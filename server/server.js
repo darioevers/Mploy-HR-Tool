@@ -13,12 +13,7 @@ app.use(express.json());
 dotenv.config();
 app.use(cors());
 
-// routes
-const userApis = require("./routes/users");
-app.use("/users", userApis);
-
 let PORT = process.env.PORT || 5000;
-
 const main = async () => {
   try {
     // Connect with the database
@@ -34,7 +29,9 @@ const main = async () => {
     consola.error(`Unable to start the server \n${err.message}`);
   }
 };
-
+// routes
+const userApis = require("./routes/users");
+app.use("/users", userApis);
 main();
 
 module.exports = app;
