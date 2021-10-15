@@ -38,11 +38,6 @@ const UserSchema = Schema(
       type: Date,
       required: false,
     },
-    role: {
-      type: String,
-      enum: ["Admin", "User"],
-      required: true,
-    },
   },
   { timestamp: true }
 );

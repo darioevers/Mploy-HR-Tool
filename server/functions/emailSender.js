@@ -1,21 +1,19 @@
 const sgMail = require("@sendgrid/mail");
-
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+sgMail.setApiKey(process.env.SENDGRID_API);
 
 const sendMail = async (email, subject, text, html) => {
   try {
     const msg = {
-      to: email,
-      from: process.env.APP_HOST_EMAIL,
-      subject,
-      text,
       html,
+      text,
+      subject,
+      to: process.env.HOST_EMAIL,
+      from: email,
     };
     await sgMail.send(msg);
-    console.log("MAIL_SENT", err.message);
+    console.log("MAIL_SENT");
   } catch (err) {
     console.log("ERROR_MAILING", err.message);
-  } finally {
-    return;
   }
 };
+module.exports = sendMail;

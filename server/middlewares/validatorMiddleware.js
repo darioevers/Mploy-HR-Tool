@@ -6,8 +6,6 @@ const validationMiddleware = (req, res, next) => {
     return res.send({
       errors: errors.array(),
     });
-  } else {
-    res.status(200).send("Form updated successfully... ");
   }
   next();
 };
