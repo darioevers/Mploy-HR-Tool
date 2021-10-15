@@ -7,13 +7,16 @@ const sendMail = async (email, subject, text, html) => {
       html,
       text,
       subject,
-      to: process.env.HOST_EMAIL,
-      from: email,
+      to: email,
+      from: process.env.HOST_EMAIL,
     };
+    console.log(msg);
     await sgMail.send(msg);
     console.log("MAIL_SENT");
   } catch (err) {
     console.log("ERROR_MAILING", err.message);
+  } finally {
+    return;
   }
 };
 module.exports = sendMail;
