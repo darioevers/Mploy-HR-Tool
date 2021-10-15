@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/darioevers/Mploy-HR-Tool#readme",
   "dependencies": {
+    "@sendgrid/mail": "^7.4.7",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "consola": "^2.15.3",
