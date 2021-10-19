@@ -1,22 +1,26 @@
-const sgMail = require("@sendgrid/mail");
-sgMail.setApiKey(process.env.SENDGRID_API);
+const nodemailer = require("nodemailer");
 
-const sendMail = async (email, subject, text, html) => {
-  try {
-    const msg = {
-      html,
-      text,
-      subject,
-      to: email,
-      from: process.env.HOST_EMAIL,
-    };
-    console.log(msg);
-    await sgMail.send(msg);
-    console.log("MAIL_SENT");
-  } catch (err) {
-    console.log("ERROR_MAILING", err.message);
-  } finally {
-    return;
-  }
+const sendEmail = (options) => {
+  const transporter = nodemailer.createTransport({
+    service: process.env.EMAIL_SERVICE,
+    auth: {
+      user: process.env.EMAIL_USERNAME,
+      pass: process.env.EMAIL_PASSWORD,
+    },
+  });
+  const mailOptions = {
+    from: process.env.HOST_EMAIL,
+    to: options.to,
+    subject: options.subject,
+    html: options.text,
+  };
+  transporter.sendMail(mailOptions, function (err, info) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(info);
+    }
+  });
 };
-module.exports = sendMail;
+
+module.exports = sendEmail;

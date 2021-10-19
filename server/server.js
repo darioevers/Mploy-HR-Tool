@@ -5,22 +5,20 @@ const morgan = require("morgan");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const users = require("./models/userModel");
+const users = require("./models/UserModel");
+// const ErrorHandler = require("./middlewares/error");
 
 // Applications Middlewares
 app.use(morgan("dev"));
 app.use(express.json());
 dotenv.config();
 app.use(cors());
-
-// routes
-const userApis = require("./routes/users");
-app.use("/users", userApis);
+// app.use(ErrorHandler);
+// Connect with the database
 
 let PORT = process.env.PORT || 5000;
 const main = async () => {
   try {
-    // Connect with the database
     await mongoose.connect(process.env.DB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -34,5 +32,10 @@ const main = async () => {
   }
 };
 main();
+
+// routes
+app.use("/users", require("./routes/users"));
+
+app.use("/private", require("./routes/private"));
 
 module.exports = app;
