@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
 import PrivateRoute from "./components/routing/PrivateRoute";
 
 // importing screens
@@ -9,9 +8,12 @@ import LoRegisterScreen from "./components/screens/RegisterScreen";
 import ForgotPasswordScreen from "./components/screens/ForgotPasswordScreen";
 import ResetPasswordScreen from "./components/screens/ResetPasswordScreen";
 
+//dashboard
+import TopNav from "./components/dashboard/global/TopNav";
 function App() {
   return (
     <>
+      <TopNav />
       <Router>
         <div className="app">
           <Switch>

@@ -2,8 +2,8 @@ import React from "react";
 
 function TopNav() {
   return (
-    <div>
-      <h1> Top Nav</h1>
+    <div className="top-nav">
+      <h1> Top Navigation</h1>
     </div>
   );
 }
