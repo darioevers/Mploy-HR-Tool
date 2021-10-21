@@ -53,46 +53,48 @@ const LoginScreen = ({ history, location }) => {
     <div>
       <LandingpageTopnav />
       <div className="loginarea">
-    <div className="login-screen">
-      <form onSubmit={loginHandler} className="login-screen__form">
-        <h3 className="login-screen__title"> Sign in </h3>
-        {error && <span className="error-message">{error}</span>}
-        <div className="form-group">
-          <input
-            type="email"
-            required
-            id="email"
-            placeholder="Email address"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-            tabIndex={1}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">
-            <Link to="/forgotpassword" className="login-screen__forgotpassword">
-              Forgot Password?
+        <div className="login-screen">
+          <form onSubmit={loginHandler} className="login-screen__form">
+            <h3 className="login-screen__title"> Sign in </h3>
+            {error && <span className="error-message">{error}</span>}
+            <div className="form-group">
+              <input
+                type="email"
+                required
+                id="email"
+                placeholder="Email address"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                tabIndex={1}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="password">
+                <Link to="/forgotpassword" className="login-screen__forgotpassword">
+                  Forgot Password?
             </Link>
-          </label>
-          <input
-            type="password"
-            required
-            id="password"
-            autoComplete="true"
-            placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-            tabIndex={2}
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Login
+              </label>
+              <input
+                type="password"
+                required
+                id="password"
+                autoComplete="true"
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+                tabIndex={2}
+              />
+            </div>
+            <button type="submit" className="btn btn-primary">
+              Login
         </button>
 
-        <span className="login-screen__subtext">
-          Don't have an account? <Link to="/register">Register</Link>
-        </span>
-      </form>
+            <span className="login-screen__subtext">
+              Don't have an account? <Link to="/register">Register</Link>
+            </span>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };
