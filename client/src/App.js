@@ -2,23 +2,49 @@ import "./scss/main.scss";
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-// LANDINGPAGE GLOBAL IMPORTS
-import Landingpagetopnav from "./components/landingpage/LandingpageTopnav";
+import PrivateRoute from "./components/routing/PrivateRoute";
 
-// LANDINGPAGE HOME IMPORTS
-
+// importing screens
+import PrivateScreen from "./components/screens/PrivateScreen";
+import LoginScreen from "./components/screens/LoginScreen";
+import LoRegisterScreen from "./components/screens/RegisterScreen";
+import ForgotPasswordScreen from "./components/screens/ForgotPasswordScreen";
+import ResetPasswordScreen from "./components/screens/ResetPasswordScreen";
 
 function App() {
-  const [isActive, setActive] = useState("false");
-
-  const themeToggle = () => {
-    setActive(!isActive);
-  };
   return (
-    <div className={isActive ? "theme-light" : "theme-dark"}>
+    <>
       <Router>
+        <div className="app">
+          <Switch>
+            {/* <PrivateRoute exact path="/" component={PrivateScreen} /> */}
+            <Route exact path="/login" component={LoginScreen} />
+            <Route exact path="/register" component={LoRegisterScreen} />
+            <Route
+              exact
+              path="/forgotpassword"
+              component={ForgotPasswordScreen}
+            />
+            <Route
+              exact
+              path="/passwordreset/resetToken"
+              component={ResetPasswordScreen}
+            />
+          </Switch>
+        </div>
       </Router>
-    </div>
+    </>
   );
+}
+
+const themeToggle = () => {
+  setActive(!isActive);
+};
+return (
+  <div className={isActive ? "theme-light" : "theme-dark"}>
+    <Router>
+    </Router>
+  </div>
+);
 }
 export default App;
