@@ -37,14 +37,10 @@ function App() {
   );
 }
 
-const themeToggle = () => {
-  setActive(!isActive);
-};
 return (
-  <div className={isActive ? "theme-light" : "theme-dark"}>
+  <div>
     <Router>
     </Router>
   </div>
 );
-}
 export default App;
