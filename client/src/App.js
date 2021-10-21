@@ -12,14 +12,17 @@ import ForgotPasswordScreen from "./components/landingpage/login/ForgotPasswordS
 import ResetPasswordScreen from "./components/landingpage/login/ResetPasswordScreen";
 import LandingpageTopnav from "./components/landingpage/LandingpageTopnav";
 
+// HOME COMPONENTS
+import Home from "./components/landingpage/home/Home";
+
 function App() {
   return (
     <>
       <Router>
-        <LandingpageTopnav />
         <div className="app">
           <Switch>
             {/* <PrivateRoute exact path="/" component={PrivateScreen} /> */}
+            <Route exact path="/" component={Home} />
             <Route exact path="/login" component={LoginScreen} />
             <Route exact path="/register" component={LoRegisterScreen} />
             <Route
