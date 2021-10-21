@@ -3,8 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 // IMPORT COMPONENTS
-import LandingpageTopnav from '../LandingpageTopnav';
-
+import LandingpageTopnav from "../LandingpageTopnav";
 
 const LoginScreen = ({ history, location }) => {
   const [email, setEmail] = useState("");
@@ -13,7 +12,7 @@ const LoginScreen = ({ history, location }) => {
 
   useEffect(() => {
     if (localStorage.getItem("authToken")) {
-      history.push("/private");
+      history.push("/login");
     }
     if (location.state && location.state.email) {
       setEmail(location.state.email);
@@ -39,7 +38,7 @@ const LoginScreen = ({ history, location }) => {
       console.log(data);
       localStorage.setItem("authToken", data.token);
 
-      history.push("/private");
+      history.push("/dashboard");
     } catch (error) {
       console.log(error);
       setError(error.response.data.error);
@@ -70,9 +69,12 @@ const LoginScreen = ({ history, location }) => {
             </div>
             <div className="form-group">
               <label htmlFor="password">
-                <Link to="/forgotpassword" className="login-screen__forgotpassword">
+                <Link
+                  to="/forgotpassword"
+                  className="login-screen__forgotpassword"
+                >
                   Forgot Password?
-            </Link>
+                </Link>
               </label>
               <input
                 type="password"
@@ -87,7 +89,7 @@ const LoginScreen = ({ history, location }) => {
             </div>
             <button type="submit" className="btn btn-primary">
               Login
-        </button>
+            </button>
 
             <span className="login-screen__subtext">
               Don't have an account? <Link to="/register">Register</Link>

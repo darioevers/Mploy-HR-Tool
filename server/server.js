@@ -36,6 +36,6 @@ main();
 // routes
 app.use("/users", require("./routes/users"));
 
-app.use("/private", require("./routes/private"));
+app.use("/dashboard", require("./routes/dashboard"));
 
 module.exports = app;
