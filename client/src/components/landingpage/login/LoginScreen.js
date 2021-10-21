@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import "./LoginScreen.css";
 
 const LoginScreen = ({ history, location }) => {
   const [email, setEmail] = useState("");

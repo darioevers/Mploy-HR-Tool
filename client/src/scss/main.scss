@@ -2,11 +2,10 @@
 @import "./vendor/_vendor-dir";
 @import "./abstracts/_abstracts-dir";
 @import "./base/_base-dir";
-@import "./components/_components-dir";
 @import "./layouts/_layouts-dir";
 
 // COMPONENTS GLOBAL
-@import "./components/sidenav/_sidenav-dir";
-@import "./components/topnav/_topnav-dir";
 
 // COMPONENTS
+
+@import "../components/_components-dir";
