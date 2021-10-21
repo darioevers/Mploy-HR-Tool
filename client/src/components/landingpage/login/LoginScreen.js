@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+// IMPORT COMPONENTS
+import LandingpageTopnav from '../LandingpageTopnav';
+
 const LoginScreen = ({ history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -43,53 +46,58 @@ const LoginScreen = ({ history }) => {
   };
 
   return (
-    <div className="login-screen">
-      <form onSubmit={loginHandler} className="login-screen__form">
-        <h3 className="login-screen__title">Sign in</h3>
-        {error && <span className="error-message"> {error} </span>}
+    <div>
+      <LandingpageTopnav />
+      <div className="loginarea">
+        <div className="login-screen">
+          <form onSubmit={loginHandler} className="login-screen__form">
+            <h3 className="login-screen__title">Sign in</h3>
+            {error && <span className="error-message"> {error} </span>}
 
-        <div className="form-group">
-          <input
-            type="email"
-            required
-            id="email"
-            placeholder="Enter Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            tabIndex={1}
-          />
-        </div>
+            <div className="form-group">
+              <input
+                type="email"
+                required
+                id="email"
+                placeholder="Enter Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                tabIndex={1}
+              />
+            </div>
 
-        <div className="form-group">
-          <label htmlFor="password">
-            <Link
-              to="/forgotpassword"
-              className="login-screen__forgotpassword"
-              tabIndex={4}
-            >
-              Forgot Password ?
+            <div className="form-group">
+              <label htmlFor="password">
+                <Link
+                  to="/forgotpassword"
+                  className="login-screen__forgotpassword"
+                  tabIndex={4}
+                >
+                  Forgot Password ?
             </Link>
-          </label>
+              </label>
 
-          <input
-            type="password"
-            required
-            id="password"
-            placeholder="Enter Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            tabIndex={2}
-          />
-        </div>
+              <input
+                type="password"
+                required
+                id="password"
+                placeholder="Enter Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                tabIndex={2}
+              />
+            </div>
 
-        <button type="submit" className="btn btn-primary" tabIndex={3}>
-          Login
+            <button type="submit" className="btn btn-primary" tabIndex={3}>
+              Login
         </button>
 
-        <span className="login-screen__subtext">
-          Do not have an account? <Link to="/register">Register</Link>
-        </span>
-      </form>
+            <span className="login-screen__subtext">
+              Do not have an account? <Link to="/register">Register</Link>
+            </span>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };

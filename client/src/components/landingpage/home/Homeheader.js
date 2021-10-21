@@ -2,7 +2,7 @@ import React from 'react';
 
 const Homeheader = () => {
     return (
-        <div>Test</div>
+        <div className="homeheader_mainbox">HOMEHEADER</div>
     )
 }
 

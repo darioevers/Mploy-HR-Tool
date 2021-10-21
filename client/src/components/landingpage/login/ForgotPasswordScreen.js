@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+// IMPORT COMPONENTS
+import LandingpageTopnav from '../LandingpageTopnav';
+
 const ForgotPasswordScreen = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
@@ -30,33 +33,38 @@ const ForgotPasswordScreen = () => {
     }
   };
   return (
-    <div className="forgotpassword-screen">
-      <form
-        onSubmit={ForgotPasswordScreenHandler}
-        className="forgotpassword-screen__form"
-      >
-        <h3 className="forgotpassword-screen__title">Forgot Password</h3>
-        {error && <span className="error-message">{error}</span>}
-        {success && <span className="success-message">{success}</span>}
-        <div className="form-group">
-          <p className="forgotpassword-screen__subtext">
-            Enter yout email Address and we will send you a reset password email
-            to your email address.
+    <div>
+      <LandingpageTopnav />
+      <div className="loginarea">
+        <div className="forgotpassword-screen">
+          <form
+            onSubmit={ForgotPasswordScreenHandler}
+            className="forgotpassword-screen__form"
+          >
+            <h3 className="forgotpassword-screen__title">Forgot Password</h3>
+            {error && <span className="error-message">{error}</span>}
+            {success && <span className="success-message">{success}</span>}
+            <div className="form-group">
+              <p className="forgotpassword-screen__subtext">
+                Enter yout email Address and we will send you a reset password email
+                to your email address.
           </p>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            required
-            id="email"
-            placeholder="Email address"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Send Email
+              <label htmlFor="email">Email:</label>
+              <input
+                type="email"
+                required
+                id="email"
+                placeholder="Email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <button type="submit" className="btn btn-primary">
+              Send Email
         </button>
-      </form>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };

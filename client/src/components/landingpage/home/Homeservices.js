@@ -1,7 +1,9 @@
 import React from 'react';
 
 const Homeservices = () => {
-    return (<div></div>)
+    return (
+        <div className="homeservices_mainbox">HOMESERVICES</div>
+    )
 }
 
 export default Homeservices;
