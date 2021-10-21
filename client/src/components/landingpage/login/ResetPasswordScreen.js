@@ -13,18 +13,15 @@ const ResetPasswordScreen = ({ history, match }) => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  // make our request to the backend
   const resetPasswordHandler = async (e) => {
     e.preventDefault();
-
+    // make our request to the backend
     const config = {
       header: {
         "Content-Type": "application/json",
       },
     };
-
     // check if the two passwords do not much remove and clear state
-
     if (password !== confirmPassword) {
       setPassword("");
       setConfirmPassword("");
@@ -33,8 +30,9 @@ const ResetPasswordScreen = ({ history, match }) => {
       }, 5000);
       return setError("Passwords don't match");
     }
-    // axios request to api of password reset
+
     try {
+      console.log(match.params.resetToken);
       const { data } = await axios.put(
         `http://localhost:5000/users/passwordreset/${match.params.resetToken}`,
         {
@@ -43,8 +41,10 @@ const ResetPasswordScreen = ({ history, match }) => {
         config
       );
 
+      console.log(data);
       setSuccess(data.data);
     } catch (error) {
+      console.log(error);
       setError(error.response.data.error);
       setTimeout(() => {
         setError("");

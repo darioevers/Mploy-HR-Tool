@@ -10,9 +10,10 @@ const protect = async (req, res, next) => {
     req.headers.authorization &&
     req.headers.authorization.startsWith("Bearer")
   ) {
-    // Bearer jgfd5488784d4d4d445de888s5
     token = req.headers.authorization.split(" ")[1];
   }
+  // Bearer jgfd5488784d4d4d445de888s5
+
   if (!token) {
     return res.status(401).json("Not authorized to access this rout");
   }
