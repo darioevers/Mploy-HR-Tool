@@ -20,6 +20,6 @@ router.post("/login", login);
 router.post("/forgotpassword", forgotPassword);
 
 //reset password Using token
-router.put("/resetpassword/:resetToken", resetpassword);
+router.put("/passwordreset/:resetToken", resetpassword);
 
 module.exports = router;

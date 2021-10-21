@@ -8,8 +8,9 @@ const PrivateScreen = ({ history }) => {
   // if there is nothing in the local storage we immediatly redirect
   useEffect(() => {
     if (!localStorage.getItem("authToken")) {
-      history.push("/login");
+      history.push("/");
     }
+
     const fetchPrivateData = async () => {
       const config = {
         headers: {
@@ -18,9 +19,14 @@ const PrivateScreen = ({ history }) => {
         },
       };
       try {
-        const { data } = await axios.get("/private", config);
+        const { data } = await axios.get(
+          "http://localhost:5000/private",
+          config
+        );
+        console.log(data);
         setPrivateData(data.data);
       } catch (error) {
+        console.log(error);
         localStorage.removeItem("authToken");
         setError("You are not authorized Please Login!");
       }
@@ -28,18 +34,18 @@ const PrivateScreen = ({ history }) => {
     fetchPrivateData();
   }, [history]);
 
-  // logout button handler remove the localstorage
   const logoutHandler = () => {
     localStorage.removeItem("authToken");
-    history.push("/login");
+    history.push("/");
+    // should go to the /
   };
 
   return error ? (
-    <span className="error-message ">{error}</span>
+    <span className="error-message">{error}</span>
   ) : (
     <>
       <div style={{ background: "green", color: "white" }}>{privateData}</div>
-      <button onClick={logoutHandler}> Logout </button>
+      <button onClick={logoutHandler}>Logout</button>
     </>
   );
 };

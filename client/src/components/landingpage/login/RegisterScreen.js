@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -6,14 +6,8 @@ const RegisterScreen = ({ history }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmpassword, setConfirmpassword] = useState("");
+  const [confirmpassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
-
-  useEffect(() => {
-    if (localStorage.getItem("authToken")) {
-      history.push("/");
-    }
-  }, [history]);
 
   const registerHandler = async (e) => {
     e.preventDefault();
@@ -26,7 +20,7 @@ const RegisterScreen = ({ history }) => {
 
     if (password !== confirmpassword) {
       setPassword("");
-      setConfirmpassword("");
+      setConfirmPassword("");
       setTimeout(() => {
         setError("");
       }, 5000);
@@ -44,9 +38,7 @@ const RegisterScreen = ({ history }) => {
         config
       );
 
-      localStorage.setItem("authToken", data.token);
-
-      history.push("/");
+      history.push({ pathname: "/login", state: { email, password } });
     } catch (error) {
       setError(error.response.data.error);
       setTimeout(() => {
@@ -59,55 +51,53 @@ const RegisterScreen = ({ history }) => {
     <div className="register-screen">
       <form onSubmit={registerHandler} className="register-screen__form">
         <h3 className="register-screen__title">Register</h3>
-        {error && <span className="error-message"> {error} </span>}
+        {error && <span className="error-message">{error}</span>}
         <div className="form-group">
           <label htmlFor="name">Username:</label>
           <input
             type="text"
             required
             id="name"
-            placeholder="Enter Username"
+            placeholder="Enter username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
-
         <div className="form-group">
           <label htmlFor="email">Email:</label>
           <input
             type="email"
             required
             id="email"
-            placeholder="Enter Email"
+            placeholder="Email address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-
         <div className="form-group">
           <label htmlFor="password">Password:</label>
           <input
             type="password"
             required
             id="password"
-            placeholder="Enter Password"
+            autoComplete="true"
+            placeholder="Enter password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-
         <div className="form-group">
-          <label htmlFor="confirmPassword">Confirm Password:</label>
+          <label htmlFor="confirmpassword">Confirm Password:</label>
           <input
             type="password"
             required
-            id="confirmPassword"
-            placeholder="Confirm Password"
+            id="confirmpassword"
+            autoComplete="true"
+            placeholder="Confirm password"
             value={confirmpassword}
-            onChange={(e) => setConfirmpassword(e.target.value)}
+            onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </div>
-
         <button type="submit" className="btn btn-primary">
           Register
         </button>
