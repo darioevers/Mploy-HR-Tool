@@ -1,6 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
 
+// IMPORT COMPONENTS
+import LandingpageTopnav from '../LandingpageTopnav';
+
 const ForgotPasswordScreen = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
@@ -33,6 +36,9 @@ const ForgotPasswordScreen = () => {
   };
 
   return (
+    <div>
+      <LandingpageTopnav />
+      <div className="loginarea">
     <div className="forgotpassword-screen">
       <form
         onSubmit={forgotPasswordHandler}
@@ -59,7 +65,9 @@ const ForgotPasswordScreen = () => {
         <button type="submit" className="btn btn-primary">
           Send Email
         </button>
-      </form>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };

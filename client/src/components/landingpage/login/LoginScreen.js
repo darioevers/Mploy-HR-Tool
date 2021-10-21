@@ -2,6 +2,10 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+// IMPORT COMPONENTS
+import LandingpageTopnav from '../LandingpageTopnav';
+
+
 const LoginScreen = ({ history, location }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -46,6 +50,9 @@ const LoginScreen = ({ history, location }) => {
   };
 
   return (
+    <div>
+      <LandingpageTopnav />
+      <div className="loginarea">
     <div className="login-screen">
       <form onSubmit={loginHandler} className="login-screen__form">
         <h3 className="login-screen__title"> Sign in </h3>

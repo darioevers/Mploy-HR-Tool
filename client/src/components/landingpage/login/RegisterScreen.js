@@ -2,6 +2,9 @@ import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+// IMPORT COMPONENTS
+import LandingpageTopnav from '../LandingpageTopnav';
+
 const RegisterScreen = ({ history }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -48,6 +51,9 @@ const RegisterScreen = ({ history }) => {
   };
 
   return (
+    <div>
+      <LandingpageTopnav />
+      <div className="loginarea">
     <div className="register-screen">
       <form onSubmit={registerHandler} className="register-screen__form">
         <h3 className="register-screen__title">Register</h3>
@@ -102,10 +108,12 @@ const RegisterScreen = ({ history }) => {
           Register
         </button>
 
-        <span className="register-screen__subtext">
-          Already have an account? <Link to="/login">Login</Link>
-        </span>
-      </form>
+            <span className="register-screen__subtext">
+              Already have an account? <Link to="/login">Login</Link>
+            </span>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };

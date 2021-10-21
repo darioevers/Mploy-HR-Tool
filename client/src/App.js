@@ -14,6 +14,7 @@ import ResetPasswordScreen from "./components/landingpage/login/ResetPasswordScr
 
 // HOME COMPONENTS
 import Home from "./components/landingpage/home/Home";
+
 const App = () => {
   return (
     <Router>
