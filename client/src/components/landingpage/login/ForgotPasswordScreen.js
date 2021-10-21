@@ -1,25 +1,30 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
+
+// IMPORT COMPONENTS
+import LandingpageTopnav from '../LandingpageTopnav';
 
 const ForgotPasswordScreen = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  const ForgotPasswordScreenHandler = async (e) => {
+  const forgotPasswordHandler = async (e) => {
     e.preventDefault();
 
     const config = {
       header: {
-        "content-type": "application/json",
+        "Content-Type": "application/json",
       },
     };
+
     try {
       const { data } = await axios.post(
         "http://localhost:5000/users/forgotpassword",
         { email },
         config
       );
+
       setSuccess(data.data);
     } catch (error) {
       setError(error.response.data.error);
@@ -29,10 +34,14 @@ const ForgotPasswordScreen = () => {
       }, 5000);
     }
   };
+
   return (
+    <div>
+      <LandingpageTopnav />
+      <div className="loginarea">
     <div className="forgotpassword-screen">
       <form
-        onSubmit={ForgotPasswordScreenHandler}
+        onSubmit={forgotPasswordHandler}
         className="forgotpassword-screen__form"
       >
         <h3 className="forgotpassword-screen__title">Forgot Password</h3>
@@ -43,7 +52,7 @@ const ForgotPasswordScreen = () => {
             Enter yout email Address and we will send you a reset password email
             to your email address.
           </p>
-          <label htmlFor="email">Email:</label>
+
           <input
             type="email"
             required
@@ -56,7 +65,9 @@ const ForgotPasswordScreen = () => {
         <button type="submit" className="btn btn-primary">
           Send Email
         </button>
-      </form>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };
