@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import * as React from 'react';
+import ReactDOM from 'react-dom';
 import { NavLink } from 'react-router-dom'
+import Button from '@mui/material/Button';
 
 const LandingpageTopnav = () => {
     return (
@@ -14,11 +16,11 @@ const LandingpageTopnav = () => {
                 </div>
                 <div className="landingpage_topnav_buttons">
                     <div className="landingpage_topnav_contactbutton">
-                        <button>Contact</button>
+                        <Button variant="outlined">Contact</Button>
                     </div>
                     <div className="landingpage_topnav_loginbutton">
                         <NavLink exact to="/login" className="sidenav_button">
-                            <button>Login</button>
+                            <Button variant="contained">Login</Button>
                         </NavLink>
                     </div>
                 </div>
