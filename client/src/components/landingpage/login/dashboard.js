@@ -20,7 +20,7 @@ const PrivateScreen = ({ history }) => {
       };
       try {
         const { data } = await axios.get(
-          "http://localhost:5000/private",
+          "http://localhost:5000/dashboard",
           config
         );
         console.log(data);

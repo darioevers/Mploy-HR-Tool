@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 
-const pick = require("lodash");
 const Schema = mongoose.Schema;
 const UserSchema = Schema(
   {
