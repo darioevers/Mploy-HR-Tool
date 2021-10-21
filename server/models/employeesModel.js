@@ -45,6 +45,9 @@ const EmployeesSchema = Schema({
       type: String,
       required: false,
     },
+    photo: {
+      type: String,
+    },
   },
   addressOne: {
     street: {
