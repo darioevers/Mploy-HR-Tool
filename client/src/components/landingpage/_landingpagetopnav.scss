@@ -1,0 +1,30 @@
+.landingpage_topnav_mainbox {
+    width: 80vw;
+    display: flex;
+    height: 50px;
+    margin: 0vw 10vw;
+    align-items: center;
+    .landingpage_topnav_logobox{
+        width: 10vw;
+        color: rgb(124, 35, 35);
+        font-size: 1.6rem;
+        font-weight: 800;
+        justify-content: left;
+    }
+    .landingpage_topnav_menulinks{
+        width: 20vw;
+        display: flex;
+        justify-content: center;
+        .landingpage_topnav_menulink{
+            padding: 0px 10px;
+        }
+    }
+    .landingpage_topnav_buttons{
+        justify-content: right;
+        width: 50vw;
+        display: flex;
+        .landingpage_topnav_contactbutton{
+            padding: 0px 10px;
+        }
+    }
+}
