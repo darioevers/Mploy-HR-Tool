@@ -1,12 +1,11 @@
 // GLOBAL STYLINGS
-// @import "./vendor/_vendor-dir";
-// @import "./abstracts/_abstracts-dir";
-// @import "./base/_base-dir";
-// // @import "./components/_components-dir";
-// @import "./layouts/_layouts-dir";
+@import "./vendor/_vendor-dir";
+@import "./abstracts/_abstracts-dir";
+@import "./base/_base-dir";
+@import "./layouts/_layouts-dir";
 
-// // COMPONENTS GLOBAL
-// // @import "./components/sidenav/_sidenav-dir";
-@import "../components/dashboard/global/top-nav";
+// COMPONENTS GLOBAL
 
 // COMPONENTS
+
+@import "../components/_components-dir";
