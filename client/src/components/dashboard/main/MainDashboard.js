@@ -6,7 +6,7 @@ function MainDashboard() {
   return (
     <div>
       <TopNav />
-      <SideNav />
+      {/* <SideNav /> */}
     </div>
   );
 }

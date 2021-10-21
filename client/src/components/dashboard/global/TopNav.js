@@ -1,9 +1,14 @@
 import React from "react";
+import SearchButton from "./SearchButton";
 
 function TopNav() {
   return (
-    <div>
-      <h1>TOPNAV</h1>
+    <div className="top-nav-wrapper">
+      <div className="logo">
+        <img src="" />
+      </div>
+      <div className="top-nav-line"></div>
+      <SearchButton />
     </div>
   );
 }
