@@ -5,11 +5,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PrivateRoute from "./components/routing/PrivateRoute";
 
 // importing screens
-import PrivateScreen from "./components/screens/PrivateScreen";
-import LoginScreen from "./components/screens/LoginScreen";
-import LoRegisterScreen from "./components/screens/RegisterScreen";
-import ForgotPasswordScreen from "./components/screens/ForgotPasswordScreen";
-import ResetPasswordScreen from "./components/screens/ResetPasswordScreen";
+import PrivateScreen from "./components/landingpage/login/PrivateScreen";
+import LoginScreen from "./components/landingpage/login/LoginScreen";
+import LoRegisterScreen from "./components/landingpage/login/RegisterScreen";
+import ForgotPasswordScreen from "./components/landingpage/login/ForgotPasswordScreen";
+import ResetPasswordScreen from "./components/landingpage/login/ResetPasswordScreen";
 
 function App() {
   return (
