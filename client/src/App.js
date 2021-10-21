@@ -11,12 +11,9 @@ import ForgotPasswordScreen from "./components/landingpage/login/ForgotPasswordS
 import ResetPasswordScreen from "./components/landingpage/login/ResetPasswordScreen";
 import LandingpageTopnav from "./components/landingpage/LandingpageTopnav";
 
-//dashboard
-import TopNav from "./components/dashboard/global/TopNav";
 function App() {
   return (
     <>
-      <TopNav />
       <Router>
         <LandingpageTopnav />
         <div className="app">
