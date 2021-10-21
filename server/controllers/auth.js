@@ -1,23 +1,6 @@
 const User = require("../models/UserModel");
 const sendEmail = require("../functions/emailSender");
 const crypto = require("crypto");
-// signup or register new user
-const register = async (req, res, next) => {
-  const { username, email, password } = req.body;
-  try {
-    const user = await User.create({
-      username,
-      email,
-      password,
-    });
-    sendToken(user, 201, res);
-  } catch (err) {
-    res.status(500).json({
-      success: false,
-      err: err.message,
-    });
-  }
-};
 
 // login with email and password
 const login = async (req, res, next) => {
@@ -38,9 +21,25 @@ const login = async (req, res, next) => {
     if (!isMatch) {
       res.status(404).json({ success: false, error: "Invalid credentials" });
     }
+
     sendToken(user, 200, res);
   } catch (err) {
-    res.status(500).json({ success: false, err: err.message });
+    next(err);
+  }
+};
+
+// signup or register new user
+const register = async (req, res, next) => {
+  const { username, email, password } = req.body;
+  try {
+    const user = await User.create({
+      username,
+      email,
+      password,
+    });
+    sendToken(user, 201, res);
+  } catch (err) {
+    next(err);
   }
 };
 
@@ -72,7 +71,7 @@ const forgotPassword = async (req, res, next) => {
     `;
 
     try {
-      await sendEmail({
+      sendEmail({
         to: user.email,
         subject: "Password Reset Request",
         text: message,
@@ -100,18 +99,21 @@ const resetpassword = async (req, res, next) => {
     .createHash("sha256")
     .update(req.params.resetToken)
     .digest("hex");
-
+  // const resetPasswordToken = req.params.resetToken;
+  console.log(resetPasswordToken);
+  //4db8366238a7205b4371c8cc0401170bf0c77cda734a6fe3b2fd423275217ca0"
   try {
     const user = await User.findOne({
       resetPasswordToken,
-      resetPasswordExpire: { $gt: Date.now() },
     });
     if (!user) {
       return res.status(400).json(" Reset is not Valid ");
     }
+    console.log(user);
     user.password = req.body.password;
-    user.resetPasswordToken = undefined;
-    user.resetPasswordExpire = undefined;
+    user.resetPasswordToken = null;
+    user.resetPasswordExpire = null;
+
     await user.save();
     res.status(201).json({ data: "Password reset successfully." });
   } catch (error) {
@@ -124,4 +126,5 @@ const sendToken = (user, statusCode, res) => {
   const token = user.getSignedToken();
   res.status(statusCode).json({ success: true, token });
 };
+
 module.exports = { register, login, forgotPassword, resetpassword };

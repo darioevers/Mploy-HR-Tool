@@ -52,7 +52,7 @@ UserSchema.methods.getSignedToken = function () {
   });
 };
 
-// create reset password hash added to the object saving ?
+// create reset password hash added to the object saving
 UserSchema.methods.getResetPasswordToken = function () {
   const resetToken = crypto.randomBytes(20).toString("hex");
 
@@ -63,29 +63,10 @@ UserSchema.methods.getResetPasswordToken = function () {
     .digest("hex");
 
   // Set token expire date
-  this.resetPasswordExpire = Date.now() + 10 * (60 * 1000); // Ten Minutes
+  // this.resetPasswordExpire = Date.now() + 10 * (60 * 1000); // Ten Minutes
 
   return resetToken;
 };
 
-// // Pick Creates an object composed of the picked object properties. here we just pick some of the values from the obj
-// UserSchema.methods.getUserInfo = function () {
-//   return pick(this, ["_id", "username", "email", "name"]);
-// };
-
 const User = mongoose.model("users", UserSchema);
 module.exports = User;
-
-//
-// verified: {
-//   type: Boolean,
-//   default: false,
-// },
-// verficationCode: {
-//   type: String,
-//   required: false,
-// },
-// name: {
-//   type: String,
-//   required: true,
-// },
