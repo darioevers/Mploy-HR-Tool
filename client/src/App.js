@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import PrivateRoute from "./components/routing/PrivateRoute";
 
-// importing screens
+// LOGIN COMPONENTS
 import PrivateScreen from "./components/landingpage/login/PrivateScreen";
 import LoginScreen from "./components/landingpage/login/LoginScreen";
 import LoRegisterScreen from "./components/landingpage/login/RegisterScreen";
