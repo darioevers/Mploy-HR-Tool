@@ -1,4 +1,6 @@
 import React from "react";
+import InstagramIcon from "@material-ui/icons/Instagram";
+import TwitterIcon from "@material-ui/icons/Twitter";
 
 const Homefooter = () => {
   return (
@@ -31,7 +33,8 @@ const Homefooter = () => {
       </div>
 
       <div className="homefooter_topic_2">
-        <div>SOCIAL MEDIA CHANNELS</div>
+        <InstagramIcon />
+        <TwitterIcon />
       </div>
 
       <hr />
@@ -40,6 +43,10 @@ const Homefooter = () => {
         <div>Privacy Policy</div>
         <div>Legal Notice </div>
         <div> Terms and Conditions</div>
+      </div>
+
+      <div className="homefooter_topic_4">
+        <div>©2021 by Mploy. All rights reserved</div>
       </div>
     </div>
   );
