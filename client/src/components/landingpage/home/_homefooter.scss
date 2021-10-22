@@ -1,4 +1,28 @@
-.homefooter_mainbox{
-    height: 200px;
-    border: red 1px solid;
+.homefooter_mainbox {
+  height: 200px;
+  border: red 1px solid;
+  padding: 20px;
+}
+
+.homefooter_topic {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+hr {
+  margin: 20px 0;
+}
+
+.homefooter_subtopic_header {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.homefooter_topic_3 {
+  display: flex;
+
+  > div {
+    padding-right: 20px;
+  }
 }
