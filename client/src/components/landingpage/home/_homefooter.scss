@@ -2,7 +2,7 @@
   height: 300px;
   background-color: $dark-bg;
   color: white;
-  padding: 25px;
+  padding: 25px 50px;
 }
 
 hr {
@@ -17,13 +17,19 @@ hr {
   color: #b8b7b7;
 }
 .homefooter_topic_2 {
+  display: flex;
+  justify-content: center;
   padding-top: 20px;
+  * {
+    margin-right: 20px;
+  }
 }
 .homefooter_topic_3,
 .homefooter_topic_4 {
   display: flex;
-  font-size: small;
+  font-size: 11px;
   padding-bottom: 15px;
+  justify-content: center;
 
   > div {
     padding-right: 20px;
