@@ -5,7 +5,9 @@
 @import "./layouts/_layouts-dir";
 
 // COMPONENTS GLOBAL
+@import "../components//dashboard//global/_topnav.scss";
+@import "../components//dashboard//global/_sidenav.scss";
 
 // COMPONENTS
-
 @import "../components/_components-dir";
+@import "../components//dashboard/global/search-button";
