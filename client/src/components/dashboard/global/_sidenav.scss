@@ -1,4 +1,8 @@
 .sidenav_mainbox {
+  height: 100%;
+  background-color: $dark-bg;
+  border-radius: 15px;
   grid-area: sidenav_mainbox;
-  border: 1px solid red;
+  margin-right: 10px;
+  // border: 1px solid red;
 }

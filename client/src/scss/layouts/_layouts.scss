@@ -20,7 +20,7 @@
   display: grid;
   grid-template-columns: 0.6fr 1.4fr 1fr;
   grid-template-rows: 0.4fr 1.6fr 1fr;
-  gap: 0px 0px;
+  gap: 10px 0px;
   grid-template-areas:
     "topnav_mainbox topnav_mainbox topnav_mainbox"
     "sidenav_mainbox components_mainbox components_mainbox"

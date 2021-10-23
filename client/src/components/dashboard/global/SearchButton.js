@@ -1,9 +1,9 @@
 import * as React from "react";
 import { styled } from "@mui/material/styles";
+import FormControlLabel from "@mui/material/FormControlLabel";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
 import InputBase from "@mui/material/InputBase";
 import Switch from "@mui/material/Switch";
 import SearchIcon from "@material-ui/icons/Search";
@@ -24,10 +24,14 @@ const Search = styled("div")(({ theme }) => ({
     color: "#2b3240",
   },
   margin: "20px",
+  padding: "none",
   width: "100%",
+  height: "28px",
+  fontSize: "10px",
   [theme.breakpoints.up("sm")]: {
     marginLeft: theme.spacing(1),
     width: "auto",
+    fontSize: "0",
   },
 }));
 
@@ -49,11 +53,16 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
-    width: "100%",
+    width: "70%",
+    height: "20px",
+    fontSize: "15px",
+    marginTop: "-4px",
+
     [theme.breakpoints.up("sm")]: {
       width: "0",
       "&:focus": {
         width: "20ch",
+        paddingBottom: "10px",
       },
     },
   },
@@ -61,18 +70,63 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const label = { inputProps: { "aria-label": "Switch demo" } };
 
+const DarkModeSwitch = styled((props) => (
+  <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
+))(({ theme }) => ({
+  marginLeft: "20px",
+  width: 50,
+  height: 30,
+  padding: 1.8,
+  "& .MuiSwitch-switchBase": {
+    padding: 1,
+    margin: 2,
+    transitionDuration: "300ms",
+    "&.Mui-checked": {
+      transform: "translateX(16px)",
+      color: "#fff",
+      "& + .MuiSwitch-track": {
+        backgroundColor: theme.palette.mode === "dark" ? "white" : "#2b3240",
+        opacity: 1,
+        border: "1px solid #2b3240",
+      },
+      "&.Mui-disabled + .MuiSwitch-track": {
+        opacity: 0.5,
+      },
+    },
+    "&.Mui-focusVisible .MuiSwitch-thumb": {
+      color: "#33cf4d",
+      border: "6px solid #fff",
+    },
+    "&.Mui-disabled .MuiSwitch-thumb": {
+      backgroundColor:
+        theme.palette.mode === "light" ? "white" : theme.palette.grey[600],
+    },
+    "&.Mui-disabled + .MuiSwitch-track": {
+      opacity: theme.palette.mode === "light" ? 0.7 : 0.3,
+    },
+  },
+  "& .MuiSwitch-thumb": {
+    boxSizing: "border-box",
+    width: 16,
+    height: 16,
+    margin: "5px 6px",
+  },
+  "& .MuiSwitch-track": {
+    borderRadius: "50px",
+    backgroundColor: theme.palette.mode === "light" ? "white" : "#2b3240",
+    border: "1px solid black",
+    opacity: 1,
+    transition: theme.transitions.create(["background-color"], {
+      duration: 500,
+    }),
+  },
+}));
+
 export default function SearchAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <MyAppBar position="static" width="100vw" backgroundColor="red">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          ></IconButton>
           <div className="logo">
             <h1>Mploy</h1>
           </div>
@@ -98,7 +152,10 @@ export default function SearchAppBar() {
             </select> */}
           </div>
           <div className="darkmode_switch">
-            <Switch {...label} />
+            <FormControlLabel
+              control={<DarkModeSwitch sx={{ m: 1 }} defaultunchecked />}
+              label="dark mode"
+            />
           </div>
         </Toolbar>
       </MyAppBar>
