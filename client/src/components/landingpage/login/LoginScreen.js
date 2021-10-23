@@ -44,7 +44,7 @@ const LoginScreen = ({ history, location }) => {
       setError(error.response.data.error);
       setTimeout(() => {
         setError("");
-      }, 5000);
+      }, 3000);
     }
   };
 

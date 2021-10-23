@@ -1,11 +1,11 @@
 import React from "react";
-import TopNav from "../global/TopNav";
-import SideNav from "../global/SideNav";
+import DashboardTopNav from "../global/DashboardTopNav";
+// import SideNav from "../global/SideNav";
 
 function MainDashboard() {
   return (
     <div>
-      <TopNav />
+      <DashboardTopNav />
       {/* <SideNav /> */}
     </div>
   );

@@ -24,10 +24,10 @@ const App = () => {
       <div className="app">
         <Switch>
           <Route exact path="/" component={Home} />
-          <PrivateRoute exact path="/dashboard" component={PrivateScreen} />
+          <PrivateRoute exact path="/dashboard" component={MainDashboard} />
 
           <Route exact path="/login" component={LoginScreen} />
-          <Route exact path="/dashboard" component={MainDashboard} />
+          {/* <Route exact path="/dashboard" component={MainDashboard} /> */}
           <Route exact path="/register" component={RegisterScreen} />
           <Route
             exact
