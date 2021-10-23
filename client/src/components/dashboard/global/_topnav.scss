@@ -1,43 +1,54 @@
 .topnav_mainbox {
   display: flex;
   justify-content: space-between;
-  width: 100vw;
-  height: 5vh;
+  grid-area: topnav_mainbox;
+  width: 100%;
+  height: 10vh;
+  border: 1px solid red;
 }
 
 .logo {
-  color: orange;
-  margin: 10px;
+  color: $dark-bg;
 }
 .top-nav-line {
   display: flex;
   align-self: center;
-  margin-left: 20px;
+  margin: 0 20px;
   height: 5px;
   width: 65%;
   background-color: black;
 }
 
-.search_wrapper {
-  width: 50vw;
-  background-color: red;
-}
-
 .language_switch {
-  margin: 10px;
-  padding: 5px;
-  select {
-    width: 80px;
-    height: 25px;
+  @include flex-center;
+  margin: 0 20px;
+  .eng_wrapper,
+  .deu_wrapper {
+    @include flex-center;
+    color: black;
+    width: 40px;
+    height: 40px;
     border: 1px solid black;
-    border-radius: 50px;
-    background-color: transparent;
-    font-size: 20px;
-    padding-left: 10px;
+    border-radius: 100px;
+    margin: 10px;
+    font-size: 12px;
+    font-weight: bolder;
+    &:hover {
+      background-color: orange;
+    }
   }
-  option {
-    padding: 50px;
-  }
+  // select {
+  //   width: 80px;
+  //   height: 25px;
+  //   border: 1px solid black;
+  //   border-radius: 50px;
+  //   background-color: transparent;
+  //   font-size: 20px;
+  //   padding-left: 10px;
+  // }
+  // option {
+  //   padding: 50px;
+  // }
 }
 
 .MuiBox-root css-i9gxme {

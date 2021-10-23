@@ -1,10 +1,10 @@
 import React from "react";
 
-function SideNav() {
+function DashboardSideNav() {
   return (
-    <div>
+    <div className="sidenav_mainbox">
       <h1>SideNav</h1>
     </div>
   );
 }
-export default SideNav;
+export default DashboardSideNav;

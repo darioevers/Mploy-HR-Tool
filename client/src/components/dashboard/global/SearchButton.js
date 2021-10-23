@@ -11,16 +11,17 @@ import SearchIcon from "@material-ui/icons/Search";
 const MyAppBar = styled(AppBar)({
   background: "none",
   boxShadow: "none",
-  padding: "0 30px",
+  padding: "0 10px",
 });
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: "50px",
   backgroundColor: "#2b3240",
-  border: "1px solid black",
+  border: "1px solid #2b3240",
   "&:hover": {
-    backgroundColor: "#2b324098",
+    backgroundColor: "white",
+    color: "#2b3240",
   },
   margin: "20px",
   width: "100%",
@@ -85,10 +86,16 @@ export default function SearchAppBar() {
           </Search>
 
           <div className="language_switch">
-            <select name="language" id="language">
+            <div className="eng_wrapper">
+              <p>ENG</p>
+            </div>
+            <div className="deu_wrapper">
+              <p>DEU</p>
+            </div>
+            {/* <select name="language" id="language">
               <option value="volvo">&#127465;&#127466;</option>
               <option value="saab">&#127468;&#127463;</option>
-            </select>
+            </select> */}
           </div>
           <div className="darkmode_switch">
             <Switch {...label} />

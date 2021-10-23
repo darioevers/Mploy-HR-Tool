@@ -1,12 +1,14 @@
 import React from "react";
 import DashboardTopNav from "../global/DashboardTopNav";
-// import SideNav from "../global/SideNav";
+import DashboardSideNav from "../global/DashboardSideNav";
+import Components from "../Components";
 
 function MainDashboard() {
   return (
-    <div>
+    <div className="maindashboard_area">
       <DashboardTopNav />
-      {/* <SideNav /> */}
+      <DashboardSideNav />
+      <Components />
     </div>
   );
 }

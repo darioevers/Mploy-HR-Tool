@@ -1,3 +1,9 @@
+// FLEX CENTER
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 // MEDIA QUERYS
 // Small devices
 @mixin sm {
