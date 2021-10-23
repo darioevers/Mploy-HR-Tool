@@ -9,12 +9,8 @@ const Homeabout = () => {
         <h3>
           Here at Mploy we strive to deliver innovative solutions with our
           modern approach to HR Management. We want to make HR management an
-          experience, rather than a task.
+          experience, rather than a task. Sign up and let us show you how.
         </h3>
-        <br />
-        <div>
-          Sign up and experience firsthand the edge you have with Mploy.
-        </div>
       </div>
       <div className="homeabout_content">
         <div className="homeabout_content_left">
