@@ -1,4 +1,6 @@
 .sidenav_mainbox {
+  display: flex;
+  flex-direction: column;
   height: 100%;
   background-color: $dark-bg;
   border-radius: 15px;

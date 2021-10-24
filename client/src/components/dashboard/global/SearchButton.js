@@ -11,7 +11,7 @@ import SearchIcon from "@material-ui/icons/Search";
 const MyAppBar = styled(AppBar)({
   background: "none",
   boxShadow: "none",
-  padding: "0 10px",
+  padding: "none",
 });
 
 const Search = styled("div")(({ theme }) => ({
@@ -73,7 +73,7 @@ const label = { inputProps: { "aria-label": "Switch demo" } };
 const DarkModeSwitch = styled((props) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
 ))(({ theme }) => ({
-  marginLeft: "20px",
+  marginLeft: "25px",
   width: 50,
   height: 30,
   padding: 1.8,
@@ -112,6 +112,7 @@ const DarkModeSwitch = styled((props) => (
     margin: "5px 6px",
   },
   "& .MuiSwitch-track": {
+    width: "100px",
     borderRadius: "50px",
     backgroundColor: theme.palette.mode === "light" ? "white" : "#2b3240",
     border: "1px solid black",
@@ -146,15 +147,11 @@ export default function SearchAppBar() {
             <div className="deu_wrapper">
               <p>DEU</p>
             </div>
-            {/* <select name="language" id="language">
-              <option value="volvo">&#127465;&#127466;</option>
-              <option value="saab">&#127468;&#127463;</option>
-            </select> */}
           </div>
           <div className="darkmode_switch">
             <FormControlLabel
-              control={<DarkModeSwitch sx={{ m: 1 }} defaultunchecked />}
-              label="dark mode"
+              control={<DarkModeSwitch sx={{ m: 0 }} defaultunchecked />}
+              label=""
             />
           </div>
         </Toolbar>

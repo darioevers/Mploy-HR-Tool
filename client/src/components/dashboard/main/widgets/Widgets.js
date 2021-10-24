@@ -1,4 +1,5 @@
 import React from "react";
+import WelcomeMessage from "./WelcomeMessage";
 import WidgetAnnouncements from "./WidgetAnnouncements";
 import WidgetApplications from "./WidgetApplications";
 import WidgetBirthdays from "./WidgetBirthdays";
@@ -12,6 +13,7 @@ import WidgetTeam from "./WidgetTeam";
 function Widgets() {
   return (
     <div className="components_mainbox">
+      <WelcomeMessage />
       <WidgetAnnouncements />
       <WidgetApplications />
       <WidgetBirthdays />
