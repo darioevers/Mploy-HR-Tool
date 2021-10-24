@@ -1,0 +1,12 @@
+.components_mainbox {
+  display: grid;
+  grid-template-columns: 0.6fr 0.4fr 1fr 1fr;
+  grid-template-rows: 0.8fr 1.1fr 0.3fr 0.8fr;
+  gap: 12px 12px;
+  grid-template-areas:
+    "widget_sickleave widget_sickleave widget_holidays widget_homeoffice"
+    "widget_team widget_tasks widget_tasks widget_calendar"
+    "widget_team widget_tasks widget_tasks widget_announcements"
+    "widget_applications widget_applications widget_birthdays widget_announcements";
+  grid-area: components_mainbox;
+}

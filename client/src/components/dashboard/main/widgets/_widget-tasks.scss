@@ -1,0 +1,4 @@
+.widget_tasks_mainbox {
+  @include widget-wrapper;
+  grid-area: widget_tasks;
+}

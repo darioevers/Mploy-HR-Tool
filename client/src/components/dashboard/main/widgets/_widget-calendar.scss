@@ -1,0 +1,4 @@
+.widget_calendar_mainbox {
+  @include widget-wrapper;
+  grid-area: widget_calendar;
+}
