@@ -112,7 +112,6 @@ const DarkModeSwitch = styled((props) => (
     margin: "5px 6px",
   },
   "& .MuiSwitch-track": {
-    width: "100px",
     borderRadius: "50px",
     backgroundColor: theme.palette.mode === "light" ? "white" : "#2b3240",
     border: "1px solid black",
