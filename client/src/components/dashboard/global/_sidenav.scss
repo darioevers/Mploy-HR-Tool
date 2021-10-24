@@ -1,10 +1,68 @@
 .sidenav_mainbox {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 95%;
+  width: 180px;
   background-color: $dark-bg;
   border-radius: 15px;
   grid-area: sidenav_mainbox;
-  margin-right: 10px;
-  // border: 1px solid red;
+  margin: 0px 10px 10px 10px;
+  padding: 20px;
+}
+
+.sidenav_employeeinfo {
+  display: flex;
+  margin-top: 20px;
+  .sidenav_employeeinfo_image {
+    width: 65px;
+    height: 65px;
+    border: 1px solid yellow;
+    border-radius: 100%;
+  }
+  .sidenav_employeeinfo_details {
+    margin-left: 12px;
+    h1 {
+      color: $primary;
+      font-size: 18px;
+      font-weight: normal;
+      margin-bottom: 5px;
+    }
+    h4 {
+      color: $secondary;
+      font-size: 12px;
+      font-weight: normal;
+      margin-bottom: 5px;
+    }
+    select {
+      color: $online;
+      background-color: none;
+      font-size: 12px;
+      font-weight: bold;
+    }
+  }
+}
+
+.sidenav_links {
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+  margin-left: 20px;
+
+  .sidenav_link {
+    @include flex_center;
+    justify-content: flex-start;
+    color: white;
+    margin-bottom: 30px;
+
+    p {
+      margin-left: 10px;
+      font-weight: lighter;
+    }
+    :active {
+      color: black;
+    }
+    :focus {
+      color: black;
+    }
+  }
 }

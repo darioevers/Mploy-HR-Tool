@@ -6,7 +6,9 @@ function EmployeeData() {
   return (
     <div className="employeedata_mainbox">
       <DashboardTopNav />
+
       <DashboardSideNav />
+
       <h1>Employee Data</h1>
     </div>
   );

@@ -7,6 +7,7 @@ import Toolbar from "@mui/material/Toolbar";
 import InputBase from "@mui/material/InputBase";
 import Switch from "@mui/material/Switch";
 import SearchIcon from "@material-ui/icons/Search";
+import DarkModeSwitch from "./DarkModeSwitch";
 
 const MyAppBar = styled(AppBar)({
   background: "none",
@@ -70,57 +71,57 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const label = { inputProps: { "aria-label": "Switch demo" } };
 
-const DarkModeSwitch = styled((props) => (
-  <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
-))(({ theme }) => ({
-  marginLeft: "25px",
-  width: 50,
-  height: 30,
-  padding: 1.8,
-  "& .MuiSwitch-switchBase": {
-    padding: 1,
-    margin: 2,
-    transitionDuration: "300ms",
-    "&.Mui-checked": {
-      transform: "translateX(16px)",
-      color: "#fff",
-      "& + .MuiSwitch-track": {
-        backgroundColor: theme.palette.mode === "dark" ? "white" : "#2b3240",
-        opacity: 1,
-        border: "1px solid #2b3240",
-      },
-      "&.Mui-disabled + .MuiSwitch-track": {
-        opacity: 0.5,
-      },
-    },
-    "&.Mui-focusVisible .MuiSwitch-thumb": {
-      color: "#33cf4d",
-      border: "6px solid #fff",
-    },
-    "&.Mui-disabled .MuiSwitch-thumb": {
-      backgroundColor:
-        theme.palette.mode === "light" ? "white" : theme.palette.grey[600],
-    },
-    "&.Mui-disabled + .MuiSwitch-track": {
-      opacity: theme.palette.mode === "light" ? 0.7 : 0.3,
-    },
-  },
-  "& .MuiSwitch-thumb": {
-    boxSizing: "border-box",
-    width: 16,
-    height: 16,
-    margin: "5px 6px",
-  },
-  "& .MuiSwitch-track": {
-    borderRadius: "50px",
-    backgroundColor: theme.palette.mode === "light" ? "white" : "#2b3240",
-    border: "1px solid black",
-    opacity: 1,
-    transition: theme.transitions.create(["background-color"], {
-      duration: 500,
-    }),
-  },
-}));
+// const DarkModeSwitch = styled((props) => (
+//   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
+// ))(({ theme }) => ({
+//   marginLeft: "25px",
+//   width: 50,
+//   height: 30,
+//   padding: 1.8,
+//   "& .MuiSwitch-switchBase": {
+//     padding: 1,
+//     margin: 2,
+//     transitionDuration: "300ms",
+//     "&.Mui-checked": {
+//       transform: "translateX(16px)",
+//       color: "#fff",
+//       "& + .MuiSwitch-track": {
+//         backgroundColor: theme.palette.mode === "dark" ? "white" : "#2b3240",
+//         opacity: 1,
+//         border: "1px solid #2b3240",
+//       },
+//       "&.Mui-disabled + .MuiSwitch-track": {
+//         opacity: 0.5,
+//       },
+//     },
+//     "&.Mui-focusVisible .MuiSwitch-thumb": {
+//       color: "#33cf4d",
+//       border: "6px solid #fff",
+//     },
+//     "&.Mui-disabled .MuiSwitch-thumb": {
+//       backgroundColor:
+//         theme.palette.mode === "light" ? "white" : theme.palette.grey[600],
+//     },
+//     "&.Mui-disabled + .MuiSwitch-track": {
+//       opacity: theme.palette.mode === "light" ? 0.7 : 0.3,
+//     },
+//   },
+//   "& .MuiSwitch-thumb": {
+//     boxSizing: "border-box",
+//     width: 16,
+//     height: 16,
+//     margin: "5px 6px",
+//   },
+//   "& .MuiSwitch-track": {
+//     borderRadius: "50px",
+//     backgroundColor: theme.palette.mode === "light" ? "white" : "#2b3240",
+//     border: "1px solid black",
+//     opacity: 1,
+//     transition: theme.transitions.create(["background-color"], {
+//       duration: 500,
+//     }),
+//   },
+// }));
 
 export default function SearchAppBar() {
   return (
@@ -147,12 +148,15 @@ export default function SearchAppBar() {
               <p>DEU</p>
             </div>
           </div>
-          <div className="darkmode_switch">
+          <DarkModeSwitch />
+          {/* <div className="darkmode_switch">
             <FormControlLabel
               control={<DarkModeSwitch sx={{ m: 0 }} defaultunchecked />}
               label=""
             />
-          </div>
+            
+            
+          </div> */}
         </Toolbar>
       </MyAppBar>
     </Box>
