@@ -45,24 +45,36 @@
 .sidenav_links {
   display: flex;
   flex-direction: column;
-  margin-top: 100px;
-  margin-left: 20px;
-
+  margin-top: 80px;
+  margin-left: 10px;
+  font-size: 13px;
+  font-weight: normal;
   .sidenav_link {
     @include flex_center;
     justify-content: flex-start;
     color: white;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 
     p {
       margin-left: 10px;
       font-weight: lighter;
     }
-    :active {
-      color: black;
+    i {
+      margin-left: 10px;
     }
-    :focus {
-      color: black;
-    }
+  }
+}
+
+.active {
+  background-color: white;
+  width: 220px;
+  height: 40px;
+  border-radius: 50px;
+  p {
+    color: black;
+  }
+  i {
+    color: black;
+    margin-left: 10px;
   }
 }

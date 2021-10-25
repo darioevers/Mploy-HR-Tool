@@ -1,6 +1,5 @@
 .language_switch {
   @include flex-center;
-  margin-right: 15px;
   .eng_wrapper,
   .deu_wrapper {
     @include flex-center;
@@ -9,11 +8,12 @@
     height: 28px;
     border: 1px solid black;
     border-radius: 100px;
-    margin: 3px;
+    margin: 10px;
     font-size: 10px;
     font-weight: bolder;
     &:hover {
-      background-color: orange;
+      background-color: $dark-bg;
+      color: white;
     }
   }
 }

@@ -24,29 +24,77 @@ const DashboardSideNav = () => {
       </div>
 
       <div className="sidenav_links">
-        <div className="sidenav_link_wrapper">
-          <NavLink exact to="/dashboard" className="sidenav_link">
-            <DashboardIcon /> <p>Dashboard</p>
-          </NavLink>
-        </div>
-        <NavLink exact to="/dashboard/employeedata" className="sidenav_link">
-          <FolderOpenIcon />
+        <NavLink
+          exact
+          to="/dashboard"
+          activeClassName="active"
+          className="sidenav_link"
+        >
+          <i>
+            <DashboardIcon />
+          </i>
+          <p>Dashboard</p>
+        </NavLink>
+
+        <NavLink
+          exact
+          to="/dashboard/employeedata"
+          activeClassName="active"
+          className="sidenav_link"
+        >
+          <i>
+            {" "}
+            <FolderOpenIcon />{" "}
+          </i>
           <p>Employee Data</p>
         </NavLink>
-        <NavLink exact to="/dashboard/calendar" className="sidenav_link">
-          <TodayIcon />
+        <NavLink
+          exact
+          to="/dashboard/calendar"
+          activeClassName="active"
+          className="sidenav_link"
+        >
+          <i>
+            {" "}
+            <TodayIcon />
+          </i>
           <p>Calendar</p>
         </NavLink>
-        <NavLink exact to="/dashboard/payroll" className="sidenav_link">
-          <EuroIcon />
+        <NavLink
+          exact
+          to="/dashboard/payroll"
+          activeClassName="active"
+          className="sidenav_link"
+        >
+          <i>
+            {" "}
+            <EuroIcon />{" "}
+          </i>
           <p> Payroll </p>
         </NavLink>
-        <NavLink exact to="/dashboard/tasks" className="sidenav_link">
-          <FormatListBulletedIcon />
+        <NavLink
+          exact
+          to="/dashboard/tasks"
+          activeClassName="active"
+          className="sidenav_link"
+        >
+          <i>
+            {" "}
+            <FormatListBulletedIcon />
+          </i>
           <p> Tasks </p>
         </NavLink>
-        <NavLink exact to="/dashboard/elearning" className="sidenav_link">
-          <MenuBookIcon /> <p>E-Learning</p>
+        <NavLink
+          exact
+          to="/dashboard/elearning"
+          activeClassName="active"
+          className="sidenav_link"
+        >
+          <i>
+            {" "}
+            <MenuBookIcon />
+          </i>{" "}
+          <p>E-Learning</p>
         </NavLink>
       </div>
     </div>

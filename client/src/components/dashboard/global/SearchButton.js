@@ -128,11 +128,6 @@ export default function SearchAppBar() {
     <Box sx={{ flexGrow: 1 }}>
       <MyAppBar position="static" width="100vw" backgroundColor="red">
         <Toolbar>
-          <div className="logo">
-            <h1>Mploy</h1>
-          </div>
-          <div className="top-nav-line"></div>
-
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -140,22 +135,11 @@ export default function SearchAppBar() {
             <StyledInputBase inputProps={{ "aria-label": "search" }} />
           </Search>
 
-          <div className="language_switch">
-            <div className="eng_wrapper">
-              <p>ENG</p>
-            </div>
-            <div className="deu_wrapper">
-              <p>DEU</p>
-            </div>
-          </div>
-          <DarkModeSwitch />
           {/* <div className="darkmode_switch">
             <FormControlLabel
               control={<DarkModeSwitch sx={{ m: 0 }} defaultunchecked />}
               label=""
             />
-            
-            
           </div> */}
         </Toolbar>
       </MyAppBar>
