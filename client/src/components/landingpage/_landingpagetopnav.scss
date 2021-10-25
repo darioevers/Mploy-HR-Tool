@@ -1,47 +1,47 @@
-.landingpage_topnav_backgroundbox{
-    width: 100vw;
-    border: red 1px solid;
+.landingpage_topnav_backgroundbox {
+  width: 100vw;
+  border: red 1px solid;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  background-color: $primary;
+  .landingpage_topnav_mainbox {
+    display: flex;
     height: 50px;
-    position: fixed;
+    align-items: center;
+    margin-bottom: 40px;
     top: 0;
-    background-color: white;
-    .landingpage_topnav_mainbox {
-        display: flex;
-        height: 50px;
-        align-items: center;
-        margin-bottom: 40px;
-        top: 0;
-        width: 80vw;
-        margin: 0 auto;
-        .landingpage_topnav_logobox{
-            width: 10%;
-            color: rgb(124, 35, 35);
-            font-size: 1.6rem;
-            font-weight: 800;
-            justify-content: left;
-        }
-        .landingpage_topnav_menulinks{
-            width: 20%;
-            display: flex;
-            justify-content: left;
-            .landingpage_topnav_menulink{
-                padding: 0px 10px;
-            }
-        }
-        .landingpage_topnav_buttons{
-            justify-content: right;
-            width: 70%;
-            display: flex;
-            align-items: center;
-            .landingpage_topnav_contactbutton{
-                padding-right: 10px;
-                Button {
-                    height: 70%;
-                }
-            }
-            .landingpage_topnav_loginbutton{
-                padding-left: 10px;
-        }
-        }
+    width: 80vw;
+    margin: 0 auto;
+    .landingpage_topnav_logobox {
+      width: 10%;
+      color: rgb(124, 35, 35);
+      font-size: 1.6rem;
+      font-weight: 800;
+      justify-content: left;
     }
+    .landingpage_topnav_menulinks {
+      width: 20%;
+      display: flex;
+      justify-content: left;
+      .landingpage_topnav_menulink {
+        padding: 0px 10px;
+      }
+    }
+    .landingpage_topnav_buttons {
+      justify-content: right;
+      width: 70%;
+      display: flex;
+      align-items: center;
+      .landingpage_topnav_contactbutton {
+        padding-right: 10px;
+        Button {
+          height: 70%;
+        }
+      }
+      .landingpage_topnav_loginbutton {
+        padding-left: 10px;
+      }
+    }
+  }
 }

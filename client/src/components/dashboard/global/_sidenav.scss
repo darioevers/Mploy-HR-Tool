@@ -52,7 +52,7 @@
   .sidenav_link {
     @include flex_center;
     justify-content: flex-start;
-    color: white;
+    color: $primary;
     margin-bottom: 25px;
 
     p {
@@ -66,15 +66,15 @@
 }
 
 .active {
-  background-color: white;
+  background-color: $primary;
   width: 220px;
   height: 40px;
   border-radius: 50px;
   p {
-    color: black;
+    color: $dark-bg;
   }
   i {
-    color: black;
+    color: $dark-bg;
     margin-left: 10px;
   }
 }
