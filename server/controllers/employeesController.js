@@ -25,21 +25,6 @@ employeeContoller.addNewEmployee = async (req, res) => {
   }
 };
 
-// get one employee by name
-
-// employeeContoller.getOneEmployee = async (req, res, next) => {
-//   try {
-//     let employee = await EmployeeData.findOne({ firstName: req.params.name });
-//     if (employee == null) {
-//       return res.status(404).json({ message: "Sorry,employee not found" });
-//     }
-//   } catch (error) {
-//     res.status(500).json({ message: err.message });
-//   }
-//   res.employee = employee;
-//   next();
-// };
-
 // get single employee using id
 employeeContoller.getOneEmployeeById = async (req, res) => {
   try {
