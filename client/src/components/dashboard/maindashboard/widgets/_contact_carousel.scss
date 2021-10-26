@@ -80,9 +80,7 @@
 }
 
 //carousel
-.rec.rec-carousel {
-  margin-top: 25px;
-}
+
 .rec.rec-arrow {
   @include flex-center;
   border-radius: 0;
@@ -91,18 +89,11 @@
   height: 30px;
   box-shadow: none;
   background-color: $light-bg;
-  :hover {
-    background-color: none;
-  }
 }
-.jRFJkP:hover,
-.jRFJkP:focus {
-  background-color: none;
-  box-shadow: none;
-}
+
 /* hide disabled buttons */
 .rec.rec-arrow:disabled {
-  color: rgb(208, 208, 208);
+  color: #d0d0d0;
 }
 
 .rec.rec-pagination {

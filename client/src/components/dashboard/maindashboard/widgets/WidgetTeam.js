@@ -49,11 +49,11 @@ function WidgetTeam() {
       </div>
 
       {/* IT Manager / Supervisor */}
-      <div className="team_it_one">
+      <div className="team_it_one_wrapper">
         <div>
           <div className="team_it_one_photo"></div>
           <div className="team_it_one_title">
-            <h4>IT Manager</h4>
+            <h4>IT Supervisor</h4>
           </div>
         </div>
         <div>
@@ -67,7 +67,7 @@ function WidgetTeam() {
       </div>
 
       {/* IT Support */}
-      <div className="team_it_two">
+      <div className="team_it_two_wrapper">
         <div>
           <div className="team_it_two_photo"></div>
           <div className="team_it_two_title">
