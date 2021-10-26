@@ -5,23 +5,19 @@ const getPrivateData = (req, res, next) => {
   });
 };
 
-// new controller for add new admin
-// const addAdmin = async(req, res) => {
 //   console.log("add admin");
-
-//  const userFind=await  UserData.find({ email: req.body.email })
-//     .then((user) => {
-//       if (!user) {
-//         return res.status(401).json("User not found");
-//       }
-
-//       user.role = "admin";
-//       user.save();
-//       res.status(200).json("Successfull!");
-//     })
-//     .catch((err) => {
-//       console.log("hi" + err);
-//       res.status(401).json({ message: err, status: "Not successfull" });
-//     });
-// };
-module.exports = getPrivateData;
+const addAdmin = async (req, res) => {
+  await UserData.findOneAndUpdate(
+    { email: req.body.newAdminEmail },
+    { $set: { role: "admin" } },
+    { new: true },
+    (err, doc) => {
+      if (err) {
+        console.log("hi" + err);
+        res.status(401).json({ message: err, status: "Not successfull" });
+      }
+      res.send({ doc, message: "successfull" });
+    }
+  );
+};
+module.exports = { getPrivateData, addAdmin };

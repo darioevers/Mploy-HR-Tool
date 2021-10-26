@@ -28,7 +28,7 @@ const EmployeesSchema = Schema({
       type: String,
       required: false,
     },
-    PhoneNumber: {
+    phoneNumber: {
       type: String,
       required: false,
     },
@@ -58,7 +58,7 @@ const EmployeesSchema = Schema({
       type: String,
     },
     state: {
-      type: Number,
+      type: String,
       required: false,
     },
     country: {
@@ -114,7 +114,7 @@ const EmployeesSchema = Schema({
     },
 
     jobTitle: {
-      type: Date,
+      type: String,
       required: false,
     },
     from: {
