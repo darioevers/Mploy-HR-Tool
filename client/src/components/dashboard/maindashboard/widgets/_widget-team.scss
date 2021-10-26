@@ -1,0 +1,139 @@
+.widget_team_mainbox {
+  @include widget-wrapper;
+  grid-area: widget_team;
+
+  //inside grid
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 10% 30% 30% 10% 20%;
+  gap: 0px 0px;
+  grid-template-areas:
+    "team_header_top team_header_top"
+    "team_manager_wrapper team_supervisor_wrapper"
+    "team_it_one team_it_two"
+    "team_header_bottom team_header_bottom"
+    "team_contacts_wrapper team_contacts_wrapper";
+}
+
+.team_header_top {
+  grid-area: team_header_top;
+  margin: 20px;
+  .horizontal_line {
+    width: 80%;
+    height: 2px;
+    background-color: red;
+  }
+  h1 {
+    font-size: 18px;
+  }
+}
+
+.team_header_bottom {
+  grid-area: team_header_bottom;
+  .horizontal_line {
+    width: 80%;
+    height: 2px;
+    background-color: red;
+  }
+  h1 {
+    font-size: 18px;
+  }
+}
+
+.team_contacts_wrapper {
+  grid-area: team_contacts_wrapper;
+}
+
+.team_manager_wrapper {
+  grid-area: team_manager_wrapper;
+  width: 80%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  .team_manager_photo {
+    width: 30px;
+    height: 30px;
+    border: 1px solid red;
+    border-radius: 50px;
+    margin-bottom: 5px;
+  }
+  .team_manager_title {
+    h4 {
+      font-size: 12px;
+      font-weight: normal;
+      color: $dark-bg;
+    }
+  }
+}
+
+.team_supervisor_wrapper {
+  grid-area: team_supervisor_wrapper;
+  width: 80%;
+  height: 80%;
+  margin: 20px 0px 0px 0px;
+  display: flex;
+  justify-content: center;
+  background-color: yellow;
+  .team_supervisor_photo {
+    width: 30px;
+    height: 30px;
+    border: 1px solid red;
+    border-radius: 50px;
+    margin-bottom: 5px;
+  }
+  .team_supervisor_title {
+    h4 {
+      font-size: 12px;
+      font-weight: normal;
+      color: $dark-bg;
+    }
+  }
+}
+
+.team_it_one {
+  grid-area: team_it_one;
+  width: 80%;
+  height: 80%;
+  margin: 2px 0px 0px 14px;
+  display: flex;
+  justify-content: center;
+  .team_it_one_photo {
+    width: 30px;
+    height: 30px;
+    border: 1px solid red;
+    border-radius: 50px;
+    margin-bottom: 5px;
+  }
+  .team_it_one_title {
+    h4 {
+      font-size: 12px;
+      font-weight: normal;
+      color: $dark-bg;
+    }
+  }
+}
+
+.team_it_two {
+  grid-area: team_it_two;
+  width: 80%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  margin: 2px 0px 20px 0px;
+
+  .team_it_two_photo {
+    width: 30px;
+    height: 30px;
+    border: 1px solid red;
+    border-radius: 50px;
+    margin-bottom: 5px;
+  }
+  .team_it_two_title {
+    h4 {
+      font-size: 12px;
+      font-weight: normal;
+      color: $dark-bg;
+    }
+  }
+}
