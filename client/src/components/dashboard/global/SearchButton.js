@@ -1,26 +1,38 @@
 import * as React from "react";
-import { styled, alpha } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
+import FormControlLabel from "@mui/material/FormControlLabel";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
-import MenuIcon from "@material-ui/icons/Menu";
+import Switch from "@mui/material/Switch";
 import SearchIcon from "@material-ui/icons/Search";
+import DarkModeSwitch from "./DarkModeSwitch";
+
+const MyAppBar = styled(AppBar)({
+  background: "none",
+  boxShadow: "none",
+  padding: "none",
+});
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  borderRadius: "50px",
+  backgroundColor: "#2b3240",
+  border: "1px solid #2b3240",
   "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
+    backgroundColor: "white",
+    color: "#2b3240",
   },
-  marginLeft: 0,
+  margin: "20px",
+  padding: "none",
   width: "100%",
+  height: "28px",
+  fontSize: "10px",
   [theme.breakpoints.up("sm")]: {
     marginLeft: theme.spacing(1),
     width: "auto",
+    fontSize: "0",
   },
 }));
 
@@ -32,6 +44,7 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  borderRadius: "12px",
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -41,49 +54,95 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
-    width: "100%",
+    width: "70%",
+    height: "20px",
+    fontSize: "15px",
+    marginTop: "-4px",
+
     [theme.breakpoints.up("sm")]: {
-      width: "12ch",
+      width: "0",
       "&:focus": {
         width: "20ch",
+        paddingBottom: "10px",
       },
     },
   },
 }));
 
+const label = { inputProps: { "aria-label": "Switch demo" } };
+
+// const DarkModeSwitch = styled((props) => (
+//   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
+// ))(({ theme }) => ({
+//   marginLeft: "25px",
+//   width: 50,
+//   height: 30,
+//   padding: 1.8,
+//   "& .MuiSwitch-switchBase": {
+//     padding: 1,
+//     margin: 2,
+//     transitionDuration: "300ms",
+//     "&.Mui-checked": {
+//       transform: "translateX(16px)",
+//       color: "#fff",
+//       "& + .MuiSwitch-track": {
+//         backgroundColor: theme.palette.mode === "dark" ? "white" : "#2b3240",
+//         opacity: 1,
+//         border: "1px solid #2b3240",
+//       },
+//       "&.Mui-disabled + .MuiSwitch-track": {
+//         opacity: 0.5,
+//       },
+//     },
+//     "&.Mui-focusVisible .MuiSwitch-thumb": {
+//       color: "#33cf4d",
+//       border: "6px solid #fff",
+//     },
+//     "&.Mui-disabled .MuiSwitch-thumb": {
+//       backgroundColor:
+//         theme.palette.mode === "light" ? "white" : theme.palette.grey[600],
+//     },
+//     "&.Mui-disabled + .MuiSwitch-track": {
+//       opacity: theme.palette.mode === "light" ? 0.7 : 0.3,
+//     },
+//   },
+//   "& .MuiSwitch-thumb": {
+//     boxSizing: "border-box",
+//     width: 16,
+//     height: 16,
+//     margin: "5px 6px",
+//   },
+//   "& .MuiSwitch-track": {
+//     borderRadius: "50px",
+//     backgroundColor: theme.palette.mode === "light" ? "white" : "#2b3240",
+//     border: "1px solid black",
+//     opacity: 1,
+//     transition: theme.transitions.create(["background-color"], {
+//       duration: 500,
+//     }),
+//   },
+// }));
+
 export default function SearchAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <MyAppBar position="static" width="100vw" backgroundColor="red">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
-            MUI
-          </Typography>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
+            <StyledInputBase inputProps={{ "aria-label": "search" }} />
           </Search>
+
+          {/* <div className="darkmode_switch">
+            <FormControlLabel
+              control={<DarkModeSwitch sx={{ m: 0 }} defaultunchecked />}
+              label=""
+            />
+          </div> */}
         </Toolbar>
-      </AppBar>
+      </MyAppBar>
     </Box>
   );
 }

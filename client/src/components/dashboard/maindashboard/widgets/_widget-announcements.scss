@@ -1,0 +1,4 @@
+.widget_announcements_mainbox {
+  @include widget-wrapper;
+  grid-area: widget_announcements;
+}

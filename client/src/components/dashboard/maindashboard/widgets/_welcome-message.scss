@@ -1,0 +1,17 @@
+.welcome_message_mainbox {
+  margin: 10px 0;
+  width: 100%;
+  grid-area: welcome_message;
+
+  .employee_name {
+    color: $highlight;
+  }
+  h1 {
+    font-size: 45px;
+  }
+  h4 {
+    padding-top: 5px;
+    font-size: 15px;
+    font-weight: normal;
+  }
+}

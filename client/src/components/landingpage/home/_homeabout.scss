@@ -1,7 +1,7 @@
 .homeabout_mainbox {
   display: flex;
   flex-direction: column;
-  height: 60vh;
+  height: auto;
   background-color: white;
   margin-bottom: 70px;
   margin-top: 70px;
@@ -9,15 +9,22 @@
 
 .homeabout_content {
   display: flex;
-  margin: 40px 0;
+  margin: 20px 0;
   .homeabout_content_left {
-    width: 75%;
+    width: 40%;
+    height: auto;
+    text-align: justify;
+  }
+  .homeabout_content_right {
+    display: flex;
+    justify-content: flex-end;
+    width: 60%;
   }
 }
 
 img {
-  width: 450px;
-  height: 270px;
+  width: 80%;
+  height: auto;
 }
 
 .homeabout_header {
@@ -25,6 +32,17 @@ img {
     color: gray;
     font-weight: normal;
     padding-top: 10px;
+    text-align: justify;
+  }
+  button {
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    font-size: 15px;
+    margin-right: 10px;
+    background-color: $highlight;
+    color: $primary;
   }
 }
 
@@ -33,7 +51,7 @@ img {
 }
 .homeabout_content_left {
   h2 {
-    color: $highight;
+    color: $highlight;
   }
   h3 {
     padding: 10px 0;
