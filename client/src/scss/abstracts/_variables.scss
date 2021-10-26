@@ -1,6 +1,4 @@
 // VARIABLES
-$dark-bg: #2b3240;
-$highight: #de7456;
 
 // Small tablets and large smartphones (landscape view)
 $screen-sm-min: 576px;
@@ -15,6 +13,18 @@ $screen-lg-min: 992px;
 $screen-xl-min: 1200px;
 
 // COLORS
+//light-mode
+$light-bg: #eeeeee;
+$dark-bg: #2b3240;
+$primary: #ffffff;
+$secondary: #a0a0a0;
+$highlight: #de7456;
+$light-blue: #43597d;
+$lighter-blue: #a0c0d7;
+
+//general
+$online: #00cf53;
+$offline: #ff0000;
 
 // FONTS
 

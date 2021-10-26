@@ -12,3 +12,7 @@
   width: 80vw;
   margin: 0 auto;
 }
+
+.maindashboard_area {
+  @include main_dashboard_grid;
+}

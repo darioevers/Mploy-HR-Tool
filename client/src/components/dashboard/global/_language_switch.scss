@@ -1,0 +1,19 @@
+.language_switch {
+  @include flex-center;
+  .eng_wrapper,
+  .deu_wrapper {
+    @include flex-center;
+    color: black;
+    width: 28px;
+    height: 28px;
+    border: 1px solid black;
+    border-radius: 100px;
+    margin: 10px;
+    font-size: 10px;
+    font-weight: bolder;
+    &:hover {
+      background-color: $dark-bg;
+      color: $primary;
+    }
+  }
+}
