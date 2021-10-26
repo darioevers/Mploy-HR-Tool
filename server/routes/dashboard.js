@@ -4,5 +4,6 @@ const getPrivateData = require("../controllers/dashboard");
 const protect = require("../middlewares/authMiddleware");
 
 router.get("/", protect, getPrivateData);
+// router.patch("/addAdmin", addAdmin);
 
 module.exports = router;
