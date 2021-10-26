@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import TopNav from "../../dashboard/global/TopNav";
 
 const PrivateScreen = ({ history }) => {
   const [error, setError] = useState("");
