@@ -5,7 +5,7 @@ const PrivateScreen = ({ history }) => {
   const [error, setError] = useState("");
   const [privateData, setPrivateData] = useState("");
 
-  // if there is nothing in the local storage we immediatly redirect
+  // if there is nothing in the local storage we immediatly
   useEffect(() => {
     if (!localStorage.getItem("authToken")) {
       history.push("/");
