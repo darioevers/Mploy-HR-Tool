@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const Dashboard = ({ history }) => {
+const Logout = ({ history }) => {
   const [error, setError] = useState("");
   const [privateData, setPrivateData] = useState("");
 
@@ -49,4 +49,4 @@ const Dashboard = ({ history }) => {
   );
 };
 
-export default Dashboard;
+export default Logout;

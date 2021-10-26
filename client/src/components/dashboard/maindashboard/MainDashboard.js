@@ -2,7 +2,7 @@ import React from "react";
 import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
 import Widgets from "./widgets/Widgets";
-import Dashboard from "./Dashboard";
+import Logout from "./Logout";
 
 function MainDashboard({ history }) {
   return (
@@ -10,7 +10,7 @@ function MainDashboard({ history }) {
       <DashboardTopNav />
       <DashboardSideNav />
       <Widgets />
-      <Dashboard history={history} />
+      <Logout history={history} />
     </div>
   );
 }
