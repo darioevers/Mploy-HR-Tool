@@ -4,12 +4,18 @@
   grid-area: widget_calendar;
 
   .calendar {
-    margin: 20px;
-    width: 55%;
+    @include flex-center;
+    flex-direction: column;
+
+    width: 80%;
     height: 80%;
-    font-size: 10px;
+    .calendar_view {
+      width: 80%;
+      height: 90%;
+      font-size: 10px;
+    }
     .calendar_bottom_border {
-      width: 100%;
+      width: 80%;
       height: 10%;
       background-color: $dark-bg;
       border-bottom-right-radius: 10px;
@@ -85,13 +91,24 @@
 
 .react-calendar__month-view__weekdays {
   margin-top: 12px;
-  font-size: 8px;
+  font-size: 9px;
   border: none;
 }
 
 .react-calendar__year-view__months {
-  border: 1px solid white;
+  @include flex-center;
+  margin: 10px;
   button {
-    font-size: 8px;
+    font-size: 10px;
+    margin: 3px;
+  }
+}
+
+.react-calendar__decade-view__years {
+  @include flex-center;
+  margin: 10px;
+  button {
+    font-size: 10px;
+    margin: 3px;
   }
 }

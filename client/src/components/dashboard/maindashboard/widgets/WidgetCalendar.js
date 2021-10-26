@@ -52,7 +52,9 @@ function WidgetCalendar() {
       </div>
 
       <div className="calendar">
-        <Calendar onChange={onChange} value={value} />
+        <div className="calendar_view">
+          <Calendar onChange={onChange} value={value} />
+        </div>
         <div className="calendar_bottom_border"></div>
       </div>
     </div>
