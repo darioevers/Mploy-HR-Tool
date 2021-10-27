@@ -1,11 +1,14 @@
 import * as React from "react";
 import { NavLink, useHistory } from "react-router-dom";
+
+//icons
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import FolderOpenIcon from "@material-ui/icons/FolderOpen";
 import TodayIcon from "@material-ui/icons/Today";
 import EuroIcon from "@material-ui/icons/Euro";
 import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
+
 import { useState, useEffect } from "react";
 import axios from "axios";
 
