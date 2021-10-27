@@ -31,7 +31,7 @@ const DashboardSideNav = () => {
           className="sidenav_link"
         >
           <i>
-            <DashboardIcon />
+            <DashboardIcon style={{ fontSize: "x-large" }} />
           </i>
           <p>Dashboard</p>
         </NavLink>
@@ -44,7 +44,7 @@ const DashboardSideNav = () => {
         >
           <i>
             {" "}
-            <FolderOpenIcon />{" "}
+            <FolderOpenIcon style={{ fontWeight: "1000", color: "white" }} />
           </i>
           <p>Employee Data</p>
         </NavLink>
