@@ -38,4 +38,7 @@ app.use("/users", require("./routes/users"));
 
 app.use("/dashboard", require("./routes/dashboard"));
 
+const employeesRoute = require("./routes/employees");
+app.use("/employee", employeesRoute);
+
 module.exports = app;

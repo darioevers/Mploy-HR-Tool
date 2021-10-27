@@ -19,8 +19,11 @@
   },
   "homepage": "https://github.com/darioevers/Mploy-HR-Tool#readme",
   "dependencies": {
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
     "@sendgrid/mail": "^7.4.7",
     "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "consola": "^2.15.3",
     "cors": "^2.8.5",
