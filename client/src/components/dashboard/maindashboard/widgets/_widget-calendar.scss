@@ -11,7 +11,7 @@
     height: 80%;
     .calendar_view {
       width: 80%;
-      height: 90%;
+      height: 220px;
       font-size: 10px;
     }
     .calendar_bottom_border {
@@ -87,10 +87,10 @@
 }
 .react-calendar__month-view__days {
   button {
-    font-size: 9px;
+    font-size: 100%;
     font-weight: 500;
     border: none;
-    margin: 6.8px 0px;
+    margin: 3% 0;
   }
 }
 

@@ -1,5 +1,10 @@
 import * as React from "react";
 import { NavLink } from "react-router-dom";
+
+//components
+import Logout from "./Logout";
+
+//icons
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import FolderOpenIcon from "@material-ui/icons/FolderOpen";
 import TodayIcon from "@material-ui/icons/Today";
@@ -7,9 +12,10 @@ import EuroIcon from "@material-ui/icons/Euro";
 import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 
-const DashboardSideNav = () => {
+const DashboardSideNav = ({ history }) => {
   return (
     <div className="sidenav_mainbox">
+      {/* employee info */}
       <div className="sidenav_employeeinfo">
         <div className="sidenav_employeeinfo_image"></div>
         <div className="sidenav_employeeinfo_details">
@@ -23,6 +29,7 @@ const DashboardSideNav = () => {
         </div>
       </div>
 
+      {/* sidenavlinks */}
       <div className="sidenav_links">
         <NavLink
           exact
@@ -97,6 +104,9 @@ const DashboardSideNav = () => {
           <p>E-Learning</p>
         </NavLink>
       </div>
+
+      <div className="sidenav_logout">{/* <Logout history={history} /> */}</div>
+      <Logout history={history} />
     </div>
   );
 };
