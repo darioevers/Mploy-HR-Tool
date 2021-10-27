@@ -3,7 +3,7 @@ import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
 import Widgets from "./widgets/Widgets";
 
-function MainDashboard({ history }) {
+function MainDashboard() {
   return (
     <div className="maindashboard_area">
       <DashboardTopNav />
