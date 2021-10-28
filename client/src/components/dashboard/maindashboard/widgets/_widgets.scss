@@ -1,9 +1,9 @@
 .components_mainbox {
   display: grid;
-  margin: 0 20px;
+  margin: 0 0;
   grid-template-columns: 0.8fr 0.2fr 1fr 1fr;
-  grid-template-rows: 0.5fr 0.8fr 1.1fr 0.3fr 0.5fr;
-  gap: 20px 20px;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  gap: 12px 12px;
   grid-template-areas:
     "welcome_message welcome_message welcome_message welcome_message"
     "widget_sickleave widget_sickleave widget_holidays widget_homeoffice"
