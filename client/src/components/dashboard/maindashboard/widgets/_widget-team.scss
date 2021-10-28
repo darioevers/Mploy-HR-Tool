@@ -42,6 +42,7 @@
 .team_contacts_wrapper {
   grid-area: 5 / 1 / 6 / 3;
   @include flex-center;
+  min-width: 340px;
 }
 
 .team_manager_wrapper {

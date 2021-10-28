@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import DarkModeSwitch from "./DarkModeSwitch";
 import SearchButton from "./SearchButton";
+import SettingsIcon from "@material-ui/icons/Settings";
+
 import axios from "axios";
 
 function TopNav() {
   const [newAdminEmail, setNewAdminEmail] = useState("");
+  const [show, setShow] = useState(false);
 
   const handleAddAdmin = () => {
     console.log(newAdminEmail);
@@ -41,14 +44,32 @@ function TopNav() {
       <div className="darkmode_switch">
         <DarkModeSwitch />
       </div>
-      <div>
-        <input
-          type="email"
-          value={newAdminEmail}
-          onChange={(e) => setNewAdminEmail(e.target.value)}
-          placeholder="New Admin email"
+
+      <div className="settings_button">
+        <SettingsIcon
+          onClick={() => setShow((currentShow) => !currentShow)}
+          style={{
+            padding: "3px",
+            backgroundColor: "#2b3240",
+            border: "1px solid #2b3240",
+            borderRadius: "10px",
+            color: "white",
+          }}
         />
-        <button onClick={handleAddAdmin}>Add +</button>
+      </div>
+
+      <div className="add_admin_input">
+        {show ? (
+          <div className="add_admin_input_wrapper">
+            <input
+              type="email"
+              value={newAdminEmail}
+              onChange={(e) => setNewAdminEmail(e.target.value)}
+              placeholder="New Admin email"
+            />
+            <button onClick={handleAddAdmin}>Add +</button>
+          </div>
+        ) : null}
       </div>
     </div>
   );
