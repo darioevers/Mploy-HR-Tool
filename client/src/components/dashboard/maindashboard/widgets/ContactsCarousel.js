@@ -4,7 +4,7 @@ import Carousel from "react-elastic-carousel";
 function ContactCarousel() {
   return (
     <div className="contact_carousel_mainbox">
-      <Carousel itemsToShow={2}>
+      <Carousel itemsToShow={3}>
         <div className="contact_one">
           <div className="contact_one_image"></div>
           <div className="contact_one_name">User 1 </div>

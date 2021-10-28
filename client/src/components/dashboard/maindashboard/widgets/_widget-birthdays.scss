@@ -1,4 +1,35 @@
 .widget_birthdays_mainbox {
   @include widget-wrapper;
   grid-area: widget_birthdays;
+
+  //inside grid
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "birthdays_header birthdays_header ."
+    "birthdays_today birthdays_month ."
+    ". . .";
+}
+
+.birthdays_header {
+  grid-area: birthdays_header;
+  width: 100%;
+  margin: 20px 0px 0px 20px;
+  h1 {
+    font-size: 18px;
+  }
+}
+.birthdays_today {
+  grid-area: birthdays_today;
+  width: 100%;
+  height: 100%;
+  background-color: yellow;
+}
+.birthdays_month {
+  grid-area: birthdays_month;
+  width: 100%;
+  height: 100%;
+  background-color: red;
 }
