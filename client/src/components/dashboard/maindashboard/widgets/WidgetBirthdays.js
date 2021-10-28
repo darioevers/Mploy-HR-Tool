@@ -35,6 +35,7 @@ function WidgetBirthdays() {
             <div className="contact_five_name">User 5 </div>
           </div>
         </Carousel>
+        <h1>Today</h1>
       </div>
 
       <div className="birthdays_month">
@@ -64,6 +65,7 @@ function WidgetBirthdays() {
             <div className="contact_five_name">User 5 </div>
           </div>
         </Carousel>
+        <h1>This Month</h1>
       </div>
     </div>
   );
