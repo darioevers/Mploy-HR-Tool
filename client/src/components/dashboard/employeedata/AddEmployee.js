@@ -1,7 +1,15 @@
 import React from "react";
+import DashboardTopNav from "../global/DashboardTopNav";
+import DashboardSideNav from "../global/DashboardSideNav";
 
-const AddEmployee = () => {
-  return <div>add employee</div>;
-};
+function AddEmployee() {
+  return (
+    <div className="addemployee_mainbox">
+      <DashboardTopNav />
+      <DashboardSideNav />
+      <h1>ADD EMPLOYEE HERE</h1> A
+    </div>
+  );
+}
 
 export default AddEmployee;

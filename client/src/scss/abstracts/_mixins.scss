@@ -17,6 +17,8 @@
 @mixin main_dashboard_grid {
   width: 98vw;
   height: 95vh;
+  min-height: 100%;
+  overflow: overlay;
   margin: 10px;
   display: grid;
   grid-template-columns: 0.5fr 1.5fr 1fr;
