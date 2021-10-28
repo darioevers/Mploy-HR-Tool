@@ -17,6 +17,8 @@ import MainDashboard from "./components/dashboard/maindashboard/MainDashboard";
 import Calendar from "./components/dashboard/calendar/Calendar";
 import EmployeeData from "./components/dashboard/employeedata/EmployeeData";
 import AddEmployee from "./components/dashboard/employeedata/AddEmployee";
+import EditEmployee from "./components/dashboard/employeedata/EditEmployee";
+
 import Payroll from "./components/dashboard/payroll/Payroll";
 import Tasks from "./components/dashboard/tasks/Tasks";
 import ELearning from "./components/dashboard/elearning/ELearning";
@@ -50,10 +52,17 @@ const App = () => {
             path="/dashboard/employeedata"
             component={EmployeeData}
           />
+
           <Route
             exact
             path="/dashboard/employeedata/addemployee"
             component={AddEmployee}
+          />
+
+          <Route
+            exact
+            path="/dashboard/employeedata/editemployee"
+            component={EditEmployee}
           />
           <Route exact path="/dashboard/calendar" component={Calendar} />
           <Route exact path="/dashboard/payroll" component={Payroll} />

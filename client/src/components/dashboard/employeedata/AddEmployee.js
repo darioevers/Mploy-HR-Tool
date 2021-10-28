@@ -7,7 +7,7 @@ function AddEmployee() {
     <div className="addemployee_mainbox">
       <DashboardTopNav />
       <DashboardSideNav />
-      <h1>ADD EMPLOYEE HERE</h1> A
+      <h1>ADD EMPLOYEE HERE</h1>
     </div>
   );
 }
