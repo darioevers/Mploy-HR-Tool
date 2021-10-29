@@ -11,4 +11,5 @@ function AddEmployee() {
     </div>
   );
 }
+
 export default AddEmployee;
