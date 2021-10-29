@@ -22,7 +22,7 @@ function EmployeeData() {
   useEffect(() => {
     getAllEmployee();
   }, []);
-
+  // fetching data from backend
   const getAllEmployee = () => {
     axios
       .get(
@@ -62,6 +62,7 @@ function EmployeeData() {
                 <TableCell>{employee.firstName}</TableCell>
                 <TableCell>{employee.lastName}</TableCell>
                 <TableCell>{employee.email}</TableCell>
+
                 <TableCell>{employee.age}</TableCell>
                 <TableCell>{employee.nationality}</TableCell>
                 <TableCell>{employee.gender}</TableCell>
