@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   grid-area: topnav_mainbox;
-  width: 100%;
+  width: 98%;
   height: 100%;
 }
 
@@ -22,30 +22,5 @@
 
 .settings_button {
   @include flex-center;
-}
-
-.add_admin_input {
-  @include flex-center;
-  margin: 20px;
-  height: 45%;
-  .add_admin_input_wrapper {
-    display: flex;
-    flex-direction: row;
-    height: 80%;
-  }
-  input {
-    border: 1px solid $dark-bg;
-    border-radius: 20px;
-    font-size: 12px;
-    padding: 10px;
-  }
-  button {
-    width: 50px;
-    background-color: $dark-bg;
-    color: $primary;
-    border: none;
-    border-radius: 10px;
-    font-size: 12px;
-    margin-left: 2px;
-  }
+  margin-top: 3px;
 }

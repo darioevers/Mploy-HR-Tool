@@ -1,0 +1,26 @@
+.newadmin_input {
+  width: 100%;
+  margin-top: 20px;
+
+  .newadmin_input_wrapper {
+    display: flex;
+    flex-direction: row;
+    height: 80%;
+  }
+  input {
+    border: 1px solid $dark-bg;
+    border-radius: 10px;
+    font-size: 12px;
+    padding: 10px;
+    width: 80%;
+  }
+  button {
+    width: 50px;
+    background-color: $dark-bg;
+    color: $primary;
+    border: none;
+    border-radius: 8px;
+    font-size: 12px;
+    margin-left: 2px;
+  }
+}
