@@ -1,9 +1,6 @@
 .widget_holidays_mainbox {
   @include widget-wrapper;
   grid-area: widget_holidays;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
 
   //inside grid
   display: grid;
@@ -14,89 +11,89 @@
     "holidays_top_wrapper holidays_top_wrapper holidays_top_wrapper holidays_top_wrapper holidays_top_wrapper"
     "holidays_middle_wrapper holidays_middle_wrapper holidays_middle_wrapper holidays_middle_wrapper holidays_middle_wrapper"
     "holidays_bottomleft_wrapper holidays_bottomleft_line_wrapper holidays_bottommiddle_wrapper holidays_bottomright_line_wrapper holidays_bottomright_wrapper";
-  .holidays_top_wrapper {
-    grid-area: holidays_top_wrapper;
-    margin: 20px;
-    @include flex-center;
-    justify-content: flex-start;
-    .square_bullet {
-      width: 14px;
-      height: 60%;
-      background-color: $lighter-blue;
-      border-radius: 2px;
-    }
-    h1 {
-      font-size: 20px;
-      margin-left: 20px;
-    }
+}
+.holidays_top_wrapper {
+  grid-area: holidays_top_wrapper;
+  margin: 20px;
+  @include flex-center;
+  justify-content: flex-start;
+  .square_bullet {
+    width: 14px;
+    height: 60%;
+    background-color: $lighter-blue;
+    border-radius: 2px;
   }
+  h1 {
+    font-size: 20px;
+    margin-left: 20px;
+  }
+}
 
-  .holidays_middle_wrapper {
-    grid-area: holidays_middle_wrapper;
-    margin-left: 20px;
-    h4 {
-      font-size: 10px;
-    }
-    .horizontal_line {
-      background-color: $primary;
-      margin: 10px 0px;
-      width: 92%;
-      height: 2px;
-    }
+.holidays_middle_wrapper {
+  grid-area: holidays_middle_wrapper;
+  margin-left: 20px;
+  h4 {
+    font-size: 10px;
   }
-  .holidays_bottomleft_wrapper {
-    grid-area: holidays_bottomleft_wrapper;
-    margin-left: 20px;
-    h2 {
-      font-size: 18px;
-      margin-bottom: 3px;
-    }
-    h4 {
-      font-size: 10px;
-      color: $secondary;
-      font-weight: normal;
-    }
+  .horizontal_line {
+    background-color: $primary;
+    margin: 10px 0px;
+    width: 92%;
+    height: 2px;
   }
-  .holidays_bottomleft_line_wrapper {
-    grid-area: holidays_bottomleft_line_wrapper;
-    .vertical_line {
-      width: 2px;
-      height: 80%;
-      background-color: $primary;
-    }
+}
+.holidays_bottomleft_wrapper {
+  grid-area: holidays_bottomleft_wrapper;
+  margin-left: 20px;
+  h2 {
+    font-size: 18px;
+    margin-bottom: 3px;
   }
-  .holidays_bottommiddle_wrapper {
-    grid-area: holidays_bottommiddle_wrapper;
-    margin-left: 10px;
-    h2 {
-      font-size: 18px;
-      margin-bottom: 3px;
-    }
-    h4 {
-      font-size: 10px;
-      color: $secondary;
-      font-weight: normal;
-    }
+  h4 {
+    font-size: 10px;
+    color: $secondary;
+    font-weight: normal;
   }
-  .holidays_bottommiddle_line_wrapper {
-    grid-area: holidays_bottomright_line_wrapper;
-    .vertical_line {
-      width: 2px;
-      height: 80%;
-      background-color: $primary;
-    }
+}
+.holidays_bottomleft_line_wrapper {
+  grid-area: holidays_bottomleft_line_wrapper;
+  .vertical_line {
+    width: 2px;
+    height: 80%;
+    background-color: $primary;
   }
-  .holidays_bottomright_wrapper {
-    grid-area: holidays_bottomright_wrapper;
-    margin-left: 10px;
-    h2 {
-      font-size: 18px;
-      margin-bottom: 3px;
-    }
-    h4 {
-      font-size: 10px;
-      color: $secondary;
-      font-weight: normal;
-    }
+}
+.holidays_bottommiddle_wrapper {
+  grid-area: holidays_bottommiddle_wrapper;
+  margin-left: 10px;
+  h2 {
+    font-size: 18px;
+    margin-bottom: 3px;
+  }
+  h4 {
+    font-size: 10px;
+    color: $secondary;
+    font-weight: normal;
+  }
+}
+.holidays_bottommiddle_line_wrapper {
+  grid-area: holidays_bottomright_line_wrapper;
+  .vertical_line {
+    width: 2px;
+    height: 80%;
+    background-color: $primary;
+  }
+}
+.holidays_bottomright_wrapper {
+  grid-area: holidays_bottomright_wrapper;
+  margin-left: 10px;
+  h2 {
+    font-size: 18px;
+    margin-bottom: 3px;
+  }
+  h4 {
+    font-size: 10px;
+    color: $secondary;
+    font-weight: normal;
   }
 }

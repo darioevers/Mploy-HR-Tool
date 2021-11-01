@@ -1,3 +1,28 @@
 .calendar_mainbox {
   @include main_dashboard_grid;
 }
+
+.calendar_wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 0.1fr 0.9fr 2fr;
+  gap: 30px 30px;
+  grid-template-areas:
+    "calendar_header calendar_header calendar_header"
+    "calendar_mini_display calendar_big_display calendar_big_display"
+    "calendar_appointments calendar_big_display calendar_big_display";
+}
+
+.calendar_header {
+  grid-area: calendar_header;
+}
+.calendar_mini_display {
+  grid-area: calendar_mini_display;
+  border-bottom: 1px solid $secondary;
+}
+.calendar_big_display {
+  grid-area: calendar_big_display;
+}
+.calendar_appointments {
+  grid-area: calendar_appointments;
+}

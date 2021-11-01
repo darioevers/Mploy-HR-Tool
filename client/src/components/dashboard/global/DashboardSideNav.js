@@ -88,7 +88,7 @@ const DashboardSideNav = () => {
         >
           <i>
             {" "}
-            <FolderOpenIcon style={{ fontWeight: "1000", color: "white" }} />
+            <FolderOpenIcon />
           </i>
           <p>Employee Data</p>
         </NavLink>
