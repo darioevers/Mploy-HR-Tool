@@ -36,7 +36,9 @@ const AddEmployee = () => {
       )
       .then((res) => {
         console.log(res);
-      });
+      })
+      .catch((err) => console.log(err));
+    setEmployee("");
   };
 
   return (
@@ -117,9 +119,9 @@ const AddEmployee = () => {
           />
         </FormControl>
         <FormControl>
-          <InputLabel id="demo-simple-select-label">Gender</InputLabel>
+          <InputLabel id="demo">Gender</InputLabel>
           <Select
-            labelId="demo-simple-select-label"
+            labelId="demo"
             onChange={(e) =>
               setEmployee({ ...employee, gender: e.target.value })
             }
@@ -148,12 +150,12 @@ const AddEmployee = () => {
           />
         </FormControl>
 
-        {/* <FormControl>
+        <FormControl>
           <InputLabel htmlFor="my-input">Street</InputLabel>
           <Input
             name="street"
             onChange={(e) =>
-              setEmployee({ ...employee, street: e.target.value })
+              setEmployee({ ...employee, streetOne: e.target.value })
             }
           />
         </FormControl>
@@ -161,7 +163,9 @@ const AddEmployee = () => {
           <InputLabel htmlFor="my-input">City</InputLabel>
           <Input
             name="city"
-            onChange={(e) => setEmployee({ ...employee, city: e.target.value })}
+            onChange={(e) =>
+              setEmployee({ ...employee, cityOne: e.target.value })
+            }
           />
         </FormControl>
         <FormControl>
@@ -169,7 +173,7 @@ const AddEmployee = () => {
           <Input
             name="postalCode"
             onChange={(e) =>
-              setEmployee({ ...employee, postalCode: e.target.value })
+              setEmployee({ ...employee, postalCodeOne: e.target.value })
             }
           />
         </FormControl>
@@ -178,12 +182,12 @@ const AddEmployee = () => {
           <Select
             labelId="demo-simple-select-label"
             onChange={(e) =>
-              setEmployee({ ...employee, state: e.target.value })
+              setEmployee({ ...employee, stateOne: e.target.value })
             }
           >
-            <MenuItem>Schsen</MenuItem>
-            <MenuItem>Berlin</MenuItem>
-            <MenuItem>Hamburg</MenuItem>
+            <MenuItem value="sachsen">Schsen</MenuItem>
+            <MenuItem value="Berlin">Berlin</MenuItem>
+            <MenuItem value="Hamburg">Hamburg</MenuItem>
           </Select>
         </FormControl>
         <FormControl>
@@ -191,10 +195,10 @@ const AddEmployee = () => {
           <Input
             name="Country"
             onChange={(e) =>
-              setEmployee({ ...employee, country: e.target.value })
+              setEmployee({ ...employee, countryOne: e.target.value })
             }
           />
-        </FormControl> */}
+        </FormControl>
 
         <FormControl>
           <Button onClick={addNew}>Add </Button>
