@@ -42,20 +42,20 @@ function WidgetCalendar() {
 
   return (
     <div className="widget_calendar_mainbox">
-      <div className="calendar_today">
-        <div className="calendar_today_header">
+      <div className="widget_calendar_today">
+        <div className="widget_calendar_today_header">
           <h1>TODAY</h1>
         </div>
-        <div className="calendar_month">{month.toUpperCase()}</div>
-        <div className="calendar_day_number">{dayNum}</div>
-        <div className="calendar_day_name">{dayName.toUpperCase()}</div>
+        <div className="widget_calendar_month">{month.toUpperCase()}</div>
+        <div className="widget_calendar_day_number">{dayNum}</div>
+        <div className="widget_calendar_day_name">{dayName.toUpperCase()}</div>
       </div>
 
-      <div className="calendar">
-        <div className="calendar_view">
+      <div className="widget_calendar">
+        <div className="widget_calendar_view">
           <Calendar onChange={onChange} value={value} />
         </div>
-        <div className="calendar_bottom_border"></div>
+        <div className="widget_calendar_bottom_border"></div>
       </div>
     </div>
   );

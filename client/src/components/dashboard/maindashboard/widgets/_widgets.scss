@@ -1,9 +1,9 @@
 .components_mainbox {
-  width: 80vw;
+  width: 98.5%;
   display: grid;
   margin: 0 0;
-  grid-template-columns: 1fr 0.2fr 1fr 1fr;
-  grid-template-rows: 0.2fr 1fr 2fr 2fr 0.8fr;
+  grid-template-columns: 0.8fr 1vw 1fr 1fr;
+  grid-template-rows: 0.7fr 1.3fr 1.3fr 0.4fr 1.3fr;
   gap: 12px 12px;
   grid-template-areas:
     "welcome_message welcome_message welcome_message welcome_message"

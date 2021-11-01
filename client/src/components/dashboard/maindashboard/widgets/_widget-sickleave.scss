@@ -1,8 +1,6 @@
 .widget_sickleave_mainbox {
   @include widget-wrapper;
   grid-area: widget_sickleave;
-  width: 100%;
-  height: 100%;
 
   //inside grid
   display: grid;
