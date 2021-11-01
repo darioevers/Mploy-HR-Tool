@@ -1,7 +1,9 @@
+.landingpage_contact_backgroundbox {
+
+}
+
 .homecontact_mainbox {
   display: flex;
-  background-color: $dark-bg;
-  color: $primary;
   height: auto;
   line-height: 20px;
   h1 {
@@ -24,9 +26,7 @@
     width: 40%;
 
     button {
-      background-color: $highlight;
       align-self: center;
-      color: white;
       font-size: 17px;
       height: 30px;
       width: 150px;
