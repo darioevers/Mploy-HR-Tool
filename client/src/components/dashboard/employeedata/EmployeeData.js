@@ -34,17 +34,19 @@ function EmployeeData() {
           },
         }
       )
+
       .then((data) => setEmployees(data.data))
       .catch((err) => console.log(err));
   };
-
   return (
     <div className="employeedata_mainbox">
       <DashboardTopNav />
       <DashboardSideNav />
-      <Table className={classes.table}>
+      <Table>
         <TableHead>
           <TableRow className={classes.thead}>
+            <TableCell>id</TableCell>
+
             <TableCell>First Name</TableCell>
             <TableCell>Last Name</TableCell>
             <TableCell>Email</TableCell>
@@ -59,15 +61,16 @@ function EmployeeData() {
           {employees &&
             employees.map((employee) => (
               <TableRow key={employee._id}>
-                <TableCell>{employee.firstName}</TableCell>
-                <TableCell>{employee.lastName}</TableCell>
-                <TableCell>{employee.email}</TableCell>
+                <TableCell>{employee.bio.firstName}</TableCell>
 
-                <TableCell>{employee.age}</TableCell>
-                <TableCell>{employee.nationality}</TableCell>
-                <TableCell>{employee.gender}</TableCell>
-                <TableCell>{employee.phoneNo}</TableCell>
-                <TableCell>{employee.maritalStatus}</TableCell>
+                <TableCell>{employee.bio.lastName}</TableCell>
+                <TableCell>{employee.bio.email}</TableCell>
+
+                <TableCell>{employee.bio.age}</TableCell>
+                <TableCell>{employee.bio.nationality}</TableCell>
+                <TableCell>{employee.bio.gender}</TableCell>
+                <TableCell>{employee.bio.phoneNo}</TableCell>
+                <TableCell>{employee.bio.maritalStatus}</TableCell>
 
                 <TableCell>
                   <Button
@@ -77,6 +80,16 @@ function EmployeeData() {
                     to={`/dashboard/employeedata/editemployee/`}
                   >
                     Edit
+                  </Button>
+                </TableCell>
+                <TableCell>
+                  <Button
+                    color="primary"
+                    variant="contained"
+                    component={Link}
+                    to={`/dashboard/employeedata/employeedata/`}
+                  >
+                    Delete
                   </Button>
                 </TableCell>
               </TableRow>
