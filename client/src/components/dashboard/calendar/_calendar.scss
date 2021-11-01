@@ -26,16 +26,3 @@
 .calendar_appointments {
   grid-area: calendar_appointments;
 }
-
-.react-calendar__month-view__days__day--neighboringMonth {
-  color: #757575;
-}
-
-.react-calendar__tile--active {
-  background-color: orange;
-}
-
-.react-calendar__navigation button:enabled:hover,
-.react-calendar__navigation button:enabled:focus {
-  background-color: #e6e6e6;
-}

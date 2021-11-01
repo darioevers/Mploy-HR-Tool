@@ -13,6 +13,7 @@ const MyAppBar = styled(AppBar)({
 });
 
 const Search = styled("div")(({ theme }) => ({
+  color: "white",
   position: "relative",
   borderRadius: "50px",
   backgroundColor: "#2b3240",
@@ -71,7 +72,7 @@ const label = { inputProps: { "aria-label": "Switch demo" } };
 export default function SearchAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <MyAppBar position="static" width="100vw" backgroundColor="red">
+      <MyAppBar position="static" width="100vw">
         <Toolbar>
           <Search>
             <SearchIconWrapper>
