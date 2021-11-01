@@ -1,6 +1,37 @@
-.homecontact_mainbox{
-    height: 60vh;
-    border: red 1px solid;
-    margin-bottom: 70px;
-    margin-top: 70px;
+.landingpage_contact_backgroundbox {
+
+}
+
+.homecontact_mainbox {
+  display: flex;
+  height: auto;
+  line-height: 20px;
+  h1 {
+    font-size: 30px;
+  }
+  h3 {
+    font-size: 15px;
+    font-weight: normal;
+    margin: 20px 0;
+  }
+  .homecontact_left {
+    width: 60%;
+    padding: 20px;
+    margin: 20px 0;
+  }
+  .homecontact_right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+
+    button {
+      align-self: center;
+      font-size: 17px;
+      height: 30px;
+      width: 150px;
+      border-radius: 12px;
+      border: none;
+    }
+  }
 }

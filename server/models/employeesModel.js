@@ -4,18 +4,17 @@ const EmployeesSchema = Schema({
   bio: {
     firstName: {
       type: String,
-      required: true,
+      required: false,
       minlength: 5,
     },
     lastName: {
       type: String,
-      required: true,
+      required: false,
       minlength: 5,
     },
     email: {
       type: String,
-      required: true,
-      unique: true,
+      required: false,
     },
     age: {
       type: Number,
@@ -29,11 +28,7 @@ const EmployeesSchema = Schema({
       type: String,
       required: false,
     },
-    PhoneNumber: {
-      type: String,
-      required: true,
-    },
-    height: {
+    phoneNumber: {
       type: String,
       required: false,
     },
@@ -52,23 +47,23 @@ const EmployeesSchema = Schema({
   addressOne: {
     street: {
       type: String,
-      required: true,
+      required: false,
     },
     city: {
       type: String,
-      required: true,
+      required: false,
       minlength: 5,
     },
     postalCode: {
       type: String,
     },
     state: {
-      type: Number,
-      required: true,
+      type: String,
+      required: false,
     },
     country: {
       type: String,
-      required: true,
+      required: false,
     },
   },
   addressTwo: {
@@ -98,10 +93,7 @@ const EmployeesSchema = Schema({
       type: String,
       required: false,
     },
-    startDate: {
-      type: Date,
-      required: false,
-    },
+
     endDate: {
       type: Date,
       required: false,
@@ -115,18 +107,37 @@ const EmployeesSchema = Schema({
       required: false,
     },
   },
+  workExperience: {
+    company: {
+      type: String,
+      required: false,
+    },
+
+    jobTitle: {
+      type: String,
+      required: false,
+    },
+    from: {
+      type: Date,
+      required: false,
+    },
+    to: {
+      type: Date,
+      required: false,
+    },
+  },
   contractInfo: {
     contractNo: {
       type: String,
-      required: true,
+      required: false,
     },
     hireDate: {
       type: Date,
-      required: true,
+      required: false,
     },
     contractEnd: {
       type: Date,
-      required: true,
+      required: false,
     },
     probationPeriod: {
       type: String,
@@ -164,15 +175,15 @@ const EmployeesSchema = Schema({
   leave: {
     usedLeave: {
       type: String,
-      required: true,
+      required: false,
     },
     remainingLeave: {
       type: String,
-      required: true,
+      required: false,
     },
     fromDate: {
       type: Date,
-      required: true,
+      required: false,
     },
     toDate: {
       type: Date,
@@ -183,14 +194,6 @@ const EmployeesSchema = Schema({
       required: false,
     },
     emergencyContact: {
-      type: String,
-      required: false,
-    },
-    team: {
-      type: String,
-      required: false,
-    },
-    department: {
       type: String,
       required: false,
     },
