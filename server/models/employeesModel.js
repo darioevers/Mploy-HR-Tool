@@ -16,7 +16,7 @@ const EmployeesSchema = Schema({
       type: String,
       required: false,
     },
-    age: {
+    dateOfBirth: {
       type: Number,
       required: false,
     },
@@ -32,10 +32,6 @@ const EmployeesSchema = Schema({
       type: String,
       required: false,
     },
-    bloodGroup: {
-      type: String,
-      required: false,
-    },
     maritalStatus: {
       type: String,
       required: false,
@@ -45,45 +41,45 @@ const EmployeesSchema = Schema({
     },
   },
   addressOne: {
-    street: {
+    streetOne: {
       type: String,
       required: false,
     },
-    city: {
+    cityOne: {
       type: String,
       required: false,
       minlength: 5,
     },
-    postalCode: {
+    postalCodeOne: {
       type: String,
     },
-    state: {
+    stateOne: {
       type: String,
       required: false,
     },
-    country: {
+    countryOne: {
       type: String,
       required: false,
     },
   },
   addressTwo: {
-    street: {
+    streetTwo: {
       type: String,
       required: false,
     },
-    city: {
+    cityTwo: {
       type: String,
       required: false,
     },
-    postalCode: {
+    postalCodeTwo: {
       type: String,
       required: false,
     },
-    state: {
+    stateTwo: {
       type: String,
       required: false,
     },
-    country: {
+    countryTwo: {
       type: String,
       required: false,
     },

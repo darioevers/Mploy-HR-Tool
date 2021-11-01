@@ -3,8 +3,13 @@ import { NavLink } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import { ColorModeContext } from "../theme/theme";
 import { useTheme } from "@mui/material/styles";
+<<<<<<< HEAD
 import Brightness4Icon from "@material-ui/icons/Brightness4";
 import Brightness7Icon from "@material-ui/icons//Brightness7";
+=======
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
+>>>>>>> main
 import IconButton from "@mui/material/IconButton";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Paper";
