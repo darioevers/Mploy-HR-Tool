@@ -3,6 +3,7 @@
   grid-area: widget_team;
   width: 100%;
   height: 100%;
+  overflow: unset;
   //inside grid
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -42,6 +43,8 @@
 .team_contacts_wrapper {
   grid-area: 5 / 1 / 6 / 3;
   @include flex-center;
+  min-width: 340px;
+  height: 100%;
 }
 
 .team_manager_wrapper {

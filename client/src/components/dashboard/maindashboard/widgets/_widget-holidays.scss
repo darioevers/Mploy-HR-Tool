@@ -1,6 +1,7 @@
 .widget_holidays_mainbox {
   @include widget-wrapper;
   grid-area: widget_holidays;
+  overflow: hidden;
   width: 100%;
   height: 100%;
 

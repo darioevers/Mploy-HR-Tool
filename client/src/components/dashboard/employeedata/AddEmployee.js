@@ -1,15 +1,15 @@
 import React from "react";
 import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
-import Widgets from "./widgets/Widgets";
 
-function MainDashboard() {
+function AddEmployee() {
   return (
-    <div className="maindashboard_area">
+    <div className="addemployee_mainbox">
       <DashboardTopNav />
       <DashboardSideNav />
-      <Widgets />
+      <h1>ADD EMPLOYEE HERE</h1>
     </div>
   );
 }
-export default MainDashboard;
+
+export default AddEmployee;

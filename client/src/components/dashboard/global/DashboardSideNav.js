@@ -1,5 +1,7 @@
 import * as React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
+
+//icons
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import FolderOpenIcon from "@material-ui/icons/FolderOpen";
 import TodayIcon from "@material-ui/icons/Today";
@@ -7,9 +9,50 @@ import EuroIcon from "@material-ui/icons/Euro";
 import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 
+import { useState, useEffect } from "react";
+import axios from "axios";
+
 const DashboardSideNav = () => {
+  const [privateData, setPrivateData] = useState("");
+
+  const history = useHistory();
+  // if there is nothing in the local storage we immediatly
+  useEffect(() => {
+    if (!localStorage.getItem("authToken")) {
+      history.push("/");
+    }
+
+    const fetchPrivateData = async () => {
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        },
+      };
+      try {
+        const { data } = await axios.get(
+          "http://localhost:5000/dashboard",
+          config
+        );
+        console.log(data);
+        setPrivateData(data.data);
+      } catch (error) {
+        console.log(error);
+        localStorage.removeItem("authToken");
+      }
+    };
+    fetchPrivateData();
+  }, [history]);
+  // for logining out
+  const logoutHandler = () => {
+    localStorage.removeItem("authToken");
+    history.push("/");
+    // should go to the /
+  };
+
   return (
     <div className="sidenav_mainbox">
+      {/* employee info */}
       <div className="sidenav_employeeinfo">
         <div className="sidenav_employeeinfo_image"></div>
         <div className="sidenav_employeeinfo_details">
@@ -23,6 +66,7 @@ const DashboardSideNav = () => {
         </div>
       </div>
 
+      {/* sidenavlinks */}
       <div className="sidenav_links">
         <NavLink
           exact
@@ -97,6 +141,7 @@ const DashboardSideNav = () => {
           <p>E-Learning</p>
         </NavLink>
       </div>
+      <button onClick={logoutHandler}>Logout</button>
     </div>
   );
 };

@@ -79,6 +79,11 @@
   }
 }
 
+.team_contacts_wrapper {
+  .rec.rec-carousel {
+    width: 150%;
+  }
+}
 //carousel
 
 .rec.rec-arrow {
@@ -98,6 +103,7 @@
 
 .rec.rec-pagination {
   visibility: hidden;
+  height: 0px;
 }
 /* disable default outline on focused items */
 /* add custom outline on focused items */

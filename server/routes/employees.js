@@ -3,10 +3,10 @@ const router = express.Router();
 const employeesController = require("../controllers/employeesController");
 
 //get all Employees
-router.get("/", employeesController.getAllEmployees);
+router.get("/allemployee", employeesController.getAllEmployees);
 
 // add new Employee ?
-router.post("/", employeesController.addNewEmployee);
+router.post("/addemployee", employeesController.addNewEmployee);
 
 // get one employee by name
 // router.get("/:firstName", employeesController.getOneEmployee);

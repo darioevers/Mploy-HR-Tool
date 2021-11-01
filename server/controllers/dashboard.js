@@ -13,7 +13,6 @@ const addAdmin = async (req, res) => {
     { new: true },
     (err, doc) => {
       if (err) {
-        console.log("hi" + err);
         res.status(401).json({ message: err, status: "Not successfull" });
       }
       res.send({ doc, message: "successfull" });
