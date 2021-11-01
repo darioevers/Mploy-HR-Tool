@@ -17,57 +17,99 @@ const AddHrInfo = () => {
       <DashboardTopNav />
       <DashboardSideNav />
 
-      <FormGroup>
+      {/* <FormGroup>
         <Typography variant="h4">Hr Information</Typography>
         <FormControl>
           <InputLabel htmlFor="my-input">Contract No</InputLabel>
-          <Input />
+          <Input
+            onChange={(e) =>
+              setEmployee({ ...employee, contractNo: e.target.value })
+            }
+          />
         </FormControl>
         <FormControl>
           <InputLabel htmlFor="my-input">Hire date</InputLabel>
-          <Input />
+          <Input
+            onChange={(e) =>
+              setEmployee({ ...employee, hireDate: e.target.value })
+            }
+          />
         </FormControl>
         <FormControl>
           <InputLabel htmlFor="my-input">Contract End</InputLabel>
-          <Input />
+          <Input
+            onChange={(e) =>
+              setEmployee({ ...employee, contractEnd: e.target.value })
+            }
+          />
         </FormControl>
         <FormControl>
           <InputLabel htmlFor="my-input">Probation Period</InputLabel>
-          <Input />
+          <Input
+            onChange={(e) =>
+              setEmployee({ ...employee, probationPeriod: e.target.value })
+            }
+          />
         </FormControl>
         <FormControl>
           <InputLabel htmlFor="my-input">Employment Type</InputLabel>
-          <Input />
+          <Input
+            onChange={(e) =>
+              setEmployee({ ...employee, employmentType: e.target.value })
+            }
+          />
         </FormControl>
         <FormControl>
           <InputLabel htmlFor="my-input">Position</InputLabel>
-          <Input />
+          <Input
+            onChange={(e) =>
+              setEmployee({ ...employee, position: e.target.value })
+            }
+          />
         </FormControl>
         <FormControl>
           <InputLabel htmlFor="my-input">Team</InputLabel>
-          <Input />
+          <Input
+            onChange={(e) => setEmployee({ ...employee, team: e.target.value })}
+          />
         </FormControl>
         <FormControl>
           <InputLabel htmlFor="my-input">Department</InputLabel>
-          <Input />
+          <Input
+            onChange={(e) =>
+              setEmployee({ ...employee, department: e.target.value })
+            }
+          />
         </FormControl>
         <FormControl>
           <InputLabel htmlFor="my-input">Salary</InputLabel>
-          <Input />
+          <Input
+            onChange={(e) =>
+              setEmployee({ ...employee, salary: e.target.value })
+            }
+          />
         </FormControl>
         <FormControl>
           <InputLabel htmlFor="my-input">Overtime</InputLabel>
-          <Input />
+          <Input
+            onChange={(e) =>
+              setEmployee({ ...employee, overtime: e.target.value })
+            }
+          />
         </FormControl>
         <FormControl>
           <InputLabel htmlFor="my-input">Work Location</InputLabel>
-          <Input />
+          <Input
+            onChange={(e) =>
+              setEmployee({ ...employee, workLocation: e.target.value })
+            }
+          />
         </FormControl>
 
         <FormControl>
-          <Button>Add </Button>
+          <Button onClick={employee}>Add </Button>
         </FormControl>
-      </FormGroup>
+      </FormGroup> */}
     </div>
   );
 };

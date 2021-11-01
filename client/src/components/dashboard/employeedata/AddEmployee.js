@@ -45,15 +45,7 @@ const AddEmployee = () => {
     <div className="addemployee_mainbox">
       <DashboardTopNav />
       <DashboardSideNav />
-      <NavLink
-        exact
-        to="/dashboard/employeedata/addemployee/hrinfo"
-        activeClassName="active"
-        className="sidenav_link"
-      >
-        HR Information
-      </NavLink>
-
+      <h3>Personal Information</h3>
       <NavLink
         exact
         to="/dashboard/employeedata/addemployee/documents"
@@ -201,6 +193,14 @@ const AddEmployee = () => {
         </FormControl>
 
         <FormControl>
+          <NavLink
+            exact
+            to="/dashboard/employeedata/addemployee/hrinfo"
+            activeClassName="active"
+            className="sidenav_link"
+          >
+            Next
+          </NavLink>
           <Button onClick={addNew}>Add </Button>
         </FormControl>
       </FormGroup>
