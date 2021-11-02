@@ -45,8 +45,6 @@ function EmployeeData() {
       <Table>
         <TableHead>
           <TableRow className={classes.thead}>
-            <TableCell>id</TableCell>
-
             <TableCell>First Name</TableCell>
             <TableCell>Last Name</TableCell>
             <TableCell>Email</TableCell>
@@ -66,10 +64,10 @@ function EmployeeData() {
                 <TableCell>{employee.bio.lastName}</TableCell>
                 <TableCell>{employee.bio.email}</TableCell>
 
-                <TableCell>{employee.bio.age}</TableCell>
+                <TableCell>{employee.bio.dateOfBirth}</TableCell>
                 <TableCell>{employee.bio.nationality}</TableCell>
                 <TableCell>{employee.bio.gender}</TableCell>
-                <TableCell>{employee.bio.phoneNo}</TableCell>
+                <TableCell>{employee.bio.phoneNumber}</TableCell>
                 <TableCell>{employee.bio.maritalStatus}</TableCell>
 
                 <TableCell>
