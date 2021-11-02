@@ -45,7 +45,7 @@ const AddEmployee = () => {
     <div className="addemployee_mainbox">
       <DashboardTopNav />
       <DashboardSideNav />
-      <h3>Personal Information</h3>
+
       <NavLink
         exact
         to="/dashboard/employeedata/addemployee/documents"
@@ -54,6 +54,14 @@ const AddEmployee = () => {
       >
         {" "}
         Documents
+      </NavLink>
+      <NavLink
+        exact
+        to="/dashboard/employeedata/addemployee/hrinfo"
+        activeClassName="active"
+        className="sidenav_link"
+      >
+        Hr Information
       </NavLink>
       <FormGroup>
         <Typography variant="h4">Personal Inforamtion</Typography>
@@ -128,7 +136,7 @@ const AddEmployee = () => {
           <Input
             name="phoneNumber"
             onChange={(e) =>
-              setEmployee({ ...employee, phone: e.target.value })
+              setEmployee({ ...employee, phoneNumber: e.target.value })
             }
           />
         </FormControl>
@@ -193,14 +201,6 @@ const AddEmployee = () => {
         </FormControl>
 
         <FormControl>
-          <NavLink
-            exact
-            to="/dashboard/employeedata/addemployee/hrinfo"
-            activeClassName="active"
-            className="sidenav_link"
-          >
-            Next
-          </NavLink>
           <Button onClick={addNew}>Add </Button>
         </FormControl>
       </FormGroup>
