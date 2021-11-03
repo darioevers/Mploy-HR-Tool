@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
 import {
@@ -10,20 +10,46 @@ import {
   makeStyles,
   Typography,
 } from "@material-ui/core";
+import axios from "axios";
 
-const AddHrInfo = () => {
+const AddHrInfo = ({ location, history }) => {
+  const [employeeData, setEmployeeData] = useState(
+    location.state && location.state.employee
+  );
+
+  const addNew = () => {
+    const data = employeeData;
+    console.log(employeeData);
+    console.log(location.state.employee);
+    axios
+      .post(
+        "http://localhost:5000/employee/addemployee",
+        data,
+
+        {
+          header: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        history.push("/dashboard/employeedata/addemployee/documents");
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <div className="addemployee_mainbox">
       <DashboardTopNav />
       <DashboardSideNav />
 
-      {/* <FormGroup>
+      <FormGroup>
         <Typography variant="h4">Hr Information</Typography>
         <FormControl>
           <InputLabel htmlFor="my-input">Contract No</InputLabel>
           <Input
             onChange={(e) =>
-              setEmployee({ ...employee, contractNo: e.target.value })
+              setEmployeeData({ ...employeeData, contractNo: e.target.value })
             }
           />
         </FormControl>
@@ -31,7 +57,7 @@ const AddHrInfo = () => {
           <InputLabel htmlFor="my-input">Hire date</InputLabel>
           <Input
             onChange={(e) =>
-              setEmployee({ ...employee, hireDate: e.target.value })
+              setEmployeeData({ ...employeeData, hireDate: e.target.value })
             }
           />
         </FormControl>
@@ -39,7 +65,7 @@ const AddHrInfo = () => {
           <InputLabel htmlFor="my-input">Contract End</InputLabel>
           <Input
             onChange={(e) =>
-              setEmployee({ ...employee, contractEnd: e.target.value })
+              setEmployeeData({ ...employeeData, contractEnd: e.target.value })
             }
           />
         </FormControl>
@@ -47,7 +73,10 @@ const AddHrInfo = () => {
           <InputLabel htmlFor="my-input">Probation Period</InputLabel>
           <Input
             onChange={(e) =>
-              setEmployee({ ...employee, probationPeriod: e.target.value })
+              setEmployeeData({
+                ...employeeData,
+                probationPeriod: e.target.value,
+              })
             }
           />
         </FormControl>
@@ -55,7 +84,10 @@ const AddHrInfo = () => {
           <InputLabel htmlFor="my-input">Employment Type</InputLabel>
           <Input
             onChange={(e) =>
-              setEmployee({ ...employee, employmentType: e.target.value })
+              setEmployeeData({
+                ...employeeData,
+                employmentType: e.target.value,
+              })
             }
           />
         </FormControl>
@@ -63,21 +95,23 @@ const AddHrInfo = () => {
           <InputLabel htmlFor="my-input">Position</InputLabel>
           <Input
             onChange={(e) =>
-              setEmployee({ ...employee, position: e.target.value })
+              setEmployeeData({ ...employeeData, position: e.target.value })
             }
           />
         </FormControl>
         <FormControl>
           <InputLabel htmlFor="my-input">Team</InputLabel>
           <Input
-            onChange={(e) => setEmployee({ ...employee, team: e.target.value })}
+            onChange={(e) =>
+              setEmployeeData({ ...employeeData, team: e.target.value })
+            }
           />
         </FormControl>
         <FormControl>
           <InputLabel htmlFor="my-input">Department</InputLabel>
           <Input
             onChange={(e) =>
-              setEmployee({ ...employee, department: e.target.value })
+              setEmployeeData({ ...employeeData, department: e.target.value })
             }
           />
         </FormControl>
@@ -85,7 +119,7 @@ const AddHrInfo = () => {
           <InputLabel htmlFor="my-input">Salary</InputLabel>
           <Input
             onChange={(e) =>
-              setEmployee({ ...employee, salary: e.target.value })
+              setEmployeeData({ ...employeeData, salary: e.target.value })
             }
           />
         </FormControl>
@@ -93,7 +127,7 @@ const AddHrInfo = () => {
           <InputLabel htmlFor="my-input">Overtime</InputLabel>
           <Input
             onChange={(e) =>
-              setEmployee({ ...employee, overtime: e.target.value })
+              setEmployeeData({ ...employeeData, overtime: e.target.value })
             }
           />
         </FormControl>
@@ -101,15 +135,15 @@ const AddHrInfo = () => {
           <InputLabel htmlFor="my-input">Work Location</InputLabel>
           <Input
             onChange={(e) =>
-              setEmployee({ ...employee, workLocation: e.target.value })
+              setEmployeeData({ ...employeeData, workLocation: e.target.value })
             }
           />
         </FormControl>
 
         <FormControl>
-          <Button onClick={employee}>Add </Button>
+          <Button onClick={addNew}>Add </Button>
         </FormControl>
-      </FormGroup> */}
+      </FormGroup>
     </div>
   );
 };

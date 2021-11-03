@@ -48,7 +48,7 @@ function EmployeeData() {
             <TableCell>First Name</TableCell>
             <TableCell>Last Name</TableCell>
             <TableCell>Email</TableCell>
-            <TableCell>Age</TableCell>
+            <TableCell>DOB</TableCell>
             <TableCell>Nationality</TableCell>
             <TableCell>Gender</TableCell>
             <TableCell>Phone</TableCell>

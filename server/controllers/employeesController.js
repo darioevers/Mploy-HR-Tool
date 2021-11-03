@@ -18,7 +18,6 @@ employeeContoller.getAllEmployees = async (req, res) => {
 
 // add new Employee
 employeeContoller.addNewEmployee = async (req, res) => {
-  console.log(req.body);
   try {
     const employee = await new EmployeeData({
       bio: {

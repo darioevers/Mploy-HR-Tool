@@ -17,29 +17,8 @@ import {
 } from "@material-ui/core";
 // import DatePicker from "@material-ui/lab/DatePicker";
 
-const AddEmployee = () => {
+const AddEmployee = ({ history }) => {
   const [employee, setEmployee] = useState({});
-
-  const addNew = () => {
-    const data = employee;
-    console.log(employee);
-    axios
-      .post(
-        "http://localhost:5000/employee/addemployee",
-        data,
-
-        {
-          header: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => console.log(err));
-    setEmployee("");
-  };
 
   return (
     <div className="addemployee_mainbox">
@@ -201,7 +180,17 @@ const AddEmployee = () => {
         </FormControl>
 
         <FormControl>
-          <Button onClick={addNew}>Add </Button>
+          <Button
+            onClick={() => {
+              console.log(employee);
+              history.push({
+                pathname: "/dashboard/employeedata/addemployee/hrinfo",
+                state: { employee },
+              });
+            }}
+          >
+            Next{" "}
+          </Button>
         </FormControl>
       </FormGroup>
     </div>

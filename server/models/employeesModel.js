@@ -5,12 +5,10 @@ const EmployeesSchema = Schema({
     firstName: {
       type: String,
       required: false,
-      minlength: 5,
     },
     lastName: {
       type: String,
       required: false,
-      minlength: 5,
     },
     email: {
       type: String,
@@ -48,7 +46,6 @@ const EmployeesSchema = Schema({
     cityOne: {
       type: String,
       required: false,
-      minlength: 5,
     },
     postalCodeOne: {
       type: String,
