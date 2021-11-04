@@ -89,19 +89,38 @@ employeeContoller.addNewEmployee = async (req, res) => {
     res.status(404).json({ status: "fail", message: error });
   }
 };
-
-// get single employee using id
-employeeContoller.getOneEmployeeById = async (req, res) => {
+// employee search
+employeeContoller.searchName = async (req, res) => {
+  console.log(req.body);
+  // let searchPattern = new RegEx("^" + req.body.query);
+  // EmployeeData.find({ firstName: { $regex: searchPattern } })
   try {
-    const employee = await EmployeeData.findById(req.params.id);
-    res.status(200).json({
-      status: "success",
-      data: employee,
-    });
-  } catch (error) {
-    res.status(404).json({ message: error.message });
+    const empArr = await EmployeeData.find();
+    // .select("firstName"
+    console.log(empArr);
+    const empFilter = empArr.filter((item) =>
+      item.bio.firstName.includes(req.body.query)
+    );
+
+    console.log(empFilter);
+    res.json(empFilter);
+  } catch (err) {
+    res.send(err);
   }
 };
+
+// get single employee using id
+// employeeContoller.getOneEmployeeById = async (req, res) => {
+//   try {
+//     const employee = await EmployeeData.findById(req.params.id);
+//     res.status(200).json({
+//       status: "success",
+//       data: employee,
+//     });
+//   } catch (error) {
+//     res.status(404).json({ message: error.message });
+//   }
+// };
 
 // patch or update employee
 employeeContoller.updateEmployee = async (req, res) => {

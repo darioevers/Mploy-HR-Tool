@@ -141,7 +141,14 @@ const AddHrInfo = ({ location, history }) => {
         </FormControl>
 
         <FormControl>
-          <Button onClick={addNew}>Add </Button>
+          <Button
+            onClick={() => {
+              addNew();
+              setEmployeeData("");
+            }}
+          >
+            Add{" "}
+          </Button>
         </FormControl>
       </FormGroup>
     </div>

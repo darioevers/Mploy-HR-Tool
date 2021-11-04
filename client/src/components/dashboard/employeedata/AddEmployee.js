@@ -3,7 +3,6 @@ import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
 import { NavLink, Link } from "react-router-dom";
 
-import axios from "axios";
 import {
   FormGroup,
   FormControl,
@@ -19,6 +18,7 @@ import {
 
 const AddEmployee = ({ history }) => {
   const [employee, setEmployee] = useState({});
+  const [disabled, setDisabled] = useState(false);
 
   return (
     <div className="addemployee_mainbox">
@@ -181,6 +181,7 @@ const AddEmployee = ({ history }) => {
 
         <FormControl>
           <Button
+            disabled={disabled}
             onClick={() => {
               console.log(employee);
               history.push({
