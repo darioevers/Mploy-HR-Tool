@@ -11,6 +11,10 @@ import {
   TableBody,
   Button,
   makeStyles,
+  FormGroup,
+  FormControl,
+  InputLabel,
+  Input,
 } from "@material-ui/core";
 
 const useStyles = makeStyles({});
@@ -18,7 +22,7 @@ const useStyles = makeStyles({});
 function EmployeeData() {
   const classes = useStyles();
   const [employees, setEmployees] = useState();
-
+  const [search, setSearch] = useState("");
   useEffect(() => {
     getAllEmployee();
   }, []);
@@ -38,17 +42,44 @@ function EmployeeData() {
       .then((data) => setEmployees(data.data))
       .catch((err) => console.log(err));
   };
+  const searchEmployee = (query) => {
+    const data = { query };
+    console.log(data);
+    setSearch(query);
+    axios
+      .post("http://localhost:5000/employee/search", data, {
+        header: {
+          "Content-Type": "application/json",
+        },
+      })
+
+      .then((data) => setEmployees(data.data))
+      .catch((err) => console.log(err));
+  };
   return (
     <div className="employeedata_mainbox">
       <DashboardTopNav />
       <DashboardSideNav />
+
+      {/* search */}
+      <FormGroup>
+        <FormControl>
+          <Input
+            type="text"
+            value={search}
+            onChange={(e) => searchEmployee(e.target.value)}
+            placeholder="Search"
+          />
+        </FormControl>
+      </FormGroup>
+
       <Table>
         <TableHead>
-          <TableRow className={classes.thead}>
+          <TableRow>
             <TableCell>First Name</TableCell>
             <TableCell>Last Name</TableCell>
             <TableCell>Email</TableCell>
-            <TableCell>Age</TableCell>
+            <TableCell>DOB</TableCell>
             <TableCell>Nationality</TableCell>
             <TableCell>Gender</TableCell>
             <TableCell>Phone</TableCell>

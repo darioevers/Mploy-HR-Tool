@@ -3,7 +3,6 @@ import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
 import { NavLink, Link } from "react-router-dom";
 
-import axios from "axios";
 import {
   FormGroup,
   FormControl,
@@ -17,29 +16,9 @@ import {
 } from "@material-ui/core";
 // import DatePicker from "@material-ui/lab/DatePicker";
 
-const AddEmployee = () => {
+const AddEmployee = ({ history }) => {
   const [employee, setEmployee] = useState({});
-
-  const addNew = () => {
-    const data = employee;
-    console.log(employee);
-    axios
-      .post(
-        "http://localhost:5000/employee/addemployee",
-        data,
-
-        {
-          header: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => console.log(err));
-    setEmployee("");
-  };
+  const [disabled, setDisabled] = useState(false);
 
   return (
     <div className="addemployee_mainbox">
@@ -201,7 +180,18 @@ const AddEmployee = () => {
         </FormControl>
 
         <FormControl>
-          <Button onClick={addNew}>Add </Button>
+          <Button
+            disabled={disabled}
+            onClick={() => {
+              console.log(employee);
+              history.push({
+                pathname: "/dashboard/employeedata/addemployee/hrinfo",
+                state: { employee },
+              });
+            }}
+          >
+            Next{" "}
+          </Button>
         </FormControl>
       </FormGroup>
     </div>
