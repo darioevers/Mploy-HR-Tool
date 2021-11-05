@@ -99,7 +99,7 @@ employeeContoller.searchName = async (req, res) => {
     // .select("firstName"
     console.log(empArr);
     const empFilter = empArr.filter((item) =>
-      item.bio.firstName.includes(req.body.query)
+      item.bio.firstName.toLowerCase().includes(req.body.query)
     );
 
     console.log(empFilter);

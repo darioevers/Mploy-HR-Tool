@@ -140,6 +140,90 @@ const AddHrInfo = ({ location, history }) => {
           />
         </FormControl>
 
+        {/* --education--- */}
+        <div>
+          <Typography variant="h6">Education</Typography>
+
+          <FormControl>
+            <InputLabel htmlFor="my-input">School Name</InputLabel>
+            <Input
+              onChange={(e) =>
+                setEmployeeData({
+                  ...employeeData,
+                  school: e.target.value,
+                })
+              }
+            />
+          </FormControl>
+          <FormControl>
+            <InputLabel htmlFor="my-input">Degree</InputLabel>
+            <Input
+              onChange={(e) =>
+                setEmployeeData({ ...employeeData, degree: e.target.value })
+              }
+            />
+          </FormControl>
+
+          <FormControl>
+            <InputLabel htmlFor="my-input">Field Of Study</InputLabel>
+            <Input
+              onChange={(e) =>
+                setEmployeeData({
+                  ...employeeData,
+                  specialization: e.target.value,
+                })
+              }
+            />
+          </FormControl>
+
+          <FormControl>
+            <InputLabel htmlFor="my-input">Year Of Completion</InputLabel>
+            <Input
+              onChange={(e) =>
+                setEmployeeData({ ...employeeData, endDate: e.target.value })
+              }
+            />
+          </FormControl>
+        </div>
+
+        {/* experience */}
+        <div>
+          <Typography variant="h6">Work Experience</Typography>
+
+          <FormControl>
+            <InputLabel htmlFor="my-input">Company</InputLabel>
+            <Input
+              onChange={(e) =>
+                setEmployeeData({ ...employeeData, company: e.target.value })
+              }
+            />
+          </FormControl>
+          <FormControl>
+            <InputLabel htmlFor="my-input">Job Title</InputLabel>
+            <Input
+              onChange={(e) =>
+                setEmployeeData({ ...employeeData, jobTitle: e.target.value })
+              }
+            />
+          </FormControl>
+          <FormControl>
+            <InputLabel htmlFor="my-input">From</InputLabel>
+            <Input
+              onChange={(e) =>
+                setEmployeeData({ ...employeeData, from: e.target.value })
+              }
+            />
+          </FormControl>
+          <FormControl>
+            <InputLabel htmlFor="my-input">To</InputLabel>
+            <Input
+              onChange={(e) =>
+                setEmployeeData({ ...employeeData, to: e.target.value })
+              }
+            />
+          </FormControl>
+        </div>
+
         <FormControl>
           <Button
             onClick={() => {

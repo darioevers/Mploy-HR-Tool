@@ -42,6 +42,8 @@ function EmployeeData() {
       .then((data) => setEmployees(data.data))
       .catch((err) => console.log(err));
   };
+
+  // searching query search with firstName
   const searchEmployee = (query) => {
     const data = { query };
     console.log(data);
@@ -72,7 +74,14 @@ function EmployeeData() {
           />
         </FormControl>
       </FormGroup>
-
+      <NavLink
+        exact
+        to="/dashboard/employeedata/addemployee"
+        activeClassName="active"
+        className="sidenav_link"
+      >
+        <button>Add Employee</button>
+      </NavLink>
       <Table>
         <TableHead>
           <TableRow>
@@ -91,10 +100,8 @@ function EmployeeData() {
             employees.map((employee) => (
               <TableRow key={employee._id}>
                 <TableCell>{employee.bio.firstName}</TableCell>
-
                 <TableCell>{employee.bio.lastName}</TableCell>
                 <TableCell>{employee.bio.email}</TableCell>
-
                 <TableCell>{employee.bio.dateOfBirth}</TableCell>
                 <TableCell>{employee.bio.nationality}</TableCell>
                 <TableCell>{employee.bio.gender}</TableCell>
@@ -125,24 +132,6 @@ function EmployeeData() {
             ))}
         </TableBody>
       </Table>
-
-      <NavLink
-        exact
-        to="/dashboard/employeedata/addemployee"
-        activeClassName="active"
-        className="sidenav_link"
-      >
-        <button>Add Employee</button>
-      </NavLink>
-
-      <NavLink
-        exact
-        to="/dashboard/employeedata/editemployee"
-        activeClassName="active"
-        className="sidenav_link"
-      >
-        Edit employeee
-      </NavLink>
     </div>
   );
 }
