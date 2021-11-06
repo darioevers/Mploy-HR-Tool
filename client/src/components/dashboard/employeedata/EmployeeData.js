@@ -58,6 +58,15 @@ function EmployeeData() {
       .then((data) => setEmployees(data.data))
       .catch((err) => console.log(err));
   };
+
+  // Deleting the employee
+  // const deleteEmployeeData = async (id) => {
+  //   axios.delete("http://localhost:5000/employee/delete/:id", {
+  //     header: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   });
+  // };
   return (
     <div className="employeedata_mainbox">
       <DashboardTopNav />
@@ -93,6 +102,7 @@ function EmployeeData() {
             <TableCell>Gender</TableCell>
             <TableCell>Phone</TableCell>
             <TableCell>Marital Status</TableCell>
+            <TableCell>Status</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -107,6 +117,7 @@ function EmployeeData() {
                 <TableCell>{employee.bio.gender}</TableCell>
                 <TableCell>{employee.bio.phoneNumber}</TableCell>
                 <TableCell>{employee.bio.maritalStatus}</TableCell>
+                <TableCell>{employee.bio.status}</TableCell>
 
                 <TableCell>
                   <Button
@@ -119,14 +130,13 @@ function EmployeeData() {
                   </Button>
                 </TableCell>
                 <TableCell>
-                  <Button
-                    color="primary"
+                  {/* <Button
+                    color="secondary"
                     variant="contained"
-                    component={Link}
-                    to={`/dashboard/employeedata/employeedata/`}
+                    onClick={() => deleteEmployeeData(_id)}
                   >
                     Delete
-                  </Button>
+                  </Button> */}
                 </TableCell>
               </TableRow>
             ))}

@@ -178,7 +178,15 @@ const AddEmployee = ({ history }) => {
             }
           />
         </FormControl>
-
+        <FormControl>
+          <InputLabel htmlFor="my-input">Status</InputLabel>
+          <Input
+            name="status"
+            onChange={(e) =>
+              setEmployee({ ...employee, status: e.target.value })
+            }
+          />
+        </FormControl>
         <FormControl>
           <Button
             disabled={disabled}

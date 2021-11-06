@@ -6,9 +6,9 @@ const employeeContoller = {};
 
 employeeContoller.getAllEmployees = async (req, res) => {
   try {
-    const employees = await EmployeeData.find();
+    const employees = await EmployeeData.find({ "bio.status": "available" });
     res.status(200).json(employees);
-    console.log(employees);
+    // console.log(employees);
   } catch (error) {
     res.status(error.status).json({
       message: error.message,
@@ -30,6 +30,7 @@ employeeContoller.addNewEmployee = async (req, res) => {
         phoneNumber: req.body.phoneNumber,
         maritalStatus: req.body.maritalStatus,
         photo: req.body.photo,
+        status: req.body.status,
       },
       addressOne: {
         streetOne: req.body.streetOne,
