@@ -9,7 +9,7 @@ import IconButton from "@mui/material/IconButton";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Paper";
 import LoginIcon from "@mui/icons-material/Login";
-import LogoDarkS from "../../img/logo/MPLOY_logo_small_dark.png";
+import LogoDarkS from "../../img/logo/MPLOY_logo_small_dark.svg";
 
 const LandingpageTopnav = () => {
     const colorMode = React.useContext(ColorModeContext);
@@ -31,10 +31,25 @@ const LandingpageTopnav = () => {
                             </Link>
                         </div>
                         <div className="landingpage_topnav_menulinks">
-                            <div className="landingpage_topnav_menulink">Solutions</div>
-                            <div className="landingpage_topnav_menulink">About</div>
+                            <Link to={"/solutions"} style={{ color: "text.primary" }}>
+                                <div className="landingpage_topnav_menulink">Solutions</div>
+                            </Link>
+                            <Link to={"/about"}>
+                                <div className="landingpage_topnav_menulink">About</div>
+                            </Link>
                         </div>
                         <div className="landingpage_topnav_buttons">
+                            <IconButton
+                                sx={{ ml: 1 }}
+                                onClick={colorMode.toggleColorMode}
+                                color="inherit"
+                            >
+                                {theme.palette.mode === "dark" ? (
+                                    <Brightness7Icon />
+                                ) : (
+                                        <Brightness4Icon />
+                                    )}
+                            </IconButton>
                             <Link to={"/contact"}>
                                 <div className="landingpage_topnav_contactbutton">
                                     <Button variant="outlined">Contact</Button>
@@ -50,17 +65,6 @@ const LandingpageTopnav = () => {
                                         Login
                                     </Button>
                                 </Link>
-                                <IconButton
-                                    sx={{ ml: 1 }}
-                                    onClick={colorMode.toggleColorMode}
-                                    color="inherit"
-                                >
-                                    {theme.palette.mode === "dark" ? (
-                                        <Brightness7Icon />
-                                    ) : (
-                                            <Brightness4Icon />
-                                        )}
-                                </IconButton>
                             </div>
                         </div>
                     </div>

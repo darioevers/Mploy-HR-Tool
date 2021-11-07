@@ -13,8 +13,15 @@ const About = () => {
     >
         <div>
             <LandingpageTopnav />
+            <Box sx={{
+                background: "primary.darker"
+            }}>
+                <div className="abouttopbox">
+                    Test
+                </div>
+            </Box>
             <div className="homearea">
-                Test
+
             </div>
             <LandingpageFooter />
         </div >
