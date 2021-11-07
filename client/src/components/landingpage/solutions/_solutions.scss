@@ -1,13 +1,11 @@
 .solutions_header {
     height: 60vh;
     text-align: center;
-    background: orange;
-    clip-path: polygon(0 50%, 0 0, 100% 0, 100% 50%, 50% 100%);
     .solutions_header_content {
         width: 80vw;
     }
 }
 
-.solutions_mid {
-    z-index: 99;
+.solutions_mid_content_mid {
+    height: 50vh;
 }

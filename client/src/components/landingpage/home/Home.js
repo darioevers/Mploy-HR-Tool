@@ -13,7 +13,7 @@ const Home = () => {
     return (
         <Box
             sx={{
-                bgcolor: 'background.darker',
+                bgcolor: 'background.default',
                 borderRadius: '0px'
             }}
         >

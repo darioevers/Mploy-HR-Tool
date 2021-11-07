@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 const Contact = () => {
     return (<Box
         sx={{
-            bgcolor: 'background.darker',
+            bgcolor: 'background.default',
             borderRadius: '0px'
         }}
     >

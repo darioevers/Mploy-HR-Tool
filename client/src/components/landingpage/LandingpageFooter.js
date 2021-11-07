@@ -3,6 +3,8 @@ import InstagramIcon from "@material-ui/icons/Instagram";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Paper';
+import Chip from '@mui/material/Chip';
+import Divider from '@mui/material/Divider';
 
 const Homefooter = () => {
   return (
@@ -13,6 +15,9 @@ const Homefooter = () => {
           borderRadius: '0px'
         }}
       >
+        <Divider>
+          <Chip label="MPLOY" />
+        </Divider>
         <div className="landingpage_footer_backgroundbox">
           <div className="homefooter_mainbox">
             <div className="homefooter_topic">
