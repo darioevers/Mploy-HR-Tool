@@ -3,6 +3,8 @@
   height: 50px;
   position: fixed;
   top: 0;
+  z-index: 99;
+  #landingpagetopnavbox {
   .landingpage_topnav_mainbox {
     display: flex;
     height: 50px;
@@ -13,10 +15,11 @@
     margin: 0 auto;
     .landingpage_topnav_logobox {
       width: 10%;
-      color: rgb(124, 35, 35);
-      font-size: 1.6rem;
-      font-weight: 800;
       justify-content: left;
+      img {
+        height: 30px;
+        width: auto;
+      }
     }
     .landingpage_topnav_menulinks {
       width: 20%;
@@ -32,7 +35,7 @@
       display: flex;
       align-items: center;
       .landingpage_topnav_contactbutton {
-        padding-right: 10px;
+        padding: 0px 10px 0px 20px;
         Button {
           height: 70%;
         }
@@ -42,4 +45,9 @@
       }
     }
   }
+}
+}
+
+.landingpage_topnav_fillerbox {
+  height: 50px;
 }

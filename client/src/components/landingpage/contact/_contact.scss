@@ -1,0 +1,14 @@
+.contact_mainbox {
+    height: 70vh;
+    width: 100%;
+    // border: red 1px solid;
+    display: flex;
+    // flex-wrap: wrap;
+    .contact_formbox {
+        display: block;
+        width: 50%;
+        #boxtest {
+            display: block;
+        }
+    }
+}

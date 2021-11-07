@@ -39,7 +39,7 @@ export function ToggleColorMode(props) {
                         light: '#caf4ff',
                         dark: '#6891a7',
                     },
-                    divider: '#fff',
+                    divider: '#ebebeb',
                     text: {
                         primary: '#000',
                         secondary: '#000',
@@ -47,12 +47,16 @@ export function ToggleColorMode(props) {
                     background: {
                         paper: '#fff',
                         default: '#fff',
+                        darker: '#ebebeb'
                     },
                     footer: {
                         main: '#fff',
                     },
                     landingnavbar: {
                         main: '#fff',
+                    },
+                    solutions: {
+                        header: '#ffbd00'
                     }
                 }
                 : {
@@ -79,15 +83,18 @@ export function ToggleColorMode(props) {
                         secondary: '#fff',
                     },
                     background: {
-                        paper: '#293241',
-                        default: '#293241',
-                        darker: '#141d26',
+                        paper: '#3b444e',
+                        default: '#141d26',
+                        darker: '#000000',
                     },
                     footer: {
                         main: '#141d26',
                     },
                     landingnavbar: {
                         main: '#141d26',
+                    },
+                    solutions: {
+                        header: '#ffbd00'
                     }
                 }),
         },
