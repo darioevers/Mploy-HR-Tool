@@ -1,6 +1,23 @@
+// Colors
+$bg-color: white;
+$dot-color: #b8b8b8;
+
+// Dimensions
+$dot-size: 2px;
+$dot-space: 25px;
+
 .homeheader_mainbox{
-    height: 60vh;
+    height: 50vh;
     margin-bottom: 70px;
-    padding-top: 80px;
     width: 80vw;
+    text-align: center;
+    background:
+		linear-gradient(90deg, $bg-color ($dot-space - $dot-size), transparent 1%) center,
+		linear-gradient($bg-color ($dot-space - $dot-size), transparent 1%) center,
+		$dot-color;
+    background-size: $dot-space $dot-space;
+    .homeheader_topbox {
+        padding-top: 4rem;
+        font-family: 'Mohave';
+    }
 }
