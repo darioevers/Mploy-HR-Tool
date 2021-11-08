@@ -7,8 +7,19 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import PhoneIcon from '@mui/icons-material/Phone';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import PersonPinIcon from '@mui/icons-material/PersonPin';
+
 
 const Contact = () => {
+    const [value, setValue] = React.useState(0);
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    }
     return (<Box
         sx={{
             bgcolor: 'background.default',
@@ -18,7 +29,6 @@ const Contact = () => {
 
         <LandingpageTopnav />
         <div className="homearea">
-            {/* <Container> */}
             <div className="contact_mainbox">
                 <div className="contact_textbox">
                     <Box component="span" sx={{ width: '100%', maxWidth: 500 }}>
@@ -33,6 +43,13 @@ const Contact = () => {
                                     </Typography>
                         <Divider variant="middle" />
                     </Box>
+                    <Tabs value={value} onChange={handleChange} id="contact_tabs">
+                        <Tab icon={<PhoneIcon />} id="contact_tabs_icon" textColor="primary"
+                            indicatorColor="peimary" >
+                            Test </Tab>
+                        <Tab icon={<FavoriteIcon />} id="contact_tabs_icon" />
+                        <Tab icon={<PersonPinIcon />} id="contact_tabs_icon" />
+                    </Tabs>
                 </div>
                 <div className="contact_formbox">
                     <Box
@@ -53,8 +70,8 @@ const Contact = () => {
                             id="contactform_message"
                             label="Message"
                             multiline
-                            maxRows={5}
-                            rows={4}
+                            maxRows={10}
+                            minRows={6}
                             fullWidth
                             style={{ width: "90%" }}
                         />
@@ -62,7 +79,6 @@ const Contact = () => {
                     </Box>
                 </div>
             </div>
-            {/* </Container> */}
         </div>
         <LandingpageFooter />
 

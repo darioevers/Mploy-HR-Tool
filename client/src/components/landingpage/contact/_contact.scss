@@ -5,6 +5,17 @@
     margin-top: 60px;
     .contact_textbox {
         width: 40%;
+        #contact_tabs {
+            width: 100%;
+            margin-top: 20px;
+            @media only screen and (max-width: 600px){
+                /*Big smartphones [426px -> 600px]*/
+                width: 80vw;
+            }
+            #contact_tabs_icon {
+                width: 33%;
+            }
+        }
         @media only screen and (max-width: 1200px){
             /*Tablets [601px -> 1200px]*/
         }
