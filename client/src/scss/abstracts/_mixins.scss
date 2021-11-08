@@ -23,7 +23,7 @@
   display: grid;
   grid-template-columns: 0.5fr 1.5fr 1fr;
   grid-template-rows: 0.2fr 1.6fr 1fr;
-  gap: 10px 0px;
+  gap: 0px 20px;
   grid-template-areas:
     "topnav_mainbox topnav_mainbox topnav_mainbox"
     "sidenav_mainbox components_mainbox components_mainbox"
