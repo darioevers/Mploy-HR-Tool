@@ -6,7 +6,7 @@ const employeeContoller = {};
 
 employeeContoller.getAllEmployees = async (req, res) => {
   try {
-    const employees = await EmployeeData.find({ "bio.status": "available" });
+    const employees = await EmployeeData.find({ "bio.status": "active" });
     res.status(200).json(employees);
     // console.log(employees);
   } catch (error) {
@@ -180,13 +180,12 @@ employeeContoller.deleteOrUpdateStatus = async (req, res) => {
     const employee = await EmployeeData.findOneAndUpdate(
       {"bio.email":req.body.email},
       
-     {$set:{ "bio.status": "unavailable" } }
+     {$set:{ "bio.status": "inactive" } }
     );
     res.status(200).send({ message: "Successfully updated!" });
   } catch (error) {
     res.status(400).send({ message: error.message });
   }
 };
-//findone creiteria email, const emp
-// emp
+
 module.exports = employeeContoller;
