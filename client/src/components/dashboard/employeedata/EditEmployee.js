@@ -79,8 +79,8 @@ const EditEmployee = ({ location, history }) => {
               setEditEmp({ ...editEmp,bio:{...editEmp.bio, dateOfBirth: e.target.value } })
             }
           />
-        </FormControl>
-        <FormControl>
+          </FormControl>
+         <FormControl>
           <InputLabel htmlFor="my-input">Nationality</InputLabel>
           <Input
             name="nationality"
@@ -89,8 +89,8 @@ const EditEmployee = ({ location, history }) => {
               setEditEmp({ ...editEmp, bio:{...editEmp.bio, nationality: e.target.value } })
             }
           />
-        </FormControl>
-        <FormControl>
+         </FormControl>
+          <FormControl>
           <InputLabel id="demo">Gender</InputLabel>
           <Select
             labelId="demo"
@@ -103,8 +103,8 @@ const EditEmployee = ({ location, history }) => {
             <MenuItem value="x">X</MenuItem>
             
           </Select>
-        </FormControl>
-        <FormControl>
+         </FormControl>
+          <FormControl>
           <InputLabel htmlFor="my-input">Phone Number</InputLabel>
           <Input
             name="phoneNumber"
@@ -113,8 +113,8 @@ const EditEmployee = ({ location, history }) => {
               setEditEmp({ ...editEmp, bio:{...editEmp.bio, phoneNumber: e.target.value } })
             }
           />
-        </FormControl>
-        <FormControl>
+          </FormControl>
+         <FormControl>
           <InputLabel htmlFor="my-input">Marital Status</InputLabel>
           <Input
             name="maritalStatus"
@@ -123,9 +123,9 @@ const EditEmployee = ({ location, history }) => {
               setEditEmp({ ...editEmp,bio:{...editEmp.bio, maritalStatus: e.target.value } })
             }
           />
-        </FormControl>
+         </FormControl>
 
-  <FormControl>
+          <FormControl>
           <InputLabel htmlFor="my-input">Status</InputLabel>
           <Input
             name="status"
@@ -189,7 +189,9 @@ const EditEmployee = ({ location, history }) => {
             }
           />
         </FormControl>
+        
         </div>
+
       {/* education info update */}
       <div>
           <Typography variant="h6">Education</Typography>
