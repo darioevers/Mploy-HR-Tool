@@ -133,6 +133,8 @@ const EditEmployee = ({ location, history }) => {
             onChange={(e) => setEditEmp({ ...editEmp, bio:{...editEmp.bio, status: e.target.value } })}
           />
         </FormControl>
+         <div>
+          <Typography variant="h6">Address</Typography>
         <FormControl>
           <InputLabel htmlFor="my-input">Street</InputLabel>
           <Input
@@ -187,7 +189,97 @@ const EditEmployee = ({ location, history }) => {
             }
           />
         </FormControl>
+        </div>
+      {/* education info update */}
+      <div>
+          <Typography variant="h6">Education</Typography>
+
+        <FormControl>
+          <InputLabel htmlFor="my-input">School</InputLabel>
+          <Input
+            name="school"
+            value={editEmp.education.school}
+            onChange={(e) =>
+              setEditEmp({ ...editEmp, education:{...editEmp.education, school: e.target.value } })
+            }
+          />
+        </FormControl>
+        <FormControl>
+          <InputLabel htmlFor="my-input">Degree</InputLabel>
+          <Input
+            name="degree"
+            value={editEmp.education.degree}
+            onChange={(e) =>
+              setEditEmp({ ...editEmp,education:{...editEmp.education, degree: e.target.value } })
+            }
+          />
+        </FormControl>
+
+  <FormControl>
+          <InputLabel htmlFor="my-input">Field Of Study</InputLabel>
+          <Input
+            name="specialization"
+            value={editEmp.education.specialization}
+            onChange={(e) => setEditEmp({ ...editEmp, education:{...editEmp.education, specialization: e.target.value } })}
+          />
+        </FormControl>
+        <FormControl>
+          <InputLabel htmlFor="my-input">Year Of Completion</InputLabel>
+          <Input
+            name="endDate"
+            value={editEmp.education.endDate}
+            onChange={(e) =>
+              setEditEmp({ ...editEmp, education:{...editEmp.education, endDate: e.target.value } })
+            }
+          />
+        </FormControl>
+</div>
+        {/* work Experience update */}
+        <div>
+          <Typography variant="h6">Work Experience</Typography>
       
+        <FormControl>
+          <InputLabel htmlFor="my-input">company</InputLabel>
+          <Input
+            name="company"
+            value={editEmp.workExperience.company}
+            onChange={(e) =>
+              setEditEmp({ ...editEmp, workExperience:{...editEmp.workExperience, company: e.target.value } })
+            }
+          />
+        </FormControl>
+        <FormControl>
+          <InputLabel htmlFor="my-input">Job Title</InputLabel>
+          <Input
+            name="postalCode"
+            value={editEmp.workExperience.jobTitle}
+            onChange={(e) =>
+              setEditEmp({ ...editEmp, workExperience:{...editEmp.workExperience, jobTitle: e.target.value } })
+            }
+          />
+        </FormControl>
+  
+        <FormControl>
+          <InputLabel htmlFor="my-input">From</InputLabel>
+          <Input
+            name="from"
+            value={editEmp.workExperience.from}
+            onChange={(e) =>
+              setEditEmp({ ...editEmp,workExperience:{...editEmp.workExperience, from: e.target.value } })
+            }
+          />
+        </FormControl>
+        <FormControl>
+          <InputLabel htmlFor="my-input">To</InputLabel>
+          <Input
+            name="from"
+            value={editEmp.workExperience.to}
+            onChange={(e) =>
+              setEditEmp({ ...editEmp,workExperience:{...editEmp.workExperience, to: e.target.value } })
+            }
+          />
+        </FormControl>
+        </div>
         <FormControl>
           <Button onClick={edit}>Save</Button>
         </FormControl>
