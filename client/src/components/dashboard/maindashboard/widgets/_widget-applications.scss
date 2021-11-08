@@ -1,5 +1,5 @@
 .widget_applications_mainbox {
-  @include widget-wrapper;
+  @include widget_wrapper;
   grid-area: widget_applications;
   width: 100%;
   height: 100%;
@@ -12,9 +12,6 @@
     "widget_applications_header widget_applications_header widget_applications_header"
     "widget_applications_pending widget_applications_approved widget_applications_new";
 }
-
-//test
-//test
 
 .widget_applications_header {
   grid-area: widget_applications_header;
@@ -51,7 +48,6 @@
 }
 .widget_applications_new {
   grid-area: widget_applications_new;
-  position: relative;
   @include flex-center;
   button {
     background-color: $highlight;
@@ -64,79 +60,110 @@
   }
 }
 
-//pop up form
-/* Button used to open the contact form - fixed at the bottom of the page */
-.open-button {
-  background-color: #555;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  opacity: 0.8;
-  position: fixed;
-  bottom: 23px;
-  right: 28px;
-  width: 280px;
+//new applications pop-up form
+.form_main_container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000a9;
+  z-index: 10;
 }
 
-/* The popup form - hidden by default */
-.form-popup {
-  display: none;
-  position: fixed;
-  bottom: 8vw;
-  left: 30vw;
+.form_container {
+  width: 25%;
+  position: absolute;
+  bottom: 25%;
+  left: 40%;
   z-index: 9;
-}
-
-/* Add styles to the form container */
-.form-container {
-  max-width: 500px;
   height: 400px;
   padding: 10px;
   background-color: $dark-bg;
   border-radius: 12px;
   padding: 20px;
-
   h1 {
     font-size: 18px;
     text-align: center;
     color: $primary;
-  }
-  h2 {
-    margin-top: 10px;
-    font-size: 15px;
-    color: $primary;
-  }
-  select {
-    margin-top: 5px;
-    width: 100%;
-    height: 20%;
-    font-size: 15px;
+    margin-top: 20px;
   }
   input {
     width: 100%;
+    height: 25px;
+    margin-top: 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+  }
+  select {
+    width: 100%;
+    height: 25px;
+    margin-top: 5px;
+    padding-left: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 13px;
   }
 }
 
-/* Set a style for the submit/login button */
-.form-container .btn {
-  background-color: #04aa6d;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 50%;
-  margin: 20px 0px;
-  opacity: 0.8;
+.form_buttons {
+  @include flex-center;
+  justify-content: space-around;
+
+  .btn_submit {
+    @include flex-center;
+    background-color: $highlight;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    width: 70%;
+    height: 20px;
+    margin: 15px 0px;
+  }
+  .btn_cancel {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 15px;
+    font-weight: bolder;
+    color: white;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
 }
 
-/* Add a red background color to the cancel button */
-.form-container .cancel {
-  background-color: red;
+.form_search {
+  margin-bottom: 15px;
+  h3 {
+    font-size: 15px;
+    font-weight: normal;
+    color: white;
+  }
 }
 
-/* Add some hover effects to buttons */
-.form-container .btn:hover,
-.open-button:hover {
-  opacity: 1;
+.form_type {
+  margin-bottom: 15px;
+  h3 {
+    font-size: 15px;
+    font-weight: normal;
+    color: white;
+  }
+}
+
+.form_date {
+  margin-bottom: 10px;
+  h3 {
+    font-size: 15px;
+    font-weight: normal;
+    color: white;
+  }
+  input {
+    width: 94%;
+    height: 10px;
+    margin-bottom: 15px;
+  }
 }
