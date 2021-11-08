@@ -30,7 +30,9 @@ const EditEmployee = ({ location, history }) => {
           },
         }
       )
-      .then((data) => console.log(data))
+      .then((data) =>{ console.log(data)
+      history.push("/dashboard/employeedata/");
+      })
       .catch((err) => console.log(err));
   };
   return (
@@ -63,8 +65,9 @@ const EditEmployee = ({ location, history }) => {
           <InputLabel htmlFor="my-input">Email</InputLabel>
           <Input
             name="email"
-            value={editEmp.bio.email}
-            onChange={(e) => setEditEmp({ ...editEmp, email: e.target.value })}
+           value={editEmp.bio.email}
+            onChange={(e) => 
+            setEditEmp({ ...editEmp, bio:{...editEmp.bio, email: e.target.value }})}
           />
         </FormControl>
         <FormControl>
@@ -73,7 +76,7 @@ const EditEmployee = ({ location, history }) => {
             name="dateofbirth"
             value={editEmp.bio.dateOfBirth}
             onChange={(e) =>
-              setEditEmp({ ...editEmp, dateOfBirth: e.target.value })
+              setEditEmp({ ...editEmp,bio:{...editEmp.bio, dateOfBirth: e.target.value } })
             }
           />
         </FormControl>
@@ -83,7 +86,7 @@ const EditEmployee = ({ location, history }) => {
             name="nationality"
             value={editEmp.bio.nationality}
             onChange={(e) =>
-              setEditEmp({ ...editEmp, nationality: e.target.value })
+              setEditEmp({ ...editEmp, bio:{...editEmp.bio, nationality: e.target.value } })
             }
           />
         </FormControl>
@@ -92,11 +95,13 @@ const EditEmployee = ({ location, history }) => {
           <Select
             labelId="demo"
             value={editEmp.bio.gender}
-            onChange={(e) => setEditEmp({ ...editEmp, gender: e.target.value })}
+            onChange={(e) => setEditEmp({ ...editEmp, bio:{...editEmp.bio, gender: e.target.value }})}
           >
+          
             <MenuItem value="male">Male</MenuItem>
             <MenuItem value="female">Female</MenuItem>
             <MenuItem value="x">X</MenuItem>
+            
           </Select>
         </FormControl>
         <FormControl>
@@ -105,7 +110,7 @@ const EditEmployee = ({ location, history }) => {
             name="phoneNumber"
             value={editEmp.bio.phoneNumber}
             onChange={(e) =>
-              setEditEmp({ ...editEmp, phoneNumber: e.target.value })
+              setEditEmp({ ...editEmp, bio:{...editEmp.bio, phoneNumber: e.target.value } })
             }
           />
         </FormControl>
@@ -115,7 +120,7 @@ const EditEmployee = ({ location, history }) => {
             name="maritalStatus"
             value={editEmp.bio.maritalStatus}
             onChange={(e) =>
-              setEditEmp({ ...editEmp, maritalStatus: e.target.value })
+              setEditEmp({ ...editEmp,bio:{...editEmp.bio, maritalStatus: e.target.value } })
             }
           />
         </FormControl>
@@ -125,7 +130,7 @@ const EditEmployee = ({ location, history }) => {
           <Input
             name="status"
             value={editEmp.bio.status}
-            onChange={(e) => setEditEmp({ ...editEmp, status: e.target.value })}
+            onChange={(e) => setEditEmp({ ...editEmp, bio:{...editEmp.bio, status: e.target.value } })}
           />
         </FormControl>
         <FormControl>
@@ -134,7 +139,7 @@ const EditEmployee = ({ location, history }) => {
             name="street"
             value={editEmp.addressOne.streetOne}
             onChange={(e) =>
-              setEditEmp({ ...editEmp, streetOne: e.target.value })
+              setEditEmp({ ...editEmp, addressOne:{...editEmp.addressOne, streetOne: e.target.value } })
             }
           />
         </FormControl>
@@ -144,7 +149,7 @@ const EditEmployee = ({ location, history }) => {
             name="city"
             value={editEmp.addressOne.cityOne}
             onChange={(e) =>
-              setEditEmp({ ...editEmp, cityOne: e.target.value })
+              setEditEmp({ ...editEmp, addressOne:{...editEmp.addressOne, cityOne: e.target.value } })
             }
           />
         </FormControl>
@@ -154,7 +159,7 @@ const EditEmployee = ({ location, history }) => {
             name="postalCode"
             value={editEmp.addressOne.postalCodeOne}
             onChange={(e) =>
-              setEditEmp({ ...editEmp, postalCodeOne: e.target.value })
+              setEditEmp({ ...editEmp, addressOne:{...editEmp.addressOne, postalCodeOne: e.target.value } })
             }
           />
         </FormControl>
@@ -164,7 +169,7 @@ const EditEmployee = ({ location, history }) => {
             labelId="demo-simple-select-label"
             value={editEmp.addressOne.stateOne}
             onChange={(e) =>
-              setEditEmp({ ...editEmp, stateOne: e.target.value })
+              setEditEmp({ ...editEmp, addressOne:{...editEmp.addressOne, stateOne: e.target.value } })
             }
           >
             <MenuItem value="sachsen">Schsen</MenuItem>
@@ -178,13 +183,13 @@ const EditEmployee = ({ location, history }) => {
             name="Country"
             value={editEmp.addressOne.countryOne}
             onChange={(e) =>
-              setEditEmp({ ...editEmp, countryOne: e.target.value })
+              setEditEmp({ ...editEmp,addressOne:{...editEmp.addressOne, countryOne: e.target.value } })
             }
           />
         </FormControl>
       
         <FormControl>
-          <Button onClick={edit}>Edit</Button>
+          <Button onClick={edit}>Save</Button>
         </FormControl>
       </FormGroup>
     </div>
