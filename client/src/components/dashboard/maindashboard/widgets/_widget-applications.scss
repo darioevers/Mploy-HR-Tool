@@ -69,6 +69,8 @@
   height: 100vh;
   background-color: #000000a9;
   z-index: 10;
+  visibility: visible;
+  transition: visibility 0s, opacity 0.5s linear;
 }
 
 .form_container {
@@ -82,6 +84,7 @@
   background-color: $dark-bg;
   border-radius: 12px;
   padding: 20px;
+
   h1 {
     font-size: 18px;
     text-align: center;

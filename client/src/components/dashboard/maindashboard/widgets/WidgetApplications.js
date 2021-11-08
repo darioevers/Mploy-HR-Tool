@@ -3,6 +3,10 @@ import React, { useState } from "react";
 function WidgetApplications() {
   const [showNewApp, setShowNewApp] = useState(false);
 
+  const onSubmit = () => {
+    alert("Implement Submit!");
+  };
+
   return (
     <div className="widget_applications_mainbox">
       <div className="widget_applications_header">
@@ -56,7 +60,7 @@ function WidgetApplications() {
             </div>
 
             <div className="form_buttons">
-              <button type="submit" class="btn_submit">
+              <button onClick={onSubmit} type="submit" class="btn_submit">
                 Submit
               </button>
               <button

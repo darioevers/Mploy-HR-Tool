@@ -1,6 +1,9 @@
 import React from "react";
 
 function Announcements() {
+  const submitAnnouncement = () => {
+    alert("Implement Submit!");
+  };
   return (
     <div className="announcements_mainbox">
       <div className="announcements_date">
@@ -10,7 +13,7 @@ function Announcements() {
         </div>
 
         <div className="announcements_date_end">
-          <h3>Start Date</h3>
+          <h3>End Date</h3>
           <input type="date"></input>
         </div>
       </div>
@@ -25,8 +28,13 @@ function Announcements() {
         <input type="text"></input>
       </div>
 
+      <div className="announcements_poster">
+        <h3>Posted By</h3>
+        <input type="text"></input>
+      </div>
+
       <div className="announcements_post">
-        <button>POST</button>
+        <button onClick={submitAnnouncement}>POST</button>
       </div>
     </div>
   );
