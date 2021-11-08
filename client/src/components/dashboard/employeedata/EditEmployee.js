@@ -39,8 +39,10 @@ const EditEmployee = ({ location, history }) => {
     <div className="addemployee_mainbox">
       <DashboardTopNav />
       <DashboardSideNav />
-      {/* edit data */}
+      {/* personal edit data */}
+
       <FormGroup>
+         <div>
         <FormControl>
           <InputLabel htmlFor="my-input">First Name</InputLabel>
           <Input
@@ -60,8 +62,8 @@ const EditEmployee = ({ location, history }) => {
               setEditEmp({ ...editEmp,bio:{...editEmp.bio, lastName: e.target.value }})
             }
           />
-        </FormControl>
-        <FormControl>
+         </FormControl>
+          <FormControl>
           <InputLabel htmlFor="my-input">Email</InputLabel>
           <Input
             name="email"
@@ -69,8 +71,8 @@ const EditEmployee = ({ location, history }) => {
             onChange={(e) => 
             setEditEmp({ ...editEmp, bio:{...editEmp.bio, email: e.target.value }})}
           />
-        </FormControl>
-        <FormControl>
+          </FormControl>
+         <FormControl>
           <InputLabel htmlFor="my-input">Date of Birth</InputLabel>
           <Input
             name="dateofbirth"
@@ -133,6 +135,9 @@ const EditEmployee = ({ location, history }) => {
             onChange={(e) => setEditEmp({ ...editEmp, bio:{...editEmp.bio, status: e.target.value } })}
           />
         </FormControl>
+         </div>
+
+        {/* address update */}
          <div>
           <Typography variant="h6">Address</Typography>
         <FormControl>
@@ -282,8 +287,133 @@ const EditEmployee = ({ location, history }) => {
           />
         </FormControl>
         </div>
+        <div>
+        {/* contract Info update */}
+        <Typography variant="h6">Hr Info</Typography>
         <FormControl>
-          <Button onClick={edit}>Save</Button>
+          <InputLabel htmlFor="my-input">Contract Number</InputLabel>
+          <Input
+            name="contractNo"
+            value={editEmp.contractInfo.contractNo}
+            onChange={(e) =>
+              setEditEmp({ ...editEmp, contractInfo:{...editEmp.contractInfo, contractNo: e.target.value } })
+            }
+          />
+        </FormControl>
+        <FormControl>
+          <InputLabel htmlFor="my-input">hireDate</InputLabel>
+          <Input
+            name="hireDate"
+            value={editEmp.contractInfo.hireDate}
+            onChange={(e) =>
+              setEditEmp({ ...editEmp, contractInfo:{...editEmp.contractInfo, hireDate: e.target.value } })
+            }
+          />
+        </FormControl>
+        <FormControl>
+          <InputLabel htmlFor="my-input">contractEnd</InputLabel>
+          <Input
+            name="contractEnd"
+            value={editEmp.contractInfo.contractEnd}
+            onChange={(e) =>
+              setEditEmp({ ...editEmp, contractInfo:{...editEmp.contractInfo, contractEnd: e.target.value } })
+            }
+          />
+        </FormControl>
+
+        <FormControl>
+          <InputLabel htmlFor="my-input">probationPeriod</InputLabel>
+          <Input
+            name="probationPeriod"
+            value={editEmp.contractInfo.probationPeriod}
+            onChange={(e) =>
+              setEditEmp({ ...editEmp, contractInfo:{...editEmp.contractInfo, probationPeriod: e.target.value } })
+            }
+          />
+        </FormControl>
+        <FormControl>
+          <InputLabel htmlFor="my-input">employmentType</InputLabel>
+          <Input
+            name="employmentType"
+            value={editEmp.contractInfo.employmentType}
+            onChange={(e) =>
+              setEditEmp({ ...editEmp, contractInfo:{...editEmp.contractInfo, employmentType: e.target.value } })
+            }
+          />
+        </FormControl>
+
+        <FormControl>
+          <InputLabel htmlFor="my-input">position</InputLabel>
+          <Input
+            name="position"
+            value={editEmp.contractInfo.position}
+            onChange={(e) =>
+              setEditEmp({ ...editEmp, contractInfo:{...editEmp.contractInfo, position: e.target.value } })
+            }
+          />
+        </FormControl>
+
+              <FormControl>
+          <InputLabel htmlFor="my-input">team</InputLabel>
+          <Input
+            name="team"
+            value={editEmp.contractInfo.team}
+            onChange={(e) =>
+              setEditEmp({ ...editEmp, contractInfo:{...editEmp.contractInfo, team: e.target.value } })
+            }
+          />
+        </FormControl>
+
+
+    <FormControl>
+          <InputLabel htmlFor="my-input">department</InputLabel>
+          <Input
+            name="department"
+            value={editEmp.contractInfo.department}
+            onChange={(e) =>
+              setEditEmp({ ...editEmp, contractInfo:{...editEmp.contractInfo, department: e.target.value } })
+            }
+          />
+        </FormControl>
+
+         <FormControl>
+          <InputLabel htmlFor="my-input">salary</InputLabel>
+          <Input
+            name="salary"
+            value={editEmp.contractInfo.salary}
+            onChange={(e) =>
+              setEditEmp({ ...editEmp, contractInfo:{...editEmp.contractInfo, salary: e.target.value } })
+            }
+          />
+        </FormControl>
+
+          <FormControl>
+          <InputLabel htmlFor="my-input">overtime</InputLabel>
+          <Input
+            name="overtime"
+            value={editEmp.contractInfo.overtime}
+            onChange={(e) =>
+              setEditEmp({ ...editEmp, contractInfo:{...editEmp.contractInfo, overtime: e.target.value } })
+            }
+          />
+        </FormControl>
+
+
+          <FormControl>
+          <InputLabel htmlFor="my-input">workLocation</InputLabel>
+          <Input
+            name="workLocation"
+            value={editEmp.contractInfo.workLocation}
+            onChange={(e) =>
+              setEditEmp({ ...editEmp, contractInfo:{...editEmp.contractInfo, workLocation: e.target.value } })
+            }
+          />
+        </FormControl>
+        </div>
+
+        <FormControl>
+          <Button onClick={edit}  color="primary"
+                   >Update</Button>
         </FormControl>
       </FormGroup>
     </div>
