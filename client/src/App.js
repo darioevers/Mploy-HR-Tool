@@ -28,6 +28,9 @@ import ELearning from "./components/dashboard/elearning/ELearning";
 
 // HOME COMPONENTS
 import Home from "./components/landingpage/home/Home";
+import About from "./components/landingpage/about/About";
+import Contact from "./components/landingpage/contact/Contact";
+import Solutions from "./components/landingpage/solutions/Solutions";
 
 const App = () => {
   return (
@@ -36,6 +39,9 @@ const App = () => {
         <div className="app">
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/about" component={About} />
+            <Route exact path="/contact" component={Contact} />
+            <Route exact path="/solutions" component={Solutions} />
             <Route exact path="/login" component={LoginScreen} />
             <Route exact path="/register" component={RegisterScreen} />
             <Route
