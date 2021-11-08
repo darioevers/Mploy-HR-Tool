@@ -3,6 +3,10 @@ import React, { useState } from "react";
 function WidgetApplications() {
   const [showNewApp, setShowNewApp] = useState(false);
 
+  const handleClick = () => {
+    setShowNewApp(!showNewApp);
+  };
+
   const onSubmit = () => {
     alert("Implement Submit!");
   };
@@ -22,58 +26,55 @@ function WidgetApplications() {
         <h4>Approved</h4>
       </div>
       <div className="widget_applications_new">
-        <button onClick={() => setShowNewApp(!showNewApp)}>
-          NEW APPLICATION
-        </button>
+        <button onClick={handleClick}>NEW APPLICATION</button>
       </div>
-      {showNewApp && (
-        <div className="form_main_container">
-          <form class="form_container">
-            <h1>APPLICATION WIZARD</h1>
-            <br />
 
-            <div className="form_search">
-              <h3>Employee Name</h3>
-              <input
-                type="search"
-                placeholder="Type name of employee"
-                className="application_search"
-              />
-            </div>
+      <div
+        className={
+          showNewApp ? "form_main_container_show" : "form_main_container_hide"
+        }
+      >
+        <form class="form_container">
+          <h1>APPLICATION WIZARD</h1>
+          <br />
 
-            <div className="form_type">
-              <h3>Application Type</h3>
-              <select>
-                <option value="">Please select type...</option>
-                <option value="sick-leave">Sick Leave</option>
-                <option value="holiday">Holday</option>
-                <option value="home-office">Home Office</option>
-              </select>
-            </div>
+          <div className="form_search">
+            <h3>Employee Name</h3>
+            <input
+              type="search"
+              placeholder="Type name of employee"
+              className="application_search"
+            />
+          </div>
 
-            <div className="form_date">
-              <h3>From</h3>
-              <input type="date" />
+          <div className="form_type">
+            <h3>Application Type</h3>
+            <select>
+              <option value="">Please select type...</option>
+              <option value="sick-leave">Sick Leave</option>
+              <option value="holiday">Holday</option>
+              <option value="home-office">Home Office</option>
+            </select>
+          </div>
 
-              <h3>To</h3>
-              <input type="date" />
-            </div>
+          <div className="form_date">
+            <h3>From</h3>
+            <input type="date" />
 
-            <div className="form_buttons">
-              <button onClick={onSubmit} type="submit" class="btn_submit">
-                Submit
-              </button>
-              <button
-                type="button"
-                class="btn_cancel"
-                onClick={() => setShowNewApp(!showNewApp)}
-              >
-                X
-              </button>
-            </div>
-          </form>
-        </div>
-      )}
+            <h3>To</h3>
+            <input type="date" />
+          </div>
+
+          <div className="form_buttons">
+            <button onClick={onSubmit} type="submit" class="btn_submit">
+              Submit
+            </button>
+            <button type="button" class="btn_cancel" onClick={handleClick}>
+              X
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

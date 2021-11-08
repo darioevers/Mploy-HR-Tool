@@ -61,7 +61,7 @@
 }
 
 //new applications pop-up form
-.form_main_container {
+.form_main_container_show {
   position: absolute;
   top: 0;
   left: 0;
@@ -70,7 +70,14 @@
   background-color: #000000a9;
   z-index: 10;
   visibility: visible;
-  transition: visibility 0s, opacity 0.5s linear;
+  opacity: 1;
+  transition: visibility 1s, opacity 0.5s linear;
+}
+
+.form_main_container_hide {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 1s linear, opacity 0.3s linear;
 }
 
 .form_container {

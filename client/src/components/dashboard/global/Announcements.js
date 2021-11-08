@@ -20,12 +20,12 @@ function Announcements() {
 
       <div className="announcements_title">
         <h3>Title</h3>
-        <input type="text"></input>
+        <input type="text" placeholder="Enter title..."></input>
       </div>
 
       <div className="announcements_message">
         <h3>Message</h3>
-        <input type="text"></input>
+        <textarea placeholder="Write message here..."></textarea>
       </div>
 
       <div className="announcements_poster">
