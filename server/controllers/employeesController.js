@@ -6,7 +6,7 @@ const employeeContoller = {};
 
 employeeContoller.getAllEmployees = async (req, res) => {
   try {
-    const employees = await EmployeeData.find({ "bio.status": "available" });
+    const employees = await EmployeeData.find({ "bio.status": "active" });
     res.status(200).json(employees);
     // console.log(employees);
   } catch (error) {
@@ -110,10 +110,10 @@ employeeContoller.searchName = async (req, res) => {
   }
 };
 
-// get single employee using id
-// employeeContoller.getOneEmployeeById = async (req, res) => {
+// get single employee using email
+// employeeContoller.getOneEmployee = async (req, res) => {
 //   try {
-//     const employee = await EmployeeData.findById(req.params.id);
+//     const employee = await EmployeeData.findOne({"bio.email":req.body.email});
 //     res.status(200).json({
 //       status: "success",
 //       data: employee,
@@ -126,20 +126,42 @@ employeeContoller.searchName = async (req, res) => {
 // patch or update employee
 employeeContoller.updateEmployee = async (req, res) => {
   try {
-    const employee = await EmployeeData.findByIdAndUpdate(
-      req.params.id,
-      req.body,
+    console.log(req.body);
+   const employee= await EmployeeData.findOneAndUpdate(
+      {"bio.email":req.body.editEmp.bio.email},
+      req.body.editEmp,
       {
         new: true,
       }
     );
     res.status(200).json({ status: "success", data: employee });
   } catch (error) {
-    res.status(404).json({ status: "fail", message: message.error });
+    res.status(404).json({ status: "fail", message: error.message});
   }
 };
 
-// delete one employee upon criteria
+// employeeContoller.updateEmployee = async (req, res) => {
+//   EmployeeData.findById(req.params.id, function (err, employee) {
+//     console.log(req.body);
+//     if (!employee) res.send("Unable To Find Employee With This Id");
+//     else {
+//       employee.firstName = req.body.firstName;
+//       employee.lastName = req.body.lastName;
+//       employee.email = req.body.email;
+//       // employee.phone = req.body.phone;
+
+//       employee
+//         .save()
+//         .then((emp) => {
+//           res.json("Employee Updated Successfully");
+//         })
+//         .catch((err) => {
+//           res.status(400).send("Unable To Update Employee");
+//         });
+//     }
+//   });
+// };
+// delete one employee upon criteria from the log
 employeeContoller.deleteOneEmployee = async (req, res) => {
   try {
     await EmployeeData.findByIdAndDelete(req.params.id);
@@ -152,4 +174,18 @@ employeeContoller.deleteOneEmployee = async (req, res) => {
     });
   }
 };
+// deleting from the db but actually it change the status from available to unavailable
+employeeContoller.deleteOrUpdateStatus = async (req, res) => {
+  try {
+    const employee = await EmployeeData.findOneAndUpdate(
+      {"bio.email":req.body.email},
+      
+     {$set:{ "bio.status": "inactive" } }
+    );
+    res.status(200).send({ message: "Successfully updated!" });
+  } catch (error) {
+    res.status(400).send({ message: error.message });
+  }
+};
+
 module.exports = employeeContoller;

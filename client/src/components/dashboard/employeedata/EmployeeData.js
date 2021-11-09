@@ -19,10 +19,11 @@ import {
 
 const useStyles = makeStyles({});
 
-function EmployeeData() {
+function EmployeeData({ history }) {
   const classes = useStyles();
   const [employees, setEmployees] = useState();
   const [search, setSearch] = useState("");
+  const [hidden, setHidden] = useState(false);
   useEffect(() => {
     getAllEmployee();
   }, []);
@@ -39,7 +40,7 @@ function EmployeeData() {
         }
       )
 
-      .then((data) => setEmployees(data.data))
+      .then((data) => {console.log(data.data);setEmployees(data.data)})
       .catch((err) => console.log(err));
   };
 
@@ -60,13 +61,19 @@ function EmployeeData() {
   };
 
   // Deleting the employee
-  // const deleteEmployeeData = async (id) => {
-  //   axios.delete("http://localhost:5000/employee/delete/:id", {
-  //     header: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   });
-  // };
+  const deleteEmployeeData = (x) => {
+    const data={email:x}
+    axios.patch("http://localhost:5000/employee/delete",data,
+     {
+      header: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then((data) => getAllEmployee())
+      .catch((err) => console.log(err));
+  };
+
+
   return (
     <div className="employeedata_mainbox">
       <DashboardTopNav />
@@ -113,30 +120,39 @@ function EmployeeData() {
                 <TableCell>{employee.bio.lastName}</TableCell>
                 <TableCell>{employee.bio.email}</TableCell>
                 <TableCell>{employee.bio.dateOfBirth}</TableCell>
-                <TableCell>{employee.bio.nationality}</TableCell>
+                
+                  <TableCell>{employee.bio.nationality}</TableCell>
                 <TableCell>{employee.bio.gender}</TableCell>
                 <TableCell>{employee.bio.phoneNumber}</TableCell>
                 <TableCell>{employee.bio.maritalStatus}</TableCell>
                 <TableCell>{employee.bio.status}</TableCell>
 
+                
+                
+
                 <TableCell>
                   <Button
                     color="primary"
                     variant="contained"
-                    component={Link}
-                    to={`/dashboard/employeedata/editemployee/`}
+                    onClick={() => {
+                      console.log(employees);
+                      history.push({
+                        pathname: "/dashboard/employeedata/editemployee",
+                        state: { employee },
+                      });
+                    }}
                   >
                     Edit
                   </Button>
                 </TableCell>
                 <TableCell>
-                  {/* <Button
+                  <Button
                     color="secondary"
                     variant="contained"
-                    onClick={() => deleteEmployeeData(_id)}
+                   onClick={() => deleteEmployeeData(employee.bio.email)}
                   >
                     Delete
-                  </Button> */}
+                  </Button>
                 </TableCell>
               </TableRow>
             ))}
