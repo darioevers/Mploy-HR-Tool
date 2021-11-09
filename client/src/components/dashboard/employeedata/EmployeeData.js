@@ -23,6 +23,7 @@ function EmployeeData({ history }) {
   const classes = useStyles();
   const [employees, setEmployees] = useState();
   const [search, setSearch] = useState("");
+  const [hidden, setHidden] = useState(false);
   useEffect(() => {
     getAllEmployee();
   }, []);
@@ -119,11 +120,15 @@ function EmployeeData({ history }) {
                 <TableCell>{employee.bio.lastName}</TableCell>
                 <TableCell>{employee.bio.email}</TableCell>
                 <TableCell>{employee.bio.dateOfBirth}</TableCell>
-                <TableCell>{employee.bio.nationality}</TableCell>
+                
+                  <TableCell>{employee.bio.nationality}</TableCell>
                 <TableCell>{employee.bio.gender}</TableCell>
                 <TableCell>{employee.bio.phoneNumber}</TableCell>
                 <TableCell>{employee.bio.maritalStatus}</TableCell>
                 <TableCell>{employee.bio.status}</TableCell>
+
+                
+                
 
                 <TableCell>
                   <Button

@@ -63,15 +63,7 @@ const EditEmployee = ({ location, history }) => {
             }
           />
          </FormControl>
-          <FormControl>
-          <InputLabel htmlFor="my-input">Email</InputLabel>
-          <Input
-            name="email"
-           value={editEmp.bio.email}
-            onChange={(e) => 
-            setEditEmp({ ...editEmp, bio:{...editEmp.bio, email: e.target.value }})}
-          />
-          </FormControl>
+         
          <FormControl>
           <InputLabel htmlFor="my-input">Date of Birth</InputLabel>
           <Input
