@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 
 function WidgetApplications() {
-  function openForm() {
-    document.getElementById("myForm").style.display = "block";
-  }
+  const [showNewApp, setShowNewApp] = useState(false);
 
-  function closeForm() {
-    document.getElementById("myForm").style.display = "none";
-  }
+  const handleClick = () => {
+    setShowNewApp(!showNewApp);
+  };
+
+  const onSubmit = () => {
+    alert("Implement Submit!");
+  };
 
   return (
     <div className="widget_applications_mainbox">
@@ -15,48 +17,66 @@ function WidgetApplications() {
         <h1> APPLICATIONS</h1>
         <div className="horizontal_line"></div>
       </div>
-
       <div className="widget_applications_pending">
         <h1>0</h1>
         <h4>Pending</h4>
       </div>
-
       <div className="widget_applications_approved">
         <h1>5</h1>
         <h4>Approved</h4>
       </div>
-
       <div className="widget_applications_new">
-        <button onClick={openForm}>NEW APPLICATION</button>
+        <button onClick={handleClick}>NEW APPLICATION</button>
       </div>
 
-      <div class="form-popup" id="myForm">
-        <form class="form-container">
+      <div
+        className={
+          showNewApp ? "form_main_container_show" : "form_main_container_hide"
+        }
+      >
+        <form class="form_container">
           <h1>APPLICATION WIZARD</h1>
+          <br />
 
-          <h2>Type of Application</h2>
+          <div className="form_search">
+            <h3>Employee Name</h3>
+            <input
+              type="search"
+              placeholder="Type name of employee"
+              className="application_search"
+            />
+          </div>
 
-          <select>
-            <option value="sick-leave">Sick Leave</option>
-            <option value="holiday">Holday</option>
-            <option value="home-office">Home Office</option>
-          </select>
+          <div className="form_type">
+            <h3>Application Type</h3>
+            <select>
+              <option value="">Please select type...</option>
+              <option value="sick-leave">Sick Leave</option>
+              <option value="holiday">Holday</option>
+              <option value="home-office">Home Office</option>
+            </select>
+          </div>
 
-          <h2>From</h2>
-          <input type="date" />
+          <div className="form_date">
+            <h3>From</h3>
+            <input type="date" />
 
-          <h2>To</h2>
-          <input type="date" />
+            <h3>To</h3>
+            <input type="date" />
+          </div>
 
-          <button type="submit" class="btn">
-            Submit
-          </button>
-          <button type="button" class="btn cancel" onClick={closeForm}>
-            Close
-          </button>
+          <div className="form_buttons">
+            <button onClick={onSubmit} type="submit" class="btn_submit">
+              Submit
+            </button>
+            <button type="button" class="btn_cancel" onClick={handleClick}>
+              X
+            </button>
+          </div>
         </form>
       </div>
     </div>
   );
 }
+
 export default WidgetApplications;
