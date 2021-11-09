@@ -96,7 +96,7 @@ employeeContoller.searchName = async (req, res) => {
   // let searchPattern = new RegEx("^" + req.body.query);
   // EmployeeData.find({ firstName: { $regex: searchPattern } })
   try {
-    const empArr = await EmployeeData.find();
+    const empArr = await EmployeeData.find({ "bio.status": "active" });
     // .select("firstName"
     console.log(empArr);
     const empFilter = empArr.filter((item) =>

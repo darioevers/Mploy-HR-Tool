@@ -27,7 +27,8 @@ function EmployeeData({ history }) {
   useEffect(() => {
     getAllEmployee();
   }, []);
-  // fetching data from backend
+
+  // fetching all data from backend
   const getAllEmployee = () => {
     axios
       .get(
@@ -43,7 +44,6 @@ function EmployeeData({ history }) {
       .then((data) => {console.log(data.data);setEmployees(data.data)})
       .catch((err) => console.log(err));
   };
-
   // searching query search with firstName
   const searchEmployee = (query) => {
     const data = { query };
@@ -60,7 +60,9 @@ function EmployeeData({ history }) {
       .catch((err) => console.log(err));
   };
 
-  // Deleting the employee
+  
+
+  // Deleting or changing the employee status to inactive
   const deleteEmployeeData = (x) => {
     const data={email:x}
     axios.patch("http://localhost:5000/employee/delete",data,
