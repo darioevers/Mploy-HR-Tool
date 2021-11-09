@@ -26,17 +26,20 @@ const LandingpageTopnav = () => {
                 >
                     <div className="landingpage_topnav_mainbox">
                         <div className="landingpage_topnav_logobox">
-                            <Link to={"/"}>
+                            <Link to={"/"} color="inherit">
                                 <img src={LogoDarkS}></img>
                             </Link>
                         </div>
                         <div className="landingpage_topnav_menulinks">
+
                             <Link to={"/solutions"} style={{ color: "text.primary" }}>
                                 <div className="landingpage_topnav_menulink">Solutions</div>
                             </Link>
-                            <Link to={"/about"}>
+
+                            <Link to={"/about"} color="inherit">
                                 <div className="landingpage_topnav_menulink">About</div>
                             </Link>
+
                         </div>
                         <div className="landingpage_topnav_buttons">
                             <IconButton
