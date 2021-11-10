@@ -1,10 +1,19 @@
 .widget_announcements_mainbox {
   @include widget-wrapper;
   grid-area: widget_announcements;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.5fr 1.5fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "header"
+    "body";
 }
 
 .widget_announcements_header {
-  margin: 20px 0px 0px 20px;
+  grid-area: header;
+  margin: 15px 0px 0px 20px;
+  position: fixed;
   h1 {
     font-size: 18px;
   }
@@ -12,41 +21,36 @@
 
 .widget_announcements_display {
   flex-direction: column;
-  margin-top: 10px;
+  grid-area: body;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding-bottom: 15px;
 }
 
-.widget_announcement_one {
-  @include flex-center;
+.widget_announcement {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-top: 5px;
   margin-left: 20px;
   padding: 10px;
-  width: 80%;
-  height: 1vh;
+  width: 85%;
+  height: 3vh;
   color: $primary;
   border-radius: 8px;
   background-color: $dark-bg;
 }
 
-.widget_announcement_two {
-  @include flex-center;
-  margin-top: 5px;
-  margin-left: 20px;
-  padding: 10px;
-  width: 80%;
-  height: 1vh;
-  color: $primary;
-  border-radius: 8px;
-  background-color: $dark-bg;
+.widget_announcement_header {
+  display: flex;
+  flex-direction: column;
+  p {
+    font-size: 10px;
+    color: $secondary;
+  }
 }
 
-.widget_announcement_three {
-  @include flex-center;
-  margin-top: 5px;
-  margin-left: 20px;
-  padding: 10px;
-  width: 80%;
-  height: 1vh;
-  color: $primary;
-  border-radius: 8px;
-  background-color: $dark-bg;
+.widget_announcement_icons {
+  display: flex;
+  gap: 10px;
 }

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import AspectRatioIcon from "@mui/icons-material/AspectRatio";
 
 function WidgetAnnouncements() {
   const [announcements, setAnnouncements] = useState();
@@ -30,13 +32,25 @@ function WidgetAnnouncements() {
       <div className="widget_announcements_header">
         <h1>ANNOUNCEMENTS</h1>
       </div>
-
-      {announcements &&
-        announcements.map((announcement) => (
-          <div className="widget_announcements_display" key={announcement.id}>
-            <div className="widget_announcement_one">{announcement.title}</div>
-          </div>
-        ))}
+      <div className="widget_announcements_display">
+        {announcements &&
+          announcements.map((announcement) => (
+            <div className="widget_announcement" key={announcement.id}>
+              <div className="widget_announcement_header">
+                <div>{announcement.title}</div>
+                <p> Posted by: {announcement.poster}</p>
+              </div>
+              <div className="widget_announcement_icons">
+                <div className="widget_announcement_delete">
+                  <DeleteForeverIcon fontSize="small" />
+                </div>
+                <div className="widget_announcement_delete">
+                  <AspectRatioIcon fontSize="small" />
+                </div>
+              </div>
+            </div>
+          ))}
+      </div>
     </div>
   );
 }
