@@ -88,6 +88,7 @@ function Announcements() {
           onClick={() => {
             addNewAnnouncement();
             setAnnouncement("");
+            window.location.reload();
           }}
         >
           POST

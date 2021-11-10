@@ -8,6 +8,7 @@ function WidgetAnnouncements() {
   useEffect(() => {
     getAllAnnouncements();
   }, []);
+
   // fetching data from backend
   const getAllAnnouncements = () => {
     axios
@@ -27,6 +28,24 @@ function WidgetAnnouncements() {
       })
       .catch((err) => console.log(err));
   };
+
+  //delete announcement
+
+  const deleteAnnouncement = (id) => {
+    console.log(id);
+    axios
+      .delete(`http://localhost:5000/announcements/${id}`, {
+        header: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((data) => {
+        console.log(data);
+        data.data.success && getAllAnnouncements();
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="widget_announcements_mainbox">
       <div className="widget_announcements_header">
@@ -35,14 +54,17 @@ function WidgetAnnouncements() {
       <div className="widget_announcements_display">
         {announcements &&
           announcements.map((announcement) => (
-            <div className="widget_announcement" key={announcement.id}>
+            <div className="widget_announcement" key={announcement._id}>
               <div className="widget_announcement_header">
                 <div>{announcement.title}</div>
                 <p> Posted by: {announcement.poster}</p>
               </div>
               <div className="widget_announcement_icons">
                 <div className="widget_announcement_delete">
-                  <DeleteForeverIcon fontSize="small" />
+                  <DeleteForeverIcon
+                    fontSize="small"
+                    onClick={() => deleteAnnouncement(announcement._id)}
+                  />
                 </div>
                 <div className="widget_announcement_delete">
                   <AspectRatioIcon fontSize="small" />
@@ -51,6 +73,11 @@ function WidgetAnnouncements() {
             </div>
           ))}
       </div>
+
+      {/* <div className="widget_announcement_expand">
+        <h1>Title</h1>
+       
+      </div> */}
     </div>
   );
 }
