@@ -4,17 +4,48 @@ import axios from "axios";
 function Announcements() {
   const [announcement, setAnnouncement] = useState({});
 
+  const addNewAnnouncement = () => {
+    const data = announcement;
+    // console.log(announcement);
+    axios
+      .post(
+        "http://localhost:5000/announcements/addannouncement",
+        data,
+
+        {
+          header: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        // history.push("/dashboard");
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="announcements_mainbox">
       <div className="announcements_date">
         <div className="announcements_date_start">
           <h3>Start Date</h3>
-          <input type="date"></input>
+          <input
+            type="date"
+            onChange={(e) =>
+              setAnnouncement({ ...announcement, startDate: e.target.value })
+            }
+          ></input>
         </div>
 
         <div className="announcements_date_end">
           <h3>End Date</h3>
-          <input type="date"></input>
+          <input
+            type="date"
+            onChange={(e) =>
+              setAnnouncement({ ...announcement, endDate: e.target.value })
+            }
+          ></input>
         </div>
       </div>
 
@@ -55,7 +86,8 @@ function Announcements() {
       <div className="announcements_post">
         <button
           onClick={() => {
-            console.log(announcement);
+            addNewAnnouncement();
+            setAnnouncement("");
           }}
         >
           POST
