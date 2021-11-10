@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import AspectRatioIcon from "@mui/icons-material/AspectRatio";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
 import Carousel from "react-elastic-carousel";
 
 function WidgetAnnouncements() {
@@ -52,6 +51,13 @@ function WidgetAnnouncements() {
     setExpand(!expand);
   };
 
+  const styles = {
+    largeIcon: {
+      width: 100,
+      height: 100,
+    },
+  };
+
   return (
     <div className="widget_announcements_mainbox">
       <div className="widget_announcements_header">
@@ -99,9 +105,9 @@ function WidgetAnnouncements() {
                 <h1>{announcement.title}</h1>
                 <div className="expand_subheader">
                   <p>by {announcement.poster}</p>
-                  <p> | </p>
+
                   <p>Date Posted: {announcement.date}</p>
-                  <p> | </p>
+
                   <p>Time Posted: {announcement.time}</p>
                 </div>
               </div>
@@ -119,6 +125,9 @@ function WidgetAnnouncements() {
                 <button type="button" class="btn_cancel" onClick={handleClick}>
                   X
                 </button>
+                <i>
+                  <BookmarkIcon style={{ fontSize: 80 }} />
+                </i>
               </div>
             </form>
           </div>

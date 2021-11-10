@@ -138,11 +138,11 @@
   left: 25%;
   z-index: 9;
   height: 400px;
-  padding: 20px;
   background-color: $dark-bg;
   border-radius: 12px;
   padding: 40px;
   overflow-x: scroll;
+  border-bottom: 40px solid $dark-bg;
 
   .expand_header {
     position: sticky;
@@ -161,14 +161,17 @@
   p {
     color: $secondary;
     font-size: 12px;
-    font-style: italic;
+    // font-style: italic;
+    border-right: 1px solid $primary;
     margin-right: 10px;
+    padding-right: 20px;
+    margin-top: 10px;
   }
 }
 
 .expand_subtopic {
   font-size: 14px;
-  margin-top: 10px;
+  margin-top: 20px;
   color: $primary;
   line-height: 20px;
 }
@@ -185,6 +188,7 @@
     text-align: justify;
     color: white;
     line-height: 25px;
+    padding-bottom: 20px;
   }
 }
 .expand_buttons {
@@ -200,6 +204,13 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
+  }
+  i {
+    position: absolute;
+    margin-top: -12px;
+    top: 0;
+    right: 70px;
+    color: $highlight;
   }
 }
 
