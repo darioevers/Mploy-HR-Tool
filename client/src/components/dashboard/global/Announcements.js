@@ -27,23 +27,22 @@ function Announcements() {
 
   return (
     <div className="announcements_mainbox">
-      <div className="announcements_date">
-        <div className="announcements_date_start">
-          <h3>Start Date</h3>
+      <div className="announcements_date_container">
+        <div className="announcements_date">
+          <h3>Date</h3>
           <input
             type="date"
             onChange={(e) =>
-              setAnnouncement({ ...announcement, startDate: e.target.value })
+              setAnnouncement({ ...announcement, date: e.target.value })
             }
           ></input>
         </div>
-
-        <div className="announcements_date_end">
-          <h3>End Date</h3>
+        <div className="announcements_date">
+          <h3>Time</h3>
           <input
-            type="date"
+            type="time"
             onChange={(e) =>
-              setAnnouncement({ ...announcement, endDate: e.target.value })
+              setAnnouncement({ ...announcement, time: e.target.value })
             }
           ></input>
         </div>
@@ -57,6 +56,18 @@ function Announcements() {
           name="title"
           onChange={(e) =>
             setAnnouncement({ ...announcement, title: e.target.value })
+          }
+        ></input>
+      </div>
+
+      <div className="announcements_subtopic">
+        <h3>Subtopic</h3>
+        <input
+          type="text"
+          placeholder="Enter text..."
+          name="subtopic"
+          onChange={(e) =>
+            setAnnouncement({ ...announcement, subtopic: e.target.value })
           }
         ></input>
       </div>

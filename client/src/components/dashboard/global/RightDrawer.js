@@ -55,7 +55,7 @@ export default function TemporaryDrawer() {
             <div className="right_drawer_announcements">
               <h4>CREATE AN ANNOUNCEMENT</h4>
               <hr />
-              <p>Announcements Appear to all users in the maindashboard.</p>
+              <p>Announcements appear to all users in the maindashboard.</p>
               <Announcements />
             </div>
           </Drawer>
