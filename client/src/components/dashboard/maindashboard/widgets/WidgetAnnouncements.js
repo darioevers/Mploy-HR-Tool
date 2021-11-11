@@ -51,6 +51,33 @@ function WidgetAnnouncements() {
     setExpand(!expand);
   };
 
+  const showMonths = (stringDate) => {
+    const date = new Date(stringDate);
+    const month = date.getMonth();
+    const months = [
+      "JAN",
+      "FEB",
+      "MAR",
+      "APR",
+      "MAY",
+      "JUN",
+      "JUL",
+      "AUG",
+      "SEP",
+      "OCT",
+      "NOV",
+      "DEC",
+    ];
+
+    return months[month];
+  };
+
+  const showDay = (stringDate) => {
+    const date = new Date(stringDate);
+    const day = ("0" + date.getDay()).slice(-2);
+    return day;
+  };
+
   return (
     <div className="widget_announcements_mainbox">
       <div className="widget_announcements_header">
@@ -62,8 +89,8 @@ function WidgetAnnouncements() {
             announcements.map((announcement) => (
               <div className="widget_announcement" key={announcement._id}>
                 <div className="widget_announcement_dateposted">
-                  <h4>{announcement.date.getMonth()}</h4>
-                  <h3>{announcement.date.getDay()}</h3>
+                  <h4>{showMonths(announcement.date)}</h4>
+                  <h3>{showDay(announcement.date)}</h3>
                   <hr />
                 </div>
 
