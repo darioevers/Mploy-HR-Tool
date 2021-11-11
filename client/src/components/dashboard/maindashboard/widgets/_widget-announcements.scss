@@ -1,52 +1,226 @@
 .widget_announcements_mainbox {
   @include widget-wrapper;
+  background-color: $dark-bg;
   grid-area: widget_announcements;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.5fr 1.5fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "header"
+    "body";
 }
 
 .widget_announcements_header {
-  margin: 20px 0px 0px 20px;
+  grid-area: header;
+  margin: 15px 0px 0px 20px;
+  position: fixed;
   h1 {
-    font-size: 18px;
+    font-size: 16px;
+    color: $primary;
   }
 }
 
 .widget_announcements_display {
+  @include flex-center;
+  position: relative;
+  width: 100%;
+  height: 90%;
   flex-direction: column;
-  margin-top: 10px;
+  grid-area: body;
+  .rec.rec-carousel-wrapper {
+    @include flex-center;
+    height: 100%;
+  }
+  .rec.rec-arrow.rec.rec-arrow-left {
+    color: $primary;
+    width: 12px;
+  }
+  .rec.rec-arrow.rec.rec-arrow-right {
+    color: $primary;
+  }
 }
 
-.widget_announcement_one {
-  @include flex-center;
-  margin-top: 5px;
-  margin-left: 20px;
-  padding: 10px;
-  width: 80%;
-  height: 1vh;
+.widget_announcement {
+  width: 100vw;
+  height: 140px;
+  display: flex;
   color: $primary;
-  border-radius: 8px;
-  background-color: $dark-bg;
 }
 
-.widget_announcement_two {
-  @include flex-center;
-  margin-top: 5px;
-  margin-left: 20px;
-  padding: 10px;
-  width: 80%;
-  height: 1vh;
-  color: $primary;
-  border-radius: 8px;
-  background-color: $dark-bg;
+.widget_announcement_dateposted {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-right: 15px;
+  h4 {
+    font-size: 15px;
+  }
+  h3 {
+    margin-top: -5px;
+    font-size: 30px;
+  }
+  hr {
+    width: 35px;
+    border: 1px solid $highlight;
+    margin-top: 2px;
+  }
 }
 
-.widget_announcement_three {
-  @include flex-center;
-  margin-top: 5px;
-  margin-left: 20px;
-  padding: 10px;
-  width: 80%;
-  height: 1vh;
-  color: $primary;
-  border-radius: 8px;
+.widget_announcement_info {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.widget_announcement_header {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-bottom: 20px;
+  h3 {
+    font-size: 19px;
+    color: $highlight;
+  }
+  h4 {
+    font-size: 11.5px;
+    font-weight: 300;
+    color: $secondary;
+    text-align: justify;
+  }
+  p {
+    font-size: 11.5px;
+    color: $highlight;
+    margin-top: 10px;
+  }
+}
+
+.widget_announcements_icons {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 20px;
+  font-size: 11.5px;
+  color: $highlight;
+  :first-child {
+    margin-right: 70px;
+  }
+  p:hover {
+    color: $primary;
+    cursor: pointer;
+  }
+}
+
+.widget_announcement_delete {
+  position: absolute;
+  left: 5px;
+  bottom: 12px;
+  z-index: 11;
+}
+
+//expand announcements
+.expand_main_container_show {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0000005e;
+  z-index: 10;
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 1s, opacity 0.5s linear;
+}
+
+.expand_main_container_hide {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 1s linear, opacity 0.3s linear;
+}
+
+.expand_container {
+  width: 40%;
+  position: absolute;
+  top: 20%;
+  left: 25%;
+  z-index: 9;
+  height: 400px;
   background-color: $dark-bg;
+  border-radius: 12px;
+  padding: 40px;
+  overflow-x: scroll;
+  border-bottom: 40px solid $dark-bg;
+
+  .expand_header {
+    position: sticky;
+    h1 {
+      font-size: 30px;
+      text-align: left;
+      color: $highlight;
+      margin-top: 20px;
+      margin-bottom: 2px;
+    }
+  }
+}
+
+.expand_subheader {
+  display: flex;
+  p {
+    color: $secondary;
+    font-size: 12px;
+    // font-style: italic;
+    border-right: 1px solid $primary;
+    margin-right: 10px;
+    padding-right: 20px;
+    margin-top: 10px;
+  }
+}
+
+.expand_subtopic {
+  font-size: 14px;
+  margin-top: 20px;
+  color: $primary;
+  line-height: 20px;
+}
+
+.expand_main_content {
+  h3 {
+    font-size: 16px;
+    color: $highlight;
+    margin-top: 40px;
+    margin-bottom: 10px;
+  }
+  p {
+    font-size: 15px;
+    text-align: justify;
+    color: white;
+    line-height: 25px;
+    padding-bottom: 20px;
+  }
+  h4 {
+    text-align: center;
+    color: $highlight;
+  }
+}
+.expand_buttons {
+  @include flex-center;
+  justify-content: space-around;
+  .btn_cancel {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 15px;
+    font-weight: bolder;
+    color: white;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  i {
+    position: absolute;
+    margin-top: -12px;
+    top: 0;
+    right: 70px;
+    color: $highlight;
+  }
 }
