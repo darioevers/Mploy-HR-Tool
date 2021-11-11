@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import FilterListIcon from "@mui/icons-material/FilterList";
+import CheckIcon from "@mui/icons-material/Check";
+import ClearIcon from "@mui/icons-material/Clear";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
 
 function WidgetTasks() {
   //open and close new task form onClick
@@ -31,11 +34,14 @@ function WidgetTasks() {
 
       <div id={show ? "main_open" : "main"}>
         <div className="widget_tasks_newtask">
-          <div
-            id={show ? "newtask_button_open" : "newtask_button"}
-            onClick={handleClick}
-          >
-            +
+          <div>
+            <p
+              id={show ? "newtask_button_open" : "newtask_button"}
+              onClick={handleClick}
+            >
+              {" "}
+              +{" "}
+            </p>
           </div>
         </div>
 
@@ -47,7 +53,7 @@ function WidgetTasks() {
             <div className="header_icons">
               <p>Filter</p>
               <span>
-                <FilterListIcon fontSize="small" />
+                <FilterListIcon style={{ fontSize: 15 }} />
               </span>
             </div>
           </div>
@@ -58,25 +64,111 @@ function WidgetTasks() {
           <div className="tasks">
             <div className="task">
               <div className="task_main">
-                <p> Title </p>
-                <p>Due Date</p>
+                <h5> Title </h5>
+                <p>
+                  Due Date: <span className="task_date">DD MM YYYY</span>
+                </p>
               </div>
 
               <div className="task_icons">
-                <p>delete</p>
-                <p>done</p>
+                <p>
+                  <CheckIcon style={{ fontSize: 15 }} />
+                </p>
+                <hr />
+                <p>
+                  <ClearIcon style={{ fontSize: 15 }} />
+                </p>
+                <div className="task_tag">
+                  <BookmarkIcon style={{ fontSize: 15 }} />
+                </div>
               </div>
             </div>
 
             <div className="task">
               <div className="task_main">
-                <p> Title </p>
-                <p>Due Date</p>
+                <h5> Title </h5>
+                <p>
+                  Due Date: <span className="task_date">DD MM YYYY</span>
+                </p>
               </div>
 
               <div className="task_icons">
-                <p>delete</p>
-                <p>done</p>
+                <p>
+                  <CheckIcon style={{ fontSize: 15 }} />
+                </p>
+                <hr />
+                <p>
+                  <ClearIcon style={{ fontSize: 15 }} />
+                </p>
+                <div className="task_tag_two">
+                  <BookmarkIcon style={{ fontSize: 15 }} />
+                </div>
+              </div>
+            </div>
+
+            <div className="task">
+              <div className="task_main">
+                <h5> Title </h5>
+                <p>
+                  Due Date: <span className="task_date">DD MM YYYY</span>
+                </p>
+              </div>
+
+              <div className="task_icons">
+                <p>
+                  <CheckIcon style={{ fontSize: 15 }} />
+                </p>
+                <hr />
+                <p>
+                  <ClearIcon style={{ fontSize: 15 }} />
+                </p>
+                <div className="task_tag_three">
+                  <BookmarkIcon style={{ fontSize: 15 }} />
+                </div>
+              </div>
+            </div>
+
+            <div className="task">
+              <div className="task_main">
+                <h5> Title </h5>
+                <p>
+                  Due Date: <span className="task_date">DD MM YYYY</span>
+                </p>
+              </div>
+
+              <div className="task_icons">
+                <p>
+                  <CheckIcon style={{ fontSize: 15 }} />
+                </p>
+                <hr />
+                <p>
+                  <ClearIcon style={{ fontSize: 15 }} />
+                </p>
+                <div className="task_tag_three">
+                  <BookmarkIcon style={{ fontSize: 15 }} />
+                </div>
+              </div>
+            </div>
+
+            <div className="task">
+              <div className="task_main">
+                <h5> Title </h5>
+                <p>
+                  Due Date: <span className="task_date">DD MM YYYY</span>
+                </p>
+              </div>
+
+              <div className="task_icons">
+                <p>
+                  <CheckIcon style={{ fontSize: 15 }} />
+                </p>
+                <hr />
+                <p>
+                  <ClearIcon style={{ fontSize: 15 }} />
+                </p>
+                <div className="task_tag_three">
+                  <BookmarkIcon style={{ fontSize: 15 }} />
+                </div>
               </div>
             </div>
           </div>

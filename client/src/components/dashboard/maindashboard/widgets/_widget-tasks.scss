@@ -4,17 +4,16 @@
   position: relative;
 }
 
-/* The side navigation menu */
 .sidenav {
-  height: 100%; /* 100% Full-height */
-  width: 0; /* 0 width - change this with JavaScript */
-  position: absolute; /* Stay in place */
-  z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
+  height: 100%;
+  width: 0;
+  position: absolute;
+  z-index: 1;
+  top: 0;
   left: 0px;
-  background-color: $dark-bg; /* Black*/
-  overflow-x: hidden; /* Disable horizontal scroll */
-  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  background-color: $dark-bg;
+  overflow-x: hidden;
+  transition: 0.5s;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
   h1 {
@@ -23,7 +22,6 @@
     font-weight: normal;
     margin: 15px;
     margin-top: 17px;
-    color: $highlight;
   }
   hr {
     margin-top: -8px;
@@ -77,20 +75,10 @@
   }
 }
 
-/* Position and style the close button (top right corner) */
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 10px;
-  margin-left: 50px;
-}
-
 .newtask_input::placeholder {
   color: $highlight;
 }
 
-/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
   height: 78%;
   display: flex;
@@ -111,8 +99,6 @@
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   &:hover {
-    background-color: $primary;
-    color: $highlight;
     cursor: pointer;
   }
 }
@@ -120,12 +106,8 @@
 #newtask_button {
   color: $primary;
   font-size: 25px;
-  transition: transform 0.5s;
+  transition: transform 1s;
   width: 20px;
-  &:hover {
-    background-color: $primary;
-    color: $highlight;
-  }
 }
 
 .widget_tasks_display {
@@ -156,38 +138,77 @@
 .display_divider {
   width: 100%;
   margin-top: -15px;
+  margin-bottom: -5px;
   hr {
     border: 1px solid $primary;
   }
 }
 
 .tasks {
+  width: 100%;
   display: flex;
   font-size: 30px;
   flex-wrap: wrap;
   margin-left: 10px;
+  overflow-x: scroll;
 }
 
 .task {
-  position: relative;
   display: flex;
+  position: relative;
   align-items: center;
-  width: 160px;
+  width: 100%;
   height: 50px;
   background-color: $dark-bg;
   border-radius: 10px;
   justify-content: space-between;
   padding: 5px;
+  margin: 0 25px 10px 5px;
 }
 
 .task_main {
-  font-size: 12px;
   margin-left: 10px;
+  color: $primary;
+  h5 {
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+  p {
+    font-size: 9px;
+    color: $secondary;
+  }
+  .task_date {
+    color: $primary;
+  }
 }
 
 .task_icons {
   p {
     font-size: 10px;
+    color: $primary;
+  }
+  hr {
+    margin: 5px 0;
+    margin-right: -5px;
+  }
+  .task_tag {
+    position: absolute;
+    top: -16px;
+    left: 7px;
+    color: rgb(0, 255, 81);
+  }
+
+  .task_tag_two {
+    position: absolute;
+    top: -16px;
+    left: 7px;
+    color: rgb(254, 233, 0);
+  }
+  .task_tag_three {
+    position: absolute;
+    top: -16px;
+    left: 7px;
+    color: rgb(254, 17, 0);
   }
 }
 
@@ -210,7 +231,6 @@
     font-weight: normal;
     margin: 15px;
     margin-top: 17px;
-    color: $highlight;
   }
   hr {
     margin-top: -8px;
@@ -221,7 +241,7 @@
   h2 {
     font-size: 12px;
     margin: 10px 0px 2px 15px;
-    color: $highlight;
+    color: $primary;
     font-weight: 400;
   }
   input {
@@ -278,10 +298,6 @@
   color: $primary;
   font-size: 25px;
   width: 20px;
-  transition: transform 0.5s;
+  transition: transform 1s;
   transform: rotate(45deg);
-  &:hover {
-    background-color: $primary;
-    color: $highlight;
-  }
 }
