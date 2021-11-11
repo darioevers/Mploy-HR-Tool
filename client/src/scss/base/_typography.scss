@@ -5,3 +5,26 @@
 body {
   scroll-behavior: smooth;
 }
+
+//date picker
+::-webkit-datetime-edit {
+  padding: 1em;
+}
+::-webkit-datetime-edit-text {
+  color: $highlight;
+}
+::-webkit-datetime-edit-month-field {
+  color: $highlight;
+}
+::-webkit-datetime-edit-day-field {
+  color: $highlight;
+}
+::-webkit-datetime-edit-year-field {
+  color: $highlight;
+}
+::-webkit-inner-spin-button {
+  display: none;
+}
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}

@@ -1,4 +1,287 @@
 .widget_tasks_mainbox {
   @include widget-wrapper;
   grid-area: widget_tasks;
+  position: relative;
+}
+
+/* The side navigation menu */
+.sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: absolute; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0px;
+  background-color: $dark-bg; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  h1 {
+    font-size: 16px;
+    color: $primary;
+    font-weight: normal;
+    margin: 15px;
+    margin-top: 17px;
+    color: $highlight;
+  }
+  hr {
+    margin-top: -8px;
+    margin-left: 15px;
+    width: 85%;
+    border: 1px solid $highlight;
+  }
+  h2 {
+    font-size: 12px;
+    margin: 10px 0px 2px 15px;
+    color: $highlight;
+    font-weight: 400;
+  }
+  input {
+    margin-left: 15px;
+    font-size: 12px;
+    height: 20px;
+    width: 82%;
+    border: 1px solid $highlight;
+    border-radius: 10px;
+    background-color: transparent;
+    color: $primary;
+    padding: 0 5px;
+  }
+  select {
+    margin-left: 15px;
+    height: 25px;
+    width: 87%;
+    font-size: 12px;
+    border: 1px solid $highlight;
+    border-radius: 10px;
+    background-color: transparent;
+    color: $highlight;
+    padding: 0 5px;
+  }
+  .save_btn {
+    @include flex-center;
+    margin-top: 5px;
+    button {
+      align-self: right;
+      margin: 20px;
+      width: 80px;
+      height: 22px;
+      font-size: 12px;
+      border-radius: 5px;
+      background-color: $highlight;
+      border: none;
+      color: $dark-bg;
+      font-weight: bolder;
+    }
+  }
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 10px;
+  margin-left: 50px;
+}
+
+.newtask_input::placeholder {
+  color: $highlight;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  height: 78%;
+  display: flex;
+  align-items: center;
+  transition: margin-left 0.5s;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+.widget_tasks_newtask {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $highlight;
+  width: 30px;
+  height: 50px;
+  margin-left: -20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  &:hover {
+    background-color: $primary;
+    color: $highlight;
+    cursor: pointer;
+  }
+}
+
+#newtask_button {
+  color: $primary;
+  font-size: 25px;
+  transition: transform 0.5s;
+  width: 20px;
+  &:hover {
+    background-color: $primary;
+    color: $highlight;
+  }
+}
+
+.widget_tasks_display {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  .header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h1 {
+      font-size: 16px;
+    }
+    .header_icons {
+      @include flex-center;
+      p {
+        margin-right: 10px;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.display_divider {
+  width: 100%;
+  margin-top: -15px;
+  hr {
+    border: 1px solid $primary;
+  }
+}
+
+.tasks {
+  display: flex;
+  font-size: 30px;
+  flex-wrap: wrap;
+  margin-left: 10px;
+}
+
+.task {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 160px;
+  height: 50px;
+  background-color: $dark-bg;
+  border-radius: 10px;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.task_main {
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+.task_icons {
+  p {
+    font-size: 10px;
+  }
+}
+
+//set state on handleClick
+.sidenav_open {
+  width: 250px;
+  height: 100%; /* 100% Full-height */
+  position: absolute; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0px;
+  background-color: $dark-bg; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  h1 {
+    font-size: 16px;
+    color: $primary;
+    font-weight: normal;
+    margin: 15px;
+    margin-top: 17px;
+    color: $highlight;
+  }
+  hr {
+    margin-top: -8px;
+    margin-left: 15px;
+    width: 85%;
+    border: 1px solid $highlight;
+  }
+  h2 {
+    font-size: 12px;
+    margin: 10px 0px 2px 15px;
+    color: $highlight;
+    font-weight: 400;
+  }
+  input {
+    margin-left: 15px;
+    font-size: 12px;
+    height: 20px;
+    width: 82%;
+    border: 1px solid $highlight;
+    border-radius: 10px;
+    background-color: transparent;
+    color: $primary;
+    padding: 0 5px;
+  }
+  select {
+    margin-left: 15px;
+    height: 25px;
+    width: 87%;
+    font-size: 12px;
+    border: 1px solid $highlight;
+    border-radius: 10px;
+    background-color: transparent;
+    color: $highlight;
+    padding: 0 5px;
+  }
+  .save_btn {
+    @include flex-center;
+    margin-top: 5px;
+    button {
+      align-self: right;
+      margin: 20px;
+      width: 80px;
+      height: 22px;
+      font-size: 12px;
+      border-radius: 5px;
+      background-color: $highlight;
+      border: none;
+      color: $dark-bg;
+      font-weight: bolder;
+    }
+  }
+}
+
+#main_open {
+  height: 78%;
+  display: flex;
+  align-items: center;
+  transition: margin-left 0.5s;
+  padding: 20px;
+  margin-top: 10px;
+  margin-left: 250px;
+}
+
+#newtask_button_open {
+  color: $primary;
+  font-size: 25px;
+  width: 20px;
+  transition: transform 0.5s;
+  transform: rotate(45deg);
+  &:hover {
+    background-color: $primary;
+    color: $highlight;
+  }
 }
