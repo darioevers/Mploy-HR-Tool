@@ -51,13 +51,6 @@ function WidgetAnnouncements() {
     setExpand(!expand);
   };
 
-  const styles = {
-    largeIcon: {
-      width: 100,
-      height: 100,
-    },
-  };
-
   return (
     <div className="widget_announcements_mainbox">
       <div className="widget_announcements_header">
@@ -69,8 +62,8 @@ function WidgetAnnouncements() {
             announcements.map((announcement) => (
               <div className="widget_announcement" key={announcement._id}>
                 <div className="widget_announcement_dateposted">
-                  <h4>JUN</h4>
-                  <h3>06</h3>
+                  <h4>{announcement.date.getMonth()}</h4>
+                  <h3>{announcement.date.getDay()}</h3>
                   <hr />
                 </div>
 
@@ -119,6 +112,7 @@ function WidgetAnnouncements() {
               <div className="expand_main_content">
                 <h3>Content</h3>
                 <p>{announcement.message}</p>
+                <h4> - END - </h4>
               </div>
 
               <div className="expand_buttons">

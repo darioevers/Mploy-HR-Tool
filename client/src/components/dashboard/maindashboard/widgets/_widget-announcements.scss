@@ -68,8 +68,10 @@
 }
 
 .widget_announcement_info {
+  position: relative;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 .widget_announcement_header {
   display: flex;
@@ -96,8 +98,13 @@
 .widget_announcements_icons {
   display: flex;
   justify-content: space-between;
+  position: absolute;
+  bottom: 20px;
   font-size: 11.5px;
   color: $highlight;
+  :first-child {
+    margin-right: 70px;
+  }
   p:hover {
     color: $primary;
     cursor: pointer;
@@ -180,7 +187,7 @@
   h3 {
     font-size: 16px;
     color: $highlight;
-    margin-top: 20px;
+    margin-top: 40px;
     margin-bottom: 10px;
   }
   p {
@@ -189,6 +196,10 @@
     color: white;
     line-height: 25px;
     padding-bottom: 20px;
+  }
+  h4 {
+    text-align: center;
+    color: $highlight;
   }
 }
 .expand_buttons {
@@ -211,37 +222,5 @@
     top: 0;
     right: 70px;
     color: $highlight;
-  }
-}
-
-.form_search {
-  margin-bottom: 15px;
-  h3 {
-    font-size: 15px;
-    font-weight: normal;
-    color: white;
-  }
-}
-
-.form_type {
-  margin-bottom: 15px;
-  h3 {
-    font-size: 15px;
-    font-weight: normal;
-    color: white;
-  }
-}
-
-.form_date {
-  margin-bottom: 10px;
-  h3 {
-    font-size: 15px;
-    font-weight: normal;
-    color: white;
-  }
-  input {
-    width: 94%;
-    height: 10px;
-    margin-bottom: 15px;
   }
 }
