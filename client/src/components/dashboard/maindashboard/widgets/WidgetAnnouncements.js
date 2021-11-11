@@ -155,49 +155,6 @@ function WidgetAnnouncements() {
             ))}
         </Carousel>
       </div>
-
-      {/* {announcements &&
-        announcements.map((announcement) => (
-          <div
-            className={
-              expand
-                ? "expand_main_container_show"
-                : "expand_main_container_hide"
-            }
-          >
-            <form class="expand_container">
-              <div className="expand_header">
-                <h1>{announcement.title}</h1>
-                <div className="expand_subheader">
-                  <p>by {announcement.poster}</p>
-
-                  <p>Date Posted: {announcement.date}</p>
-
-                  <p>Time Posted: {announcement.time}</p>
-                </div>
-              </div>
-
-              <div className="expand_subtopic">
-                <p>{announcement.subtopic}</p>
-              </div>
-
-              <div className="expand_main_content">
-                <h3>Content</h3>
-                <p>{announcement.message}</p>
-                <h4> - END - </h4>
-              </div>
-
-              <div className="expand_buttons">
-                <button type="button" class="btn_cancel" onClick={handleClick}>
-                  X
-                </button>
-                <i>
-                  <BookmarkIcon style={{ fontSize: 80 }} />
-                </i>
-              </div>
-            </form>
-          </div>
-        ))} */}
     </div>
   );
 }
