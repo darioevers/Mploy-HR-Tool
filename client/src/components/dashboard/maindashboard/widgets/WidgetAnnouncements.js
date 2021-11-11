@@ -74,10 +74,9 @@ function WidgetAnnouncements() {
 
   const showDay = (stringDate) => {
     const date = new Date(stringDate);
-    const day = ("0" + date.getDay()).slice(-2);
+    const day = ("0" + date.getDate()).slice(-2);
     return day;
   };
-
   return (
     <div className="widget_announcements_mainbox">
       <div className="widget_announcements_header">

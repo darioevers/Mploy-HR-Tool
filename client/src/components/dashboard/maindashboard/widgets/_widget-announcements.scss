@@ -120,12 +120,12 @@
 
 //expand announcements
 .expand_main_container_show {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #0000005e;
+  background-color: #0000001a;
   z-index: 10;
   visibility: visible;
   opacity: 1;
