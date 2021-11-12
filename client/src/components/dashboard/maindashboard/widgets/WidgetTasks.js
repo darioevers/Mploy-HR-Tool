@@ -58,6 +58,21 @@ function WidgetTasks() {
       .catch((err) => console.log(err));
   };
 
+  //delete task
+  const deleteTask = (id) => {
+    axios
+      .delete(`http://localhost:5000/tasks/${id}`, {
+        header: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((data) => {
+        console.log(data);
+        data.data.success && getAllTasks();
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="widget_tasks_mainbox">
       <div class={show ? "sidenav_open" : "sidenav"}>
@@ -146,7 +161,10 @@ function WidgetTasks() {
                     </p>
                     <hr />
                     <p>
-                      <ClearIcon style={{ fontSize: 15 }} />
+                      <ClearIcon
+                        style={{ fontSize: 15 }}
+                        onClick={() => deleteTask(task._id)}
+                      />
                     </p>
                     <div className="task_tag">
                       <BookmarkIcon style={{ fontSize: 15 }} />
