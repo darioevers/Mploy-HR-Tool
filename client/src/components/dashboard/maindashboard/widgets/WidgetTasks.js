@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import CheckIcon from "@mui/icons-material/Check";
 import ClearIcon from "@mui/icons-material/Clear";
@@ -59,7 +59,6 @@ function WidgetTasks() {
   };
 
   return (
-
     <div className="widget_tasks_mainbox">
       <div class={show ? "sidenav_open" : "sidenav"}>
         <h1>ADD NEW TASK</h1>
@@ -112,11 +111,7 @@ function WidgetTasks() {
             </p>
           </div>
         </div>
-
-  
-        {getTasks &&
-          getTasks.map((task) => (
-      <div className="widget_tasks_display">
+        <div className="widget_tasks_display">
           <div className="header">
             <div className="header_title">
               <h1>TASK LIST</h1>
@@ -134,31 +129,35 @@ function WidgetTasks() {
           </div>
 
           <div className="tasks">
-            <div className="task">
-              <div className="task_main">
-                <h5> Title </h5>
-                <p>
-                  Due Date: <span className="task_date">DD MM YYYY</span>
-                </p>
-              </div>
+            {getTasks &&
+              getTasks.map((task) => (
+                <div className="task">
+                  <div className="task_main">
+                    <h5> {task.title} </h5>
+                    <p>
+                      Due Date:{" "}
+                      <span className="task_date">{task.dueDate}</span>
+                    </p>
+                  </div>
 
-              <div className="task_icons">
-                <p>
-                  <CheckIcon style={{ fontSize: 15 }} />
-                </p>
-                <hr />
-                <p>
-                  <ClearIcon style={{ fontSize: 15 }} />
-                </p>
-                <div className="task_tag">
-                  <BookmarkIcon style={{ fontSize: 15 }} />
+                  <div className="task_icons">
+                    <p>
+                      <CheckIcon style={{ fontSize: 15 }} />
+                    </p>
+                    <hr />
+                    <p>
+                      <ClearIcon style={{ fontSize: 15 }} />
+                    </p>
+                    <div className="task_tag">
+                      <BookmarkIcon style={{ fontSize: 15 }} />
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            </div>
-      
-            ))}
+              ))}
+          </div>
         </div>
-  )
+      </div>
+    </div>
+  );
 }
 export default WidgetTasks;
