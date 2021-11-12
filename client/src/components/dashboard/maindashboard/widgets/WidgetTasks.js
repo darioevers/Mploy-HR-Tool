@@ -7,7 +7,7 @@ import axios from "axios";
 
 function WidgetTasks() {
   //open and close new task form onClick
-  const [showForm, setShowForm] = useState(false);
+  const [showForm, setShowForm] = useState(true);
   const handleClick = () => {
     setShowForm(!showForm);
   };
@@ -74,10 +74,34 @@ function WidgetTasks() {
   };
 
   //filter
-  const [showFilter, setShowFilter] = useState(true);
+  const [showFilter, setShowFilter] = useState(false);
   const handleShowFilter = () => {
     setShowFilter(!showFilter);
     console.log("clicked");
+  };
+
+  //formatting date
+  const showDate = (stringDate) => {
+    const date = new Date(stringDate);
+    const day = date.getDate();
+    const month = date.getMonth();
+    const year = date.getYear() + 1900;
+    const months = [
+      "JAN",
+      "FEB",
+      "MAR",
+      "APR",
+      "MAY",
+      "JUN",
+      "JUL",
+      "AUG",
+      "SEP",
+      "OCT",
+      "NOV",
+      "DEC",
+    ];
+
+    return `${day} ${months[month]} ${year}`;
   };
 
   return (
@@ -98,15 +122,15 @@ function WidgetTasks() {
           type="date"
           onChange={(e) => setTask({ ...task, dueDate: e.target.value })}
         />
-        <h2>Task Tag</h2>
+        <h2>Set Priority</h2>
         <select
           className="newtask_tag"
           onChange={(e) => setTask({ ...task, taskTag: e.target.value })}
         >
           <option>Please Select ... </option>
-          <option>High Priority</option>
-          <option>Medium Priority</option>
-          <option>Low Priority</option>
+          <option>High</option>
+          <option>Medium</option>
+          <option>Low</option>
         </select>
         <div className="save_btn">
           <button
@@ -150,12 +174,7 @@ function WidgetTasks() {
           <div className="filter_bar">
             {showFilter && (
               <div className={showForm ? "task_filter_open" : "task_filter"}>
-                {[
-                  "All",
-                  "High Priority",
-                  "Medium Priority",
-                  "Low Priority",
-                ].map((cat) => {
+                {["All", "High", "Medium", "Low"].map((cat) => {
                   return (
                     <h5
                       onClick={() => {
@@ -186,7 +205,9 @@ function WidgetTasks() {
                     <h5> {task.title} </h5>
                     <p>
                       Due Date:{" "}
-                      <span className="task_date">{task.dueDate}</span>
+                      <span className="task_date">
+                        {showDate(task.dueDate)}
+                      </span>
                     </p>
                   </div>
 
@@ -202,9 +223,9 @@ function WidgetTasks() {
                       />
                     </p>
                     <div className="task_tag">
-                      {task.taskTag === "High Priority" ? (
+                      {task.taskTag === "High" ? (
                         <BookmarkIcon style={{ fontSize: 15, color: "red" }} />
-                      ) : task.taskTag === "Medium Priority" ? (
+                      ) : task.taskTag === "Medium" ? (
                         <BookmarkIcon
                           style={{ fontSize: 15, color: "yellow" }}
                         />

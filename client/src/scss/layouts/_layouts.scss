@@ -1,6 +1,9 @@
 * {
   margin: 0px;
   padding: 0px;
+  &:focus {
+    outline: 0;
+  }
 }
 
 .homearea {
