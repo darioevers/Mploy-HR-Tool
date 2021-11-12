@@ -120,23 +120,23 @@
 
 //expand announcements
 .expand_main_container_show {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #0000005e;
+  background-color: #0000007c;
   z-index: 10;
   visibility: visible;
   opacity: 1;
   transition: visibility 1s, opacity 0.5s linear;
 }
 
-.expand_main_container_hide {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 1s linear, opacity 0.3s linear;
-}
+// .expand_main_container_hide {
+//   visibility: hidden;
+//   opacity: 0;
+//   transition: visibility 1s linear, opacity 0.3s linear;
+// }
 
 .expand_container {
   width: 40%;
@@ -148,8 +148,9 @@
   background-color: $dark-bg;
   border-radius: 12px;
   padding: 40px;
-  overflow-x: scroll;
   border-bottom: 40px solid $dark-bg;
+  overflow-x: hidden;
+  overflow-y: scroll;
 
   .expand_header {
     position: sticky;
@@ -223,4 +224,27 @@
     right: 70px;
     color: $highlight;
   }
+}
+
+//scrollbar
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px transparent;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $secondary;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $highlight;
 }

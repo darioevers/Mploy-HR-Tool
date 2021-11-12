@@ -1,3 +1,11 @@
 * {
   font-family: $font-family-roboto;
 }
+
+body {
+  scroll-behavior: smooth;
+}
+
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}

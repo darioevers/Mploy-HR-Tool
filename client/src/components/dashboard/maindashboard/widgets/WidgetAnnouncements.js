@@ -4,12 +4,12 @@ import BookmarkIcon from "@mui/icons-material/Bookmark";
 import Carousel from "react-elastic-carousel";
 
 function WidgetAnnouncements() {
+  // getting all data
   const [announcements, setAnnouncements] = useState();
   useEffect(() => {
     getAllAnnouncements();
   }, []);
 
-  // fetch data from backend
   const getAllAnnouncements = () => {
     axios
       .get(
@@ -47,10 +47,39 @@ function WidgetAnnouncements() {
 
   //expanding announcements
   const [expand, setExpand] = useState(false);
-  const handleClick = () => {
+  const [id, setId] = useState();
+  const handleClick = (id) => {
     setExpand(!expand);
+    setId(id);
   };
 
+  //extracting month and date from data
+  const showMonths = (stringDate) => {
+    const date = new Date(stringDate);
+    const month = date.getMonth();
+    const months = [
+      "JAN",
+      "FEB",
+      "MAR",
+      "APR",
+      "MAY",
+      "JUN",
+      "JUL",
+      "AUG",
+      "SEP",
+      "OCT",
+      "NOV",
+      "DEC",
+    ];
+
+    return months[month];
+  };
+
+  const showDay = (stringDate) => {
+    const date = new Date(stringDate);
+    const day = ("0" + date.getDate()).slice(-2);
+    return day;
+  };
   return (
     <div className="widget_announcements_mainbox">
       <div className="widget_announcements_header">
@@ -62,8 +91,8 @@ function WidgetAnnouncements() {
             announcements.map((announcement) => (
               <div className="widget_announcement" key={announcement._id}>
                 <div className="widget_announcement_dateposted">
-                  <h4>{announcement.date.getMonth()}</h4>
-                  <h3>{announcement.date.getDay()}</h3>
+                  <h4>{showMonths(announcement.date)}</h4>
+                  <h3>{showDay(announcement.date)}</h3>
                   <hr />
                 </div>
 
@@ -73,59 +102,59 @@ function WidgetAnnouncements() {
                     <h4> {announcement.subtopic}</h4>
                   </div>
                   <div className="widget_announcements_icons">
-                    <p onClick={handleClick}> Read More Here &gt;&gt;</p>
+                    <p onClick={() => handleClick(announcement._id)}>
+                      {" "}
+                      Read More Here &gt;&gt;
+                    </p>
                     <p onClick={() => deleteAnnouncement(announcement._id)}>
                       Delete
                     </p>
                   </div>
                 </div>
+
+                {expand && announcement._id === id && (
+                  <div className="expand_main_container_show">
+                    <form class="expand_container">
+                      <div className="expand_header">
+                        <h1>{announcement.title}</h1>
+                        <div className="expand_subheader">
+                          <p>by {announcement.poster}</p>
+
+                          <p>Date Posted: {announcement.date}</p>
+
+                          <p>Time Posted: {announcement.time}</p>
+                        </div>
+                      </div>
+
+                      <div className="expand_subtopic">
+                        <p>{announcement.subtopic}</p>
+                      </div>
+
+                      <div className="expand_main_content">
+                        <h3>Content</h3>
+                        <p>{announcement.message}</p>
+                        <h4> - END - </h4>
+                      </div>
+
+                      <div className="expand_buttons">
+                        <button
+                          type="button"
+                          class="btn_cancel"
+                          onClick={handleClick}
+                        >
+                          X
+                        </button>
+                        <i>
+                          <BookmarkIcon style={{ fontSize: 80 }} />
+                        </i>
+                      </div>
+                    </form>
+                  </div>
+                )}
               </div>
             ))}
         </Carousel>
       </div>
-
-      {announcements &&
-        announcements.map((announcement) => (
-          <div
-            className={
-              expand
-                ? "expand_main_container_show"
-                : "expand_main_container_hide"
-            }
-          >
-            <form class="expand_container">
-              <div className="expand_header">
-                <h1>{announcement.title}</h1>
-                <div className="expand_subheader">
-                  <p>by {announcement.poster}</p>
-
-                  <p>Date Posted: {announcement.date}</p>
-
-                  <p>Time Posted: {announcement.time}</p>
-                </div>
-              </div>
-
-              <div className="expand_subtopic">
-                <p>{announcement.subtopic}</p>
-              </div>
-
-              <div className="expand_main_content">
-                <h3>Content</h3>
-                <p>{announcement.message}</p>
-                <h4> - END - </h4>
-              </div>
-
-              <div className="expand_buttons">
-                <button type="button" class="btn_cancel" onClick={handleClick}>
-                  X
-                </button>
-                <i>
-                  <BookmarkIcon style={{ fontSize: 80 }} />
-                </i>
-              </div>
-            </form>
-          </div>
-        ))}
     </div>
   );
 }
