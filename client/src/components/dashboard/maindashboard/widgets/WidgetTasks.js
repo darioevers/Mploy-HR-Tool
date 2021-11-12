@@ -73,6 +73,8 @@ function WidgetTasks() {
       .catch((err) => console.log(err));
   };
 
+  const setColor = (color) => `backgroundColor: "${color}"`;
+
   return (
     <div className="widget_tasks_mainbox">
       <div class={show ? "sidenav_open" : "sidenav"}>
@@ -167,7 +169,17 @@ function WidgetTasks() {
                       />
                     </p>
                     <div className="task_tag">
-                      <BookmarkIcon style={{ fontSize: 15 }} />
+                      {task.taskTag === "High Priority - Red" ? (
+                        <BookmarkIcon style={{ fontSize: 15, color: "red" }} />
+                      ) : task.taskTag === "Medium Priority - Yellow" ? (
+                        <BookmarkIcon
+                          style={{ fontSize: 15, color: "yellow" }}
+                        />
+                      ) : (
+                        <BookmarkIcon
+                          style={{ fontSize: 15, color: "green" }}
+                        />
+                      )}
                     </div>
                   </div>
                 </div>

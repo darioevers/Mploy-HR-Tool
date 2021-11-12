@@ -55,7 +55,6 @@
     border-radius: 10px;
     background-color: transparent;
     color: $highlight;
-    padding: 0 5px;
   }
   .save_btn {
     @include flex-center;
@@ -76,7 +75,7 @@
 }
 
 .newtask_input::placeholder {
-  color: $highlight;
+  color: $primary;
 }
 
 #main {
@@ -263,8 +262,7 @@
     border: 1px solid $highlight;
     border-radius: 10px;
     background-color: transparent;
-    color: $highlight;
-    padding: 0 5px;
+    color: $primary;
   }
   .save_btn {
     @include flex-center;
