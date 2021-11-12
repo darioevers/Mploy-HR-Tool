@@ -1,7 +1,7 @@
 const express = require("express");
 const { registerValidations } = require("../validators/user-validator");
 const validator = require("../middlewares/validatorMiddleware");
-// const verificationEmail = require("../controllers/usersControllers");
+
 const {
   register,
   login,

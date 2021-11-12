@@ -23,7 +23,9 @@ function EmployeeData({ history }) {
   const classes = useStyles();
   const [employees, setEmployees] = useState();
   const [search, setSearch] = useState("");
-  const [hidden, setHidden] = useState(false);
+  const [checked,setChecked] = useState(false);
+  
+
   useEffect(() => {
     getAllEmployee();
   }, []);
@@ -115,21 +117,22 @@ function EmployeeData({ history }) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {employees &&
+          {employees  &&
             employees.map((employee) => (
               <TableRow key={employee._id}>
                 <TableCell>{employee.bio.firstName}</TableCell>
                 <TableCell>{employee.bio.lastName}</TableCell>
                 <TableCell>{employee.bio.email}</TableCell>
                 <TableCell>{employee.bio.dateOfBirth}</TableCell>
-                
-                  <TableCell>{employee.bio.nationality}</TableCell>
+               
+              
+                 <TableCell>{employee.bio.nationality}</TableCell>
                 <TableCell>{employee.bio.gender}</TableCell>
                 <TableCell>{employee.bio.phoneNumber}</TableCell>
                 <TableCell>{employee.bio.maritalStatus}</TableCell>
-                <TableCell>{employee.bio.status}</TableCell>
+                <TableCell>{employee.bio.status}</TableCell>   
 
-                
+         
                 
 
                 <TableCell>

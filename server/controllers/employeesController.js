@@ -29,8 +29,9 @@ employeeContoller.addNewEmployee = async (req, res) => {
         gender: req.body.gender,
         phoneNumber: req.body.phoneNumber,
         maritalStatus: req.body.maritalStatus,
-        photo: req.body.photo,
         status: req.body.status,
+        // photo: req.body.photo,
+
       },
       addressOne: {
         streetOne: req.body.streetOne,
@@ -90,6 +91,7 @@ employeeContoller.addNewEmployee = async (req, res) => {
     res.status(404).json({ status: "fail", message: error });
   }
 };
+
 // employee search
 employeeContoller.searchName = async (req, res) => {
   console.log(req.body);

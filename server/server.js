@@ -6,14 +6,18 @@ const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const users = require("./models/UserModel");
-// const ErrorHandler = require("./middlewares/error");
+const multer=require("multer");
+const path=require("path");
 
 // Applications Middlewares
 app.use(morgan("dev"));
 app.use(express.json());
 dotenv.config();
 app.use(cors());
-// app.use(ErrorHandler);
+
+// app.use("/uploads",express.static(path.join(__dirname + "uploads")));
+
+
 // Connect with the database
 
 let PORT = process.env.PORT || 5000;
@@ -39,5 +43,7 @@ app.use("/users", require("./routes/users"));
 app.use("/dashboard", require("./routes/dashboard"));
 
 app.use("/employee", require("./routes/employees"));
+// upload route
+app.use("/api", require("./routes/uploads"));
 
 module.exports = app;

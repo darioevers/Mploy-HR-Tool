@@ -34,7 +34,7 @@ const AddHrInfo = ({ location, history }) => {
       )
       .then((res) => {
         console.log(res);
-        history.push("/dashboard/employeedata/addemployee/documents");
+        // history.push("/dashboard/employeedata/addemployee/documents");
       })
       .catch((err) => console.log(err));
   };

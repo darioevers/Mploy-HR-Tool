@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import axios from "axios";
 
 import {
   FormGroup,
@@ -18,8 +19,34 @@ import {
 
 const AddEmployee = ({ history }) => {
   const [employee, setEmployee] = useState({});
-  const [disabled, setDisabled] = useState(false);
+  const [file, setFile] = useState();
+  
+  // const fileUpload=()=>{
+  //   const data=employee;
+  //     .catch((err) => console.log(err));
+  // };
+  
+const send=event=>{
+  const data=new FormData();
+  data.append("file",file);
+  console.log(FormData);
+    axios
+      .post(
+        "http://localhost:5000/api/singlefile",
+        data,
 
+        {
+          header: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+      })
+    
+  
+}
   return (
     <div className="addemployee_mainbox">
       <DashboardTopNav />
@@ -42,16 +69,46 @@ const AddEmployee = ({ history }) => {
       >
         Hr Information
       </NavLink>
-      <FormGroup>
-        <Typography variant="h4">Personal Inforamtion</Typography>
-        {/* <FormControl>
+
+
+      {/* <form>
+      <input type="file" id ="file" name="file" onChange={event=>{
+        const file=event.target.files[0];
+        setFile("file")
+      } } />
+     <button onClick={send}>send</button>
+      </form> */}
+
+
+      <FormGroup enctype="multipart/form-data">
+       <div>
+        <FormControl>
           <InputLabel htmlFor="my-input">Photo</InputLabel>
-          <Input
-            value={photo}
-            name="photo"
-            onChange={(e) => setPhoto(e.target.value)}
+          <Input type="file" id="file" accept="jpg"
+            name="file"
+            
+            onChange={event=>{
+        const file=event.target.files[0];
+        setFile("file")
+      } }
+
+
           />
-        </FormControl> */}
+        </FormControl>
+        <FormControl>
+
+         <Button onClick={send}
+         
+           
+          >
+            Next{" "}
+          </Button>
+        </FormControl>
+
+        </div>
+        <Typography variant="h4">Personal Inforamtion</Typography>
+      <div>
+
         <FormControl>
           <InputLabel htmlFor="my-input">First Name</InputLabel>
           <Input
@@ -187,11 +244,15 @@ const AddEmployee = ({ history }) => {
             }
           />
         </FormControl>
+        </div>
+
+       
         <FormControl>
           <Button
-            disabled={disabled}
+         
             onClick={() => {
               console.log(employee);
+              // fileUpload();
               history.push({
                 pathname: "/dashboard/employeedata/addemployee/hrinfo",
                 state: { employee },
