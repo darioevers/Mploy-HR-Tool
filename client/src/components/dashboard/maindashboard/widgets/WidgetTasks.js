@@ -7,9 +7,9 @@ import axios from "axios";
 
 function WidgetTasks() {
   //open and close new task form onClick
-  const [show, setShow] = useState(false);
+  const [showForm, setShowForm] = useState(false);
   const handleClick = () => {
-    setShow(!show);
+    setShowForm(!showForm);
   };
 
   //add new task
@@ -73,11 +73,16 @@ function WidgetTasks() {
       .catch((err) => console.log(err));
   };
 
-  const setColor = (color) => `backgroundColor: "${color}"`;
+  //filter
+  const [showFilter, setShowFilter] = useState(true);
+  const handleShowFilter = () => {
+    setShowFilter(!showFilter);
+    console.log("clicked");
+  };
 
   return (
     <div className="widget_tasks_mainbox">
-      <div class={show ? "sidenav_open" : "sidenav"}>
+      <div class={showForm ? "sidenav_open" : "sidenav"}>
         <h1>ADD NEW TASK</h1>
         <hr />
         <h2>Task</h2>
@@ -99,9 +104,9 @@ function WidgetTasks() {
           onChange={(e) => setTask({ ...task, taskTag: e.target.value })}
         >
           <option>Please Select ... </option>
-          <option>High Priority - Red </option>
-          <option>Medium Priority - Yellow </option>
-          <option>Low Priority - Green </option>
+          <option>High Priority</option>
+          <option>Medium Priority</option>
+          <option>Low Priority</option>
         </select>
         <div className="save_btn">
           <button
@@ -116,11 +121,11 @@ function WidgetTasks() {
         </div>
       </div>
 
-      <div id={show ? "main_open" : "main"}>
+      <div id={showForm ? "main_open" : "main"}>
         <div className="widget_tasks_newtask">
           <div>
             <p
-              id={show ? "newtask_button_open" : "newtask_button"}
+              id={showForm ? "newtask_button_open" : "newtask_button"}
               onClick={handleClick}
             >
               {" "}
@@ -133,12 +138,40 @@ function WidgetTasks() {
             <div className="header_title">
               <h1>TASK LIST</h1>
             </div>
-            <div className="header_icons">
+
+            <div className="header_icons" onClick={handleShowFilter}>
               <p>Filter</p>
               <span>
                 <FilterListIcon style={{ fontSize: 15 }} />
               </span>
             </div>
+          </div>
+
+          <div className="filter_bar">
+            {showFilter && (
+              <div className={showForm ? "task_filter_open" : "task_filter"}>
+                {[
+                  "All",
+                  "High Priority",
+                  "Medium Priority",
+                  "Low Priority",
+                ].map((cat) => {
+                  return (
+                    <h5
+                      onClick={() => {
+                        let filteredArr = getTasks.filter((item) =>
+                          cat === "All" ? item : item.taskTag === cat
+                        );
+                        setGetTasks(filteredArr);
+                      }}
+                      className="filter"
+                    >
+                      {cat}
+                    </h5>
+                  );
+                })}
+              </div>
+            )}
           </div>
 
           <div className="display_divider">
@@ -147,9 +180,9 @@ function WidgetTasks() {
 
           <div className="tasks">
             {getTasks &&
-              getTasks.map((task) => (
+              getTasks.map((task, i) => (
                 <div className="task">
-                  <div className="task_main">
+                  <div className="task_main" key={i}>
                     <h5> {task.title} </h5>
                     <p>
                       Due Date:{" "}
@@ -169,9 +202,9 @@ function WidgetTasks() {
                       />
                     </p>
                     <div className="task_tag">
-                      {task.taskTag === "High Priority - Red" ? (
+                      {task.taskTag === "High Priority" ? (
                         <BookmarkIcon style={{ fontSize: 15, color: "red" }} />
-                      ) : task.taskTag === "Medium Priority - Yellow" ? (
+                      ) : task.taskTag === "Medium Priority" ? (
                         <BookmarkIcon
                           style={{ fontSize: 15, color: "yellow" }}
                         />

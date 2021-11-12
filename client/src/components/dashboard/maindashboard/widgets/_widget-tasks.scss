@@ -11,7 +11,7 @@
   z-index: 1;
   top: 0;
   left: 0px;
-  background-color: $dark-bg;
+  background-color: $light-bg;
   overflow-x: hidden;
   transition: 0.5s;
   border-top-left-radius: 20px;
@@ -126,6 +126,14 @@
     }
     .header_icons {
       @include flex-center;
+      width: 80px;
+      height: 30px;
+      &:hover {
+        cursor: pointer;
+        color: $highlight;
+        transform: translateY(-1px);
+        transition: transform 0.5s;
+      }
       p {
         margin-right: 10px;
         font-size: 14px;
@@ -143,6 +151,27 @@
   }
 }
 
+.filter_bar {
+  width: 100%;
+  width: 100%;
+  margin-top: 10px;
+  .task_filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 5px;
+    h5 {
+      font-size: 12px;
+      &:hover {
+        color: $highlight;
+        cursor: pointer;
+        transform: translateY(-1px);
+        transition: transform 0.5s;
+      }
+    }
+  }
+}
+
 .tasks {
   width: 100%;
   display: flex;
@@ -156,13 +185,14 @@
   display: flex;
   position: relative;
   align-items: center;
-  width: 100%;
+  width: 120px;
   height: 46px;
   background-color: $dark-bg;
   border-radius: 10px;
   justify-content: space-between;
   padding: 5px;
-  margin: 0 25px 10px 5px;
+  margin: 0 5px 10px 5px;
+  transition: justify-content linear 0.5s;
 }
 
 .task_main {
@@ -185,6 +215,12 @@
   p {
     font-size: 10px;
     color: $primary;
+    &:hover {
+      color: $highlight;
+      cursor: pointer;
+      transform: translateY(-1px);
+      transition: transform 0.5s;
+    }
   }
   hr {
     margin: 5px 0;
@@ -194,34 +230,20 @@
     position: absolute;
     top: -16px;
     left: 7px;
-    color: rgb(0, 255, 81);
-  }
-
-  .task_tag_two {
-    position: absolute;
-    top: -16px;
-    left: 7px;
-    color: rgb(254, 233, 0);
-  }
-  .task_tag_three {
-    position: absolute;
-    top: -16px;
-    left: 7px;
-    color: rgb(254, 17, 0);
   }
 }
 
 //set state on handleClick
 .sidenav_open {
   width: 250px;
-  height: 100%; /* 100% Full-height */
-  position: absolute; /* Stay in place */
-  z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+  top: 0;
   left: 0px;
-  background-color: $dark-bg; /* Black*/
-  overflow-x: hidden; /* Disable horizontal scroll */
-  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  background-color: $dark-bg;
+  overflow-x: hidden;
+  transition: 0.5s;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
   h1 {
@@ -298,4 +320,22 @@
   width: 20px;
   transition: transform 1s;
   transform: rotate(45deg);
+}
+
+.task_filter_open {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  line-height: 15px;
+  h5 {
+    font-size: 12px;
+    &:hover {
+      color: $highlight;
+      cursor: pointer;
+      transform: translateY(-1px);
+      transition: transform 0.5s;
+    }
+  }
 }
