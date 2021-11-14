@@ -77,7 +77,6 @@ function WidgetTasks() {
   const [showFilter, setShowFilter] = useState(false);
   const handleShowFilter = () => {
     setShowFilter(!showFilter);
-    console.log("clicked");
   };
 
   //formatting date
@@ -143,6 +142,7 @@ function WidgetTasks() {
             SAVE
           </button>
         </div>
+        <div className="sidenav_cloak"></div>
       </div>
 
       <div id={showForm ? "main_open" : "main"}>
@@ -199,9 +199,9 @@ function WidgetTasks() {
 
           <div className="tasks">
             {getTasks &&
-              getTasks.map((task, i) => (
+              getTasks.map((task) => (
                 <div className="task">
-                  <div className="task_main" key={i}>
+                  <div className="task_main">
                     <h5> {task.title} </h5>
                     <p>
                       Due Date:{" "}
