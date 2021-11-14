@@ -99,8 +99,11 @@ function WidgetTasks() {
       "NOV",
       "DEC",
     ];
-
-    return `${day} ${months[month]} ${year}`;
+    if ((day && months[month] && year !== NaN) || undefined) {
+      return `${day} ${months[month]} ${year}`;
+    } else {
+      return ` Not Specified`;
+    }
   };
 
   return (
@@ -202,9 +205,14 @@ function WidgetTasks() {
               getTasks.map((task) => (
                 <div className="task">
                   <div className="task_main">
-                    <h5> {task.title} </h5>
+                    <h5>
+                      {" "}
+                      {task.title === ""
+                        ? task.title
+                        : "No Title Specified"}{" "}
+                    </h5>
                     <p>
-                      Due Date:{" "}
+                      Due Date:
                       <span className="task_date">
                         {showDate(task.dueDate)}
                       </span>
