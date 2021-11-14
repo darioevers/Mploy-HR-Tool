@@ -96,9 +96,30 @@
   background-color: $light-bg;
 }
 
-/* hide disabled buttons */
-.rec.rec-arrow:disabled {
-  color: #d0d0d0;
+.rec.rec-arrow.rec.rec-arrow-left {
+  background-color: transparent;
+  color: $dark-bg;
+  &:hover {
+    background-color: none;
+    color: $highlight;
+    box-shadow: none;
+  }
+  &:disabled {
+    color: #d0d0d0;
+  }
+}
+
+.rec.rec-arrow.rec.rec-arrow-right {
+  background-color: transparent;
+  color: $dark-bg;
+  &:hover {
+    background-color: none;
+    color: $highlight;
+    box-shadow: none;
+  }
+  &:disabled {
+    color: #d0d0d0;
+  }
 }
 
 .rec.rec-pagination {

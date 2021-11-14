@@ -19,12 +19,10 @@ function WidgetTeam() {
             <div className="team_manager_photo"></div>
             <div className="team_manager_links">
               <div>
-                <MailOutlineIcon
-                  style={{ fontSize: "small", color: "black" }}
-                />
+                <MailOutlineIcon style={{ fontSize: "small", color: "gray" }} />
               </div>
               <div>
-                <InfoIcon style={{ fontSize: "small", color: "black" }} />
+                <InfoIcon style={{ fontSize: "small", color: "gray" }} />
               </div>
             </div>
           </div>
@@ -42,12 +40,10 @@ function WidgetTeam() {
             <div className="team_supervisor_photo"></div>
             <div className="team_supervisor_links">
               <div>
-                <MailOutlineIcon
-                  style={{ fontSize: "small", color: "black" }}
-                />
+                <MailOutlineIcon style={{ fontSize: "small", color: "gray" }} />
               </div>
               <div>
-                <InfoIcon style={{ fontSize: "small", color: "black" }} />
+                <InfoIcon style={{ fontSize: "small", color: "gray" }} />
               </div>
             </div>
           </div>
@@ -65,12 +61,10 @@ function WidgetTeam() {
             <div className="team_it_one_photo"></div>
             <div className="team_it_one_links">
               <div>
-                <MailOutlineIcon
-                  style={{ fontSize: "small", color: "black" }}
-                />
+                <MailOutlineIcon style={{ fontSize: "small", color: "gray" }} />
               </div>
               <div>
-                <InfoIcon style={{ fontSize: "small", color: "black" }} />
+                <InfoIcon style={{ fontSize: "small", color: "gray" }} />
               </div>
             </div>
           </div>
@@ -88,12 +82,10 @@ function WidgetTeam() {
             <div className="team_it_two_photo"></div>
             <div className="team_it_two_links">
               <div>
-                <MailOutlineIcon
-                  style={{ fontSize: "small", color: "black" }}
-                />
+                <MailOutlineIcon style={{ fontSize: "small", color: "gray" }} />
               </div>
               <div>
-                <InfoIcon style={{ fontSize: "small", color: "black" }} />
+                <InfoIcon style={{ fontSize: "small", color: "gray" }} />
               </div>
             </div>
           </div>

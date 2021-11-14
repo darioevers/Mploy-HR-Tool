@@ -1,4 +1,341 @@
 .widget_tasks_mainbox {
   @include widget-wrapper;
   grid-area: widget_tasks;
+  position: relative;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0px;
+  background-color: $light-bg;
+  overflow-x: hidden;
+  transition: 0.5s;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  h1 {
+    font-size: 16px;
+    color: $primary;
+    font-weight: normal;
+    margin: 15px;
+    margin-top: 17px;
+  }
+  hr {
+    margin-top: -8px;
+    margin-left: 15px;
+    width: 85%;
+    border: 1px solid $highlight;
+  }
+  h2 {
+    font-size: 12px;
+    margin: 10px 0px 2px 15px;
+    color: $highlight;
+    font-weight: 400;
+  }
+  input {
+    margin-left: 15px;
+    font-size: 12px;
+    height: 20px;
+    width: 82%;
+    border: 1px solid $highlight;
+    border-radius: 10px;
+    background-color: transparent;
+    color: $primary;
+    padding: 0 5px;
+  }
+  select {
+    margin-left: 15px;
+    height: 25px;
+    width: 87%;
+    font-size: 12px;
+    border: 1px solid $highlight;
+    border-radius: 10px;
+    background-color: transparent;
+    color: $highlight;
+  }
+  .save_btn {
+    @include flex-center;
+    margin-top: 5px;
+    button {
+      align-self: right;
+      margin: 20px;
+      width: 80px;
+      height: 22px;
+      font-size: 12px;
+      border-radius: 5px;
+      background-color: $highlight;
+      border: none;
+      color: $dark-bg;
+      font-weight: bolder;
+    }
+  }
+}
+
+.newtask_input::placeholder {
+  color: $primary;
+}
+
+#main {
+  height: 78%;
+  display: flex;
+  align-items: center;
+  transition: margin-left 0.5s;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+.widget_tasks_newtask {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $highlight;
+  width: 30px;
+  height: 50px;
+  margin-left: -20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+#newtask_button {
+  color: $primary;
+  font-size: 25px;
+  transition: transform 1s;
+  width: 20px;
+}
+
+.widget_tasks_display {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  .header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h1 {
+      font-size: 16px;
+    }
+    .header_icons {
+      @include flex-center;
+      width: 80px;
+      height: 30px;
+      &:hover {
+        cursor: pointer;
+        color: $highlight;
+        transform: translateY(-1px);
+        transition: transform 0.5s;
+      }
+      p {
+        margin-right: 10px;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.display_divider {
+  width: 100%;
+  margin-top: -15px;
+  margin-bottom: -5px;
+  hr {
+    border: 1px solid $primary;
+  }
+}
+
+.filter_bar {
+  width: 100%;
+  width: 100%;
+  margin-top: 10px;
+  .task_filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 5px;
+    h5 {
+      font-size: 12px;
+      &:hover {
+        color: $highlight;
+        cursor: pointer;
+        transform: translateY(-1px);
+        transition: transform 0.5s;
+      }
+    }
+  }
+}
+
+.tasks {
+  width: 100%;
+  display: flex;
+  font-size: 30px;
+  flex-wrap: wrap;
+  margin-left: 10px;
+  overflow-x: scroll;
+}
+
+.task {
+  display: flex;
+  position: relative;
+  align-items: center;
+  width: 120px;
+  height: 46px;
+  background-color: $dark-bg;
+  border-radius: 10px;
+  justify-content: space-between;
+  padding: 5px;
+  margin: 0 5px 10px 5px;
+  transition: justify-content linear 0.5s;
+}
+
+.task_main {
+  margin-left: 10px;
+  color: $primary;
+  h5 {
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+  p {
+    font-size: 9px;
+    color: $secondary;
+  }
+  .task_date {
+    color: $primary;
+  }
+}
+
+.task_icons {
+  p {
+    font-size: 10px;
+    color: $primary;
+    &:hover {
+      color: $highlight;
+      cursor: pointer;
+      transform: translateY(-1px);
+      transition: transform 0.5s;
+    }
+  }
+  hr {
+    margin: 5px 0;
+    margin-right: -5px;
+  }
+  .task_tag {
+    position: absolute;
+    top: -16px;
+    left: 7px;
+  }
+}
+
+//set state on handleClick
+.sidenav_open {
+  width: 250px;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0px;
+  background-color: $dark-bg;
+  overflow-x: hidden;
+  transition: 0.5s;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  h1 {
+    font-size: 16px;
+    color: $primary;
+    font-weight: normal;
+    margin: 15px;
+    margin-top: 17px;
+  }
+  hr {
+    margin-top: -8px;
+    margin-left: 15px;
+    width: 85%;
+    border: 1px solid $highlight;
+  }
+  h2 {
+    font-size: 12px;
+    margin: 10px 0px 2px 15px;
+    color: $primary;
+    font-weight: 400;
+  }
+  input {
+    margin-left: 15px;
+    font-size: 12px;
+    height: 20px;
+    width: 82%;
+    border: 1px solid $highlight;
+    border-radius: 10px;
+    background-color: transparent;
+    color: $primary;
+    padding: 0 5px;
+  }
+  select {
+    margin-left: 15px;
+    height: 25px;
+    width: 87%;
+    font-size: 12px;
+    border: 1px solid $highlight;
+    border-radius: 10px;
+    background-color: transparent;
+    color: $primary;
+  }
+  .save_btn {
+    @include flex-center;
+    margin-top: 5px;
+    button {
+      align-self: right;
+      margin: 20px;
+      width: 80px;
+      height: 22px;
+      font-size: 12px;
+      border-radius: 5px;
+      background-color: $highlight;
+      border: none;
+      color: $dark-bg;
+      font-weight: bolder;
+    }
+  }
+}
+
+#main_open {
+  height: 78%;
+  display: flex;
+  align-items: center;
+  transition: margin-left 0.5s;
+  padding: 20px;
+  margin-top: 10px;
+  margin-left: 250px;
+}
+
+#newtask_button_open {
+  color: $primary;
+  font-size: 25px;
+  width: 20px;
+  transition: transform 1s;
+  transform: rotate(45deg);
+}
+
+.task_filter_open {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  line-height: 15px;
+  h5 {
+    font-size: 12px;
+    &:hover {
+      color: $highlight;
+      cursor: pointer;
+      transform: translateY(-1px);
+      transition: transform 0.5s;
+    }
+  }
 }
