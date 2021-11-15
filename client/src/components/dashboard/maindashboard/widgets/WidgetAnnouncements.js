@@ -104,7 +104,7 @@ function WidgetAnnouncements() {
                   <div className="widget_announcements_icons">
                     <p onClick={() => handleClick(announcement._id)}>
                       {" "}
-                      Read More Here &gt;&gt;
+                      Read More Here
                     </p>
                     <p onClick={() => deleteAnnouncement(announcement._id)}>
                       Delete

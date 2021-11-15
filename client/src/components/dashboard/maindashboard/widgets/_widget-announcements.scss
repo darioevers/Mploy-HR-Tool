@@ -75,9 +75,12 @@
 }
 .widget_announcement_header {
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
   flex-direction: column;
   margin-bottom: 20px;
+  width: 250px;
+  // height: 90px;
+  text-overflow: ellipsis;
   h3 {
     font-size: 19px;
     color: $highlight;
@@ -86,6 +89,7 @@
     font-size: 11.5px;
     font-weight: 300;
     color: $secondary;
+    margin-top: 5px;
     text-align: justify;
   }
   p {

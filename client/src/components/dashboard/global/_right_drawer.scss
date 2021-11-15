@@ -1,8 +1,10 @@
 .right_drawer_header {
   @include flex-center;
+  flex-direction: row;
+  flex-wrap: wrap;
   background-color: $dark-bg;
   width: 100%;
-  height: 10%;
+  height: 100px;
   h3 {
     font-size: 20px;
     font-weight: normal;
@@ -12,19 +14,133 @@
 
 .right_drawer_newadmin {
   margin: 20px;
-  hr {
-    margin-top: 7px;
+  margin-bottom: 15px;
+  transition: margin-bottom 0.3s;
+
+  .newadmin_header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $secondary;
+    &:hover {
+      color: $highlight;
+      cursor: pointer;
+    }
+    i {
+      transform: rotate(-90deg);
+      transition: transform 0.3s;
+    }
+  }
+  .newadmin_content {
+    visibility: hidden;
+  }
+}
+
+.right_drawer_newadmin_open {
+  margin: 20px;
+  margin-bottom: 75px;
+  transition: margin-bottom 0.3s;
+  .newadmin_header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $secondary;
+    i {
+      transform: rotate(0deg);
+      transition: transform 0.3s;
+    }
+  }
+  .newadmin_content {
+    visibility: block;
   }
 }
 
 .right_drawer_announcements {
-  margin: 20px;
+  margin: -50px 20px;
+  margin-bottom: 10px;
+  height: 20px;
+  transition: margin-bottom 0.3s;
+  .right_drawer_announcements_header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $secondary;
+    transition: margin-bottom 0.3s;
+    i {
+      transform: rotate(-90deg);
+      transition: transform 0.3s;
+    }
+  }
   p {
     font-size: 12px;
-    margin-top: -12px;
-    margin-bottom: 20px;
   }
-  hr {
-    margin-top: 7px;
+  .right_drawer_announcements_content {
+    width: 400px;
+    visibility: hidden;
+  }
+}
+
+.right_drawer_announcements_open {
+  margin: -50px 20px;
+  margin-bottom: 20px;
+  transition: margin-bottom 0.3s;
+
+  .right_drawer_announcements_header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $secondary;
+    transition: margin-bottom 0.3s;
+    i {
+      transform: rotate(0deg);
+      transition: transform 0.3s;
+    }
+  }
+  .right_drawer_announcements_content {
+    width: 400px;
+
+    p {
+      font-size: 12px;
+    }
+  }
+}
+
+//leaves
+.right_drawer_leaves {
+  margin: 20px;
+  .right_drawer_leaves_header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    transition: margin-bottom 0.3s;
+    i {
+      transform: rotate(-90deg);
+      transition: transform 0.3s;
+    }
+  }
+  p {
+    font-size: 12px;
+  }
+  .right_drawer_leaves_content {
+    width: 300px;
+    visibility: hidden;
+  }
+}
+
+.right_drawer_leaves_open {
+  margin: 20px;
+
+  .right_drawer_leaves_header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0px;
+    transition: margin-bottom 0.3s;
+    i {
+      transform: rotate(0deg);
+      transition: transform 0.3s;
+    }
+  }
+  .right_drawer_leaves_content {
+    width: 300px;
+
+    p {
+      font-size: 12px;
+    }
   }
 }
