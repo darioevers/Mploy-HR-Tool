@@ -14,8 +14,8 @@ app.use(morgan("dev"));
 app.use(express.json());
 dotenv.config();
 app.use(cors());
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// app.use("/uploads",express.static(path.join(__dirname + "uploads")));
 
 
 // Connect with the database
@@ -43,7 +43,6 @@ app.use("/users", require("./routes/users"));
 app.use("/dashboard", require("./routes/dashboard"));
 
 app.use("/employee", require("./routes/employees"));
-// upload route
-app.use("/api", require("./routes/uploads"));
+
 
 module.exports = app;

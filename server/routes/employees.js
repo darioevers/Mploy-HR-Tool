@@ -7,14 +7,10 @@ const {uploads}=require("../functions/uploads")
 router.get("/allemployee/", employeesController.getAllEmployees);
 
 // add new Employee
-router.post("/addemployee", employeesController.addNewEmployee);
-
-// file upload 
-// router.post("/addemployee",uploads.single("file"), employeesController.addNewEmployee);
+router.post("/addemployee" ,uploads.single('file'), employeesController.addNewEmployee);
 
 // search for employee
 router.post("/search", employeesController.searchName);
-
 
 // update employee
 router.put("/update/", employeesController.updateEmployee);
