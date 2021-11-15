@@ -94,19 +94,19 @@ const About = () => {
                     </Tabs>
                     <TabPanel value={value} index={0} style={{ width: "100%", height: 240, boxShadow: "none" }}>
                         Item One
-      </TabPanel>
+                    </TabPanel>
                     <TabPanel value={value} index={1} style={{ width: "100%", height: 240, boxShadow: "none" }}>
                         Item Two
-      </TabPanel>
+                    </TabPanel>
                     <TabPanel value={value} index={2} style={{ width: "100%", height: 240, boxShadow: "none" }}>
                         Item Three
-      </TabPanel>
+                    </TabPanel>
                     <TabPanel value={value} index={3} style={{ width: "100%", height: 240, boxShadow: "none" }}>
                         Item Four
-      </TabPanel>
+                    </TabPanel>
                     <TabPanel value={value} index={4} style={{ width: "100%", height: 240, boxShadow: "none" }}>
                         Item Five
-      </TabPanel>
+                    </TabPanel>
                 </Box>
             </div>
             <LandingpageFooter />

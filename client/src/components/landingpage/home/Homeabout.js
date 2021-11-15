@@ -3,7 +3,7 @@ import Image from "../../../img/img_home_about.png";
 
 const Homeabout = () => {
   return (
-    <div className="homeabout_mainbox">
+    <div className="homeabout_mainbox" style={{ bgcolor: "background.default" }}>
       <div className="homeabout_header">
         <h1>HR Management should be seamless, intuitive and easy.</h1>
         <h3>

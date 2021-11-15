@@ -1,5 +1,30 @@
 .homeservices_mainbox{
-    height: 60vh;
-    border: red 1px solid;
-    margin-bottom: 70px;
+    .homeservices_main_topbox {
+        text-align: center;
+        display: block;
+        #HomeServicesGraphic {
+            margin-top: -16vh;
+        }
+    }
+    .homeservices_main_midbox {
+        width: 570px;
+        margin-top: 6rem;
+        .coloured_heading {
+            @include text-gradient-red-blue;
+        }
+        @media only screen and (max-width: 600px){
+            /*Big smartphones [426px -> 600px]*/
+            width: 80vw;
+        }
+    }
+    .homeservices_main_botbox {
+        margin-top: 4rem;
+        .homeservices_box {
+            width: 100%;
+            height: auto;
+        }
+        .homeservices_grid_text {
+            padding: 0 1rem;
+        }
+    }
 }

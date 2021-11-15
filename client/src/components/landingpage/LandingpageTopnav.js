@@ -32,7 +32,7 @@ const LandingpageTopnav = () => {
                         </div>
                         <div className="landingpage_topnav_menulinks">
 
-                            <Link to={"/solutions"} style={{ color: "text.primary" }}>
+                            <Link to={"/solutions"} color="inherit">
                                 <div className="landingpage_topnav_menulink">Solutions</div>
                             </Link>
 
@@ -53,11 +53,11 @@ const LandingpageTopnav = () => {
                                         <Brightness4Icon />
                                     )}
                             </IconButton>
-                            <Link to={"/contact"}>
-                                <div className="landingpage_topnav_contactbutton">
+                            <div className="landingpage_topnav_contactbutton">
+                                <Link to={"/contact"}>
                                     <Button variant="outlined">Contact</Button>
-                                </div>
-                            </Link>
+                                </Link>
+                            </div>
                             <div className="landingpage_topnav_loginbutton">
                                 <Link to={"/login"}>
                                     <Button

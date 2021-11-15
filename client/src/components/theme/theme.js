@@ -55,6 +55,10 @@ export function ToggleColorMode(props) {
                     landingnavbar: {
                         main: '#fff',
                     },
+                    homeheader: {
+                        headerbackground: "#fff",
+                        headerdot: "#a4b7cc",
+                    },
                     solutions: {
                         header: '#ffbd00'
                     }
@@ -92,6 +96,10 @@ export function ToggleColorMode(props) {
                     },
                     landingnavbar: {
                         main: '#141d26',
+                    },
+                    homeheader: {
+                        headerbackground: "#addcf7",
+                        headerdot: "#a4b7cc",
                     },
                     solutions: {
                         header: '#ffbd00'

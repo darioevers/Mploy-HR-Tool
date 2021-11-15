@@ -9,11 +9,15 @@ import Box from '@mui/material/Box';
 
 const Homeheader = () => {
     return (
-        <div className="homeheader_mainbox">
+        <div className="homeheader_mainbox" style={{
+            background:
+                "linear - gradient(90deg, homeheader.headerbackground(25px - 2px), transparent 1 %) center, linear- gradient(homeheader.headerbackground(25px - 2px), transparent 1 %) center, homeheader.headerdot",
+            backgroundSize: "25px 2px"
+        }}>
             <Container>
                 <div className="homeheader_topbox">
                     <Typography variant="h1" component="div" style={{ fontFamily: "Mohave", fontWeight: 400 }} gutterBottom>
-                        HUMAN RESSOURCE
+                        HUMAN RESOURCE
                     </Typography>
                     <Typography variant="h4" gutterBottom component="div">
                         made easy with MPloy.
@@ -26,7 +30,7 @@ const Homeheader = () => {
                 </div>
             </Container>
 
-        </div>
+        </div >
     )
 }
 

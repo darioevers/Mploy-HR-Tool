@@ -7,17 +7,11 @@ $dot-size: 2px;
 $dot-space: 25px;
 
 .homeheader_mainbox{
-    height: 55vh;
-    margin-bottom: 70px;
+    height: 65vh;
     width: 80vw;
     text-align: center;
-    background:
-		linear-gradient(90deg, $bg-color ($dot-space - $dot-size), transparent 1%) center,
-		linear-gradient($bg-color ($dot-space - $dot-size), transparent 1%) center,
-		$dot-color;
-    background-size: $dot-space $dot-space;
     .homeheader_topbox {
-        padding-top: 4rem;
+        padding-top: 6rem;
         font-family: 'Mohave';
     }
 }

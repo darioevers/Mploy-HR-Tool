@@ -5,12 +5,22 @@
   align-items: center;
 }
 
+// COLORED HEADINGS 
+@mixin text-gradient-red-blue {
+    background: #d32de5; /* Old browsers */
+background: -moz-linear-gradient(-45deg, #EE6C4D 0%, #98C1D9 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg, #EE6C4D 0%,#98C1D9 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg, #EE6C4D 0%,#98C1D9 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+-webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 //WIDGET WRAPPER
 @mixin widget-wrapper {
   width: 100%;
   height: 100%;
   background-color: $light-bg;
-  border-radius: 15px;
+  border-radius:15px;
 }
 
 //MAIN DASHBOARD GRID
