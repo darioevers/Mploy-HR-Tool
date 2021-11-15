@@ -9,9 +9,9 @@ function WidgetApplications() {
   };
 
   //add new leave application
-  const [leave, setLeave] = useState({});
+  const [newLeave, setNewLeave] = useState({});
   const addLeave = () => {
-    const data = leave;
+    const data = newLeave;
     axios
       .post(
         "http://localhost:5000/leaves/addLeave",
@@ -63,8 +63,8 @@ function WidgetApplications() {
               placeholder="Type name of employee"
               className="application_search"
               onChange={(e) =>
-                setLeave({
-                  ...leave,
+                setNewLeave({
+                  ...newLeave,
                   name: e.target.value,
                 })
               }
@@ -75,8 +75,8 @@ function WidgetApplications() {
             <h3>Application Type</h3>
             <select
               onChange={(e) =>
-                setLeave({
-                  ...leave,
+                setNewLeave({
+                  ...newLeave,
                   type: e.target.value,
                 })
               }
@@ -93,8 +93,8 @@ function WidgetApplications() {
             <input
               type="date"
               onChange={(e) =>
-                setLeave({
-                  ...leave,
+                setNewLeave({
+                  ...newLeave,
                   dateFrom: e.target.value,
                 })
               }
@@ -104,8 +104,8 @@ function WidgetApplications() {
             <input
               type="date"
               onChange={(e) =>
-                setLeave({
-                  ...leave,
+                setNewLeave({
+                  ...newLeave,
                   dateTo: e.target.value,
                 })
               }
@@ -118,11 +118,14 @@ function WidgetApplications() {
               class="btn_submit"
               onClick={() => {
                 addLeave();
-                setLeave("");
+                setNewLeave("");
                 window.location.reload();
               }}
             >
               Submit
+            </button>
+            <button type="button" class="btn_cancel" onClick={handleClick}>
+              X
             </button>
           </div>
         </form>

@@ -43,6 +43,10 @@
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid $secondary;
+    &:hover {
+      color: $highlight;
+      cursor: pointer;
+    }
     i {
       transform: rotate(0deg);
       transition: transform 0.3s;
@@ -63,6 +67,10 @@
     justify-content: space-between;
     border-bottom: 1px solid $secondary;
     transition: margin-bottom 0.3s;
+    &:hover {
+      color: $highlight;
+      cursor: pointer;
+    }
     i {
       transform: rotate(-90deg);
       transition: transform 0.3s;
@@ -87,6 +95,10 @@
     justify-content: space-between;
     border-bottom: 1px solid $secondary;
     transition: margin-bottom 0.3s;
+    &:hover {
+      color: $highlight;
+      cursor: pointer;
+    }
     i {
       transform: rotate(0deg);
       transition: transform 0.3s;
@@ -104,11 +116,16 @@
 //leaves
 .right_drawer_leaves {
   margin: 20px;
+
   .right_drawer_leaves_header {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
     transition: margin-bottom 0.3s;
+    &:hover {
+      color: $highlight;
+      cursor: pointer;
+    }
     i {
       transform: rotate(-90deg);
       transition: transform 0.3s;
@@ -131,6 +148,10 @@
     justify-content: space-between;
     margin-bottom: 0px;
     transition: margin-bottom 0.3s;
+    &:hover {
+      color: $highlight;
+      cursor: pointer;
+    }
     i {
       transform: rotate(0deg);
       transition: transform 0.3s;
