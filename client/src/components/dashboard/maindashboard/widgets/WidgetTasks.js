@@ -207,7 +207,7 @@ function WidgetTasks() {
                   <div className="task_main">
                     <h5>
                       {" "}
-                      {task.title === ""
+                      {task.title !== undefined
                         ? task.title
                         : "No Title Specified"}{" "}
                     </h5>
