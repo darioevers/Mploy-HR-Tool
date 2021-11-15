@@ -16,20 +16,20 @@ export default function TemporaryDrawer() {
     marginTop: "50px",
   };
   //close / open newAdmin form
-  const [showNewAdmin, setShowNewAdmin] = React.useState(false);
+  const [showNewAdmin, setShowNewAdmin] = React.useState(true);
 
   const handleNewAdmin = () => {
     setShowNewAdmin(!showNewAdmin);
   };
 
   //close / open newAnnouncement form
-  const [showNewAnnouncement, setShowNewAnnouncement] = React.useState(false);
+  const [showNewAnnouncement, setShowNewAnnouncement] = React.useState(true);
   const handleNewAnnouncement = () => {
     setShowNewAnnouncement(!showNewAnnouncement);
   };
 
-  //close / open newAnnouncement form
-  const [showLeaves, setShowLeaves] = React.useState(false);
+  //close / open leave application
+  const [showLeaves, setShowLeaves] = React.useState(true);
   const handleShowLeaves = () => {
     setShowLeaves(!showLeaves);
   };
@@ -77,10 +77,10 @@ export default function TemporaryDrawer() {
                   : "right_drawer_newadmin_open"
               }
             >
-              <div className="newadmin_header">
+              <div className="newadmin_header" onClick={handleNewAdmin}>
                 <h4>ADD NEW ADMIN</h4>
                 <i>
-                  <KeyboardArrowDownIcon onClick={handleNewAdmin} />
+                  <KeyboardArrowDownIcon />
                 </i>
               </div>
 
@@ -96,10 +96,13 @@ export default function TemporaryDrawer() {
                   : "right_drawer_announcements_open"
               }
             >
-              <div className="right_drawer_announcements_header">
+              <div
+                className="right_drawer_announcements_header"
+                onClick={handleNewAnnouncement}
+              >
                 <h4>POST AN ANNOUNCEMENT</h4>
                 <i>
-                  <KeyboardArrowDownIcon onClick={handleNewAnnouncement} />
+                  <KeyboardArrowDownIcon />
                 </i>
               </div>
 
@@ -113,10 +116,13 @@ export default function TemporaryDrawer() {
                 showLeaves ? "right_drawer_leaves" : "right_drawer_leaves_open"
               }
             >
-              <div className="right_drawer_leaves_header">
+              <div
+                className="right_drawer_leaves_header"
+                onClick={handleShowLeaves}
+              >
                 <h4>LEAVE APPLICATIONS</h4>
                 <i>
-                  <KeyboardArrowDownIcon onClick={handleShowLeaves} />
+                  <KeyboardArrowDownIcon />
                 </i>
               </div>
 

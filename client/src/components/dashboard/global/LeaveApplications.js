@@ -73,18 +73,38 @@ function LeaveApplications() {
     }
   };
 
+  //formatting type of leave
+  const capitalizeString = (str) => str.toUpperCase();
+
   return (
-    <div className="leaveapplications_mainbox">
+    <>
       {getLeaves &&
         getLeaves.map((item) => (
-          <div>
-            <h1>{item.name}</h1>
-            <h5> Type: {item.type}</h5>
-            <h5> Date From: {item.dateFrom}</h5>
-            <h5> Date To: {item.dateTo}</h5>
+          <div className="leaveapplications_mainbox">
+            <div className="leavebox_left">
+              <h1>{item.name}</h1>
+              <h5>
+                {" "}
+                Application Type:{" "}
+                <span className="data">{capitalizeString(item.type)}</span>
+              </h5>
+              <div className="leave_date">
+                <p>
+                  From: <span className="data">{showDate(item.dateFrom)}</span>
+                </p>
+                <p>
+                  To: <span className="data">{showDate(item.dateTo)}</span>
+                </p>
+              </div>
+            </div>
+
+            <div className="leavebox_right">
+              <button>APPROVE</button>
+              <button>REJECT</button>
+            </div>
           </div>
         ))}
-    </div>
+    </>
   );
 }
 export default LeaveApplications;

@@ -21,6 +21,10 @@
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid $secondary;
+    &:hover {
+      color: $highlight;
+      cursor: pointer;
+    }
     i {
       transform: rotate(-90deg);
       transition: transform 0.3s;
@@ -55,7 +59,6 @@
   height: 20px;
   transition: margin-bottom 0.3s;
   .right_drawer_announcements_header {
-    width: 300px;
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid $secondary;
@@ -69,7 +72,7 @@
     font-size: 12px;
   }
   .right_drawer_announcements_content {
-    width: 300px;
+    width: 400px;
     visibility: hidden;
   }
 }
@@ -80,7 +83,6 @@
   transition: margin-bottom 0.3s;
 
   .right_drawer_announcements_header {
-    width: 300px;
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid $secondary;
@@ -91,7 +93,7 @@
     }
   }
   .right_drawer_announcements_content {
-    width: 300px;
+    width: 400px;
 
     p {
       font-size: 12px;
@@ -103,7 +105,6 @@
 .right_drawer_leaves {
   margin: 20px;
   .right_drawer_leaves_header {
-    width: 300px;
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
@@ -126,7 +127,6 @@
   margin: 20px;
 
   .right_drawer_leaves_header {
-    width: 300px;
     display: flex;
     justify-content: space-between;
     margin-bottom: 0px;
