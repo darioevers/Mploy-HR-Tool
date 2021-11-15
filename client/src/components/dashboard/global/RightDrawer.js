@@ -3,6 +3,7 @@ import Drawer from "@mui/material/Drawer";
 import SettingsIcon from "@material-ui/icons/Settings";
 import NewAdmin from "./NewAdmin";
 import Announcements from "./Announcements";
+import Leaves from "./Leaves";
 import { AnnouncementSharp } from "@material-ui/icons";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
@@ -120,7 +121,7 @@ export default function TemporaryDrawer() {
               </div>
 
               <div className="right_drawer_leaves_content">
-                <p> LOREM IPSUM</p>
+                <Leaves />
               </div>
             </div>
           </Drawer>
