@@ -1,8 +1,6 @@
 .widget_applications_mainbox {
   @include widget_wrapper;
   grid-area: widget_applications;
-  width: 100%;
-  height: 100%;
   overflow: unset;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

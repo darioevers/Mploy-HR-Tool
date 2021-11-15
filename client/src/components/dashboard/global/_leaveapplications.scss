@@ -1,0 +1,55 @@
+.leaveapplications_mainbox {
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+  height: 80px;
+  background-color: $dark-bg;
+  border-radius: 8px;
+  color: $primary;
+  line-height: 20px;
+  margin-top: 10px;
+}
+
+.leavebox_left {
+  padding: 10px;
+  h1 {
+    font-size: 18px;
+  }
+  h5 {
+    font-size: 10px;
+    font-weight: 400;
+    color: $secondary;
+  }
+  .data {
+    color: $primary;
+  }
+  .leave_date {
+    display: flex;
+    p {
+      margin-right: 20px;
+      font-size: 10px;
+      color: $secondary;
+    }
+  }
+}
+
+.leavebox_right {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  button {
+    height: 50%;
+    width: 100px;
+    border: none;
+    &:nth-child(1) {
+      border-top-right-radius: 8px;
+      background-color: $highlight;
+      color: $primary;
+    }
+    &:nth-child(2) {
+      border-bottom-right-radius: 8px;
+      background-color: $secondary;
+      color: $primary;
+    }
+  }
+}
