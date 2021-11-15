@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "../../../img/img_home_about.png";
+import Typography from '@mui/material/Typography';
 
 const Homeabout = () => {
   return (
@@ -14,19 +15,20 @@ const Homeabout = () => {
       </div>
       <div className="homeabout_content">
         <div className="homeabout_content_left">
-          <h2>What do we do? </h2>
-
-          <h3>
-            Mploy is an HR Management platform designed to make productivity an
-            uncomplicated experience.
-          </h3>
-          <h4>
-            From employee management to document tracking, HR task management
+          <Typography variant="h2" style={{ fontWeight: 700 }}>
+            <span className="coloured_heading">What do we do?</span>
+          </Typography>
+          <Typography variant="h5">
+            <span>Mploy is an HR Management platform designed to make productivity an
+            uncomplicated experience.</span>
+          </Typography>
+          <Typography style={{ marginTop: "1rem" }}>
+            <span>From employee management to document tracking, HR task management
             and payroll - we offer the features that companies need to simplify
             their processes and save time. Mploy is user friendly and designed
             for the modern age. Digitising your HR management doesn’t need to be
-            hard and Mploy is here to streamline that process.
-          </h4>
+            hard and Mploy is here to streamline that process.</span>
+          </Typography>
         </div>
         <div className="homeabout_content_right">
           <img src={Image} />
