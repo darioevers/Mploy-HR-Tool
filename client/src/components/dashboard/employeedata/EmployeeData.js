@@ -138,11 +138,18 @@ function EmployeeData({ history }) {
               </TableRow>
               { checked && employee._id ===id && 
                <div className="xx" style={{"backgroundColor": "red"}} >
+
                <TableCell>{employee.bio.nationality}</TableCell>
               <TableCell>{employee.bio.gender}</TableCell>
               <TableCell>{employee.bio.phoneNumber}</TableCell>
               <TableCell>{employee.bio.maritalStatus}</TableCell>
               <TableCell>{employee.bio.status}</TableCell>   
+              <TableCell> <h4> Address</h4> {`${employee.addressOne.streetOne} ${employee.addressOne.cityOne} ${employee.addressOne.postalCodeOne} ${employee.addressOne.countryOne}`}</TableCell>   
+
+              <TableCell>{employee.contractInfo.department}</TableCell> 
+              <TableCell>{employee.contractInfo.team}</TableCell>  
+              <TableCell>{employee.contractInfo.workLocation}</TableCell>
+              
               <TableCell>
                   <Button
                     color="primary"
