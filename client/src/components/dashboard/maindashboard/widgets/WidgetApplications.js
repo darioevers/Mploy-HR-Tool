@@ -54,9 +54,6 @@ function WidgetApplications() {
       .catch((err) => console.log(err));
   };
 
-  //reducer
-  // const reduced = leaves.reduce((acc, item) => acc.pending + item.pending);
-
   return (
     <div className="widget_applications_mainbox">
       <div className="widget_applications_header">

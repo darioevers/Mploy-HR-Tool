@@ -36,7 +36,7 @@ function WidgetTasks() {
   };
 
   // fetch tasks data
-  const [getTasks, setGetTasks] = useState();
+  const [tasks, setTasks] = useState();
   useEffect(() => {
     getAllTasks();
   }, []);
@@ -55,7 +55,7 @@ function WidgetTasks() {
 
       .then((data) => {
         console.log(data.data);
-        setGetTasks(data.data);
+        setTasks(data.data);
         setNewArr(data.data);
       })
       .catch((err) => console.log(err));
@@ -70,8 +70,8 @@ function WidgetTasks() {
         },
       })
       .then((data) => {
-        console.log(data);
         data.data.success && getAllTasks();
+        alert("task deleted");
       })
       .catch((err) => console.log(err));
   };
@@ -184,7 +184,7 @@ function WidgetTasks() {
                   return (
                     <h5
                       onClick={() => {
-                        let filteredArr = getTasks.filter((item) =>
+                        let filteredArr = tasks.filter((item) =>
                           cat === "All" ? item : item.taskTag === cat
                         );
                         setNewArr(filteredArr);
