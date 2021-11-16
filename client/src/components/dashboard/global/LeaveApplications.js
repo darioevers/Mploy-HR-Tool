@@ -26,7 +26,7 @@ function LeaveApplications() {
 
       .then((data) => {
         console.log(data.data);
-        setLeaves(data.data);
+        setLeaves(data.data.filter((item) => item.pending === true));
       })
       .catch((err) => console.log(err));
   };
@@ -48,6 +48,8 @@ function LeaveApplications() {
       .catch((err) => console.log(err));
   };
 
+  //remove leave after approval
+
   //approve leave application
   const approveLeaveApplication = (id) => {
     const data = { id, approved: true };
@@ -58,7 +60,6 @@ function LeaveApplications() {
         },
       })
       .then((data) => {
-        console.log(data);
         data.data.success && getAllLeaves();
         window.location.reload();
       })
