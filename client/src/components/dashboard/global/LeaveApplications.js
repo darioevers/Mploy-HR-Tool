@@ -73,7 +73,7 @@ function LeaveApplications() {
     }
   };
 
-  // //formatting type of leave
+  //formatting type of leave
   const formatType = (str) => {
     if (str === "sick-leave") {
       return "SL";
@@ -84,13 +84,24 @@ function LeaveApplications() {
     }
   };
 
+  //format ring
+
   return (
     <>
       {getLeaves &&
         getLeaves.map((item) => (
           <div className="leaveapplications_mainbox">
             <div className="leave_classification">
-              <div className="leave_classification_ring">
+              <div
+                className="leave_classification_ring"
+                style={
+                  item.type === "sick-leave"
+                    ? { border: "1px solid #de7456" }
+                    : item.type === "holiday"
+                    ? { border: "1px solid #a0a0a0" }
+                    : { border: "1px solid #ffffff" }
+                }
+              >
                 <div>{formatType(item.type)}</div>
               </div>
             </div>
@@ -98,18 +109,23 @@ function LeaveApplications() {
             <div className="leave_details">
               <div>
                 <h1>{item.name}</h1>
-                <p>{item.department}</p>
+                <h1>( {item.department} )</h1>
               </div>
 
               <div>
-                <p>{showDate(item.dateFrom)}</p>
-                <p>{showDate(item.dateTo)}</p>
+                <h5>
+                  From <span>{showDate(item.dateFrom)}</span>
+                </h5>
+                <h5>
+                  To <span>{showDate(item.dateTo)}</span>
+                </h5>
               </div>
             </div>
 
             <div className="leave_buttons">
-              <p>APPROVE</p>
-              <p>REJECT</p>
+              <h4>APPROVE</h4>
+
+              <h5>REJECT</h5>
             </div>
           </div>
         ))}
