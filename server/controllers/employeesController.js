@@ -145,8 +145,8 @@ employeeContoller.searchName = async (req, res) => {
 employeeContoller.updateEmployee = async (req, res) => {
   try {
     console.log(req.body);
-   const employee= await EmployeeData.findOneAndUpdate(
-      {"bio.email":req.body.editEmp.bio.email},
+    const employee = await EmployeeData.findOneAndUpdate(
+      { "bio.email": req.body.editEmp.bio.email },
       req.body.editEmp,
       {
         new: true,
@@ -154,7 +154,7 @@ employeeContoller.updateEmployee = async (req, res) => {
     );
     res.status(200).json({ status: "success", data: employee });
   } catch (error) {
-    res.status(404).json({ status: "fail", message: error.message});
+    res.status(404).json({ status: "fail", message: error.message });
   }
 };
 
@@ -176,9 +176,9 @@ employeeContoller.deleteOneEmployee = async (req, res) => {
 employeeContoller.deleteOrUpdateStatus = async (req, res) => {
   try {
     const employee = await EmployeeData.findOneAndUpdate(
-      {"bio.email":req.body.email},
-      
-     {$set:{ "bio.status": "inactive" } }
+      { "bio.email": req.body.email },
+
+      { $set: { "bio.status": "inactive" } }
     );
     res.status(200).send({ message: "Successfully updated!" });
   } catch (error) {

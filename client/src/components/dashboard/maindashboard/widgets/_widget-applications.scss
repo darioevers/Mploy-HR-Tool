@@ -1,18 +1,25 @@
 .widget_applications_mainbox {
   @include widget_wrapper;
   grid-area: widget_applications;
-  overflow: unset;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 0.5fr 1.5fr;
-  gap: 0px 0px;
-  grid-template-areas:
-    "widget_applications_header widget_applications_header widget_applications_header"
-    "widget_applications_pending widget_applications_approved widget_applications_new";
+  display: flex;
+  flex-direction: column;
+  //   display: grid;
+  //   grid-template-columns: 20% 20% 20% 20%;
+  //   grid-template-rows: 0.5fr 1.5fr;
+  //   gap: 0px 0px;
+  //   grid-template-areas:
+  //     "head head head"
+  //     "rejected pending approved btn";
+  // }
 }
 
+.widget_applications_body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
 .widget_applications_header {
-  grid-area: widget_applications_header;
   h1 {
     font-size: 16px;
     margin: 20px 0px 10px 20px;
@@ -25,18 +32,29 @@
   }
 }
 .widget_applications_pending {
-  grid-area: widget_applications_pending;
+  @include flex-center;
+  flex-direction: column;
   font-size: 20px;
   margin-left: 20px;
   margin-top: 10px;
   h4 {
     font-size: 10px;
-    color: $secondary;
-    font-weight: normal;
   }
 }
 .widget_applications_approved {
-  grid-area: widget_applications_approved;
+  @include flex-center;
+  flex-direction: column;
+  font-size: 20px;
+  margin-left: 20px;
+  margin-top: 10px;
+  h4 {
+    font-size: 10px;
+  }
+}
+
+.widget_applications_rejected {
+  @include flex-center;
+  flex-direction: column;
   font-size: 20px;
   margin-left: 20px;
   margin-top: 10px;
@@ -45,17 +63,17 @@
   }
 }
 .widget_applications_new {
-  grid-area: widget_applications_new;
   @include flex-center;
   button {
     background-color: $highlight;
     color: $primary;
     border: none;
     border-radius: 8px;
-    width: 80%;
+    width: 75%;
     height: 50%;
-    margin-top: -20px;
-    margin-right: 28px;
+    padding: 8px;
+    margin-top: 10px;
+    margin-right: 15px;
   }
 }
 

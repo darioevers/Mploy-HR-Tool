@@ -3,7 +3,7 @@ import axios from "axios";
 
 function WidgetApplications() {
   //fetch leaves data
-  const [getLeaves, setGetLeaves] = useState();
+  const [leaves, setLeaves] = useState();
   useEffect(() => {
     getAllLeaves();
   }, []);
@@ -21,7 +21,7 @@ function WidgetApplications() {
       )
 
       .then((data) => {
-        setGetLeaves(data.data);
+        setLeaves(data.data);
       })
       .catch((err) => console.log(err));
   };
@@ -55,7 +55,7 @@ function WidgetApplications() {
   };
 
   //reducer
-  // const reduced = getLeaves.reduce((acc, item) => acc.pending + item.pending);
+  // const reduced = leaves.reduce((acc, item) => acc.pending + item.pending);
 
   return (
     <div className="widget_applications_mainbox">
@@ -63,22 +63,28 @@ function WidgetApplications() {
         <h1> APPLICATIONS</h1>
         <div className="horizontal_line"></div>
       </div>
-      <div className="widget_applications_pending">
-        <h1>
-          {getLeaves &&
-            getLeaves.filter((item) => item.pending === true).length}
-        </h1>
-        <h4>Pending</h4>
-      </div>
-      <div className="widget_applications_approved">
-        <h1>
-          {getLeaves &&
-            getLeaves.filter((item) => item.pending === false).length}
-        </h1>
-        <h4>Approved</h4>
-      </div>
-      <div className="widget_applications_new">
-        <button onClick={handleShow}>NEW APPLICATION</button>
+      <div className="widget_applications_body">
+        {/* <div className="widget_applications_rejected">
+          <h1>
+            {leaves && leaves.filter((item) => item.pending === true).length}
+          </h1>
+          <h4>Rejected</h4>
+        </div> */}
+        <div className="widget_applications_pending">
+          <h1>
+            {leaves && leaves.filter((item) => item.pending === true).length}
+          </h1>
+          <h4>Pending</h4>
+        </div>
+        <div className="widget_applications_approved">
+          <h1>
+            {leaves && leaves.filter((item) => item.pending === false).length}
+          </h1>
+          <h4>Approved</h4>
+        </div>
+        <div className="widget_applications_new">
+          <button onClick={handleShow}>NEW APPLICATION</button>
+        </div>
       </div>
 
       <div
@@ -160,8 +166,6 @@ function WidgetApplications() {
               }
             />
           </div>
-          {/* 
-          <div className="pending_counter">{reduced}</div> */}
 
           <div className="form_buttons">
             <button
