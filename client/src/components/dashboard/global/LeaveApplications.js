@@ -7,7 +7,7 @@ import axios from "axios";
 
 function LeaveApplications() {
   // fetch leave application data
-  const [getLeaves, setGetLeaves] = useState();
+  const [leaves, setLeaves] = useState();
   useEffect(() => {
     getAllLeaves();
   }, []);
@@ -26,15 +26,16 @@ function LeaveApplications() {
 
       .then((data) => {
         console.log(data.data);
-        setGetLeaves(data.data);
+        setLeaves(data.data);
       })
       .catch((err) => console.log(err));
   };
 
   //reject leave application
   const rejectLeaveApplication = (id) => {
+    const data = { id, approved: false };
     axios
-      .delete(`http://localhost:5000/leaves/${id}`, {
+      .put(`http://localhost:5000/leaves/`, data, {
         header: {
           "Content-Type": "application/json",
         },
@@ -42,6 +43,24 @@ function LeaveApplications() {
       .then((data) => {
         console.log(data);
         data.data.success && getAllLeaves();
+        window.location.reload();
+      })
+      .catch((err) => console.log(err));
+  };
+
+  //approve leave application
+  const approveLeaveApplication = (id) => {
+    const data = { id, approved: true };
+    axios
+      .put(`http://localhost:5000/leaves/`, data, {
+        header: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((data) => {
+        console.log(data);
+        data.data.success && getAllLeaves();
+        window.location.reload();
       })
       .catch((err) => console.log(err));
   };
@@ -84,12 +103,10 @@ function LeaveApplications() {
     }
   };
 
-  //format ring
-
   return (
     <>
-      {getLeaves &&
-        getLeaves.map((item) => (
+      {leaves &&
+        leaves.map((item) => (
           <div className="leaveapplications_mainbox">
             <div className="leave_classification">
               <div
@@ -123,9 +140,8 @@ function LeaveApplications() {
             </div>
 
             <div className="leave_buttons">
-              <h4>APPROVE</h4>
-
-              <h5>REJECT</h5>
+              <h4 onClick={() => approveLeaveApplication(item._id)}>APPROVE</h4>
+              <h5 onClick={() => rejectLeaveApplication(item._id)}>REJECT</h5>
             </div>
           </div>
         ))}

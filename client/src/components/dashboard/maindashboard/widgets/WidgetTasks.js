@@ -12,6 +12,8 @@ function WidgetTasks() {
     setShowForm(!showForm);
   };
 
+  const [newArr, setNewArr] = useState();
+
   //add new task
   const [task, setTask] = useState({});
   const addNewTask = () => {
@@ -54,6 +56,7 @@ function WidgetTasks() {
       .then((data) => {
         console.log(data.data);
         setGetTasks(data.data);
+        setNewArr(data.data);
       })
       .catch((err) => console.log(err));
   };
@@ -184,7 +187,7 @@ function WidgetTasks() {
                         let filteredArr = getTasks.filter((item) =>
                           cat === "All" ? item : item.taskTag === cat
                         );
-                        setGetTasks(filteredArr);
+                        setNewArr(filteredArr);
                       }}
                       className="filter"
                     >
@@ -201,8 +204,8 @@ function WidgetTasks() {
           </div>
 
           <div className="tasks">
-            {getTasks &&
-              getTasks.map((task) => (
+            {newArr &&
+              newArr.map((task) => (
                 <div className="task">
                   <div className="task_main">
                     <h5>

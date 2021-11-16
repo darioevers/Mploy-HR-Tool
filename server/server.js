@@ -40,4 +40,10 @@ app.use("/dashboard", require("./routes/dashboard"));
 
 app.use("/employee", require("./routes/employees"));
 
+app.use("/announcements", require("./routes/announcements"));
+
+app.use("/tasks", require("./routes/tasks"));
+
+app.use("/leaves", require("./routes/leaves"));
+
 module.exports = app;

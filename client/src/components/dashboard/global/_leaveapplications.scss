@@ -60,10 +60,22 @@
     font-size: 10px;
     font-weight: 500;
     color: $secondary;
+    &:hover {
+      transform: translateY(-1px);
+      transition: transform 0.5s;
+      color: $primary;
+      cursor: pointer;
+    }
   }
   h4 {
     font-size: 10px;
     font-weight: 500;
     color: $highlight;
+    &:hover {
+      transform: translateY(-1px);
+      transition: transform 0.2s;
+      color: $primary;
+      cursor: pointer;
+    }
   }
 }
