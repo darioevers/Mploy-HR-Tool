@@ -2,54 +2,68 @@
   display: flex;
   justify-content: space-between;
   width: 400px;
-  height: 80px;
+  height: 50px;
   background-color: $dark-bg;
-  border-radius: 8px;
+  border-radius: 50px;
   color: $primary;
   line-height: 20px;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
-.leavebox_left {
-  padding: 10px;
+.leave_classification {
+  @include flex-center;
+  margin-left: 10px;
+  .leave_classification_ring {
+    width: 35px;
+    height: 35px;
+    border: 1px solid white;
+    border-radius: 50px;
+    position: relative;
+    div {
+      position: absolute;
+      top: 25%;
+      left: 26%;
+      font-size: 13px;
+    }
+  }
+}
+
+.leave_details {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0px;
+  width: 100%;
+  margin-left: 20px;
+
+  div {
+    display: flex;
+  }
   h1 {
-    font-size: 18px;
+    font-size: 14px;
+    margin-right: 8px;
   }
   h5 {
     font-size: 10px;
-    font-weight: 400;
+    margin-right: 8px;
     color: $secondary;
+    font-weight: 100;
   }
-  .data {
+  span {
     color: $primary;
-  }
-  .leave_date {
-    display: flex;
-    p {
-      margin-right: 20px;
-      font-size: 10px;
-      color: $secondary;
-    }
   }
 }
 
-.leavebox_right {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  button {
-    height: 50%;
-    width: 100px;
-    border: none;
-    &:nth-child(1) {
-      border-top-right-radius: 8px;
-      background-color: $highlight;
-      color: $primary;
-    }
-    &:nth-child(2) {
-      border-bottom-right-radius: 8px;
-      background-color: $secondary;
-      color: $primary;
-    }
+.leave_buttons {
+  margin-top: 5px;
+  margin-right: 20px;
+  h5 {
+    font-size: 10px;
+    font-weight: 500;
+    color: $secondary;
+  }
+  h4 {
+    font-size: 10px;
+    font-weight: 500;
+    color: $highlight;
   }
 }

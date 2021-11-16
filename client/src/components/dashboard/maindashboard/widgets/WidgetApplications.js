@@ -1,17 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function WidgetApplications() {
+  //fetch leaves data
+  const [getLeaves, setGetLeaves] = useState();
+  useEffect(() => {
+    getAllLeaves();
+  }, []);
+
+  const getAllLeaves = () => {
+    axios
+      .get(
+        "http://localhost:5000/leaves/getLeaves",
+
+        {
+          header: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+
+      .then((data) => {
+        setGetLeaves(data.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  //show app
   const [showNewApp, setShowNewApp] = useState(false);
 
-  const handleClick = () => {
+  const handleShow = () => {
     setShowNewApp(!showNewApp);
   };
 
   //add new leave application
-  const [leave, setLeave] = useState({});
+  const [newLeave, setNewLeave] = useState({});
   const addLeave = () => {
-    const data = leave;
+    const data = newLeave;
     axios
       .post(
         "http://localhost:5000/leaves/addLeave",
@@ -29,6 +54,9 @@ function WidgetApplications() {
       .catch((err) => console.log(err));
   };
 
+  //reducer
+  // const reduced = getLeaves.reduce((acc, item) => acc.pending + item.pending);
+
   return (
     <div className="widget_applications_mainbox">
       <div className="widget_applications_header">
@@ -36,15 +64,21 @@ function WidgetApplications() {
         <div className="horizontal_line"></div>
       </div>
       <div className="widget_applications_pending">
-        <h1>0</h1>
+        <h1>
+          {getLeaves &&
+            getLeaves.filter((item) => item.pending === true).length}
+        </h1>
         <h4>Pending</h4>
       </div>
       <div className="widget_applications_approved">
-        <h1>5</h1>
+        <h1>
+          {getLeaves &&
+            getLeaves.filter((item) => item.pending === false).length}
+        </h1>
         <h4>Approved</h4>
       </div>
       <div className="widget_applications_new">
-        <button onClick={handleClick}>NEW APPLICATION</button>
+        <button onClick={handleShow}>NEW APPLICATION</button>
       </div>
 
       <div
@@ -63,9 +97,24 @@ function WidgetApplications() {
               placeholder="Type name of employee"
               className="application_search"
               onChange={(e) =>
-                setLeave({
-                  ...leave,
+                setNewLeave({
+                  ...newLeave,
                   name: e.target.value,
+                })
+              }
+            />
+          </div>
+
+          <div className="form_search">
+            <h3>Department</h3>
+            <input
+              type="search"
+              placeholder="Enter Department"
+              className="application_search"
+              onChange={(e) =>
+                setNewLeave({
+                  ...newLeave,
+                  department: e.target.value,
                 })
               }
             />
@@ -75,8 +124,8 @@ function WidgetApplications() {
             <h3>Application Type</h3>
             <select
               onChange={(e) =>
-                setLeave({
-                  ...leave,
+                setNewLeave({
+                  ...newLeave,
                   type: e.target.value,
                 })
               }
@@ -93,8 +142,8 @@ function WidgetApplications() {
             <input
               type="date"
               onChange={(e) =>
-                setLeave({
-                  ...leave,
+                setNewLeave({
+                  ...newLeave,
                   dateFrom: e.target.value,
                 })
               }
@@ -104,13 +153,15 @@ function WidgetApplications() {
             <input
               type="date"
               onChange={(e) =>
-                setLeave({
-                  ...leave,
+                setNewLeave({
+                  ...newLeave,
                   dateTo: e.target.value,
                 })
               }
             />
           </div>
+          {/* 
+          <div className="pending_counter">{reduced}</div> */}
 
           <div className="form_buttons">
             <button
@@ -118,11 +169,14 @@ function WidgetApplications() {
               class="btn_submit"
               onClick={() => {
                 addLeave();
-                setLeave("");
+                setNewLeave("");
                 window.location.reload();
               }}
             >
               Submit
+            </button>
+            <button type="button" class="btn_cancel" onClick={handleShow}>
+              X
             </button>
           </div>
         </form>
