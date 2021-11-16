@@ -74,33 +74,58 @@ function LeaveApplications() {
   };
 
   //formatting type of leave
-  const capitalizeString = (str) => str.toUpperCase();
+  const formatType = (str) => {
+    if (str === "sick-leave") {
+      return "SL";
+    } else if (str === "holiday") {
+      return "HL";
+    } else {
+      return "HO";
+    }
+  };
+
+  //format ring
 
   return (
     <>
       {getLeaves &&
         getLeaves.map((item) => (
           <div className="leaveapplications_mainbox">
-            <div className="leavebox_left">
-              <h1>{item.name}</h1>
-              <h5>
-                {" "}
-                Application Type:{" "}
-                <span className="data">{capitalizeString(item.type)}</span>
-              </h5>
-              <div className="leave_date">
-                <p>
-                  From: <span className="data">{showDate(item.dateFrom)}</span>
-                </p>
-                <p>
-                  To: <span className="data">{showDate(item.dateTo)}</span>
-                </p>
+            <div className="leave_classification">
+              <div
+                className="leave_classification_ring"
+                style={
+                  item.type === "sick-leave"
+                    ? { border: "1px solid #de7456" }
+                    : item.type === "holiday"
+                    ? { border: "1px solid #a0a0a0" }
+                    : { border: "1px solid #ffffff" }
+                }
+              >
+                <div>{formatType(item.type)}</div>
               </div>
             </div>
 
-            <div className="leavebox_right">
-              <button>APPROVE</button>
-              <button>REJECT</button>
+            <div className="leave_details">
+              <div>
+                <h1>{item.name}</h1>
+                <h1>( {item.department} )</h1>
+              </div>
+
+              <div>
+                <h5>
+                  From <span>{showDate(item.dateFrom)}</span>
+                </h5>
+                <h5>
+                  To <span>{showDate(item.dateTo)}</span>
+                </h5>
+              </div>
+            </div>
+
+            <div className="leave_buttons">
+              <h4>APPROVE</h4>
+
+              <h5>REJECT</h5>
             </div>
           </div>
         ))}
