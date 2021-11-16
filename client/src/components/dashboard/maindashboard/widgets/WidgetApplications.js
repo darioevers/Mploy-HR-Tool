@@ -2,12 +2,31 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function WidgetApplications() {
-  //pending counter
-  const [pendingCount, setPendingCount] = useState(0);
+  //fetch leaves data
+  const [getLeaves, setGetLeaves] = useState();
+  useEffect(() => {
+    getAllLeaves();
+  }, []);
 
-  const updatePending = () => {
-    setPendingCount((prevPendingCount) => pendingCount + 1);
+  const getAllLeaves = () => {
+    axios
+      .get(
+        "http://localhost:5000/leaves/getLeaves",
+
+        {
+          header: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+
+      .then((data) => {
+        setGetLeaves(data.data);
+      })
+      .catch((err) => console.log(err));
   };
+
+  //show app
   const [showNewApp, setShowNewApp] = useState(false);
 
   const handleShow = () => {
@@ -35,6 +54,9 @@ function WidgetApplications() {
       .catch((err) => console.log(err));
   };
 
+  //reducer
+  // const reduced = getLeaves.reduce((acc, item) => acc.pending + item.pending);
+
   return (
     <div className="widget_applications_mainbox">
       <div className="widget_applications_header">
@@ -42,11 +64,17 @@ function WidgetApplications() {
         <div className="horizontal_line"></div>
       </div>
       <div className="widget_applications_pending">
-        <h1>{pendingCount}</h1>
+        <h1>
+          {getLeaves &&
+            getLeaves.filter((item) => item.pending === true).length}
+        </h1>
         <h4>Pending</h4>
       </div>
       <div className="widget_applications_approved">
-        <h1>5</h1>
+        <h1>
+          {getLeaves &&
+            getLeaves.filter((item) => item.pending === false).length}
+        </h1>
         <h4>Approved</h4>
       </div>
       <div className="widget_applications_new">
@@ -132,8 +160,8 @@ function WidgetApplications() {
               }
             />
           </div>
-
-          <div className="pending_counter"></div>
+          {/* 
+          <div className="pending_counter">{reduced}</div> */}
 
           <div className="form_buttons">
             <button
