@@ -73,34 +73,43 @@ function LeaveApplications() {
     }
   };
 
-  //formatting type of leave
-  const capitalizeString = (str) => str.toUpperCase();
+  // //formatting type of leave
+  const formatType = (str) => {
+    if (str === "sick-leave") {
+      return "SL";
+    } else if (str === "holiday") {
+      return "HL";
+    } else {
+      return "HO";
+    }
+  };
 
   return (
     <>
       {getLeaves &&
         getLeaves.map((item) => (
           <div className="leaveapplications_mainbox">
-            <div className="leavebox_left">
-              <h1>{item.name}</h1>
-              <h5>
-                {" "}
-                Application Type:{" "}
-                <span className="data">{capitalizeString(item.type)}</span>
-              </h5>
-              <div className="leave_date">
-                <p>
-                  From: <span className="data">{showDate(item.dateFrom)}</span>
-                </p>
-                <p>
-                  To: <span className="data">{showDate(item.dateTo)}</span>
-                </p>
+            <div className="leave_classification">
+              <div className="leave_classification_ring">
+                <div>{formatType(item.type)}</div>
               </div>
             </div>
 
-            <div className="leavebox_right">
-              <button>APPROVE</button>
-              <button>REJECT</button>
+            <div className="leave_details">
+              <div>
+                <h1>{item.name}</h1>
+                <p>{item.department}</p>
+              </div>
+
+              <div>
+                <p>{showDate(item.dateFrom)}</p>
+                <p>{showDate(item.dateTo)}</p>
+              </div>
+            </div>
+
+            <div className="leave_buttons">
+              <p>APPROVE</p>
+              <p>REJECT</p>
             </div>
           </div>
         ))}

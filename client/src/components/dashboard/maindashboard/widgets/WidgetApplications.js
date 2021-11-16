@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function WidgetApplications() {
+  //pending counter
+  const [pendingCount, setPendingCount] = useState(0);
+
+  const updatePending = () => {
+    setPendingCount((prevPendingCount) => pendingCount + 1);
+  };
   const [showNewApp, setShowNewApp] = useState(false);
 
-  const handleClick = () => {
+  const handleShow = () => {
     setShowNewApp(!showNewApp);
   };
 
@@ -36,7 +42,7 @@ function WidgetApplications() {
         <div className="horizontal_line"></div>
       </div>
       <div className="widget_applications_pending">
-        <h1>0</h1>
+        <h1>{pendingCount}</h1>
         <h4>Pending</h4>
       </div>
       <div className="widget_applications_approved">
@@ -44,7 +50,7 @@ function WidgetApplications() {
         <h4>Approved</h4>
       </div>
       <div className="widget_applications_new">
-        <button onClick={handleClick}>NEW APPLICATION</button>
+        <button onClick={handleShow}>NEW APPLICATION</button>
       </div>
 
       <div
@@ -66,6 +72,21 @@ function WidgetApplications() {
                 setNewLeave({
                   ...newLeave,
                   name: e.target.value,
+                })
+              }
+            />
+          </div>
+
+          <div className="form_search">
+            <h3>Department</h3>
+            <input
+              type="search"
+              placeholder="Enter Department"
+              className="application_search"
+              onChange={(e) =>
+                setNewLeave({
+                  ...newLeave,
+                  department: e.target.value,
                 })
               }
             />
@@ -112,6 +133,8 @@ function WidgetApplications() {
             />
           </div>
 
+          <div className="pending_counter"></div>
+
           <div className="form_buttons">
             <button
               type="submit"
@@ -124,7 +147,7 @@ function WidgetApplications() {
             >
               Submit
             </button>
-            <button type="button" class="btn_cancel" onClick={handleClick}>
+            <button type="button" class="btn_cancel" onClick={handleShow}>
               X
             </button>
           </div>
