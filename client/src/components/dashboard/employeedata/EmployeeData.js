@@ -24,7 +24,7 @@ function EmployeeData({ history }) {
   const [employees, setEmployees] = useState();
   const [search, setSearch] = useState("");
   const [checked,setChecked] = useState(false);
-  
+  const [id, setId] = useState();
 
   useEffect(() => {
     getAllEmployee();
@@ -105,37 +105,45 @@ function EmployeeData({ history }) {
       <Table>
         <TableHead>
           <TableRow>
+          <TableCell>Photo</TableCell>
+
             <TableCell>First Name</TableCell>
             <TableCell>Last Name</TableCell>
             <TableCell>Email</TableCell>
             <TableCell>DOB</TableCell>
-            <TableCell>Nationality</TableCell>
-            <TableCell>Gender</TableCell>
-            <TableCell>Phone</TableCell>
-            <TableCell>Marital Status</TableCell>
-            <TableCell>Status</TableCell>
+           
           </TableRow>
         </TableHead>
+
         <TableBody>
-          {employees  &&
+          {employees  && 
             employees.map((employee) => (
-              <TableRow key={employee._id}>
+              <>
+              <TableRow key={employee._id} onClick={()=>{setChecked(true); 
+            setId(employee._id)  
+            }
+
+            }>
+                <TableCell><img src={`http://localhost:5000/${employee.bio.photo}`} alt="profile photo" /> </TableCell>
+
                 <TableCell>{employee.bio.firstName}</TableCell>
                 <TableCell>{employee.bio.lastName}</TableCell>
                 <TableCell>{employee.bio.email}</TableCell>
                 <TableCell>{employee.bio.dateOfBirth}</TableCell>
-               
-              
-                 <TableCell>{employee.bio.nationality}</TableCell>
-                <TableCell>{employee.bio.gender}</TableCell>
-                <TableCell>{employee.bio.phoneNumber}</TableCell>
-                <TableCell>{employee.bio.maritalStatus}</TableCell>
-                <TableCell>{employee.bio.status}</TableCell>   
 
-         
+                
                 
 
-                <TableCell>
+         
+              </TableRow>
+              { checked && employee._id ===id && 
+               <div className="xx" style={{"backgroundColor": "red"}} >
+               <TableCell>{employee.bio.nationality}</TableCell>
+              <TableCell>{employee.bio.gender}</TableCell>
+              <TableCell>{employee.bio.phoneNumber}</TableCell>
+              <TableCell>{employee.bio.maritalStatus}</TableCell>
+              <TableCell>{employee.bio.status}</TableCell>   
+              <TableCell>
                   <Button
                     color="primary"
                     variant="contained"
@@ -159,7 +167,9 @@ function EmployeeData({ history }) {
                     Delete
                   </Button>
                 </TableCell>
-              </TableRow>
+              </div>
+}
+           </>
             ))}
         </TableBody>
       </Table>

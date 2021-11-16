@@ -19,7 +19,7 @@ employeeContoller.getAllEmployees = async (req, res) => {
 // add new Employee
 employeeContoller.addNewEmployee = async (req, res) => {
   const received=JSON.parse(req.body.employeeData);
-
+const path=req.file.path.substring(7);
   try {
     const employee = await new EmployeeData({
       bio: {
@@ -32,7 +32,7 @@ employeeContoller.addNewEmployee = async (req, res) => {
         phoneNumber: received.phoneNumber,
         maritalStatus: received.maritalStatus,
         status: received.status,
-        photo: req.file.path,
+        photo:path ,
 
       },
       
