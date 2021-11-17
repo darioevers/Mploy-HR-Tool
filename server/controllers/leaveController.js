@@ -56,15 +56,4 @@ leaveController.addLeave = async (req, res) => {
   }
 };
 
-//reject leave application
-leaveController.rejectLeave = async (req, res) => {
-  console.log(req.params.id);
-  try {
-    await LeavesData.findByIdAndDelete(req.params.id);
-    res.status(200).send({ message: "data deleted!", success: true });
-  } catch (error) {
-    res.status(400).send({ message: error.message });
-  }
-};
-
 module.exports = leaveController;
