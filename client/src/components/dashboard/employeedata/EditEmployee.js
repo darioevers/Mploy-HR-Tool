@@ -45,6 +45,19 @@ const EditEmployee = ({ location, history }) => {
 
       <FormGroup>
         <div>
+        <FormControl>
+            <InputLabel htmlFor="my-input">Photo</InputLabel>
+            <Input type="file"
+              name="file"
+              // value={editEmp.bio.photo}
+              onChange={(e) =>
+                setEditEmp({
+                  ...editEmp,
+                  bio: { ...editEmp.bio, photo: e.target.files[0] },
+                })
+              }
+            />
+          </FormControl>
           <FormControl>
             <InputLabel htmlFor="my-input">First Name</InputLabel>
             <Input
@@ -58,6 +71,7 @@ const EditEmployee = ({ location, history }) => {
               }
             />
           </FormControl>
+
           <FormControl>
             <InputLabel htmlFor="my-input">Last Name</InputLabel>
             <Input

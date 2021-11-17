@@ -21,8 +21,8 @@ const AddHrInfo = ({ location, history }) => {
   const addNew = () => {
     const data = new FormData();
     data.append("file", file);
-    const readyTOSend=JSON.stringify(employeeData)
-    data.append("employeeData",readyTOSend)
+    const readyTOSend = JSON.stringify(employeeData);
+    data.append("employeeData", readyTOSend);
 
     axios
       .post(
@@ -40,36 +40,9 @@ const AddHrInfo = ({ location, history }) => {
         // history.push("/dashboard/employeedata/addemployee/documents");
       })
       .catch((err) => console.log(err));
-   
+
     setEmployeeData("");
   };
-
-  // upload route
-//   const send = () => {
-//     const data = new FormData();
-//     data.append("file", file);
-//     const readyTOSend=JSON.stringify(employeeData)
-//     data.append("employeeData",readyTOSend);
-    
-// const fileOwner=employeeData.email;
-
-//     console.log(FormData);
-//     axios
-//       .post(
-//         "http://localhost:5000/employee/singlefile",
-//         data,
-
-//         {fileOwner,
-
-//           header: {"owner":fileOwner,
-//             "Content-Type": "multipart/form-data",
-//           },
-//         }
-//       )
-//       .then((res) => {
-//         console.log(res);
-//       });
-//   };
 
   return (
     <div className="addemployee_mainbox">
@@ -83,7 +56,6 @@ const AddHrInfo = ({ location, history }) => {
             <InputLabel htmlFor="my-input">Photo</InputLabel>
             <Input
               type="file"
-              id="file"
               name="file"
               onChange={(e) => setFile(e.target.files[0])}
             />

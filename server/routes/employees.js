@@ -13,7 +13,7 @@ router.post("/addemployee" ,uploads.single('file'), employeesController.addNewEm
 router.post("/search", employeesController.searchName);
 
 // update employee
-router.put("/update/", employeesController.updateEmployee);
+router.put("/update/",uploads.single('file'), employeesController.updateEmployee);
 
 // updating status ||deleting from the get all employees
 router.patch("/delete", employeesController.deleteOrUpdateStatus);

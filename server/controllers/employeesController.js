@@ -18,8 +18,8 @@ employeeContoller.getAllEmployees = async (req, res) => {
 
 // add new Employee
 employeeContoller.addNewEmployee = async (req, res) => {
-  const received=JSON.parse(req.body.employeeData);
-const path=req.file.path.substring(7);
+  const received = JSON.parse(req.body.employeeData);
+  const path = req.file.path.substring(7);
   try {
     const employee = await new EmployeeData({
       bio: {
@@ -32,11 +32,9 @@ const path=req.file.path.substring(7);
         phoneNumber: received.phoneNumber,
         maritalStatus: received.maritalStatus,
         status: received.status,
-        photo:path ,
-
+        photo: path,
       },
-      
-    
+
       addressOne: {
         streetOne: received.streetOne,
         cityOne: received.cityOne,
@@ -96,13 +94,12 @@ const path=req.file.path.substring(7);
   }
 };
 
-
 // upload
 // employeeContoller.singleFileUpload = async (req, res, next) => {
 //     try{
 //       console.log(req.file)
 
-//       console.log(received)      
+//       console.log(received)
 //       res.status(201).send('File Uploaded Successfully');
 //     }catch(error) {
 //         res.status(400).send(error.message);
@@ -157,7 +154,6 @@ employeeContoller.updateEmployee = async (req, res) => {
     res.status(404).json({ status: "fail", message: error.message });
   }
 };
-
 
 // delete one employee upon criteria from the log
 employeeContoller.deleteOneEmployee = async (req, res) => {

@@ -36,14 +36,14 @@ const AddEmployee = ({ history }) => {
         {" "}
         Documents
       </NavLink>
-      <NavLink
+      {/* <NavLink
         exact
         to="/dashboard/employeedata/addemployee/hrinfo"
         activeClassName="active"
         className="sidenav_link"
       >
         Hr Information
-      </NavLink>
+      </NavLink> */}
 
      
       <FormGroup enctype="multipart/form-data">
