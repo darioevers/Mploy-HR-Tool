@@ -2,29 +2,43 @@
     .homeservices_main_topbox {
         text-align: center;
         display: block;
-        #HomeServicesGraphic {
-            margin-top: -16vh;
-        }
     }
     .homeservices_main_midbox {
-        width: 570px;
+        display: flex;
+        align-items: center; 
         margin-top: 6rem;
-        .coloured_heading {
-            @include text-gradient-red-blue;
+        .homeservices_main_midcontent {
+            width: 570px;
+            .coloured_heading {
+                @include text-gradient-red-blue;
+            }
+            @media only screen and (max-width: 600px){
+                /*Big smartphones [426px -> 600px]*/
+                width: 80vw;
+            }
         }
-        @media only screen and (max-width: 600px){
-            /*Big smartphones [426px -> 600px]*/
-            width: 80vw;
+        .homeservices_main_midimage {
+            width: 40%;
+            justify-content: center;
+            align-items: center; 
+            text-align: end;
+            height: 100%;
+            @media only screen and (max-width: 600px){
+                /*Big smartphones [426px -> 600px]*/
+                display: none;
+            }
+            img {
+                width: 
+                50%;
+                @media only screen and (max-width: 1536px){
+                    // CONTENT WIDTH FOR ALL SCREENS <1536PX
+                    width: 70%;
+                  }
+            }
         }
     }
-    .homeservices_main_botbox {
-        margin-top: 4rem;
-        .homeservices_box {
-            width: 100%;
-            height: auto;
-        }
-        .homeservices_grid_text {
-            padding: 0 1rem;
-        }
-    }
+}
+
+.homeservices_gridbox {
+    margin-top: 6rem;
 }

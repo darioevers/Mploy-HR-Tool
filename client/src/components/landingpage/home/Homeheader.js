@@ -1,37 +1,69 @@
 import React from 'react';
-import Container from '@mui/material/Container';
+
+// IMAGE IMPORTS
+import HomeHeaderGraphic from "../../../img/graphics/browser-mockup.png";
+
+// MUI IMPORTS
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import { Link } from "react-router-dom";
-import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
-
-const Homeheader = () => {
+// COMPONENT EXPORT
+export default function Homeheader(props) {
+    // EDIT STRINGS HERE
+    const content = {
+        'topheading': 'INTRODUCING',
+        '01_mainheading': 'MPLOY',
+        '02_mainheading': 'HR TOOL',
+        '01_button': 'LOGIN',
+        '02_button': 'LEARN MORE',
+        ...props.content
+    };
+    // BUTTON COLORING
+    const theme = createTheme({
+        palette: {
+            button: {
+                main: '#fff',
+                contrastText: '#fff',
+            },
+        },
+    });
     return (
-        <div className="homeheader_mainbox" style={{
-            background:
-                "linear - gradient(90deg, homeheader.headerbackground(25px - 2px), transparent 1 %) center, linear- gradient(homeheader.headerbackground(25px - 2px), transparent 1 %) center, homeheader.headerdot",
-            backgroundSize: "25px 2px"
-        }}>
-            <Container>
-                <div className="homeheader_topbox">
-                    <Typography variant="h1" component="div" style={{ fontFamily: "Mohave", fontWeight: 400 }} gutterBottom>
-                        HUMAN RESOURCE
-                    </Typography>
-                    <Typography variant="h4" gutterBottom component="div">
-                        made easy with MPloy.
-                    </Typography>
-                    <Link to="/login">
-                        <Button variant="contained" size="large" style={{ marginTop: "2rem" }}>LOGIN</Button>
-                    </Link>
-                </div>
-                <div className="homeheader_botbox">
-                </div>
-            </Container>
-
+        <div className="homearea">
+            <div className="homeheader_mainbox">
+                <Box sx={{
+                    display: 'flex',
+                    bgcolor: "rgb(238,108,77)",
+                    background: "linear-gradient(149deg, rgba(238,108,77,1) 0%, rgba(152,193,217,1) 100%)",
+                    color: 'text.primary',
+                    backdropFilter: "blur(400px)",
+                    borderRadius: 2,
+                    width: "100%",
+                    height: "60vh",
+                    marginTop: 15,
+                    marginBottom: 5,
+                    boxShadow: "0",
+                }}>
+                    <div className="homeheader_mainbox_content">
+                        <div className="homeheader_mainbox_leftcontent">
+                            <Typography>{content['topheading']}</Typography>
+                            <Typography variant="h2" style={{ fontWeight: 700, color: "#fff", }}>{content['01_mainheading']}</Typography>
+                            <Typography variant="h2" style={{ fontWeight: 700, color: "#000" }}>{content['02_mainheading']}</Typography>
+                            <Stack spacing={2} direction="row" sx={{ marginTop: "2rem" }}>
+                                <ThemeProvider theme={theme}>
+                                    <Button variant="contained" color="button">{content['01_button']}</Button>
+                                    <Button variant="outlined" color="button">{content['02_button']}</Button>
+                                </ThemeProvider>
+                            </Stack>
+                        </div>
+                        <div className="homeheader_mainbox_rightcontent">
+                            <img src={HomeHeaderGraphic} alt="Mploy WebApp Screenshot"></img>
+                        </div>
+                    </div>
+                </Box>
+            </div >
         </div >
     )
 }
-
-export default Homeheader;

@@ -1,11 +1,14 @@
 import React from 'react';
+
+// COMPONENT IMPORTS
 import LandingpageTopnav from '../LandingpageTopnav';
 import Homeheader from './Homeheader';
 import Homeservices from './Homeservices';
 import Homecontact from './Homecontact';
 import Homeabout from './Homeabout';
 import Homefooter from '../LandingpageFooter';
-import Paper from '@mui/material/Paper';
+
+// MUI IMPORTS
 import Box from '@mui/material/Paper';
 
 
@@ -14,17 +17,16 @@ const Home = () => {
         <Box
             sx={{
                 bgcolor: 'background.default',
-                borderRadius: '0px'
+                borderRadius: '0px',
+                boxShadow: "0",
             }}
         >
             <div>
                 <LandingpageTopnav />
-                <div className="homearea">
-                    <Homeheader />
-                    <Homeservices />
-                    <Homecontact />
-                    <Homeabout />
-                </div>
+                <Homeheader />
+                <Homeservices />
+                <Homeabout />
+                <Homecontact />
                 <Homefooter />
             </div >
         </Box>

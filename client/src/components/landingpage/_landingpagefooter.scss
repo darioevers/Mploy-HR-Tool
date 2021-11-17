@@ -3,10 +3,13 @@
 }
 .homefooter_mainbox {
   align-items: center;
-  width: 80vw;
-  height: 300px;
-  // padding: 25px 50px;
+  width: 75vw;
+  padding: 2rem 0rem;
   margin: 0 auto;
+  @media only screen and (max-width: 1536px){
+    /*Big smartphones [426px -> 600px]*/
+    width: 85vw;
+  }
 }
 
 hr {

@@ -1,17 +1,24 @@
-// Colors
-$bg-color: white;
-$dot-color: #a4b7cc;
-
-// Dimensions
-$dot-size: 2px;
-$dot-space: 25px;
-
 .homeheader_mainbox{
-    height: 65vh;
-    width: 80vw;
-    text-align: center;
-    .homeheader_topbox {
-        padding-top: 6rem;
-        font-family: 'Mohave';
+    .homeheader_mainbox_content {
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+        width: 80%;
+        margin: 0 auto;
+        .homeheader_mainbox_leftcontent {
+            width: 50%;
+            height: 60%;
+            justify-content: center;
+            .coloured_heading {
+                @include text-gradient-red-blue;
+            }
+        }
+        .homeheader_mainbox_rightcontent {
+            width: 50%;
+            height: 70%;
+            img {
+                width: 100%;
+            }
+        }
     }
 }

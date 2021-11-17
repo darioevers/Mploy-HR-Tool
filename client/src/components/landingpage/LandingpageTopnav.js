@@ -1,43 +1,59 @@
 import * as React from "react";
-import { NavLink, Link } from "react-router-dom";
-import Button from "@material-ui/core/Button";
+import { Link } from "react-router-dom";
+
+// IMAGE IMPORTS
+import LogoDarkS from "../../img/logo/MPLOY_logo_small_dark.svg";
+
+// ICON IMPORTS
+import LoginIcon from "@mui/icons-material/Login";
+
+// DARK MODE TOGGLE IMPORT
 import { ColorModeContext } from "../theme/theme";
+
+// MUI IMPORTS
 import { useTheme } from "@mui/material/styles";
+import Button from "@material-ui/core/Button";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import IconButton from "@mui/material/IconButton";
-import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Paper";
-import LoginIcon from "@mui/icons-material/Login";
-import LogoDarkS from "../../img/logo/MPLOY_logo_small_dark.svg";
+import Typography from '@mui/material/Typography';
 
 const LandingpageTopnav = () => {
     const colorMode = React.useContext(ColorModeContext);
     const theme = useTheme();
     return (
-        <Paper elevation={0}>
+        <Box sx={{
+            boxShadow: "0"
+        }}>
             <div className="landingpage_topnav_backgroundbox">
                 <Box
                     id="landingpagetopnavbox"
                     sx={{
-                        bgcolor: "landingnavbar.main",
+                        bgcolor: "landingpagenavbar.main",
                         borderRadius: "0px",
+                        backdropFilter: "blur(4px)",
+                        boxShadow: "0"
                     }}
                 >
                     <div className="landingpage_topnav_mainbox">
                         <div className="landingpage_topnav_logobox">
                             <Link to={"/"} color="inherit">
-                                <img src={LogoDarkS}></img>
+                                <img src={LogoDarkS} alt="Logo"></img>
                             </Link>
                         </div>
                         <div className="landingpage_topnav_menulinks">
 
                             <Link to={"/solutions"} color="inherit">
-                                <div className="landingpage_topnav_menulink">Solutions</div>
+                                <Typography variant="h6" id="landingpage_navlink" fontWeight="400">
+                                    Solutions
+                                </Typography>
                             </Link>
 
                             <Link to={"/about"} color="inherit">
-                                <div className="landingpage_topnav_menulink">About</div>
+                                <Typography variant="h6" id="landingpage_navlink" fontWeight="400">
+                                    About
+                                </Typography>
                             </Link>
 
                         </div>
@@ -73,8 +89,7 @@ const LandingpageTopnav = () => {
                     </div>
                 </Box>
             </div>
-            <div className="landingpage_topnav_fillerbox"></div>
-        </Paper >
+        </Box >
     );
 };
 

@@ -1,41 +1,58 @@
-import React, { useContext } from "react";
-import { ColorModeContext } from "../../theme/theme";
-import { useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
+import React from "react";
 
-const Homecontact = () => {
-  const colorMode = React.useContext(ColorModeContext);
-  const theme = useTheme();
+// MUI IMPORTS
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+
+// COMPONENT EXPORT
+export default function Homecontact(props) {
+  // EDIT STRINGS HERE
+  const content = {
+    '01_mainheading': 'Try Mploy for Free!',
+    '02_mainheading': 'Sign up with Mploy today and experience how our HR Management platform can help streamline your HR needs.',
+    '01_button': 'TRY NOW',
+    ...props.content
+  };
+  // BUTTON COLORING
+  const theme = createTheme({
+    palette: {
+      button: {
+        main: '#fff',
+        contrastText: '#fff',
+      },
+    },
+  });
   return (
-    <Paper elevation={3}>
-      <div className="landingpage_contact_backgroundbox">
-        <Box
-          sx={{
-            display: 'flex',
-            margin: 0,
-            bgcolor: 'background.default',
-            color: 'text.primary',
-            borderRadius: 0,
-            p: 3,
-          }}
-        >
-          <div className="homecontact_mainbox">
-            <div className="homecontact_left">
-              <h1>Try Mploy for Free!</h1>
-              <h3>
-                Sign up with Mploy today and experience how our HR Management platform
-                can help streamline your HR needs.
-        </h3>
-            </div>
-            <div className="homecontact_right">
-              <button variant="contained" color="secondary">Sign Up</button>
-            </div>
-          </div>
-        </Box>
-      </div>
-    </Paper>
+    <div className="landingpage_contact_backgroundbox">
+      <Box
+        sx={{
+          margin: 0,
+          bgcolor: "#ee6c4d",
+          color: 'text.alternate',
+          p: 5,
+          boxShadow: "0",
+        }}
+      >
+        <div className="homearea">
+          <Box sx={{
+            width: "40vw",
+            margin: "0 auto",
+            boxShadow: "0",
+          }}>
+            <Typography variant="h2" fontWeight="500">{content['01_mainheading']}</Typography>
+            <Typography variant="h5" fontWeight="400" sx={{ marginBottom: "2rem" }}>
+              {content['02_mainheading']}
+            </Typography>
+            <ThemeProvider theme={theme}>
+              <Button color="button" variant="contained">
+                {content['01_button']}
+              </Button>
+            </ThemeProvider>
+          </Box>
+        </div>
+      </Box>
+    </div>
   );
 };
-
-export default Homecontact;
