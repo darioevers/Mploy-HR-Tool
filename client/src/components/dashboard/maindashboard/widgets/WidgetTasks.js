@@ -7,10 +7,12 @@ import axios from "axios";
 
 function WidgetTasks() {
   //open and close new task form onClick
-  const [showForm, setShowForm] = useState(false);
+  const [showForm, setShowForm] = useState(true);
   const handleClick = () => {
     setShowForm(!showForm);
   };
+
+  const [newArr, setNewArr] = useState();
 
   //add new task
   const [task, setTask] = useState({});
@@ -34,7 +36,7 @@ function WidgetTasks() {
   };
 
   // fetch tasks data
-  const [getTasks, setGetTasks] = useState();
+  const [tasks, setTasks] = useState();
   useEffect(() => {
     getAllTasks();
   }, []);
@@ -53,7 +55,8 @@ function WidgetTasks() {
 
       .then((data) => {
         console.log(data.data);
-        setGetTasks(data.data);
+        setTasks(data.data);
+        setNewArr(data.data);
       })
       .catch((err) => console.log(err));
   };
@@ -67,17 +70,43 @@ function WidgetTasks() {
         },
       })
       .then((data) => {
-        console.log(data);
         data.data.success && getAllTasks();
+        alert("task deleted");
       })
       .catch((err) => console.log(err));
   };
 
   //filter
-  const [showFilter, setShowFilter] = useState(true);
+  const [showFilter, setShowFilter] = useState(false);
   const handleShowFilter = () => {
     setShowFilter(!showFilter);
-    console.log("clicked");
+  };
+
+  //formatting date
+  const showDate = (stringDate) => {
+    const date = new Date(stringDate);
+    const day = date.getDate();
+    const month = date.getMonth();
+    const year = date.getYear() + 1900;
+    const months = [
+      "JAN",
+      "FEB",
+      "MAR",
+      "APR",
+      "MAY",
+      "JUN",
+      "JUL",
+      "AUG",
+      "SEP",
+      "OCT",
+      "NOV",
+      "DEC",
+    ];
+    if ((day && months[month] && year !== NaN) || undefined) {
+      return `${day} ${months[month]} ${year}`;
+    } else {
+      return ` Not Specified`;
+    }
   };
 
   return (
@@ -98,15 +127,15 @@ function WidgetTasks() {
           type="date"
           onChange={(e) => setTask({ ...task, dueDate: e.target.value })}
         />
-        <h2>Task Tag</h2>
+        <h2>Set Priority</h2>
         <select
           className="newtask_tag"
           onChange={(e) => setTask({ ...task, taskTag: e.target.value })}
         >
           <option>Please Select ... </option>
-          <option>High Priority</option>
-          <option>Medium Priority</option>
-          <option>Low Priority</option>
+          <option>High</option>
+          <option>Medium</option>
+          <option>Low</option>
         </select>
         <div className="save_btn">
           <button
@@ -119,6 +148,7 @@ function WidgetTasks() {
             SAVE
           </button>
         </div>
+        <div className="sidenav_cloak"></div>
       </div>
 
       <div id={showForm ? "main_open" : "main"}>
@@ -150,19 +180,14 @@ function WidgetTasks() {
           <div className="filter_bar">
             {showFilter && (
               <div className={showForm ? "task_filter_open" : "task_filter"}>
-                {[
-                  "All",
-                  "High Priority",
-                  "Medium Priority",
-                  "Low Priority",
-                ].map((cat) => {
+                {["All", "High", "Medium", "Low"].map((cat) => {
                   return (
                     <h5
                       onClick={() => {
-                        let filteredArr = getTasks.filter((item) =>
+                        let filteredArr = tasks.filter((item) =>
                           cat === "All" ? item : item.taskTag === cat
                         );
-                        setGetTasks(filteredArr);
+                        setNewArr(filteredArr);
                       }}
                       className="filter"
                     >
@@ -179,14 +204,21 @@ function WidgetTasks() {
           </div>
 
           <div className="tasks">
-            {getTasks &&
-              getTasks.map((task, i) => (
+            {newArr &&
+              newArr.map((task) => (
                 <div className="task">
-                  <div className="task_main" key={i}>
-                    <h5> {task.title} </h5>
+                  <div className="task_main">
+                    <h5>
+                      {" "}
+                      {task.title !== undefined
+                        ? task.title
+                        : "No Title Specified"}{" "}
+                    </h5>
                     <p>
-                      Due Date:{" "}
-                      <span className="task_date">{task.dueDate}</span>
+                      Due Date:
+                      <span className="task_date">
+                        {showDate(task.dueDate)}
+                      </span>
                     </p>
                   </div>
 
@@ -202,9 +234,9 @@ function WidgetTasks() {
                       />
                     </p>
                     <div className="task_tag">
-                      {task.taskTag === "High Priority" ? (
+                      {task.taskTag === "High" ? (
                         <BookmarkIcon style={{ fontSize: 15, color: "red" }} />
-                      ) : task.taskTag === "Medium Priority" ? (
+                      ) : task.taskTag === "Medium" ? (
                         <BookmarkIcon
                           style={{ fontSize: 15, color: "yellow" }}
                         />

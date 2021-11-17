@@ -5,6 +5,7 @@
 }
 
 .sidenav {
+  display: hidden;
   height: 100%;
   width: 0;
   position: absolute;
@@ -16,61 +17,15 @@
   transition: 0.5s;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
-  h1 {
-    font-size: 16px;
-    color: $primary;
-    font-weight: normal;
-    margin: 15px;
-    margin-top: 17px;
-  }
-  hr {
-    margin-top: -8px;
-    margin-left: 15px;
-    width: 85%;
-    border: 1px solid $highlight;
-  }
-  h2 {
-    font-size: 12px;
-    margin: 10px 0px 2px 15px;
-    color: $highlight;
-    font-weight: 400;
-  }
-  input {
-    margin-left: 15px;
-    font-size: 12px;
-    height: 20px;
-    width: 82%;
-    border: 1px solid $highlight;
-    border-radius: 10px;
-    background-color: transparent;
-    color: $primary;
-    padding: 0 5px;
-  }
-  select {
-    margin-left: 15px;
-    height: 25px;
-    width: 87%;
-    font-size: 12px;
-    border: 1px solid $highlight;
-    border-radius: 10px;
-    background-color: transparent;
-    color: $highlight;
-  }
-  .save_btn {
-    @include flex-center;
-    margin-top: 5px;
-    button {
-      align-self: right;
-      margin: 20px;
-      width: 80px;
-      height: 22px;
-      font-size: 12px;
-      border-radius: 5px;
-      background-color: $highlight;
-      border: none;
-      color: $dark-bg;
-      font-weight: bolder;
-    }
+  .sidenav_cloak {
+    display: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: $dark-bg;
+    z-index: 10;
   }
 }
 
@@ -144,7 +99,7 @@
 
 .display_divider {
   width: 100%;
-  margin-top: -15px;
+  margin-top: -30px;
   margin-bottom: -5px;
   hr {
     border: 1px solid $primary;
@@ -153,8 +108,8 @@
 
 .filter_bar {
   width: 100%;
-  width: 100%;
-  margin-top: 10px;
+  margin-top: 0px;
+  margin-bottom: 15px;
   .task_filter {
     display: flex;
     flex-wrap: wrap;
@@ -185,7 +140,7 @@
   display: flex;
   position: relative;
   align-items: center;
-  width: 120px;
+  width: 180px;
   height: 46px;
   background-color: $dark-bg;
   border-radius: 10px;
@@ -235,7 +190,7 @@
 
 //set state on handleClick
 .sidenav_open {
-  width: 250px;
+  width: 200px;
   height: 100%;
   position: absolute;
   z-index: 1;
@@ -247,14 +202,14 @@
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
   h1 {
-    font-size: 16px;
+    font-size: 15px;
     color: $primary;
     font-weight: normal;
-    margin: 15px;
-    margin-top: 17px;
+    margin: 20px;
+    margin-top: 23px;
   }
   hr {
-    margin-top: -8px;
+    margin-top: -15px;
     margin-left: 15px;
     width: 85%;
     border: 1px solid $highlight;
@@ -311,7 +266,7 @@
   transition: margin-left 0.5s;
   padding: 20px;
   margin-top: 10px;
-  margin-left: 250px;
+  margin-left: 200px;
 }
 
 #newtask_button_open {
@@ -324,9 +279,7 @@
 
 .task_filter_open {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
   padding: 5px;
   line-height: 15px;
   h5 {

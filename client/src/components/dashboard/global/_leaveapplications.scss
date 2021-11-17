@@ -1,0 +1,81 @@
+.leaveapplications_mainbox {
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+  height: 50px;
+  background-color: $dark-bg;
+  border-radius: 50px;
+  color: $primary;
+  line-height: 20px;
+  margin-top: 5px;
+}
+
+.leave_classification {
+  @include flex-center;
+  margin-left: 10px;
+  .leave_classification_ring {
+    width: 35px;
+    height: 35px;
+    border: 1px solid white;
+    border-radius: 50px;
+    position: relative;
+    div {
+      position: absolute;
+      top: 25%;
+      left: 26%;
+      font-size: 13px;
+    }
+  }
+}
+
+.leave_details {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0px;
+  width: 100%;
+  margin-left: 20px;
+
+  div {
+    display: flex;
+  }
+  h1 {
+    font-size: 14px;
+    margin-right: 8px;
+  }
+  h5 {
+    font-size: 10px;
+    margin-right: 8px;
+    color: $secondary;
+    font-weight: 100;
+  }
+  span {
+    color: $primary;
+  }
+}
+
+.leave_buttons {
+  margin-top: 5px;
+  margin-right: 20px;
+  h5 {
+    font-size: 10px;
+    font-weight: 500;
+    color: $secondary;
+    &:hover {
+      transform: translateY(-1px);
+      transition: transform 0.5s;
+      color: $primary;
+      cursor: pointer;
+    }
+  }
+  h4 {
+    font-size: 10px;
+    font-weight: 500;
+    color: $highlight;
+    &:hover {
+      transform: translateY(-1px);
+      transition: transform 0.2s;
+      color: $primary;
+      cursor: pointer;
+    }
+  }
+}
