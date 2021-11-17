@@ -16,11 +16,14 @@ const AddHrInfo = ({ location, history }) => {
   const [employeeData, setEmployeeData] = useState(
     location.state && location.state.employee
   );
+  const [file, setFile] = useState();
 
   const addNew = () => {
-    const data = employeeData;
-    console.log(employeeData);
-    console.log(location.state.employee);
+    const data = new FormData();
+    data.append("file", file);
+    const readyTOSend=JSON.stringify(employeeData)
+    data.append("employeeData",readyTOSend)
+
     axios
       .post(
         "http://localhost:5000/employee/addemployee",
@@ -34,10 +37,40 @@ const AddHrInfo = ({ location, history }) => {
       )
       .then((res) => {
         console.log(res);
-        history.push("/dashboard/employeedata/addemployee/documents");
+        // history.push("/dashboard/employeedata/addemployee/documents");
       })
       .catch((err) => console.log(err));
+   
+    setEmployeeData("");
   };
+
+  // upload route
+//   const send = () => {
+//     const data = new FormData();
+//     data.append("file", file);
+//     const readyTOSend=JSON.stringify(employeeData)
+//     data.append("employeeData",readyTOSend);
+    
+// const fileOwner=employeeData.email;
+
+//     console.log(FormData);
+//     axios
+//       .post(
+//         "http://localhost:5000/employee/singlefile",
+//         data,
+
+//         {fileOwner,
+
+//           header: {"owner":fileOwner,
+//             "Content-Type": "multipart/form-data",
+//           },
+//         }
+//       )
+//       .then((res) => {
+//         console.log(res);
+//       });
+//   };
+
   return (
     <div className="addemployee_mainbox">
       <DashboardTopNav />
@@ -45,6 +78,18 @@ const AddHrInfo = ({ location, history }) => {
 
       <FormGroup>
         <Typography variant="h4">Hr Information</Typography>
+        <div>
+          <FormControl>
+            <InputLabel htmlFor="my-input">Photo</InputLabel>
+            <Input
+              type="file"
+              id="file"
+              name="file"
+              onChange={(e) => setFile(e.target.files[0])}
+            />
+          </FormControl>
+        </div>
+
         <FormControl>
           <InputLabel htmlFor="my-input">Contract No</InputLabel>
           <Input
@@ -225,14 +270,7 @@ const AddHrInfo = ({ location, history }) => {
         </div>
 
         <FormControl>
-          <Button
-            onClick={() => {
-              addNew();
-              setEmployeeData("");
-            }}
-          >
-            Add{" "}
-          </Button>
+          <Button onClick={addNew}>Add </Button>
         </FormControl>
       </FormGroup>
     </div>
