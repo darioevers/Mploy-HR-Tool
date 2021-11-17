@@ -61,12 +61,6 @@ function WidgetApplications() {
         <div className="horizontal_line"></div>
       </div>
       <div className="widget_applications_body">
-        {/* <div className="widget_applications_rejected">
-          <h1>
-            {leaves && leaves.filter((item) => item.pending === true).length}
-          </h1>
-          <h4>Rejected</h4>
-        </div> */}
         <div className="widget_applications_pending">
           <h1>
             {leaves && leaves.filter((item) => item.pending === true).length}
