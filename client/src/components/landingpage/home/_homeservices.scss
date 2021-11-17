@@ -1,5 +1,44 @@
 .homeservices_mainbox{
-    height: 60vh;
-    border: red 1px solid;
-    margin-bottom: 70px;
+    .homeservices_main_topbox {
+        text-align: center;
+        display: block;
+    }
+    .homeservices_main_midbox {
+        display: flex;
+        align-items: center; 
+        margin-top: 6rem;
+        .homeservices_main_midcontent {
+            width: 570px;
+            .coloured_heading {
+                @include text-gradient-red-blue;
+            }
+            @media only screen and (max-width: 600px){
+                /*Big smartphones [426px -> 600px]*/
+                width: 80vw;
+            }
+        }
+        .homeservices_main_midimage {
+            width: 40%;
+            justify-content: center;
+            align-items: center; 
+            text-align: end;
+            height: 100%;
+            @media only screen and (max-width: 600px){
+                /*Big smartphones [426px -> 600px]*/
+                display: none;
+            }
+            img {
+                width: 
+                50%;
+                @media only screen and (max-width: 1536px){
+                    // CONTENT WIDTH FOR ALL SCREENS <1536PX
+                    width: 70%;
+                  }
+            }
+        }
+    }
+}
+
+.homeservices_gridbox {
+    margin-top: 6rem;
 }

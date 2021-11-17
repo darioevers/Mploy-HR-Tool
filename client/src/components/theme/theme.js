@@ -43,21 +43,35 @@ export function ToggleColorMode(props) {
                     text: {
                         primary: '#000',
                         secondary: '#000',
+                        alternate: "#fff",
                     },
                     background: {
                         paper: '#fff',
                         default: '#fff',
-                        darker: '#ebebeb'
+                        darker: '#ebebeb',
+                        lighter: '#ebebeb',
+                        lighterTwo: "#f5f5f7",
+                        lighterThree: "#fbfbfd",
+                    },
+                    landingpagenavbar: {
+                        main: "rgba(255, 255, 255, 0.75)"
                     },
                     footer: {
-                        main: '#fff',
+                        main: '#f5f5f7',
                     },
-                    landingnavbar: {
-                        main: '#fff',
+                    homeheader: {
+                        headerbackground: "#fff",
+                        headergradient: "radial- gradient(circle, rgba(255, 255, 255, 1) 0 %, rgba(227, 227, 227, 1) 100 %)",
                     },
                     solutions: {
                         header: '#ffbd00'
-                    }
+                    },
+                    contact: {
+                        main: '#4b3f72'
+                    },
+                    button: {
+                        white: "#fff"
+                    },
                 }
                 : {
                     // palette values for dark mode
@@ -81,21 +95,35 @@ export function ToggleColorMode(props) {
                     text: {
                         primary: '#fff',
                         secondary: '#fff',
+                        alternate: "#fff",
                     },
                     background: {
                         paper: '#3b444e',
                         default: '#141d26',
                         darker: '#000000',
+                        lighter: '#3b444e',
+                        lighterTwo: "#3d4752",
+                        lighterThree: "#121a22",
+                    },
+                    landingpagenavbar: {
+                        main: "rgba(54, 54, 54, 0.835)"
                     },
                     footer: {
                         main: '#141d26',
                     },
-                    landingnavbar: {
-                        main: '#141d26',
+                    homeheader: {
+                        headerbackground: "rgb(59,68,78)",
+                        headergradient: "radial-gradient(circle, rgba(59,68,78,1) 0%, rgba(0,0,0,1) 100%)",
                     },
                     solutions: {
                         header: '#ffbd00'
-                    }
+                    },
+                    contact: {
+                        main: '#20262c'
+                    },
+                    button: {
+                        white: "#fff"
+                    },
                 }),
         },
     });

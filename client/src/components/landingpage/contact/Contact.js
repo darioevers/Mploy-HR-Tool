@@ -1,29 +1,44 @@
 import React from 'react';
+
+// NAVBAR + FOOTER IMPORT
 import LandingpageTopnav from '../LandingpageTopnav';
 import LandingpageFooter from '../LandingpageFooter';
+
+// ICON IMPORTS
+import PhoneIcon from '@mui/icons-material/Phone';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import PersonPinIcon from '@mui/icons-material/PersonPin';
+
+// MUI IMPORTS
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Paper';
-import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import PhoneIcon from '@mui/icons-material/Phone';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import PersonPinIcon from '@mui/icons-material/PersonPin';
 
-
-const Contact = () => {
+// COMPONENT EXPORT
+export default function Solutions(props) {
+    // EDIT STRINGS HERE
+    const content = {
+        '01_mainheading': 'Get In Touch.',
+        '01_subheading': 'Subheading',
+        '01_body': 'Lorem Ipsum Paragraph 01_body',
+        '02_button': 'LEARN MORE',
+        '1_button': 'INFO',
+        ...props.content
+    };
+    // SIDE TABS FUNCTION
     const [value, setValue] = React.useState(0);
-
     const handleChange = (event, newValue) => {
         setValue(newValue);
     }
     return (<Box
         sx={{
             bgcolor: 'background.default',
-            borderRadius: '0px'
+            borderRadius: '0px',
+            boxShadow: "0",
         }}
     >
 
@@ -31,16 +46,16 @@ const Contact = () => {
         <div className="homearea">
             <div className="contact_mainbox">
                 <div className="contact_textbox">
-                    <Box component="span" sx={{ width: '100%', maxWidth: 500 }}>
+                    <Box component="span" sx={{ width: '100%', maxWidth: 500, marginTop: "6rem" }}>
                         <Typography variant="h3" component="div">
-                            Get In Touch.
-                                </Typography>
+                            {content['01_mainheading']}
+                        </Typography>
                         <Typography variant="h6" gutterBottom sx={{ fontWeight: "400" }}>
-                            Lorem Ipsum
-                                </Typography>
+                            {content['01_subheading']}
+                        </Typography>
                         <Typography variant="body1" gutterBottom>
-                            Lorem Ipsusmdf suiadh kajshd kashdksadh saka
-                                    </Typography>
+                            {content['01_body']}
+                        </Typography>
                         <Divider variant="middle" />
                     </Box>
                     <Tabs value={value} onChange={handleChange} id="contact_tabs">
@@ -84,5 +99,3 @@ const Contact = () => {
 
     </Box>)
 }
-
-export default Contact;
