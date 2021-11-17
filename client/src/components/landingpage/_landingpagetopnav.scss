@@ -1,17 +1,17 @@
 .landingpage_topnav_backgroundbox {
   width: 100vw;
-  height: 50px;
+  height: 80px;
   position: fixed;
   top: 0;
   z-index: 99;
   #landingpagetopnavbox {
   .landingpage_topnav_mainbox {
     display: flex;
-    height: 50px;
+    height: 80px;
     align-items: center;
-    margin-bottom: 40px;
     top: 0;
-    width: 80vw;
+    // CONTENT WIDTH FOR BIGGER SCREENS >1536px
+    width: 75vw;
     margin: 0 auto;
     .landingpage_topnav_logobox {
       width: 10%;
@@ -25,8 +25,8 @@
       width: 20%;
       display: flex;
       justify-content: left;
-      .landingpage_topnav_menulink {
-        padding: 0px 10px;
+      #landingpage_navlink {
+        padding: 0 10px;
       }
     }
     .landingpage_topnav_buttons {
@@ -44,10 +44,10 @@
         padding-left: 10px;
       }
     }
+    @media only screen and (max-width: 1536px){
+      // CONTENT WIDTH FOR ALL SCREENS <1536PX
+      width: 85vw;
+    }
   }
 }
-}
-
-.landingpage_topnav_fillerbox {
-  height: 50px;
 }

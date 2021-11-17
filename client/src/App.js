@@ -2,12 +2,12 @@ import "./scss/main.scss";
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ToggleColorMode } from "./components/theme/theme";
+import CssBaseline from '@mui/material/CssBaseline';
 
 // Routing
 import PrivateRoute from "./components/landingpage/login/routing/PrivateRoute";
 
 // LOGIN COMPONENTS
-import PrivateScreen from "./components/landingpage/login/dashboard";
 import LoginScreen from "./components/landingpage/login/LoginScreen";
 import RegisterScreen from "./components/landingpage/login/RegisterScreen";
 import ForgotPasswordScreen from "./components/landingpage/login/ForgotPasswordScreen";
@@ -35,6 +35,7 @@ import Solutions from "./components/landingpage/solutions/Solutions";
 const App = () => {
   return (
     <ToggleColorMode>
+      <CssBaseline />
       <Router>
         <div className="app">
           <Switch>
