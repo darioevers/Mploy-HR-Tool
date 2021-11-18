@@ -9,13 +9,14 @@ const EmployeesSchema = Schema({
     lastName: {
       type: String,
       required: false,
+      
     },
     email: {
       type: String,
       required: false,
     },
     dateOfBirth: {
-      type: Number,
+      type: String,
       required: false,
     },
     nationality: {
@@ -34,14 +35,21 @@ const EmployeesSchema = Schema({
       type: String,
       required: false,
     },
-    photo: {
-      type: String,
-    },
 
     status: {
       type: String,
     },
+    photo: {
+      type:String,
+      
+    },
+    // approved: {
+    //   type: Boolean,
+    //   default:false,
+    // },
   },
+
+ 
   addressOne: {
     streetOne: {
       type: String,

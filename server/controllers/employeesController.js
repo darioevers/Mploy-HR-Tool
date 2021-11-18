@@ -18,67 +18,72 @@ employeeContoller.getAllEmployees = async (req, res) => {
 
 // add new Employee
 employeeContoller.addNewEmployee = async (req, res) => {
+  const received=JSON.parse(req.body.employeeData);
+const path=req.file.path.substring(7);
   try {
     const employee = await new EmployeeData({
       bio: {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        dateOfBirth: req.body.dateOfBirth,
-        nationality: req.body.nationality,
-        gender: req.body.gender,
-        phoneNumber: req.body.phoneNumber,
-        maritalStatus: req.body.maritalStatus,
-        photo: req.body.photo,
-        status: req.body.status,
+        firstName: received.firstName,
+        lastName: received.lastName,
+        email: received.email,
+        dateOfBirth: received.dateOfBirth,
+        nationality: received.nationality,
+        gender: received.gender,
+        phoneNumber: received.phoneNumber,
+        maritalStatus: received.maritalStatus,
+        status: received.status,
+        photo:path ,
+
       },
+      
+    
       addressOne: {
-        streetOne: req.body.streetOne,
-        cityOne: req.body.cityOne,
-        postalCodeOne: req.body.postalCodeOne,
-        stateOne: req.body.stateOne,
-        countryOne: req.body.countryOne,
+        streetOne: received.streetOne,
+        cityOne: received.cityOne,
+        postalCodeOne: received.postalCodeOne,
+        stateOne: received.stateOne,
+        countryOne: received.countryOne,
       },
       addressTwo: {
-        streetTwo: req.body.streetTwo,
-        cityTwo: req.body.cityTwo,
-        postalCodeTwo: req.body.postalCodeTwo,
-        stateTwo: req.body.stateTwo,
-        countryTwo: req.body.countryTwo,
+        streetTwo: received.streetTwo,
+        cityTwo: received.cityTwo,
+        postalCodeTwo: received.postalCodeTwo,
+        stateTwo: received.stateTwo,
+        countryTwo: received.countryTwo,
       },
       education: {
-        school: req.body.school,
-        endDate: req.body.endDate,
-        degree: req.body.degree,
-        specialization: req.body.specialization,
+        school: received.school,
+        endDate: received.endDate,
+        degree: received.degree,
+        specialization: received.specialization,
       },
 
       workExperience: {
-        company: req.body.company,
-        jobTitle: req.body.jobTitle,
-        from: req.body.from,
-        to: req.body.to,
+        company: received.company,
+        jobTitle: received.jobTitle,
+        from: received.from,
+        to: received.to,
       },
 
       contractInfo: {
-        contractNo: req.body.contractNo,
-        hireDate: req.body.hireDate,
-        contractEnd: req.body.contractEnd,
-        probationPeriod: req.body.probationPeriod,
-        employmentType: req.body.employmentType,
-        team: req.body.team,
-        department: req.body.department,
-        salary: req.body.salary,
-        overtime: req.body.overtime,
-        workLocation: req.body.workLocation,
+        contractNo: received.contractNo,
+        hireDate: received.hireDate,
+        contractEnd: received.contractEnd,
+        probationPeriod: received.probationPeriod,
+        employmentType: received.employmentType,
+        team: received.team,
+        department: received.department,
+        salary: received.salary,
+        overtime: received.overtime,
+        workLocation: received.workLocation,
       },
       leave: {
-        usedLeave: req.body.usedLeave,
-        remainingLeave: req.body.remainingLeave,
-        fromDate: req.body.fromDate,
-        toDate: req.body.toDate,
-        totalDays: req.body.totalDays,
-        emergencyContact: req.body.emergencyContact,
+        usedLeave: received.usedLeave,
+        remainingLeave: received.remainingLeave,
+        fromDate: received.fromDate,
+        toDate: received.toDate,
+        totalDays: received.totalDays,
+        emergencyContact: received.emergencyContact,
       },
     });
 
@@ -90,13 +95,26 @@ employeeContoller.addNewEmployee = async (req, res) => {
     res.status(404).json({ status: "fail", message: error });
   }
 };
+
+
+// upload
+// employeeContoller.singleFileUpload = async (req, res, next) => {
+//     try{
+//       console.log(req.file)
+
+//       console.log(received)      
+//       res.status(201).send('File Uploaded Successfully');
+//     }catch(error) {
+//         res.status(400).send(error.message);
+//     }
+// }
+
 // employee search
 employeeContoller.searchName = async (req, res) => {
-  console.log(req.body);
   // let searchPattern = new RegEx("^" + req.body.query);
   // EmployeeData.find({ firstName: { $regex: searchPattern } })
   try {
-    const empArr = await EmployeeData.find();
+    const empArr = await EmployeeData.find({ "bio.status": "active" });
     // .select("firstName"
     console.log(empArr);
     const empFilter = empArr.filter((item) =>
@@ -140,27 +158,7 @@ employeeContoller.updateEmployee = async (req, res) => {
   }
 };
 
-// employeeContoller.updateEmployee = async (req, res) => {
-//   EmployeeData.findById(req.params.id, function (err, employee) {
-//     console.log(req.body);
-//     if (!employee) res.send("Unable To Find Employee With This Id");
-//     else {
-//       employee.firstName = req.body.firstName;
-//       employee.lastName = req.body.lastName;
-//       employee.email = req.body.email;
-//       // employee.phone = req.body.phone;
 
-//       employee
-//         .save()
-//         .then((emp) => {
-//           res.json("Employee Updated Successfully");
-//         })
-//         .catch((err) => {
-//           res.status(400).send("Unable To Update Employee");
-//         });
-//     }
-//   });
-// };
 // delete one employee upon criteria from the log
 employeeContoller.deleteOneEmployee = async (req, res) => {
   try {

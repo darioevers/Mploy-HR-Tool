@@ -23,11 +23,14 @@ function EmployeeData({ history }) {
   const classes = useStyles();
   const [employees, setEmployees] = useState();
   const [search, setSearch] = useState("");
-  const [hidden, setHidden] = useState(false);
+  const [checked,setChecked] = useState(false);
+  const [id, setId] = useState();
+
   useEffect(() => {
     getAllEmployee();
   }, []);
-  // fetching data from backend
+
+  // fetching all data from backend
   const getAllEmployee = () => {
     axios
       .get(
@@ -43,7 +46,6 @@ function EmployeeData({ history }) {
       .then((data) => {console.log(data.data);setEmployees(data.data)})
       .catch((err) => console.log(err));
   };
-
   // searching query search with firstName
   const searchEmployee = (query) => {
     const data = { query };
@@ -60,7 +62,9 @@ function EmployeeData({ history }) {
       .catch((err) => console.log(err));
   };
 
-  // Deleting the employee
+  
+
+  // Deleting or changing the employee status to inactive
   const deleteEmployeeData = (x) => {
     const data={email:x}
     axios.patch("http://localhost:5000/employee/delete",data,
@@ -101,36 +105,52 @@ function EmployeeData({ history }) {
       <Table>
         <TableHead>
           <TableRow>
+          <TableCell>Photo</TableCell>
+
             <TableCell>First Name</TableCell>
             <TableCell>Last Name</TableCell>
             <TableCell>Email</TableCell>
             <TableCell>DOB</TableCell>
-            <TableCell>Nationality</TableCell>
-            <TableCell>Gender</TableCell>
-            <TableCell>Phone</TableCell>
-            <TableCell>Marital Status</TableCell>
-            <TableCell>Status</TableCell>
+           
           </TableRow>
         </TableHead>
+
         <TableBody>
-          {employees &&
+          {employees  && 
             employees.map((employee) => (
-              <TableRow key={employee._id}>
+              <>
+              <TableRow key={employee._id} onClick={()=>{setChecked(true); 
+            setId(employee._id)  
+            }
+
+            }>
+                <TableCell><img src={`http://localhost:5000/${employee.bio.photo}`} alt="profile photo" /> </TableCell>
+
                 <TableCell>{employee.bio.firstName}</TableCell>
                 <TableCell>{employee.bio.lastName}</TableCell>
                 <TableCell>{employee.bio.email}</TableCell>
                 <TableCell>{employee.bio.dateOfBirth}</TableCell>
-                
-                  <TableCell>{employee.bio.nationality}</TableCell>
-                <TableCell>{employee.bio.gender}</TableCell>
-                <TableCell>{employee.bio.phoneNumber}</TableCell>
-                <TableCell>{employee.bio.maritalStatus}</TableCell>
-                <TableCell>{employee.bio.status}</TableCell>
 
                 
                 
 
-                <TableCell>
+         
+              </TableRow>
+              { checked && employee._id ===id && 
+               <div className="xx" style={{"backgroundColor": "red"}} >
+
+               <TableCell>{employee.bio.nationality}</TableCell>
+              <TableCell>{employee.bio.gender}</TableCell>
+              <TableCell>{employee.bio.phoneNumber}</TableCell>
+              <TableCell>{employee.bio.maritalStatus}</TableCell>
+              <TableCell>{employee.bio.status}</TableCell>   
+              <TableCell> <h4> Address</h4> {`${employee.addressOne.streetOne} ${employee.addressOne.cityOne} ${employee.addressOne.postalCodeOne} ${employee.addressOne.countryOne}`}</TableCell>   
+
+              <TableCell>{employee.contractInfo.department}</TableCell> 
+              <TableCell>{employee.contractInfo.team}</TableCell>  
+              <TableCell>{employee.contractInfo.workLocation}</TableCell>
+              
+              <TableCell>
                   <Button
                     color="primary"
                     variant="contained"
@@ -154,7 +174,9 @@ function EmployeeData({ history }) {
                     Delete
                   </Button>
                 </TableCell>
-              </TableRow>
+              </div>
+}
+           </>
             ))}
         </TableBody>
       </Table>
