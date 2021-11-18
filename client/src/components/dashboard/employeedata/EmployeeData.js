@@ -127,7 +127,7 @@ function EmployeeData({ history }) {
                 >
                   <TableCell>
                     <img
-                      src={`http://localhost:5000/${employee.bio.photo}`} onError={(e)=>{e.target.onError=null; e.target.src='http://localhost:5000/uploads/error.png'}} />
+                      src={`http://localhost:5000/${employee.bio.photo}`} onError={(e)=>{e.target.onError=null; e.target.src='http://localhost:5000/uploads/error.jpg'}} />
                      
                   </TableCell>
 
