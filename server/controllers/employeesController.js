@@ -18,8 +18,12 @@ employeeContoller.getAllEmployees = async (req, res) => {
 
 // add new Employee
 employeeContoller.addNewEmployee = async (req, res) => {
+console.log(req.body);
+
   const received = JSON.parse(req.body.employeeData);
   const path = req.file.path.substring(7);
+ 
+
   try {
     const employee = await new EmployeeData({
       bio: {
@@ -62,7 +66,6 @@ employeeContoller.addNewEmployee = async (req, res) => {
         from: received.from,
         to: received.to,
       },
-
       contractInfo: {
         contractNo: received.contractNo,
         hireDate: received.hireDate,
@@ -140,11 +143,17 @@ employeeContoller.searchName = async (req, res) => {
 
 // patch or update employee
 employeeContoller.updateEmployee = async (req, res) => {
+
+
   try {
-    console.log(req.body);
+    let received =await JSON.parse(req.body.editEmp);
+    received.bio.photo="uploads/" + req.file.path.substring(15);
+   console.log(req.file.path);
+    // received.bio.photo=req.file.path.substring(7);
+    console.log(received);
     const employee = await EmployeeData.findOneAndUpdate(
-      { "bio.email": req.body.editEmp.bio.email },
-      req.body.editEmp,
+      { "bio.email": received.bio.email },
+      received,
       {
         new: true,
       }

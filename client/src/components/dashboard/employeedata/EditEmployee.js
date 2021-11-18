@@ -18,13 +18,20 @@ const EditEmployee = ({ location, history }) => {
   const [editEmp, setEditEmp] = useState(
     location.state && location.state.employee
   );
+  const [file, setFile] = useState();
+
 
   const edit = () => {
+    const data = new FormData();
+    data.append("file", file);
+    const readyTOSend = JSON.stringify(editEmp);
+    data.append("editEmp", readyTOSend);
+
     console.log(editEmp);
     axios
       .put(
         "http://localhost:5000/employee/update",
-        { editEmp },
+        data ,
         {
           header: {
             "Content-Type": "application/json",
@@ -51,10 +58,7 @@ const EditEmployee = ({ location, history }) => {
               name="file"
               // value={editEmp.bio.photo}
               onChange={(e) =>
-                setEditEmp({
-                  ...editEmp,
-                  bio: { ...editEmp.bio, photo: e.target.files[0] },
-                })
+                setFile( e.target.files[0]) 
               }
             />
           </FormControl>

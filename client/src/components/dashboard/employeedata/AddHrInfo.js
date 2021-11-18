@@ -17,6 +17,7 @@ const AddHrInfo = ({ location, history }) => {
     location.state && location.state.employee
   );
   const [file, setFile] = useState();
+  const [hireDate, setHireDate] = useState("2000-01-01")
 
   const addNew = () => {
     const data = new FormData();
@@ -41,7 +42,6 @@ const AddHrInfo = ({ location, history }) => {
       })
       .catch((err) => console.log(err));
 
-    setEmployeeData("");
   };
 
   return (
@@ -71,16 +71,16 @@ const AddHrInfo = ({ location, history }) => {
           />
         </FormControl>
         <FormControl>
-          <InputLabel htmlFor="my-input">Hire date</InputLabel>
-          <Input
-            onChange={(e) =>
+          <InputLabel htmlFor="my-input">Hire Date</InputLabel>
+          <Input type="date" 
+            onChange={(e) =>{ console.log(e.target.value);setHireDate(e.target.value);
               setEmployeeData({ ...employeeData, hireDate: e.target.value })
-            }
+            }}
           />
         </FormControl>
         <FormControl>
           <InputLabel htmlFor="my-input">Contract End</InputLabel>
-          <Input
+          <Input type="date" min="2019-01-01" 
             onChange={(e) =>
               setEmployeeData({ ...employeeData, contractEnd: e.target.value })
             }
@@ -225,7 +225,7 @@ const AddHrInfo = ({ location, history }) => {
           </FormControl>
           <FormControl>
             <InputLabel htmlFor="my-input">From</InputLabel>
-            <Input
+            <Input type="date"
               onChange={(e) =>
                 setEmployeeData({ ...employeeData, from: e.target.value })
               }
@@ -233,7 +233,7 @@ const AddHrInfo = ({ location, history }) => {
           </FormControl>
           <FormControl>
             <InputLabel htmlFor="my-input">To</InputLabel>
-            <Input
+            <Input type="date"
               onChange={(e) =>
                 setEmployeeData({ ...employeeData, to: e.target.value })
               }
@@ -242,7 +242,8 @@ const AddHrInfo = ({ location, history }) => {
         </div>
 
         <FormControl>
-          <Button onClick={addNew}>Add </Button>
+  
+          <Button onClick={()=>{addNew() ;   setEmployeeData(""); }}>Add </Button>
         </FormControl>
       </FormGroup>
     </div>

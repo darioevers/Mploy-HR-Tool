@@ -78,7 +78,7 @@ const AddEmployee = ({ history }) => {
           </FormControl>
           <FormControl>
             <InputLabel htmlFor="my-input">Date of Birth</InputLabel>
-            <Input
+            <Input type="date" 
               name="dateofbirth"
               onChange={(e) =>
                 setEmployee({ ...employee, dateOfBirth: e.target.value })
