@@ -1,4 +1,5 @@
 const LeavesData = require("../models/leavesModel");
+const EmployeesData = require("../models/employeesModel");
 const leaveController = {};
 
 // get leave applications
@@ -40,6 +41,7 @@ leaveController.addLeave = async (req, res) => {
   try {
     const leave = await new LeavesData({
       name: req.body.name,
+      email: req.body.email,
       department: req.body.department,
       type: req.body.type,
       dateFrom: req.body.dateFrom,
@@ -47,7 +49,12 @@ leaveController.addLeave = async (req, res) => {
       pending: true,
     });
 
-    leave.save();
+    await leave.save();
+    const employee = EmployeesData.find({ email: req.body.email });
+    employee.leaves = employee.leaves.push(leave._id);
+    employee.save();
+
+    // [...employee.leaves, leave._id];
     res
       .status(200)
       .json({ status: "success", message: "added new leave application" });

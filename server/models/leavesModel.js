@@ -5,6 +5,10 @@ const LeavesSchema = Schema({
     type: String,
     required: false,
   },
+  email: {
+    type: String,
+    required: false,
+  },
   department: {
     type: String,
     required: false,

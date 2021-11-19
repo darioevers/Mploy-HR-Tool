@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+
 const EmployeesSchema = Schema({
   bio: {
     firstName: {
@@ -9,7 +10,6 @@ const EmployeesSchema = Schema({
     lastName: {
       type: String,
       required: false,
-      
     },
     email: {
       type: String,
@@ -40,8 +40,7 @@ const EmployeesSchema = Schema({
       type: String,
     },
     photo: {
-      type:String,
-      
+      type: String,
     },
     // approved: {
     //   type: Boolean,
@@ -49,7 +48,6 @@ const EmployeesSchema = Schema({
     // },
   },
 
- 
   addressOne: {
     streetOne: {
       type: String,
@@ -177,32 +175,7 @@ const EmployeesSchema = Schema({
       required: false,
     },
   },
-  leave: {
-    usedLeave: {
-      type: String,
-      required: false,
-    },
-    remainingLeave: {
-      type: String,
-      required: false,
-    },
-    fromDate: {
-      type: Date,
-      required: false,
-    },
-    toDate: {
-      type: Date,
-      required: false,
-    },
-    totalDays: {
-      type: String,
-      required: false,
-    },
-    emergencyContact: {
-      type: String,
-      required: false,
-    },
-  },
+  leaves: [{ type: mongoose.Schema.Types.ObjectId, ref: "leaves" }],
 });
 
 const Employees = mongoose.model("employees", EmployeesSchema);
