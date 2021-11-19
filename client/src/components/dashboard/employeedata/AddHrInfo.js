@@ -17,12 +17,13 @@ const AddHrInfo = ({ location, history }) => {
     location.state && location.state.employee
   );
   const [file, setFile] = useState();
+  const [hireDate, setHireDate] = useState("2000-01-01")
 
   const addNew = () => {
     const data = new FormData();
     data.append("file", file);
-    const readyTOSend=JSON.stringify(employeeData)
-    data.append("employeeData",readyTOSend)
+    const readyTOSend = JSON.stringify(employeeData);
+    data.append("employeeData", readyTOSend);
 
     axios
       .post(
@@ -40,36 +41,8 @@ const AddHrInfo = ({ location, history }) => {
         // history.push("/dashboard/employeedata/addemployee/documents");
       })
       .catch((err) => console.log(err));
-   
-    setEmployeeData("");
+
   };
-
-  // upload route
-//   const send = () => {
-//     const data = new FormData();
-//     data.append("file", file);
-//     const readyTOSend=JSON.stringify(employeeData)
-//     data.append("employeeData",readyTOSend);
-    
-// const fileOwner=employeeData.email;
-
-//     console.log(FormData);
-//     axios
-//       .post(
-//         "http://localhost:5000/employee/singlefile",
-//         data,
-
-//         {fileOwner,
-
-//           header: {"owner":fileOwner,
-//             "Content-Type": "multipart/form-data",
-//           },
-//         }
-//       )
-//       .then((res) => {
-//         console.log(res);
-//       });
-//   };
 
   return (
     <div className="addemployee_mainbox">
@@ -83,7 +56,6 @@ const AddHrInfo = ({ location, history }) => {
             <InputLabel htmlFor="my-input">Photo</InputLabel>
             <Input
               type="file"
-              id="file"
               name="file"
               onChange={(e) => setFile(e.target.files[0])}
             />
@@ -99,16 +71,16 @@ const AddHrInfo = ({ location, history }) => {
           />
         </FormControl>
         <FormControl>
-          <InputLabel htmlFor="my-input">Hire date</InputLabel>
-          <Input
-            onChange={(e) =>
+          <InputLabel htmlFor="my-input">Hire Date</InputLabel>
+          <Input type="date" 
+            onChange={(e) =>{ console.log(e.target.value);setHireDate(e.target.value);
               setEmployeeData({ ...employeeData, hireDate: e.target.value })
-            }
+            }}
           />
         </FormControl>
         <FormControl>
           <InputLabel htmlFor="my-input">Contract End</InputLabel>
-          <Input
+          <Input type="date" min="2019-01-01" 
             onChange={(e) =>
               setEmployeeData({ ...employeeData, contractEnd: e.target.value })
             }
@@ -253,7 +225,7 @@ const AddHrInfo = ({ location, history }) => {
           </FormControl>
           <FormControl>
             <InputLabel htmlFor="my-input">From</InputLabel>
-            <Input
+            <Input type="date"
               onChange={(e) =>
                 setEmployeeData({ ...employeeData, from: e.target.value })
               }
@@ -261,7 +233,7 @@ const AddHrInfo = ({ location, history }) => {
           </FormControl>
           <FormControl>
             <InputLabel htmlFor="my-input">To</InputLabel>
-            <Input
+            <Input type="date"
               onChange={(e) =>
                 setEmployeeData({ ...employeeData, to: e.target.value })
               }
@@ -270,7 +242,8 @@ const AddHrInfo = ({ location, history }) => {
         </div>
 
         <FormControl>
-          <Button onClick={addNew}>Add </Button>
+  
+          <Button onClick={()=>{addNew() ;   setEmployeeData(""); }}>Add </Button>
         </FormControl>
       </FormGroup>
     </div>

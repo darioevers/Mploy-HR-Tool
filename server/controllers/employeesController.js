@@ -18,8 +18,12 @@ employeeContoller.getAllEmployees = async (req, res) => {
 
 // add new Employee
 employeeContoller.addNewEmployee = async (req, res) => {
-  const received=JSON.parse(req.body.employeeData);
-const path=req.file.path.substring(7);
+console.log(req.body);
+
+  const received = JSON.parse(req.body.employeeData);
+  const path = req.file.path.substring(7);
+ 
+
   try {
     const employee = await new EmployeeData({
       bio: {
@@ -32,11 +36,9 @@ const path=req.file.path.substring(7);
         phoneNumber: received.phoneNumber,
         maritalStatus: received.maritalStatus,
         status: received.status,
-        photo:path ,
-
+        photo: path,
       },
-      
-    
+
       addressOne: {
         streetOne: received.streetOne,
         cityOne: received.cityOne,
@@ -64,7 +66,6 @@ const path=req.file.path.substring(7);
         from: received.from,
         to: received.to,
       },
-
       contractInfo: {
         contractNo: received.contractNo,
         hireDate: received.hireDate,
@@ -96,13 +97,12 @@ const path=req.file.path.substring(7);
   }
 };
 
-
 // upload
 // employeeContoller.singleFileUpload = async (req, res, next) => {
 //     try{
 //       console.log(req.file)
 
-//       console.log(received)      
+//       console.log(received)
 //       res.status(201).send('File Uploaded Successfully');
 //     }catch(error) {
 //         res.status(400).send(error.message);
@@ -143,11 +143,17 @@ employeeContoller.searchName = async (req, res) => {
 
 // patch or update employee
 employeeContoller.updateEmployee = async (req, res) => {
+
+
   try {
-    console.log(req.body);
+    let received =await JSON.parse(req.body.editEmp);
+    received.bio.photo="uploads/" + req.file.path.substring(15);
+   console.log(req.file.path);
+    // received.bio.photo=req.file.path.substring(7);
+    console.log(received);
     const employee = await EmployeeData.findOneAndUpdate(
-      { "bio.email": req.body.editEmp.bio.email },
-      req.body.editEmp,
+      { "bio.email": received.bio.email },
+      received,
       {
         new: true,
       }
@@ -157,7 +163,6 @@ employeeContoller.updateEmployee = async (req, res) => {
     res.status(404).json({ status: "fail", message: error.message });
   }
 };
-
 
 // delete one employee upon criteria from the log
 employeeContoller.deleteOneEmployee = async (req, res) => {
