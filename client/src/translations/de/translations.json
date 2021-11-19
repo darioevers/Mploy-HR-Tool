@@ -1,0 +1,35 @@
+{
+  "landingNavbar": {
+    "link01": "Leistungen",
+    "link02": "Über Uns",
+    "button01": "KONTAKT",
+    "button02": "ANMELDEN"
+  },
+  "landingHomeHeader": {
+    "title01": "Wir stellen vor,",
+    "title02": "MPLOY",
+    "title03": "HR TOOL",
+    "button01": "ANMELDEN",
+    "button02": "MEHR"
+  },
+  "landingHomeServices": {
+    "title01": "Arbeiten mit MPloy.",
+    "title02": "Das beste rausholen!",
+    "body01": "Es war noch nie so einfach, das beste aus Ihrem Team zu holen. Verwalten Sie mit MPloy alles in einem Arbeitsbereich und legen Sie in wenigen Minuten los. Testen Sie es noch heute kostenlos!",
+    "button01": "JETZT ANMELDEN",
+    "button02": "SPRICH UNS AN"
+  },
+  "landingHomeAbout": {
+    "title01": "HR digitalisieren.",
+    "title02": "Entwickelt, um Produktivität zu einem unkomplizierten Erlebnis zu machen.",
+    "body01": "Von der Mitarbeiterverwaltung über die Dokumentenverfolgung und die Verwaltung von HR-Aufgaben bis hin zur Gehaltsabrechnung - wir bieten die Funktionen, die Unternehmen benötigen, um ihre Prozesse zu vereinfachen und Zeit zu sparen."
+  },
+  "landingHomeContact": {
+    "title01": "Kostenlos testen!",
+    "title02": "Melden Sie sich noch heute an und erfahren Sie, wie unsere Plattform Ihre HR-Anforderungen rationalisieren kann.",
+    "button01": "JETZT ANMELDEN"
+  },
+  "contact": {
+    "title": "Sprich uns an."
+  }
+}
