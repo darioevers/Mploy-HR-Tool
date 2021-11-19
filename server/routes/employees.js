@@ -18,6 +18,10 @@ router.put("/update/",uploads.single('file'), employeesController.updateEmployee
 // updating status ||deleting from the get all employees
 router.patch("/delete", employeesController.deleteOrUpdateStatus);
 
+// get employee who had today birthday
+router.get("/todaybirthday/", employeesController.getTodaysBirthDay);
+
+
 // get one employee by name
 // router.get("/:firstName", employeesController.getOneEmployee);
 

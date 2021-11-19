@@ -18,11 +18,10 @@ employeeContoller.getAllEmployees = async (req, res) => {
 
 // add new Employee
 employeeContoller.addNewEmployee = async (req, res) => {
-console.log(req.body);
+  console.log(req.body);
 
   const received = JSON.parse(req.body.employeeData);
   const path = req.file.path.substring(7);
- 
 
   try {
     const employee = await new EmployeeData({
@@ -143,12 +142,10 @@ employeeContoller.searchName = async (req, res) => {
 
 // patch or update employee
 employeeContoller.updateEmployee = async (req, res) => {
-
-
   try {
-    let received =await JSON.parse(req.body.editEmp);
-    received.bio.photo="uploads/" + req.file.path.substring(15);
-   console.log(req.file.path);
+    let received = await JSON.parse(req.body.editEmp);
+    received.bio.photo = "uploads/" + req.file.path.substring(15);
+    console.log(req.file.path);
     // received.bio.photo=req.file.path.substring(7);
     console.log(received);
     const employee = await EmployeeData.findOneAndUpdate(
@@ -191,4 +188,22 @@ employeeContoller.deleteOrUpdateStatus = async (req, res) => {
   }
 };
 
+// gettting the employees which have birthday today
+
+employeeContoller.getTodaysBirthDay = async (req, res) => {
+  var today = new Date().getDate();
+  // var currentDate = new Date()
+  // var day = currentDate.getDate()
+  // var month = currentDate.getMonth() + 1
+  // var year = currentDate.getFullYear()
+  try {
+    const employees = await EmployeeData.find({ "bio.dateOfBirth":today});
+    res.status(200).json(employees);
+     console.log(today);
+  } catch (error) {
+    res.status(error.status).json({
+      message: error.message,
+    });
+  }
+};
 module.exports = employeeContoller;

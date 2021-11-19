@@ -16,7 +16,7 @@ const EmployeesSchema = Schema({
       required: false,
     },
     dateOfBirth: {
-      type: String,
+      type: Date,
       required: false,
     },
     nationality: {
