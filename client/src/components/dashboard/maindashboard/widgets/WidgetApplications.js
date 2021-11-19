@@ -102,6 +102,22 @@ function WidgetApplications() {
             />
           </div>
 
+          {/* EMAIL */}
+          <div className="form_search">
+            <h3>Email</h3>
+            <input
+              type="search"
+              placeholder="Type email"
+              className="email"
+              onChange={(e) =>
+                setNewLeave({
+                  ...newLeave,
+                  email: e.target.value,
+                })
+              }
+            />
+          </div>
+
           <div className="form_search">
             <h3>Department</h3>
             <input
