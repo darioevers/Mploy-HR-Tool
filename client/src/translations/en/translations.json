@@ -1,0 +1,35 @@
+{
+  "landingNavbar": {
+    "link01": "Solutions",
+    "link02": "About",
+    "button01": "CONTACT",
+    "button02": "LOGIN"
+  },
+  "landingHomeHeader": {
+    "title01": "INTRODUCING",
+    "title02": "MPLOY",
+    "title03": "HR TOOL",
+    "button01": "LOGIN",
+    "button02": "LEARN MORE"
+  },
+  "landingHomeServices": {
+    "title01": "Employ with MPloy.",
+    "title02": "Scale your team with thoughtful solutions.",
+    "body01": "Planning, tracking and delivering your team’s best work has never been easier. Manage everything in one Workspace with MPloy and get started within minutes. Try it today for free!",
+    "button01": "SIGN UP FOR MPLOY",
+    "button02": "GET IN TOUCH"
+  },
+  "landingHomeAbout": {
+    "title01": "Digitising HR.",
+    "title02": "Designed to make productivity an uncomplicated experience.",
+    "body01": "From employee management to document tracking, HR task management and payroll - we offer the features that companies need to simplify their processes and save time.Mploy is user friendly and designed for the modern age."
+  },
+  "landingHomeContact": {
+    "title01": "Try Mploy for Free!",
+    "title02": "Sign up with Mploy today and experience how our HR Management platform can help streamline your HR needs.",
+    "button01": "TRY NOW"
+  },
+  "contact": {
+    "title": "Get in touch."
+  }
+}

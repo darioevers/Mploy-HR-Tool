@@ -36,14 +36,14 @@ const AddEmployee = ({ history }) => {
         {" "}
         Documents
       </NavLink>
-      <NavLink
+      {/* <NavLink
         exact
         to="/dashboard/employeedata/addemployee/hrinfo"
         activeClassName="active"
         className="sidenav_link"
       >
         Hr Information
-      </NavLink>
+      </NavLink> */}
 
      
       <FormGroup enctype="multipart/form-data">
@@ -78,7 +78,7 @@ const AddEmployee = ({ history }) => {
           </FormControl>
           <FormControl>
             <InputLabel htmlFor="my-input">Date of Birth</InputLabel>
-            <Input
+            <Input type="date" 
               name="dateofbirth"
               onChange={(e) =>
                 setEmployee({ ...employee, dateOfBirth: e.target.value })
