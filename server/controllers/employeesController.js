@@ -35,7 +35,7 @@ employeeController.addNewEmployee = async (req, res) => {
   console.log(req.body);
 
   const received = JSON.parse(req.body.employeeData);
-  const path = req.file.path.substring(7);
+  const path = req.file && req.file.path.substring(7);
 
   try {
     const employee = await new EmployeeData({
