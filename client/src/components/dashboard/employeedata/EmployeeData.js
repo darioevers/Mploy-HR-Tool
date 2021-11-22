@@ -3,6 +3,7 @@ import { NavLink, Link } from "react-router-dom";
 import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
 import axios from "axios";
+import SearchIcon from "@mui/icons-material/Search";
 import {
   Table,
   TableHead,
@@ -24,6 +25,7 @@ function EmployeeData({ history }) {
   const [employees, setEmployees] = useState();
   const [search, setSearch] = useState("");
   const [checked, setChecked] = useState(false);
+  const [show, setShow] = useState(false);
   const [id, setId] = useState();
 
   useEffect(() => {
@@ -88,24 +90,23 @@ function EmployeeData({ history }) {
           <h1>Employee Data</h1>
         </div>
         {/* search */}
-        <div className="employeedata_searchbar">
+        <div
+          className={
+            checked
+              ? "employeedata_searchbar_show"
+              : "employeedata_searchbar_hide"
+          }
+        >
           <div className="search">
-            {/* <input
+            <span>
+              <SearchIcon />
+            </span>
+            <input
               type="text"
               value={search}
               onChange={(e) => searchEmployee(e.target.value)}
               placeholder="Type Employee Name"
-            /> */}
-            <FormGroup>
-              <FormControl>
-                <Input
-                  type="text"
-                  value={search}
-                  onChange={(e) => searchEmployee(e.target.value)}
-                  placeholder="Type Employee Name"
-                />
-              </FormControl>
-            </FormGroup>
+            />
           </div>
 
           <div className="button">
@@ -122,20 +123,14 @@ function EmployeeData({ history }) {
           </div>
         </div>
 
-        <div className="employeedata_show">
-          <Table
-            sx={{ minWidth: 700 }}
-            aria-label="customized table"
-            style={{ overflow: "scroll" }}
-          >
+        <div className={checked ? "employeedata_show" : "employeedata_hide"}>
+          <Table style={{ width: "100%" }}>
             <TableHead>
               <TableRow>
-                <TableCell></TableCell>
-
-                <TableCell>First Name</TableCell>
-                <TableCell>Last Name</TableCell>
+                <TableCell>Name</TableCell>
+                <TableCell>Department</TableCell>
                 <TableCell>Email</TableCell>
-                <TableCell>DOB</TableCell>
+                <TableCell>Date of Birth</TableCell>
               </TableRow>
             </TableHead>
 
@@ -150,7 +145,7 @@ function EmployeeData({ history }) {
                         setId(employee._id);
                       }}
                     >
-                      <TableCell>
+                      <TableCell style={{ display: "flex" }}>
                         <img
                           src={`http://localhost:5000/${employee.bio.photo}`}
                           onError={(e) => {
@@ -159,16 +154,26 @@ function EmployeeData({ history }) {
                               "http://localhost:5000/uploads/error.jpg";
                           }}
                         />
+                        <div className="table_cell_photo">
+                          <h5>
+                            {employee.bio.firstName} {employee.bio.lastName}
+                          </h5>
+                          <h5>{employee.contractInfo.department}</h5>
+                        </div>
                       </TableCell>
 
-                      <TableCell>{employee.bio.firstName}</TableCell>
-                      <TableCell>{employee.bio.lastName}</TableCell>
+                      <TableCell>{employee.contractInfo.team}</TableCell>
                       <TableCell>{employee.bio.email}</TableCell>
                       <TableCell>{employee.bio.dateOfBirth}</TableCell>
                     </TableRow>
+
                     {checked && employee._id === id && (
                       <div
-                        className="employeedata_summary"
+                        className={
+                          checked
+                            ? "employeedata_summary_show"
+                            : "employeedata_summary_hide"
+                        }
                         style={{
                           backgroundColor: "whitesmoke",
                         }}
@@ -190,6 +195,12 @@ function EmployeeData({ history }) {
                             </h1>
                             <h2>{employee.contractInfo.team}</h2>
                             <h3>{employee.bio.status}</h3>
+                          </div>
+                          <div className="summary_close_btn">
+                            <button onClick={() => setChecked(!checked)}>
+                              {" "}
+                              X{" "}
+                            </button>
                           </div>
                         </div>
 
@@ -238,33 +249,28 @@ function EmployeeData({ history }) {
                           </div>
 
                           <div className="summary_buttons">
-                            <i>
-                              <Button
-                                color="primary"
-                                variant="contained"
-                                onClick={() => {
-                                  console.log(employees);
-                                  history.push({
-                                    pathname:
-                                      "/dashboard/employeedata/editemployee",
-                                    state: { employee },
-                                  });
-                                }}
-                              >
-                                Edit
-                              </Button>
-                            </i>
-                            <i>
-                              <Button
-                                color="secondary"
-                                variant="contained"
-                                onClick={() =>
-                                  deleteEmployeeData(employee.bio.email)
-                                }
-                              >
-                                Delete
-                              </Button>
-                            </i>
+                            <Button
+                              variant="contained"
+                              onClick={() => {
+                                console.log(employees);
+                                history.push({
+                                  pathname:
+                                    "/dashboard/employeedata/editemployee",
+                                  state: { employee },
+                                });
+                              }}
+                            >
+                              Edit
+                            </Button>
+
+                            <Button
+                              variant="contained"
+                              onClick={() =>
+                                deleteEmployeeData(employee.bio.email)
+                              }
+                            >
+                              Delete
+                            </Button>
                           </div>
                         </div>
                       </div>
