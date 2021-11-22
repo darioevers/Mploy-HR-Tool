@@ -168,57 +168,105 @@ function EmployeeData({ history }) {
                     </TableRow>
                     {checked && employee._id === id && (
                       <div
-                        className="xx"
+                        className="employeedata_summary"
                         style={{
                           backgroundColor: "whitesmoke",
                         }}
                       >
-                        <TableCell>{employee.bio.nationality}</TableCell>
-                        <TableCell>{employee.bio.gender}</TableCell>
-                        <TableCell>{employee.bio.phoneNumber}</TableCell>
-                        <TableCell>{employee.bio.maritalStatus}</TableCell>
-                        <TableCell>{employee.bio.status}</TableCell>
-                        <TableCell>
-                          {" "}
-                          <h4> Address</h4>{" "}
-                          {`${employee.addressOne.streetOne} ${employee.addressOne.cityOne} ${employee.addressOne.postalCodeOne} ${employee.addressOne.countryOne}`}
-                        </TableCell>
+                        <div className="summary_header">
+                          <div className="summary_header_photo">
+                            <img
+                              src={`http://localhost:5000/${employee.bio.photo}`}
+                              onError={(e) => {
+                                e.target.onError = null;
+                                e.target.src =
+                                  "http://localhost:5000/uploads/error.jpg";
+                              }}
+                            />
+                          </div>
+                          <div className="summary_header_title">
+                            <h1>
+                              {employee.bio.firstName} {employee.bio.lastName}
+                            </h1>
+                            <h2>{employee.contractInfo.team}</h2>
+                            <h3>{employee.bio.status}</h3>
+                          </div>
+                        </div>
 
-                        <TableCell>
-                          {employee.contractInfo.department}
-                        </TableCell>
-                        <TableCell>{employee.contractInfo.team}</TableCell>
-                        <TableCell>
-                          {employee.contractInfo.workLocation}
-                        </TableCell>
+                        <div className="summary_body">
+                          <h1> Contact Information </h1>
+                          <div className="summary_body_contact">
+                            <div className="contact_left">
+                              <h5>Contact No.:</h5>
+                              <h5>Email:</h5>
+                            </div>
+                            <div className="contact_right">
+                              <h5>{employee.bio.phoneNumber}</h5>
+                              <h5>{employee.bio.email}</h5>
+                            </div>
+                          </div>
 
-                        <TableCell>
-                          <Button
-                            color="primary"
-                            variant="contained"
-                            onClick={() => {
-                              console.log(employees);
-                              history.push({
-                                pathname:
-                                  "/dashboard/employeedata/editemployee",
-                                state: { employee },
-                              });
-                            }}
-                          >
-                            Edit
-                          </Button>
-                        </TableCell>
-                        <TableCell>
-                          <Button
-                            color="secondary"
-                            variant="contained"
-                            onClick={() =>
-                              deleteEmployeeData(employee.bio.email)
-                            }
-                          >
-                            Delete
-                          </Button>
-                        </TableCell>
+                          <h1> Work Information </h1>
+                          <div className="summary_body_workinfo">
+                            <div className="workinfo_left">
+                              <h5>Department:</h5>
+                              <h5>Supervisor</h5>
+                              <h5>Office</h5>
+                            </div>
+                            <div className="workinfo_right">
+                              <h5>{employee.contractInfo.department}</h5>
+                              <h5>Supervisor Name</h5>
+                              <h5>{employee.contractInfo.workLocation}</h5>
+                            </div>
+                          </div>
+
+                          <h1> Personal Info </h1>
+                          <div className="summary_body_personalinfo">
+                            <div className="personalinfo_left">
+                              <h5>Gender:</h5>
+                              <h5>Birthday</h5>
+                              <h5>Address</h5>
+                            </div>
+                            <div className="personalinfo_right">
+                              <h5>{employee.bio.gender}</h5>
+                              <h5>{employee.bio.dateOfBirth}</h5>
+                              <h5>
+                                {employee.addressOne.stateOne},{" "}
+                                {employee.addressOne.countryOne}
+                              </h5>
+                            </div>
+                          </div>
+
+                          <div className="summary_buttons">
+                            <i>
+                              <Button
+                                color="primary"
+                                variant="contained"
+                                onClick={() => {
+                                  console.log(employees);
+                                  history.push({
+                                    pathname:
+                                      "/dashboard/employeedata/editemployee",
+                                    state: { employee },
+                                  });
+                                }}
+                              >
+                                Edit
+                              </Button>
+                            </i>
+                            <i>
+                              <Button
+                                color="secondary"
+                                variant="contained"
+                                onClick={() =>
+                                  deleteEmployeeData(employee.bio.email)
+                                }
+                              >
+                                Delete
+                              </Button>
+                            </i>
+                          </div>
+                        </div>
                       </div>
                     )}
                   </>
