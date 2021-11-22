@@ -22,6 +22,11 @@ import {
 const AddEmployee = ({ history }) => {
   const [employee, setEmployee] = useState({});
 
+  //autofill
+  const [firstName, setFirstName] = useState("First Name");
+  const [lastName, setLastName] = useState("Last Name");
+  const [position, setPosition] = useState("Position");
+
   return (
     <div className="addemployee_mainbox">
       <DashboardTopNav />
@@ -66,33 +71,15 @@ const AddEmployee = ({ history }) => {
 
               <div className="form_header_info">
                 <div className="fullname">
-                  <input
-                    name="firstname"
-                    onChange={(e) =>
-                      setEmployee({ ...employee, firstName: e.target.value })
-                    }
-                    placeholder="First Name"
-                  />
-
-                  <input
-                    name="lastname"
-                    onChange={(e) =>
-                      setEmployee({ ...employee, lastName: e.target.value })
-                    }
-                    placeholder="Last Name"
-                  />
+                  <h1>{firstName}</h1>
+                  <h1>{lastName}</h1>
                 </div>
 
                 <div className="position">
-                  <input
-                    onChange={(e) =>
-                      setEmployee({ ...employee, position: e.target.value })
-                    }
-                    placeholder="Position"
-                  />
+                  <h3>{position}</h3>
                 </div>
                 <div className="contacts">
-                  <MailOutlineIcon />
+                  <MailOutlineIcon fontSize="small" />
                   <input
                     name="email"
                     onChange={(e) =>
@@ -101,7 +88,7 @@ const AddEmployee = ({ history }) => {
                     placeholder="Email"
                   />
 
-                  <PhoneIcon />
+                  <PhoneIcon fontSize="small" />
                   <input
                     name="phoneNumber"
                     onChange={(e) =>
@@ -122,25 +109,25 @@ const AddEmployee = ({ history }) => {
               </div>
 
               <div className="basicdetails_content">
-                <label for="firstName">First Name</label>
+                <h2> First Name</h2>
                 <input
                   type="text"
                   name="firstName"
-                  onChange={(e) =>
-                    setEmployee({ ...employee, firstName: e.target.value })
-                  }
+                  onChange={(e) => {
+                    setEmployee({ ...employee, firstName: e.target.value });
+                    setFirstName(e.target.value);
+                  }}
                 />
-
-                <label for="lastName">Last Name</label>
+                <h2> Last Name</h2>
                 <input
                   name="lastName"
-                  onChange={(e) =>
-                    setEmployee({ ...employee, lastName: e.target.value })
-                  }
+                  onChange={(e) => {
+                    setEmployee({ ...employee, lastName: e.target.value });
+                    setLastName(e.target.value);
+                  }}
                 />
                 <br />
-
-                <label for="employeeId">Employee ID</label>
+                <h2> Employee ID</h2>
                 <input
                   type="text"
                   name="employeeId"
@@ -148,13 +135,13 @@ const AddEmployee = ({ history }) => {
                     setEmployee({ ...employee, employeeId: e.target.value })
                   }
                 />
-
-                <label for="position">Position</label>
+                <h2> Position</h2>
                 <input
                   name="position"
-                  onChange={(e) =>
-                    setEmployee({ ...employee, position: e.target.value })
-                  }
+                  onChange={(e) => {
+                    setEmployee({ ...employee, position: e.target.value });
+                    setPosition(e.target.value);
+                  }}
                 />
               </div>
 
@@ -163,7 +150,7 @@ const AddEmployee = ({ history }) => {
               </div>
 
               <div className="personal_details_content">
-                <label for="addressOne">Address 1</label>
+                <h2> Address 1</h2>
                 <input
                   type="text"
                   name="streetOne"
@@ -172,7 +159,7 @@ const AddEmployee = ({ history }) => {
                   }
                 />
 
-                <label for="addressOne">Address 2</label>
+                <h2> Address 2</h2>
                 <input
                   type="text"
                   name="addressTwo"
@@ -182,7 +169,7 @@ const AddEmployee = ({ history }) => {
                 />
                 <br />
 
-                <label for="cityOne">City</label>
+                <h2> City</h2>
                 <input
                   type="text"
                   name="addressOne"
@@ -191,7 +178,7 @@ const AddEmployee = ({ history }) => {
                   }
                 />
 
-                <label for="countryOne">Country</label>
+                <h2> Country</h2>
                 <input
                   type="text"
                   name="countryOne"
@@ -201,7 +188,7 @@ const AddEmployee = ({ history }) => {
                 />
                 <br />
 
-                <label for="stateOne">State</label>
+                <h2>State</h2>
                 <input
                   type="text"
                   name="stateOne"
@@ -210,7 +197,7 @@ const AddEmployee = ({ history }) => {
                   }
                 />
 
-                <label for="postalCode">Postal Code</label>
+                <h2> Postal Code</h2>
                 <input
                   type="text"
                   name="postalCodeOne"
@@ -220,7 +207,7 @@ const AddEmployee = ({ history }) => {
                 />
                 <br />
 
-                <label for="dateOfBirth">Date of Birth</label>
+                <h2> Date of Birth</h2>
                 <input
                   type="date"
                   name="dateOfBirth"
@@ -229,7 +216,7 @@ const AddEmployee = ({ history }) => {
                   }
                 />
 
-                <label for="otherEmail">Other Email</label>
+                <h2> Other Email</h2>
                 <input
                   type="text"
                   name="otherEmail"
@@ -239,7 +226,7 @@ const AddEmployee = ({ history }) => {
                 />
                 <br />
 
-                <label for="nationality">Nationality</label>
+                <h2>Nationality</h2>
                 <input
                   type="text"
                   name="nationality"
@@ -248,12 +235,23 @@ const AddEmployee = ({ history }) => {
                   }
                 />
 
-                <InputLabel id="demo">Gender</InputLabel>
+                <h2>Gender</h2>
                 <Select
                   labelId="demo"
                   onChange={(e) =>
                     setEmployee({ ...employee, gender: e.target.value })
                   }
+                  style={{
+                    width: "32%",
+                    height: "25px",
+                    fontSize: "15px",
+                    backgroundColor: "#FFFFFF",
+                    fontSize: "16px",
+                    border: "none",
+                    borderRadius: "5px",
+                    margin: "0px 20px 10px 0px",
+                    padding: "2px 10px",
+                  }}
                 >
                   <MenuItem value="male">Male</MenuItem>
                   <MenuItem value="female">Female</MenuItem>
@@ -261,12 +259,22 @@ const AddEmployee = ({ history }) => {
                 </Select>
                 <br />
 
-                <InputLabel id="demo">Marital Status</InputLabel>
+                <h2>Marital Status</h2>
                 <Select
                   labelId="demo"
                   onChange={(e) =>
                     setEmployee({ ...employee, maritalStatus: e.target.value })
                   }
+                  style={{
+                    width: "32%",
+                    height: "25px",
+                    backgroundColor: "#FFFFFF",
+                    fontSize: "14px",
+                    border: "none",
+                    borderRadius: "5px",
+                    margin: "0px 20px 10px 0px",
+                    padding: "2px 10px",
+                  }}
                 >
                   <MenuItem value="male">Single</MenuItem>
                   <MenuItem value="female">Married</MenuItem>
@@ -274,7 +282,7 @@ const AddEmployee = ({ history }) => {
                   <MenuItem value="x">Not Specified</MenuItem>
                 </Select>
 
-                <label for="hobbies">Hobbies</label>
+                <h2> Hobbies</h2>
                 <input
                   type="text"
                   name="hobbies"
@@ -284,79 +292,10 @@ const AddEmployee = ({ history }) => {
                 />
                 <br />
               </div>
-
-              <FormControl>
-                <InputLabel htmlFor="my-input">Marital Status</InputLabel>
-                <Input
-                  name="maritalStatus"
-                  onChange={(e) =>
-                    setEmployee({ ...employee, maritalStatus: e.target.value })
-                  }
-                />
-              </FormControl>
-
-              <FormControl>
-                <InputLabel htmlFor="my-input">Street</InputLabel>
-                <Input
-                  name="street"
-                  onChange={(e) =>
-                    setEmployee({ ...employee, streetOne: e.target.value })
-                  }
-                />
-              </FormControl>
-              <FormControl>
-                <InputLabel htmlFor="my-input">City</InputLabel>
-                <Input
-                  name="city"
-                  onChange={(e) =>
-                    setEmployee({ ...employee, cityOne: e.target.value })
-                  }
-                />
-              </FormControl>
-              <FormControl>
-                <InputLabel htmlFor="my-input">Postal Code</InputLabel>
-                <Input
-                  name="postalCode"
-                  onChange={(e) =>
-                    setEmployee({ ...employee, postalCodeOne: e.target.value })
-                  }
-                />
-              </FormControl>
-              <FormControl>
-                <InputLabel id="demo-simple-select-label">State</InputLabel>
-                <Select
-                  labelId="demo-simple-select-label"
-                  onChange={(e) =>
-                    setEmployee({ ...employee, stateOne: e.target.value })
-                  }
-                >
-                  <MenuItem value="sachsen">Schsen</MenuItem>
-                  <MenuItem value="Berlin">Berlin</MenuItem>
-                  <MenuItem value="Hamburg">Hamburg</MenuItem>
-                </Select>
-              </FormControl>
-              <FormControl>
-                <InputLabel htmlFor="my-input">Country</InputLabel>
-                <Input
-                  name="Country"
-                  onChange={(e) =>
-                    setEmployee({ ...employee, countryOne: e.target.value })
-                  }
-                />
-              </FormControl>
-              <FormControl>
-                <InputLabel htmlFor="my-input">Status</InputLabel>
-                <Input
-                  name="status"
-                  onChange={(e) =>
-                    setEmployee({ ...employee, status: e.target.value })
-                  }
-                />
-              </FormControl>
             </div>
 
-            <FormControl>
-              <Button
+            <div className="next-btn">
+              <button
                 onClick={() => {
                   console.log(employee);
 
@@ -367,8 +306,8 @@ const AddEmployee = ({ history }) => {
                 }}
               >
                 Next{" "}
-              </Button>
-            </FormControl>
+              </button>
+            </div>
           </FormGroup>
         </div>
       </div>
