@@ -36,6 +36,7 @@ function WidgetApplications() {
   //add new leave application
   const [newLeave, setNewLeave] = useState({});
   const addLeave = () => {
+    console.log("HELLO");
     const data = newLeave;
     axios
       .post(
@@ -61,12 +62,6 @@ function WidgetApplications() {
         <div className="horizontal_line"></div>
       </div>
       <div className="widget_applications_body">
-        {/* <div className="widget_applications_rejected">
-          <h1>
-            {leaves && leaves.filter((item) => item.pending === true).length}
-          </h1>
-          <h4>Rejected</h4>
-        </div> */}
         <div className="widget_applications_pending">
           <h1>
             {leaves && leaves.filter((item) => item.pending === true).length}
@@ -103,6 +98,22 @@ function WidgetApplications() {
                 setNewLeave({
                   ...newLeave,
                   name: e.target.value,
+                })
+              }
+            />
+          </div>
+
+          {/* EMAIL */}
+          <div className="form_search">
+            <h3>Email</h3>
+            <input
+              type="search"
+              placeholder="Type email"
+              className="email"
+              onChange={(e) =>
+                setNewLeave({
+                  ...newLeave,
+                  email: e.target.value,
                 })
               }
             />

@@ -1,4 +1,7 @@
 const LeavesData = require("../models/leavesModel");
+const EmployeesData = require("../models/employeesModel");
+const mongoose = require("mongoose");
+const { log } = require("npmlog");
 const leaveController = {};
 
 // get leave applications
@@ -39,7 +42,9 @@ leaveController.updateLeave = async (req, res) => {
 leaveController.addLeave = async (req, res) => {
   try {
     const leave = await new LeavesData({
+      // _id: new mongoose.Types.Schema.ObjectId(),
       name: req.body.name,
+      email: req.body.email,
       department: req.body.department,
       type: req.body.type,
       dateFrom: req.body.dateFrom,
@@ -48,22 +53,29 @@ leaveController.addLeave = async (req, res) => {
     });
 
     leave.save();
+    let employee = await EmployeesData.findOne({ "bio.email": req.body.email });
+    employee.leaves.push(leave);
+    employee.save();
+
+    // await EmployeesData.find({ "bio.email": req.body.email })
+    //   .then((employee) => {
+    //     if (employee) {
+    //       console.log(employee);
+    //       employee.leaves?.push(leave);
+    //       employee.save();
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+
+    // employee.leaves.push(leave);
+
     res
       .status(200)
       .json({ status: "success", message: "added new leave application" });
   } catch (error) {
     res.status(404).json({ status: "fail", message: error });
-  }
-};
-
-//reject leave application
-leaveController.rejectLeave = async (req, res) => {
-  console.log(req.params.id);
-  try {
-    await LeavesData.findByIdAndDelete(req.params.id);
-    res.status(200).send({ message: "data deleted!", success: true });
-  } catch (error) {
-    res.status(400).send({ message: error.message });
   }
 };
 

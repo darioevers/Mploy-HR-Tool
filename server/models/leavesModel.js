@@ -5,6 +5,10 @@ const LeavesSchema = Schema({
     type: String,
     required: false,
   },
+  email: {
+    type: String,
+    required: false,
+  },
   department: {
     type: String,
     required: false,
@@ -26,6 +30,10 @@ const LeavesSchema = Schema({
     default: true,
     required: false,
   },
+  // employee: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: "employees",
+  // },
 });
 
 const Leaves = mongoose.model("leaves", LeavesSchema);

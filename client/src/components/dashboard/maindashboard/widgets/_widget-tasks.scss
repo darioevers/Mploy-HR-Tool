@@ -34,7 +34,7 @@
 }
 
 #main {
-  height: 78%;
+  height: 100%;
   display: flex;
   align-items: center;
   transition: margin-left 0.5s;
@@ -76,6 +76,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: -24px;
     h1 {
       font-size: 16px;
     }
@@ -129,19 +130,20 @@
 
 .tasks {
   width: 100%;
+  height: 100%;
   display: flex;
+  flex-direction: column;
   font-size: 30px;
-  flex-wrap: wrap;
-  margin-left: 10px;
+  margin-left: 5px;
   overflow-x: scroll;
 }
 
 .task {
   display: flex;
-  position: relative;
   align-items: center;
-  width: 180px;
-  height: 46px;
+  position: relative;
+  width: 95%;
+  height: 60px;
   background-color: $dark-bg;
   border-radius: 10px;
   justify-content: space-between;
@@ -153,6 +155,7 @@
 .task_main {
   margin-left: 10px;
   color: $primary;
+  position: relative;
   h5 {
     font-size: 12px;
     margin-bottom: 5px;
@@ -183,8 +186,11 @@
   }
   .task_tag {
     position: absolute;
-    top: -16px;
-    left: 7px;
+    top: 30%;
+    left: 0;
+    h5 {
+      font-weight: bolder;
+    }
   }
 }
 
@@ -224,7 +230,7 @@
     margin-left: 15px;
     font-size: 12px;
     height: 20px;
-    width: 82%;
+    width: 87%;
     border: 1px solid $highlight;
     border-radius: 10px;
     background-color: transparent;
@@ -237,9 +243,10 @@
     width: 87%;
     font-size: 12px;
     border: 1px solid $highlight;
-    border-radius: 10px;
+    border-radius: 15px;
     background-color: transparent;
     color: $primary;
+    padding: 0 3px;
   }
   .save_btn {
     @include flex-center;
@@ -260,7 +267,7 @@
 }
 
 #main_open {
-  height: 78%;
+  height: 100%;
   display: flex;
   align-items: center;
   transition: margin-left 0.5s;

@@ -1,12 +1,13 @@
 const EmployeeData = require("../models/employeesModel");
-
-const employeeContoller = {};
+const employeeController = {};
 
 // Get all employees
-
-employeeContoller.getAllEmployees = async (req, res) => {
+employeeController.getAllEmployees = async (req, res) => {
   try {
-    const employees = await EmployeeData.find({ "bio.status": "active" });
+    const employees = await EmployeeData.find({
+      "bio.status": "active",
+    });
+
     res.status(200).json(employees);
     // console.log(employees);
   } catch (error) {
@@ -16,13 +17,25 @@ employeeContoller.getAllEmployees = async (req, res) => {
   }
 };
 
+// //get
+// leaveController.getLeaves = async (name, res) => {
+//   try {
+//     const leaves = await LeavesData.find({name: name})
+//     .populate('leaves')
+//     res.status(200).json(leaves);
+//   } catch (error) {
+//     res.status(error.status).json({
+//       message: error.message,
+//     });
+//   }
+// };
+
 // add new Employee
-employeeContoller.addNewEmployee = async (req, res) => {
-console.log(req.body);
+employeeController.addNewEmployee = async (req, res) => {
+  console.log(req.body);
 
   const received = JSON.parse(req.body.employeeData);
   const path = req.file.path.substring(7);
- 
 
   try {
     const employee = await new EmployeeData({
@@ -38,7 +51,6 @@ console.log(req.body);
         status: received.status,
         photo: path,
       },
-
       addressOne: {
         streetOne: received.streetOne,
         cityOne: received.cityOne,
@@ -78,14 +90,15 @@ console.log(req.body);
         overtime: received.overtime,
         workLocation: received.workLocation,
       },
-      leave: {
-        usedLeave: received.usedLeave,
-        remainingLeave: received.remainingLeave,
-        fromDate: received.fromDate,
-        toDate: received.toDate,
-        totalDays: received.totalDays,
-        emergencyContact: received.emergencyContact,
-      },
+      // leave: {
+      //   typeOfLeave: received.typeOfLeave,
+      //   dateFrom: received.dateFrom,
+      //   dateTo: received.dateTo,
+      //   pending: true,
+      //   totalSickLeave: received.totalSickLeave,
+      //   totalHolidays: received.totalHolidays,
+      //   totalHomeOffice: received.totalHomeOffice,
+      // },
     });
 
     employee.save();
@@ -98,7 +111,7 @@ console.log(req.body);
 };
 
 // upload
-// employeeContoller.singleFileUpload = async (req, res, next) => {
+// employeeController.singleFileUpload = async (req, res, next) => {
 //     try{
 //       console.log(req.file)
 
@@ -110,7 +123,7 @@ console.log(req.body);
 // }
 
 // employee search
-employeeContoller.searchName = async (req, res) => {
+employeeController.searchName = async (req, res) => {
   // let searchPattern = new RegEx("^" + req.body.query);
   // EmployeeData.find({ firstName: { $regex: searchPattern } })
   try {
@@ -129,7 +142,7 @@ employeeContoller.searchName = async (req, res) => {
 };
 
 // get single employee using email
-// employeeContoller.getOneEmployee = async (req, res) => {
+// employeeController.getOneEmployee = async (req, res) => {
 //   try {
 //     const employee = await EmployeeData.findOne({"bio.email":req.body.email});
 //     res.status(200).json({
@@ -142,13 +155,11 @@ employeeContoller.searchName = async (req, res) => {
 // };
 
 // patch or update employee
-employeeContoller.updateEmployee = async (req, res) => {
-
-
+employeeController.updateEmployee = async (req, res) => {
   try {
-    let received =await JSON.parse(req.body.editEmp);
-    received.bio.photo="uploads/" + req.file.path.substring(15);
-   console.log(req.file.path);
+    let received = await JSON.parse(req.body.editEmp);
+    received.bio.photo = "uploads/" + req.file.path.substring(15);
+    console.log(req.file.path);
     // received.bio.photo=req.file.path.substring(7);
     console.log(received);
     const employee = await EmployeeData.findOneAndUpdate(
@@ -165,7 +176,7 @@ employeeContoller.updateEmployee = async (req, res) => {
 };
 
 // delete one employee upon criteria from the log
-employeeContoller.deleteOneEmployee = async (req, res) => {
+employeeController.deleteOneEmployee = async (req, res) => {
   try {
     await EmployeeData.findByIdAndDelete(req.params.id);
     res
@@ -178,7 +189,7 @@ employeeContoller.deleteOneEmployee = async (req, res) => {
   }
 };
 // deleting from the db but actually it change the status from available to unavailable
-employeeContoller.deleteOrUpdateStatus = async (req, res) => {
+employeeController.deleteOrUpdateStatus = async (req, res) => {
   try {
     const employee = await EmployeeData.findOneAndUpdate(
       { "bio.email": req.body.email },
@@ -191,4 +202,4 @@ employeeContoller.deleteOrUpdateStatus = async (req, res) => {
   }
 };
 
-module.exports = employeeContoller;
+module.exports = employeeController;
