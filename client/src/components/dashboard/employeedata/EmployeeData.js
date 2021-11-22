@@ -159,7 +159,7 @@ function EmployeeData({ history }) {
                           <h5>
                             {employee.bio.firstName} {employee.bio.lastName}
                           </h5>
-                          <h5>{employee.contractInfo.position}</h5>
+                          <h4>{employee.contractInfo.position}</h4>
                         </div>
                       </TableCell>
 
