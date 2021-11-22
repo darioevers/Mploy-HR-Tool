@@ -154,6 +154,10 @@ const EmployeesSchema = Schema({
       type: String,
       required: false,
     },
+    supervisor: {
+      type: String,
+      required: false,
+    },
     team: {
       type: String,
       required: false,

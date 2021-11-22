@@ -85,6 +85,7 @@ employeeController.addNewEmployee = async (req, res) => {
         probationPeriod: received.probationPeriod,
         employmentType: received.employmentType,
         position: received.position,
+        supervisor: received.supervisor,
         team: received.team,
         department: received.department,
         salary: received.salary,

@@ -194,8 +194,7 @@ function EmployeeData({ history }) {
                             <h1>
                               {employee.bio.firstName} {employee.bio.lastName}
                             </h1>
-                            <h2>{employee.contractInfo.team}</h2>
-                            <h3>{employee.bio.status}</h3>
+                            <h2>{employee.contractInfo.position}</h2>
                           </div>
                           <div className="summary_close_btn">
                             <button onClick={() => setChecked(!checked)}>
@@ -222,12 +221,12 @@ function EmployeeData({ history }) {
                           <div className="summary_body_workinfo">
                             <div className="workinfo_left">
                               <h5>Department:</h5>
-                              <h5>Supervisor</h5>
-                              <h5>Office</h5>
+                              <h5>Supervisor:</h5>
+                              <h5>Office:</h5>
                             </div>
                             <div className="workinfo_right">
                               <h5>{employee.contractInfo.department}</h5>
-                              <h5>Supervisor Name</h5>
+                              <h5>{employee.contractInfo.supervisor}</h5>
                               <h5>{employee.contractInfo.workLocation}</h5>
                             </div>
                           </div>
@@ -236,8 +235,8 @@ function EmployeeData({ history }) {
                           <div className="summary_body_personalinfo">
                             <div className="personalinfo_left">
                               <h5>Gender:</h5>
-                              <h5>Birthday</h5>
-                              <h5>Address</h5>
+                              <h5>Birthday:</h5>
+                              <h5>Address:</h5>
                             </div>
                             <div className="personalinfo_right">
                               <h5>{employee.bio.gender}</h5>
