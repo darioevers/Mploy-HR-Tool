@@ -1,5 +1,7 @@
 const LeavesData = require("../models/leavesModel");
 const EmployeesData = require("../models/employeesModel");
+const mongoose = require("mongoose");
+const { log } = require("npmlog");
 const leaveController = {};
 
 // get leave applications
@@ -40,6 +42,7 @@ leaveController.updateLeave = async (req, res) => {
 leaveController.addLeave = async (req, res) => {
   try {
     const leave = await new LeavesData({
+      // _id: new mongoose.Types.Schema.ObjectId(),
       name: req.body.name,
       email: req.body.email,
       department: req.body.department,
@@ -49,12 +52,25 @@ leaveController.addLeave = async (req, res) => {
       pending: true,
     });
 
-    await leave.save();
-    const employee = EmployeesData.find({ email: req.body.email });
-    employee.leaves = employee.leaves.push(leave._id);
+    leave.save();
+    let employee = await EmployeesData.findOne({ "bio.email": req.body.email });
+    employee.leaves.push(leave);
     employee.save();
 
-    // [...employee.leaves, leave._id];
+    // await EmployeesData.find({ "bio.email": req.body.email })
+    //   .then((employee) => {
+    //     if (employee) {
+    //       console.log(employee);
+    //       employee.leaves?.push(leave);
+    //       employee.save();
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+
+    // employee.leaves.push(leave);
+
     res
       .status(200)
       .json({ status: "success", message: "added new leave application" });

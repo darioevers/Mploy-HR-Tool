@@ -175,7 +175,7 @@ const EmployeesSchema = Schema({
       required: false,
     },
   },
-  leaves: [{ type: mongoose.Schema.Types.ObjectId, ref: "leaves" }],
+  leaves: [],
 });
 
 const Employees = mongoose.model("employees", EmployeesSchema);

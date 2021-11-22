@@ -36,6 +36,7 @@ function WidgetApplications() {
   //add new leave application
   const [newLeave, setNewLeave] = useState({});
   const addLeave = () => {
+    console.log("HELLO");
     const data = newLeave;
     axios
       .post(

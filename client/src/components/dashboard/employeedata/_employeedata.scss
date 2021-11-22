@@ -1,3 +1,56 @@
 .employeedata_mainbox {
   @include main_dashboard_grid;
+  overflow: hidden;
 }
+
+.employeedata_container {
+  width: 78vw;
+  // overflow-x: scroll;
+}
+
+.employeedata_searchbar {
+  height: 100px;
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  background-color: $primary;
+}
+
+.search {
+  width: 80%;
+  height: 40%;
+  margin-top: 20px;
+}
+
+.button {
+  margin-top: 15px;
+  button {
+    background-color: $primary;
+    color: $highlight;
+    border: 1px solid $highlight;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  span {
+    font-size: 15px;
+    font-weight: bolder;
+    margin: 0 5px;
+  }
+}
+.employeedata_show {
+  width: 90%;
+  height: 100%;
+  overflow: scroll;
+
+  img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+}
+
+// .xx {
+//   position: absolute;
+//   top: 100px;
+//   right: 0;
+// }
