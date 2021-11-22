@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import PhoneIcon from "@mui/icons-material/Phone";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 import {
   FormGroup,
@@ -21,6 +22,7 @@ import {
 
 const AddEmployee = ({ history }) => {
   const [employee, setEmployee] = useState({});
+  const [file, setFile] = useState();
 
   //autofill
   const [firstName, setFirstName] = useState("First Name");
@@ -66,7 +68,22 @@ const AddEmployee = ({ history }) => {
           <FormGroup enctype="multipart/form-data">
             <div className="form_header">
               <div className="form_header_photo">
-                <div className="photo"></div>
+                <div className="photo">
+                  <div className="dummy_photo">
+                    <i>
+                      <AccountCircleIcon style={{ fontSize: "135" }} />
+                    </i>
+                  </div>
+                  <div>
+                    <label for="upload-photo">Upload Photo +</label>
+                    <input
+                      type="file"
+                      name="file"
+                      id="upload-photo"
+                      onChange={(e) => setFile(e.target.files[0])}
+                    />
+                  </div>
+                </div>
               </div>
 
               <div className="form_header_info">

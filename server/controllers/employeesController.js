@@ -43,6 +43,7 @@ employeeController.addNewEmployee = async (req, res) => {
         firstName: received.firstName,
         lastName: received.lastName,
         email: received.email,
+        otherEmail: received.otherEmail,
         dateOfBirth: received.dateOfBirth,
         nationality: received.nationality,
         gender: received.gender,
@@ -50,6 +51,7 @@ employeeController.addNewEmployee = async (req, res) => {
         maritalStatus: received.maritalStatus,
         status: received.status,
         photo: path,
+        hobbies: received.hobbies,
       },
       addressOne: {
         streetOne: received.streetOne,

@@ -15,6 +15,10 @@ const EmployeesSchema = Schema({
       type: String,
       required: false,
     },
+    otherEmail: {
+      type: String,
+      required: false,
+    },
     dateOfBirth: {
       type: String,
       required: false,
@@ -41,6 +45,10 @@ const EmployeesSchema = Schema({
     },
     photo: {
       type: String,
+    },
+    hobbies: {
+      type: String,
+      required: false,
     },
     // approved: {
     //   type: Boolean,
