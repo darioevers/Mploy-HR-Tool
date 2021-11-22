@@ -144,6 +144,7 @@ function EmployeeData({ history }) {
                         setChecked(true);
                         setId(employee._id);
                       }}
+                      style={{ cursor: "pointer" }}
                     >
                       <TableCell style={{ display: "flex" }}>
                         <img
