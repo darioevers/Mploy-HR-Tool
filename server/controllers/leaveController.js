@@ -42,7 +42,6 @@ leaveController.updateLeave = async (req, res) => {
 leaveController.addLeave = async (req, res) => {
   try {
     const leave = await new LeavesData({
-      // _id: new mongoose.Types.Schema.ObjectId(),
       name: req.body.name,
       email: req.body.email,
       department: req.body.department,
@@ -56,20 +55,6 @@ leaveController.addLeave = async (req, res) => {
     let employee = await EmployeesData.findOne({ "bio.email": req.body.email });
     employee.leaves.push(leave);
     employee.save();
-
-    // await EmployeesData.find({ "bio.email": req.body.email })
-    //   .then((employee) => {
-    //     if (employee) {
-    //       console.log(employee);
-    //       employee.leaves?.push(leave);
-    //       employee.save();
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
-
-    // employee.leaves.push(leave);
 
     res
       .status(200)

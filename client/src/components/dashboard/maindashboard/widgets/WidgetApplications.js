@@ -146,7 +146,7 @@ function WidgetApplications() {
             >
               <option value="">Please select type...</option>
               <option value="sick-leave">Sick Leave</option>
-              <option value="holiday">Holday</option>
+              <option value="holiday">Holiday</option>
               <option value="home-office">Home Office</option>
             </select>
           </div>

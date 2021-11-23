@@ -1,6 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 function WidgetHomeOffice() {
+  const [leaves, setLeaves] = useState();
+  useEffect(() => {
+    getAllLeaves();
+  }, []);
+
+  const getAllLeaves = () => {
+    axios
+      .get(
+        "http://localhost:5000/leaves/getLeaves",
+
+        {
+          header: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+
+      .then((data) => {
+        setLeaves(data.data);
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <div className="widget_homeoffice_mainbox">
       <div className="homeoffice_top_wrapper">
@@ -21,8 +44,13 @@ function WidgetHomeOffice() {
         <div className="vertical_line"></div>
       </div>
       <div className="homeoffice_bottomright_wrapper">
-        <h2>4</h2>
-        <h4>Taken</h4>
+        <h2>
+          {leaves &&
+            leaves.filter(
+              (item) => item.pending === false && item.type === "home-office"
+            ).length}
+        </h2>
+        <h4>Days Taken </h4>
       </div>
     </div>
   );
