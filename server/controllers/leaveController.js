@@ -40,6 +40,16 @@ leaveController.updateLeave = async (req, res) => {
 
 //add new leave application
 leaveController.addLeave = async (req, res) => {
+  const daysBetween = (one, two) => {
+    let date1 = new Date(one);
+    let date2 = new Date(two);
+    let result = Math.round(Math.abs(+date1 - +date2) / 8.64e7);
+    return result;
+    // return setNewLeave({ ...newLeave, leavesApplied: "result" });
+
+    // console.log(Math.round(Math.abs(+date1 - +date2) / 8.64e7));
+  };
+  const leavesAppliedNum = daysBetween(req.body.dateFrom, req.body.dateTo);
   try {
     const leave = await new LeavesData({
       name: req.body.name,
@@ -49,11 +59,26 @@ leaveController.addLeave = async (req, res) => {
       dateFrom: req.body.dateFrom,
       dateTo: req.body.dateTo,
       pending: true,
+      leavesApplied: leavesAppliedNum,
+      // totalHolidays: LeavesData.totalHolidays + req.body.totalHolidays, //comment
     });
 
     leave.save();
     let employee = await EmployeesData.findOne({ "bio.email": req.body.email });
     employee.leaves.push(leave);
+    const type = req.body.type;
+    console.log(req.body);
+    if (type === "sick-leave") {
+      employee.takenSickLeave = leavesAppliedNum;
+    } else if (type === "holiday") {
+      employee.takenHolidays = leavesAppliedNum;
+      employee.availableHolidays =
+        employee.availableHolidays - leavesAppliedNum;
+    } else {
+      employee.takenHomeOffice = leavesAppliedNum;
+      employee.availableHomeOffice =
+        employee.availableHomeOffice - leavesAppliedNum;
+    }
     employee.save();
 
     res
@@ -63,5 +88,26 @@ leaveController.addLeave = async (req, res) => {
     res.status(404).json({ status: "fail", message: error });
   }
 };
+
+// //update totalHolidays
+// const daysBetween = (dateFrom, dateTo) => {
+//   let date1 = new Date(dateFrom);
+//   let date2 = new Date(dateTo);
+//   return Math.round(Math.abs(+date1 - +date2) / 8.64e7);
+// };
+
+// leaveController.updateLeave = async (req, res) => {
+//   try {
+//     const leave = await LeavesData.findById(req.body.id);
+//     const totalApplied = daysBetween(req.body.dateFrom, req.body.dateTo);
+//     leave.totalHolidays = leave.totalHolidays + totalApplied;
+//     leave.save();
+//     res.json({ success: true, message: "leave marked as approved" });
+//   } catch (error) {
+//     res.status(error.status).json({
+//       message: error.message,
+//     });
+//   }
+// };
 
 module.exports = leaveController;

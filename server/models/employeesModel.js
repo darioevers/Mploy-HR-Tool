@@ -188,6 +188,28 @@ const EmployeesSchema = Schema({
     },
   },
   leaves: [],
+  availableHolidays: {
+    type: Number,
+    default: 30,
+    required: false,
+  },
+  availableHomeOffice: {
+    type: Number,
+    default: 30,
+    required: false,
+  },
+  takenHolidays: {
+    type: Number,
+    required: false,
+  },
+  takenHomeOffice: {
+    type: Number,
+    required: false,
+  },
+  takenSickLeave: {
+    type: Number,
+    required: false,
+  },
 });
 
 const Employees = mongoose.model("employees", EmployeesSchema);

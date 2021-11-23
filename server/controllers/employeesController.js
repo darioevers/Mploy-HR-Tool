@@ -49,7 +49,7 @@ employeeController.addNewEmployee = async (req, res) => {
         gender: received.gender,
         phoneNumber: received.phoneNumber,
         maritalStatus: received.maritalStatus,
-        status: received.status,
+        status: "active",
         photo: path,
         hobbies: received.hobbies,
       },
@@ -94,15 +94,8 @@ employeeController.addNewEmployee = async (req, res) => {
         overtime: received.overtime,
         workLocation: received.workLocation,
       },
-      // leave: {
-      //   typeOfLeave: received.typeOfLeave,
-      //   dateFrom: received.dateFrom,
-      //   dateTo: received.dateTo,
-      //   pending: true,
-      //   totalSickLeave: received.totalSickLeave,
-      //   totalHolidays: received.totalHolidays,
-      //   totalHomeOffice: received.totalHomeOffice,
-      // },
+      availableHolidays: 30,
+      availableHomeOffice: 30,
     });
 
     employee.save();

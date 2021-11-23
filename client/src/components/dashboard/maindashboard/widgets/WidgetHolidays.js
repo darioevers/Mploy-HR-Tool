@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function WidgetHolidays() {
+  //fetch leaves data
   const [leaves, setLeaves] = useState();
   useEffect(() => {
     getAllLeaves();
@@ -10,7 +11,7 @@ function WidgetHolidays() {
   const getAllLeaves = () => {
     axios
       .get(
-        "http://localhost:5000/leaves/getLeaves",
+        "http://localhost:5000/employee/allemployee",
 
         {
           header: {
@@ -24,6 +25,7 @@ function WidgetHolidays() {
       })
       .catch((err) => console.log(err));
   };
+
   return (
     <div className="widget_holidays_mainbox">
       <div className="holidays_top_wrapper">
@@ -37,19 +39,22 @@ function WidgetHolidays() {
       </div>
 
       <div className="holidays_bottomleft_wrapper">
-        <h2>30</h2>
+        {leaves &&
+          leaves
+            .filter((item) => item.bio.email === "alex.albaran@mploy.com")
+            .map((item) => <h2>{item.availableHolidays}</h2>)}
         <h4>Available</h4>
       </div>
+
       <div className="holidays_bottommiddle_wrapper">
         <div className="vertical_line"></div>
       </div>
+
       <div className="holidays_bottomright_wrapper">
-        <h2>
-          {leaves &&
-            leaves.filter(
-              (item) => item.pending === false && item.type === "holiday"
-            ).length}
-        </h2>
+        {leaves &&
+          leaves
+            .filter((item) => item.bio.email === "alex.albaran@mploy.com")
+            .map((item) => <h2>{item.takenHolidays} </h2>)}
         <h4>Days Taken</h4>
       </div>
     </div>
