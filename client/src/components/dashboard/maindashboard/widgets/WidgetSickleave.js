@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function WidgetSickLeave() {
+  //fetch leaves data
   const [leaves, setLeaves] = useState();
   useEffect(() => {
     getAllLeaves();
@@ -10,7 +11,7 @@ function WidgetSickLeave() {
   const getAllLeaves = () => {
     axios
       .get(
-        "http://localhost:5000/leaves/getLeaves",
+        "http://localhost:5000/employee/allemployee",
 
         {
           header: {
@@ -46,11 +47,10 @@ function WidgetSickLeave() {
       </div>
       <div className="sickleave_bottomright_wrapper">
         <h2>
-          {" "}
           {leaves &&
-            leaves.filter(
-              (item) => item.pending === false && item.type === "sick-leave"
-            ).length}
+            leaves
+              .filter((item) => item.bio.email === "alex.albaran@mploy.com")
+              .map((item) => <h2>{item.takenSickLeave}</h2>)}
         </h2>
         <h4>Days Taken</h4>
       </div>
