@@ -5,7 +5,7 @@ function WidgetHolidays() {
     <div className="widget_holidays_mainbox">
       <div className="holidays_top_wrapper">
         <div className="square_bullet"></div>
-        <h1> Holidays </h1>
+        <h1> Holidays</h1>
       </div>
 
       <div className="holidays_middle_wrapper">
@@ -14,20 +14,10 @@ function WidgetHolidays() {
       </div>
 
       <div className="holidays_bottomleft_wrapper">
-        <h2>21</h2>
+        <h2>30</h2>
         <h4>Available</h4>
       </div>
-
-      <div className="holidays_bottomleft_line_wrapper">
-        <div className="vertical_line"></div>
-      </div>
-
       <div className="holidays_bottommiddle_wrapper">
-        <h2>10</h2>
-        <h4>Planned</h4>
-      </div>
-
-      <div className="holidays_bottommiddle_line_wrapper">
         <div className="vertical_line"></div>
       </div>
       <div className="holidays_bottomright_wrapper">
