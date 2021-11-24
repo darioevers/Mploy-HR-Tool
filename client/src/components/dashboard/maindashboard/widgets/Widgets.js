@@ -11,11 +11,21 @@ import WidgetTasks from "./WidgetTasks";
 import WidgetTeam from "./WidgetTeam";
 
 function Widgets() {
+const role=localStorage.getItem("role");
+
+
   return (
     <div className="components_mainbox">
+
+
       <WelcomeMessage />
-      <WidgetAnnouncements />
-      <WidgetApplications />
+    {role === "admin" &&
+    (<>
+     <WidgetAnnouncements />
+     <WidgetApplications />
+     </>)
+    }
+   
       <WidgetBirthdays />
       <WidgetCalendar />
       <WidgetHolidays />

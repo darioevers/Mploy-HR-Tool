@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const announcementController = require("../controllers/announcementController");
-
+const auth=require("../middlewares/authMiddleware");
 //get announcements
 router.get("/announcements/", announcementController.getAnnouncements);
 

@@ -17,7 +17,7 @@ const AddHrInfo = ({ location, history }) => {
     location.state && location.state.employee
   );
   const [file, setFile] = useState();
-  const [hireDate, setHireDate] = useState("2000-01-01")
+  const [hireDate, setHireDate] = useState(false);
 
   const addNew = () => {
     const data = new FormData();
@@ -44,6 +44,15 @@ const AddHrInfo = ({ location, history }) => {
 
   };
 
+  // hiredate validation
+//   const checkDateValidation=()=> {
+//     // check the dates
+//  if ((new Date(setEmployeeData.hireDate) > new Date(setEmployeeData.contractEnd)) || (new Date(setEmployeeData.contractEnd) < new Date(setEmployeeData.hireDate))){
+//   setHireDate(true);
+//     } else {
+//       null 
+//     }
+//   }
   return (
     <div className="addemployee_mainbox">
       <DashboardTopNav />
@@ -73,7 +82,7 @@ const AddHrInfo = ({ location, history }) => {
         <FormControl>
           <InputLabel htmlFor="my-input">Hire Date</InputLabel>
           <Input type="date" 
-            onChange={(e) =>{ console.log(e.target.value);setHireDate(e.target.value);
+            onChange={(e) =>{setHireDate(e.target.value);
               setEmployeeData({ ...employeeData, hireDate: e.target.value })
             }}
           />

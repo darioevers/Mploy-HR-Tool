@@ -85,6 +85,7 @@ function EmployeeData({ history }) {
       <DashboardTopNav />
       <DashboardSideNav />
 
+
       <div className="employeedata_container">
         <div className="employeedata_header">
           <h1>Employee Data</h1>
@@ -146,7 +147,7 @@ function EmployeeData({ history }) {
                       }}
                       style={{ cursor: "pointer" }}
                     >
-                      <TableCell style={{ display: "flex" }}>
+                      
                         <img
                           src={`http://localhost:5000/${employee.bio.photo}`}
                           onError={(e) => {
@@ -177,6 +178,7 @@ function EmployeeData({ history }) {
                         }
                         style={{
                           backgroundColor: "whitesmoke",
+
                         }}
                       >
                         <div className="summary_header">
