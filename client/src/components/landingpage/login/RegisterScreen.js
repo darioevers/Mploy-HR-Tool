@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 import LandingpageTopnav from '../LandingpageTopnav';
 
 const RegisterScreen = ({ history }) => {
-  const [username, setUsername] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("")
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
@@ -34,14 +35,15 @@ const RegisterScreen = ({ history }) => {
       const { data } = await axios.post(
         "http://localhost:5000/users/register",
         {
-          username,
+          firstName,
+          lastName,
           email,
           password,
         },
         config
       );
-
-      history.push({ pathname: "/login", state: { email, password } });
+        console.log(data)
+      history.push({ pathname: "/login", state: {email, password } });
     } catch (error) {
       setError(error.response.data.error);
       setTimeout(() => {
@@ -59,14 +61,25 @@ const RegisterScreen = ({ history }) => {
         <h3 className="register-screen__title">Register</h3>
         {error && <span className="error-message">{error}</span>}
         <div className="form-group">
-          <label htmlFor="name">Username:</label>
+          <label htmlFor="name">First Name</label>
           <input
             type="text"
             required
-            id="name"
-            placeholder="Enter username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+          
+            placeholder="Enter first name"
+            value={firstName}
+            onChange={(e) =>setFirstName(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="name">Last Name</label>
+          <input
+            type="text"
+            required
+          
+            placeholder="Enter Last name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
           />
         </div>
         <div className="form-group">

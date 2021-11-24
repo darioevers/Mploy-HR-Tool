@@ -27,7 +27,7 @@ const AddEmployee = ({ history }) => {
       <DashboardTopNav />
       <DashboardSideNav />
 
-      <NavLink
+      {/* <NavLink
         exact
         to="/dashboard/employeedata/addemployee/documents"
         activeClassName="active"
@@ -35,7 +35,7 @@ const AddEmployee = ({ history }) => {
       >
         {" "}
         Documents
-      </NavLink>
+      </NavLink> */}
       {/* <NavLink
         exact
         to="/dashboard/employeedata/addemployee/hrinfo"
@@ -80,8 +80,8 @@ const AddEmployee = ({ history }) => {
             <InputLabel htmlFor="my-input">Date of Birth</InputLabel>
             <Input type="date" 
               name="dateofbirth"
-              onChange={(e) =>
-                setEmployee({ ...employee, dateOfBirth: e.target.value })
+              onChange={(e) => 
+                setEmployee({ ...employee, dateOfBirth: e.target.value.substring(0,10) })
               }
             />
           </FormControl>

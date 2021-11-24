@@ -92,7 +92,7 @@ const EditEmployee = ({ location, history }) => {
 
           <FormControl>
             <InputLabel htmlFor="my-input">Date of Birth</InputLabel>
-            <Input
+            <Input type="date" 
               name="dateofbirth"
               value={editEmp.bio.dateOfBirth}
               onChange={(e) =>
