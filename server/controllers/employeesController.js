@@ -33,13 +33,10 @@ employeeController.getAllEmployees = async (req, res) => {
 // add new Employee
 
 employeeController.addNewEmployee = async (req, res) => {
-
   console.log(req.body);
 
   const received = JSON.parse(req.body.employeeData);
   const path = req.file && req.file.path.substring(7);
-
-
 
   try {
     const employee = await new EmployeeData({
@@ -111,8 +108,6 @@ employeeController.addNewEmployee = async (req, res) => {
   }
 };
 
-
-
 // employee search
 employeeController.searchName = async (req, res) => {
   // let searchPattern = new RegEx("^" + req.body.query);
@@ -148,7 +143,6 @@ employeeController.searchName = async (req, res) => {
 // patch or update employee
 
 employeeController.updateEmployee = async (req, res) => {
-
   try {
     let received = await JSON.parse(req.body.editEmp);
     received.bio.photo = "uploads/" + req.file.path.substring(15);
@@ -197,31 +191,27 @@ employeeController.deleteOrUpdateStatus = async (req, res) => {
   }
 };
 
-
 // geting employees who had birthday today
-employeeContoller.getTodaysBirthDay = async (req, res) => {
-  const year = new Date().getFullYear();
-  const month = new Date().getMonth() + 1;
-  const day = new Date().getDate();
-  const today = month + "-" + day;
-  try {
-    const allEmployees = await EmployeeData.find();
-    // console.log("this is emp" +allEmployees);
+// employeeController.getTodaysBirthDay = async (req, res) => {
+//   const year = new Date().getFullYear();
+//   const month = new Date().getMonth() + 1;
+//   const day = new Date().getDate();
+//   const today = month + "-" + day;
+//   try {
+//     const allEmployees = await EmployeeData.find();
+//     // console.log("this is emp" +allEmployees);
 
-    const  currentBdays=allEmployees.filter(item=>item.bio.dateOfBirth.includes(today));
+//     const  currentBdays=allEmployees.filter(item=>item.bio.dateOfBirth.includes(today));
 
-    console.log("this is current bdays"+currentBdays);
+//     console.log("this is current bdays"+currentBdays);
 
-    res.status(200).json(currentBdays);
-    // console.log(employees);
-  } catch (error) {
-    res.status(404).json({
-      message: error.message,
-    });
-  }
-};
+//     res.status(200).json(currentBdays);
+//     // console.log(employees);
+//   } catch (error) {
+//     res.status(404).json({
+//       message: error.message,
+//     });
+//   }
+// };
 
-
-
-module.exports = employeeContoller;
-
+module.exports = employeeController;

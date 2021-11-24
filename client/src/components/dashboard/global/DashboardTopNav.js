@@ -5,6 +5,7 @@ import SearchButton from "./SearchButton";
 import RightDrawer from "./RightDrawer";
 
 function TopNav() {
+  const role = localStorage.getItem("role");
   return (
     <div className="topnav_mainbox">
       <div className="logo">
@@ -23,10 +24,13 @@ function TopNav() {
       <div className="darkmode_switch">
         <DarkModeSwitch />
       </div>
-
-      <div className="settings_button">
-        <RightDrawer />
-      </div>
+      {role === "admin" && (
+        <>
+          <div className="settings_button">
+            <RightDrawer />
+          </div>
+        </>
+      )}
     </div>
   );
 }
