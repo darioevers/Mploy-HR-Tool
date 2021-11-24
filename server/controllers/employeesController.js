@@ -1,12 +1,13 @@
 const EmployeeData = require("../models/employeesModel");
-
-const employeeContoller = {};
+const employeeController = {};
 
 // Get all employees
-
-employeeContoller.getAllEmployees = async (req, res) => {
+employeeController.getAllEmployees = async (req, res) => {
   try {
-    const employees = await EmployeeData.find({ "bio.status": "active" });
+    const employees = await EmployeeData.find({
+      "bio.status": "active",
+    });
+
     res.status(200).json(employees);
     // console.log(employees);
   } catch (error) {
@@ -16,28 +17,46 @@ employeeContoller.getAllEmployees = async (req, res) => {
   }
 };
 
+// //get
+// leaveController.getLeaves = async (name, res) => {
+//   try {
+//     const leaves = await LeavesData.find({name: name})
+//     .populate('leaves')
+//     res.status(200).json(leaves);
+//   } catch (error) {
+//     res.status(error.status).json({
+//       message: error.message,
+//     });
+//   }
+// };
+
 // add new Employee
-employeeContoller.addNewEmployee = async (req, res) => {
+
+employeeController.addNewEmployee = async (req, res) => {
+
   console.log(req.body);
 
   const received = JSON.parse(req.body.employeeData);
   const path = req.file && req.file.path.substring(7);
-  // if ((new Date(hireDate) > new Date(contractEnd)) || (new Date(contractEnd) < new Date(hireDate))){}
+
+
+
   try {
     const employee = await new EmployeeData({
       bio: {
         firstName: received.firstName,
         lastName: received.lastName,
         email: received.email,
+        otherEmail: received.otherEmail,
         dateOfBirth: received.dateOfBirth,
         nationality: received.nationality,
         gender: received.gender,
         phoneNumber: received.phoneNumber,
         maritalStatus: received.maritalStatus,
-        status: received.status,
+        status: "active",
         photo: path,
+        hobbies: received.hobbies,
       },
-
       addressOne: {
         streetOne: received.streetOne,
         cityOne: received.cityOne,
@@ -71,20 +90,16 @@ employeeContoller.addNewEmployee = async (req, res) => {
         contractEnd: received.contractEnd,
         probationPeriod: received.probationPeriod,
         employmentType: received.employmentType,
+        position: received.position,
+        supervisor: received.supervisor,
         team: received.team,
         department: received.department,
         salary: received.salary,
         overtime: received.overtime,
         workLocation: received.workLocation,
       },
-      leave: {
-        usedLeave: received.usedLeave,
-        remainingLeave: received.remainingLeave,
-        fromDate: received.fromDate,
-        toDate: received.toDate,
-        totalDays: received.totalDays,
-        emergencyContact: received.emergencyContact,
-      },
+      availableHolidays: 30,
+      availableHomeOffice: 30,
     });
 
     employee.save();
@@ -96,8 +111,10 @@ employeeContoller.addNewEmployee = async (req, res) => {
   }
 };
 
+
+
 // employee search
-employeeContoller.searchName = async (req, res) => {
+employeeController.searchName = async (req, res) => {
   // let searchPattern = new RegEx("^" + req.body.query);
   // EmployeeData.find({ firstName: { $regex: searchPattern } })
   try {
@@ -116,7 +133,7 @@ employeeContoller.searchName = async (req, res) => {
 };
 
 // get single employee using email
-// employeeContoller.getOneEmployee = async (req, res) => {
+// employeeController.getOneEmployee = async (req, res) => {
 //   try {
 //     const employee = await EmployeeData.findOne({"bio.email":req.body.email});
 //     res.status(200).json({
@@ -129,7 +146,9 @@ employeeContoller.searchName = async (req, res) => {
 // };
 
 // patch or update employee
-employeeContoller.updateEmployee = async (req, res) => {
+
+employeeController.updateEmployee = async (req, res) => {
+
   try {
     let received = await JSON.parse(req.body.editEmp);
     received.bio.photo = "uploads/" + req.file.path.substring(15);
@@ -152,7 +171,7 @@ employeeContoller.updateEmployee = async (req, res) => {
 // qrcode
 
 // delete one employee upon criteria from the log
-employeeContoller.deleteOneEmployee = async (req, res) => {
+employeeController.deleteOneEmployee = async (req, res) => {
   try {
     await EmployeeData.findByIdAndDelete(req.params.id);
     res
@@ -165,7 +184,7 @@ employeeContoller.deleteOneEmployee = async (req, res) => {
   }
 };
 // deleting from the db but actually it change the status from available to unavailable
-employeeContoller.deleteOrUpdateStatus = async (req, res) => {
+employeeController.deleteOrUpdateStatus = async (req, res) => {
   try {
     const employee = await EmployeeData.findOneAndUpdate(
       { "bio.email": req.body.email },
@@ -177,6 +196,7 @@ employeeContoller.deleteOrUpdateStatus = async (req, res) => {
     res.status(400).send({ message: error.message });
   }
 };
+
 
 // geting employees who had birthday today
 employeeContoller.getTodaysBirthDay = async (req, res) => {
@@ -191,7 +211,7 @@ employeeContoller.getTodaysBirthDay = async (req, res) => {
     const  currentBdays=allEmployees.filter(item=>item.bio.dateOfBirth.includes(today));
 
     console.log("this is current bdays"+currentBdays);
-22
+
     res.status(200).json(currentBdays);
     // console.log(employees);
   } catch (error) {
@@ -202,24 +222,6 @@ employeeContoller.getTodaysBirthDay = async (req, res) => {
 };
 
 
-// month
-// employeeContoller.getTodaysBirthDay = async (req, res) => {
-//   const month = new Date().getMonth() + 1;
-//   const thisMonth = "-" + month + "-" 
-//   try {
-//     const allEmployees = await EmployeeData.find();
-//     // console.log("this is emp" +allEmployees);
 
-//     const  currentBdays=allEmployees.filter(item=>item.bio.dateOfBirth.includes(thisMonth));
-
-//     console.log("this is current bdays"+currentBdays);
-
-//     res.status(200).json(currentBdays);
-//     // console.log(employees);
-//   } catch (error) {
-//     res.status(404).json({
-//       message: error.message,
-//     });
-//   }
-// };
 module.exports = employeeContoller;
+

@@ -4,6 +4,7 @@ const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 
 const Schema = mongoose.Schema;
+
 const EmployeesSchema = Schema({
   bio: {
     firstName: {
@@ -12,7 +13,9 @@ const EmployeesSchema = Schema({
     },
     lastName: {
       type: String,
+
       required: false, 
+
     },
     email: {
       type: String,
@@ -24,11 +27,18 @@ const EmployeesSchema = Schema({
       required: false,
       // select: false,
     },
+
     role: {
       type: String,
       default: "user",
       enum: ["admin", "user"],
     },  
+
+    otherEmail: {
+      type: String,
+      required: false,
+    },
+
     dateOfBirth: {
       type: String,
       required: false,
@@ -56,14 +66,24 @@ const EmployeesSchema = Schema({
       enum:["active","inactive"],
     },
     photo: {
+
       type:String,
       // default:"http:localhost:5000/uploads/error.jpg"
-      
+
+    
+    },
+    hobbies: {
+      type: String,
+      required: false,
+
     },
     resetPasswordToken: String,
 
+
     resetPasswordExpire: Date,
   },
+
+
   addressOne: {
     streetOne: {
       type: String,
@@ -170,6 +190,10 @@ const EmployeesSchema = Schema({
       type: String,
       required: false,
     },
+    supervisor: {
+      type: String,
+      required: false,
+    },
     team: {
       type: String,
       required: false,
@@ -191,31 +215,28 @@ const EmployeesSchema = Schema({
       required: false,
     },
   },
-  leave: {
-    usedLeave: {
-      type: String,
-      required: false,
-    },
-    remainingLeave: {
-      type: String,
-      required: false,
-    },
-    fromDate: {
-      type: Date,
-      required: false,
-    },
-    toDate: {
-      type: Date,
-      required: false,
-    },
-    totalDays: {
-      type: String,
-      required: false,
-    },
-    emergencyContact: {
-      type: String,
-      required: false,
-    },
+  leaves: [],
+  availableHolidays: {
+    type: Number,
+    default: 30,
+    required: false,
+  },
+  availableHomeOffice: {
+    type: Number,
+    default: 30,
+    required: false,
+  },
+  takenHolidays: {
+    type: Number,
+    required: false,
+  },
+  takenHomeOffice: {
+    type: Number,
+    required: false,
+  },
+  takenSickLeave: {
+    type: Number,
+    required: false,
   },
 });
 
