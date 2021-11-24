@@ -15,6 +15,10 @@ const EmployeesSchema = Schema({
       type: String,
       required: false,
     },
+    otherEmail: {
+      type: String,
+      required: false,
+    },
     dateOfBirth: {
       type: String,
       required: false,
@@ -41,6 +45,10 @@ const EmployeesSchema = Schema({
     },
     photo: {
       type: String,
+    },
+    hobbies: {
+      type: String,
+      required: false,
     },
     // approved: {
     //   type: Boolean,
@@ -154,6 +162,10 @@ const EmployeesSchema = Schema({
       type: String,
       required: false,
     },
+    supervisor: {
+      type: String,
+      required: false,
+    },
     team: {
       type: String,
       required: false,
@@ -176,6 +188,28 @@ const EmployeesSchema = Schema({
     },
   },
   leaves: [],
+  availableHolidays: {
+    type: Number,
+    default: 30,
+    required: false,
+  },
+  availableHomeOffice: {
+    type: Number,
+    default: 30,
+    required: false,
+  },
+  takenHolidays: {
+    type: Number,
+    required: false,
+  },
+  takenHomeOffice: {
+    type: Number,
+    required: false,
+  },
+  takenSickLeave: {
+    type: Number,
+    required: false,
+  },
 });
 
 const Employees = mongoose.model("employees", EmployeesSchema);

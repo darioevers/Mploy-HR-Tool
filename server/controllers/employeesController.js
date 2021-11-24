@@ -35,7 +35,7 @@ employeeController.addNewEmployee = async (req, res) => {
   console.log(req.body);
 
   const received = JSON.parse(req.body.employeeData);
-  const path = req.file.path.substring(7);
+  const path = req.file && req.file.path.substring(7);
 
   try {
     const employee = await new EmployeeData({
@@ -43,13 +43,15 @@ employeeController.addNewEmployee = async (req, res) => {
         firstName: received.firstName,
         lastName: received.lastName,
         email: received.email,
+        otherEmail: received.otherEmail,
         dateOfBirth: received.dateOfBirth,
         nationality: received.nationality,
         gender: received.gender,
         phoneNumber: received.phoneNumber,
         maritalStatus: received.maritalStatus,
-        status: received.status,
+        status: "active",
         photo: path,
+        hobbies: received.hobbies,
       },
       addressOne: {
         streetOne: received.streetOne,
@@ -84,21 +86,16 @@ employeeController.addNewEmployee = async (req, res) => {
         contractEnd: received.contractEnd,
         probationPeriod: received.probationPeriod,
         employmentType: received.employmentType,
+        position: received.position,
+        supervisor: received.supervisor,
         team: received.team,
         department: received.department,
         salary: received.salary,
         overtime: received.overtime,
         workLocation: received.workLocation,
       },
-      // leave: {
-      //   typeOfLeave: received.typeOfLeave,
-      //   dateFrom: received.dateFrom,
-      //   dateTo: received.dateTo,
-      //   pending: true,
-      //   totalSickLeave: received.totalSickLeave,
-      //   totalHolidays: received.totalHolidays,
-      //   totalHomeOffice: received.totalHomeOffice,
-      // },
+      availableHolidays: 30,
+      availableHomeOffice: 30,
     });
 
     employee.save();
