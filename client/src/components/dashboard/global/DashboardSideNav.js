@@ -35,7 +35,7 @@ const DashboardSideNav = () => {
           config
         );
         console.log(data);
-        setPrivateData(data.user);
+        setPrivateData(data.data);
       } catch (error) {
         console.log(error);
         localStorage.removeItem("authToken");
@@ -54,13 +54,9 @@ const DashboardSideNav = () => {
     <div className="sidenav_mainbox">
       {/* employee info */}
       <div className="sidenav_employeeinfo">
-        <div className="sidenav_employeeinfo_image">
-        {/* <img
-        src={`http://localhost:5000/${privateData.bio.photo}`} width="50" onError={(e)=>{e.target.onError=null; e.target.src='http://localhost:5000/uploads/error.jpg'} }/> */}
-
-        </div>
+        <div className="sidenav_employeeinfo_image"></div>
         <div className="sidenav_employeeinfo_details">
-          <h1>this</h1>
+          <h1>John Smith</h1>
           <h4>HR Specialist</h4>
           <select>
             <option>Available</option>
