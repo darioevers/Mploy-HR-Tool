@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const leaveController = require("../controllers/leaveController");
-
+const auth=require("../middlewares/authMiddleware");
 //get announcements
 router.get("/getLeaves", leaveController.getLeaves);
 

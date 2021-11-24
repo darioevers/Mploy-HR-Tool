@@ -1,7 +1,7 @@
 // check for jwt in headers
 
 const jwt = require("jsonwebtoken");
-const User = require("../models/UserModel");
+const User = require("../models/employeesModel");
 
 const protect = async (req, res, next) => {
   let token;

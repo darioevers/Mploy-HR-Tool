@@ -21,8 +21,8 @@ employeeContoller.addNewEmployee = async (req, res) => {
   console.log(req.body);
 
   const received = JSON.parse(req.body.employeeData);
-  const path = req.file.path.substring(7);
-
+  const path = req.file && req.file.path.substring(7);
+  // if ((new Date(hireDate) > new Date(contractEnd)) || (new Date(contractEnd) < new Date(hireDate))){}
   try {
     const employee = await new EmployeeData({
       bio: {
@@ -96,18 +96,6 @@ employeeContoller.addNewEmployee = async (req, res) => {
   }
 };
 
-// upload
-// employeeContoller.singleFileUpload = async (req, res, next) => {
-//     try{
-//       console.log(req.file)
-
-//       console.log(received)
-//       res.status(201).send('File Uploaded Successfully');
-//     }catch(error) {
-//         res.status(400).send(error.message);
-//     }
-// }
-
 // employee search
 employeeContoller.searchName = async (req, res) => {
   // let searchPattern = new RegEx("^" + req.body.query);
@@ -151,6 +139,7 @@ employeeContoller.updateEmployee = async (req, res) => {
     const employee = await EmployeeData.findOneAndUpdate(
       { "bio.email": received.bio.email },
       received,
+
       {
         new: true,
       }
@@ -160,6 +149,7 @@ employeeContoller.updateEmployee = async (req, res) => {
     res.status(404).json({ status: "fail", message: error.message });
   }
 };
+// qrcode
 
 // delete one employee upon criteria from the log
 employeeContoller.deleteOneEmployee = async (req, res) => {
@@ -188,22 +178,48 @@ employeeContoller.deleteOrUpdateStatus = async (req, res) => {
   }
 };
 
-// gettting the employees which have birthday today
-
+// geting employees who had birthday today
 employeeContoller.getTodaysBirthDay = async (req, res) => {
-  var today = new Date().getDate();
-  // var currentDate = new Date()
-  // var day = currentDate.getDate()
-  // var month = currentDate.getMonth() + 1
-  // var year = currentDate.getFullYear()
+  const year = new Date().getFullYear();
+  const month = new Date().getMonth() + 1;
+  const day = new Date().getDate();
+  const today = month + "-" + day;
   try {
-    const employees = await EmployeeData.find({ "bio.dateOfBirth":today});
-    res.status(200).json(employees);
-     console.log(today);
+    const allEmployees = await EmployeeData.find();
+    // console.log("this is emp" +allEmployees);
+
+    const  currentBdays=allEmployees.filter(item=>item.bio.dateOfBirth.includes(today));
+
+    console.log("this is current bdays"+currentBdays);
+22
+    res.status(200).json(currentBdays);
+    // console.log(employees);
   } catch (error) {
-    res.status(error.status).json({
+    res.status(404).json({
       message: error.message,
     });
   }
 };
+
+
+// month
+// employeeContoller.getTodaysBirthDay = async (req, res) => {
+//   const month = new Date().getMonth() + 1;
+//   const thisMonth = "-" + month + "-" 
+//   try {
+//     const allEmployees = await EmployeeData.find();
+//     // console.log("this is emp" +allEmployees);
+
+//     const  currentBdays=allEmployees.filter(item=>item.bio.dateOfBirth.includes(thisMonth));
+
+//     console.log("this is current bdays"+currentBdays);
+
+//     res.status(200).json(currentBdays);
+//     // console.log(employees);
+//   } catch (error) {
+//     res.status(404).json({
+//       message: error.message,
+//     });
+//   }
+// };
 module.exports = employeeContoller;
