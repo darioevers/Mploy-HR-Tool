@@ -14,8 +14,7 @@ const EmployeesSchema = Schema({
     lastName: {
       type: String,
 
-      required: false, 
-
+      required: false,
     },
     email: {
       type: String,
@@ -32,7 +31,7 @@ const EmployeesSchema = Schema({
       type: String,
       default: "user",
       enum: ["admin", "user"],
-    },  
+    },
 
     otherEmail: {
       type: String,
@@ -62,27 +61,21 @@ const EmployeesSchema = Schema({
 
     status: {
       type: String,
-      default:"active",
-      enum:["active","inactive"],
+      default: "active",
+      enum: ["active", "inactive"],
     },
     photo: {
-
-      type:String,
+      type: String,
       // default:"http:localhost:5000/uploads/error.jpg"
-
-    
     },
     hobbies: {
       type: String,
       required: false,
-
     },
     resetPasswordToken: String,
 
-
     resetPasswordExpire: Date,
   },
-
 
   addressOne: {
     streetOne: {
@@ -244,7 +237,7 @@ const EmployeesSchema = Schema({
 EmployeesSchema.pre("save", async function (next) {
   let user = this.bio;
   console.log(user.password);
-  console.log("hash"+ await hash(user.password, 10));
+  console.log("hash" + (await hash(user.password, 10)));
 
   if (!user.isModified("bio.password")) return next();
   user.password = await hash(user.password, 10);

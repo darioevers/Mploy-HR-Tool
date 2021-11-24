@@ -85,7 +85,6 @@ function EmployeeData({ history }) {
       <DashboardTopNav />
       <DashboardSideNav />
 
-
       <div className="employeedata_container">
         <div className="employeedata_header">
           <h1>Employee Data</h1>
@@ -147,24 +146,22 @@ function EmployeeData({ history }) {
                       }}
                       style={{ cursor: "pointer" }}
                     >
-                      
-                        <img
-                          src={`http://localhost:5000/${employee.bio.photo}`}
-                          onError={(e) => {
-                            e.target.onError = null;
-                            e.target.src =
-                              "http://localhost:5000/uploads/error.jpg";
-                          }}
-                        />
-                        <div className="table_cell_photo">
-                          <h5>
-                            {employee.bio.firstName} {employee.bio.lastName}
-                          </h5>
-                          <h4>{employee.contractInfo.position}</h4>
-                        </div>
-                      </TableCell>
+                      <img
+                        src={`http://localhost:5000/${employee.bio.photo}`}
+                        onError={(e) => {
+                          e.target.onError = null;
+                          e.target.src =
+                            "http://localhost:5000/uploads/error.jpg";
+                        }}
+                      />
+                      <div className="table_cell_photo">
+                        <h5>
+                          {employee.bio.firstName} {employee.bio.lastName}
+                        </h5>
+                        {/* <h4>{employee.contractInfo.position}</h4> */}
+                      </div>
 
-                      <TableCell>{employee.contractInfo.department}</TableCell>
+                      {/* <TableCell>{employee.contractInfo.department}</TableCell> */}
                       <TableCell>{employee.bio.email}</TableCell>
                       <TableCell>{employee.bio.dateOfBirth}</TableCell>
                     </TableRow>
@@ -178,7 +175,6 @@ function EmployeeData({ history }) {
                         }
                         style={{
                           backgroundColor: "whitesmoke",
-
                         }}
                       >
                         <div className="summary_header">
