@@ -20,7 +20,6 @@ const EditEmployee = ({ location, history }) => {
   );
   const [file, setFile] = useState();
 
-
   const edit = () => {
     const data = new FormData();
     data.append("file", file);
@@ -29,15 +28,11 @@ const EditEmployee = ({ location, history }) => {
 
     console.log(editEmp);
     axios
-      .put(
-        "http://localhost:5000/employee/update",
-        data ,
-        {
-          header: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
+      .put("http://localhost:5000/employee/update", data, {
+        header: {
+          "Content-Type": "application/json",
+        },
+      })
       .then((data) => {
         console.log(data);
         history.push("/dashboard/employeedata/");
@@ -52,14 +47,13 @@ const EditEmployee = ({ location, history }) => {
 
       <FormGroup>
         <div>
-        <FormControl>
+          <FormControl>
             <InputLabel htmlFor="my-input">Photo</InputLabel>
-            <Input type="file"
+            <Input
+              type="file"
               name="file"
               // value={editEmp.bio.photo}
-              onChange={(e) =>
-                setFile( e.target.files[0]) 
-              }
+              onChange={(e) => setFile(e.target.files[0])}
             />
           </FormControl>
           <FormControl>
@@ -92,7 +86,8 @@ const EditEmployee = ({ location, history }) => {
 
           <FormControl>
             <InputLabel htmlFor="my-input">Date of Birth</InputLabel>
-            <Input type="date" 
+            <Input
+              type="date"
               name="dateofbirth"
               value={editEmp.bio.dateOfBirth}
               onChange={(e) =>
@@ -182,7 +177,7 @@ const EditEmployee = ({ location, history }) => {
             <InputLabel htmlFor="my-input">Street</InputLabel>
             <Input
               name="street"
-              value={editEmp.addressOne.streetOne}
+              value={editEmp.addressOne?.streetOne}
               onChange={(e) =>
                 setEditEmp({
                   ...editEmp,
@@ -198,7 +193,7 @@ const EditEmployee = ({ location, history }) => {
             <InputLabel htmlFor="my-input">City</InputLabel>
             <Input
               name="city"
-              value={editEmp.addressOne.cityOne}
+              value={editEmp.addressOne?.cityOne}
               onChange={(e) =>
                 setEditEmp({
                   ...editEmp,
@@ -214,7 +209,7 @@ const EditEmployee = ({ location, history }) => {
             <InputLabel htmlFor="my-input">Postal Code</InputLabel>
             <Input
               name="postalCode"
-              value={editEmp.addressOne.postalCodeOne}
+              value={editEmp.addressOne?.postalCodeOne}
               onChange={(e) =>
                 setEditEmp({
                   ...editEmp,
@@ -230,7 +225,7 @@ const EditEmployee = ({ location, history }) => {
             <InputLabel id="demo-simple-select-label">State</InputLabel>
             <Select
               labelId="demo-simple-select-label"
-              value={editEmp.addressOne.stateOne}
+              value={editEmp.addressOne?.stateOne}
               onChange={(e) =>
                 setEditEmp({
                   ...editEmp,
@@ -250,7 +245,7 @@ const EditEmployee = ({ location, history }) => {
             <InputLabel htmlFor="my-input">Country</InputLabel>
             <Input
               name="Country"
-              value={editEmp.addressOne.countryOne}
+              value={editEmp.addressOne?.countryOne}
               onChange={(e) =>
                 setEditEmp({
                   ...editEmp,
@@ -272,7 +267,7 @@ const EditEmployee = ({ location, history }) => {
             <InputLabel htmlFor="my-input">School</InputLabel>
             <Input
               name="school"
-              value={editEmp.education.school}
+              value={editEmp.education?.school}
               onChange={(e) =>
                 setEditEmp({
                   ...editEmp,
@@ -285,7 +280,7 @@ const EditEmployee = ({ location, history }) => {
             <InputLabel htmlFor="my-input">Degree</InputLabel>
             <Input
               name="degree"
-              value={editEmp.education.degree}
+              value={editEmp.education?.degree}
               onChange={(e) =>
                 setEditEmp({
                   ...editEmp,
@@ -299,7 +294,7 @@ const EditEmployee = ({ location, history }) => {
             <InputLabel htmlFor="my-input">Field Of Study</InputLabel>
             <Input
               name="specialization"
-              value={editEmp.education.specialization}
+              value={editEmp.education?.specialization}
               onChange={(e) =>
                 setEditEmp({
                   ...editEmp,
@@ -315,7 +310,7 @@ const EditEmployee = ({ location, history }) => {
             <InputLabel htmlFor="my-input">Year Of Completion</InputLabel>
             <Input
               name="endDate"
-              value={editEmp.education.endDate}
+              value={editEmp.education?.endDate}
               onChange={(e) =>
                 setEditEmp({
                   ...editEmp,
@@ -333,7 +328,7 @@ const EditEmployee = ({ location, history }) => {
             <InputLabel htmlFor="my-input">company</InputLabel>
             <Input
               name="company"
-              value={editEmp.workExperience.company}
+              value={editEmp.workExperience?.company}
               onChange={(e) =>
                 setEditEmp({
                   ...editEmp,
@@ -349,7 +344,7 @@ const EditEmployee = ({ location, history }) => {
             <InputLabel htmlFor="my-input">Job Title</InputLabel>
             <Input
               name="postalCode"
-              value={editEmp.workExperience.jobTitle}
+              value={editEmp.workExperience?.jobTitle}
               onChange={(e) =>
                 setEditEmp({
                   ...editEmp,
@@ -366,7 +361,7 @@ const EditEmployee = ({ location, history }) => {
             <InputLabel htmlFor="my-input">From</InputLabel>
             <Input
               name="from"
-              value={editEmp.workExperience.from}
+              value={editEmp.workExperience?.from}
               onChange={(e) =>
                 setEditEmp({
                   ...editEmp,
@@ -382,7 +377,7 @@ const EditEmployee = ({ location, history }) => {
             <InputLabel htmlFor="my-input">To</InputLabel>
             <Input
               name="from"
-              value={editEmp.workExperience.to}
+              value={editEmp.workExperience?.to}
               onChange={(e) =>
                 setEditEmp({
                   ...editEmp,
@@ -402,7 +397,7 @@ const EditEmployee = ({ location, history }) => {
             <InputLabel htmlFor="my-input">Contract Number</InputLabel>
             <Input
               name="contractNo"
-              value={editEmp.contractInfo.contractNo}
+              value={editEmp.contractInfo?.contractNo}
               onChange={(e) =>
                 setEditEmp({
                   ...editEmp,
@@ -418,7 +413,7 @@ const EditEmployee = ({ location, history }) => {
             <InputLabel htmlFor="my-input">hireDate</InputLabel>
             <Input
               name="hireDate"
-              value={editEmp.contractInfo.hireDate}
+              value={editEmp.contractInfo?.hireDate}
               onChange={(e) =>
                 setEditEmp({
                   ...editEmp,
@@ -434,7 +429,7 @@ const EditEmployee = ({ location, history }) => {
             <InputLabel htmlFor="my-input">contractEnd</InputLabel>
             <Input
               name="contractEnd"
-              value={editEmp.contractInfo.contractEnd}
+              value={editEmp.contractInfo?.contractEnd}
               onChange={(e) =>
                 setEditEmp({
                   ...editEmp,
@@ -451,7 +446,7 @@ const EditEmployee = ({ location, history }) => {
             <InputLabel htmlFor="my-input">probationPeriod</InputLabel>
             <Input
               name="probationPeriod"
-              value={editEmp.contractInfo.probationPeriod}
+              value={editEmp.contractInfo?.probationPeriod}
               onChange={(e) =>
                 setEditEmp({
                   ...editEmp,
@@ -467,7 +462,7 @@ const EditEmployee = ({ location, history }) => {
             <InputLabel htmlFor="my-input">employmentType</InputLabel>
             <Input
               name="employmentType"
-              value={editEmp.contractInfo.employmentType}
+              value={editEmp.contractInfo?.employmentType}
               onChange={(e) =>
                 setEditEmp({
                   ...editEmp,
@@ -484,7 +479,7 @@ const EditEmployee = ({ location, history }) => {
             <InputLabel htmlFor="my-input">position</InputLabel>
             <Input
               name="position"
-              value={editEmp.contractInfo.position}
+              value={editEmp.contractInfo?.position}
               onChange={(e) =>
                 setEditEmp({
                   ...editEmp,
@@ -501,7 +496,7 @@ const EditEmployee = ({ location, history }) => {
             <InputLabel htmlFor="my-input">team</InputLabel>
             <Input
               name="team"
-              value={editEmp.contractInfo.team}
+              value={editEmp.contractInfo?.team}
               onChange={(e) =>
                 setEditEmp({
                   ...editEmp,
@@ -518,7 +513,7 @@ const EditEmployee = ({ location, history }) => {
             <InputLabel htmlFor="my-input">department</InputLabel>
             <Input
               name="department"
-              value={editEmp.contractInfo.department}
+              value={editEmp.contractInfo?.department}
               onChange={(e) =>
                 setEditEmp({
                   ...editEmp,
@@ -535,7 +530,7 @@ const EditEmployee = ({ location, history }) => {
             <InputLabel htmlFor="my-input">salary</InputLabel>
             <Input
               name="salary"
-              value={editEmp.contractInfo.salary}
+              value={editEmp.contractInfo?.salary}
               onChange={(e) =>
                 setEditEmp({
                   ...editEmp,
@@ -552,7 +547,7 @@ const EditEmployee = ({ location, history }) => {
             <InputLabel htmlFor="my-input">overtime</InputLabel>
             <Input
               name="overtime"
-              value={editEmp.contractInfo.overtime}
+              value={editEmp.contractInfo?.overtime}
               onChange={(e) =>
                 setEditEmp({
                   ...editEmp,
@@ -569,7 +564,7 @@ const EditEmployee = ({ location, history }) => {
             <InputLabel htmlFor="my-input">workLocation</InputLabel>
             <Input
               name="workLocation"
-              value={editEmp.contractInfo.workLocation}
+              value={editEmp.contractInfo?.workLocation}
               onChange={(e) =>
                 setEditEmp({
                   ...editEmp,

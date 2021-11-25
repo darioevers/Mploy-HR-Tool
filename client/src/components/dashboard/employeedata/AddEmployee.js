@@ -29,11 +29,21 @@ const AddEmployee = ({ history }) => {
   const [lastName, setLastName] = useState("Last Name");
   const [position, setPosition] = useState("Position");
 
+  //styling of formControls
+  const inputStylesA = {
+    width: "35%",
+    marginRight: "20px",
+  };
+
+  const inputStylesB = {
+    width: "30%",
+    marginRight: "20px",
+  };
+
   return (
     <div className="addemployee_mainbox">
       <DashboardTopNav />
       <DashboardSideNav />
-
 
       <div className="addemployee_wrapper">
         <h1> Add New Employee </h1>
@@ -47,7 +57,6 @@ const AddEmployee = ({ history }) => {
               to="/dashboard/employeedata/addemployee/hrinfo"
               activeClassName="active"
               className="sidenav_link"
-
             >
               {" "}
               HR Information
@@ -122,194 +131,218 @@ const AddEmployee = ({ history }) => {
               </div>
             </div>
 
-            <div className="form_basicdetails">
-              <div className="basic_details_header">
+            <div className="form_generaldata">
+              <div className="basicdetails_header">
                 <h3>BASIC DETAILS </h3>
               </div>
 
               <div className="basicdetails_content">
-                <h2> First Name</h2>
-                <input
-                  type="text"
-                  name="firstName"
-                  onChange={(e) => {
-                    setEmployee({ ...employee, firstName: e.target.value });
-                    setFirstName(e.target.value);
-                  }}
-                />
-                <h2> Last Name</h2>
-                <input
-                  name="lastName"
-                  onChange={(e) => {
-                    setEmployee({ ...employee, lastName: e.target.value });
-                    setLastName(e.target.value);
-                  }}
-                />
+                <FormControl style={inputStylesA}>
+                  <InputLabel htmlFor="my-input">First Name</InputLabel>
+                  <Input
+                    type="text"
+                    name="firstName"
+                    // style={inputStylesA}
+                    onChange={(e) => {
+                      setEmployee({ ...employee, firstName: e.target.value });
+                      setFirstName(e.target.value);
+                    }}
+                  />
+                </FormControl>
+                <FormControl style={inputStylesA}>
+                  <InputLabel htmlFor="my-input">Last Name</InputLabel>
+                  <Input
+                    type="text"
+                    name="lasttName"
+                    onChange={(e) => {
+                      setEmployee({ ...employee, lastName: e.target.value });
+                      setLastName(e.target.value);
+                    }}
+                  />
+                </FormControl>
                 <br />
-                <h2> Employee ID</h2>
-                <input
-                  type="text"
-                  name="employeeId"
-                  onChange={(e) =>
-                    setEmployee({ ...employee, employeeId: e.target.value })
-                  }
-                />
-                <h2> Position</h2>
-                <input
-                  name="position"
-                  onChange={(e) => {
-                    setEmployee({ ...employee, position: e.target.value });
-                    setPosition(e.target.value);
-                  }}
-                />
+                <FormControl style={inputStylesA}>
+                  <InputLabel htmlFor="my-input">Employee ID</InputLabel>
+                  <Input
+                    type="text"
+                    name="employeeID"
+                    onChange={(e) => {
+                      setEmployee({ ...employee, employeeID: e.target.value });
+                    }}
+                  />
+                </FormControl>
+                <FormControl style={inputStylesA}>
+                  <InputLabel htmlFor="my-input">Position</InputLabel>
+                  <Input
+                    type="text"
+                    name="position"
+                    onChange={(e) => {
+                      setEmployee({ ...employee, position: e.target.value });
+                    }}
+                  />
+                </FormControl>
               </div>
 
-              <div className="personal_details_header">
+              <div className="personaldetails_header">
                 <h3>PERSONAL DETAILS </h3>
               </div>
 
-              <div className="personal_details_content">
-                <h2> Address 1</h2>
-                <input
-                  type="text"
-                  name="streetOne"
-                  onChange={(e) =>
-                    setEmployee({ ...employee, streetOne: e.target.value })
-                  }
-                />
+              <div className="personaldetails_content">
+                <FormControl style={inputStylesB}>
+                  <InputLabel htmlFor="my-input">Address 1</InputLabel>
+                  <Input
+                    type="text"
+                    name="streetOne"
+                    onChange={(e) => {
+                      setEmployee({ ...employee, streetOne: e.target.value });
+                    }}
+                  />
+                </FormControl>
 
-                <h2> Address 2</h2>
-                <input
-                  type="text"
-                  name="addressTwo"
-                  onChange={(e) =>
-                    setEmployee({ ...employee, streetTwo: e.target.value })
-                  }
-                />
-                <br />
+                <FormControl style={inputStylesB}>
+                  <InputLabel htmlFor="my-input">Address 2</InputLabel>
+                  <Input
+                    type="text"
+                    name="streetTwo"
+                    onChange={(e) => {
+                      setEmployee({ ...employee, streetTwo: e.target.value });
+                    }}
+                  />
+                </FormControl>
 
-                <h2> City</h2>
-                <input
-                  type="text"
-                  name="addressOne"
-                  onChange={(e) =>
-                    setEmployee({ ...employee, cityOne: e.target.value })
-                  }
-                />
+                <FormControl style={inputStylesB}>
+                  <InputLabel htmlFor="my-input">City</InputLabel>
+                  <Input
+                    type="text"
+                    name="cityOne"
+                    onChange={(e) => {
+                      setEmployee({ ...employee, cityOne: e.target.value });
+                    }}
+                  />
+                </FormControl>
 
-                <h2> Country</h2>
-                <input
-                  type="text"
-                  name="countryOne"
-                  onChange={(e) =>
-                    setEmployee({ ...employee, countryOne: e.target.value })
-                  }
-                />
-                <br />
+                <FormControl style={inputStylesB}>
+                  <InputLabel htmlFor="my-input">Country</InputLabel>
+                  <Input
+                    type="text"
+                    name="countryOne"
+                    onChange={(e) => {
+                      setEmployee({ ...employee, countryOne: e.target.value });
+                    }}
+                  />
+                </FormControl>
+                <FormControl style={inputStylesB}>
+                  <InputLabel htmlFor="my-input">State / Region</InputLabel>
+                  <Input
+                    type="text"
+                    name="stateOne"
+                    onChange={(e) => {
+                      setEmployee({ ...employee, stateOne: e.target.value });
+                    }}
+                  />
+                </FormControl>
 
-                <h2>State</h2>
-                <input
-                  type="text"
-                  name="stateOne"
-                  onChange={(e) =>
-                    setEmployee({ ...employee, stateOne: e.target.value })
-                  }
-                />
+                <FormControl style={inputStylesB}>
+                  <InputLabel htmlFor="my-input">Postal Code</InputLabel>
+                  <Input
+                    type="text"
+                    name="postalCodeOne"
+                    onChange={(e) => {
+                      setEmployee({
+                        ...employee,
+                        postalCodeOne: e.target.value,
+                      });
+                    }}
+                  />
+                </FormControl>
 
-                <h2> Postal Code</h2>
-                <input
-                  type="text"
-                  name="postalCodeOne"
-                  onChange={(e) =>
-                    setEmployee({ ...employee, postalCodeOne: e.target.value })
-                  }
-                />
-                <br />
+                <FormControl style={inputStylesB}>
+                  <InputLabel htmlFor="my-input">dateOfBirth</InputLabel>
+                  <Input
+                    type="text"
+                    name="dateOfBirth"
+                    onChange={(e) => {
+                      setEmployee({
+                        ...employee,
+                        dateOfBirth: e.target.value,
+                      });
+                    }}
+                  />
+                </FormControl>
 
-                <h2> Date of Birth</h2>
-                <input
-                  type="date"
-                  name="dateOfBirth"
-                  onChange={(e) =>
-                    setEmployee({ ...employee, dateOfBirth: e.target.value })
-                  }
-                />
+                <FormControl style={inputStylesB}>
+                  <InputLabel htmlFor="my-input">Other Email</InputLabel>
+                  <Input
+                    type="text"
+                    name="otherEmail"
+                    onChange={(e) => {
+                      setEmployee({
+                        ...employee,
+                        otherEmail: e.target.value,
+                      });
+                    }}
+                  />
+                </FormControl>
 
-                <h2> Other Email</h2>
-                <input
-                  type="text"
-                  name="otherEmail"
-                  onChange={(e) =>
-                    setEmployee({ ...employee, otherEmail: e.target.value })
-                  }
-                />
-                <br />
+                <FormControl style={inputStylesB}>
+                  <InputLabel htmlFor="my-input">Nationality</InputLabel>
+                  <Input
+                    type="text"
+                    name="nationality"
+                    onChange={(e) => {
+                      setEmployee({
+                        ...employee,
+                        nationality: e.target.value,
+                      });
+                    }}
+                  />
+                </FormControl>
 
-                <h2>Nationality</h2>
-                <input
-                  type="text"
-                  name="nationality"
-                  onChange={(e) =>
-                    setEmployee({ ...employee, nationality: e.target.value })
-                  }
-                />
+                <FormControl style={inputStylesB}>
+                  <InputLabel htmlFor="my-input">Gender</InputLabel>
+                  <Select
+                    labelId="demo"
+                    onChange={(e) =>
+                      setEmployee({ ...employee, gender: e.target.value })
+                    }
+                  >
+                    <MenuItem value="Male">Male</MenuItem>
+                    <MenuItem value="Female">Female</MenuItem>
+                    <MenuItem value="Diverse">Diverse</MenuItem>
+                  </Select>
+                </FormControl>
 
-                <h2>Gender</h2>
-                <Select
-                  labelId="demo"
-                  onChange={(e) =>
-                    setEmployee({ ...employee, gender: e.target.value })
-                  }
-                  style={{
-                    width: "32%",
-                    height: "25px",
-                    fontSize: "15px",
-                    backgroundColor: "#FFFFFF",
-                    fontSize: "16px",
-                    border: "none",
-                    borderRadius: "5px",
-                    margin: "0px 20px 10px 0px",
-                    padding: "2px 10px",
-                  }}
-                >
-                  <MenuItem value="male">Male</MenuItem>
-                  <MenuItem value="female">Female</MenuItem>
-                  <MenuItem value="x">Diverse</MenuItem>
-                </Select>
-                <br />
+                <FormControl style={inputStylesB}>
+                  <InputLabel htmlFor="my-input">Marital Status</InputLabel>
+                  <Select
+                    labelId="demo"
+                    onChange={(e) =>
+                      setEmployee({
+                        ...employee,
+                        maritalStatus: e.target.value,
+                      })
+                    }
+                  >
+                    <MenuItem value="Single">Single</MenuItem>
+                    <MenuItem value="Married">Married</MenuItem>
+                    <MenuItem value="Separated">Separated</MenuItem>
+                    <MenuItem value="Not specified">Not Specified</MenuItem>
+                  </Select>
+                </FormControl>
 
-                <h2>Marital Status</h2>
-                <Select
-                  labelId="demo"
-                  onChange={(e) =>
-                    setEmployee({ ...employee, maritalStatus: e.target.value })
-                  }
-                  style={{
-                    width: "32%",
-                    height: "25px",
-                    backgroundColor: "#FFFFFF",
-                    fontSize: "14px",
-                    border: "none",
-                    borderRadius: "5px",
-                    margin: "0px 20px 10px 0px",
-                    padding: "2px 10px",
-                  }}
-                >
-                  <MenuItem value="male">Single</MenuItem>
-                  <MenuItem value="female">Married</MenuItem>
-                  <MenuItem value="x">Separated</MenuItem>
-                  <MenuItem value="x">Not Specified</MenuItem>
-                </Select>
-
-                <h2> Hobbies</h2>
-                <input
-                  type="text"
-                  name="hobbies"
-                  onChange={(e) =>
-                    setEmployee({ ...employee, hobbies: e.target.value })
-                  }
-                />
-                <br />
+                <FormControl style={inputStylesB}>
+                  <InputLabel htmlFor="my-input">Hobbies</InputLabel>
+                  <Input
+                    type="text"
+                    name="hobbies"
+                    onChange={(e) => {
+                      setEmployee({
+                        ...employee,
+                        hobbies: e.target.value,
+                      });
+                    }}
+                  />
+                </FormControl>
               </div>
             </div>
 

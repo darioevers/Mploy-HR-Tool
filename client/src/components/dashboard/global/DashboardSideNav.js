@@ -51,102 +51,108 @@ const DashboardSideNav = () => {
   };
 
   return (
-    <div className="sidenav_mainbox">
-      {/* employee info */}
-      <div className="sidenav_employeeinfo">
-        <div className="sidenav_employeeinfo_image">
-        {/* <img
-        src={`http://localhost:5000/${privateData.bio.photo}`} width="50" onError={(e)=>{e.target.onError=null; e.target.src='http://localhost:5000/uploads/error.jpg'} }/> */}
+    <>
+      {privateData && (
+        <div className="sidenav_mainbox">
+          {/* employee info */}
+          <div className="sidenav_employeeinfo">
+            <div className="sidenav_employeeinfo_image">
+              <img
+                src={`http://localhost:5000/${privateData.bio.photo}`}
+                width="50"
+                onError={(e) => {
+                  e.target.onError = null;
+                  e.target.src = "http://localhost:5000/uploads/error.jpg";
+                }}
+              />
+            </div>
+            <div className="sidenav_employeeinfo_details">
+              <h1>{privateData.bio.firstName}</h1>
+              <h1>{privateData.bio.lastName}</h1>
+              <h4>{privateData.contractInfo?.position}</h4>
+            </div>
+          </div>
 
+          {/* sidenavlinks */}
+          <div className="sidenav_links">
+            <NavLink
+              exact
+              to="/dashboard"
+              activeClassName="active"
+              className="sidenav_link"
+            >
+              <i>
+                <DashboardIcon style={{ fontSize: "x-large" }} />
+              </i>
+              <p>Dashboard</p>
+            </NavLink>
+
+            <NavLink
+              exact
+              to="/dashboard/employeedata"
+              activeClassName="active"
+              className="sidenav_link"
+            >
+              <i>
+                {" "}
+                <FolderOpenIcon />
+              </i>
+              <p>Employee Data</p>
+            </NavLink>
+            <NavLink
+              exact
+              to="/dashboard/calendar"
+              activeClassName="active"
+              className="sidenav_link"
+            >
+              <i>
+                {" "}
+                <TodayIcon />
+              </i>
+              <p>Calendar</p>
+            </NavLink>
+            <NavLink
+              exact
+              to="/dashboard/payroll"
+              activeClassName="active"
+              className="sidenav_link"
+            >
+              <i>
+                {" "}
+                <EuroIcon />{" "}
+              </i>
+              <p> Payroll </p>
+            </NavLink>
+            <NavLink
+              exact
+              to="/dashboard/tasks"
+              activeClassName="active"
+              className="sidenav_link"
+            >
+              <i>
+                {" "}
+                <FormatListBulletedIcon />
+              </i>
+              <p> Tasks </p>
+            </NavLink>
+            <NavLink
+              exact
+              to="/dashboard/elearning"
+              activeClassName="active"
+              className="sidenav_link"
+            >
+              <i>
+                {" "}
+                <MenuBookIcon />
+              </i>{" "}
+              <p>E-Learning</p>
+            </NavLink>
+          </div>
+
+          <button onClick={logoutHandler}>Logout</button>
         </div>
-        <div className="sidenav_employeeinfo_details">
-          <h1>this</h1>
-          <h4>HR Specialist</h4>
-          <select>
-            <option>Available</option>
-            <option>Away</option>
-            <option>Offline</option>
-          </select>
-        </div>
-      </div>
-
-      {/* sidenavlinks */}
-      <div className="sidenav_links">
-        <NavLink
-          exact
-          to="/dashboard"
-          activeClassName="active"
-          className="sidenav_link"
-        >
-          <i>
-            <DashboardIcon style={{ fontSize: "x-large" }} />
-          </i>
-          <p>Dashboard</p>
-        </NavLink>
-
-        <NavLink
-          exact
-          to="/dashboard/employeedata"
-          activeClassName="active"
-          className="sidenav_link"
-        >
-          <i>
-            {" "}
-            <FolderOpenIcon />
-          </i>
-          <p>Employee Data</p>
-        </NavLink>
-        <NavLink
-          exact
-          to="/dashboard/calendar"
-          activeClassName="active"
-          className="sidenav_link"
-        >
-          <i>
-            {" "}
-            <TodayIcon />
-          </i>
-          <p>Calendar</p>
-        </NavLink>
-        <NavLink
-          exact
-          to="/dashboard/payroll"
-          activeClassName="active"
-          className="sidenav_link"
-        >
-          <i>
-            {" "}
-            <EuroIcon />{" "}
-          </i>
-          <p> Payroll </p>
-        </NavLink>
-        <NavLink
-          exact
-          to="/dashboard/tasks"
-          activeClassName="active"
-          className="sidenav_link"
-        >
-          <i>
-            {" "}
-            <FormatListBulletedIcon />
-          </i>
-          <p> Tasks </p>
-        </NavLink>
-        <NavLink
-          exact
-          to="/dashboard/elearning"
-          activeClassName="active"
-          className="sidenav_link"
-        >
-          <i>
-            {" "}
-            <MenuBookIcon />
-          </i>{" "}
-          <p>E-Learning</p>
-        </NavLink>
-      </div>
-      <button onClick={logoutHandler}>Logout</button>
-    </div>
+      )}
+    </>
   );
 };
 

@@ -4,7 +4,6 @@ import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
 import axios from "axios";
 import SearchIcon from "@mui/icons-material/Search";
-import CloseIcon from "@mui/icons-material/Close";
 import {
   Table,
   TableHead,
@@ -138,7 +137,7 @@ function EmployeeData({ history }) {
             <TableBody>
               {employees &&
                 employees.map((employee) => (
-                  <div>
+                  <>
                     <TableRow
                       key={employee._id}
                       onClick={() => {
@@ -147,26 +146,28 @@ function EmployeeData({ history }) {
                       }}
                       style={{ cursor: "pointer" }}
                     >
-                      <TableCell style={{ display: "flex" }}>
-                        <img
-                          src={`http://localhost:5000/${employee.bio.photo}`}
-                          onError={(e) => {
-                            e.target.onError = null;
-                            e.target.src =
-                              "http://localhost:5000/uploads/error.jpg";
-                          }}
-                        />
-                        <div className="table_cell_photo">
-                          <h5>
-                            {employee.bio.firstName} {employee.bio.lastName}{" "}
-                          </h5>
-                          {/* <h4>{employee.contractInfo.position}</h4> */}
+                      <TableCell>
+                        <div className="table_cell">
+                          <img
+                            src={`http://localhost:5000/${employee.bio.photo}`}
+                            onError={(e) => {
+                              e.target.onError = null;
+                              e.target.src =
+                                "http://localhost:5000/uploads/error.jpg";
+                            }}
+                          />
+                          <div className="table_cell_photo">
+                            <h5>
+                              {employee.bio.firstName} {employee.bio.lastName}
+                            </h5>
+                            <h4>{employee.contractInfo?.position}</h4>
+                          </div>
                         </div>
                       </TableCell>
 
-                      {/* <TableCell>{employee.contractInfo.department}</TableCell> */}
-                      <TableCell>{employee.bio.dateOfBirth}</TableCell>
+                      <TableCell>{employee.contractInfo?.department}</TableCell>
                       <TableCell>{employee.bio.email}</TableCell>
+                      <TableCell>{employee.bio.dateOfBirth}</TableCell>
                     </TableRow>
 
                     {checked && employee._id === id && (
@@ -193,12 +194,15 @@ function EmployeeData({ history }) {
                           </div>
                           <div className="summary_header_title">
                             <h1>
-                              {employee.bio.lasttName} {employee.bio.lastName}
+                              {employee.bio.firstName} {employee.bio.lastName}
                             </h1>
-                            <h2>{employee.bio}</h2>
+                            <h2>{employee.contractInfo?.position} </h2>
                           </div>
                           <div className="summary_close_btn">
-                            <CloseIcon onClick={() => setChecked(!checked)} />
+                            <button onClick={() => setChecked(!checked)}>
+                              {" "}
+                              X{" "}
+                            </button>
                           </div>
                         </div>
 
@@ -206,12 +210,18 @@ function EmployeeData({ history }) {
                           <h1> Contact Information </h1>
                           <div className="summary_body_contact">
                             <div className="contact_left">
-                              <h5>Contact No.:</h5>
+                              <h5>Phone:</h5>
                               <h5>Email:</h5>
                             </div>
                             <div className="contact_right">
-                              <h5>{employee.bio.phoneNumber}</h5>
-                              <h5>{employee.bio.email}</h5>
+                              <h5>
+                                {employee.bio.phoneNumber
+                                  ? employee.bio.phoneNumber
+                                  : "Not Specified"}
+                              </h5>
+                              <h5>
+                                {employee.bio.email ? employee.bio.email : ""}
+                              </h5>
                             </div>
                           </div>
 
@@ -223,9 +233,9 @@ function EmployeeData({ history }) {
                               <h5>Office:</h5>
                             </div>
                             <div className="workinfo_right">
-                              {/* <h5>{employee.contractInfo.department}</h5>
-                              <h5>{employee.contractInfo.supervisor}</h5>
-                              <h5>{employee.contractInfo.workLocation}</h5> */}
+                              <h5>{employee.contractInfo?.department}</h5>
+                              <h5>{employee.contractInfo?.supervisor}</h5>
+                              <h5>{employee.contractInfo?.workLocation}</h5>
                             </div>
                           </div>
 
@@ -239,10 +249,10 @@ function EmployeeData({ history }) {
                             <div className="personalinfo_right">
                               <h5>{employee.bio.gender}</h5>
                               <h5>{employee.bio.dateOfBirth}</h5>
-                              {/* <h5>
-                                {employee.addressOne.stateOne},{" "}
-                                {employee.addressOne.countryOne}
-                              </h5> */}
+                              <h5>
+                                {employee.addressOne?.stateOne},{" "}
+                                {employee.addressOne?.countryOne}
+                              </h5>
                             </div>
                           </div>
 
@@ -273,7 +283,7 @@ function EmployeeData({ history }) {
                         </div>
                       </div>
                     )}
-                  </div>
+                  </>
                 ))}
             </TableBody>
           </Table>
