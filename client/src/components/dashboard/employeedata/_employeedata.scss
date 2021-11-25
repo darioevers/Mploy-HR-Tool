@@ -104,7 +104,7 @@
   right: 0;
   margin: 20px;
   border-radius: 20px;
-  padding: 20px;
+  padding: 25px 50px;
   width: 25%;
   visibility: visible;
   opacity: 1;
@@ -127,6 +127,7 @@
 
 .summary_header {
   display: flex;
+  margin-top: 20px;
 }
 
 .summary_header_photo {
@@ -150,7 +151,8 @@
 
 .summary_close_btn {
   position: absolute;
-  right: 25px;
+  top: 30px;
+  right: 30px;
   button {
     border: none;
     font-size: 15px;
