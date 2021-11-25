@@ -31,7 +31,7 @@ const AddEmployee = ({ history }) => {
 
   //styling of formControls
   const inputStylesA = {
-    width: "35%",
+    width: "46%",
     marginRight: "20px",
   };
 
@@ -257,7 +257,7 @@ const AddEmployee = ({ history }) => {
                 </FormControl>
 
                 <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">dateOfBirth</InputLabel>
+                  <InputLabel htmlFor="my-input">Date of Birth</InputLabel>
                   <Input
                     type="text"
                     name="dateOfBirth"
