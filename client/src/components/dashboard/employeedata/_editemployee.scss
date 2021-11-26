@@ -1,0 +1,23 @@
+.editemployee_wrapper {
+  width: 78vw;
+  h1 {
+    border-bottom: 1px solid $tertiary;
+    margin-bottom: 10px;
+  }
+}
+.editemployee_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  padding: 0px 20px;
+}
+
+.active_tab {
+  @include flex-center;
+  width: 20%;
+  height: 40px;
+  border-bottom: 1px solid $highlight;
+  padding: 3px 10px;
+  color: $dark-bg;
+}

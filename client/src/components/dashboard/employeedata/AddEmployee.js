@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
 import { NavLink } from "react-router-dom";
@@ -6,6 +6,7 @@ import axios from "axios";
 import PhoneIcon from "@mui/icons-material/Phone";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import countrydata from "../../../selectData/countries";
 
 import {
   FormGroup,
@@ -160,7 +161,7 @@ const AddEmployee = ({ history }) => {
                     }}
                   />
                 </FormControl>
-                <br />
+
                 <FormControl style={inputStylesA}>
                   <InputLabel htmlFor="my-input">Employee ID</InputLabel>
                   <Input
@@ -223,13 +224,16 @@ const AddEmployee = ({ history }) => {
 
                 <FormControl style={inputStylesB}>
                   <InputLabel htmlFor="my-input">Country</InputLabel>
-                  <Input
-                    type="text"
-                    name="countryOne"
-                    onChange={(e) => {
-                      setEmployee({ ...employee, countryOne: e.target.value });
-                    }}
-                  />
+                  <Select
+                    labelId="demo"
+                    onChange={(e) =>
+                      setEmployee({ ...employee, country: e.target.value })
+                    }
+                  >
+                    {countrydata.map((data) => (
+                      <MenuItem value={data}>{data}</MenuItem>
+                    ))}
+                  </Select>
                 </FormControl>
                 <FormControl style={inputStylesB}>
                   <InputLabel htmlFor="my-input">State / Region</InputLabel>
@@ -259,7 +263,7 @@ const AddEmployee = ({ history }) => {
                 <FormControl style={inputStylesB}>
                   <InputLabel htmlFor="my-input">Date of Birth</InputLabel>
                   <Input
-                    type="text"
+                    type="date"
                     name="dateOfBirth"
                     onChange={(e) => {
                       setEmployee({

@@ -1,5 +1,7 @@
 .hrinfo_wrapper {
   width: 78vw;
+  height: 86vh;
+  position: relative;
   h1 {
     border-bottom: 1px solid $tertiary;
     margin-bottom: 10px;
@@ -42,6 +44,8 @@
   @include flex-center;
   margin-top: 30px;
   width: 100%;
+  position: absolute;
+  bottom: 0;
   button {
     width: 250px;
     height: 35px;
@@ -50,4 +54,14 @@
     background-color: $highlight;
     color: $primary;
   }
+}
+
+.add-btn {
+  width: 150px;
+  height: 30px;
+  color: $highlight;
+  background-color: transparent;
+  border: 1px solid $highlight;
+  margin-top: 10px;
+  border-radius: 5px;
 }

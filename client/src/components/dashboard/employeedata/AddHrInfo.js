@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
 import { NavLink } from "react-router-dom";
 import {
+  Table,
+  TableHead,
+  TableCell,
+  TableRow,
   FormGroup,
   FormControl,
   InputLabel,
   Input,
-  Button,
-  makeStyles,
-  Typography,
 } from "@material-ui/core";
 import axios from "axios";
 
@@ -19,6 +20,8 @@ const AddHrInfo = ({ location, history }) => {
   );
   const [file, setFile] = useState();
   const [hireDate, setHireDate] = useState(false);
+  const [addEducation, setAddEducation] = useState(false);
+  const [addWorkExperience, setAddWorkExperience] = useState(false);
 
   const addNew = () => {
     const data = new FormData();
@@ -63,6 +66,11 @@ const AddHrInfo = ({ location, history }) => {
   //       null
   //     }
   //   }
+
+  const handleAddEducation = () => setAddEducation(!addEducation);
+  const handleAddWorkExperience = () =>
+    setAddWorkExperience(!addWorkExperience);
+
   return (
     <div className="addemployee_mainbox">
       <DashboardTopNav />
@@ -130,6 +138,7 @@ const AddHrInfo = ({ location, history }) => {
               <FormControl style={inputStylesA}>
                 <InputLabel htmlFor="my-input">Hire Date</InputLabel>
                 <Input
+                  autoFocus
                   type="date"
                   onChange={(e) => {
                     setHireDate(e.target.value);
@@ -175,17 +184,7 @@ const AddHrInfo = ({ location, history }) => {
                   }
                 />
               </FormControl>
-              <FormControl style={inputStylesA}>
-                <InputLabel htmlFor="my-input">Position</InputLabel>
-                <Input
-                  onChange={(e) =>
-                    setEmployeeData({
-                      ...employeeData,
-                      position: e.target.value,
-                    })
-                  }
-                />
-              </FormControl>
+
               <FormControl style={inputStylesA}>
                 <InputLabel htmlFor="my-input">Team</InputLabel>
                 <Input
@@ -201,6 +200,18 @@ const AddHrInfo = ({ location, history }) => {
                     setEmployeeData({
                       ...employeeData,
                       department: e.target.value,
+                    })
+                  }
+                />
+              </FormControl>
+
+              <FormControl style={inputStylesA}>
+                <InputLabel htmlFor="my-input">Supervisor</InputLabel>
+                <Input
+                  onChange={(e) =>
+                    setEmployeeData({
+                      ...employeeData,
+                      supervisor: e.target.value,
                     })
                   }
                 />
@@ -244,100 +255,110 @@ const AddHrInfo = ({ location, history }) => {
               <h3>EDUCATION HISTORY</h3>
             </div>
 
-            <div clasName="education_content">
-              <FormControl style={inputStylesB}>
-                <InputLabel htmlFor="my-input">School Name</InputLabel>
-                <Input
-                  onChange={(e) =>
-                    setEmployeeData({
-                      ...employeeData,
-                      school: e.target.value,
-                    })
-                  }
-                />
-              </FormControl>
-              <FormControl style={inputStylesB}>
-                <InputLabel htmlFor="my-input">Degree</InputLabel>
-                <Input
-                  onChange={(e) =>
-                    setEmployeeData({
-                      ...employeeData,
-                      degree: e.target.value,
-                    })
-                  }
-                />
-              </FormControl>
+            {addEducation && (
+              <div clasName="education_content">
+                <FormControl style={inputStylesB}>
+                  <InputLabel htmlFor="my-input">School Name</InputLabel>
+                  <Input
+                    onChange={(e) =>
+                      setEmployeeData({
+                        ...employeeData,
+                        school: e.target.value,
+                      })
+                    }
+                  />
+                </FormControl>
+                <FormControl style={inputStylesB}>
+                  <InputLabel htmlFor="my-input">Degree</InputLabel>
+                  <Input
+                    onChange={(e) =>
+                      setEmployeeData({
+                        ...employeeData,
+                        degree: e.target.value,
+                      })
+                    }
+                  />
+                </FormControl>
 
-              <FormControl style={inputStylesB}>
-                <InputLabel htmlFor="my-input">Field Of Study</InputLabel>
-                <Input
-                  onChange={(e) =>
-                    setEmployeeData({
-                      ...employeeData,
-                      specialization: e.target.value,
-                    })
-                  }
-                />
-              </FormControl>
+                <FormControl style={inputStylesB}>
+                  <InputLabel htmlFor="my-input">Field Of Study</InputLabel>
+                  <Input
+                    onChange={(e) =>
+                      setEmployeeData({
+                        ...employeeData,
+                        specialization: e.target.value,
+                      })
+                    }
+                  />
+                </FormControl>
 
-              <FormControl style={inputStylesB}>
-                <InputLabel htmlFor="my-input">Year Of Completion</InputLabel>
-                <Input
-                  onChange={(e) =>
-                    setEmployeeData({
-                      ...employeeData,
-                      endDate: e.target.value,
-                    })
-                  }
-                />
-              </FormControl>
-            </div>
+                <FormControl style={inputStylesB}>
+                  <InputLabel htmlFor="my-input">Year Of Completion</InputLabel>
+                  <Input
+                    onChange={(e) =>
+                      setEmployeeData({
+                        ...employeeData,
+                        endDate: e.target.value,
+                      })
+                    }
+                  />
+                </FormControl>
+              </div>
+            )}
+            <button className="add-btn" onClick={handleAddEducation}>
+              Add Education +{" "}
+            </button>
 
             <div className="workexperience_header">
               <h3>WORK EXPERIENCE</h3>
             </div>
-            <div className="workexperience_content">
-              <FormControl style={inputStylesB}>
-                <InputLabel htmlFor="my-input">Company</InputLabel>
-                <Input
-                  onChange={(e) =>
-                    setEmployeeData({
-                      ...employeeData,
-                      company: e.target.value,
-                    })
-                  }
-                />
-              </FormControl>
-              <FormControl style={inputStylesB}>
-                <InputLabel htmlFor="my-input">Job Title</InputLabel>
-                <Input
-                  onChange={(e) =>
-                    setEmployeeData({
-                      ...employeeData,
-                      jobTitle: e.target.value,
-                    })
-                  }
-                />
-              </FormControl>
-              <FormControl style={inputStylesB}>
-                <InputLabel htmlFor="my-input">From</InputLabel>
-                <Input
-                  type="date"
-                  onChange={(e) =>
-                    setEmployeeData({ ...employeeData, from: e.target.value })
-                  }
-                />
-              </FormControl>
-              <FormControl style={inputStylesB}>
-                <InputLabel htmlFor="my-input">To</InputLabel>
-                <Input
-                  type="date"
-                  onChange={(e) =>
-                    setEmployeeData({ ...employeeData, to: e.target.value })
-                  }
-                />
-              </FormControl>
-            </div>
+            {addWorkExperience && (
+              <div className="workexperience_content">
+                <FormControl style={inputStylesB}>
+                  <InputLabel htmlFor="my-input">Company</InputLabel>
+                  <Input
+                    onChange={(e) =>
+                      setEmployeeData({
+                        ...employeeData,
+                        company: e.target.value,
+                      })
+                    }
+                  />
+                </FormControl>
+                <FormControl style={inputStylesB}>
+                  <InputLabel htmlFor="my-input">Job Title</InputLabel>
+                  <Input
+                    onChange={(e) =>
+                      setEmployeeData({
+                        ...employeeData,
+                        jobTitle: e.target.value,
+                      })
+                    }
+                  />
+                </FormControl>
+                <FormControl style={inputStylesB}>
+                  <InputLabel htmlFor="my-input">From</InputLabel>
+                  <Input
+                    type="date"
+                    onChange={(e) =>
+                      setEmployeeData({ ...employeeData, from: e.target.value })
+                    }
+                  />
+                </FormControl>
+                <FormControl style={inputStylesB}>
+                  <InputLabel htmlFor="my-input">To</InputLabel>
+                  <Input
+                    type="date"
+                    onChange={(e) =>
+                      setEmployeeData({ ...employeeData, to: e.target.value })
+                    }
+                  />
+                </FormControl>
+              </div>
+            )}
+            <button className="add-btn" onClick={handleAddWorkExperience}>
+              Add Experience +{" "}
+            </button>
 
             <div className="hr-save-btn">
               <button

@@ -10,12 +10,14 @@ import WidgetSickLeave from "./WidgetSickleave";
 import WidgetTasks from "./WidgetTasks";
 import WidgetTeam from "./WidgetTeam";
 
-function Widgets() {
-  const role = localStorage.getItem("role");
+function Widgets(props) {
+  const { welcomeMessage } = props;
+  // const role = localStorage.getItem("role");
 
   return (
     <div className="components_mainbox">
       <WelcomeMessage />
+
       {/* {role === "admin" && (
         <>
          

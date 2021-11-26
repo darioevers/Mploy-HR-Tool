@@ -25,6 +25,7 @@ import Calendar from "./components/dashboard/calendar/Calendar";
 import EmployeeData from "./components/dashboard/employeedata/EmployeeData";
 import AddEmployee from "./components/dashboard/employeedata/AddEmployee";
 import EditEmployee from "./components/dashboard/employeedata/EditEmployee";
+import EditHrInfo from "./components/dashboard/employeedata/EditHrInfo";
 import AddHrInfo from "./components/dashboard/employeedata/AddHrInfo";
 import AddDocument from "./components/dashboard/employeedata/AddDocument";
 
@@ -75,6 +76,12 @@ const App = () => {
                 exact
                 path="/dashboard/employeedata/editemployee"
                 component={EditEmployee}
+              />
+
+              <Route
+                exact
+                path="/dashboard/employeedata/editemployee/edithrinfo"
+                component={EditHrInfo}
               />
               <Route
                 exact
