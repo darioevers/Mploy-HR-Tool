@@ -5,7 +5,9 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import PhoneIcon from "@mui/icons-material/Phone";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+
 import {
   FormGroup,
   FormControl,
@@ -18,35 +20,35 @@ import {
   MenuItem,
 } from "@material-ui/core";
 
-const EditHrInfo = ({ location, history }) => {
-  const [editHrEmp, setEditHrEmp] = useState(
-    location.state && location.state.editEmp
+const EmployeeInfo = ({ location, history }) => {
+  const [empInfo, setEmpInfo] = useState(
+    location.state && location.state.employee
   );
   const [file, setFile] = useState();
 
-  const edit = () => {
-    const data = new FormData();
-    data.append("file", file);
-    const readyTOSend = JSON.stringify(editHrEmp);
-    data.append("editHrEmp", readyTOSend);
+  // const edit = () => {
+  //   const data = new FormData();
+  //   data.append("file", file);
+  //   const readyTOSend = JSON.stringify(empInfo);
+  //   data.append("empInfo", readyTOSend);
 
-    console.log(editHrEmp);
-    axios
-      .put("http://localhost:5000/employee/update", data, {
-        header: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then((data) => {
-        console.log(data);
-        history.push("/dashboard/employeedata/");
-      })
-      .catch((err) => console.log(err));
-  };
-  //autofill
-  const [firstName, setFirstName] = useState("First Name");
-  const [lastName, setLastName] = useState("Last Name");
-  const [position, setPosition] = useState("Position");
+  //   console.log(empInfo);
+  //   axios
+  //     .put("http://localhost:5000/employee/update", data, {
+  //       header: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     })
+  //     .then((data) => {
+  //       console.log(data);
+  //       history.push("/dashboard/employeedata/");
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
+  // autofill
+  const [firstName, setFirstName] = useState(empInfo.bio.firstName);
+  const [lastName, setLastName] = useState(empInfo.bio.lastName);
+  const [position, setPosition] = useState(empInfo.contractInfo.position);
 
   //styling of formControls
   const inputStylesA = {
@@ -55,8 +57,15 @@ const EditHrInfo = ({ location, history }) => {
   };
 
   const inputStylesB = {
-    width: "30%",
+    width: "100%",
     marginRight: "20px",
+  };
+
+  const formStyles = {
+    backgroundColor: "#ebebeb",
+    marginTop: "20px",
+    padding: "20px",
+    borderRadius: "20px",
   };
 
   return (
@@ -65,18 +74,40 @@ const EditHrInfo = ({ location, history }) => {
       <DashboardSideNav />
       {/* personal edit data */}
 
-      <div className="editemployee_wrapper">
-        <h1> Edit Employee </h1>
-        <div className="addemployee_header">
+      <div className="employeeinfo_wrapper">
+        <NavLink
+          exact
+          to="/dashboard/employeedata/"
+          activeClassName="active"
+          className="sidenav_link"
+        >
+          <div className="back-arrow">
+            <i>
+              <ArrowBackIcon />
+            </i>
+            <p> Back</p>
+          </div>
+        </NavLink>
+        <div className="employeeinfo_header">
+          <h1> Employee Info </h1>
+        </div>
+
+        <div className="employeeinfo_subheader">
           <div className="active_tab">
             <h4>General Data</h4>
           </div>
           <div className="inactive_tab">
             <NavLink
               exact
-              to="/dashboard/employeedata/editemployee/edithrinfo"
+              to="/dashboard/employeedata/employeeinfo/hrinfo"
               activeClassName="active"
               className="sidenav_link"
+              onClick={() => {
+                history.push({
+                  pathname: "/dashboard/employeedata/employeeinfo/hrinfo",
+                  state: { empInfo },
+                });
+              }}
             >
               {" "}
               HR Information
@@ -85,7 +116,7 @@ const EditHrInfo = ({ location, history }) => {
           <div className="inactive_tab">
             <NavLink
               exact
-              to="/dashboard/employeedata/addemployee/documents"
+              to="/dashboard/employeedata/employeeinfo/employeedocuments"
               activeClassName="active"
               className="sidenav_link"
             >
@@ -94,23 +125,20 @@ const EditHrInfo = ({ location, history }) => {
             </NavLink>
           </div>
         </div>
+
         <div className="employeedata_form">
           <FormGroup>
             <div className="form_header">
               <div className="form_header_photo">
                 <div className="photo">
                   <div className="dummy_photo">
-                    <i>
-                      <AccountCircleIcon style={{ fontSize: "135" }} />
-                    </i>
-                  </div>
-                  <div>
-                    <label for="upload-photo">Upload Photo +</label>
-                    <input
-                      type="file"
-                      name="file"
-                      id="upload-photo"
-                      onChange={(e) => setFile(e.target.files[0])}
+                    <img
+                      src={`http://localhost:5000/${empInfo.bio.photo}`}
+                      onError={(e) => {
+                        e.target.onError = null;
+                        e.target.src =
+                          "http://localhost:5000/uploads/error.jpg";
+                      }}
                     />
                   </div>
                 </div>
@@ -118,32 +146,26 @@ const EditHrInfo = ({ location, history }) => {
 
               <div className="form_header_info">
                 <div className="fullname">
-                  <h1>{editHrEmp?.bio.firstName}</h1>
-                  <h1>{editHrEmp?.bio.lastName}</h1>
+                  <h1>{firstName}</h1>
+                  <h1>{lastName}</h1>
                 </div>
 
                 <div className="position">
-                  <h3>{editHrEmp?.contractInfo.position}</h3>
+                  <h3>{position}</h3>
                 </div>
+
                 <div className="contacts">
                   <MailOutlineIcon fontSize="small" />
                   <input
                     name="email"
-                    onChange={(e) =>
-                      setEditHrEmp({ ...editHrEmp, email: e.target.value })
-                    }
+                    value={empInfo.bio.email}
                     placeholder="Email"
                   />
 
                   <PhoneIcon fontSize="small" />
                   <input
                     name="phoneNumber"
-                    onChange={(e) =>
-                      setEditHrEmp({
-                        ...setEditHrEmp,
-                        phoneNumber: e.target.value,
-                      })
-                    }
+                    value={empInfo.bio.phoneNumber}
                     placeholder="Phone Number"
                   />
                 </div>
@@ -160,11 +182,7 @@ const EditHrInfo = ({ location, history }) => {
                   <Input
                     type="text"
                     name="firstName"
-                    value={editHrEmp?.bio.firstName}
-                    // style={inputStylesA}
-                    onChange={(e) => {
-                      setEditHrEmp({ ...editHrEmp, firstName: e.target.value });
-                    }}
+                    value={empInfo.bio.firstName}
                   />
                 </FormControl>
                 <FormControl style={inputStylesA}>
@@ -172,13 +190,7 @@ const EditHrInfo = ({ location, history }) => {
                   <Input
                     type="text"
                     name="lastName"
-                    value={editHrEmp?.bio.lastName}
-                    onChange={(e) => {
-                      setEditHrEmp({
-                        ...editHrEmp,
-                        bio: { ...editHrEmp, lastName: e.target.value },
-                      });
-                    }}
+                    value={empInfo.bio.lastName}
                   />
                 </FormControl>
 
@@ -187,13 +199,7 @@ const EditHrInfo = ({ location, history }) => {
                   <Input
                     type="text"
                     name="employeeID"
-                    value={editHrEmp.bio.employeeId}
-                    onChange={(e) => {
-                      setEditHrEmp({
-                        ...editHrEmp,
-                        employeeId: e.target.value,
-                      });
-                    }}
+                    value={empInfo.bio.employeeId}
                   />
                 </FormControl>
                 <FormControl style={inputStylesA}>
@@ -201,11 +207,7 @@ const EditHrInfo = ({ location, history }) => {
                   <Input
                     type="text"
                     name="position"
-                    value={editHrEmp.contractInfo.position}
-                    onChange={(e) => {
-                      setPosition(e.target.value);
-                      setEditHrEmp({ ...editHrEmp, position: e.target.value });
-                    }}
+                    value={empInfo.contractInfo.position}
                   />
                 </FormControl>
               </div>
@@ -214,16 +216,14 @@ const EditHrInfo = ({ location, history }) => {
                 <h3>PERSONAL DETAILS </h3>
               </div>
 
-              <div className="personaldetails_content">
+              <FormGroup style={formStyles}>
                 <FormControl style={inputStylesB}>
                   <InputLabel htmlFor="my-input">Address 1</InputLabel>
                   <Input
                     type="text"
                     name="streetOne"
-                    value={editHrEmp.addressOne.streetOne}
-                    onChange={(e) => {
-                      setEditHrEmp({ ...editHrEmp, streetOne: e.target.value });
-                    }}
+                    value={empInfo.addressOne.streetOne}
+                    disabled
                   />
                 </FormControl>
 
@@ -232,10 +232,12 @@ const EditHrInfo = ({ location, history }) => {
                   <Input
                     type="text"
                     name="streetTwo"
-                    value={editHrEmp.addressTwo?.streetTwo}
-                    onChange={(e) => {
-                      setEditHrEmp({ ...editHrEmp, streetTwo: e.target.value });
-                    }}
+                    value={
+                      empInfo.addressTwo?.streetTwo
+                        ? empInfo.addressTwo?.streetTwo
+                        : "None"
+                    }
+                    disabled
                   />
                 </FormControl>
 
@@ -244,10 +246,8 @@ const EditHrInfo = ({ location, history }) => {
                   <Input
                     type="text"
                     name="cityOne"
-                    value={editHrEmp.addressOne.cityOne}
-                    onChange={(e) => {
-                      setEditHrEmp({ ...editHrEmp, cityOne: e.target.value });
-                    }}
+                    value={empInfo.addressOne.cityOne}
+                    disabled
                   />
                 </FormControl>
 
@@ -256,13 +256,8 @@ const EditHrInfo = ({ location, history }) => {
                   <Input
                     type="text"
                     name="countryOne"
-                    value={editHrEmp.addressOne.countryOne}
-                    onChange={(e) => {
-                      setEditHrEmp({
-                        ...editHrEmp,
-                        countryOne: e.target.value,
-                      });
-                    }}
+                    value={empInfo.addressOne.countryOne}
+                    disabled
                   />
                 </FormControl>
                 <FormControl style={inputStylesB}>
@@ -270,10 +265,8 @@ const EditHrInfo = ({ location, history }) => {
                   <Input
                     type="text"
                     name="stateOne"
-                    value={editHrEmp.addressOne.stateOne}
-                    onChange={(e) => {
-                      setEditHrEmp({ ...editHrEmp, stateOne: e.target.value });
-                    }}
+                    value={empInfo.addressOne.stateOne}
+                    disabled
                   />
                 </FormControl>
 
@@ -282,28 +275,20 @@ const EditHrInfo = ({ location, history }) => {
                   <Input
                     type="text"
                     name="postalCodeOne"
-                    value={editHrEmp.addressOne.postalCodeOne}
-                    onChange={(e) => {
-                      setEditHrEmp({
-                        ...editHrEmp,
-                        postalCodeOne: e.target.value,
-                      });
-                    }}
+                    value={empInfo.addressOne.postalCodeOne}
+                    disabled
                   />
                 </FormControl>
+              </FormGroup>
 
+              <FormGroup style={formStyles}>
                 <FormControl style={inputStylesB}>
                   <InputLabel htmlFor="my-input">Date of Birth</InputLabel>
                   <Input
                     type="text"
                     name="dateOfBirth"
-                    value={editHrEmp.bio.dateOfBirth}
-                    onChange={(e) => {
-                      setEditHrEmp({
-                        ...editHrEmp,
-                        dateOfBirth: e.target.value,
-                      });
-                    }}
+                    value={empInfo.bio.dateOfBirth}
+                    disabled
                   />
                 </FormControl>
 
@@ -312,13 +297,8 @@ const EditHrInfo = ({ location, history }) => {
                   <Input
                     type="text"
                     name="otherEmail"
-                    value={editHrEmp.bio?.otherEmail}
-                    onChange={(e) => {
-                      setEditHrEmp({
-                        ...editHrEmp,
-                        otherEmail: e.target.value,
-                      });
-                    }}
+                    value={empInfo.bio?.otherEmail}
+                    disabled
                   />
                 </FormControl>
 
@@ -327,48 +307,29 @@ const EditHrInfo = ({ location, history }) => {
                   <Input
                     type="text"
                     name="nationality"
-                    value={editHrEmp.bio.nationality}
-                    onChange={(e) => {
-                      setEditHrEmp({
-                        ...editHrEmp,
-                        nationality: e.target.value,
-                      });
-                    }}
+                    value={empInfo.bio.nationality}
+                    disabled
                   />
                 </FormControl>
 
                 <FormControl style={inputStylesB}>
                   <InputLabel htmlFor="my-input">Gender</InputLabel>
-                  <Select
-                    labelId="demo"
-                    value={editHrEmp.bio.gender}
-                    onChange={(e) =>
-                      setEditHrEmp({ ...editHrEmp, gender: e.target.value })
-                    }
-                  >
-                    <MenuItem value="Male">Male</MenuItem>
-                    <MenuItem value="Female">Female</MenuItem>
-                    <MenuItem value="Diverse">Diverse</MenuItem>
-                  </Select>
+                  <Input
+                    type="text"
+                    name="nationality"
+                    value={empInfo.bio.gender}
+                    disabled
+                  />
                 </FormControl>
 
                 <FormControl style={inputStylesB}>
                   <InputLabel htmlFor="my-input">Marital Status</InputLabel>
-                  <Select
-                    labelId="demo"
-                    value={editHrEmp.bio.maritalStatus}
-                    onChange={(e) =>
-                      setEditHrEmp({
-                        ...editHrEmp,
-                        maritalStatus: e.target.value,
-                      })
-                    }
-                  >
-                    <MenuItem value="Single">Single</MenuItem>
-                    <MenuItem value="Married">Married</MenuItem>
-                    <MenuItem value="Separated">Separated</MenuItem>
-                    <MenuItem value="Not specified">Not Specified</MenuItem>
-                  </Select>
+                  <Input
+                    type="text"
+                    name="nationality"
+                    value={empInfo.bio.maritalStatus}
+                    disabled
+                  />
                 </FormControl>
 
                 <FormControl style={inputStylesB}>
@@ -376,20 +337,24 @@ const EditHrInfo = ({ location, history }) => {
                   <Input
                     type="text"
                     name="hobbies"
-                    value={editHrEmp.bio.hobbies}
-                    onChange={(e) => {
-                      setEditHrEmp({
-                        ...editHrEmp,
-                        hobbies: e.target.value,
-                      });
-                    }}
+                    value={empInfo.bio.hobbies ? empInfo.bio.hobbies : "None"}
+                    disabled
                   />
                 </FormControl>
-              </div>
+              </FormGroup>
             </div>
 
             <div className="next-btn">
-              <button onClick={edit}>Save and Update Employee Data</button>
+              <button
+                onClick={() => {
+                  history.push({
+                    pathname: "/dashboard/employeedata/employeeinfo/hrinfo",
+                    state: { empInfo },
+                  });
+                }}
+              >
+                Next{" "}
+              </button>
             </div>
           </FormGroup>
         </div>
@@ -398,4 +363,4 @@ const EditHrInfo = ({ location, history }) => {
   );
 };
 
-export default EditHrInfo;
+export default EmployeeInfo;

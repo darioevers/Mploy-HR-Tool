@@ -86,7 +86,7 @@ const AddEmployee = ({ history }) => {
                       <AccountCircleIcon style={{ fontSize: "135" }} />
                     </i>
                   </div>
-                  <div>
+                  <div className="upload-photo">
                     <label for="upload-photo">Upload Photo +</label>
                     <input
                       type="file"
@@ -137,7 +137,7 @@ const AddEmployee = ({ history }) => {
                 <h3>BASIC DETAILS </h3>
               </div>
 
-              <div className="basicdetails_content">
+              <div className="basicdetailsone_content">
                 <FormControl style={inputStylesA}>
                   <InputLabel htmlFor="my-input">First Name</InputLabel>
                   <Input
@@ -188,7 +188,7 @@ const AddEmployee = ({ history }) => {
                 <h3>PERSONAL DETAILS </h3>
               </div>
 
-              <div className="personaldetails_content">
+              <div className="personaldetails_content_one">
                 <FormControl style={inputStylesB}>
                   <InputLabel htmlFor="my-input">Address 1</InputLabel>
                   <Input
@@ -259,7 +259,8 @@ const AddEmployee = ({ history }) => {
                     }}
                   />
                 </FormControl>
-
+              </div>
+              <div className="personaldetails_content_two">
                 <FormControl style={inputStylesB}>
                   <InputLabel htmlFor="my-input">Date of Birth</InputLabel>
                   <Input

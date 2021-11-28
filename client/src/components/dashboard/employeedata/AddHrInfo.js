@@ -76,9 +76,9 @@ const AddHrInfo = ({ location, history }) => {
       <DashboardTopNav />
       <DashboardSideNav />
 
-      <div className="hrinfo_wrapper">
+      <div className="addhrinfo_wrapper">
         <h1> Add New Employee </h1>
-        <div className="hrinfo_header">
+        <div className="addhrinfo_header">
           <div className="inactive_tab">
             <NavLink
               exact
@@ -118,12 +118,12 @@ const AddHrInfo = ({ location, history }) => {
             </FormControl>
           </div>
 
-          <div className="form_hrinfo">
-            <div className="contractdetails_header">
+          <div className="addhrinfo_form">
+            <div className="addhrinfo_contractdetails_header">
               <h3>CONTRACT DETAILS </h3>
             </div>
 
-            <div className="contractdetails_content">
+            <div className="addhrinfo_contractdetails_content">
               <FormControl style={inputStylesA}>
                 <InputLabel htmlFor="my-input">Contract No</InputLabel>
                 <Input
@@ -251,12 +251,12 @@ const AddHrInfo = ({ location, history }) => {
               </FormControl>
             </div>
 
-            <div className="education_header">
+            <div className="addhrinfo_education_header">
               <h3>EDUCATION HISTORY</h3>
             </div>
 
             {addEducation && (
-              <div clasName="education_content">
+              <div clasName="addhrinfo_education_content">
                 <FormControl style={inputStylesB}>
                   <InputLabel htmlFor="my-input">School Name</InputLabel>
                   <Input
@@ -309,11 +309,11 @@ const AddHrInfo = ({ location, history }) => {
               Add Education +{" "}
             </button>
 
-            <div className="workexperience_header">
+            <div className="addhrinfo_workexperience_header">
               <h3>WORK EXPERIENCE</h3>
             </div>
             {addWorkExperience && (
-              <div className="workexperience_content">
+              <div className="addhrinfo_workexperience_content">
                 <FormControl style={inputStylesB}>
                   <InputLabel htmlFor="my-input">Company</InputLabel>
                   <Input

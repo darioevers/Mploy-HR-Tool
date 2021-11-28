@@ -49,7 +49,7 @@ function WidgetSickLeave() {
         <h2>
           {leaves &&
             leaves
-              .filter((item) => item.bio.email === "alex.albaran@mploy.com")
+              .filter((item) => item.bio.email === "mark.albaran@outlook.com")
               .map((item) => <h2>{item.takenSickLeave}</h2>)}
         </h2>
         <h4>Days Taken</h4>

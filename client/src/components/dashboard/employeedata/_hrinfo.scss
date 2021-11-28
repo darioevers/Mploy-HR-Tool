@@ -1,0 +1,203 @@
+.hrinfo_mainbox {
+  @include main_dashboard_grid;
+}
+.hrinfo_wrapper {
+  width: 78vw;
+}
+
+.back-arrow {
+  @include md {
+    visibility: visible;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100vw;
+    height: 4vh;
+    background-color: $dark-bg;
+  }
+  visibility: hidden;
+  width: 0;
+  height: 0;
+
+  i {
+    @include md {
+      color: $primary;
+    }
+    margin-right: 15px;
+    margin-top: 25px;
+    margin-left: 10px;
+  }
+  p {
+    @include md {
+      color: $primary;
+      margin-top: 20px;
+      font-size: 15px;
+    }
+  }
+}
+
+.hrinfo_header {
+  @include md {
+    @include flex-center;
+    flex-direction: column;
+    background-color: $dark-bg;
+    width: 100vw;
+    height: 15vh;
+    border-bottom: none;
+  }
+  display: flex;
+  justify-content: flex-start;
+  width: 95%;
+  padding: 0px 20px;
+  border-bottom: 1px solid $tertiary;
+
+  h1 {
+    @include md {
+      color: $primary;
+    }
+  }
+}
+.hrinfo_subheader {
+  @include md {
+    width: 100vw;
+    color: $primary;
+    font-size: 15px;
+    background-color: $dark-bg;
+    padding: 0px 15px 10px;
+  }
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hrinfo_form_generaldata {
+  @include md {
+    margin-left: 20px;
+    height: 66vh;
+    overflow: scroll;
+    border-radius: 20px;
+    padding: 0px 50px;
+    margin-top: 10px;
+    width: 90vw;
+  }
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.active_tab_hr {
+  @include md {
+    color: $primary;
+    border-bottom: none;
+    width: 28%;
+    height: 18px;
+    align-items: center;
+  }
+  @include flex-center;
+  width: 20%;
+  height: 40px;
+  border-bottom: 1px solid $highlight;
+  padding: 3px 10px;
+  color: $dark-bg;
+}
+
+.hrinfo_contractdetails_header,
+.hrinfo_education_header,
+.hrinfo_workexperience_header {
+  @include md {
+    font-size: 15px;
+    margin-bottom: 0px;
+  }
+  margin-top: 20px;
+  margin-bottom: -20px;
+}
+
+.hrinfo_contractdetails_content {
+  @include md {
+    flex-direction: column;
+    background-color: $tertiary;
+    padding: 0px 15px 25px 15px;
+  }
+  display: flex;
+  margin-top: 20px;
+  padding: 0px 15px;
+  border-radius: 20px;
+  width: 95%;
+}
+
+.hrinfo_contractdetails_left {
+  @include md {
+    width: 100%;
+  }
+  width: 50%;
+  margin-right: 20px;
+  font-size: 12px;
+}
+
+.hrinfo_contractdetails_right {
+  @include md {
+    width: 100%;
+  }
+  width: 50%;
+}
+
+.hrinfo_education_content {
+  @include md {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $tertiary;
+    border-radius: 20px;
+    padding: 20px;
+  }
+  width: 95%;
+  h2 {
+    @include md {
+      font-size: 16px;
+      text-align: right;
+    }
+  }
+  h3 {
+    @include md {
+      font-size: 16px;
+    }
+  }
+  h4 {
+    @include md {
+      font-size: 11px;
+      font-weight: 100;
+    }
+  }
+}
+
+.hrinfo_workexperience_content {
+  @include md {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $tertiary;
+    border-radius: 20px;
+    padding: 20px;
+  }
+  width: 95%;
+  h3 {
+    @include md {
+      font-size: 16px;
+    }
+  }
+  h4 {
+    @include md {
+      font-size: 11px;
+      font-weight: 100;
+    }
+  }
+
+  h5 {
+    @include md {
+      text-align: right;
+      font-size: 11px;
+      font-weight: 100;
+    }
+  }
+}

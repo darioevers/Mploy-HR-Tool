@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 
 //icons
@@ -14,6 +14,12 @@ import MenuBookIcon from "@material-ui/icons/MenuBook";
 
 const DashboardSideNav = (props) => {
   const { data, logout } = props;
+  const [active, setActive] = useState("");
+
+  const handleClick = () => {
+    setActive("active");
+  };
+
   // const [privateData, setPrivateData] = useState("");
 
   // const history = useHistory();
@@ -83,6 +89,7 @@ const DashboardSideNav = (props) => {
             to="/dashboard"
             activeClassName="active"
             className="sidenav_link"
+            onClick={handleClick}
           >
             <i>
               <DashboardIcon style={{ fontSize: "x-large" }} />
@@ -95,64 +102,80 @@ const DashboardSideNav = (props) => {
             to="/dashboard/employeedata"
             activeClassName="active"
             className="sidenav_link"
+            onClick={handleClick}
           >
             <i>
               {" "}
               <FolderOpenIcon />
             </i>
             <p>Employee Data</p>
+            {/* <img src={iconbg} /> */}
+            <div></div>
           </NavLink>
+
           <NavLink
             exact
             to="/dashboard/calendar"
             activeClassName="active"
             className="sidenav_link"
+            onClick={handleClick}
           >
             <i>
               {" "}
               <TodayIcon />
             </i>
             <p>Calendar</p>
+            {/* <img src={iconbg} /> */}
+            <div></div>
           </NavLink>
           <NavLink
             exact
             to="/dashboard/payroll"
             activeClassName="active"
             className="sidenav_link"
+            onClick={active}
           >
             <i>
               {" "}
               <EuroIcon />{" "}
             </i>
-            <p> Payroll </p>
+            <p>Payroll</p>
+            {/* <img src={iconbg} /> */}
+            <div></div>
           </NavLink>
           <NavLink
             exact
             to="/dashboard/tasks"
             activeClassName="active"
             className="sidenav_link"
+            onClick={active}
           >
             <i>
-              {" "}
               <FormatListBulletedIcon />
             </i>
-            <p> Tasks </p>
+            <p>Tasks</p>
+            {/* <img src={iconbg} /> */}
+            <div></div>
           </NavLink>
           <NavLink
             exact
             to="/dashboard/elearning"
             activeClassName="active"
             className="sidenav_link"
+            onClick={active}
           >
             <i>
               {" "}
               <MenuBookIcon />
             </i>{" "}
             <p>E-Learning</p>
+            {/* <img src={iconbg} /> */}
+            <div></div>
           </NavLink>
         </div>
-
-        <button onClick={logout}>Logout</button>
+        <div className="logout_btn">
+          <button onClick={logout}>Logout</button>
+        </div>
       </div>
     </>
   );

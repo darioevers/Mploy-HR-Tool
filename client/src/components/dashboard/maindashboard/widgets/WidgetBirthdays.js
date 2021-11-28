@@ -1,6 +1,6 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Carousel from "react-elastic-carousel";
-import axios from "axios"
+import axios from "axios";
 function WidgetBirthdays() {
   // const [employees, setEmployees] = useState();
 
@@ -29,13 +29,17 @@ function WidgetBirthdays() {
 
   return (
     <div className="widget_birthdays_mainbox">
-      <div className="birthdays_header">
-        <h1>BIRTHDAYS</h1>
+      <div className="widget_applications_header">
+        <h1>
+          {" "}
+          BIRTHDAYS <span>TODAY</span>
+        </h1>
+        <div className="horizontal_line"></div>
       </div>
 
       <div className="birthdays_today">
-        <Carousel itemsToShow={2}>
-        {/* {employees &&
+        <Carousel itemsToShow={3}>
+          {/* {employees &&
             employees.map((employee) => (
           <div className="contact_one" key={employee._id}>
             <div className="contact_one_image">{employee.bio.firstName}</div>
@@ -47,25 +51,25 @@ function WidgetBirthdays() {
           </div>
             ))} */}
 
-          {/* <div className="contact_two">
+          <div className="contact_two">
             <div className="contact_two_image"></div>
             <div className="contact_two_name">User 2 </div>
-          </div> */}
+          </div>
 
-          {/* <div className="contact_three">
+          <div className="contact_three">
             <div className="contact_three_image"></div>
             <div className="contact_three_name">User 3 </div>
-          </div> */}
+          </div>
 
-          {/* <div className="contact_four">
+          <div className="contact_four">
             <div className="contact_four_image"></div>
             <div className="contact_four_name">User 4 </div>
-          </div> */}
+          </div>
 
-          {/* <div className="contact_five">
+          <div className="contact_five">
             <div className="contact_five_image"></div>
             <div className="contact_five_name">User 5 </div>
-          </div> */}
+          </div>
         </Carousel>
         <h1>Today</h1>
       </div>

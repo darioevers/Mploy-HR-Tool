@@ -1,4 +1,4 @@
-.hrinfo_wrapper {
+.addhrinfo_wrapper {
   width: 78vw;
   height: 86vh;
   position: relative;
@@ -7,7 +7,7 @@
     margin-bottom: 10px;
   }
 }
-.hrinfo_header {
+.addhrinfo_header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -27,18 +27,30 @@
   color: $dark-bg;
 }
 
-.contractdetails_header,
-.education_header,
-.workexperience_header {
-  margin-top: 20px;
+.addhrinfo_contractdetails_header,
+.addhrinfo_education_header,
+.addhrinfo_workexperience_header {
+  @include md {
+    margin-top: 40px;
+  }
+  h3 {
+    @include md {
+      font-size: 16px;
+    }
+  }
 }
 
-.workdetails_content,
-.education_content,
-.workexperience_content {
-  display: flex;
-  flex-wrap: wrap;
-}
+// .education_header,
+// .workexperience_header {
+//   margin-top: 20px;
+// }
+
+// .workdetails_content,
+// .education_content,
+// .workexperience_content {
+//   display: flex;
+//   flex-wrap: wrap;
+// }
 
 .hr-save-btn {
   @include flex-center;

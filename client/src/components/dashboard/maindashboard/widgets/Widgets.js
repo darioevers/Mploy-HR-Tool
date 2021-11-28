@@ -10,8 +10,7 @@ import WidgetSickLeave from "./WidgetSickleave";
 import WidgetTasks from "./WidgetTasks";
 import WidgetTeam from "./WidgetTeam";
 
-function Widgets(props) {
-  const { welcomeMessage } = props;
+function Widgets() {
   // const role = localStorage.getItem("role");
 
   return (

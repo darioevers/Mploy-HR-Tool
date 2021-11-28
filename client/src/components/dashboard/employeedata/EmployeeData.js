@@ -4,6 +4,8 @@ import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
 import axios from "axios";
 import SearchIcon from "@mui/icons-material/Search";
+import CloseIcon from "@mui/icons-material/Close";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import {
   Table,
   TableHead,
@@ -18,10 +20,8 @@ import {
   Input,
 } from "@material-ui/core";
 
-const useStyles = makeStyles({});
-
 function EmployeeData({ history }) {
-  const classes = useStyles();
+  // const classes = useStyles();
   const [employees, setEmployees] = useState();
   const [search, setSearch] = useState("");
   const [checked, setChecked] = useState(false);
@@ -54,7 +54,6 @@ function EmployeeData({ history }) {
   // searching query search with firstName
   const searchEmployee = (query) => {
     const data = { query };
-    console.log(data);
     setSearch(query);
     axios
       .post("http://localhost:5000/employee/search", data, {
@@ -87,8 +86,11 @@ function EmployeeData({ history }) {
 
       <div className="employeedata_container">
         <div className="employeedata_header">
-          <h1>Employee Data</h1>
+          <div className="employeedata_header_title">
+            <h1>Employee Data</h1>
+          </div>
         </div>
+
         {/* search */}
         <div
           className={
@@ -116,15 +118,22 @@ function EmployeeData({ history }) {
               activeClassName="active"
               className="sidenav_link"
             >
-              <button>
+              <div className="addemployee_button">
                 Add Employee <span>+</span>
-              </button>
+              </div>
             </NavLink>
           </div>
+
+          {/* <div
+            className="searchemployee_button"
+            onClick={(e) => searchEmployee(e.target.value)}
+          >
+            Search
+          </div> */}
         </div>
 
         <div className={checked ? "employeedata_show" : "employeedata_hide"}>
-          <Table style={{ width: "100%" }}>
+          <Table>
             <TableHead>
               <TableRow>
                 <TableCell>Name</TableCell>
@@ -177,9 +186,6 @@ function EmployeeData({ history }) {
                             ? "employeedata_summary_show"
                             : "employeedata_summary_hide"
                         }
-                        style={{
-                          backgroundColor: "whitesmoke",
-                        }}
                       >
                         <div className="summary_header">
                           <div className="summary_header_photo">
@@ -199,10 +205,9 @@ function EmployeeData({ history }) {
                             <h2>{employee.contractInfo?.position} </h2>
                           </div>
                           <div className="summary_close_btn">
-                            <button onClick={() => setChecked(!checked)}>
-                              {" "}
-                              X{" "}
-                            </button>
+                            <div onClick={() => setChecked(!checked)}>
+                              <CloseIcon />
+                            </div>
                           </div>
                         </div>
 
@@ -257,7 +262,7 @@ function EmployeeData({ history }) {
                           </div>
 
                           <div className="summary_buttons">
-                            <Button
+                            <div
                               variant="contained"
                               onClick={() => {
                                 console.log(employees);
@@ -269,16 +274,32 @@ function EmployeeData({ history }) {
                               }}
                             >
                               Edit
-                            </Button>
+                            </div>
 
-                            <Button
+                            <div
                               variant="contained"
                               onClick={() =>
                                 deleteEmployeeData(employee.bio.email)
                               }
                             >
                               Delete
-                            </Button>
+                            </div>
+
+                            <div
+                              variant="contained"
+                              onClick={() => {
+                                history.push({
+                                  pathname:
+                                    "/dashboard/employeedata/employeeinfo",
+                                  state: { employee },
+                                });
+                              }}
+                            >
+                              <i>
+                                {" "}
+                                <ArrowForwardIosIcon />
+                              </i>
+                            </div>
                           </div>
                         </div>
                       </div>

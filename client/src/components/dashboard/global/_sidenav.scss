@@ -1,4 +1,15 @@
 .sidenav_mainbox {
+  @include md {
+    @include flex-center;
+    position: absolute;
+    bottom: 0;
+    height: 8%;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    z-index: -2;
+  }
   display: flex;
   flex-direction: column;
   height: 99%;
@@ -11,9 +22,26 @@
 }
 
 .sidenav_employeeinfo {
+  @include md {
+    width: 100vw;
+    height: 28vh;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    background-color: $dark-bg;
+    z-index: -3;
+  }
   display: flex;
   margin-top: 20px;
   .sidenav_employeeinfo_image {
+    @include md {
+      position: fixed;
+      top: 4%;
+      left: 10%;
+      width: 100px;
+      height: 100px;
+    }
     @include flex_center;
     width: 60px;
     height: 60px;
@@ -24,8 +52,19 @@
     }
   }
   .sidenav_employeeinfo_details {
+    @include md {
+      width: 100%;
+      position: fixed;
+      top: 5%;
+      left: 30%;
+    }
+
     margin-left: 12px;
     h1 {
+      @include md {
+        font-size: 22px;
+        line-height: 22px;
+      }
       color: $primary;
       font-size: 18px;
       font-weight: normal;
@@ -47,47 +86,80 @@
 }
 
 .sidenav_links {
+  @include md {
+    @include flex-center;
+    flex-direction: row;
+    margin-top: 10px;
+    padding: 0;
+    margin: 0;
+  }
   display: flex;
   flex-direction: column;
   margin-top: 80px;
   margin-left: 10px;
   font-size: 13px;
   font-weight: normal;
+
   .sidenav_link {
+    @include md {
+      margin: 0 20px;
+    }
     @include flex_center;
-    justify-content: flex-start;
     color: $primary;
+    position: relative;
+    justify-content: flex-start;
     margin-bottom: 25px;
 
     p {
+      @include md {
+        visibility: hidden;
+        width: 0;
+        height: 0;
+      }
+
       margin-left: 10px;
       font-weight: lighter;
     }
     i {
       margin-left: 10px;
+      z-index: 1;
     }
   }
 }
-
-.sidenav_logout {
-  background-color: red;
-  width: 100%;
-  height: 50%;
-  .logout_button {
-    background-color: yellow;
-  }
-}
-
 .active {
-  background-color: $primary;
-  width: 220px;
-  height: 40px;
-  border-radius: 50px;
+  @include md {
+    color: $dark-bg;
+    width: 94px;
+    height: 69px;
+    background-image: url("../../../img/graphics/active-bg.png");
+    background-size: cover;
+  }
+  width: 230px;
+  height: 79px;
+  background-image: url("../../../img/graphics/active-bg-xl.png");
+  background-size: cover;
+  margin-left: -30px;
+  margin-bottom: 0;
+  // border: 1px solid red;
   p {
     color: $dark-bg;
   }
   i {
+    @include md {
+      padding-left: 25px;
+    }
     color: $dark-bg;
-    margin-left: 10px;
+    padding-left: 33px;
+  }
+}
+
+.logout_btn {
+  @include md {
+    visibility: hidden;
+    height: 0;
+    width: 0;
+  }
+  button {
+    width: 100%;
   }
 }

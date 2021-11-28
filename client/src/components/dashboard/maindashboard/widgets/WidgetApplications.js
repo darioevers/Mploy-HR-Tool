@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import consolaGlobalInstance from "consola";
+import CloseIcon from "@mui/icons-material/Close";
 
 function WidgetApplications() {
   //fetch leaves data
@@ -90,7 +91,7 @@ function WidgetApplications() {
           <h4>Approved</h4>
         </div>
         <div className="widget_applications_new">
-          <button onClick={handleShow}>NEW APPLICATION</button>
+          <div onClick={handleShow}> NEW APPLICATION </div>
         </div>
       </div>
 
@@ -201,7 +202,7 @@ function WidgetApplications() {
           </div>
 
           <div className="form_buttons">
-            <button
+            <div
               type="submit"
               class="btn_submit"
               onClick={() => {
@@ -211,10 +212,10 @@ function WidgetApplications() {
               }}
             >
               Submit
-            </button>
-            <button type="button" class="btn_cancel" onClick={handleShow}>
-              X
-            </button>
+            </div>
+            <div class="btn_cancel" onClick={handleShow}>
+              <CloseIcon />
+            </div>
           </div>
         </form>
       </div>

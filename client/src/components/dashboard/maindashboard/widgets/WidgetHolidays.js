@@ -41,7 +41,7 @@ function WidgetHolidays() {
       <div className="holidays_bottomleft_wrapper">
         {leaves &&
           leaves
-            .filter((item) => item.bio.email === "alex.albaran@mploy.com")
+            .filter((item) => item.bio.email === "mark.albaran@outlook.com")
             .map((item) => <h2>{item.availableHolidays}</h2>)}
         <h4>Available</h4>
       </div>
@@ -53,7 +53,7 @@ function WidgetHolidays() {
       <div className="holidays_bottomright_wrapper">
         {leaves &&
           leaves
-            .filter((item) => item.bio.email === "alex.albaran@mploy.com")
+            .filter((item) => item.bio.email === "mark.albaran@outlook.com")
             .map((item) => <h2>{item.takenHolidays} </h2>)}
         <h4>Days Taken</h4>
       </div>

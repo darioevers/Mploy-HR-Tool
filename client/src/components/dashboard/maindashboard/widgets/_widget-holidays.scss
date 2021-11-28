@@ -1,4 +1,13 @@
 .widget_holidays_mainbox {
+  @include md {
+    display: flex;
+    background-color: $tertiary;
+    position: fixed;
+    top: 32%;
+    height: 7%;
+    width: 90%;
+    z-index: -1;
+  }
   @include widget-wrapper;
   grid-area: widget_holidays;
   //inside grid
@@ -11,23 +20,47 @@
     "holidays_middle_wrapper holidays_middle_wrapper holidays_middle_wrapper"
     "holidays_bottomleft_wrapper holidays_bottommiddle_wrapper holidays_bottomright_wrapper";
   .holidays_top_wrapper {
+    @include md {
+      @include flex-center;
+      background-color: $dark-bg;
+      width: 25%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      line-height: 22px;
+      border-top-left-radius: 14px;
+      border-bottom-left-radius: 14px;
+    }
     grid-area: holidays_top_wrapper;
     margin: 20px;
     @include flex-center;
     justify-content: flex-start;
     .square_bullet {
+      @include md {
+        visibility: hidden;
+        width: 0;
+      }
       width: 14px;
       height: 60%;
       background-color: $lighter-blue;
       border-radius: 2px;
     }
     h1 {
+      @include md {
+        margin-left: 0;
+        color: $primary;
+        font-size: 16px;
+      }
       font-size: 20px;
       margin-left: 20px;
     }
   }
 
   .holidays_middle_wrapper {
+    @include md {
+      visibility: hidden;
+      width: 0;
+    }
     grid-area: holidays_middle_wrapper;
     margin-left: 20px;
     h4 {
@@ -41,6 +74,10 @@
     }
   }
   .holidays_bottomleft_wrapper {
+    @include md {
+      @include flex-center;
+      flex-direction: column;
+    }
     grid-area: holidays_bottomleft_wrapper;
     margin-left: 20px;
     h2 {
@@ -54,6 +91,10 @@
     }
   }
   .holidays_bottommiddle_wrapper {
+    @include md {
+      visibility: hidden;
+      width: 0;
+    }
     grid-area: holidays_bottommiddle_wrapper;
     .vertical_line {
       width: 2px;
@@ -62,6 +103,11 @@
     }
   }
   .holidays_bottomright_wrapper {
+    @include md {
+      @include flex-center;
+      flex-direction: column;
+      margin-left: 35px;
+    }
     grid-area: holidays_bottomright_wrapper;
     h2 {
       font-size: 18px;

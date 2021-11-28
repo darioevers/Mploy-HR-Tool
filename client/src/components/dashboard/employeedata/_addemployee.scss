@@ -32,12 +32,20 @@
 }
 
 .form_header {
+  @include md {
+    margin: 15px;
+  }
   position: relative;
   display: flex;
   margin: 25px 50px;
   .photo {
     flex-direction: column;
     label {
+      @include md {
+        visibility: hidden;
+        width: 0;
+        height: 0;
+      }
       background-color: $primary;
       color: $highlight;
       cursor: pointer;
@@ -56,15 +64,22 @@
 }
 
 .dummy_photo {
+  @include md {
+    width: 80px;
+    height: 80px;
+    margin: 20px;
+    margin-right: 5px;
+  }
   @include flex-center;
   width: 120px;
   height: 120px;
-  border-radius: 50%;
+
   background-color: $primary;
   margin-bottom: 5px;
-  i {
-    color: $secondary;
-    margin-top: 5px;
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
   }
 }
 
@@ -75,6 +90,11 @@
 .fullname {
   display: flex;
   h1 {
+    @include md {
+      font-size: 22px;
+      margin-top: 15px;
+      margin-bottom: 0;
+    }
     font-size: 30px;
     border: none;
     margin-bottom: 5px;
@@ -86,6 +106,9 @@
 
 .position {
   h3 {
+    @include md {
+      font-size: 16px;
+    }
     background-color: transparent;
     font-size: 18px;
     font-weight: 100;
@@ -93,10 +116,18 @@
 }
 
 .contacts {
+  @include md {
+    margin-top: 5px;
+  }
   display: flex;
   align-items: center;
   margin-top: 12px;
   input {
+    @include md {
+      width: 30vw;
+      margin-right: 0px;
+      font-size: 12px;
+    }
     width: 220px;
     font-size: 14px;
     border: none;
@@ -108,6 +139,15 @@
 }
 
 .form_generaldata {
+  @include md {
+    margin-left: 0px;
+    height: 500px;
+    overflow: scroll;
+    border-radius: 20px;
+    padding: 0px 50px;
+    margin-top: -30px;
+    width: 100vw;
+  }
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -115,20 +155,40 @@
 }
 
 .basicdetails_header {
+  @include md {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
   margin-bottom: -20px;
 }
 .basicdetails_content {
+  @include md {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
   display: flex;
   flex-wrap: wrap;
   margin-top: 20px;
 }
 
 .personaldetails_header {
+  @include md {
+    font-size: 15px;
+    margin-bottom: 0px;
+  }
   margin-top: 20px;
   margin-bottom: -20px;
 }
 
-.personaldetails_content {
+.personaldetails_content_one {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.personaldetails_content_two {
   display: flex;
   flex-wrap: wrap;
   margin-top: 20px;

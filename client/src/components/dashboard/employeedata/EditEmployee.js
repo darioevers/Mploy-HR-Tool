@@ -24,25 +24,25 @@ const EditEmployee = ({ location, history }) => {
   );
   const [file, setFile] = useState();
 
-  const edit = () => {
-    const data = new FormData();
-    data.append("file", file);
-    const readyTOSend = JSON.stringify(editEmp);
-    data.append("editEmp", readyTOSend);
+  // const edit = () => {
+  //   const data = new FormData();
+  //   data.append("file", file);
+  //   const readyTOSend = JSON.stringify(editEmp);
+  //   data.append("editEmp", readyTOSend);
 
-    console.log(editEmp);
-    axios
-      .put("http://localhost:5000/employee/update", data, {
-        header: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then((data) => {
-        console.log(data);
-        history.push("/dashboard/employeedata/");
-      })
-      .catch((err) => console.log(err));
-  };
+  //   console.log(editEmp);
+  //   axios
+  //     .put("http://localhost:5000/employee/update", data, {
+  //       header: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     })
+  //     .then((data) => {
+  //       console.log(data);
+  //       history.push("/dashboard/employeedata/");
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
   //autofill
   const [firstName, setFirstName] = useState(editEmp.bio.firstName);
   const [lastName, setLastName] = useState(editEmp.bio.lastName);
@@ -104,15 +104,6 @@ const EditEmployee = ({ location, history }) => {
                       <AccountCircleIcon style={{ fontSize: "135" }} />
                     </i>
                   </div>
-                  <div>
-                    <label for="upload-photo">Upload Photo +</label>
-                    <input
-                      type="file"
-                      name="file"
-                      id="upload-photo"
-                      onChange={(e) => setFile(e.target.files[0])}
-                    />
-                  </div>
                 </div>
               </div>
 
@@ -125,6 +116,7 @@ const EditEmployee = ({ location, history }) => {
                 <div className="position">
                   <h3>{position}</h3>
                 </div>
+
                 <div className="contacts">
                   <MailOutlineIcon fontSize="small" />
                   <input

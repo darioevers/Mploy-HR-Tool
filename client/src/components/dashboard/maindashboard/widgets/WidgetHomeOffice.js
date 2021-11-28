@@ -30,7 +30,7 @@ function WidgetHomeOffice() {
     <div className="widget_homeoffice_mainbox">
       <div className="homeoffice_top_wrapper">
         <div className="square_bullet"></div>
-        <h1> Home Office </h1>
+        <h1> Home Office</h1>
       </div>
 
       <div className="homeoffice_middle_wrapper">
@@ -41,21 +41,21 @@ function WidgetHomeOffice() {
       <div className="homeoffice_bottomleft_wrapper">
         {leaves &&
           leaves
-            .filter((item) => item.bio.email === "alex.albaran@mploy.com")
+            .filter((item) => item.bio.email === "mark.albaran@outlook.com")
             .map((item) => <h2>{item.availableHomeOffice}</h2>)}
         <h4>Available</h4>
       </div>
+
       <div className="homeoffice_bottommiddle_wrapper">
         <div className="vertical_line"></div>
       </div>
+
       <div className="homeoffice_bottomright_wrapper">
-        <h2>
-          {leaves &&
-            leaves
-              .filter((item) => item.bio.email === "alex.albaran@mploy.com")
-              .map((item) => <h2>{item.takenHomeOffice}</h2>)}
-        </h2>
-        <h4>Days Taken </h4>
+        {leaves &&
+          leaves
+            .filter((item) => item.bio.email === "mark.albaran@outlook.com")
+            .map((item) => <h2>{item.takenHomeOffice} </h2>)}
+        <h4>Days Taken</h4>
       </div>
     </div>
   );

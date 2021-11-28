@@ -110,6 +110,13 @@ function WidgetTasks() {
 
   return (
     <div className="widget_tasks_mainbox">
+      <div className="taskwidget_mobile">
+        <div className="taskwidget_mobile_header">
+          <h1>TASK WIDGETS</h1>
+          <div className="horizontal_line"></div>
+          <div className="add-btn">+</div>
+        </div>
+      </div>
       <div class={showForm ? "sidenav_open" : "sidenav"}>
         <h1>ADD NEW TASK</h1>
         <hr />

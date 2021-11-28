@@ -1,4 +1,7 @@
 .welcome_message_mainbox {
+  @include md {
+    visibility: hidden;
+  }
   margin: 10px 0;
   width: 100%;
   height: 10vh;

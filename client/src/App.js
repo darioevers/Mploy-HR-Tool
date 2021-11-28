@@ -28,6 +28,9 @@ import EditEmployee from "./components/dashboard/employeedata/EditEmployee";
 import EditHrInfo from "./components/dashboard/employeedata/EditHrInfo";
 import AddHrInfo from "./components/dashboard/employeedata/AddHrInfo";
 import AddDocument from "./components/dashboard/employeedata/AddDocument";
+import EmployeeInfo from "./components/dashboard/employeedata/EmployeeInfo";
+import HrInfo from "./components/dashboard/employeedata/HrInfo";
+import EmployeeDocuments from "./components/dashboard/employeedata/EmployeeDocuments";
 
 import Payroll from "./components/dashboard/payroll/Payroll";
 import Tasks from "./components/dashboard/tasks/Tasks";
@@ -87,6 +90,22 @@ const App = () => {
                 exact
                 path="/dashboard/employeedata/addemployee/hrinfo"
                 component={AddHrInfo}
+              />
+
+              <Route
+                exact
+                path="/dashboard/employeedata/employeeinfo"
+                component={EmployeeInfo}
+              />
+              <Route
+                exact
+                path="/dashboard/employeedata/employeeinfo/hrinfo"
+                component={HrInfo}
+              />
+              <Route
+                exact
+                path="/dashboard/employeedata/employeeinfo/employeedocuments"
+                component={EmployeeDocuments}
               />
 
               <Route

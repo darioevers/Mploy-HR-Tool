@@ -1,4 +1,11 @@
 .widget_applications_mainbox {
+  @include md {
+    position: fixed;
+    height: 13%;
+    top: 62%;
+    left: 4.5%;
+    width: 50%;
+  }
   @include widget_wrapper;
   grid-area: widget_applications;
   display: flex;
@@ -14,6 +21,10 @@
 }
 
 .widget_applications_body {
+  @include md {
+    height: 55px;
+    padding: 0;
+  }
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -21,10 +32,16 @@
 }
 .widget_applications_header {
   h1 {
+    @include md {
+      margin: 7px 20px;
+    }
     font-size: 16px;
     margin: 20px 0px 10px 20px;
   }
   .horizontal_line {
+    @include md {
+      margin-top: -5px;
+    }
     width: 87%;
     height: 2px;
     background-color: $primary;
@@ -38,33 +55,55 @@
   margin-left: 20px;
   margin-top: 10px;
   h4 {
+    @include md {
+      margin-top: -8px;
+    }
     font-size: 10px;
   }
 }
 .widget_applications_approved {
+  @include md {
+    margin-left: 35px;
+  }
+  @include flex-center;
+  flex-direction: column;
+  font-size: 20px;
+  margin-left: 20px;
+  margin-top: 10px;
   @include flex-center;
   flex-direction: column;
   font-size: 20px;
   margin-left: 20px;
   margin-top: 10px;
   h4 {
+    @include md {
+      margin-top: -8px;
+    }
     font-size: 10px;
   }
 }
 
-.widget_applications_rejected {
-  @include flex-center;
-  flex-direction: column;
-  font-size: 20px;
-  margin-left: 20px;
-  margin-top: 10px;
-  h4 {
-    font-size: 10px;
-  }
-}
+// .widget_applications_rejected {
+//   @include flex-center;
+//   flex-direction: column;
+//   font-size: 20px;
+//   margin-left: 20px;
+//   margin-top: 10px;
+//   h4 {
+//     font-size: 10px;
+//   }
+// }
 .widget_applications_new {
+  @include md {
+    font-size: 10px;
+    margin-top: 10px;
+    margin-left: 8px;
+  }
   @include flex-center;
-  button {
+  text-align: center;
+  font-size: 15px;
+
+  div {
     background-color: $highlight;
     color: $primary;
     border: none;
@@ -73,19 +112,24 @@
     height: 50%;
     padding: 8px;
     margin-top: 10px;
-    margin-right: 15px;
+    margin-right: 10px;
+    cursor: pointer;
   }
 }
 
 //new applications pop-up form
 .form_main_container_show {
+  @include md {
+    position: fixed;
+    z-index: 5;
+  }
   position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   background-color: #000000a9;
-  z-index: 10;
+  z-index: 3;
   visibility: visible;
   opacity: 1;
   transition: visibility 1s, opacity 0.5s linear;
@@ -98,11 +142,16 @@
 }
 
 .form_container {
-  width: 30%;
+  @include md {
+    width: 80%;
+    left: 10%;
+    z-index: 2;
+  }
+  min-width: 30%;
   position: absolute;
   bottom: 18%;
   left: 35%;
-  z-index: 9;
+  z-index: 2;
   height: 600px;
   padding: 10px;
   background-color: $dark-bg;
@@ -139,6 +188,10 @@
   justify-content: space-around;
 
   .btn_submit {
+    @include md {
+      position: absolute;
+      bottom: 5%;
+    }
     @include flex-center;
     background-color: $highlight;
     color: white;
@@ -152,12 +205,11 @@
   }
   .btn_cancel {
     position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 15px;
+    top: 12px;
+    right: 12px;
+    font-size: 25px;
     font-weight: bolder;
     color: white;
-    background-color: transparent;
     border: none;
     cursor: pointer;
   }

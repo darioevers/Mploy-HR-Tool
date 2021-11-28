@@ -49,7 +49,7 @@ function MainDashboard() {
     <div className="maindashboard_area">
       <DashboardTopNav />
       <DashboardSideNav data={privateData} logout={logoutHandler} />
-      <Widgets />
+      <Widgets data={privateData} />
     </div>
   );
 }

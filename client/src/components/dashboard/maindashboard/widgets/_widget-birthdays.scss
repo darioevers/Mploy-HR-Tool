@@ -1,4 +1,12 @@
 .widget_birthdays_mainbox {
+  @include md {
+    position: fixed;
+    height: 13%;
+    top: 76%;
+    left: 4.5%;
+    width: 50%;
+    z-index: -1;
+  }
   @include widget-wrapper;
   grid-area: widget_birthdays;
 
@@ -12,16 +20,31 @@
     "birthdays_today birthdays_month .";
 }
 
-.birthdays_header {
-  grid-area: birthdays_header;
-  width: 80%;
-  height: 50%;
-  margin: 20px 0px 5px 20px;
-
+.widget_birthdays_header {
   h1 {
-    font-size: 18px;
+    @include md {
+      margin: 7px 20px;
+    }
+    font-size: 16px;
+    margin: 20px 0px 10px 20px;
+  }
+  span {
+    color: red;
+    @include md {
+      visibility: visible;
+    }
+  }
+  .horizontal_line {
+    @include md {
+      margin-top: -5px;
+    }
+    width: 87%;
+    height: 2px;
+    background-color: $primary;
+    margin-left: 20px;
   }
 }
+
 .birthdays_today {
   @include flex-center;
   flex-direction: column;
@@ -31,11 +54,25 @@
   margin-top: -10px;
 
   h1 {
+    @include md {
+      visibility: hidden;
+      width: 0;
+      height: 0;
+    }
     font-size: 15px;
     margin-top: -10px;
   }
 }
+.contact_two_name {
+  @include md {
+    visibility: hidden;
+  }
+}
 .birthdays_month {
+  @include md {
+    visibility: hidden;
+    width: 0;
+  }
   @include flex-center;
   flex-direction: column;
   grid-area: birthdays_month;
