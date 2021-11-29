@@ -9,7 +9,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import {
   Table,
   TableHead,
-  TableCell,
+  td,
   TableRow,
   TableBody,
   Button,
@@ -117,7 +117,7 @@ function EmployeeData({ history }) {
                 />
               </div>
 
-              <div className="button">
+              <div className="employeedata_add_button">
                 <NavLink
                   exact
                   to="/dashboard/employeedata/addemployee"
@@ -129,33 +129,32 @@ function EmployeeData({ history }) {
                   </div>
                 </NavLink>
               </div>
-
-              {/* <div
-            className="searchemployee_button"
-            onClick={(e) => searchEmployee(e.target.value)}
-          >
-            Search
-          </div> */}
             </div>
 
             <div
               className={checked ? "employeedata_show" : "employeedata_hide"}
             >
-              <Table>
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Name</TableCell>
-                    <TableCell>Department</TableCell>
-                    <TableCell>Email</TableCell>
-                    <TableCell>Date of Birth</TableCell>
-                  </TableRow>
-                </TableHead>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>Email</th>
+                    <th className="mobile_hide">Date of Birth</th>
+                  </tr>
+                  <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th className="mobile_hide"></th>
+                  </tr>
+                </thead>
 
-                <TableBody>
+                <tbody>
                   {employees &&
                     employees.map((employee) => (
                       <>
-                        <TableRow
+                        <tr
                           key={employee._id}
                           onClick={() => {
                             setChecked(true);
@@ -163,7 +162,7 @@ function EmployeeData({ history }) {
                           }}
                           style={{ cursor: "pointer" }}
                         >
-                          <TableCell>
+                          <td>
                             <div className="table_cell">
                               <img
                                 src={`http://localhost:5000/${employee.bio.photo}`}
@@ -181,15 +180,15 @@ function EmployeeData({ history }) {
                                 <h4>{employee.contractInfo?.position}</h4>
                               </div>
                             </div>
-                          </TableCell>
+                          </td>
 
-                          <TableCell>
-                            {employee.contractInfo?.department}
-                          </TableCell>
+                          <td>{employee.contractInfo?.department}</td>
 
-                          <TableCell>{employee.bio.email}</TableCell>
-                          <TableCell>{employee.bio.dateOfBirth}</TableCell>
-                        </TableRow>
+                          <td>{employee.bio.email}</td>
+                          <td className="mobile_hide">
+                            {employee.bio.dateOfBirth}
+                          </td>
+                        </tr>
 
                         {checked && employee._id === id && (
                           <div
@@ -317,8 +316,8 @@ function EmployeeData({ history }) {
                         )}
                       </>
                     ))}
-                </TableBody>
-              </Table>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>

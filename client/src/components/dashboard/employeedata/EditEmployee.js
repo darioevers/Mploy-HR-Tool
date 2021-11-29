@@ -17,6 +17,7 @@ import {
   Select,
   MenuItem,
 } from "@material-ui/core";
+import EmployeeData from "./EmployeeData";
 
 const EditEmployee = ({ history, match }) => {
   const [editEmp, setEditEmp] = useState();
@@ -107,9 +108,14 @@ const EditEmployee = ({ history, match }) => {
               <div className="form_header_photo">
                 <div className="photo">
                   <div className="dummy_photo">
-                    <i>
-                      <AccountCircleIcon style={{ fontSize: "135" }} />
-                    </i>
+                    <img
+                      src={`http://localhost:5000/${editEmp?.bio?.photo}`}
+                      onError={(e) => {
+                        e.target.onError = null;
+                        e.target.src =
+                          "http://localhost:5000/uploads/error.jpg";
+                      }}
+                    />
                   </div>
                 </div>
               </div>

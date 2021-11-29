@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { FormGroup, FormControl, InputLabel, Input } from "@material-ui/core";
+import { formGroupClasses } from "@mui/material";
 
 const HrInfo = ({ location, history, match }) => {
   const [hrData, setHrData] = useState();
@@ -54,6 +55,7 @@ const HrInfo = ({ location, history, match }) => {
   const formStylesB = {
     backgroundColor: "#ebebeb",
     borderRadius: "20px",
+    paddingTop: "20px",
   };
 
   return (
@@ -113,74 +115,68 @@ const HrInfo = ({ location, history, match }) => {
 
           <div className="hrinfo_contractdetails_content">
             <div className="hrinfo_contractdetails_left">
-              <FormGroup>
-                <FormControl>
-                  <InputLabel htmlFor="my-input">Contract No</InputLabel>
-
-                  <Input value={hrData?.contractInfo?.contractNo} disabled />
-                </FormControl>
-                <FormControl>
-                  <InputLabel htmlFor="my-input">Hire Date</InputLabel>
-
-                  <Input value={hrData?.contractInfo?.hireDate} disabled />
-                  {/* <Input
-                  // value={hrData.contractInfo.contractNo}
-                  autoFocus
-                  type="date"
-                /> */}
-                </FormControl>
-                <FormControl>
-                  <InputLabel htmlFor="my-input">Contract End</InputLabel>
-                  <Input value={hrData?.contractInfo?.contractEnd} disabled />
-                  {/* <Input
-                  // value={hrData.contractInfo.contractNo}
-                  type="date"
-                  min="2019-01-01"
-                /> */}
-                </FormControl>
-                <FormControl>
-                  <InputLabel htmlFor="my-input">Probation Period</InputLabel>
-                  <Input
+              <FormGroup style={formStylesB}>
+                <div className="input-box">
+                  <p>Contract No.</p>
+                  <input type="text" value={hrData?.contractInfo?.contractNo} />
+                </div>
+                <div className="input-box">
+                  <p>Hire Date</p>
+                  <input type="text" value={hrData?.contractInfo?.hireDate} />
+                </div>
+                <div className="input-box">
+                  <p>Contract End</p>
+                  <input
+                    type="text"
+                    value={hrData?.contractInfo?.contractEnd}
+                  />
+                </div>
+                <div className="input-box">
+                  <p>Probation Period</p>
+                  <input
+                    type="text"
                     value={hrData?.contractInfo?.probationPeriod}
-                    disabled
                   />
-                </FormControl>
-                <FormControl>
-                  <InputLabel htmlFor="my-input">Employment Type</InputLabel>
-                  <Input
+                </div>
+                <div className="input-box">
+                  <p>Contract No.</p>
+                  <input
+                    type="text"
                     value={hrData?.contractInfo?.employmentType}
-                    disabled
                   />
-                </FormControl>
-                <FormControl>
-                  <InputLabel htmlFor="my-input">Team</InputLabel>
-                  <Input value={hrData?.contractInfo?.team} disabled />
-                </FormControl>
+                </div>
+                <div className="input-box">
+                  <p>Contract No.</p>
+                  <input type="text" value={hrData?.contractInfo?.team} />
+                </div>
               </FormGroup>
             </div>
             <div className="hrinfo_contractdetails_right">
               <FormGroup>
-                <FormControl>
-                  <InputLabel htmlFor="my-input">Department</InputLabel>
-                  <Input value={hrData?.contractInfo?.department} disabled />
-                </FormControl>
+                <div className="input-box">
+                  <p>Department</p>
+                  <input type="text" value={hrData?.contractInfo?.department} />
+                </div>
 
-                <FormControl>
-                  <InputLabel htmlFor="my-input">Supervisor</InputLabel>
-                  <Input value={hrData?.contractInfo?.supervisor} disabled />
-                </FormControl>
-                <FormControl>
-                  <InputLabel htmlFor="my-input">Salary</InputLabel>
-                  <Input value={hrData?.contractInfo?.salary} disabled />
-                </FormControl>
-                <FormControl>
-                  <InputLabel htmlFor="my-input">Overtime</InputLabel>
-                  <Input value={hrData?.contractInfo?.overtime} disabled />
-                </FormControl>
-                <FormControl>
-                  <InputLabel htmlFor="my-input">Work Location</InputLabel>
-                  <Input value={hrData?.contractInfo?.workLocation} disabled />
-                </FormControl>
+                <div className="input-box">
+                  <p>Supervisor</p>
+                  <input type="text" value={hrData?.contractInfo?.supervisor} />
+                </div>
+                <div className="input-box">
+                  <p>Salary</p>
+                  <input type="text" value={hrData?.contractInfo?.salary} />
+                </div>
+                <div className="input-box">
+                  <p>Overtime</p>
+                  <input type="text" value={hrData?.contractInfo?.overtime} />
+                </div>
+                <div className="input-box">
+                  <p>Work Location</p>
+                  <input
+                    type="text"
+                    value={hrData?.contractInfo?.workLocation}
+                  />
+                </div>
               </FormGroup>
             </div>
           </div>

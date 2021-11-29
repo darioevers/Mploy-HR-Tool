@@ -5,10 +5,8 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import PhoneIcon from "@mui/icons-material/Phone";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
-
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-
-import { FormGroup, FormControl, InputLabel, Input } from "@material-ui/core";
+import { FormGroup } from "@material-ui/core";
 
 const EmployeeInfo = ({ history, match }) => {
   const [empInfo, setEmpInfo] = useState();
@@ -172,129 +170,89 @@ const EmployeeInfo = ({ history, match }) => {
               </div>
 
               <FormGroup style={formStyles}>
-                <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Address 1</InputLabel>
-                  <Input
-                    type="text"
-                    name="streetOne"
-                    value={empInfo?.addressOne?.streetOne}
-                    disabled
-                  />
-                </FormControl>
+                <div className="input-box">
+                  <p>Address One</p>
+                  <input type="text" value={empInfo?.addressOne?.streetOne} />
+                </div>
 
-                <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Address 2</InputLabel>
-                  <Input
+                <div className="input-box">
+                  <p>Address Two</p>
+                  <input
                     type="text"
-                    name="streetTwo"
                     value={
                       empInfo?.addressTwo?.streetTwo
                         ? empInfo?.addressTwo?.streetTwo
-                        : "None"
+                        : "No Entry"
                     }
-                    disabled
                   />
-                </FormControl>
+                </div>
 
-                <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">City</InputLabel>
-                  <Input
-                    type="text"
-                    name="cityOne"
-                    value={empInfo?.addressOne?.cityOne}
-                    disabled
-                  />
-                </FormControl>
+                <div className="input-box">
+                  <p>City</p>
+                  <input type="text" value={empInfo?.addressOne?.cityOne} />
+                </div>
 
-                <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Country</InputLabel>
-                  <Input
-                    type="text"
-                    name="countryOne"
-                    value={empInfo?.addressOne?.countryOne}
-                  />
-                </FormControl>
-                <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">State / Region</InputLabel>
-                  <Input
-                    type="text"
-                    name="stateOne"
-                    value={empInfo?.addressOne?.stateOne}
-                    disabled
-                  />
-                </FormControl>
+                <div className="input-box">
+                  <p>State</p>
+                  <input type="text" value={empInfo?.addressOne?.stateOne} />
+                </div>
 
-                <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Postal Code</InputLabel>
-                  <Input
+                <div className="input-box">
+                  <p>Country</p>
+                  <input type="text" value={empInfo?.addressOne?.countryOne} />
+                </div>
+
+                <div className="input-box">
+                  <p>Postal Code</p>
+                  <input
                     type="text"
-                    name="postalCodeOne"
                     value={empInfo?.addressOne?.postalCodeOne}
-                    disabled
                   />
-                </FormControl>
+                </div>
               </FormGroup>
 
               <FormGroup style={formStyles}>
-                <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Date of Birth</InputLabel>
-                  <Input
-                    type="text"
-                    name="dateOfBirth"
-                    value={empInfo?.bio?.dateOfBirth}
-                    disabled
-                  />
-                </FormControl>
+                <div className="input-box">
+                  <p>Date of Birth</p>
+                  <input type="text" value={empInfo?.bio?.dateOfBirth} />
+                </div>
 
-                <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Other Email</InputLabel>
-                  <Input
+                <div className="input-box">
+                  <p>Other Email</p>
+                  <input
                     type="text"
-                    name="otherEmail"
-                    value={empInfo?.bio?.otherEmail}
-                    disabled
+                    value={
+                      empInfo?.bio?.otherEmail
+                        ? empInfo?.bio?.otherEmail
+                        : "No Entry"
+                    }
                   />
-                </FormControl>
+                </div>
 
-                <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Nationality</InputLabel>
-                  <Input
-                    type="text"
-                    name="nationality"
-                    value={empInfo?.bio?.nationality}
-                    disabled
-                  />
-                </FormControl>
+                <div className="input-box">
+                  <p>Nationality</p>
+                  <input type="text" value={empInfo?.bio?.nationality} />
+                </div>
 
-                <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Gender</InputLabel>
-                  <Input
-                    type="text"
-                    name="nationality"
-                    value={empInfo?.bio?.gender}
-                    disabled
-                  />
-                </FormControl>
+                <div className="input-box">
+                  <p>Gender</p>
+                  <input type="text" value={empInfo?.bio?.gender} />
+                </div>
 
-                <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Marital Status</InputLabel>
-                  <Input
-                    type="text"
-                    name="nationality"
-                    value={empInfo?.bio?.maritalStatus}
-                    disabled
-                  />
-                </FormControl>
+                <div className="input-box">
+                  <p>Marital Status</p>
+                  <input type="text" value={empInfo?.bio?.maritalStatus} />
+                </div>
 
-                <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Hobbies</InputLabel>
-                  <Input
+                <div className="input-box">
+                  <p>Hobbies</p>
+                  <input
                     type="text"
-                    name="hobbies"
-                    value={empInfo?.bio?.hobbies ? empInfo.bio.hobbies : "None"}
-                    disabled
+                    value={
+                      empInfo?.bio?.hobbies ? empInfo.bio.hobbies : "No Entry"
+                    }
                   />
-                </FormControl>
+                </div>
               </FormGroup>
             </div>
           </FormGroup>
