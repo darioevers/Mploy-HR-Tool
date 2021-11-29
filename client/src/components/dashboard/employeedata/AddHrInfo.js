@@ -69,6 +69,45 @@ const AddHrInfo = ({ location, history }) => {
               onChange={(e) => setFile(e.target.files[0])}
             />
           </FormControl>
+              {/* cv */}
+          <FormControl>
+            <InputLabel htmlFor="my-input">CV</InputLabel>
+            <Input
+              type="file"
+              name="fileCv"
+              onChange={(e) => setFile(e.target.files[1])}
+            />
+          </FormControl>
+
+               {/* Diploma */}
+               {/* <FormControl>
+            <InputLabel htmlFor="my-input">Diploma</InputLabel>
+            <Input
+              type="file"
+              name="fileDiploma"
+              onChange={(e) => setFile(e.target.files[2])}
+            />
+          </FormControl> */}
+
+            {/* letter */}
+            {/* <FormControl>
+            <InputLabel htmlFor="my-input">Letter</InputLabel>
+            <Input
+              type="file"
+              name="fileLetter"
+              onChange={(e) => setFile(e.target.files[3])}
+            />
+          </FormControl> */}
+
+          {/* certificate */}
+          {/* <FormControl>
+            <InputLabel htmlFor="my-input">Certificate</InputLabel>
+            <Input
+              type="file"
+              name="fileCetificate"
+              onChange={(e) => setFile(e.target.files[4])}
+            />
+          </FormControl> */}
         </div>
 
         <FormControl>

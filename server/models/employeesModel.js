@@ -72,8 +72,19 @@ const EmployeesSchema = Schema({
       type: String,
       required: false,
     },
+    cv: {
+      type: String,
+    },
+    certificate: {
+      type: String,
+    },
+    diploma: {
+      type: String,
+    },
+    letter: {
+      type: String,
+    },
     resetPasswordToken: String,
-
     resetPasswordExpire: Date,
   },
 
@@ -207,6 +218,7 @@ const EmployeesSchema = Schema({
       type: String,
       required: false,
     },
+  
   },
   leaves: [],
   availableHolidays: {

@@ -51,12 +51,13 @@ const DashboardSideNav = () => {
   };
 
   return (
+    
     <div className="sidenav_mainbox">
       {/* employee info */}
       <div className="sidenav_employeeinfo">
         <div className="sidenav_employeeinfo_image"></div>
         <div className="sidenav_employeeinfo_details">
-          <h1>John Smith</h1>
+          {/* <h1>{privateData.bio.firstName}</h1> */}
           <h4>HR Specialist</h4>
           <select>
             <option>Available</option>

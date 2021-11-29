@@ -63,7 +63,7 @@ function EmployeeData({ history }) {
         },
       })
 
-      .then((data) => setEmployees(data.data))
+      .then((data) =>{console.log(data); setEmployees(data.data)})
       .catch((err) => console.log(err));
   };
 
@@ -145,7 +145,8 @@ function EmployeeData({ history }) {
                         setId(employee._id);
                       }}
                       style={{ cursor: "pointer" }}
-                    >
+                     >
+
                       <img
                         src={`http://localhost:5000/${employee.bio.photo}`}
                         onError={(e) => {
@@ -160,8 +161,8 @@ function EmployeeData({ history }) {
                         </h5>
                         {/* <h4>{employee.contractInfo.position}</h4> */}
                       </div>
-
-                      {/* <TableCell>{employee.contractInfo.department}</TableCell> */}
+                      <h5></h5>
+                      {/* <TableCell>{employee.addressOne.streetOne}</TableCell> */}
                       <TableCell>{employee.bio.email}</TableCell>
                       <TableCell>{employee.bio.dateOfBirth}</TableCell>
                     </TableRow>

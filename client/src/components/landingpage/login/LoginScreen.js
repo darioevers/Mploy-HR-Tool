@@ -18,6 +18,10 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 // COMPONENT IMPORTS
 import LandingpageTopnav from "../LandingpageTopnav";
+import LandingpageFooter from "../LandingpageFooter";
+
+    
+
 
 const LoginScreen = ({ history, location }) => {
   const [email, setEmail] = useState("");
@@ -64,7 +68,7 @@ const LoginScreen = ({ history, location }) => {
   };
 
   return (
-    <div>
+    <div >
       <LandingpageTopnav />
       <Box
         sx={{
@@ -76,9 +80,10 @@ const LoginScreen = ({ history, location }) => {
           <CssBaseline />
           <Box
             sx={{
-              marginTop: 8,
+              marginTop: 12,
               display: "flex",
               flexDirection: "column",
+            
               alignItems: "center",
             }}
           >
@@ -88,6 +93,7 @@ const LoginScreen = ({ history, location }) => {
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
+            {error && <span className="error-message">{error}</span>}
             <Box
               component="form"
               onSubmit={loginHandler}
@@ -140,57 +146,11 @@ const LoginScreen = ({ history, location }) => {
           </Box>
         </Container>
       </Box>
+      {/* <LandingpageFooter /> */}
     </div>
   );
 };
 
 export default LoginScreen;
 
-{
-  /* <div className="loginarea">
-          <div className="login-screen">
-            <form onSubmit={loginHandler} className="login-screen__form">
-              <h3 className="login-screen__title"> Sign in </h3>
-              {error && <span className="error-message">{error}</span>}
-              <div className="form-group">
-                <input
-                  type="email"
-                  required
-                  id="email"
-                  placeholder="Email address"
-                  onChange={(e) => setEmail(e.target.value)}
-                  value={email}
-                  tabIndex={1}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="password">
-                  <Link
-                    to="/forgotpassword"
-                    className="login-screen__forgotpassword"
-                  >
-                    Forgot Password?
-                  </Link>
-                </label>
-                <input
-                  type="password"
-                  required
-                  id="password"
-                  autoComplete="true"
-                  placeholder="Password"
-                  onChange={(e) => setPassword(e.target.value)}
-                  value={password}
-                  tabIndex={2}
-                />
-              </div>
-              <button type="submit" className="btn btn-primary">
-                Login
-              </button>
 
-              <span className="login-screen__subtext">
-                Don't have an account? <Link to="/register">Register</Link>
-              </span>
-            </form>
-          </div>
-        </div> */
-}

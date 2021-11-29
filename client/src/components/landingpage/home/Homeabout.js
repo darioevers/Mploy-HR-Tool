@@ -41,6 +41,6 @@ export default function Homeabout(props) {
           </div>
         </div>
       </div>
-    </div>
+    </div> 
   );
 }
