@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import CheckIcon from "@mui/icons-material/Check";
 import ClearIcon from "@mui/icons-material/Clear";
-import BookmarkIcon from "@mui/icons-material/Bookmark";
 import axios from "axios";
 
 function WidgetTasks() {
@@ -235,15 +234,11 @@ function WidgetTasks() {
                     </p>
                     <div className="task_tag">
                       {task.taskTag === "High" ? (
-                        <BookmarkIcon style={{ fontSize: 15, color: "red" }} />
+                        <h5 style={{ fontSize: 15, color: "red" }}> - </h5>
                       ) : task.taskTag === "Medium" ? (
-                        <BookmarkIcon
-                          style={{ fontSize: 15, color: "yellow" }}
-                        />
+                        <h5 style={{ fontSize: 15, color: "yellow" }}> - </h5>
                       ) : (
-                        <BookmarkIcon
-                          style={{ fontSize: 15, color: "green" }}
-                        />
+                        <h5 style={{ fontSize: 15, color: "green" }}> - </h5>
                       )}
                     </div>
                   </div>

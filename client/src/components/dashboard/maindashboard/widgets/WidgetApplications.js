@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import consolaGlobalInstance from "consola";
 
 function WidgetApplications() {
   //fetch leaves data
@@ -36,7 +37,9 @@ function WidgetApplications() {
   //add new leave application
   const [newLeave, setNewLeave] = useState({});
   const addLeave = () => {
+    console.log(newLeave);
     const data = newLeave;
+
     axios
       .post(
         "http://localhost:5000/leaves/addLeave",
@@ -54,6 +57,19 @@ function WidgetApplications() {
       .catch((err) => console.log(err));
   };
 
+  //get difference between two dates
+  // const daysBetween = (one, two) => {
+  //   let date1 = new Date(one);
+  //   let date2 = new Date(two);
+  //   let result = Math.round(Math.abs(+date1 - +date2) / 8.64e7);
+  //   console.log(one, two);
+  //   console.log(result);
+  //   return setX({ ...x, test: result });
+  //   // return setNewLeave({ ...newLeave, leavesApplied: "result" });
+
+  //   // console.log(Math.round(Math.abs(+date1 - +date2) / 8.64e7));
+  // };
+
   return (
     <div className="widget_applications_mainbox">
       <div className="widget_applications_header">
@@ -61,12 +77,6 @@ function WidgetApplications() {
         <div className="horizontal_line"></div>
       </div>
       <div className="widget_applications_body">
-        {/* <div className="widget_applications_rejected">
-          <h1>
-            {leaves && leaves.filter((item) => item.pending === true).length}
-          </h1>
-          <h4>Rejected</h4>
-        </div> */}
         <div className="widget_applications_pending">
           <h1>
             {leaves && leaves.filter((item) => item.pending === true).length}
@@ -99,10 +109,26 @@ function WidgetApplications() {
               type="search"
               placeholder="Type name of employee"
               className="application_search"
-              onChange={(e) =>
+              onChange={(e) => {
                 setNewLeave({
                   ...newLeave,
                   name: e.target.value,
+                });
+              }}
+            />
+          </div>
+
+          {/* EMAIL */}
+          <div className="form_search">
+            <h3>Email</h3>
+            <input
+              type="search"
+              placeholder="Type email"
+              className="email"
+              onChange={(e) =>
+                setNewLeave({
+                  ...newLeave,
+                  email: e.target.value,
                 })
               }
             />
@@ -135,7 +161,7 @@ function WidgetApplications() {
             >
               <option value="">Please select type...</option>
               <option value="sick-leave">Sick Leave</option>
-              <option value="holiday">Holday</option>
+              <option value="holiday">Holiday</option>
               <option value="home-office">Home Office</option>
             </select>
           </div>
@@ -144,23 +170,33 @@ function WidgetApplications() {
             <h3>From</h3>
             <input
               type="date"
-              onChange={(e) =>
+              onChange={(e) => {
+                // setNewLeave({
+                //   ...newLeave,
+                //   leavesApplied: daysBetween(e.target.value, newLeave.dateTo),
+                // });
+
                 setNewLeave({
                   ...newLeave,
                   dateFrom: e.target.value,
-                })
-              }
+                });
+              }}
             />
 
             <h3>To</h3>
             <input
               type="date"
-              onChange={(e) =>
+              onChange={(e) => {
+                // setNewLeave({
+                //   ...newLeave,
+                //   leavesApplied: daysBetween(newLeave.dateFrom, e.target.value),
+                // });
+
                 setNewLeave({
                   ...newLeave,
                   dateTo: e.target.value,
-                })
-              }
+                });
+              }}
             />
           </div>
 

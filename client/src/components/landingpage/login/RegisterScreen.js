@@ -25,7 +25,8 @@ import Alert from "@mui/material/Alert";
 const theme = createTheme();
 
 const RegisterScreen = ({ history }) => {
-  const [username, setUsername] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
@@ -53,13 +54,14 @@ const RegisterScreen = ({ history }) => {
       const { data } = await axios.post(
         "http://localhost:5000/users/register",
         {
-          username,
+          firstName,
+          lastName,
           email,
           password,
         },
         config
       );
-
+      console.log(data);
       history.push({ pathname: "/login", state: { email, password } });
     } catch (error) {
       setError(error.response.data.error);
@@ -102,18 +104,6 @@ const RegisterScreen = ({ history }) => {
             sx={{ mt: 3 }}
           >
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={12}>
-                <TextField
-                  autoComplete="username"
-                  name="username"
-                  required
-                  fullWidth
-                  id="username"
-                  label={t("landingRegister.formdesc01")}
-                  autoFocus
-                  onChange={(e) => setUsername(e.target.value)}
-                />
-              </Grid>
               <Grid item xs={12}>
                 <TextField
                   required
