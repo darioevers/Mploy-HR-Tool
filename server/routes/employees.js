@@ -9,8 +9,10 @@ const { uploads } = require("../functions/uploads");
 //get all Employees
 router.get("/allemployee/", employeesController.getAllEmployees);
 
-// add new Employee
+//get employee by id
+router.get("/singleEmployee/:id", employeesController.getOneEmployee);
 
+// add new Employee
 router.post(
   "/addemployee",
   uploads.single("file"),

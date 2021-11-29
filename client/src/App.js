@@ -95,13 +95,11 @@ const App = () => {
               />
 
               <Route
-                exact
-                path="/dashboard/employeedata/employeeinfo"
+                path="/dashboard/employeedata/employeeinfo/:id"
                 component={EmployeeInfo}
               />
               <Route
-                exact
-                path="/dashboard/employeedata/employeeinfo/hrinfo"
+                path="/dashboard/employeedata/hrinfo/:id"
                 component={HrInfo}
               />
               <Route

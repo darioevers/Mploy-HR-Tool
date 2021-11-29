@@ -1,15 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { FormGroup, FormControl, InputLabel, Input } from "@material-ui/core";
 
-const HrInfo = ({ location, history }) => {
-  const [hrData, setHrData] = useState(
-    location.state && location.state.empInfo
-  );
-  const [file, setFile] = useState();
+const HrInfo = ({ location, history, match }) => {
+  const [hrData, setHrData] = useState();
+
+  useEffect(() => {
+    getEmployee();
+  }, []);
+
+  const getEmployee = () => {
+    axios
+      .get(
+        `http://localhost:5000/employee/singleEmployee/${match.params.id}`,
+
+        {
+          header: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+
+      .then((data) => {
+        console.log(data.data);
+        setHrData(data.data);
+      })
+      .catch((err) => console.log(err));
+  };
 
   //styling of formControls
   // const inputStylesA = {
@@ -59,16 +80,15 @@ const HrInfo = ({ location, history }) => {
         </div>
 
         <div className="hrinfo_subheader">
-          <div className="inactive_tab_hr">
-            <NavLink
-              exact
-              to="/dashboard/employeedata/employeeinfo"
-              activeClassName="active"
-              className="sidenav_link"
-            >
-              {" "}
-              General Data
-            </NavLink>
+          <div
+            className="inactive_tab_hr"
+            onClick={() => {
+              history.push(
+                `/dashboard/employeedata/employeeinfo/${hrData._id}`
+              );
+            }}
+          >
+            General Data
           </div>
           <div className="active_tab_hr">
             <h4>HR Information</h4>
@@ -97,13 +117,12 @@ const HrInfo = ({ location, history }) => {
                 <FormControl>
                   <InputLabel htmlFor="my-input">Contract No</InputLabel>
 
-                  <Input injectFirst />
-                  {/* <Input value={hrData.bio?.firstName} /> */}
+                  <Input value={hrData?.contractInfo?.contractNo} disabled />
                 </FormControl>
                 <FormControl>
                   <InputLabel htmlFor="my-input">Hire Date</InputLabel>
 
-                  <Input />
+                  <Input value={hrData?.contractInfo?.hireDate} disabled />
                   {/* <Input
                   // value={hrData.contractInfo.contractNo}
                   autoFocus
@@ -112,7 +131,7 @@ const HrInfo = ({ location, history }) => {
                 </FormControl>
                 <FormControl>
                   <InputLabel htmlFor="my-input">Contract End</InputLabel>
-                  <Input />
+                  <Input value={hrData?.contractInfo?.contractEnd} disabled />
                   {/* <Input
                   // value={hrData.contractInfo.contractNo}
                   type="date"
@@ -121,18 +140,21 @@ const HrInfo = ({ location, history }) => {
                 </FormControl>
                 <FormControl>
                   <InputLabel htmlFor="my-input">Probation Period</InputLabel>
-                  <Input />
-                  {/* <Input value={hrData.contractInfo.contractNo} /> */}
+                  <Input
+                    value={hrData?.contractInfo?.probationPeriod}
+                    disabled
+                  />
                 </FormControl>
                 <FormControl>
                   <InputLabel htmlFor="my-input">Employment Type</InputLabel>
-                  <Input />
-                  {/* <Input value={hrData.contractInfo.contractNo} /> */}
+                  <Input
+                    value={hrData?.contractInfo?.employmentType}
+                    disabled
+                  />
                 </FormControl>
                 <FormControl>
                   <InputLabel htmlFor="my-input">Team</InputLabel>
-                  <Input />
-                  {/* <Input value={hrData.contractInfo.contractNo} /> */}
+                  <Input value={hrData?.contractInfo?.team} disabled />
                 </FormControl>
               </FormGroup>
             </div>
@@ -140,29 +162,24 @@ const HrInfo = ({ location, history }) => {
               <FormGroup>
                 <FormControl>
                   <InputLabel htmlFor="my-input">Department</InputLabel>
-                  <Input />
-                  {/* <Input value={hrData.contractInfo.contractNo} /> */}
+                  <Input value={hrData?.contractInfo?.department} disabled />
                 </FormControl>
 
                 <FormControl>
                   <InputLabel htmlFor="my-input">Supervisor</InputLabel>
-                  <Input />
-                  {/* <Input value={hrData.contractInfo.contractNo} /> */}
+                  <Input value={hrData?.contractInfo?.supervisor} disabled />
                 </FormControl>
                 <FormControl>
                   <InputLabel htmlFor="my-input">Salary</InputLabel>
-                  <Input />
-                  {/* <Input value={hrData.contractInfo.contractNo} /> */}
+                  <Input value={hrData?.contractInfo?.salary} disabled />
                 </FormControl>
                 <FormControl>
                   <InputLabel htmlFor="my-input">Overtime</InputLabel>
-                  <Input />
-                  {/* <Input value={hrData.contractInfo.contractNo} /> */}
+                  <Input value={hrData?.contractInfo?.overtime} disabled />
                 </FormControl>
                 <FormControl>
                   <InputLabel htmlFor="my-input">Work Location</InputLabel>
-                  <Input />
-                  {/* <Input value={hrData.contractInfo.contractNo} /> */}
+                  <Input value={hrData?.contractInfo?.workLocation} disabled />
                 </FormControl>
               </FormGroup>
             </div>
@@ -174,11 +191,14 @@ const HrInfo = ({ location, history }) => {
 
           <div className="hrinfo_education_content">
             <div className="hrinfo_education_info">
-              <h3>South Hampton Institute</h3>
-              <h4>Bachelors - HR Management</h4>
+              <h3>{hrData?.education?.school}</h3>
+              <h4>
+                {hrData?.education?.degree} -{" "}
+                {hrData?.education?.specialization}
+              </h4>
             </div>
             <div className="hrinfo_education_year">
-              <h2> 2009 </h2>
+              <h2> {hrData?.education?.endDate} </h2>
               <h4>Year of Completion</h4>
             </div>
           </div>

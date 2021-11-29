@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
 import { NavLink } from "react-router-dom";
@@ -8,23 +8,33 @@ import MailOutlineIcon from "@mui/icons-material/MailOutline";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
-import {
-  FormGroup,
-  FormControl,
-  InputLabel,
-  Input,
-  Button,
-  makeStyles,
-  Typography,
-  Select,
-  MenuItem,
-} from "@material-ui/core";
+import { FormGroup, FormControl, InputLabel, Input } from "@material-ui/core";
 
-const EmployeeInfo = ({ location, history }) => {
-  const [empInfo, setEmpInfo] = useState(
-    location.state && location.state.employee
-  );
-  const [file, setFile] = useState();
+const EmployeeInfo = ({ history, match }) => {
+  const [empInfo, setEmpInfo] = useState();
+
+  useEffect(() => {
+    getEmployee();
+  }, []);
+
+  const getEmployee = () => {
+    axios
+      .get(
+        `http://localhost:5000/employee/singleEmployee/${match.params.id}`,
+
+        {
+          header: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+
+      .then((data) => {
+        console.log(data.data);
+        setEmpInfo(data.data);
+      })
+      .catch((err) => console.log(err));
+  };
 
   // const edit = () => {
   //   const data = new FormData();
@@ -45,10 +55,10 @@ const EmployeeInfo = ({ location, history }) => {
   //     })
   //     .catch((err) => console.log(err));
   // };
-  // autofill
-  const [firstName, setFirstName] = useState(empInfo.bio.firstName);
-  const [lastName, setLastName] = useState(empInfo.bio.lastName);
-  const [position, setPosition] = useState(empInfo.contractInfo.position);
+  // // autofill
+  // const [firstName, setFirstName] = useState(empInfo.bio.firstName);
+  // const [lastName, setLastName] = useState(empInfo.bio.lastName);
+  // const [position, setPosition] = useState(empInfo.contractInfo.position);
 
   //styling of formControls
   const inputStylesA = {
@@ -91,27 +101,17 @@ const EmployeeInfo = ({ location, history }) => {
         <div className="employeeinfo_header">
           <h1> Employee Info </h1>
         </div>
-
         <div className="employeeinfo_subheader">
           <div className="active_tab">
             <h4>General Data</h4>
           </div>
-          <div className="inactive_tab">
-            <NavLink
-              exact
-              to="/dashboard/employeedata/employeeinfo/hrinfo"
-              activeClassName="active"
-              className="sidenav_link"
-              onClick={() => {
-                history.push({
-                  pathname: "/dashboard/employeedata/employeeinfo/hrinfo",
-                  state: { empInfo },
-                });
-              }}
-            >
-              {" "}
-              HR Information
-            </NavLink>
+          <div
+            className="inactive_tab"
+            onClick={() => {
+              history.push(`/dashboard/employeedata/hrinfo/${empInfo._id}`);
+            }}
+          >
+            HR Information
           </div>
           <div className="inactive_tab">
             <NavLink
@@ -125,7 +125,6 @@ const EmployeeInfo = ({ location, history }) => {
             </NavLink>
           </div>
         </div>
-
         <div className="employeedata_form">
           <FormGroup>
             <div className="form_header">
@@ -133,7 +132,7 @@ const EmployeeInfo = ({ location, history }) => {
                 <div className="photo">
                   <div className="dummy_photo">
                     <img
-                      src={`http://localhost:5000/${empInfo.bio.photo}`}
+                      src={`http://localhost:5000/${empInfo?.bio?.photo}`}
                       onError={(e) => {
                         e.target.onError = null;
                         e.target.src =
@@ -146,26 +145,26 @@ const EmployeeInfo = ({ location, history }) => {
 
               <div className="form_header_info">
                 <div className="fullname">
-                  <h1>{firstName}</h1>
-                  <h1>{lastName}</h1>
+                  <h1>First</h1>
+                  <h1>Last</h1>
                 </div>
 
                 <div className="position">
-                  <h3>{position}</h3>
+                  <h3>Position</h3>
                 </div>
 
                 <div className="contacts">
                   <MailOutlineIcon fontSize="small" />
                   <input
                     name="email"
-                    value={empInfo.bio.email}
+                    value={empInfo?.bio?.email}
                     placeholder="Email"
                   />
 
                   <PhoneIcon fontSize="small" />
                   <input
                     name="phoneNumber"
-                    value={empInfo.bio.phoneNumber}
+                    value={empInfo?.bio?.phoneNumber}
                     placeholder="Phone Number"
                   />
                 </div>
@@ -182,7 +181,7 @@ const EmployeeInfo = ({ location, history }) => {
                   <Input
                     type="text"
                     name="firstName"
-                    value={empInfo.bio.firstName}
+                    value={empInfo?.bio?.firstName}
                   />
                 </FormControl>
                 <FormControl style={inputStylesA}>
@@ -190,7 +189,7 @@ const EmployeeInfo = ({ location, history }) => {
                   <Input
                     type="text"
                     name="lastName"
-                    value={empInfo.bio.lastName}
+                    value={empInfo?.bio?.lastName}
                   />
                 </FormControl>
 
@@ -199,7 +198,7 @@ const EmployeeInfo = ({ location, history }) => {
                   <Input
                     type="text"
                     name="employeeID"
-                    value={empInfo.bio.employeeId}
+                    value={empInfo?.bio?.employeeId}
                   />
                 </FormControl>
                 <FormControl style={inputStylesA}>
@@ -207,7 +206,7 @@ const EmployeeInfo = ({ location, history }) => {
                   <Input
                     type="text"
                     name="position"
-                    value={empInfo.contractInfo.position}
+                    value={empInfo?.contractInfo?.position}
                   />
                 </FormControl>
               </div>
@@ -222,7 +221,7 @@ const EmployeeInfo = ({ location, history }) => {
                   <Input
                     type="text"
                     name="streetOne"
-                    value={empInfo.addressOne.streetOne}
+                    value={empInfo?.addressOne?.streetOne}
                     disabled
                   />
                 </FormControl>
@@ -233,8 +232,8 @@ const EmployeeInfo = ({ location, history }) => {
                     type="text"
                     name="streetTwo"
                     value={
-                      empInfo.addressTwo?.streetTwo
-                        ? empInfo.addressTwo?.streetTwo
+                      empInfo?.addressTwo?.streetTwo
+                        ? empInfo?.addressTwo?.streetTwo
                         : "None"
                     }
                     disabled
@@ -246,7 +245,7 @@ const EmployeeInfo = ({ location, history }) => {
                   <Input
                     type="text"
                     name="cityOne"
-                    value={empInfo.addressOne.cityOne}
+                    value={empInfo?.addressOne?.cityOne}
                     disabled
                   />
                 </FormControl>
@@ -256,7 +255,7 @@ const EmployeeInfo = ({ location, history }) => {
                   <Input
                     type="text"
                     name="countryOne"
-                    value={empInfo.addressOne.countryOne}
+                    value={empInfo?.addressOne?.countryOne}
                     disabled
                   />
                 </FormControl>
@@ -265,7 +264,7 @@ const EmployeeInfo = ({ location, history }) => {
                   <Input
                     type="text"
                     name="stateOne"
-                    value={empInfo.addressOne.stateOne}
+                    value={empInfo?.addressOne?.stateOne}
                     disabled
                   />
                 </FormControl>
@@ -275,7 +274,7 @@ const EmployeeInfo = ({ location, history }) => {
                   <Input
                     type="text"
                     name="postalCodeOne"
-                    value={empInfo.addressOne.postalCodeOne}
+                    value={empInfo?.addressOne?.postalCodeOne}
                     disabled
                   />
                 </FormControl>
@@ -287,7 +286,7 @@ const EmployeeInfo = ({ location, history }) => {
                   <Input
                     type="text"
                     name="dateOfBirth"
-                    value={empInfo.bio.dateOfBirth}
+                    value={empInfo?.bio?.dateOfBirth}
                     disabled
                   />
                 </FormControl>
@@ -297,7 +296,7 @@ const EmployeeInfo = ({ location, history }) => {
                   <Input
                     type="text"
                     name="otherEmail"
-                    value={empInfo.bio?.otherEmail}
+                    value={empInfo?.bio?.otherEmail}
                     disabled
                   />
                 </FormControl>
@@ -307,7 +306,7 @@ const EmployeeInfo = ({ location, history }) => {
                   <Input
                     type="text"
                     name="nationality"
-                    value={empInfo.bio.nationality}
+                    value={empInfo?.bio?.nationality}
                     disabled
                   />
                 </FormControl>
@@ -317,7 +316,7 @@ const EmployeeInfo = ({ location, history }) => {
                   <Input
                     type="text"
                     name="nationality"
-                    value={empInfo.bio.gender}
+                    value={empInfo?.bio?.gender}
                     disabled
                   />
                 </FormControl>
@@ -327,7 +326,7 @@ const EmployeeInfo = ({ location, history }) => {
                   <Input
                     type="text"
                     name="nationality"
-                    value={empInfo.bio.maritalStatus}
+                    value={empInfo?.bio?.maritalStatus}
                     disabled
                   />
                 </FormControl>
@@ -337,7 +336,7 @@ const EmployeeInfo = ({ location, history }) => {
                   <Input
                     type="text"
                     name="hobbies"
-                    value={empInfo.bio.hobbies ? empInfo.bio.hobbies : "None"}
+                    value={empInfo?.bio?.hobbies ? empInfo.bio.hobbies : "None"}
                     disabled
                   />
                 </FormControl>
@@ -347,10 +346,7 @@ const EmployeeInfo = ({ location, history }) => {
             <div className="next-btn">
               <button
                 onClick={() => {
-                  history.push({
-                    pathname: "/dashboard/employeedata/employeeinfo/hrinfo",
-                    state: { empInfo },
-                  });
+                  history.push(`/dashboard/employeedata/hrinfo/${empInfo._id}`);
                 }}
               >
                 Next{" "}
@@ -358,6 +354,7 @@ const EmployeeInfo = ({ location, history }) => {
             </div>
           </FormGroup>
         </div>
+        ;
       </div>
     </div>
   );

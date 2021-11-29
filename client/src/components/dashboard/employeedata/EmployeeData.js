@@ -80,237 +80,247 @@ function EmployeeData({ history }) {
   };
 
   return (
-    <div className="employeedata_mainbox">
-      <DashboardTopNav />
-      <DashboardSideNav />
+    <>
+      {employees && (
+        <div className="employeedata_mainbox">
+          <DashboardTopNav />
+          <DashboardSideNav />
 
-      <div className="employeedata_container">
-        <div className="employeedata_header">
-          <div className="employeedata_header_title">
-            <h1>Employee Data</h1>
-          </div>
-        </div>
-
-        {/* search */}
-        <div
-          className={
-            checked
-              ? "employeedata_searchbar_show"
-              : "employeedata_searchbar_hide"
-          }
-        >
-          <div className="search">
-            <span>
-              <SearchIcon />
-            </span>
-            <input
-              type="text"
-              value={search}
-              onChange={(e) => searchEmployee(e.target.value)}
-              placeholder="Type Employee Name"
-            />
-          </div>
-
-          <div className="button">
-            <NavLink
-              exact
-              to="/dashboard/employeedata/addemployee"
-              activeClassName="active"
-              className="sidenav_link"
-            >
-              <div className="addemployee_button">
-                Add Employee <span>+</span>
+          <div className="employeedata_container">
+            <div className="employeedata_header">
+              <div className="employeedata_header_title">
+                <h1>Employee Data</h1>
               </div>
-            </NavLink>
-          </div>
+            </div>
 
-          {/* <div
+            {/* search */}
+            <div
+              className={
+                checked
+                  ? "employeedata_searchbar_show"
+                  : "employeedata_searchbar_hide"
+              }
+            >
+              <div className="search">
+                <span>
+                  <SearchIcon />
+                </span>
+                <input
+                  type="text"
+                  value={search}
+                  onChange={(e) => searchEmployee(e.target.value)}
+                  placeholder="Type Employee Name"
+                />
+              </div>
+
+              <div className="button">
+                <NavLink
+                  exact
+                  to="/dashboard/employeedata/addemployee"
+                  activeClassName="active"
+                  className="sidenav_link"
+                >
+                  <div className="addemployee_button">
+                    Add Employee <span>+</span>
+                  </div>
+                </NavLink>
+              </div>
+
+              {/* <div
             className="searchemployee_button"
             onClick={(e) => searchEmployee(e.target.value)}
           >
             Search
           </div> */}
+            </div>
+
+            <div
+              className={checked ? "employeedata_show" : "employeedata_hide"}
+            >
+              <Table>
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Name</TableCell>
+                    <TableCell>Department</TableCell>
+                    <TableCell>Email</TableCell>
+                    <TableCell>Date of Birth</TableCell>
+                  </TableRow>
+                </TableHead>
+
+                <TableBody>
+                  {employees &&
+                    employees.map((employee) => (
+                      <>
+                        <TableRow
+                          key={employee._id}
+                          onClick={() => {
+                            setChecked(true);
+                            setId(employee._id);
+                          }}
+                          style={{ cursor: "pointer" }}
+                        >
+                          <TableCell>
+                            <div className="table_cell">
+                              <img
+                                src={`http://localhost:5000/${employee.bio.photo}`}
+                                onError={(e) => {
+                                  e.target.onError = null;
+                                  e.target.src =
+                                    "http://localhost:5000/uploads/error.jpg";
+                                }}
+                              />
+                              <div className="table_cell_photo">
+                                <h5>
+                                  {employee.bio.firstName}{" "}
+                                  {employee.bio.lastName}
+                                </h5>
+                                <h4>{employee.contractInfo?.position}</h4>
+                              </div>
+                            </div>
+                          </TableCell>
+
+                          <TableCell>
+                            {employee.contractInfo?.department}
+                          </TableCell>
+                          <TableCell>{employee.bio.email}</TableCell>
+                          <TableCell>{employee.bio.dateOfBirth}</TableCell>
+                        </TableRow>
+
+                        {checked && employee._id === id && (
+                          <div
+                            className={
+                              checked
+                                ? "employeedata_summary_show"
+                                : "employeedata_summary_hide"
+                            }
+                          >
+                            <div className="summary_header">
+                              <div className="summary_header_photo">
+                                <img
+                                  src={`http://localhost:5000/${employee.bio.photo}`}
+                                  onError={(e) => {
+                                    e.target.onError = null;
+                                    e.target.src =
+                                      "http://localhost:5000/uploads/error.jpg";
+                                  }}
+                                />
+                              </div>
+                              <div className="summary_header_title">
+                                <h1>
+                                  {employee.bio.firstName}{" "}
+                                  {employee.bio.lastName}
+                                </h1>
+                                <h2>{employee.contractInfo?.position} </h2>
+                              </div>
+                              <div className="summary_close_btn">
+                                <div onClick={() => setChecked(!checked)}>
+                                  <CloseIcon />
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className="summary_body">
+                              <h1> Contact Information </h1>
+                              <div className="summary_body_contact">
+                                <div className="contact_left">
+                                  <h5>Phone:</h5>
+                                  <h5>Email:</h5>
+                                </div>
+                                <div className="contact_right">
+                                  <h5>
+                                    {employee.bio.phoneNumber
+                                      ? employee.bio.phoneNumber
+                                      : "Not Specified"}
+                                  </h5>
+                                  <h5>
+                                    {employee.bio.email
+                                      ? employee.bio.email
+                                      : ""}
+                                  </h5>
+                                </div>
+                              </div>
+
+                              <h1> Work Information </h1>
+                              <div className="summary_body_workinfo">
+                                <div className="workinfo_left">
+                                  <h5>Department:</h5>
+                                  <h5>Supervisor:</h5>
+                                  <h5>Office:</h5>
+                                </div>
+                                <div className="workinfo_right">
+                                  <h5>{employee.contractInfo?.department}</h5>
+                                  <h5>{employee.contractInfo?.supervisor}</h5>
+                                  <h5>{employee.contractInfo?.workLocation}</h5>
+                                </div>
+                              </div>
+
+                              <h1> Personal Info </h1>
+                              <div className="summary_body_personalinfo">
+                                <div className="personalinfo_left">
+                                  <h5>Gender:</h5>
+                                  <h5>Birthday:</h5>
+                                  <h5>Address:</h5>
+                                </div>
+                                <div className="personalinfo_right">
+                                  <h5>{employee.bio.gender}</h5>
+                                  <h5>{employee.bio.dateOfBirth}</h5>
+                                  <h5>
+                                    {employee.addressOne?.stateOne},{" "}
+                                    {employee.addressOne?.countryOne}
+                                  </h5>
+                                </div>
+                              </div>
+
+                              <div className="summary_buttons">
+                                <div
+                                  variant="contained"
+                                  onClick={() => {
+                                    console.log(employees);
+                                    history.push({
+                                      pathname:
+                                        "/dashboard/employeedata/editemployee",
+                                      state: { employee },
+                                    });
+                                  }}
+                                >
+                                  Edit
+                                </div>
+
+                                <div
+                                  variant="contained"
+                                  onClick={() =>
+                                    deleteEmployeeData(employee.bio.email)
+                                  }
+                                >
+                                  Delete
+                                </div>
+
+                                <div
+                                  variant="contained"
+                                  onClick={() => {
+                                    history.push(
+                                      `/dashboard/employeedata/employeeinfo/${employee._id}`
+                                    );
+                                  }}
+                                >
+                                  <i>
+                                    {" "}
+                                    <ArrowForwardIosIcon />
+                                  </i>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                      </>
+                    ))}
+                </TableBody>
+              </Table>
+            </div>
+          </div>
         </div>
-
-        <div className={checked ? "employeedata_show" : "employeedata_hide"}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Name</TableCell>
-                <TableCell>Department</TableCell>
-                <TableCell>Email</TableCell>
-                <TableCell>Date of Birth</TableCell>
-              </TableRow>
-            </TableHead>
-
-            <TableBody>
-              {employees &&
-                employees.map((employee) => (
-                  <>
-                    <TableRow
-                      key={employee._id}
-                      onClick={() => {
-                        setChecked(true);
-                        setId(employee._id);
-                      }}
-                      style={{ cursor: "pointer" }}
-                    >
-                      <TableCell>
-                        <div className="table_cell">
-                          <img
-                            src={`http://localhost:5000/${employee.bio.photo}`}
-                            onError={(e) => {
-                              e.target.onError = null;
-                              e.target.src =
-                                "http://localhost:5000/uploads/error.jpg";
-                            }}
-                          />
-                          <div className="table_cell_photo">
-                            <h5>
-                              {employee.bio.firstName} {employee.bio.lastName}
-                            </h5>
-                            <h4>{employee.contractInfo?.position}</h4>
-                          </div>
-                        </div>
-                      </TableCell>
-
-                      <TableCell>{employee.contractInfo?.department}</TableCell>
-                      <TableCell>{employee.bio.email}</TableCell>
-                      <TableCell>{employee.bio.dateOfBirth}</TableCell>
-                    </TableRow>
-
-                    {checked && employee._id === id && (
-                      <div
-                        className={
-                          checked
-                            ? "employeedata_summary_show"
-                            : "employeedata_summary_hide"
-                        }
-                      >
-                        <div className="summary_header">
-                          <div className="summary_header_photo">
-                            <img
-                              src={`http://localhost:5000/${employee.bio.photo}`}
-                              onError={(e) => {
-                                e.target.onError = null;
-                                e.target.src =
-                                  "http://localhost:5000/uploads/error.jpg";
-                              }}
-                            />
-                          </div>
-                          <div className="summary_header_title">
-                            <h1>
-                              {employee.bio.firstName} {employee.bio.lastName}
-                            </h1>
-                            <h2>{employee.contractInfo?.position} </h2>
-                          </div>
-                          <div className="summary_close_btn">
-                            <div onClick={() => setChecked(!checked)}>
-                              <CloseIcon />
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="summary_body">
-                          <h1> Contact Information </h1>
-                          <div className="summary_body_contact">
-                            <div className="contact_left">
-                              <h5>Phone:</h5>
-                              <h5>Email:</h5>
-                            </div>
-                            <div className="contact_right">
-                              <h5>
-                                {employee.bio.phoneNumber
-                                  ? employee.bio.phoneNumber
-                                  : "Not Specified"}
-                              </h5>
-                              <h5>
-                                {employee.bio.email ? employee.bio.email : ""}
-                              </h5>
-                            </div>
-                          </div>
-
-                          <h1> Work Information </h1>
-                          <div className="summary_body_workinfo">
-                            <div className="workinfo_left">
-                              <h5>Department:</h5>
-                              <h5>Supervisor:</h5>
-                              <h5>Office:</h5>
-                            </div>
-                            <div className="workinfo_right">
-                              <h5>{employee.contractInfo?.department}</h5>
-                              <h5>{employee.contractInfo?.supervisor}</h5>
-                              <h5>{employee.contractInfo?.workLocation}</h5>
-                            </div>
-                          </div>
-
-                          <h1> Personal Info </h1>
-                          <div className="summary_body_personalinfo">
-                            <div className="personalinfo_left">
-                              <h5>Gender:</h5>
-                              <h5>Birthday:</h5>
-                              <h5>Address:</h5>
-                            </div>
-                            <div className="personalinfo_right">
-                              <h5>{employee.bio.gender}</h5>
-                              <h5>{employee.bio.dateOfBirth}</h5>
-                              <h5>
-                                {employee.addressOne?.stateOne},{" "}
-                                {employee.addressOne?.countryOne}
-                              </h5>
-                            </div>
-                          </div>
-
-                          <div className="summary_buttons">
-                            <div
-                              variant="contained"
-                              onClick={() => {
-                                console.log(employees);
-                                history.push({
-                                  pathname:
-                                    "/dashboard/employeedata/editemployee",
-                                  state: { employee },
-                                });
-                              }}
-                            >
-                              Edit
-                            </div>
-
-                            <div
-                              variant="contained"
-                              onClick={() =>
-                                deleteEmployeeData(employee.bio.email)
-                              }
-                            >
-                              Delete
-                            </div>
-
-                            <div
-                              variant="contained"
-                              onClick={() => {
-                                history.push({
-                                  pathname:
-                                    "/dashboard/employeedata/employeeinfo",
-                                  state: { employee },
-                                });
-                              }}
-                            >
-                              <i>
-                                {" "}
-                                <ArrowForwardIosIcon />
-                              </i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </>
-                ))}
-            </TableBody>
-          </Table>
-        </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 }
 export default EmployeeData;

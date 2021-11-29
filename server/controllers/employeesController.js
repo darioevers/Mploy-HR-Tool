@@ -17,6 +17,21 @@ employeeController.getAllEmployees = async (req, res) => {
   }
 };
 
+//get one employee by id
+employeeController.getOneEmployee = async (req, res) => {
+  console.log(req.params.id);
+  try {
+    const employee = await EmployeeData.findById(req.params.id);
+
+    res.status(200).json(employee);
+    // console.log(employees);
+  } catch (error) {
+    res.status(error.status).json({
+      message: error.message,
+    });
+  }
+};
+
 // //get
 // leaveController.getLeaves = async (name, res) => {
 //   try {
