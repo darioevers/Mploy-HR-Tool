@@ -22,17 +22,9 @@ import Container from "@mui/material/Container";
 import Alert from "@mui/material/Alert";
 
 
-const useStyles = makeStyles((theme) => ({
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    border: "solid 1px red",
-  },
-}));
+
 const ForgotPasswordScreen = () => {
-  const classes = useStyles();
+
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
