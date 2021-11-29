@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+
 import { Link } from "react-router-dom";
 
 // TRANSLATION IMPORTS
@@ -20,7 +21,10 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Alert from "@mui/material/Alert";
 
+
+
 const ForgotPasswordScreen = () => {
+
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -56,6 +60,7 @@ const ForgotPasswordScreen = () => {
   return (
     <div>
       <LandingpageTopnav />
+
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -130,6 +135,7 @@ const ForgotPasswordScreen = () => {
           </Box>
         </Box>
       </Container>
+
     </div>
   );
 };

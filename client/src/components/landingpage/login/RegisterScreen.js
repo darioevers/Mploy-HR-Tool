@@ -21,6 +21,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Alert from "@mui/material/Alert";
+import HowToRegIcon from "@mui/icons-material/HowToReg";
 
 const theme = createTheme();
 
@@ -104,27 +105,76 @@ const RegisterScreen = ({ history }) => {
             sx={{ mt: 3 }}
           >
             <Grid container spacing={2}>
-              <Grid item xs={12}>
+              <Grid item xs={12} sm={12}>
                 <TextField
+                  type="text"
+                  label="First Name"
+                  name="firstName"
+                  margin="normal"
+                  autoFocus
+                  fullWidth
+                  required
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                />
+              </Grid>
+              <Grid item xs={12} sm={12}>
+                <TextField
+                  type="text"
+                  margin="normal"
                   required
                   fullWidth
+                  autoFocus
+                  name="lastName"
+                  value={lastName}
+                  label="Last Name"
+                  id="lastName"
+                  onChange={(e) => setLastName(e.target.value)}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  type="email"
                   id="email"
+                  margin="normal"
+                  required
+                  fullWidth
+                  autoFocus
                   label={t("landingRegister.formdesc02")}
                   name="email"
                   autoComplete="email"
+                  value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  autoComplete="true"
+                  value={password}
+                  margin="normal"
                   required
                   fullWidth
                   name="password"
                   label={t("landingRegister.formdesc03")}
                   type="password"
                   id="password"
-                  autoComplete="new-password"
+                  autoComplete="current-password"
                   onChange={(e) => setPassword(e.target.value)}
+                />
+              </Grid>
+              <Grid>
+                <TextField
+                  id="confirmpassword"
+                  autoComplete="true"
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Confirm Password"
+                  type="password"
+                  autoComplete="current-password"
+                  value={confirmpassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
                 />
               </Grid>
             </Grid>
@@ -133,11 +183,11 @@ const RegisterScreen = ({ history }) => {
               fullWidth
               variant="contained"
               size="large"
-              onChange={(e) => setConfirmPassword(e.target.value)}
               sx={{ mt: 3, mb: 2 }}
             >
               {t("landingRegister.button01")}
             </Button>
+
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link to={"/login"} variant="body1" sx={{ fontWeight: 300 }}>

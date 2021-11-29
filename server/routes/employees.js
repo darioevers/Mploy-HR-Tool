@@ -11,21 +11,13 @@ router.get("/allemployee/", employeesController.getAllEmployees);
 
 // add new Employee
 
-router.post(
-  "/addemployee",
-  uploads.single("file"),
-  employeesController.addNewEmployee
-);
+router.post("/addemployee",uploads.single("file"), employeesController.addNewEmployee);
 
 // search for employee
 router.post("/search", employeesController.searchName);
 
 // update employee
-router.put(
-  "/update/",
-  uploads.single("file"),
-  employeesController.updateEmployee
-);
+router.put("/update/", employeesController.updateEmployee);
 
 // updating status ||deleting from the get all employees
 router.patch("/delete", employeesController.deleteOrUpdateStatus);
