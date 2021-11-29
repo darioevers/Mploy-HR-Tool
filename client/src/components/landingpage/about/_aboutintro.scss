@@ -1,0 +1,21 @@
+.aboutintro_topbox {
+  margin-top: 10rem;
+  @media only screen and (max-width: 600px) {
+    /*Big smartphones [426px -> 600px]*/
+    margin-top: 4rem;
+  }
+}
+
+.aboutintro_container {
+  width: 50%;
+  margin-bottom: 5rem;
+  @media only screen and (max-width: 600px) {
+    /*Big smartphones [426px -> 600px]*/
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+}
+
+.dcilogo {
+  width: 200px;
+}

@@ -31,5 +31,100 @@
   },
   "contact": {
     "title": "Sprich uns an."
+  },
+  "landingLogin": {
+    "title01": "Anmelden",
+    "formdesc01": "E-Mail Adresse",
+    "formdesc02": "Passwort",
+    "button01": "ANMELDEN",
+    "link01": "Passwort vergessen?",
+    "link02": "Registrieren"
+  },
+  "landingRegister": {
+    "title01": "Registrieren",
+    "formdesc01": "Benutzername",
+    "formdesc02": "E-Mail Adresse",
+    "formdesc03": "Passwort",
+    "button01": "REGISTRIEREN",
+    "link01": "Sind Sie bereits registriert? Jetzt anmelden!"
+  },
+  "landingForgotPw": {
+    "title01": "Passwort vergessen?",
+    "title02": "Geben Sie Ihre E-Mail-Adresse ein und wir senden Ihnen einen Link zum Zurücksetzen des Passworts zu.",
+    "formdesc01": "Benutzername",
+    "button01": "PASSWORT ZURÜCKSETZEN",
+    "link01": "Anmelden",
+    "link02": "Registrieren"
+  },
+  "landingResetPw": {
+    "title01": "Passwort zurücksetzen",
+    "formdesc01": "Neues Passwort",
+    "formdesc02": "Neues Passwort bestätigen",
+    "button01": "PASSWORT SICHERN",
+    "link01": "Anmelden"
+  },
+  "landingAlerts": {
+    "success": "Das hat geklappt!",
+    "error": "Huch, hier fehlt noch etwas."
+  },
+  "solutions": {
+    "title01": "HR war noch nie so einfach.",
+    "gridTitle01": "Schnelle Einrichtung",
+    "gridTitle02": "Alles auf einer Oberfläche",
+    "gridTitle03": "So günstig",
+    "gridDesc01": "Verlieren Sie keine Zeit! Sie können das Dashboard in wenigen Augenblicken testen. Melden Sie sich einfach an, loggen Sie sich ein und erkunden Sie unser Unternehmensbeispiel. Wenn Sie Fragen haben, können Sie sich gerne an uns wenden.",
+    "gridDesc02": "Mit MPloy können Sie Ihr gesamtes HR-Tagesgeschäft von einem einzigen Arbeitsbereich aus verwalten. Erfahren Sie, wie viele Mitarbeiter krank oder im Urlaub sind. Versenden Sie unternehmensweite Ankündigungen, planen Sie anstehende Veranstaltungen und senden Sie Gehaltsabrechnungen an Ihre Mitarbeiter.",
+    "gridDesc03": "Die Nutzung ist für Sie völlig kostenlos! Für die Nutzung unserer Demo fallen keine Gebühren an. Sehen Sie sich unsere Preistabelle über die Schaltfläche unten an, um mehr zu erfahren.",
+    "gridButton01": "",
+    "gridButton02": "",
+    "gridButton03": "PREISE"
+  },
+  "aboutIntro": {
+    "title01": "Über unser Projekt",
+    "body01": "MPloy ist das Abschlussprojekt unserer Gruppe für den DCI Web-Developer-Kurs. Wir sind Maryam, Alex und Dario. Nachdem wir den Vollzeitkurs 11 Monate lang besucht haben, haben wir die letzten 5 Wochen genutzt, um an unserem Abschlussprojekt zu arbeiten und dabei viel gelernt.",
+    "title02": "Die Idee",
+    "body02": "Wir wollten eine vollwertige React-App entwickeln, die flexibel in der Anwendung ist. Deshalb haben wir ein visuelles Datenverwaltungssystem entwickelt.",
+    "title03": "Die Reise",
+    "body03": "In den letzten 5 Wochen haben wir mit einem Auge fürs Design und Nutzerfreundlichkeit geplant, entwickelt und getüftelt. Wir hatten mit einer Reihe von Fehlern zu kämpfen, haben sie aber alle korrigiert."
+  },
+  "aboutInfo": {
+    "title01": "Digital Career Institute",
+    "title02": "Kurz und knapp",
+    "grid01": "Ergänzungen",
+    "grid02": "Zeilen Code",
+    "grid03": "Nachrichten",
+    "grid04": "Stunden",
+    "grid05": "lorem",
+    "grid06": "viel",
+    "grid07": "gelernt"
+  },
+  "aboutProject": {
+    "title01": "So arbeiten wir",
+    "body01": "Wir wollten eine vollwertige React-App entwickeln, die flexibel in der Anwendung ist. Deshalb haben wir uns für ein visuelles Datenverwaltungssystem entschieden.",
+    "timelineStep01": "Phase 1",
+    "timelineStep02": "Phase 2",
+    "timelineStep03": "Phase 3",
+    "timelineStep04": "Phase 4",
+    "timelineTitle01": "Planung",
+    "timelineTitle02": "UI / UX",
+    "timelineTitle03": "Front-End",
+    "timelineTitle04": "Back-End",
+    "timelineDesc01": "Wir starteten in die Vorbereitungsphase, indem wir unsere Projektideen besprachen und uns darauf einigten, ein HR-Tool zu entwickeln. Um eine gute Kommunikation zu gewährleisten, haben wir eine tägliche Kommunikation über Slack und Zoom eingerichtet. Außerdem haben wir Aufgaben mit hoher Priorität in Trello vorgeplant und mit dem Aufbau unserer Coding-Umgebung in Github begonnen.",
+    "timelineDesc02": "Ein großer Teil dieser Phase wurde mit der Recherche und dem Aufbau einer Basis für das Projektdesign verbracht. Mit Figma haben wir einen funktionierenden Prototyp des Projekts erstellt. Grafiken wurden von Envato Elements verwendet und mit Adobe (PS/AI) bearbeitet.",
+    "timelineDesc03": "Das ReactJS-basierte Front-End besteht aus den Hauptkomponenten der Landingpage und des Dashboards. Es sind rund 60 Komponenten, die teilweise ineinander greifen. MUI und i18n wurden für Layouting, Dark Modes und die Sprachumstellung verwendet.",
+    "timelineDesc04": "Wir wollten eine vollwertige React-App entwickeln, die flexibel in der Anwendung ist. Deshalb haben wir uns für ein visuelles Datenverwaltungssystem entschieden."
+  },
+  "aboutTools": {
+    "title01": "Ressourcen"
+  },
+  "aboutTeam": {
+    "title01": "Das sind wir",
+    "body01": "Wir sind drei Studenten der Klasse FBW-48-1 am Digital Career Institute. In den letzten 11 Monaten haben wir zusammen mit 15 anderen Schülern an einem Web-Development Kurs teilgenommen. Wir freuen uns, Ihnen unser Abschlussprojekt präsentieren zu können.",
+    "teamDesc01": "alex beschreibung lorem ipsum",
+    "teamDesc02": "dario beschreibung lorem ipsum",
+    "teamDesc03": "maryam beschreibung lorem ipsum",
+    "teamRole01": "Front-End / Back-End",
+    "teamRole02": "Front-End",
+    "teamRole03": "Back-End"
   }
 }

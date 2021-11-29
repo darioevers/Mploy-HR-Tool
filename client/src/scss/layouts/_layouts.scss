@@ -6,11 +6,9 @@
   }
 }
 
-body {
-  @include md {
-    overflow: hidden;
-  }
-}
+
+
+
 // LANDING PAGE CONTENT WIDTH
 .homearea {
   width: 75vw;
@@ -22,12 +20,6 @@ body {
   }
 }
 
-.loginarea {
-  width: 80vw;
-  margin: 0 auto;
-}
-
-//mobile
 
 .maindashboard_area {
   @include main_dashboard_grid;

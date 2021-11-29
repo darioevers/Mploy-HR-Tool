@@ -12,6 +12,7 @@ import Home from "./components/landingpage/home/Home";
 import About from "./components/landingpage/about/About";
 import Contact from "./components/landingpage/contact/Contact";
 import Solutions from "./components/landingpage/solutions/Solutions";
+import Pricing from "./components/landingpage/pricing/Pricing";
 
 // LOGIN COMPONENTS
 import LoginScreen from "./components/landingpage/login/LoginScreen";
@@ -48,6 +49,7 @@ const App = () => {
               <Route exact path="/about" component={About} />
               <Route exact path="/contact" component={Contact} />
               <Route exact path="/solutions" component={Solutions} />
+              <Route exact path="/pricing" component={{ Pricing }} />
               <Route exact path="/login" component={LoginScreen} />
               <Route exact path="/register" component={RegisterScreen} />
               <Route

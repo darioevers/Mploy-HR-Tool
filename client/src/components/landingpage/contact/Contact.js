@@ -4,22 +4,31 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 
 // NAVBAR + FOOTER IMPORT
-import LandingpageTopnav from "../LandingpageTopnav";
-import LandingpageFooter from "../LandingpageFooter";
+import LandingpageTopnav from "../navigation/LandingpageTopnav";
+import LandingpageFooter from "../navigation/LandingpageFooter";
 
 // ICON IMPORTS
 import PhoneIcon from "@mui/icons-material/Phone";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import PersonPinIcon from "@mui/icons-material/PersonPin";
+import PersonAdd from "@mui/icons-material/PersonAdd";
+import Settings from "@mui/icons-material/Settings";
+import Logout from "@mui/icons-material/Logout";
 
 // MUI IMPORTS
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import Avatar from "@mui/material/Avatar";
+import Stack from "@mui/material/Stack";
+import { deepOrange } from "@mui/material/colors";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
 
 // COMPONENT EXPORT
 export default function Contact(props) {
@@ -32,13 +41,19 @@ export default function Contact(props) {
     "1_button": "INFO",
     ...props.content,
   };
-  // SIDE TABS FUNCTION
-  const [value, setValue] = React.useState(0);
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+
   // TRANSLATION FUNCTION
   const { t } = useTranslation();
+
+  // ICON MENU FUNCTION
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   return (
     <Box
       sx={{
@@ -49,6 +64,22 @@ export default function Contact(props) {
     >
       <LandingpageTopnav />
       <div className="homearea">
+        <Box sx={{ marginTop: 19, boxShadow: "0" }}>
+          <Typography variant="h1" className="aboutintro_heading">
+            Get In Touch.
+          </Typography>
+          <Typography
+            variant="body1"
+            gutterBottom
+            sx={{ maxWidth: "600px", textAlign: "justify" }}
+          >
+            <Box sx={{ fontSize: 22, boxShadow: "0" }}>
+              MPloy is the first project we've independently developed and
+              managed, so we would love to hear your feedback. Please fill out
+              the contact form below to get in touch.
+            </Box>
+          </Typography>
+        </Box>
         <div className="contact_mainbox">
           <div className="contact_textbox">
             <Box
@@ -56,29 +87,70 @@ export default function Contact(props) {
               sx={{ width: "100%", maxWidth: 500, marginTop: "6rem" }}
             >
               <Typography variant="h3" component="div">
-                {content["01_mainheading"]}
-                {t("contact.title")}
+                You can reach us here:
               </Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  textAlign: "center",
+                }}
+              >
+                <Tooltip title="Account settings">
+                  <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
+                    <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+                  </IconButton>
+                </Tooltip>
+              </Box>
+              <Menu
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                onClick={handleClose}
+                PaperProps={{
+                  elevation: 0,
+                  sx: {
+                    overflow: "visible",
+                    filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+                    mt: 1.5,
+                    "& .MuiAvatar-root": {
+                      width: 32,
+                      height: 32,
+                      ml: -0.5,
+                      mr: 1,
+                    },
+                    "&:before": {
+                      content: '""',
+                      display: "block",
+                      position: "absolute",
+                      top: 0,
+                      right: 14,
+                      width: 10,
+                      height: 10,
+                      bgcolor: "background.paper",
+                      transform: "translateY(-50%) rotate(45deg)",
+                      zIndex: 0,
+                    },
+                  },
+                }}
+                transformOrigin={{ horizontal: "right", vertical: "top" }}
+                anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+              >
+                <MenuItem>
+                  <Avatar /> GitHub
+                </MenuItem>
+                <MenuItem>
+                  <Avatar /> LinkedIn
+                </MenuItem>
+              </Menu>
               <Typography variant="h6" gutterBottom sx={{ fontWeight: "400" }}>
-                {content["01_subheading"]}
+                E-Mail:
               </Typography>
               <Typography variant="body1" gutterBottom>
-                {content["01_body"]}
+                nameL email
               </Typography>
               <Divider variant="middle" />
             </Box>
-            <Tabs value={value} onChange={handleChange} id="contact_tabs">
-              <Tab
-                icon={<PhoneIcon />}
-                id="contact_tabs_icon"
-                textColor="primary"
-                indicatorColor="peimary"
-              >
-                Test{" "}
-              </Tab>
-              <Tab icon={<FavoriteIcon />} id="contact_tabs_icon" />
-              <Tab icon={<PersonPinIcon />} id="contact_tabs_icon" />
-            </Tabs>
           </div>
           <div className="contact_formbox">
             <Box

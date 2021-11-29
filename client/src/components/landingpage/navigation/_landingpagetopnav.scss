@@ -1,0 +1,52 @@
+.landingpage_topnav_backgroundbox {
+  width: 100vw;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  #landingpagetopnavbox {
+    .landingpage_topnav_mainbox {
+      display: flex;
+      height: 80px;
+      align-items: center;
+      top: 0;
+      // CONTENT WIDTH FOR BIGGER SCREENS >1536px
+      width: 75vw;
+      margin: 0 auto;
+      .landingpage_topnav_logobox {
+        width: 10%;
+        justify-content: left;
+        img {
+          height: 30px;
+          width: auto;
+        }
+      }
+      .landingpage_topnav_menulinks {
+        display: flex;
+        justify-content: left;
+        #landingpage_navlink {
+          padding: 0 10px;
+        }
+      }
+      .landingpage_topnav_buttons {
+        justify-content: right;
+        width: 70%;
+        display: flex;
+        align-items: center;
+        .landingpage_topnav_contactbutton {
+          padding: 0px 10px 0px 20px;
+          Button {
+            height: 70%;
+          }
+        }
+        .landingpage_topnav_loginbutton {
+          padding-left: 10px;
+        }
+      }
+      @media only screen and (max-width: 1536px) {
+        // CONTENT WIDTH FOR ALL SCREENS <1536PX
+        width: 85vw;
+      }
+    }
+  }
+}
