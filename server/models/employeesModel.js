@@ -252,11 +252,10 @@ const EmployeesSchema = Schema({
 // using a hook inside the function to cash
 EmployeesSchema.pre("save", async function (next) {
   let user = this.bio;
-  console.log(user.password);
-  console.log("hash" + (await hash(user.password, 10)));
-
+  if(!user.password) return next();
   if (!user.isModified("bio.password")) return next();
   user.password = await hash(user.password, 10);
+
   next();
 });
 // // methods compare passwords
