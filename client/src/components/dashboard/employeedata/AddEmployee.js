@@ -34,7 +34,6 @@ const AddEmployee = ({ history }) => {
       <DashboardTopNav />
       <DashboardSideNav />
 
-
       <div className="addemployee_wrapper">
         <h1> Add New Employee </h1>
         <div className="addemployee_header">
@@ -47,7 +46,6 @@ const AddEmployee = ({ history }) => {
               to="/dashboard/employeedata/addemployee/hrinfo"
               activeClassName="active"
               className="sidenav_link"
-
             >
               {" "}
               HR Information
