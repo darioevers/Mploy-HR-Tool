@@ -102,13 +102,13 @@ const RegisterScreen = ({ history }) => {
             component="form"
             noValidate
             onSubmit={registerHandler}
-            sx={{ mt: 3 }}
+            sx={{ mt: 2 }}
           >
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={12}>
+            <Grid container spacing={0.5}>
+              <Grid item xs={6} sm={6}>
                 <TextField
                   type="text"
-                  label="First Name"
+                  label={t("landingRegister.formdesc01")}
                   name="firstName"
                   margin="normal"
                   autoFocus
@@ -118,7 +118,7 @@ const RegisterScreen = ({ history }) => {
                   onChange={(e) => setFirstName(e.target.value)}
                 />
               </Grid>
-              <Grid item xs={12} sm={12}>
+              <Grid item xs={6} sm={6}>
                 <TextField
                   type="text"
                   margin="normal"
@@ -127,7 +127,7 @@ const RegisterScreen = ({ history }) => {
                   autoFocus
                   name="lastName"
                   value={lastName}
-                  label="Last Name"
+                  label={t("landingRegister.formdesc02")}
                   id="lastName"
                   onChange={(e) => setLastName(e.target.value)}
                 />
@@ -136,11 +136,10 @@ const RegisterScreen = ({ history }) => {
                 <TextField
                   type="email"
                   id="email"
-                  margin="normal"
                   required
                   fullWidth
                   autoFocus
-                  label={t("landingRegister.formdesc02")}
+                  label={t("landingRegister.formdesc03")}
                   name="email"
                   autoComplete="email"
                   value={email}
@@ -155,38 +154,39 @@ const RegisterScreen = ({ history }) => {
                   required
                   fullWidth
                   name="password"
-                  label={t("landingRegister.formdesc03")}
+                  label={t("landingRegister.formdesc04")}
                   type="password"
                   id="password"
                   autoComplete="current-password"
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </Grid>
-              <Grid>
+              <Grid item xs={12}>
                 <TextField
                   id="confirmpassword"
                   autoComplete="true"
-                  margin="normal"
                   required
                   fullWidth
                   name="password"
-                  label="Confirm Password"
+                  label={t("landingRegister.formdesc05")}
                   type="password"
                   autoComplete="current-password"
                   value={confirmpassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 />
               </Grid>
+              <Grid item xs={12}>
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  size="large"
+                  sx={{ mt: 3, mb: 2 }}
+                >
+                  {t("landingRegister.button01")}
+                </Button>
+              </Grid>
             </Grid>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              size="large"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              {t("landingRegister.button01")}
-            </Button>
 
             <Grid container justifyContent="flex-end">
               <Grid item>
