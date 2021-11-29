@@ -6,6 +6,9 @@
   }
 }
 
+
+
+
 // LANDING PAGE CONTENT WIDTH
 .homearea {
   width: 75vw;
@@ -17,6 +20,8 @@
   }
 }
 
+
 .maindashboard_area {
   @include main_dashboard_grid;
+  overflow: hidden;
 }

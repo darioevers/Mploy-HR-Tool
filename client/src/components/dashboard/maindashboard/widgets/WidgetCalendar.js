@@ -46,9 +46,15 @@ function WidgetCalendar() {
         <div className="widget_calendar_today_header">
           <h1>TODAY</h1>
         </div>
-        <div className="widget_calendar_month">{month.toUpperCase()}</div>
-        <div className="widget_calendar_day_number">{dayNum}</div>
-        <div className="widget_calendar_day_name">{dayName.toUpperCase()}</div>
+        <div className="widget_calendar_month">
+          <p>{month.toUpperCase()}</p>
+        </div>
+        <div className="widget_calendar_day_number">
+          <p>{dayNum}</p>
+        </div>
+        <div className="widget_calendar_day_name">
+          <p>{dayName.toUpperCase()}</p>
+        </div>
       </div>
 
       <div className="widget_calendar">

@@ -1,4 +1,10 @@
 .components_mainbox {
+  @include md {
+    @include flex-center;
+    display: flex;
+    // flex-direction: column;
+    // visibility: hidden;
+  }
   width: 98.5%;
   display: grid;
   margin: 0 0;

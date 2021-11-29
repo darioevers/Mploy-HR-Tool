@@ -13,7 +13,6 @@ const EmployeesSchema = Schema({
     },
     lastName: {
       type: String,
-
       required: false,
     },
     email: {
@@ -26,18 +25,15 @@ const EmployeesSchema = Schema({
       required: false,
       // select: false,
     },
-
     role: {
       type: String,
       default: "user",
       enum: ["admin", "user"],
     },
-
     otherEmail: {
       type: String,
       required: false,
     },
-
     dateOfBirth: {
       type: String,
       required: false,
@@ -58,7 +54,6 @@ const EmployeesSchema = Schema({
       type: String,
       required: false,
     },
-
     status: {
       type: String,
       default: "active",
@@ -72,11 +67,15 @@ const EmployeesSchema = Schema({
       type: String,
       required: false,
     },
-    resetPasswordToken: String,
-
-    resetPasswordExpire: Date,
+    resetPasswordToken: {
+      type: String,
+      required: false,
+    },
+    resetPasswordExpire: {
+      type: Date,
+      required: false,
+    },
   },
-
   addressOne: {
     streetOne: {
       type: String,
@@ -144,7 +143,6 @@ const EmployeesSchema = Schema({
       type: String,
       required: false,
     },
-
     jobTitle: {
       type: String,
       required: false,

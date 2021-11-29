@@ -5,7 +5,7 @@ const crypto = require("crypto");
 // login with email and password
 const login = async (req, res, next) => {
   const { email, password } = req.body;
-console.log(req.body);
+  console.log(req.body);
 
   if (!email || !password) {
     res.status(400).json({
@@ -14,7 +14,7 @@ console.log(req.body);
     });
   }
   try {
-    const user = await User.findOne({"bio.email":email });
+    const user = await User.findOne({ "bio.email": email });
     console.log(user);
     if (!user) {
       res.status(400).json({ success: false, error: "Invalid credentials" });
@@ -31,13 +31,13 @@ console.log(req.body);
 };
 
 // signup or register new user
-const register =  async (req, res) => {
+const register = async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
   try {
-    const user=await User.create({
+    const user = await User.create({
       bio: { firstName, lastName, email, password },
     });
-    res.json({message:"Regiter Succed",user});
+    res.json({ message: "Registration Successful", user });
   } catch (err) {
     console.log(err);
     res.status(401).json(err);
@@ -50,7 +50,7 @@ const forgotPassword = async (req, res, next) => {
   const { email } = req.body;
 
   try {
-    const user = await User.findOne({ "bio.email":email });
+    const user = await User.findOne({ "bio.email": email });
 
     if (!user) {
       return res.status(404).json("No email could not be sent");
@@ -105,13 +105,13 @@ const resetpassword = async (req, res, next) => {
 
   try {
     const user = await User.findOne({
-    "bio.resetPasswordToken":resetPasswordToken,
+      "bio.resetPasswordToken": resetPasswordToken,
     });
     if (!user) {
       return res.status(400).json(" Reset is not Valid ");
     }
     console.log(user);
- 
+
     user.bio.password = req.body.password;
     user.bio.resetPasswordToken = null;
     user.bio.resetPasswordExpire = null;

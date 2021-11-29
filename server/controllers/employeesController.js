@@ -51,6 +51,7 @@ employeeController.addNewEmployee = async (req, res) => {
         phoneNumber: received.phoneNumber,
         maritalStatus: received.maritalStatus,
         status: "active",
+        role: received.role,
         photo: path,
         hobbies: received.hobbies,
       },

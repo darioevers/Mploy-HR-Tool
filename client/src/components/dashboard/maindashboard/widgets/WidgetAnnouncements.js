@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import Carousel from "react-elastic-carousel";
+import CloseIcon from "@mui/icons-material/Close";
+import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 
 function WidgetAnnouncements() {
   // getting all data
@@ -45,6 +47,12 @@ function WidgetAnnouncements() {
       .catch((err) => console.log(err));
   };
 
+  //show announcements on click mobile
+  const [mobileAnnouncements, setMobileAnnouncements] = useState(false);
+  const showMobileAnnouncements = () => {
+    setMobileAnnouncements(!mobileAnnouncements);
+  };
+
   //expanding announcements
   const [expand, setExpand] = useState(false);
   const [id, setId] = useState();
@@ -81,9 +89,26 @@ function WidgetAnnouncements() {
     return day;
   };
   return (
-    <div className="widget_announcements_mainbox">
+    <div
+      className={
+        mobileAnnouncements
+          ? "widget_announcements_mainbox_hide"
+          : "widget_announcements_mainbox_show"
+      }
+    >
       <div className="widget_announcements_header">
         <h1>ANNOUNCEMENTS</h1>
+      </div>
+
+      <div
+        className="widget_announcements_sidedrawer"
+        onClick={showMobileAnnouncements}
+      >
+        <div className={mobileAnnouncements ? "side-open" : "side-close"}>
+          <i>
+            <ArrowLeftIcon />
+          </i>
+        </div>
       </div>
       <div className="widget_announcements_display">
         <Carousel itemsToShow={1}>
@@ -100,15 +125,15 @@ function WidgetAnnouncements() {
                   <div className="widget_announcement_header">
                     <h3>{announcement.title}</h3>
                     <h4> {announcement.subtopic}</h4>
-                  </div>
-                  <div className="widget_announcements_icons">
-                    <p onClick={() => handleClick(announcement._id)}>
-                      {" "}
-                      Read More Here
-                    </p>
-                    <p onClick={() => deleteAnnouncement(announcement._id)}>
-                      Delete
-                    </p>
+                    <div className="widget_announcements_icons">
+                      <p onClick={() => handleClick(announcement._id)}>
+                        {" "}
+                        Read More
+                      </p>
+                      <p onClick={() => deleteAnnouncement(announcement._id)}>
+                        Delete
+                      </p>
+                    </div>
                   </div>
                 </div>
 
@@ -154,6 +179,80 @@ function WidgetAnnouncements() {
               </div>
             ))}
         </Carousel>
+      </div>
+
+      <div
+        className={
+          mobileAnnouncements
+            ? "widget_announcements_mobile_hide"
+            : "widget_announcements_mobile_show"
+        }
+      >
+        {announcements &&
+          announcements.map((announcement) => (
+            <div className="widget_announcement" key={announcement._id}>
+              <div className="widget_announcement_dateposted">
+                <h4>{showMonths(announcement.date)}</h4>
+                <h3>{showDay(announcement.date)}</h3>
+                <hr />
+              </div>
+
+              <div className="widget_announcement_info">
+                <div className="widget_announcement_header">
+                  <h3>{announcement.title}</h3>
+                  <h4> {announcement.subtopic}</h4>
+                </div>
+                <div className="widget_announcements_icons">
+                  <p onClick={() => handleClick(announcement._id)}>
+                    {" "}
+                    Read More Here
+                  </p>
+                  <p onClick={() => deleteAnnouncement(announcement._id)}>
+                    Delete
+                  </p>
+                </div>
+                <div className="widget_announcements_divider_mobile">
+                  <div className="line"></div>
+                </div>
+              </div>
+
+              {expand && announcement._id === id && (
+                <div className="expand_main_container_show">
+                  <form class="expand_container">
+                    <div className="expand_header">
+                      <h1>{announcement.title}</h1>
+                      <div className="expand_subheader">
+                        <p>by {announcement.poster}</p>
+
+                        <p>Date Posted: {announcement.date}</p>
+
+                        <p>Time Posted: {announcement.time}</p>
+                      </div>
+                    </div>
+
+                    <div className="expand_subtopic">
+                      <p>{announcement.subtopic}</p>
+                    </div>
+
+                    <div className="expand_main_content">
+                      <h3>Content</h3>
+                      <p>{announcement.message}</p>
+                      <h4> - END - </h4>
+                    </div>
+
+                    <div className="expand_buttons">
+                      <div class="btn_cancel" onClick={handleClick}>
+                        X
+                      </div>
+                      <i>
+                        <BookmarkIcon style={{ fontSize: 80 }} />
+                      </i>
+                    </div>
+                  </form>
+                </div>
+              )}
+            </div>
+          ))}
       </div>
     </div>
   );
