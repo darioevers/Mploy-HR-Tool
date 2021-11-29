@@ -1,10 +1,11 @@
-const User = require("../models/UserModel");
+const User = require("../models/employeesModel");
 const sendEmail = require("../functions/emailSender");
 const crypto = require("crypto");
 
 // login with email and password
 const login = async (req, res, next) => {
   const { email, password } = req.body;
+console.log(req.body);
 
   if (!email || !password) {
     res.status(400).json({
@@ -13,7 +14,8 @@ const login = async (req, res, next) => {
     });
   }
   try {
-    const user = await User.findOne({ email }).select("+password");
+    const user = await User.findOne({"bio.email":email });
+    console.log(user);
     if (!user) {
       res.status(400).json({ success: false, error: "Invalid credentials" });
     }
@@ -29,17 +31,16 @@ const login = async (req, res, next) => {
 };
 
 // signup or register new user
-const register = async (req, res, next) => {
-  const { username, email, password } = req.body;
+const register =  async (req, res) => {
+  const { firstName, lastName, email, password } = req.body;
   try {
-    const user = await User.create({
-      username,
-      email,
-      password,
+    const user=await User.create({
+      bio: { firstName, lastName, email, password },
     });
-    sendToken(user, 201, res);
+    res.json({message:"Regiter Succed",user});
   } catch (err) {
-    next(err);
+    console.log(err);
+    res.status(401).json(err);
   }
 };
 
@@ -49,7 +50,7 @@ const forgotPassword = async (req, res, next) => {
   const { email } = req.body;
 
   try {
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ "bio.email":email });
 
     if (!user) {
       return res.status(404).json("No email could not be sent");
@@ -72,7 +73,7 @@ const forgotPassword = async (req, res, next) => {
 
     try {
       sendEmail({
-        to: user.email,
+        to: user.bio.email,
         subject: "Password Reset Request",
         text: message,
       });
@@ -104,15 +105,16 @@ const resetpassword = async (req, res, next) => {
 
   try {
     const user = await User.findOne({
-      resetPasswordToken,
+    "bio.resetPasswordToken":resetPasswordToken,
     });
     if (!user) {
       return res.status(400).json(" Reset is not Valid ");
     }
     console.log(user);
-    user.password = req.body.password;
-    user.resetPasswordToken = null;
-    user.resetPasswordExpire = null;
+ 
+    user.bio.password = req.body.password;
+    user.bio.resetPasswordToken = null;
+    user.bio.resetPasswordExpire = null;
 
     await user.save();
     res.status(201).json({ data: "Password reset successfully." });
@@ -124,7 +126,7 @@ const resetpassword = async (req, res, next) => {
 // sending token to register and log in
 const sendToken = (user, statusCode, res) => {
   const token = user.getSignedToken();
-  res.status(statusCode).json({ success: true, token });
+  res.status(statusCode).json({ success: true, token, role: user.role });
 };
 
 module.exports = { register, login, forgotPassword, resetpassword };

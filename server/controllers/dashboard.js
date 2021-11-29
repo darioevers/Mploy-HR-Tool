@@ -1,8 +1,10 @@
-const UserData = require("../models/UserModel");
-const getPrivateData = (req, res, next) => {
+const UserData = require("../models/employeesModel");
+const getPrivateData = (req, res) => {
   res.status(200).json({
-    data: "You are logged in",
+    message: "You are logged in",
+    user:req.user 
   });
+  // console.log("req"+req.user)
 };
 
 //   console.log("add admin");

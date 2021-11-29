@@ -25,7 +25,8 @@ import Alert from "@mui/material/Alert";
 const theme = createTheme();
 
 const RegisterScreen = ({ history }) => {
-  const [username, setUsername] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("")
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
@@ -53,14 +54,15 @@ const RegisterScreen = ({ history }) => {
       const { data } = await axios.post(
         "http://localhost:5000/users/register",
         {
-          username,
+          firstName,
+          lastName,
           email,
           password,
         },
         config
       );
-
-      history.push({ pathname: "/login", state: { email, password } });
+        console.log(data)
+      history.push({ pathname: "/login", state: {email, password } });
     } catch (error) {
       setError(error.response.data.error);
       setTimeout(() => {
@@ -159,6 +161,7 @@ const RegisterScreen = ({ history }) => {
         </Box>
       </Container>
     </ThemeProvider>
+
   );
 };
 
