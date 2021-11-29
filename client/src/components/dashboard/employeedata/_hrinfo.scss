@@ -69,28 +69,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.hrinfo_form_generaldata {
-  @include md {
-    margin-left: 20px;
-    height: 66vh;
-    overflow: scroll;
-    border-radius: 20px;
-    padding: 0px 50px;
-    margin-top: 10px;
-    width: 90vw;
+  h4 {
+    cursor: pointer;
+    &:hover {
+      transform: translateY(-2px);
+      transition: transform 0.5s;
+      color: $highlight;
+    }
   }
-  width: 100%;
-  display: flex;
-  flex-direction: column;
 }
 
-.active_tab_hr {
+.hrinfo_active_tab {
   @include md {
     color: $primary;
     border-bottom: none;
-    width: 28%;
+    width: 30%;
     height: 18px;
     align-items: center;
   }
@@ -100,6 +93,28 @@
   border-bottom: 1px solid $highlight;
   padding: 3px 10px;
   color: $dark-bg;
+}
+
+.hrinfo_inactive_tab {
+  color: $tertiary;
+  h4 {
+    font-weight: 100;
+  }
+}
+
+.hrinfo_form_generaldata {
+  @include md {
+    margin-left: 10px;
+    height: 66vh;
+    overflow: scroll;
+    border-radius: 20px;
+    padding: 0px 50px;
+    margin-top: 10px;
+    width: 100vw;
+  }
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .hrinfo_contractdetails_header,

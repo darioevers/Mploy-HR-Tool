@@ -55,10 +55,6 @@ const EmployeeInfo = ({ history, match }) => {
   //     })
   //     .catch((err) => console.log(err));
   // };
-  // // autofill
-  // const [firstName, setFirstName] = useState(empInfo.bio.firstName);
-  // const [lastName, setLastName] = useState(empInfo.bio.lastName);
-  // const [position, setPosition] = useState(empInfo.contractInfo.position);
 
   //styling of formControls
   const inputStylesA = {
@@ -111,7 +107,7 @@ const EmployeeInfo = ({ history, match }) => {
               history.push(`/dashboard/employeedata/hrinfo/${empInfo._id}`);
             }}
           >
-            HR Information
+            <h4>HR Information</h4>
           </div>
           <div className="inactive_tab">
             <NavLink
@@ -121,7 +117,7 @@ const EmployeeInfo = ({ history, match }) => {
               className="sidenav_link"
             >
               {" "}
-              Documents
+              <h4>Documents</h4>
             </NavLink>
           </div>
         </div>
@@ -145,12 +141,12 @@ const EmployeeInfo = ({ history, match }) => {
 
               <div className="form_header_info">
                 <div className="fullname">
-                  <h1>First</h1>
-                  <h1>Last</h1>
+                  <h1>{empInfo?.bio?.firstName}</h1>
+                  <h1>{empInfo?.bio?.lastName}</h1>
                 </div>
 
                 <div className="position">
-                  <h3>Position</h3>
+                  <h3>{empInfo?.contractInfo?.position}</h3>
                 </div>
 
                 <div className="contacts">
@@ -171,46 +167,6 @@ const EmployeeInfo = ({ history, match }) => {
               </div>
             </div>
             <div className="form_generaldata">
-              <div className="basicdetails_header">
-                <h3>BASIC DETAILS </h3>
-              </div>
-
-              <div className="basicdetails_content">
-                <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">First Name</InputLabel>
-                  <Input
-                    type="text"
-                    name="firstName"
-                    value={empInfo?.bio?.firstName}
-                  />
-                </FormControl>
-                <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Last Name</InputLabel>
-                  <Input
-                    type="text"
-                    name="lastName"
-                    value={empInfo?.bio?.lastName}
-                  />
-                </FormControl>
-
-                <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Employee ID</InputLabel>
-                  <Input
-                    type="text"
-                    name="employeeID"
-                    value={empInfo?.bio?.employeeId}
-                  />
-                </FormControl>
-                <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Position</InputLabel>
-                  <Input
-                    type="text"
-                    name="position"
-                    value={empInfo?.contractInfo?.position}
-                  />
-                </FormControl>
-              </div>
-
               <div className="personaldetails_header">
                 <h3>PERSONAL DETAILS </h3>
               </div>
@@ -256,7 +212,6 @@ const EmployeeInfo = ({ history, match }) => {
                     type="text"
                     name="countryOne"
                     value={empInfo?.addressOne?.countryOne}
-                    disabled
                   />
                 </FormControl>
                 <FormControl style={inputStylesB}>
@@ -341,16 +296,6 @@ const EmployeeInfo = ({ history, match }) => {
                   />
                 </FormControl>
               </FormGroup>
-            </div>
-
-            <div className="next-btn">
-              <button
-                onClick={() => {
-                  history.push(`/dashboard/employeedata/hrinfo/${empInfo._id}`);
-                }}
-              >
-                Next{" "}
-              </button>
             </div>
           </FormGroup>
         </div>

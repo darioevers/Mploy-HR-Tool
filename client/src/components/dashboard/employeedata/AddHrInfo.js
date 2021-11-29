@@ -116,8 +116,6 @@ const AddHrInfo = ({ location, history }) => {
                 onChange={(e) => setFile(e.target.files[0])}
               />
             </FormControl>
-
-         
           </div>
 
           <div className="addhrinfo_form">

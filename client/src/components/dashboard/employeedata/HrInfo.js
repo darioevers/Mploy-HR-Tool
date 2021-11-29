@@ -81,19 +81,19 @@ const HrInfo = ({ location, history, match }) => {
 
         <div className="hrinfo_subheader">
           <div
-            className="inactive_tab_hr"
+            className="hrinfo_inactive_tab"
             onClick={() => {
               history.push(
-                `/dashboard/employeedata/employeeinfo/${hrData._id}`
+                `/dashboard/employeedata/employeeinfo/${hrData?._id}`
               );
             }}
           >
-            General Data
+            <h4>General Data</h4>
           </div>
-          <div className="active_tab_hr">
+          <div className="hrinfo_active_tab">
             <h4>HR Information</h4>
           </div>
-          <div className="inactive_tab_hr">
+          <div className="hrinfo_inactive_tab">
             <NavLink
               exact
               to="/dashboard/employeedata/employeeinfo/employeedocuments"
@@ -101,7 +101,7 @@ const HrInfo = ({ location, history, match }) => {
               className="sidenav_link"
             >
               {" "}
-              Documents
+              <h4> Documents </h4>
             </NavLink>
           </div>
         </div>

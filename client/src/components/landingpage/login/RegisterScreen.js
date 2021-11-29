@@ -125,15 +125,11 @@ const RegisterScreen = ({ history }) => {
                   required
                   fullWidth
                   autoFocus
-<<<<<<< HEAD
-                  onChange={(e) => setFirstName(e.target.value)}
-=======
                   name="lastName"
                   value={lastName}
                   label={t("landingRegister.formdesc02")}
                   id="lastName"
                   onChange={(e) => setLastName(e.target.value)}
->>>>>>> main
                 />
               </Grid>
               <Grid item xs={12}>

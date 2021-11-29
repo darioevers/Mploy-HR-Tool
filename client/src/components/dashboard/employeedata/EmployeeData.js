@@ -19,6 +19,7 @@ import {
   InputLabel,
   Input,
 } from "@material-ui/core";
+import { buttonUnstyledClasses } from "@mui/core";
 
 function EmployeeData({ history }) {
   // const classes = useStyles();
@@ -279,12 +280,9 @@ function EmployeeData({ history }) {
                                 <div
                                   variant="contained"
                                   onClick={() => {
-                                    console.log(employees);
-                                    history.push({
-                                      pathname:
-                                        "/dashboard/employeedata/editemployee",
-                                      state: { employee },
-                                    });
+                                    history.push(
+                                      `/dashboard/employeedata/editemployee/${employee._id}`
+                                    );
                                   }}
                                 >
                                   Edit
@@ -296,6 +294,7 @@ function EmployeeData({ history }) {
                                     deleteEmployeeData(employee.bio.email)
                                   }
                                 >
+                                  {" "}
                                   Delete
                                 </div>
 

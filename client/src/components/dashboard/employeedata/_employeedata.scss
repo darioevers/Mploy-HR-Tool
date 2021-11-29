@@ -321,6 +321,8 @@ table {
     color: $primary;
     width: 220px;
     height: 30px;
+    border: none;
+    cursor: pointer;
 
     &:first-child {
       @include md {
@@ -344,7 +346,7 @@ table {
         display: flex;
         position: absolute;
         top: 50vh;
-        right: 40px;
+        right: 10%;
         cursor: pointer;
       }
       visibility: hidden;
