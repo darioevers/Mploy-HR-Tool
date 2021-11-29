@@ -1,4 +1,13 @@
 .widget_sickleave_mainbox {
+  @include md {
+    display: flex;
+    background-color: $tertiary;
+    position: fixed;
+    top: 24%;
+    height: 7%;
+    width: 90%;
+    z-index: -1;
+  }
   @include widget-wrapper;
   grid-area: widget_sickleave;
   //inside grid
@@ -11,23 +20,47 @@
     "sickleave_middle_wrapper sickleave_middle_wrapper sickleave_middle_wrapper"
     "sickleave_bottomleft_wrapper sickleave_bottommiddle_wrapper sickleave_bottomright_wrapper";
   .sickleave_top_wrapper {
+    @include md {
+      @include flex-center;
+      background-color: $dark-bg;
+      width: 25%;
+      height: 100%;
+      margin: 0px;
+      padding: 0;
+      line-height: 22px;
+      border-top-left-radius: 14px;
+      border-bottom-left-radius: 14px;
+    }
     grid-area: sickleave_top_wrapper;
     margin: 20px;
     @include flex-center;
     justify-content: flex-start;
     .square_bullet {
+      @include md {
+        visibility: hidden;
+        width: 0;
+      }
       width: 14px;
       height: 60%;
       background-color: $light-blue;
       border-radius: 2px;
     }
     h1 {
+      @include md {
+        color: $primary;
+        font-size: 16px;
+        margin-right: 13px;
+      }
       font-size: 20px;
       margin-left: 20px;
     }
   }
 
   .sickleave_middle_wrapper {
+    @include md {
+      visibility: hidden;
+      width: 0;
+    }
     grid-area: sickleave_middle_wrapper;
     margin-left: 20px;
     h4 {
@@ -41,6 +74,10 @@
     }
   }
   .sickleave_bottomleft_wrapper {
+    @include md {
+      @include flex-center;
+      flex-direction: column;
+    }
     grid-area: sickleave_bottomleft_wrapper;
     margin-left: 20px;
     h2 {
@@ -54,6 +91,10 @@
     }
   }
   .sickleave_bottommiddle_wrapper {
+    @include md {
+      visibility: hidden;
+      width: 0;
+    }
     grid-area: sickleave_bottommiddle_wrapper;
     .vertical_line {
       width: 2px;
@@ -62,15 +103,21 @@
     }
   }
   .sickleave_bottomright_wrapper {
+    @include md {
+      @include flex-center;
+      flex-direction: column;
+      margin-left: 35px;
+    }
     grid-area: sickleave_bottomright_wrapper;
     h2 {
       font-size: 18px;
-      margin-bottom: 3px;
+      margin-bottom: 2px;
     }
     h4 {
       font-size: 10px;
       color: $secondary;
       font-weight: normal;
+      margin-bottom: 3px;
     }
   }
 }

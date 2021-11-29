@@ -10,24 +10,25 @@ import WidgetSickLeave from "./WidgetSickleave";
 import WidgetTasks from "./WidgetTasks";
 import WidgetTeam from "./WidgetTeam";
 
-function Widgets() {
-  const role = localStorage.getItem("role");
+function Widgets({ userdata }) {
+  // const role = localStorage.getItem("role");
 
   return (
     <div className="components_mainbox">
-      <WelcomeMessage />
+      <WelcomeMessage userdata={userdata} />
+
       {/* {role === "admin" && (
         <>
          
         </>
       )} */}
-      <WidgetApplications />
+      <WidgetApplications userdata={userdata} />
       <WidgetAnnouncements />
       <WidgetBirthdays />
       <WidgetCalendar />
-      <WidgetHolidays />
-      <WidgetHomeOffice />
-      <WidgetSickLeave />
+      <WidgetHolidays userdata={userdata} />
+      <WidgetHomeOffice userdata={userdata} />
+      <WidgetSickLeave userdata={userdata} />
       <WidgetTasks />
       <WidgetTeam />
     </div>

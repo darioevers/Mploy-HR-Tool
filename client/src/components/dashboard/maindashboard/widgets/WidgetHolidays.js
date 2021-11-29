@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-function WidgetHolidays() {
+function WidgetHolidays({ userdata }) {
   //fetch leaves data
   const [leaves, setLeaves] = useState();
   useEffect(() => {
@@ -41,7 +41,7 @@ function WidgetHolidays() {
       <div className="holidays_bottomleft_wrapper">
         {leaves &&
           leaves
-            .filter((item) => item.bio.email === "alex.albaran@mploy.com")
+            .filter((item) => item.bio.email === userdata.bio?.email)
             .map((item) => <h2>{item.availableHolidays}</h2>)}
         <h4>Available</h4>
       </div>
@@ -53,8 +53,8 @@ function WidgetHolidays() {
       <div className="holidays_bottomright_wrapper">
         {leaves &&
           leaves
-            .filter((item) => item.bio.email === "alex.albaran@mploy.com")
-            .map((item) => <h2>{item.takenHolidays} </h2>)}
+            .filter((item) => item.bio.email === userdata.bio?.email)
+            .map((item) => <h2>{item.takenHolidays || "0"} </h2>)}
         <h4>Days Taken</h4>
       </div>
     </div>

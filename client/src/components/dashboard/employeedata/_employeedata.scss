@@ -3,12 +3,56 @@
   overflow: hidden;
 }
 
+.employeedata_header {
+  @include md {
+    @include flex-center;
+    flex-direction: column;
+    background-color: $dark-bg;
+    width: 100vw;
+    height: 25vh;
+    visibility: visible;
+  }
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.employeedata_header_title {
+  @include md {
+    visibility: visible;
+    width: 100vw;
+    height: 70vh;
+  }
+  @include flex-center;
+
+  h1 {
+    color: $primary;
+    font-size: 30px;
+    font-weight: 400;
+  }
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
 .employeedata_container {
+  @include md {
+    width: 100vw;
+  }
   width: 78vw;
   // overflow-x: scroll;
+  table {
+    @include md {
+      width: 100vw;
+      height: 200px;
+    }
+  }
 }
 
 .employeedata_searchbar_show {
+  @include md {
+    width: 95%;
+  }
   @include flex-center;
   height: 60px;
   width: 68%;
@@ -27,6 +71,12 @@
 }
 
 .search {
+  @include md {
+    width: 100vw;
+    border-radius: 8px;
+    margin-left: 10px;
+    margin-top: 40px;
+  }
   @include flex-center;
   justify-content: flex-start;
   width: 80%;
@@ -42,11 +92,22 @@
   }
   input {
     border: none;
+    width: 100%;
   }
 }
 
 .button {
-  button {
+  position: absolute;
+  right: 10px;
+  .addemployee_button {
+    @include md {
+      width: 120px;
+      font-size: 12px;
+      padding: 5px;
+      visibility: hidden;
+      width: 0px;
+      height: 0px;
+    }
     background-color: $primary;
     color: $highlight;
     border: 1px solid $highlight;
@@ -85,26 +146,56 @@
   }
 }
 
+table {
+  @include md {
+    margin-left: 10px;
+  }
+  margin-top: 20px;
+}
+
+.table_cell {
+  display: flex;
+}
+
 .table_cell_photo {
   margin-left: 20px;
   h5 {
+    @include md {
+      font-size: 13px;
+    }
     font-size: 15px;
   }
   h4 {
+    @include md {
+      font-size: 12px;
+    }
     font-size: 13px;
     font-weight: 100;
   }
 }
 .employeedata_summary_show {
-  position: relative;
+  @include md {
+    left: 0;
+    width: 90%;
+    height: 57%;
+    top: 31vh;
+    padding: 0px 50px;
+    background-color: $primary;
+    h1 {
+      max-width: 200px;
+      line-height: 35px;
+    }
+  }
+
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 100px;
+  background-color: $tertiary;
+  top: 80px;
   right: 0;
   margin: 20px;
   border-radius: 20px;
-  padding: 20px;
+  padding: 25px 50px;
   width: 25%;
   visibility: visible;
   opacity: 1;
@@ -127,6 +218,7 @@
 
 .summary_header {
   display: flex;
+  margin-top: 20px;
 }
 
 .summary_header_photo {
@@ -150,8 +242,10 @@
 
 .summary_close_btn {
   position: absolute;
-  right: 25px;
-  button {
+  top: 30px;
+  right: 30px;
+  cursor: pointer;
+  div {
     border: none;
     font-size: 15px;
     font-weight: bolder;
@@ -213,18 +307,52 @@
 
 .summary_buttons {
   @include flex-center;
-  width: 100%;
   margin: 20px 0;
-  button {
+  width: 100%;
+  div {
+    @include md {
+      position: fixed;
+      top: 0;
+    }
+    @include flex-center;
     border-radius: 6px;
     box-shadow: none;
-    margin: 20px;
-    color: white;
+    margin: 10px;
+    color: $primary;
+    width: 220px;
+    height: 30px;
+
     &:first-child {
+      @include md {
+        visibility: hidden;
+        width: 0;
+        height: 0;
+      }
       background-color: $highlight;
     }
-    &:last-child {
+    &:nth-child(2) {
+      @include md {
+        visibility: hidden;
+        width: 0;
+        height: 0;
+      }
       background-color: $dark-bg;
+    }
+    &:last-child {
+      @include md {
+        visibility: visible;
+        display: flex;
+        position: absolute;
+        top: 50vh;
+        right: 40px;
+        cursor: pointer;
+      }
+      visibility: hidden;
+      width: 0;
+      height: 0;
+      i {
+        color: $dark-bg;
+      }
     }
   }
 }

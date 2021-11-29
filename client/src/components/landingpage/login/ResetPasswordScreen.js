@@ -2,23 +2,28 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
+// TRANSLATION IMPORTS
+import { useTranslation } from "react-i18next";
+
 // IMPORT COMPONENTS
-import LandingpageTopnav from "../LandingpageTopnav";
-import LandingpageFooter from "../LandingpageFooter";
+
+
+import LandingpageTopnav from "../navigation/LandingpageTopnav";
+import LandingpageFooter from "../navigation/LandingpageFooter";
+
+// MUI IMPORTS
 import Avatar from "@mui/material/Avatar";
-
 import Button from "@mui/material/Button";
-
 import CssBaseline from "@mui/material/CssBaseline";
-
 import TextField from "@mui/material/TextField";
-
+import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
+import Alert from "@mui/material/Alert";
 
-import Container from "@mui/material/Container";
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
+
 const ResetPasswordScreen = ({ history, match }) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -64,91 +69,137 @@ const ResetPasswordScreen = ({ history, match }) => {
     }
   };
 
+  const { t } = useTranslation();
+
   return (
     <div>
       <LandingpageTopnav />
 
-      <Box
-        sx={{
-          bgcolor: "landingnavbar.main",
-          borderRadius: "0px",
-        }}
-      >
-        <Container component="main" maxWidth="xs">
-          <CssBaseline />
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 20,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            {t("landingResetPw.title01")}
+          </Typography>
+          {error && (
+            <Alert severity="error" sx={{ width: "100%" }}>
+              {t("landingAlerts.error")}
+            </Alert>
+          )}
+          {success && (
+            <Alert severity="success" sx={{ width: "100%" }}>
+              {t("landingAlerts.success")}
+            </Alert>
+          )}
           <Box
-            sx={{
-              marginTop: 12,
-              display: "flex",
-              flexDirection: "column",
-
-              alignItems: "center",
-            }}
+            component="form"
+            noValidate
+            onSubmit={resetPasswordHandler}
+            sx={{ mt: 3 }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-              <VpnKeyIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              Reset Password
-            </Typography>
-            {error && <span className="error-message">{error} </span>}
-            {success && (
-              <span className="success-message">
-                {success} <Link to="/login">Login</Link>
-              </span>
-            )}
-            <Box
-              component="form"
-              onSubmit={resetPasswordHandler}
-              noValidate
-              sx={{ mt: 1 }}
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={12}>
+                <TextField
+                  autoComplete="username"
+                  name="username"
+                  required
+                  fullWidth
+                  id="username"
+                  label={t("landingResetPw.formdesc01")}
+                  autoFocus
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="email"
+                  label={t("landingResetPw.formdesc02")}
+                  name="email"
+                  autoComplete="email"
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+              </Grid>
+            </Grid>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              size="large"
+              sx={{ mt: 3, mb: 2 }}
             >
-              <TextField
-                autoComplete="true"
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <TextField
-                id="confirmpassword"
-                autoComplete="true"
-                margin="normal"
-                required
-                fullWidth
-                name="confirmPassword"
-                label="ConfirmPassword"
-                type="password"
-                autoComplete="current-password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              />
-
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-              >
-                Reset Password
-              </Button>
-             
-            </Box>
+              {t("landingResetPw.button01")}
+            </Button>
+            <Grid container justifyContent="flex-end">
+              <Grid item>
+                <Link to={"/login"} variant="body1" sx={{ fontWeight: 300 }}>
+                  {t("landingResetPw.link01")}
+                </Link>
+              </Grid>
+            </Grid>
           </Box>
-        </Container>
-      </Box>
+        </Box>
+      </Container>
 
-     
-     
-      <LandingpageFooter />
     </div>
   );
 };
 
 export default ResetPasswordScreen;
+
+
+{
+  /* <div className="resetpassword-screen">
+<form
+  onSubmit={resetPasswordHandler}
+  className="resetpassword-screen__form"
+>
+  <h3 className="resetpassword-screen__title">Forgot Password</h3>
+  {error && <span className="error-message">{error} </span>}
+  {success && (
+    <span className="success-message">
+      {success} <Link to="/login">Login</Link>
+    </span>
+  )}
+  <div className="form-group">
+    <label htmlFor="password">New Password:</label>
+    <input
+      type="password"
+      required
+      id="password"
+      placeholder="Enter new password"
+      autoComplete="true"
+      value={password}
+      onChange={(e) => setPassword(e.target.value)}
+    />
+  </div>
+  <div className="form-group">
+    <label htmlFor="confirmpassword">Confirm New Password:</label>
+    <input
+      type="password"
+      required
+      id="confirmpassword"
+      placeholder="Confirm new password"
+      autoComplete="true"
+      value={confirmPassword}
+      onChange={(e) => setConfirmPassword(e.target.value)}
+    />
+  </div>
+  <button type="submit" className="btn btn-primary">
+    Reset Password
+  </button>
+</form>
+</div> */
+}
+

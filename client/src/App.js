@@ -12,6 +12,7 @@ import Home from "./components/landingpage/home/Home";
 import About from "./components/landingpage/about/About";
 import Contact from "./components/landingpage/contact/Contact";
 import Solutions from "./components/landingpage/solutions/Solutions";
+import Pricing from "./components/landingpage/pricing/Pricing";
 
 // LOGIN COMPONENTS
 import LoginScreen from "./components/landingpage/login/LoginScreen";
@@ -25,8 +26,12 @@ import Calendar from "./components/dashboard/calendar/Calendar";
 import EmployeeData from "./components/dashboard/employeedata/EmployeeData";
 import AddEmployee from "./components/dashboard/employeedata/AddEmployee";
 import EditEmployee from "./components/dashboard/employeedata/EditEmployee";
+import EditHrInfo from "./components/dashboard/employeedata/EditHrInfo";
 import AddHrInfo from "./components/dashboard/employeedata/AddHrInfo";
 import AddDocument from "./components/dashboard/employeedata/AddDocument";
+import EmployeeInfo from "./components/dashboard/employeedata/EmployeeInfo";
+import HrInfo from "./components/dashboard/employeedata/HrInfo";
+import EmployeeDocuments from "./components/dashboard/employeedata/EmployeeDocuments";
 
 import Payroll from "./components/dashboard/payroll/Payroll";
 import Tasks from "./components/dashboard/tasks/Tasks";
@@ -44,6 +49,7 @@ const App = () => {
               <Route exact path="/about" component={About} />
               <Route exact path="/contact" component={Contact} />
               <Route exact path="/solutions" component={Solutions} />
+              <Route exact path="/pricing" component={{ Pricing }} />
               <Route exact path="/login" component={LoginScreen} />
               <Route exact path="/register" component={RegisterScreen} />
               <Route
@@ -76,10 +82,32 @@ const App = () => {
                 path="/dashboard/employeedata/editemployee"
                 component={EditEmployee}
               />
+
+              <Route
+                exact
+                path="/dashboard/employeedata/editemployee/edithrinfo"
+                component={EditHrInfo}
+              />
               <Route
                 exact
                 path="/dashboard/employeedata/addemployee/hrinfo"
                 component={AddHrInfo}
+              />
+
+              <Route
+                exact
+                path="/dashboard/employeedata/employeeinfo"
+                component={EmployeeInfo}
+              />
+              <Route
+                exact
+                path="/dashboard/employeedata/employeeinfo/hrinfo"
+                component={HrInfo}
+              />
+              <Route
+                exact
+                path="/dashboard/employeedata/employeeinfo/employeedocuments"
+                component={EmployeeDocuments}
               />
 
               <Route

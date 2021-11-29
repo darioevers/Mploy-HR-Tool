@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
+import { NavLink } from "react-router-dom";
 import axios from "axios";
+import PhoneIcon from "@mui/icons-material/Phone";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import {
   FormGroup,
   FormControl,
@@ -20,575 +24,447 @@ const EditEmployee = ({ location, history }) => {
   );
   const [file, setFile] = useState();
 
+  // const edit = () => {
+  //   const data = new FormData();
+  //   data.append("file", file);
+  //   const readyTOSend = JSON.stringify(editEmp);
+  //   data.append("editEmp", readyTOSend);
 
-  const edit = () => {
-    const data = new FormData();
-    data.append("file", file);
-    const readyTOSend = JSON.stringify(editEmp);
-    data.append("editEmp", readyTOSend);
+  //   console.log(editEmp);
+  //   axios
+  //     .put("http://localhost:5000/employee/update", data, {
+  //       header: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     })
+  //     .then((data) => {
+  //       console.log(data);
+  //       history.push("/dashboard/employeedata/");
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
+  //autofill
+  const [firstName, setFirstName] = useState(editEmp.bio.firstName);
+  const [lastName, setLastName] = useState(editEmp.bio.lastName);
+  const [position, setPosition] = useState(editEmp.contractInfo.position);
 
-    console.log(editEmp);
-    axios
-      .put(
-        "http://localhost:5000/employee/update",
-        data ,
-        {
-          header: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-      .then((data) => {
-        console.log(data);
-        history.push("/dashboard/employeedata/");
-      })
-      .catch((err) => console.log(err));
+  //styling of formControls
+  const inputStylesA = {
+    width: "46%",
+    marginRight: "20px",
   };
+
+  const inputStylesB = {
+    width: "30%",
+    marginRight: "20px",
+  };
+
   return (
     <div className="addemployee_mainbox">
       <DashboardTopNav />
       <DashboardSideNav />
       {/* personal edit data */}
 
-      <FormGroup>
-        <div>
-        <FormControl>
-            <InputLabel htmlFor="my-input">Photo</InputLabel>
-            <Input type="file"
-              name="file"
-              // value={editEmp.bio.photo}
-              onChange={(e) =>
-                setFile( e.target.files[0]) 
-              }
-            />
-          </FormControl>
-          <FormControl>
-            <InputLabel htmlFor="my-input">First Name</InputLabel>
-            <Input
-              name="firstname"
-              value={editEmp.bio.firstName}
-              onChange={(e) =>
-                setEditEmp({
-                  ...editEmp,
-                  bio: { ...editEmp.bio, firstName: e.target.value },
-                })
-              }
-            />
-          </FormControl>
-
-          <FormControl>
-            <InputLabel htmlFor="my-input">Last Name</InputLabel>
-            <Input
-              name="lastname"
-              value={editEmp.bio.lastName}
-              onChange={(e) =>
-                setEditEmp({
-                  ...editEmp,
-                  bio: { ...editEmp.bio, lastName: e.target.value },
-                })
-              }
-            />
-          </FormControl>
-
-          <FormControl>
-            <InputLabel htmlFor="my-input">Date of Birth</InputLabel>
-            <Input type="date" 
-              name="dateofbirth"
-              value={editEmp.bio.dateOfBirth}
-              onChange={(e) =>
-                setEditEmp({
-                  ...editEmp,
-                  bio: { ...editEmp.bio, dateOfBirth: e.target.value },
-                })
-              }
-            />
-          </FormControl>
-          <FormControl>
-            <InputLabel htmlFor="my-input">Nationality</InputLabel>
-            <Input
-              name="nationality"
-              value={editEmp.bio.nationality}
-              onChange={(e) =>
-                setEditEmp({
-                  ...editEmp,
-                  bio: { ...editEmp.bio, nationality: e.target.value },
-                })
-              }
-            />
-          </FormControl>
-          <FormControl>
-            <InputLabel id="demo">Gender</InputLabel>
-            <Select
-              labelId="demo"
-              value={editEmp.bio.gender}
-              onChange={(e) =>
-                setEditEmp({
-                  ...editEmp,
-                  bio: { ...editEmp.bio, gender: e.target.value },
-                })
-              }
+      <div className="editemployee_wrapper">
+        <h1> Edit Employee </h1>
+        <div className="addemployee_header">
+          <div className="active_tab">
+            <h4>General Data</h4>
+          </div>
+          <div className="inactive_tab">
+            <NavLink
+              exact
+              to="/dashboard/employeedata/editemployee/edithrinfo"
+              activeClassName="active"
+              className="sidenav_link"
             >
-              <MenuItem value="male">Male</MenuItem>
-              <MenuItem value="female">Female</MenuItem>
-              <MenuItem value="x">X</MenuItem>
-            </Select>
-          </FormControl>
-          <FormControl>
-            <InputLabel htmlFor="my-input">Phone Number</InputLabel>
-            <Input
-              name="phoneNumber"
-              value={editEmp.bio.phoneNumber}
-              onChange={(e) =>
-                setEditEmp({
-                  ...editEmp,
-                  bio: { ...editEmp.bio, phoneNumber: e.target.value },
-                })
-              }
-            />
-          </FormControl>
-          <FormControl>
-            <InputLabel htmlFor="my-input">Marital Status</InputLabel>
-            <Input
-              name="maritalStatus"
-              value={editEmp.bio.maritalStatus}
-              onChange={(e) =>
-                setEditEmp({
-                  ...editEmp,
-                  bio: { ...editEmp.bio, maritalStatus: e.target.value },
-                })
-              }
-            />
-          </FormControl>
-
-          <FormControl>
-            <InputLabel htmlFor="my-input">Status</InputLabel>
-            <Input
-              name="status"
-              value={editEmp.bio.status}
-              onChange={(e) =>
-                setEditEmp({
-                  ...editEmp,
-                  bio: { ...editEmp.bio, status: e.target.value },
-                })
-              }
-            />
-          </FormControl>
-        </div>
-
-        {/* address update */}
-        <div>
-          <Typography variant="h6">Address</Typography>
-          <FormControl>
-            <InputLabel htmlFor="my-input">Street</InputLabel>
-            <Input
-              name="street"
-              value={editEmp.addressOne.streetOne}
-              onChange={(e) =>
-                setEditEmp({
-                  ...editEmp,
-                  addressOne: {
-                    ...editEmp.addressOne,
-                    streetOne: e.target.value,
-                  },
-                })
-              }
-            />
-          </FormControl>
-          <FormControl>
-            <InputLabel htmlFor="my-input">City</InputLabel>
-            <Input
-              name="city"
-              value={editEmp.addressOne.cityOne}
-              onChange={(e) =>
-                setEditEmp({
-                  ...editEmp,
-                  addressOne: {
-                    ...editEmp.addressOne,
-                    cityOne: e.target.value,
-                  },
-                })
-              }
-            />
-          </FormControl>
-          <FormControl>
-            <InputLabel htmlFor="my-input">Postal Code</InputLabel>
-            <Input
-              name="postalCode"
-              value={editEmp.addressOne.postalCodeOne}
-              onChange={(e) =>
-                setEditEmp({
-                  ...editEmp,
-                  addressOne: {
-                    ...editEmp.addressOne,
-                    postalCodeOne: e.target.value,
-                  },
-                })
-              }
-            />
-          </FormControl>
-          <FormControl>
-            <InputLabel id="demo-simple-select-label">State</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              value={editEmp.addressOne.stateOne}
-              onChange={(e) =>
-                setEditEmp({
-                  ...editEmp,
-                  addressOne: {
-                    ...editEmp.addressOne,
-                    stateOne: e.target.value,
-                  },
-                })
-              }
+              {" "}
+              HR Information
+            </NavLink>
+          </div>
+          <div className="inactive_tab">
+            <NavLink
+              exact
+              to="/dashboard/employeedata/addemployee/documents"
+              activeClassName="active"
+              className="sidenav_link"
             >
-              <MenuItem value="sachsen">Schsen</MenuItem>
-              <MenuItem value="Berlin">Berlin</MenuItem>
-              <MenuItem value="Hamburg">Hamburg</MenuItem>
-            </Select>
-          </FormControl>
-          <FormControl>
-            <InputLabel htmlFor="my-input">Country</InputLabel>
-            <Input
-              name="Country"
-              value={editEmp.addressOne.countryOne}
-              onChange={(e) =>
-                setEditEmp({
-                  ...editEmp,
-                  addressOne: {
-                    ...editEmp.addressOne,
-                    countryOne: e.target.value,
-                  },
-                })
-              }
-            />
-          </FormControl>
+              {" "}
+              Documents
+            </NavLink>
+          </div>
         </div>
+        <div className="employeedata_form">
+          <FormGroup>
+            <div className="form_header">
+              <div className="form_header_photo">
+                <div className="photo">
+                  <div className="dummy_photo">
+                    <i>
+                      <AccountCircleIcon style={{ fontSize: "135" }} />
+                    </i>
+                  </div>
+                </div>
+              </div>
 
-        {/* education info update */}
-        <div>
-          <Typography variant="h6">Education</Typography>
+              <div className="form_header_info">
+                <div className="fullname">
+                  <h1>{firstName}</h1>
+                  <h1>{lastName}</h1>
+                </div>
 
-          <FormControl>
-            <InputLabel htmlFor="my-input">School</InputLabel>
-            <Input
-              name="school"
-              value={editEmp.education.school}
-              onChange={(e) =>
-                setEditEmp({
-                  ...editEmp,
-                  education: { ...editEmp.education, school: e.target.value },
-                })
-              }
-            />
-          </FormControl>
-          <FormControl>
-            <InputLabel htmlFor="my-input">Degree</InputLabel>
-            <Input
-              name="degree"
-              value={editEmp.education.degree}
-              onChange={(e) =>
-                setEditEmp({
-                  ...editEmp,
-                  education: { ...editEmp.education, degree: e.target.value },
-                })
-              }
-            />
-          </FormControl>
+                <div className="position">
+                  <h3>{position}</h3>
+                </div>
 
-          <FormControl>
-            <InputLabel htmlFor="my-input">Field Of Study</InputLabel>
-            <Input
-              name="specialization"
-              value={editEmp.education.specialization}
-              onChange={(e) =>
-                setEditEmp({
-                  ...editEmp,
-                  education: {
-                    ...editEmp.education,
-                    specialization: e.target.value,
-                  },
-                })
-              }
-            />
-          </FormControl>
-          <FormControl>
-            <InputLabel htmlFor="my-input">Year Of Completion</InputLabel>
-            <Input
-              name="endDate"
-              value={editEmp.education.endDate}
-              onChange={(e) =>
-                setEditEmp({
-                  ...editEmp,
-                  education: { ...editEmp.education, endDate: e.target.value },
-                })
-              }
-            />
-          </FormControl>
+                <div className="contacts">
+                  <MailOutlineIcon fontSize="small" />
+                  <input
+                    name="email"
+                    value={editEmp.bio.email}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        bio: { ...editEmp.email, email: e.target.value },
+                      })
+                    }
+                    placeholder="Email"
+                  />
+
+                  <PhoneIcon fontSize="small" />
+                  <input
+                    name="phoneNumber"
+                    value={editEmp.bio.phoneNumber}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        bio: {
+                          ...editEmp.phoneNumber,
+                          phoneNumber: e.target.value,
+                        },
+                      })
+                    }
+                    placeholder="Phone Number"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="form_generaldata">
+              <div className="basicdetails_header">
+                <h3>BASIC DETAILS </h3>
+              </div>
+
+              <div className="basicdetails_content">
+                <FormControl style={inputStylesA}>
+                  <InputLabel htmlFor="my-input">First Name</InputLabel>
+                  <Input
+                    type="text"
+                    name="firstName"
+                    value={editEmp.bio.firstName}
+                    // style={inputStylesA}
+                    onChange={(e) => {
+                      setEditEmp({
+                        ...editEmp,
+                        bio: {
+                          ...editEmp.firstName,
+                          firstName: e.target.value,
+                        },
+                      });
+                      setFirstName(e.target.value);
+                    }}
+                  />
+                </FormControl>
+                <FormControl style={inputStylesA}>
+                  <InputLabel htmlFor="my-input">Last Name</InputLabel>
+                  <Input
+                    type="text"
+                    name="lastName"
+                    value={editEmp.bio.lastName}
+                    onChange={(e) => {
+                      setEditEmp({
+                        ...editEmp,
+                        bio: { ...editEmp, lastName: e.target.value },
+                      });
+                      setLastName(e.target.value);
+                    }}
+                  />
+                </FormControl>
+
+                <FormControl style={inputStylesA}>
+                  <InputLabel htmlFor="my-input">Employee ID</InputLabel>
+                  <Input
+                    type="text"
+                    name="employeeID"
+                    value={editEmp.bio.employeeId}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        bio: {
+                          ...editEmp.employeeId,
+                          employeeId: e.target.value,
+                        },
+                      })
+                    }
+                  />
+                </FormControl>
+                <FormControl style={inputStylesA}>
+                  <InputLabel htmlFor="my-input">Position</InputLabel>
+                  <Input
+                    type="text"
+                    name="position"
+                    value={editEmp.contractInfo.position}
+                    onChange={(e) => {
+                      setEditEmp({
+                        ...editEmp,
+                        contractInfo: {
+                          ...editEmp.position,
+                          position: e.target.value,
+                        },
+                      });
+                      setPosition(e.target.value);
+                    }}
+                  />
+                </FormControl>
+              </div>
+
+              <div className="personaldetails_header">
+                <h3>PERSONAL DETAILS </h3>
+              </div>
+
+              <div className="personaldetails_content">
+                <FormControl style={inputStylesB}>
+                  <InputLabel htmlFor="my-input">Address 1</InputLabel>
+                  <Input
+                    type="text"
+                    name="streetOne"
+                    value={editEmp.addressOne.streetOne}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        addressOne: {
+                          ...editEmp.streetOne,
+                          streetOne: e.target.value,
+                        },
+                      })
+                    }
+                  />
+                </FormControl>
+
+                <FormControl style={inputStylesB}>
+                  <InputLabel htmlFor="my-input">Address 2</InputLabel>
+                  <Input
+                    type="text"
+                    name="streetTwo"
+                    value={editEmp.addressTwo?.streetTwo}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        addressTwo: {
+                          ...editEmp.streetTwo,
+                          streetTwo: e.target.value,
+                        },
+                      })
+                    }
+                  />
+                </FormControl>
+
+                <FormControl style={inputStylesB}>
+                  <InputLabel htmlFor="my-input">City</InputLabel>
+                  <Input
+                    type="text"
+                    name="cityOne"
+                    value={editEmp.addressOne.cityOne}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        adressOne: {
+                          ...editEmp.cityOne,
+                          cityOne: e.target.value,
+                        },
+                      })
+                    }
+                  />
+                </FormControl>
+
+                <FormControl style={inputStylesB}>
+                  <InputLabel htmlFor="my-input">Country</InputLabel>
+                  <Input
+                    type="text"
+                    name="countryOne"
+                    value={editEmp.addressOne.countryOne}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        addressOne: {
+                          ...editEmp.countryOne,
+                          countryOne: e.target.value,
+                        },
+                      })
+                    }
+                  />
+                </FormControl>
+                <FormControl style={inputStylesB}>
+                  <InputLabel htmlFor="my-input">State / Region</InputLabel>
+                  <Input
+                    type="text"
+                    name="stateOne"
+                    value={editEmp.addressOne.stateOne}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        addressOne: {
+                          ...editEmp.stateOne,
+                          stateOne: e.target.value,
+                        },
+                      })
+                    }
+                  />
+                </FormControl>
+
+                <FormControl style={inputStylesB}>
+                  <InputLabel htmlFor="my-input">Postal Code</InputLabel>
+                  <Input
+                    type="text"
+                    name="postalCodeOne"
+                    value={editEmp.addressOne.postalCodeOne}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        addressOne: {
+                          ...editEmp.postalCodeOne,
+                          postalCodeOne: e.target.value,
+                        },
+                      })
+                    }
+                  />
+                </FormControl>
+
+                <FormControl style={inputStylesB}>
+                  <InputLabel htmlFor="my-input">Date of Birth</InputLabel>
+                  <Input
+                    type="text"
+                    name="dateOfBirth"
+                    value={editEmp.bio.dateOfBirth}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        bio: {
+                          ...editEmp.dateOfBirth,
+                          dateOfBirth: e.target.value,
+                        },
+                      })
+                    }
+                  />
+                </FormControl>
+
+                <FormControl style={inputStylesB}>
+                  <InputLabel htmlFor="my-input">Other Email</InputLabel>
+                  <Input
+                    type="text"
+                    name="otherEmail"
+                    value={editEmp.bio?.otherEmail}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        bio: {
+                          ...editEmp.otherEmail,
+                          otherEmail: e.target.value,
+                        },
+                      })
+                    }
+                  />
+                </FormControl>
+
+                <FormControl style={inputStylesB}>
+                  <InputLabel htmlFor="my-input">Nationality</InputLabel>
+                  <Input
+                    type="text"
+                    name="nationality"
+                    value={editEmp.bio.nationality}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        bio: {
+                          ...editEmp.nationality,
+                          nationality: e.target.value,
+                        },
+                      })
+                    }
+                  />
+                </FormControl>
+
+                <FormControl style={inputStylesB}>
+                  <InputLabel htmlFor="my-input">Gender</InputLabel>
+                  <Select
+                    labelId="demo"
+                    value={editEmp.bio.gender}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        bio: { ...editEmp.gender, gender: e.target.value },
+                      })
+                    }
+                  >
+                    <MenuItem value="Male">Male</MenuItem>
+                    <MenuItem value="Female">Female</MenuItem>
+                    <MenuItem value="Diverse">Diverse</MenuItem>
+                  </Select>
+                </FormControl>
+
+                <FormControl style={inputStylesB}>
+                  <InputLabel htmlFor="my-input">Marital Status</InputLabel>
+                  <Select
+                    labelId="demo"
+                    value={editEmp.bio.maritalStatus}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        bio: {
+                          ...editEmp.maritalStatus,
+                          maritalStatus: e.target.value,
+                        },
+                      })
+                    }
+                  >
+                    <MenuItem value="Single">Single</MenuItem>
+                    <MenuItem value="Married">Married</MenuItem>
+                    <MenuItem value="Separated">Separated</MenuItem>
+                    <MenuItem value="Not specified">Not Specified</MenuItem>
+                  </Select>
+                </FormControl>
+
+                <FormControl style={inputStylesB}>
+                  <InputLabel htmlFor="my-input">Hobbies</InputLabel>
+                  <Input
+                    type="text"
+                    name="hobbies"
+                    value={editEmp.bio.hobbies}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        bio: { ...editEmp.hobbies, hobbies: e.target.value },
+                      })
+                    }
+                  />
+                </FormControl>
+              </div>
+            </div>
+
+            <div className="next-btn">
+              <button
+                onClick={() => {
+                  history.push({
+                    pathname: "/dashboard/employeedata/editemployee/edithrinfo",
+                    state: { editEmp },
+                  });
+                }}
+              >
+                Next{" "}
+              </button>
+            </div>
+          </FormGroup>
         </div>
-        {/* work Experience update */}
-        <div>
-          <Typography variant="h6">Work Experience</Typography>
-
-          <FormControl>
-            <InputLabel htmlFor="my-input">company</InputLabel>
-            <Input
-              name="company"
-              value={editEmp.workExperience.company}
-              onChange={(e) =>
-                setEditEmp({
-                  ...editEmp,
-                  workExperience: {
-                    ...editEmp.workExperience,
-                    company: e.target.value,
-                  },
-                })
-              }
-            />
-          </FormControl>
-          <FormControl>
-            <InputLabel htmlFor="my-input">Job Title</InputLabel>
-            <Input
-              name="postalCode"
-              value={editEmp.workExperience.jobTitle}
-              onChange={(e) =>
-                setEditEmp({
-                  ...editEmp,
-                  workExperience: {
-                    ...editEmp.workExperience,
-                    jobTitle: e.target.value,
-                  },
-                })
-              }
-            />
-          </FormControl>
-
-          <FormControl>
-            <InputLabel htmlFor="my-input">From</InputLabel>
-            <Input
-              name="from"
-              value={editEmp.workExperience.from}
-              onChange={(e) =>
-                setEditEmp({
-                  ...editEmp,
-                  workExperience: {
-                    ...editEmp.workExperience,
-                    from: e.target.value,
-                  },
-                })
-              }
-            />
-          </FormControl>
-          <FormControl>
-            <InputLabel htmlFor="my-input">To</InputLabel>
-            <Input
-              name="from"
-              value={editEmp.workExperience.to}
-              onChange={(e) =>
-                setEditEmp({
-                  ...editEmp,
-                  workExperience: {
-                    ...editEmp.workExperience,
-                    to: e.target.value,
-                  },
-                })
-              }
-            />
-          </FormControl>
-        </div>
-        <div>
-          {/* contract Info update */}
-          <Typography variant="h6">Hr Info</Typography>
-          <FormControl>
-            <InputLabel htmlFor="my-input">Contract Number</InputLabel>
-            <Input
-              name="contractNo"
-              value={editEmp.contractInfo.contractNo}
-              onChange={(e) =>
-                setEditEmp({
-                  ...editEmp,
-                  contractInfo: {
-                    ...editEmp.contractInfo,
-                    contractNo: e.target.value,
-                  },
-                })
-              }
-            />
-          </FormControl>
-          <FormControl>
-            <InputLabel htmlFor="my-input">hireDate</InputLabel>
-            <Input
-              name="hireDate"
-              value={editEmp.contractInfo.hireDate}
-              onChange={(e) =>
-                setEditEmp({
-                  ...editEmp,
-                  contractInfo: {
-                    ...editEmp.contractInfo,
-                    hireDate: e.target.value,
-                  },
-                })
-              }
-            />
-          </FormControl>
-          <FormControl>
-            <InputLabel htmlFor="my-input">contractEnd</InputLabel>
-            <Input
-              name="contractEnd"
-              value={editEmp.contractInfo.contractEnd}
-              onChange={(e) =>
-                setEditEmp({
-                  ...editEmp,
-                  contractInfo: {
-                    ...editEmp.contractInfo,
-                    contractEnd: e.target.value,
-                  },
-                })
-              }
-            />
-          </FormControl>
-
-          <FormControl>
-            <InputLabel htmlFor="my-input">probationPeriod</InputLabel>
-            <Input
-              name="probationPeriod"
-              value={editEmp.contractInfo.probationPeriod}
-              onChange={(e) =>
-                setEditEmp({
-                  ...editEmp,
-                  contractInfo: {
-                    ...editEmp.contractInfo,
-                    probationPeriod: e.target.value,
-                  },
-                })
-              }
-            />
-          </FormControl>
-          <FormControl>
-            <InputLabel htmlFor="my-input">employmentType</InputLabel>
-            <Input
-              name="employmentType"
-              value={editEmp.contractInfo.employmentType}
-              onChange={(e) =>
-                setEditEmp({
-                  ...editEmp,
-                  contractInfo: {
-                    ...editEmp.contractInfo,
-                    employmentType: e.target.value,
-                  },
-                })
-              }
-            />
-          </FormControl>
-
-          <FormControl>
-            <InputLabel htmlFor="my-input">position</InputLabel>
-            <Input
-              name="position"
-              value={editEmp.contractInfo.position}
-              onChange={(e) =>
-                setEditEmp({
-                  ...editEmp,
-                  contractInfo: {
-                    ...editEmp.contractInfo,
-                    position: e.target.value,
-                  },
-                })
-              }
-            />
-          </FormControl>
-
-          <FormControl>
-            <InputLabel htmlFor="my-input">team</InputLabel>
-            <Input
-              name="team"
-              value={editEmp.contractInfo.team}
-              onChange={(e) =>
-                setEditEmp({
-                  ...editEmp,
-                  contractInfo: {
-                    ...editEmp.contractInfo,
-                    team: e.target.value,
-                  },
-                })
-              }
-            />
-          </FormControl>
-
-          <FormControl>
-            <InputLabel htmlFor="my-input">department</InputLabel>
-            <Input
-              name="department"
-              value={editEmp.contractInfo.department}
-              onChange={(e) =>
-                setEditEmp({
-                  ...editEmp,
-                  contractInfo: {
-                    ...editEmp.contractInfo,
-                    department: e.target.value,
-                  },
-                })
-              }
-            />
-          </FormControl>
-
-          <FormControl>
-            <InputLabel htmlFor="my-input">salary</InputLabel>
-            <Input
-              name="salary"
-              value={editEmp.contractInfo.salary}
-              onChange={(e) =>
-                setEditEmp({
-                  ...editEmp,
-                  contractInfo: {
-                    ...editEmp.contractInfo,
-                    salary: e.target.value,
-                  },
-                })
-              }
-            />
-          </FormControl>
-
-          <FormControl>
-            <InputLabel htmlFor="my-input">overtime</InputLabel>
-            <Input
-              name="overtime"
-              value={editEmp.contractInfo.overtime}
-              onChange={(e) =>
-                setEditEmp({
-                  ...editEmp,
-                  contractInfo: {
-                    ...editEmp.contractInfo,
-                    overtime: e.target.value,
-                  },
-                })
-              }
-            />
-          </FormControl>
-
-          <FormControl>
-            <InputLabel htmlFor="my-input">workLocation</InputLabel>
-            <Input
-              name="workLocation"
-              value={editEmp.contractInfo.workLocation}
-              onChange={(e) =>
-                setEditEmp({
-                  ...editEmp,
-                  contractInfo: {
-                    ...editEmp.contractInfo,
-                    workLocation: e.target.value,
-                  },
-                })
-              }
-            />
-          </FormControl>
-        </div>
-
-        <FormControl>
-          <Button onClick={edit} color="primary">
-            Update
-          </Button>
-        </FormControl>
-      </FormGroup>
+      </div>
     </div>
   );
 };

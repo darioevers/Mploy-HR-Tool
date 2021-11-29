@@ -23,14 +23,12 @@ function TopNav() {
       </div>
       <div className="darkmode_switch">
         <DarkModeSwitch />
+
+        <div className="settings_button">
+          <RightDrawer />
+        </div>
       </div>
-      {role === "admin" && (
-        <>
-          <div className="settings_button">
-            <RightDrawer />
-          </div>
-        </>
-      )}
+      {role === "admin" && <></>}
     </div>
   );
 }
