@@ -1,57 +1,57 @@
 .contact_mainbox {
-    height: 70vh;
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 6rem;
-    .contact_textbox {
-        width: 40%;
-        #contact_tabs {
-            width: 100%;
-            margin-top: 20px;
-            @media only screen and (max-width: 600px){
-                /*Big smartphones [426px -> 600px]*/
-                width: 80vw;
-            }
-            #contact_tabs_icon {
-                width: 33%;
-            }
-        }
-        @media only screen and (max-width: 1200px){
-            /*Tablets [601px -> 1200px]*/
-        }
-        @media only screen and (max-width: 600px){
-            /*Big smartphones [426px -> 600px]*/
-            width: 80vw;
-        }
-        @media only screen and (max-width: 425px){
-            /*Small smartphones [325px -> 425px]*/
-        }
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 6rem;
+  margin-bottom: 6rem;
+  .contact_textbox {
+    width: 40%;
+    #contact_tabs {
+      width: 100%;
+      margin-top: 20px;
+      @media only screen and (max-width: 600px) {
+        /*Big smartphones [426px -> 600px]*/
+        width: 80vw;
+      }
+      #contact_tabs_icon {
+        width: 33%;
+      }
     }
-    .contact_formbox {
-        width: 50%;
-        display: block;
-        margin: 0 auto;
-        max-width: 600px;
-        #boxtest {
-            display: block;
-        }
-        @media only screen and (max-width: 1200px){
-            /*Tablets [601px -> 1200px]*/
-        }
-        @media only screen and (max-width: 600px){
-            /*Big smartphones [426px -> 600px]*/
-            width: 80vw;
-        }
-        @media only screen and (max-width: 425px){
-            /*Small smartphones [325px -> 425px]*/
-        }
-        #contactform_name {
-            width: 100%;
-        }
+    @media only screen and (max-width: 1200px) {
+      /*Tablets [601px -> 1200px]*/
     }
+    @media only screen and (max-width: 600px) {
+      /*Big smartphones [426px -> 600px]*/
+      width: 80vw;
+    }
+    @media only screen and (max-width: 425px) {
+      /*Small smartphones [325px -> 425px]*/
+    }
+  }
+  .contact_formbox {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+    max-width: 600px;
+    #boxtest {
+      display: block;
+    }
+    @media only screen and (max-width: 1200px) {
+      /*Tablets [601px -> 1200px]*/
+    }
+    @media only screen and (max-width: 600px) {
+      /*Big smartphones [426px -> 600px]*/
+      width: 80vw;
+    }
+    @media only screen and (max-width: 425px) {
+      /*Small smartphones [325px -> 425px]*/
+    }
+    #contactform_name {
+      width: 100%;
+    }
+  }
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }

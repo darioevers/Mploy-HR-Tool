@@ -6,23 +6,15 @@
   }
 }
 
-
-
-
 // LANDING PAGE CONTENT WIDTH
 .homearea {
   width: 75vw;
   // CONTENT WIDTH FOR BIGGER SCREENS >1536px
   margin: 0 auto;
-  @media only screen and (max-width: 1536px){
+  @media only screen and (max-width: 1536px) {
     // CONTENT WIDTH FOR ALL SCREENS <1536PX
     width: 85vw;
   }
-}
-
-.loginarea {
-  width: 80vw;
-  margin: 0 auto;
 }
 
 .maindashboard_area {
