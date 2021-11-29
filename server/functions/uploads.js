@@ -27,7 +27,7 @@ const storage = multer.diskStorage({
 //   }
 // };
 
-const uploads = multer({ storage: storage });
-// const uploadMultiple = uploads.fields([{ name: 'file', maxCount: 10 }, { name: 'fileCv', maxCount: 10 },  { name: 'fileDiploma', maxCount: 10 }, { name: 'fileLetter', maxCount: 10 },  { name: 'fileCetificate', maxCount: 10 }])
+const uploads = multer({ storage: storage});
+ const uploadMultiple = uploads.fields([{ name: 'file', maxCount: 10 }, { name: 'fileCv', maxCount: 10 },  { name: 'fileDiploma', maxCount: 10 }, { name: 'fileLetter', maxCount: 10 },  { name: 'fileCetificate', maxCount: 10 }])
 
-module.exports = { uploads };
+module.exports = { uploadMultiple };
