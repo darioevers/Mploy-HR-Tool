@@ -42,9 +42,11 @@
   },
   "landingRegister": {
     "title01": "Registrieren",
-    "formdesc01": "Benutzername",
-    "formdesc02": "E-Mail Adresse",
-    "formdesc03": "Passwort",
+    "formdesc01": "Vorname",
+    "formdesc02": "Nachname",
+    "formdesc03": "E-Mail Adresse",
+    "formdesc04": "Passwort",
+    "formdesc05": "Passwort bestätigen",
     "button01": "REGISTRIEREN",
     "link01": "Sind Sie bereits registriert? Jetzt anmelden!"
   },

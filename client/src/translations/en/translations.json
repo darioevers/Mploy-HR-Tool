@@ -42,9 +42,11 @@
   },
   "landingRegister": {
     "title01": "Sign Up",
-    "formdesc01": "Username",
-    "formdesc02": "Email Address",
-    "formdesc03": "Password",
+    "formdesc01": "First Name",
+    "formdesc02": "Last Name",
+    "formdesc03": "Email address",
+    "formdesc04": "Password",
+    "formdesc05": "Confirm Password",
     "button01": "SIGN UP",
     "link01": "Already have an account? Sign in"
   },
