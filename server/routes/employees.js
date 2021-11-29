@@ -12,22 +12,22 @@ router.get("/allemployee/", employeesController.getAllEmployees);
 //get employee by id
 router.get("/singleEmployee/:id", employeesController.getOneEmployee);
 
+<<<<<<< HEAD
 // add new Employee
 router.post(
   "/addemployee",
   uploads.single("file"),
   employeesController.addNewEmployee
 );
+=======
+router.post("/addemployee",uploads.single("file"), employeesController.addNewEmployee);
+>>>>>>> main
 
 // search for employee
 router.post("/search", employeesController.searchName);
 
 // update employee
-router.put(
-  "/update/",
-  uploads.single("file"),
-  employeesController.updateEmployee
-);
+router.put("/update/", employeesController.updateEmployee);
 
 // updating status ||deleting from the get all employees
 router.patch("/delete", employeesController.deleteOrUpdateStatus);

@@ -53,6 +53,7 @@ employeeController.addNewEmployee = async (req, res) => {
   const received = JSON.parse(req.body.employeeData);
   const path = req.file && req.file.path.substring(7);
 
+
   try {
     const employee = await new EmployeeData({
       bio: {
@@ -67,8 +68,12 @@ employeeController.addNewEmployee = async (req, res) => {
         maritalStatus: received.maritalStatus,
         status: "active",
         role: received.role,
-        photo: path,
         hobbies: received.hobbies,
+        photo: path,
+        cv:path,
+        certificate:path,
+        diploma:path,
+        letter:path,
       },
       addressOne: {
         streetOne: received.streetOne,
@@ -110,6 +115,8 @@ employeeController.addNewEmployee = async (req, res) => {
         salary: received.salary,
         overtime: received.overtime,
         workLocation: received.workLocation,
+       
+
       },
       availableHolidays: 30,
       availableHomeOffice: 30,

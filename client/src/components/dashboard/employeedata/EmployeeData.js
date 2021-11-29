@@ -62,7 +62,10 @@ function EmployeeData({ history }) {
         },
       })
 
-      .then((data) => setEmployees(data.data))
+      .then((data) => {
+        console.log(data);
+        setEmployees(data.data);
+      })
       .catch((err) => console.log(err));
   };
 
@@ -182,6 +185,7 @@ function EmployeeData({ history }) {
                           <TableCell>
                             {employee.contractInfo?.department}
                           </TableCell>
+
                           <TableCell>{employee.bio.email}</TableCell>
                           <TableCell>{employee.bio.dateOfBirth}</TableCell>
                         </TableRow>

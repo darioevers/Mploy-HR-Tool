@@ -21,6 +21,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Alert from "@mui/material/Alert";
+import HowToRegIcon from "@mui/icons-material/HowToReg";
 
 const theme = createTheme();
 
@@ -101,55 +102,96 @@ const RegisterScreen = ({ history }) => {
             component="form"
             noValidate
             onSubmit={registerHandler}
-            sx={{ mt: 3 }}
+            sx={{ mt: 2 }}
           >
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={12}>
+            <Grid container spacing={0.5}>
+              <Grid item xs={6} sm={6}>
                 <TextField
-                  autoComplete="username"
-                  name="username"
+                  type="text"
+                  label={t("landingRegister.formdesc01")}
+                  name="firstName"
+                  margin="normal"
+                  autoFocus
+                  fullWidth
+                  required
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                />
+              </Grid>
+              <Grid item xs={6} sm={6}>
+                <TextField
+                  type="text"
+                  margin="normal"
                   required
                   fullWidth
-                  id="username"
-                  label={t("landingRegister.formdesc01")}
                   autoFocus
+<<<<<<< HEAD
                   onChange={(e) => setFirstName(e.target.value)}
+=======
+                  name="lastName"
+                  value={lastName}
+                  label={t("landingRegister.formdesc02")}
+                  id="lastName"
+                  onChange={(e) => setLastName(e.target.value)}
+>>>>>>> main
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  type="email"
+                  id="email"
                   required
                   fullWidth
-                  id="email"
-                  label={t("landingRegister.formdesc02")}
+                  autoFocus
+                  label={t("landingRegister.formdesc03")}
                   name="email"
                   autoComplete="email"
+                  value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  autoComplete="true"
+                  value={password}
+                  margin="normal"
                   required
                   fullWidth
                   name="password"
-                  label={t("landingRegister.formdesc03")}
+                  label={t("landingRegister.formdesc04")}
                   type="password"
                   id="password"
-                  autoComplete="new-password"
+                  autoComplete="current-password"
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  id="confirmpassword"
+                  autoComplete="true"
+                  required
+                  fullWidth
+                  name="password"
+                  label={t("landingRegister.formdesc05")}
+                  type="password"
+                  autoComplete="current-password"
+                  value={confirmpassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  size="large"
+                  sx={{ mt: 3, mb: 2 }}
+                >
+                  {t("landingRegister.button01")}
+                </Button>
+              </Grid>
             </Grid>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              size="large"
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              sx={{ mt: 3, mb: 2 }}
-            >
-              {t("landingRegister.button01")}
-            </Button>
+
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link to={"/login"} variant="body1" sx={{ fontWeight: 300 }}>

@@ -6,6 +6,8 @@ import axios from "axios";
 import { useTranslation } from "react-i18next";
 
 // IMPORT COMPONENTS
+
+
 import LandingpageTopnav from "../navigation/LandingpageTopnav";
 import LandingpageFooter from "../navigation/LandingpageFooter";
 
@@ -18,8 +20,10 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
 import Alert from "@mui/material/Alert";
+import Container from "@mui/material/Container";
+
+import VpnKeyIcon from '@mui/icons-material/VpnKey';
 
 const ResetPasswordScreen = ({ history, match }) => {
   const [password, setPassword] = useState("");
@@ -71,6 +75,7 @@ const ResetPasswordScreen = ({ history, match }) => {
   return (
     <div>
       <LandingpageTopnav />
+
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -147,11 +152,13 @@ const ResetPasswordScreen = ({ history, match }) => {
           </Box>
         </Box>
       </Container>
+
     </div>
   );
 };
 
 export default ResetPasswordScreen;
+
 
 {
   /* <div className="resetpassword-screen">
@@ -196,3 +203,4 @@ export default ResetPasswordScreen;
 </form>
 </div> */
 }
+

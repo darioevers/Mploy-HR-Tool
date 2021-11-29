@@ -1,12 +1,13 @@
 .landingpage_footer_backgroundbox {
   width: 100vw;
+  margin: 0 auto;
 }
 .homefooter_mainbox {
   align-items: center;
   width: 75vw;
   padding: 2rem 0rem;
   margin: 0 auto;
-  @media only screen and (max-width: 1536px){
+  @media only screen and (max-width: 1536px) {
     /*Big smartphones [426px -> 600px]*/
     width: 85vw;
   }
@@ -52,4 +53,36 @@ hr {
   padding-bottom: 10px;
   font-size: 20px;
   font-weight: bold;
+}
+
+@media only screen and (max-width: 504px) {
+  /* Screens [maximum 504px]*/
+  .landingpage_footer_backgroundbox {
+    .homefooter_mainbox {
+      .homefooter_topic {
+        padding-top: 18px;
+        font-size: 10px;
+        .homefooter_subtopic_1 {
+          .homefooter_subtopic_header {
+            font-size: 14px;
+          }
+        }
+        .homefooter_subtopic_2 {
+          .homefooter_subtopic_header {
+            font-size: 14px;
+          }
+        }
+        .homefooter_subtopic_3 {
+          .homefooter_subtopic_header {
+            font-size: 14px;
+          }
+        }
+        .homefooter_subtopic_4 {
+          .homefooter_subtopic_header {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
 }
