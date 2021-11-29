@@ -31,5 +31,100 @@
   },
   "contact": {
     "title": "Get in touch."
+  },
+  "landingLogin": {
+    "title01": "Sign In",
+    "formdesc01": "Email Address",
+    "formdesc02": "Password",
+    "button01": "SIGN IN",
+    "link01": "Forgot Password?",
+    "link02": "Dont have an account? Sign Up!"
+  },
+  "landingRegister": {
+    "title01": "Sign Up",
+    "formdesc01": "Username",
+    "formdesc02": "Email Address",
+    "formdesc03": "Password",
+    "button01": "SIGN UP",
+    "link01": "Already have an account? Sign in"
+  },
+  "landingForgotPw": {
+    "title01": "Forgot your password?",
+    "title02": "Enter your email address and we'll send you a link to reset your password.",
+    "formdesc01": "Email address",
+    "button01": "RESET PASSWORD",
+    "link01": "Login",
+    "link02": "Register"
+  },
+  "landingResetPw": {
+    "title01": "Reset password",
+    "formdesc01": "New password",
+    "formdesc02": "Confirm new password",
+    "button01": "SAVE NEW PASSWORD",
+    "link01": "Login"
+  },
+  "landingAlerts": {
+    "success": "Great Job!",
+    "error": "Something went wrong. Sorry!"
+  },
+  "solutions": {
+    "title01": "HR has never been easier.",
+    "gridTitle01": "Setup in minutes",
+    "gridTitle02": "Manage everything in one workspace",
+    "gridTitle03": "Its so cheap",
+    "gridDesc01": "We dont want you to waste any time. You can test the dashboard within moments from now. Simply sign-up, login and explore our example corporation. Feel free to reach out if you have any questions.",
+    "gridDesc02": "MPloy allows you to manage your entire HR day-to-day business from within one workspace. Check how many employees are sick or on leave. Send company-wide announcements, plan upcoming events and send payslips to your employees.",
+    "gridDesc03": "Actually, its completely free for you to use! There will be no fee charged if you use our demo. Check out our pricing table via the button below to learn more.",
+    "gridButton01": "",
+    "gridButton02": "",
+    "gridButton03": "PRICING"
+  },
+  "aboutIntro": {
+    "title01": "What's this about?",
+    "body01": "MPloy is our groups final project for the DCI Web-Developer course. We are Maryam, Alex and Dario. After attending the full-time course for 11 months, we used the past 5 weeks to work on our final project and learned a lot on the way.",
+    "title02": "Our Idea",
+    "body02": "We wanted to build a full-stack react app that is more flexible in its use. Thats why we came up with a visualized Data Management System aka MPloy HR Tool.",
+    "title03": "The Journey",
+    "body03": "For the past 5 weeks we have planned, developed and brainstormed with a strict eye for design and useability. We have faced a number of bugs, but fixed them all."
+  },
+  "aboutInfo": {
+    "title01": "Digital Career Institute",
+    "title02": "In a nutshell",
+    "grid01": "commits",
+    "grid02": "lines of code",
+    "grid03": "messages",
+    "grid04": "hours",
+    "grid05": "techs",
+    "grid06": "unlimited",
+    "grid07": "learned"
+  },
+  "aboutProject": {
+    "title01": "How we've worked",
+    "body01": "We wanted to build a full-stack react app that is more flexible in its use. Thats why we came up with a visualized Data Management System aka MPloy HR Tool.",
+    "timelineStep01": "Step 1",
+    "timelineStep02": "Step 2",
+    "timelineStep03": "Step 3",
+    "timelineStep04": "Step 4",
+    "timelineTitle01": "Setup",
+    "timelineTitle02": "UI / UX",
+    "timelineTitle03": "Front-End",
+    "timelineTitle04": "Back-End",
+    "timelineDesc01": "We started the setup-phase by discussing our project ideas and agreeing on building an HR-Tool. In order to have proper communication we've setup daily comms via Slack and Zoom. Additionally, we have pre-planned high-priority tasks in trello and started building our coding environment in Github.",
+    "timelineDesc02": "A big part of this phase was spent researching and building a base for the projects design. Using Figma, we've build a working prototype of the project. Graphics were used from Envato Elements and edited with Adobe (PS/AI).",
+    "timelineDesc03": "The ReactJS based Front-End consists of the main components from the landingpage and the dashboard. There are around 60 components, which partially interlock in each other. MUI and i18n were used for layouting, dark modes and language switches.",
+    "timelineDesc04": "We wanted to build a full-stack react app that is more flexible in its use. Thats why we came up with a visualized Data Management System aka MPloy HR Tool."
+  },
+  "aboutTools": {
+    "title01": "tech used"
+  },
+  "aboutTeam": {
+    "title01": "Who we are",
+    "body01": "We are three students of the FBW-48-1 class at the Digital Career Institute. For the past 11 months, we have worked together with 15 other students and our teacher. We are happy to present you our final project.",
+    "teamDesc01": "alex description lorem ipsum",
+    "teamDesc02": "dario description lorem ipsum",
+    "teamDesc03": "maryam description lorem ipsum",
+    "teamRole01": "Front-End / Back-End",
+    "teamRole02": "Front-End / Project Manager",
+    "teamRole03": "Back-End"
   }
 }

@@ -1,23 +1,24 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+
+// TRANSLATION IMPORTS
+import { useTranslation } from "react-i18next";
 
 // MUI IMPORTS
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Alert from "@mui/material/Alert";
 
 // COMPONENT IMPORTS
-import LandingpageTopnav from "../LandingpageTopnav";
+import LandingpageTopnav from "../navigation/LandingpageTopnav";
 
 const LoginScreen = ({ history, location }) => {
   const [email, setEmail] = useState("");
@@ -62,6 +63,8 @@ const LoginScreen = ({ history, location }) => {
     }
   };
 
+  const { t } = useTranslation();
+
   return (
     <div>
       <LandingpageTopnav />
@@ -75,7 +78,7 @@ const LoginScreen = ({ history, location }) => {
           <CssBaseline />
           <Box
             sx={{
-              marginTop: 8,
+              marginTop: 20,
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
@@ -85,8 +88,13 @@ const LoginScreen = ({ history, location }) => {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Sign in
+              {t("landingLogin.title01")}
             </Typography>
+            {error && (
+              <Alert severity="error" sx={{ width: "100%" }}>
+                {t("landingAlerts.error")}
+              </Alert>
+            )}
             <Box
               component="form"
               onSubmit={loginHandler}
@@ -98,7 +106,7 @@ const LoginScreen = ({ history, location }) => {
                 required
                 fullWidth
                 id="email"
-                label="Email Address"
+                label={t("landingLogin.formdesc01")}
                 name="email"
                 autoComplete="email"
                 onChange={(e) => setEmail(e.target.value)}
@@ -109,7 +117,7 @@ const LoginScreen = ({ history, location }) => {
                 required
                 fullWidth
                 name="password"
-                label="Password"
+                label={t("landingLogin.formdesc02")}
                 type="password"
                 id="password"
                 autoComplete="current-password"
@@ -119,19 +127,24 @@ const LoginScreen = ({ history, location }) => {
                 type="submit"
                 fullWidth
                 variant="contained"
+                size="large"
                 sx={{ mt: 3, mb: 2 }}
               >
-                Sign In
+                {t("landingLogin.button01")}
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link to="/forgotpassword" variant="body2">
-                    Forgot password?
+                  <Link to={"/forgotpassword"}>
+                    <Typography variant="body1" sx={{ fontWeight: 300 }}>
+                      {t("landingLogin.link01")}
+                    </Typography>
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link to="/register" variant="body2">
-                    {"Don't have an account? Sign Up"}
+                  <Link to={"/register"}>
+                    <Typography variant="body1" sx={{ fontWeight: 300 }}>
+                      {t("landingLogin.link02")}
+                    </Typography>
                   </Link>
                 </Grid>
               </Grid>

@@ -1,24 +1,24 @@
-.homeheader_mainbox{
-    .homeheader_mainbox_content {
-        display: flex;
-        justify-content: center;
-        align-items: center; 
-        width: 80%;
-        margin: 0 auto;
-        .homeheader_mainbox_leftcontent {
-            width: 50%;
-            height: 60%;
-            justify-content: center;
-            .coloured_heading {
-                @include text-gradient-red-blue;
-            }
-        }
-        .homeheader_mainbox_rightcontent {
-            width: 50%;
-            height: 70%;
-            img {
-                width: 100%;
-            }
-        }
+.homeheader_mainbox {
+  .homeheader_mainbox_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+    .homeheader_mainbox_leftcontent {
+      width: 50%;
+      height: 60%;
+      justify-content: center;
+      .coloured_heading {
+        @include text-gradient-red-blue;
+      }
     }
+    .homeheader_mainbox_rightcontent {
+      width: 50%;
+      height: 70%;
+      img {
+        width: 100%;
+      }
+    }
+  }
 }
