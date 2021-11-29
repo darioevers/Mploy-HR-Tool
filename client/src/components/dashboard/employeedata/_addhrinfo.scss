@@ -1,0 +1,79 @@
+.addhrinfo_wrapper {
+  width: 78vw;
+  height: 86vh;
+  position: relative;
+  h1 {
+    border-bottom: 1px solid $tertiary;
+    margin-bottom: 10px;
+  }
+}
+.addhrinfo_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  padding: 0px 20px;
+}
+
+.active_tab {
+  @include flex-center;
+  // background-color: $tertiary;
+  //   width: 20%;
+  height: 40px;
+  border-bottom: 1px solid $highlight;
+  // border-top-right-radius: 7px;
+  // border-top-left-radius: 7px;
+  padding: 3px 10px;
+  color: $dark-bg;
+}
+
+.addhrinfo_contractdetails_header,
+.addhrinfo_education_header,
+.addhrinfo_workexperience_header {
+  @include md {
+    margin-top: 40px;
+  }
+  h3 {
+    @include md {
+      font-size: 16px;
+    }
+  }
+}
+
+// .education_header,
+// .workexperience_header {
+//   margin-top: 20px;
+// }
+
+// .workdetails_content,
+// .education_content,
+// .workexperience_content {
+//   display: flex;
+//   flex-wrap: wrap;
+// }
+
+.hr-save-btn {
+  @include flex-center;
+  margin-top: 30px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  button {
+    width: 250px;
+    height: 35px;
+    border: none;
+    border-radius: 10px;
+    background-color: $highlight;
+    color: $primary;
+  }
+}
+
+.add-btn {
+  width: 150px;
+  height: 30px;
+  color: $highlight;
+  background-color: transparent;
+  border: 1px solid $highlight;
+  margin-top: 10px;
+  border-radius: 5px;
+}

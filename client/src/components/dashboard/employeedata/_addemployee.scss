@@ -5,7 +5,7 @@
 .addemployee_wrapper {
   width: 78vw;
   h1 {
-    border-bottom: 1px solid $secondary;
+    border-bottom: 1px solid $tertiary;
     margin-bottom: 10px;
   }
 }
@@ -13,34 +13,39 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 95%;
+  padding: 0px 20px;
 }
 
 .active_tab {
   @include flex-center;
-  background-color: $tertiary;
   width: 20%;
-  height: 30px;
-  border-top-right-radius: 7px;
-  border-top-left-radius: 7px;
+  height: 40px;
+  border-bottom: 1px solid $highlight;
   padding: 3px 10px;
   color: $dark-bg;
 }
 
 .employeedata_form {
-  background-color: $tertiary;
   height: 93%;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
+  width: 95%;
 }
 
 .form_header {
+  @include md {
+    margin: 15px;
+  }
   position: relative;
   display: flex;
-  margin: 50px;
-  margin-bottom: 25px;
+  margin: 25px 50px;
   .photo {
     flex-direction: column;
     label {
+      @include md {
+        visibility: hidden;
+        width: 0;
+        height: 0;
+      }
       background-color: $primary;
       color: $highlight;
       cursor: pointer;
@@ -59,15 +64,22 @@
 }
 
 .dummy_photo {
+  @include md {
+    width: 80px;
+    height: 80px;
+    margin: 20px;
+    margin-right: 5px;
+  }
   @include flex-center;
   width: 120px;
   height: 120px;
-  border-radius: 50%;
+
   background-color: $primary;
   margin-bottom: 5px;
-  i {
-    color: $secondary;
-    margin-top: 5px;
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
   }
 }
 
@@ -78,6 +90,11 @@
 .fullname {
   display: flex;
   h1 {
+    @include md {
+      font-size: 22px;
+      margin-top: 15px;
+      margin-bottom: 0;
+    }
     font-size: 30px;
     border: none;
     margin-bottom: 5px;
@@ -89,6 +106,9 @@
 
 .position {
   h3 {
+    @include md {
+      font-size: 16px;
+    }
     background-color: transparent;
     font-size: 18px;
     font-weight: 100;
@@ -96,11 +116,19 @@
 }
 
 .contacts {
+  @include md {
+    margin-top: 5px;
+  }
   display: flex;
   align-items: center;
   margin-top: 12px;
   input {
-    background-color: $primary;
+    @include md {
+      width: 30vw;
+      margin-right: 0px;
+      font-size: 12px;
+    }
+    width: 220px;
     font-size: 14px;
     border: none;
     border-radius: 5px;
@@ -110,53 +138,60 @@
   }
 }
 
-.form_basicdetails {
+.form_generaldata {
+  @include md {
+    margin-left: 0px;
+    height: 500px;
+    overflow: scroll;
+    border-radius: 20px;
+    padding: 0px 50px;
+    margin-top: -30px;
+    width: 100vw;
+  }
   width: 100%;
   display: flex;
   flex-direction: column;
   margin-left: 50px;
 }
 
+.basicdetails_header {
+  @include md {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+  margin-bottom: -20px;
+}
 .basicdetails_content {
+  @include md {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
   display: flex;
   flex-wrap: wrap;
   margin-top: 20px;
-  h2 {
+}
+
+.personaldetails_header {
+  @include md {
     font-size: 15px;
-    width: 12%;
+    margin-bottom: 0px;
   }
-  input {
-    width: 32%;
-    background-color: $primary;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    margin: 0px 20px 10px 0px;
-    padding: 2px 10px;
-  }
-}
-
-.personal_details_header {
   margin-top: 20px;
+  margin-bottom: -20px;
 }
 
-.personal_details_content {
+.personaldetails_content_one {
   display: flex;
   flex-wrap: wrap;
   margin-top: 20px;
-  h2 {
-    font-size: 15px;
-    width: 12%;
-  }
-  input {
-    font-size: 16px;
-    width: 32%;
-    background-color: $primary;
-    border: none;
-    border-radius: 5px;
-    margin: 0px 20px 10px 0px;
-    padding: 2px 10px;
-  }
+}
+
+.personaldetails_content_two {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
 }
 .next-btn {
   @include flex-center;
@@ -164,7 +199,7 @@
   width: 100%;
   button {
     width: 150px;
-    height: 30px;
+    height: 35px;
     border: none;
     border-radius: 10px;
     background-color: $highlight;

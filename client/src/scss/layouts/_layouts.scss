@@ -19,4 +19,5 @@
 
 .maindashboard_area {
   @include main_dashboard_grid;
+  overflow: hidden;
 }

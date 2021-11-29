@@ -5,27 +5,48 @@
   align-items: center;
 }
 
-// COLORED HEADINGS 
+// COLORED HEADINGS
 @mixin text-gradient-red-blue {
-    background: #d32de5; /* Old browsers */
-background: -moz-linear-gradient(-45deg, #EE6C4D 0%, #98C1D9 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(-45deg, #EE6C4D 0%,#98C1D9 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(135deg, #EE6C4D 0%,#98C1D9 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
--webkit-background-clip: text;
+  background: #d32de5; /* Old browsers */
+  background: -moz-linear-gradient(
+    -45deg,
+    #ee6c4d 0%,
+    #98c1d9 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    -45deg,
+    #ee6c4d 0%,
+    #98c1d9 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    135deg,
+    #ee6c4d 0%,
+    #98c1d9 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 //WIDGET WRAPPER
 @mixin widget-wrapper {
   width: 100%;
+  min-width: 400px;
   height: 100%;
   // min-height: 150px;
   background-color: $light-bg;
-  border-radius:15px;
+  border-radius: 15px;
 }
 
 //MAIN DASHBOARD GRID
 @mixin main_dashboard_grid {
+  @include md {
+    min-width: 100vw;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    overflow: hidden;
+  }
   width: 98vw;
   height: 95vh;
   min-width: 1366px;
@@ -44,6 +65,7 @@ background: linear-gradient(135deg, #EE6C4D 0%,#98C1D9 100%); /* W3C, IE10+, FF1
 
 // MEDIA QUERYS
 // Small devices
+
 @mixin sm {
   @media (min-width: #{$screen-sm-min}) {
     @content;
@@ -52,7 +74,7 @@ background: linear-gradient(135deg, #EE6C4D 0%,#98C1D9 100%); /* W3C, IE10+, FF1
 
 // Medium devices
 @mixin md {
-  @media (min-width: #{$screen-md-min}) {
+  @media only screen and (max-width: #{$screen-md-min}) {
     @content;
   }
 }

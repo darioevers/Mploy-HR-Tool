@@ -1,4 +1,39 @@
-.widget_announcements_mainbox {
+.widget_announcements_mainbox_hide {
+  @include md {
+    position: fixed;
+    height: 92%;
+    top: 0%;
+    right: 0;
+    width: 75%;
+    border-radius: 0px;
+    z-index: 3;
+    transition: 0.5s;
+    min-width: 75%;
+  }
+  @include widget-wrapper;
+  background-color: $dark-bg;
+  grid-area: widget_announcements;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.5fr 1.5fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "header"
+    "body";
+}
+
+.widget_announcements_mainbox_show {
+  @include md {
+    position: fixed;
+    height: 92%;
+    top: 0%;
+    right: 0;
+    width: 0%;
+    z-index: 3;
+    border-radius: 0px;
+    transition: 0.5s;
+    min-width: 0%;
+  }
   @include widget-wrapper;
   background-color: $dark-bg;
   grid-area: widget_announcements;
@@ -12,6 +47,9 @@
 }
 
 .widget_announcements_header {
+  @include md {
+    margin-top: 30px;
+  }
   grid-area: header;
   margin: 15px 0px 0px 20px;
   position: fixed;
@@ -21,7 +59,56 @@
   }
 }
 
+.widget_announcements_sidedrawer {
+  @include md {
+    visibility: visible;
+    position: absolute;
+    left: -20px;
+    top: 51%;
+    z-index: 0;
+  }
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  cursor: pointer;
+  .side-close {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-right: 2px;
+    height: 130px;
+    width: 40px;
+    border-radius: 25px;
+    background-color: $dark-bg;
+    color: $primary;
+    i {
+      transform: none;
+      transition: transform 1;
+    }
+  }
+  .side-open {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-right: 2px;
+    height: 130px;
+    width: 40px;
+    border-radius: 25px;
+    background-color: $dark-bg;
+    color: $primary;
+    i {
+      transform: scaleX(-1);
+      transition: transform 0.5s;
+    }
+  }
+}
+
 .widget_announcements_display {
+  @include md {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
   @include flex-center;
   position: relative;
   width: 100%;
@@ -42,7 +129,9 @@
 }
 
 .widget_announcement {
-  width: 100vw;
+  @include md {
+    height: 160px;
+  }
   height: 140px;
   display: flex;
   color: $primary;
@@ -54,9 +143,15 @@
   flex-direction: column;
   margin-right: 15px;
   h4 {
+    @include md {
+      font-size: 12px;
+    }
     font-size: 15px;
   }
   h3 {
+    @include md {
+      font-size: 25px;
+    }
     margin-top: -5px;
     font-size: 30px;
   }
@@ -78,19 +173,32 @@
   // justify-content: space-between;
   flex-direction: column;
   margin-bottom: 20px;
-  width: 250px;
+  width: 180px;
   // height: 90px;
   text-overflow: ellipsis;
   h3 {
+    @include md {
+      font-size: 17px;
+    }
     font-size: 19px;
     color: $highlight;
   }
   h4 {
+    @include md {
+      font-size: 10px;
+      margin-top: 2px;
+    }
     font-size: 11.5px;
     font-weight: 300;
     color: $secondary;
     margin-top: 5px;
     text-align: justify;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
   p {
     font-size: 11.5px;
@@ -100,6 +208,9 @@
 }
 
 .widget_announcements_icons {
+  @include md {
+    font-size: 10px;
+  }
   display: flex;
   justify-content: space-between;
   position: absolute;
@@ -143,6 +254,12 @@
 // }
 
 .expand_container {
+  @include md {
+    width: 80%;
+    top: 10%;
+    left: 10%;
+    height: 80%;
+  }
   width: 40%;
   position: absolute;
   top: 20%;
@@ -171,6 +288,11 @@
 .expand_subheader {
   display: flex;
   p {
+    @include md {
+      font-size: 10px;
+      margin-right: 2px;
+      border: none;
+    }
     color: $secondary;
     font-size: 12px;
     // font-style: italic;
@@ -250,5 +372,41 @@
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: $highlight;
+  background: $dark-bg;
+}
+
+//mobile
+
+.widget_announcements_mobile_show {
+  @include md {
+    display: flex;
+    flex-direction: column;
+    margin: 100px 0px 0px 40px;
+    width: 500px;
+  }
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.widget_announcements_mobile_hide {
+  @include md {
+    display: flex;
+    flex-direction: column;
+    margin: 100px 0px 0px 50px;
+    width: 0px;
+  }
+  visibility: visible;
+  width: 0;
+  height: 0;
+}
+
+.widget_announcements_divider_mobile {
+  .line {
+    background-color: transparent;
+    width: 100%;
+    height: 20px;
+    margin: 5px 0;
+    border-bottom: 1px solid $secondary;
+  }
 }

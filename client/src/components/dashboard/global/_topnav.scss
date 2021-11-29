@@ -1,4 +1,7 @@
 .topnav_mainbox {
+  @include md {
+    display: none;
+  }
   display: flex;
   justify-content: space-between;
   grid-area: topnav_mainbox;

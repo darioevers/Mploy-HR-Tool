@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-function WidgetSickLeave() {
+function WidgetSickLeave({ userdata }) {
   //fetch leaves data
   const [leaves, setLeaves] = useState();
   useEffect(() => {
@@ -49,8 +49,8 @@ function WidgetSickLeave() {
         <h2>
           {leaves &&
             leaves
-              .filter((item) => item.bio.email === "alex.albaran@mploy.com")
-              .map((item) => <h2>{item.takenSickLeave}</h2>)}
+              .filter((item) => item.bio.email === userdata.bio?.email)
+              .map((item) => <h2>{item.takenSickLeave || "0"}</h2>)}
         </h2>
         <h4>Days Taken</h4>
       </div>
