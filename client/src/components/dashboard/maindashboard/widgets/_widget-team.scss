@@ -6,6 +6,7 @@
     left: 4.5%;
     width: 60%;
     z-index: -1;
+    min-width: 60%;
   }
   @include widget-wrapper;
   grid-area: widget_team;

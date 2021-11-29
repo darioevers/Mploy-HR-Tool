@@ -5,7 +5,8 @@
     top: 62%;
     right: 4.5%;
     width: 39%;
-    z-index: -1;
+    z-index: 0;
+    min-width: 39%;
   }
   @include widget-wrapper;
   grid-area: widget_tasks;
@@ -36,6 +37,7 @@
   h1 {
     margin: 7px 20px;
     font-size: 16px;
+    background-color: red;
   }
   .horizontal_line {
     margin-top: -5px;

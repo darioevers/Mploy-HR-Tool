@@ -112,7 +112,7 @@ function WidgetTasks() {
     <div className="widget_tasks_mainbox">
       <div className="taskwidget_mobile">
         <div className="taskwidget_mobile_header">
-          <h1>TASK WIDGETS</h1>
+          <h1>TASKS</h1>
           <div className="horizontal_line"></div>
           <div className="add-btn">+</div>
         </div>

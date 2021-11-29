@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-function WidgetHomeOffice() {
+function WidgetHomeOffice({ userdata }) {
   //fetch leaves data
   const [leaves, setLeaves] = useState();
   useEffect(() => {
@@ -41,7 +41,7 @@ function WidgetHomeOffice() {
       <div className="homeoffice_bottomleft_wrapper">
         {leaves &&
           leaves
-            .filter((item) => item.bio.email === "mark.albaran@outlook.com")
+            .filter((item) => item.bio.email === userdata.bio?.email)
             .map((item) => <h2>{item.availableHomeOffice}</h2>)}
         <h4>Available</h4>
       </div>
@@ -53,8 +53,8 @@ function WidgetHomeOffice() {
       <div className="homeoffice_bottomright_wrapper">
         {leaves &&
           leaves
-            .filter((item) => item.bio.email === "mark.albaran@outlook.com")
-            .map((item) => <h2>{item.takenHomeOffice} </h2>)}
+            .filter((item) => item.bio.email === userdata.bio?.email)
+            .map((item) => <h2>{item.takenHomeOffice || "0"} </h2>)}
         <h4>Days Taken</h4>
       </div>
     </div>

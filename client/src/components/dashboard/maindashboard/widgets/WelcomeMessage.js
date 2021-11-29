@@ -1,12 +1,12 @@
 import React from "react";
 
-function WelcomeMessage({ data }) {
+function WelcomeMessage({ userdata }) {
   return (
     <div className="welcome_message_mainbox">
       <h1>
         Hi{" "}
         <span className="employee_name">
-          {data.bio?.firstName} {data.bio?.lastName}
+          {userdata.bio?.firstName} {userdata.bio?.lastName}
         </span>
       </h1>
       <h4>

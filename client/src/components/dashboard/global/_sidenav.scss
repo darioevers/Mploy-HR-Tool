@@ -89,6 +89,7 @@
   @include md {
     @include flex-center;
     flex-direction: row;
+    justify-content: space-around;
     margin-top: 10px;
     padding: 0;
     margin: 0;
@@ -102,7 +103,7 @@
 
   .sidenav_link {
     @include md {
-      margin: 0 20px;
+      margin: 0 15px;
     }
     @include flex_center;
     color: $primary;

@@ -8,12 +8,13 @@ import TodayIcon from "@material-ui/icons/Today";
 import EuroIcon from "@material-ui/icons/Euro";
 import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 // import { useState, useEffect } from "react";
 // import axios from "axios";
 
 const DashboardSideNav = (props) => {
-  const { data, logout } = props;
+  const { userdata, logout } = props;
   const [active, setActive] = useState("");
 
   const handleClick = () => {
@@ -61,11 +62,11 @@ const DashboardSideNav = (props) => {
     <>
       <div className="sidenav_mainbox">
         {/* employee info */}
-        {data && (
+        {userdata && (
           <div className="sidenav_employeeinfo">
             <div className="sidenav_employeeinfo_image">
               <img
-                src={`http://localhost:5000/${data.bio.photo}`}
+                src={`http://localhost:5000/${userdata.bio.photo}`}
                 width="50"
                 onError={(e) => {
                   e.target.onError = null;
@@ -75,9 +76,9 @@ const DashboardSideNav = (props) => {
             </div>
 
             <div className="sidenav_employeeinfo_details">
-              <h1>{data.bio.firstName}</h1>
-              <h1>{data.bio.lastName}</h1>
-              <h4>{data.contractInfo?.position}</h4>
+              <h1>{userdata.bio.firstName}</h1>
+              <h1>{userdata.bio.lastName}</h1>
+              <h4>{userdata.contractInfo?.position}</h4>
             </div>
           </div>
         )}

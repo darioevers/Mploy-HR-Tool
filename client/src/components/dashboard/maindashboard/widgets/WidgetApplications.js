@@ -3,7 +3,7 @@ import axios from "axios";
 import consolaGlobalInstance from "consola";
 import CloseIcon from "@mui/icons-material/Close";
 
-function WidgetApplications() {
+function WidgetApplications({ userdata }) {
   //fetch leaves data
   const [leaves, setLeaves] = useState();
   useEffect(() => {
@@ -110,6 +110,7 @@ function WidgetApplications() {
               type="search"
               placeholder="Type name of employee"
               className="application_search"
+              value={`${userdata.bio?.firstName} ${userdata.bio?.lastName} `}
               onChange={(e) => {
                 setNewLeave({
                   ...newLeave,
@@ -126,6 +127,7 @@ function WidgetApplications() {
               type="search"
               placeholder="Type email"
               className="email"
+              value={userdata.bio?.email}
               onChange={(e) =>
                 setNewLeave({
                   ...newLeave,
@@ -141,6 +143,7 @@ function WidgetApplications() {
               type="search"
               placeholder="Enter Department"
               className="application_search"
+              value={userdata.contractInfo?.department}
               onChange={(e) =>
                 setNewLeave({
                   ...newLeave,

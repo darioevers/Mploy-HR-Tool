@@ -30,6 +30,7 @@
 //WIDGET WRAPPER
 @mixin widget-wrapper {
   width: 100%;
+  min-width: 400px;
   height: 100%;
   // min-height: 150px;
   background-color: $light-bg;

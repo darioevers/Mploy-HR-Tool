@@ -5,6 +5,8 @@
     top: 62%;
     left: 4.5%;
     width: 50%;
+    z-index: 2;
+    min-width: 50%;
   }
   @include widget_wrapper;
   grid-area: widget_applications;

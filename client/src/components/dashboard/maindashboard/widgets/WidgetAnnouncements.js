@@ -125,15 +125,15 @@ function WidgetAnnouncements() {
                   <div className="widget_announcement_header">
                     <h3>{announcement.title}</h3>
                     <h4> {announcement.subtopic}</h4>
-                  </div>
-                  <div className="widget_announcements_icons">
-                    <p onClick={() => handleClick(announcement._id)}>
-                      {" "}
-                      Read More Here
-                    </p>
-                    <p onClick={() => deleteAnnouncement(announcement._id)}>
-                      Delete
-                    </p>
+                    <div className="widget_announcements_icons">
+                      <p onClick={() => handleClick(announcement._id)}>
+                        {" "}
+                        Read More
+                      </p>
+                      <p onClick={() => deleteAnnouncement(announcement._id)}>
+                        Delete
+                      </p>
+                    </div>
                   </div>
                 </div>
 

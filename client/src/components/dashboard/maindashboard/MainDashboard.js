@@ -48,8 +48,8 @@ function MainDashboard() {
   return (
     <div className="maindashboard_area">
       <DashboardTopNav />
-      <DashboardSideNav data={privateData} logout={logoutHandler} />
-      <Widgets data={privateData} />
+      <DashboardSideNav userdata={privateData} logout={logoutHandler} />
+      <Widgets userdata={privateData} />
     </div>
   );
 }

@@ -5,10 +5,12 @@
     top: 76%;
     left: 4.5%;
     width: 50%;
-    z-index: -1;
+    z-index: 0;
+    min-width: 50%;
   }
   @include widget-wrapper;
   grid-area: widget_birthdays;
+  position: relative;
 
   //inside grid
   display: grid;
@@ -26,7 +28,7 @@
       margin: 7px 20px;
     }
     font-size: 16px;
-    margin: 20px 0px 10px 20px;
+    margin: 20px 0px 0px 20px;
   }
   span {
     color: red;
@@ -37,14 +39,25 @@
   .horizontal_line {
     @include md {
       margin-top: -5px;
+      margin-bottom: 20px;
+      width: 43vw;
     }
-    width: 87%;
+    width: 370px;
     height: 2px;
     background-color: $primary;
     margin-left: 20px;
   }
 }
 
+.birthdays_content_wrapper {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+}
 .birthdays_today {
   @include flex-center;
   flex-direction: column;
@@ -63,25 +76,66 @@
     margin-top: -10px;
   }
 }
-.contact_two_name {
-  @include md {
-    visibility: hidden;
+
+.birthday_today_image {
+  margin: 20px 20px 0 20px;
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    margin-top: 20px 50px 0 20px;
+  }
+}
+
+.birthday_today_name {
+  @include flex-center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  p {
+    font-size: 10px;
   }
 }
 .birthdays_month {
   @include md {
     visibility: hidden;
     width: 0;
+    height: 0;
   }
   @include flex-center;
   flex-direction: column;
-  grid-area: birthdays_month;
+  grid-area: birthdays_today;
   width: 100%;
   height: 100%;
-  font-size: 12px;
   margin-top: -10px;
+
   h1 {
-    margin-top: -10px;
+    @include md {
+      visibility: hidden;
+      width: 0;
+      height: 0;
+    }
     font-size: 15px;
+    margin-top: -10px;
+  }
+}
+
+.birthday_month_image {
+  margin: 20px 20px 0 20px;
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    margin-top: 20px 50px 0 20px;
+  }
+}
+
+.birthday_month_name {
+  @include flex-center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  p {
+    font-size: 10px;
   }
 }
