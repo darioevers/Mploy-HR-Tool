@@ -19,6 +19,11 @@ const AddHrInfo = ({ location, history }) => {
     location.state && location.state.employee
   );
   const [file, setFile] = useState();
+  const [fileCv, setFileCv] = useState();
+  const [fileDiploma, setFileDiploma] = useState();
+  const [fileLetter, setFileLetter] = useState();
+  const [fileCetificate, setFileCetificate] = useState();
+
   const [hireDate, setHireDate] = useState(false);
   const [addEducation, setAddEducation] = useState(false);
   const [addWorkExperience, setAddWorkExperience] = useState(false);
@@ -26,9 +31,15 @@ const AddHrInfo = ({ location, history }) => {
   const addNew = () => {
     const data = new FormData();
     data.append("file", file);
+    data.append("fileCv", fileCv);
+    data.append("fileDiploma", fileDiploma);
+    data.append("fileLetter", fileLetter);
+    data.append("fileCetificate", fileCetificate);
+    console.log(data);
+
     const readyTOSend = JSON.stringify(employeeData);
     data.append("employeeData", readyTOSend);
-
+    console.log(data);
     axios
       .post(
         "http://localhost:5000/employee/addemployee",
@@ -114,6 +125,45 @@ const AddHrInfo = ({ location, history }) => {
                 type="file"
                 name="file"
                 onChange={(e) => setFile(e.target.files[0])}
+              />
+            </FormControl>
+
+            {/* cv */}
+            <FormControl>
+              <InputLabel htmlFor="my-input">CV</InputLabel>
+              <Input
+                type="file"
+                name="fileCv"
+                onChange={(e) => setFileCv(e.target.files[0])}
+              />
+            </FormControl>
+            {/* Diploma */}
+            <FormControl>
+              <InputLabel htmlFor="my-input">Diploma</InputLabel>
+              <Input
+                type="file"
+                name="fileDiploma"
+                onChange={(e) => setFileDiploma(e.target.files[0])}
+              />
+            </FormControl>
+
+            {/* letter */}
+            <FormControl>
+              <InputLabel htmlFor="my-input">Letter</InputLabel>
+              <Input
+                type="file"
+                name="fileLetter"
+                onChange={(e) => setFileLetter(e.target.files[0])}
+              />
+            </FormControl>
+
+            {/* certificate */}
+            <FormControl>
+              <InputLabel htmlFor="my-input">Certificate</InputLabel>
+              <Input
+                type="file"
+                name="fileCetificate"
+                onChange={(e) => setFileCetificate(e.target.files[0])}
               />
             </FormControl>
           </div>
