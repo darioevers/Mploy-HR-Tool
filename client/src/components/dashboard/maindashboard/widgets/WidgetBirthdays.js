@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Carousel from "react-elastic-carousel";
 import axios from "axios";
-function WidgetBirthdays() {
+
+function WidgetBirthdays({ userdata }) {
   const [employees, setEmployees] = useState();
 
   useEffect(() => {
@@ -71,7 +72,11 @@ function WidgetBirthdays() {
           <Carousel itemsToShow={2}>
             {employees &&
               employees
-                .filter((item) => birthday(item.bio.dateOfBirth) === today())
+                .filter(
+                  (item) =>
+                    birthday(item.bio.dateOfBirth) === today() &&
+                    item.bio.email !== userdata.bio?.email
+                )
                 .map((employee) => (
                   <div className="birthday_today_wrapper" key={employee._id}>
                     <div className="birthday_today_image">

@@ -33,25 +33,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 // COMPONENT EXPORT
-export default function Solutions(props) {
-  // EDIT STRINGS HERE
-  const content = {
-    // HEADER CONTENT
-    topheading: "HR has never been easier.",
-    "01_subheading": "Setup in minutes",
-    "02_subheading": "Manage everything in one workspace",
-    "03_subheading": "Its so cheap",
-    "01_body":
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    "02_body":
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    "03_body":
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    pricing_button: "PRICING",
-    "1_button": "INFO",
-    // MID CONTENT
-    ...props.content,
-  };
+const Solutions = () => {
   const { t } = useTranslation();
   return (
     <Box
@@ -87,7 +69,7 @@ export default function Solutions(props) {
             <div className="landingpage_solutions_header">
               <Box
                 sx={{
-                  width: "90%",
+                  maxWidth: "950px",
                   margin: "0 auto",
                   paddingTop: 3,
                   paddingBottom: "6em",
@@ -95,9 +77,10 @@ export default function Solutions(props) {
                   textAlign: "center",
                 }}
               >
-                <Grid container spacing={3}>
+                <Grid container spacing={4}>
                   <Grid item xs={12} md={4} lg={4} xl={4}>
                     <Item
+                      className="solutions_gridcontainer"
                       sx={{
                         borderRadius: "8",
                         boxShadow: "none",
@@ -311,4 +294,6 @@ export default function Solutions(props) {
       <LandingpageFooter />
     </Box>
   );
-}
+};
+
+export default Solutions;

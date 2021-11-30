@@ -40,7 +40,7 @@
 //MAIN DASHBOARD GRID
 @mixin main_dashboard_grid {
   @include md {
-    min-width: 100vw;
+    min-width: 98vw;
     min-height: 90vh;
     display: flex;
     flex-direction: column;

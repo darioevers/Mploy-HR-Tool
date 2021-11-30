@@ -1,30 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import PhoneIcon from "@mui/icons-material/Phone";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
-
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { FormGroup } from "@material-ui/core";
 
-import {
-  FormGroup,
-  FormControl,
-  InputLabel,
-  Input,
-  Button,
-  makeStyles,
-  Typography,
-  Select,
-  MenuItem,
-} from "@material-ui/core";
+const EmployeeInfo = ({ history, match }) => {
+  const [empInfo, setEmpInfo] = useState();
 
-const EmployeeInfo = ({ location, history }) => {
-  const [empInfo, setEmpInfo] = useState(
-    location.state && location.state.employee
-  );
-  const [file, setFile] = useState();
+  useEffect(() => {
+    getEmployee();
+  }, []);
+
+  const getEmployee = () => {
+    axios
+      .get(
+        `http://localhost:5000/employee/singleEmployee/${match.params.id}`,
+
+        {
+          header: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+
+      .then((data) => {
+        console.log(data.data);
+        setEmpInfo(data.data);
+      })
+      .catch((err) => console.log(err));
+  };
 
   // const edit = () => {
   //   const data = new FormData();
@@ -45,10 +53,6 @@ const EmployeeInfo = ({ location, history }) => {
   //     })
   //     .catch((err) => console.log(err));
   // };
-  // autofill
-  const [firstName, setFirstName] = useState(empInfo.bio.firstName);
-  const [lastName, setLastName] = useState(empInfo.bio.lastName);
-  const [position, setPosition] = useState(empInfo.contractInfo.position);
 
   //styling of formControls
   const inputStylesA = {
@@ -91,27 +95,17 @@ const EmployeeInfo = ({ location, history }) => {
         <div className="employeeinfo_header">
           <h1> Employee Info </h1>
         </div>
-
         <div className="employeeinfo_subheader">
           <div className="active_tab">
             <h4>General Data</h4>
           </div>
-          <div className="inactive_tab">
-            <NavLink
-              exact
-              to="/dashboard/employeedata/employeeinfo/hrinfo"
-              activeClassName="active"
-              className="sidenav_link"
-              onClick={() => {
-                history.push({
-                  pathname: "/dashboard/employeedata/employeeinfo/hrinfo",
-                  state: { empInfo },
-                });
-              }}
-            >
-              {" "}
-              HR Information
-            </NavLink>
+          <div
+            className="inactive_tab"
+            onClick={() => {
+              history.push(`/dashboard/employeedata/hrinfo/${empInfo._id}`);
+            }}
+          >
+            <h4>HR Information</h4>
           </div>
           <div className="inactive_tab">
             <NavLink
@@ -121,11 +115,10 @@ const EmployeeInfo = ({ location, history }) => {
               className="sidenav_link"
             >
               {" "}
-              Documents
+              <h4>Documents</h4>
             </NavLink>
           </div>
         </div>
-
         <div className="employeedata_form">
           <FormGroup>
             <div className="form_header">
@@ -133,7 +126,7 @@ const EmployeeInfo = ({ location, history }) => {
                 <div className="photo">
                   <div className="dummy_photo">
                     <img
-                      src={`http://localhost:5000/${empInfo.bio.photo}`}
+                      src={`http://localhost:5000/${empInfo?.bio?.photo}`}
                       onError={(e) => {
                         e.target.onError = null;
                         e.target.src =
@@ -146,218 +139,125 @@ const EmployeeInfo = ({ location, history }) => {
 
               <div className="form_header_info">
                 <div className="fullname">
-                  <h1>{firstName}</h1>
-                  <h1>{lastName}</h1>
+                  <h1>{empInfo?.bio?.firstName}</h1>
+                  <h1>{empInfo?.bio?.lastName}</h1>
                 </div>
 
                 <div className="position">
-                  <h3>{position}</h3>
+                  <h3>{empInfo?.contractInfo?.position}</h3>
                 </div>
 
                 <div className="contacts">
                   <MailOutlineIcon fontSize="small" />
                   <input
                     name="email"
-                    value={empInfo.bio.email}
+                    value={empInfo?.bio?.email}
                     placeholder="Email"
                   />
 
                   <PhoneIcon fontSize="small" />
                   <input
                     name="phoneNumber"
-                    value={empInfo.bio.phoneNumber}
+                    value={empInfo?.bio?.phoneNumber}
                     placeholder="Phone Number"
                   />
                 </div>
               </div>
             </div>
             <div className="form_generaldata">
-              <div className="basicdetails_header">
-                <h3>BASIC DETAILS </h3>
-              </div>
-
-              <div className="basicdetails_content">
-                <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">First Name</InputLabel>
-                  <Input
-                    type="text"
-                    name="firstName"
-                    value={empInfo.bio.firstName}
-                  />
-                </FormControl>
-                <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Last Name</InputLabel>
-                  <Input
-                    type="text"
-                    name="lastName"
-                    value={empInfo.bio.lastName}
-                  />
-                </FormControl>
-
-                <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Employee ID</InputLabel>
-                  <Input
-                    type="text"
-                    name="employeeID"
-                    value={empInfo.bio.employeeId}
-                  />
-                </FormControl>
-                <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Position</InputLabel>
-                  <Input
-                    type="text"
-                    name="position"
-                    value={empInfo.contractInfo.position}
-                  />
-                </FormControl>
-              </div>
-
               <div className="personaldetails_header">
                 <h3>PERSONAL DETAILS </h3>
               </div>
 
               <FormGroup style={formStyles}>
-                <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Address 1</InputLabel>
-                  <Input
-                    type="text"
-                    name="streetOne"
-                    value={empInfo.addressOne.streetOne}
-                    disabled
-                  />
-                </FormControl>
+                <div className="input-box">
+                  <p>Address One</p>
+                  <input type="text" value={empInfo?.addressOne?.streetOne} />
+                </div>
 
-                <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Address 2</InputLabel>
-                  <Input
+                <div className="input-box">
+                  <p>Address Two</p>
+                  <input
                     type="text"
-                    name="streetTwo"
                     value={
-                      empInfo.addressTwo?.streetTwo
-                        ? empInfo.addressTwo?.streetTwo
-                        : "None"
+                      empInfo?.addressTwo?.streetTwo
+                        ? empInfo?.addressTwo?.streetTwo
+                        : "No Entry"
                     }
-                    disabled
                   />
-                </FormControl>
+                </div>
 
-                <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">City</InputLabel>
-                  <Input
-                    type="text"
-                    name="cityOne"
-                    value={empInfo.addressOne.cityOne}
-                    disabled
-                  />
-                </FormControl>
+                <div className="input-box">
+                  <p>City</p>
+                  <input type="text" value={empInfo?.addressOne?.cityOne} />
+                </div>
 
-                <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Country</InputLabel>
-                  <Input
-                    type="text"
-                    name="countryOne"
-                    value={empInfo.addressOne.countryOne}
-                    disabled
-                  />
-                </FormControl>
-                <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">State / Region</InputLabel>
-                  <Input
-                    type="text"
-                    name="stateOne"
-                    value={empInfo.addressOne.stateOne}
-                    disabled
-                  />
-                </FormControl>
+                <div className="input-box">
+                  <p>State</p>
+                  <input type="text" value={empInfo?.addressOne?.stateOne} />
+                </div>
 
-                <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Postal Code</InputLabel>
-                  <Input
+                <div className="input-box">
+                  <p>Country</p>
+                  <input type="text" value={empInfo?.addressOne?.countryOne} />
+                </div>
+
+                <div className="input-box">
+                  <p>Postal Code</p>
+                  <input
                     type="text"
-                    name="postalCodeOne"
-                    value={empInfo.addressOne.postalCodeOne}
-                    disabled
+                    value={empInfo?.addressOne?.postalCodeOne}
                   />
-                </FormControl>
+                </div>
               </FormGroup>
 
               <FormGroup style={formStyles}>
-                <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Date of Birth</InputLabel>
-                  <Input
-                    type="text"
-                    name="dateOfBirth"
-                    value={empInfo.bio.dateOfBirth}
-                    disabled
-                  />
-                </FormControl>
+                <div className="input-box">
+                  <p>Date of Birth</p>
+                  <input type="text" value={empInfo?.bio?.dateOfBirth} />
+                </div>
 
-                <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Other Email</InputLabel>
-                  <Input
+                <div className="input-box">
+                  <p>Other Email</p>
+                  <input
                     type="text"
-                    name="otherEmail"
-                    value={empInfo.bio?.otherEmail}
-                    disabled
+                    value={
+                      empInfo?.bio?.otherEmail
+                        ? empInfo?.bio?.otherEmail
+                        : "No Entry"
+                    }
                   />
-                </FormControl>
+                </div>
 
-                <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Nationality</InputLabel>
-                  <Input
-                    type="text"
-                    name="nationality"
-                    value={empInfo.bio.nationality}
-                    disabled
-                  />
-                </FormControl>
+                <div className="input-box">
+                  <p>Nationality</p>
+                  <input type="text" value={empInfo?.bio?.nationality} />
+                </div>
 
-                <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Gender</InputLabel>
-                  <Input
-                    type="text"
-                    name="nationality"
-                    value={empInfo.bio.gender}
-                    disabled
-                  />
-                </FormControl>
+                <div className="input-box">
+                  <p>Gender</p>
+                  <input type="text" value={empInfo?.bio?.gender} />
+                </div>
 
-                <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Marital Status</InputLabel>
-                  <Input
-                    type="text"
-                    name="nationality"
-                    value={empInfo.bio.maritalStatus}
-                    disabled
-                  />
-                </FormControl>
+                <div className="input-box">
+                  <p>Marital Status</p>
+                  <input type="text" value={empInfo?.bio?.maritalStatus} />
+                </div>
 
-                <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Hobbies</InputLabel>
-                  <Input
+                <div className="input-box">
+                  <p>Hobbies</p>
+                  <input
                     type="text"
-                    name="hobbies"
-                    value={empInfo.bio.hobbies ? empInfo.bio.hobbies : "None"}
-                    disabled
+                    value={
+                      empInfo?.bio?.hobbies ? empInfo.bio.hobbies : "No Entry"
+                    }
                   />
-                </FormControl>
+                </div>
               </FormGroup>
-            </div>
-
-            <div className="next-btn">
-              <button
-                onClick={() => {
-                  history.push({
-                    pathname: "/dashboard/employeedata/employeeinfo/hrinfo",
-                    state: { empInfo },
-                  });
-                }}
-              >
-                Next{" "}
-              </button>
             </div>
           </FormGroup>
         </div>
+        ;
       </div>
     </div>
   );

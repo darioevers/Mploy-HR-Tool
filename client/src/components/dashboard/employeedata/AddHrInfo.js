@@ -166,6 +166,7 @@ console.log(data);
               onChange={(e) => setFileCetificate(e.target.files[0])}
             />
           </FormControl>
+
           </div>
 
           <div className="addhrinfo_form">
