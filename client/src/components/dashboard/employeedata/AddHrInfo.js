@@ -157,6 +157,7 @@ const AddHrInfo = ({ location, history }) => {
               />
             </FormControl>
 
+<<<<<<< HEAD
             {/* certificate */}
             <FormControl>
               <InputLabel htmlFor="my-input">Certificate</InputLabel>
@@ -166,6 +167,18 @@ const AddHrInfo = ({ location, history }) => {
                 onChange={(e) => setFileCetificate(e.target.files[0])}
               />
             </FormControl>
+
+          {/* certificate */}
+          <FormControl>
+            <InputLabel htmlFor="my-input">Certificate</InputLabel>
+            <Input
+              type="file"
+              name="fileCetificate"
+              onChange={(e) => setFileCetificate(e.target.files[0])}
+            />
+          </FormControl>
+
+
           </div>
 
           <div className="addhrinfo_form">
