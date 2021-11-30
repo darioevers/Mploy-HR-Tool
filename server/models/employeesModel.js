@@ -143,7 +143,7 @@ const EmployeesSchema = Schema({
     },
 
     endDate: {
-      type: Date,
+      type: String,
       required: false,
     },
     degree: {
@@ -165,11 +165,11 @@ const EmployeesSchema = Schema({
       required: false,
     },
     from: {
-      type: Date,
+      type: String,
       required: false,
     },
     to: {
-      type: Date,
+      type: String,
       required: false,
     },
   },
@@ -179,11 +179,11 @@ const EmployeesSchema = Schema({
       required: false,
     },
     hireDate: {
-      type: Date,
+      type: String,
       required: false,
     },
     contractEnd: {
-      type: Date,
+      type: String,
       required: false,
     },
     probationPeriod: {
