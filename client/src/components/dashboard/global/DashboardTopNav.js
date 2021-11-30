@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import DarkModeSwitch from "./DarkModeSwitch";
 import SearchButton from "./SearchButton";
+// IMAGE IMPORTS
 
 import RightDrawer from "./RightDrawer";
 
@@ -9,7 +10,7 @@ function TopNav() {
   return (
     <div className="topnav_mainbox">
       <div className="logo">
-        <h1>Mploy</h1>
+        <img src={require("../../../img/logo/MPLOY_logo_small_white.svg")} />
       </div>
       <div className="top-nav-line"></div>
       <SearchButton />
