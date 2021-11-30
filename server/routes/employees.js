@@ -9,20 +9,11 @@ const { uploadMultiple } = require("../functions/uploads");
 //get all Employees
 router.get("/allemployee/", employeesController.getAllEmployees);
 
-<<<<<<< HEAD
 //get employee by id
 router.get("/singleEmployee/:id", employeesController.getOneEmployee);
 
-router.post(
-  "/addemployee",
-  uploads.single("file"),
-  employeesController.addNewEmployee
-);
-=======
 // add new Employee
-
-router.post("/addemployee",uploadMultiple, employeesController.addNewEmployee);
->>>>>>> main
+router.post("/addemployee", uploadMultiple, employeesController.addNewEmployee);
 
 // search for employee
 router.post("/search", employeesController.searchName);
