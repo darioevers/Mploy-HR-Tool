@@ -15,6 +15,8 @@ import muilogo from "../../../img/logo/mui.png";
 import expressjslogo from "../../../img/logo/expressjs.png";
 import i18nextlogo from "../../../img/logo/i18next.png";
 import mongodblogo from "../../../img/logo/mongodb.png";
+import sendgridlogo from "../../../img/logo/sendgridlogo.png";
+import envatologo from "../../../img/logo/envatologo.png";
 
 //  MUI IMPORTS
 import Typography from "@mui/material/Typography";
@@ -173,12 +175,12 @@ const Abouttools = () => {
           <Grid item xs={6} md={4} lg={2} xl={2}>
             <Item sx={{ boxShadow: "0" }}>
               <img
-                src={slacklogo}
-                alt="Slack Logo"
+                src={sendgridlogo}
+                alt="SendGrid Logo"
                 className="abouttools_img"
               />
               <Typography>
-                <Box sx={{ fontWeight: 500, m: 2 }}>Slack</Box>
+                <Box sx={{ fontWeight: 500, m: 2 }}>SendGrid</Box>
               </Typography>
             </Item>
           </Grid>
