@@ -62,7 +62,10 @@ function EmployeeData({ history }) {
         },
       })
 
-      .then((data) =>{console.log(data); setEmployees(data.data)})
+      .then((data) => {
+        console.log(data);
+        setEmployees(data.data);
+      })
       .catch((err) => console.log(err));
   };
 
@@ -154,7 +157,6 @@ function EmployeeData({ history }) {
                         setId(employee._id);
                       }}
                       style={{ cursor: "pointer" }}
-
                     >
                       <TableCell>
                         <div className="table_cell">
@@ -205,6 +207,7 @@ function EmployeeData({ history }) {
                               {employee.bio.firstName} {employee.bio.lastName}
                             </h1>
                             <h2>{employee.contractInfo?.position} </h2>
+                            
                           </div>
                           <div className="summary_close_btn">
                             <div onClick={() => setChecked(!checked)}>
@@ -286,7 +289,9 @@ function EmployeeData({ history }) {
                             >
                               Delete
                             </div>
-
+                           
+                              <a href={`http://localhost:5000/${employee.bio.cv}`}>cv</a>
+                          
                             <div
                               variant="contained"
                               onClick={() => {
