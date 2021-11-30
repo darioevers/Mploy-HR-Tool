@@ -3,5 +3,8 @@
 }
 
 body {
+  @include md {
+    overflow-x: hidden;
+  }
   scroll-behavior: smooth;
 }

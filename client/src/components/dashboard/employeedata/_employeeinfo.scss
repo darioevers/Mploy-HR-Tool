@@ -68,6 +68,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  h4 {
+    cursor: pointer;
+    &:hover {
+      transform: translateY(-2px);
+      transition: transform 0.5s;
+      color: $highlight;
+    }
+  }
 }
 
 .active_tab {
@@ -84,4 +92,13 @@
   border-bottom: 1px solid $highlight;
   padding: 3px 10px;
   color: $dark-bg;
+}
+
+.inactive_tab {
+  @include md {
+    color: $tertiary;
+    h4 {
+      font-weight: 100;
+    }
+  }
 }

@@ -14,7 +14,8 @@
   flex-direction: column;
   height: 99%;
   width: 230px;
-  background-color: $dark-bg;
+  background: $highlight;
+  background: linear-gradient(130deg, $highlight 9%, $lighter-blue 88%);
   border-radius: 15px;
   grid-area: sidenav_mainbox;
   margin: 0px 10px 10px 10px;
@@ -29,11 +30,13 @@
     padding: 0;
     position: fixed;
     top: 0;
-    background-color: $dark-bg;
+    background: $highlight;
+    background: linear-gradient(130deg, $highlight 9%, $lighter-blue 88%);
     z-index: -3;
   }
   display: flex;
   margin-top: 20px;
+
   .sidenav_employeeinfo_image {
     @include md {
       position: fixed;
@@ -67,11 +70,11 @@
       }
       color: $primary;
       font-size: 18px;
-      font-weight: normal;
       margin-bottom: 5px;
+      line-height: 18px;
     }
     h4 {
-      color: $secondary;
+      color: $tertiary;
       font-size: 12px;
       font-weight: normal;
       margin-bottom: 5px;

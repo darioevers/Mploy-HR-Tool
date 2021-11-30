@@ -24,7 +24,7 @@ function Widgets({ userdata }) {
       )} */}
       <WidgetApplications userdata={userdata} />
       <WidgetAnnouncements />
-      <WidgetBirthdays />
+      <WidgetBirthdays userdata={userdata} />
       <WidgetCalendar />
       <WidgetHolidays userdata={userdata} />
       <WidgetHomeOffice userdata={userdata} />

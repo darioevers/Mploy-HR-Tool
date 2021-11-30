@@ -1,5 +1,6 @@
 .addemployee_mainbox {
   @include main_dashboard_grid;
+  min-width: 98vw;
 }
 
 .addemployee_wrapper {
@@ -24,6 +25,14 @@
   border-bottom: 1px solid $highlight;
   padding: 3px 10px;
   color: $dark-bg;
+  cursor: pointer;
+}
+
+.inactive_tab {
+  h4 {
+    cursor: pointer;
+    font-weight: 100;
+  }
 }
 
 .employeedata_form {
@@ -73,7 +82,6 @@
   @include flex-center;
   width: 120px;
   height: 120px;
-
   background-color: $primary;
   margin-bottom: 5px;
   img {
@@ -141,7 +149,7 @@
 .form_generaldata {
   @include md {
     margin-left: 0px;
-    height: 500px;
+    height: 487px;
     overflow: scroll;
     border-radius: 20px;
     padding: 0px 50px;

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 // TRANSLATION IMPORTS
 import { useTranslation } from "react-i18next";
@@ -18,11 +17,11 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Alert from "@mui/material/Alert";
+import { Link } from "react-router-dom";
 
 // COMPONENT IMPORTS
 
 import LandingpageTopnav from "../navigation/LandingpageTopnav";
-
 
 const LoginScreen = ({ history, location }) => {
   const [email, setEmail] = useState("");
@@ -71,7 +70,7 @@ const LoginScreen = ({ history, location }) => {
   const { t } = useTranslation();
 
   return (
-    <div >
+    <div>
       <LandingpageTopnav />
       <Box
         sx={{
@@ -83,12 +82,11 @@ const LoginScreen = ({ history, location }) => {
           <CssBaseline />
           <Box
             sx={{
-
               marginTop: 20,
 
               display: "flex",
               flexDirection: "column",
-            
+
               alignItems: "center",
             }}
           >
@@ -168,5 +166,3 @@ const LoginScreen = ({ history, location }) => {
 };
 
 export default LoginScreen;
-
-

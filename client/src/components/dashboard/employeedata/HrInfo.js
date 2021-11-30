@@ -1,15 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { FormGroup, FormControl, InputLabel, Input } from "@material-ui/core";
+import { formGroupClasses } from "@mui/material";
 
-const HrInfo = ({ location, history }) => {
-  const [hrData, setHrData] = useState(
-    location.state && location.state.empInfo
-  );
-  const [file, setFile] = useState();
+const HrInfo = ({ location, history, match }) => {
+  const [hrData, setHrData] = useState();
+
+  useEffect(() => {
+    getEmployee();
+  }, []);
+
+  const getEmployee = () => {
+    axios
+      .get(
+        `http://localhost:5000/employee/singleEmployee/${match.params.id}`,
+
+        {
+          header: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+
+      .then((data) => {
+        console.log(data.data);
+        setHrData(data.data);
+      })
+      .catch((err) => console.log(err));
+  };
 
   //styling of formControls
   // const inputStylesA = {
@@ -33,6 +55,7 @@ const HrInfo = ({ location, history }) => {
   const formStylesB = {
     backgroundColor: "#ebebeb",
     borderRadius: "20px",
+    paddingTop: "20px",
   };
 
   return (
@@ -59,21 +82,20 @@ const HrInfo = ({ location, history }) => {
         </div>
 
         <div className="hrinfo_subheader">
-          <div className="inactive_tab_hr">
-            <NavLink
-              exact
-              to="/dashboard/employeedata/employeeinfo"
-              activeClassName="active"
-              className="sidenav_link"
-            >
-              {" "}
-              General Data
-            </NavLink>
+          <div
+            className="hrinfo_inactive_tab"
+            onClick={() => {
+              history.push(
+                `/dashboard/employeedata/employeeinfo/${hrData?._id}`
+              );
+            }}
+          >
+            <h4>General Data</h4>
           </div>
-          <div className="active_tab_hr">
+          <div className="hrinfo_active_tab">
             <h4>HR Information</h4>
           </div>
-          <div className="inactive_tab_hr">
+          <div className="hrinfo_inactive_tab">
             <NavLink
               exact
               to="/dashboard/employeedata/employeeinfo/employeedocuments"
@@ -81,7 +103,7 @@ const HrInfo = ({ location, history }) => {
               className="sidenav_link"
             >
               {" "}
-              Documents
+              <h4> Documents </h4>
             </NavLink>
           </div>
         </div>
@@ -93,77 +115,68 @@ const HrInfo = ({ location, history }) => {
 
           <div className="hrinfo_contractdetails_content">
             <div className="hrinfo_contractdetails_left">
-              <FormGroup>
-                <FormControl>
-                  <InputLabel htmlFor="my-input">Contract No</InputLabel>
-
-                  <Input injectFirst />
-                  {/* <Input value={hrData.bio?.firstName} /> */}
-                </FormControl>
-                <FormControl>
-                  <InputLabel htmlFor="my-input">Hire Date</InputLabel>
-
-                  <Input />
-                  {/* <Input
-                  // value={hrData.contractInfo.contractNo}
-                  autoFocus
-                  type="date"
-                /> */}
-                </FormControl>
-                <FormControl>
-                  <InputLabel htmlFor="my-input">Contract End</InputLabel>
-                  <Input />
-                  {/* <Input
-                  // value={hrData.contractInfo.contractNo}
-                  type="date"
-                  min="2019-01-01"
-                /> */}
-                </FormControl>
-                <FormControl>
-                  <InputLabel htmlFor="my-input">Probation Period</InputLabel>
-                  <Input />
-                  {/* <Input value={hrData.contractInfo.contractNo} /> */}
-                </FormControl>
-                <FormControl>
-                  <InputLabel htmlFor="my-input">Employment Type</InputLabel>
-                  <Input />
-                  {/* <Input value={hrData.contractInfo.contractNo} /> */}
-                </FormControl>
-                <FormControl>
-                  <InputLabel htmlFor="my-input">Team</InputLabel>
-                  <Input />
-                  {/* <Input value={hrData.contractInfo.contractNo} /> */}
-                </FormControl>
+              <FormGroup style={formStylesB}>
+                <div className="input-box">
+                  <p>Contract No.</p>
+                  <input type="text" value={hrData?.contractInfo?.contractNo} />
+                </div>
+                <div className="input-box">
+                  <p>Hire Date</p>
+                  <input type="text" value={hrData?.contractInfo?.hireDate} />
+                </div>
+                <div className="input-box">
+                  <p>Contract End</p>
+                  <input
+                    type="text"
+                    value={hrData?.contractInfo?.contractEnd}
+                  />
+                </div>
+                <div className="input-box">
+                  <p>Probation Period</p>
+                  <input
+                    type="text"
+                    value={hrData?.contractInfo?.probationPeriod}
+                  />
+                </div>
+                <div className="input-box">
+                  <p>Contract No.</p>
+                  <input
+                    type="text"
+                    value={hrData?.contractInfo?.employmentType}
+                  />
+                </div>
+                <div className="input-box">
+                  <p>Contract No.</p>
+                  <input type="text" value={hrData?.contractInfo?.team} />
+                </div>
               </FormGroup>
             </div>
             <div className="hrinfo_contractdetails_right">
               <FormGroup>
-                <FormControl>
-                  <InputLabel htmlFor="my-input">Department</InputLabel>
-                  <Input />
-                  {/* <Input value={hrData.contractInfo.contractNo} /> */}
-                </FormControl>
+                <div className="input-box">
+                  <p>Department</p>
+                  <input type="text" value={hrData?.contractInfo?.department} />
+                </div>
 
-                <FormControl>
-                  <InputLabel htmlFor="my-input">Supervisor</InputLabel>
-                  <Input />
-                  {/* <Input value={hrData.contractInfo.contractNo} /> */}
-                </FormControl>
-                <FormControl>
-                  <InputLabel htmlFor="my-input">Salary</InputLabel>
-                  <Input />
-                  {/* <Input value={hrData.contractInfo.contractNo} /> */}
-                </FormControl>
-                <FormControl>
-                  <InputLabel htmlFor="my-input">Overtime</InputLabel>
-                  <Input />
-                  {/* <Input value={hrData.contractInfo.contractNo} /> */}
-                </FormControl>
-                <FormControl>
-                  <InputLabel htmlFor="my-input">Work Location</InputLabel>
-                  <Input />
-                  {/* <Input value={hrData.contractInfo.contractNo} /> */}
-                </FormControl>
+                <div className="input-box">
+                  <p>Supervisor</p>
+                  <input type="text" value={hrData?.contractInfo?.supervisor} />
+                </div>
+                <div className="input-box">
+                  <p>Salary</p>
+                  <input type="text" value={hrData?.contractInfo?.salary} />
+                </div>
+                <div className="input-box">
+                  <p>Overtime</p>
+                  <input type="text" value={hrData?.contractInfo?.overtime} />
+                </div>
+                <div className="input-box">
+                  <p>Work Location</p>
+                  <input
+                    type="text"
+                    value={hrData?.contractInfo?.workLocation}
+                  />
+                </div>
               </FormGroup>
             </div>
           </div>
@@ -174,11 +187,14 @@ const HrInfo = ({ location, history }) => {
 
           <div className="hrinfo_education_content">
             <div className="hrinfo_education_info">
-              <h3>South Hampton Institute</h3>
-              <h4>Bachelors - HR Management</h4>
+              <h3>{hrData?.education?.school}</h3>
+              <h4>
+                {hrData?.education?.degree} -{" "}
+                {hrData?.education?.specialization}
+              </h4>
             </div>
             <div className="hrinfo_education_year">
-              <h2> 2009 </h2>
+              <h2> {hrData?.education?.endDate} </h2>
               <h4>Year of Completion</h4>
             </div>
           </div>
