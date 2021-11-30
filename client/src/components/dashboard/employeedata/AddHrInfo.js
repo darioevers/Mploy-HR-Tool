@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
 import { NavLink } from "react-router-dom";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import {
   Table,
   TableHead,
@@ -107,7 +108,7 @@ const AddHrInfo = ({ location, history }) => {
           <div className="inactive_tab">
             <NavLink
               exact
-              to="/dashboard/employeedata/addemployee/documents"
+              to="/dashboard/employeedata/adddocuments"
               activeClassName="active"
               className="sidenav_link"
             >
@@ -118,69 +119,6 @@ const AddHrInfo = ({ location, history }) => {
         </div>
 
         <FormGroup>
-          <div>
-            <FormControl>
-              <InputLabel htmlFor="my-input">Photo</InputLabel>
-              <Input
-                type="file"
-                name="file"
-                onChange={(e) => setFile(e.target.files[0])}
-              />
-            </FormControl>
-
-            {/* cv */}
-            <FormControl>
-              <InputLabel htmlFor="my-input">CV</InputLabel>
-              <Input
-                type="file"
-                name="fileCv"
-                onChange={(e) => setFileCv(e.target.files[0])}
-              />
-            </FormControl>
-            {/* Diploma */}
-            <FormControl>
-              <InputLabel htmlFor="my-input">Diploma</InputLabel>
-              <Input
-                type="file"
-                name="fileDiploma"
-                onChange={(e) => setFileDiploma(e.target.files[0])}
-              />
-            </FormControl>
-
-            {/* letter */}
-            <FormControl>
-              <InputLabel htmlFor="my-input">Letter</InputLabel>
-              <Input
-                type="file"
-                name="fileLetter"
-                onChange={(e) => setFileLetter(e.target.files[0])}
-              />
-            </FormControl>
-
-<<<<<<< HEAD
-            {/* certificate */}
-            <FormControl>
-              <InputLabel htmlFor="my-input">Certificate</InputLabel>
-              <Input
-                type="file"
-                name="fileCetificate"
-                onChange={(e) => setFileCetificate(e.target.files[0])}
-              />
-            </FormControl>
-
-          {/* certificate */}
-          <FormControl>
-            <InputLabel htmlFor="my-input">Certificate</InputLabel>
-            <Input
-              type="file"
-              name="fileCetificate"
-              onChange={(e) => setFileCetificate(e.target.files[0])}
-            />
-          </FormControl>
-
-
-          </div>
-
           <div className="addhrinfo_form">
             <div className="addhrinfo_contractdetails_header">
               <h3>CONTRACT DETAILS </h3>
@@ -426,11 +364,13 @@ const AddHrInfo = ({ location, history }) => {
             <div className="hr-save-btn">
               <button
                 onClick={() => {
-                  addNew();
-                  setEmployeeData("");
+                  history.push({
+                    pathname: "/dashboard/employeedata/adddocuments",
+                    state: { employeeData },
+                  });
                 }}
               >
-                SAVE EMPLOYEE DATA{" "}
+                NEXT
               </button>
             </div>
           </div>

@@ -30,6 +30,35 @@ const AddEmployee = ({ history }) => {
   const [lastName, setLastName] = useState("Last Name");
   const [position, setPosition] = useState("Position");
 
+  const addNew = () => {
+    const data = new FormData();
+    data.append("file", file);
+    // data.append("fileCv", fileCv);
+    // data.append("fileDiploma", fileDiploma);
+    // data.append("fileLetter", fileLetter);
+    // data.append("fileCetificate", fileCetificate);
+    console.log(data);
+
+    const readyTOSend = JSON.stringify(employee);
+    data.append("employee", readyTOSend);
+    console.log(data);
+    axios
+      .post(
+        "http://localhost:5000/employee/addemployee",
+        data,
+
+        {
+          header: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        // history.push("/dashboard/employeedata/addemployee/documents");
+      })
+      .catch((err) => console.log(err));
+  };
   //styling of formControls
   const inputStylesA = {
     width: "46%",
@@ -66,7 +95,7 @@ const AddEmployee = ({ history }) => {
           <div className="inactive_tab">
             <NavLink
               exact
-              to="/dashboard/employeedata/addemployee/documents"
+              to="/dashboard/employeedata/adddocuments"
               activeClassName="active"
               className="sidenav_link"
             >
@@ -353,9 +382,12 @@ const AddEmployee = ({ history }) => {
 
             <div className="next-btn">
               <button
+                // onClick={() => {
+                //   addNew();
+                //   setEmployee("");
+                // }}
                 onClick={() => {
                   console.log(employee);
-
                   history.push({
                     pathname: "/dashboard/employeedata/addemployee/hrinfo",
                     state: { employee },
