@@ -4,7 +4,7 @@ const auth = require("../middlewares/authMiddleware");
 
 const employeesController = require("../controllers/employeesController");
 
-const { uploads } = require("../functions/uploads");
+const { uploadMultiple } = require("../functions/uploads");
 
 //get all Employees
 router.get("/allemployee/", employeesController.getAllEmployees);
@@ -12,11 +12,9 @@ router.get("/allemployee/", employeesController.getAllEmployees);
 //get employee by id
 router.get("/singleEmployee/:id", employeesController.getOneEmployee);
 
-router.post(
-  "/addemployee",
-  uploads.single("file"),
-  employeesController.addNewEmployee
-);
+// add new Employee
+
+router.post("/addemployee",uploadMultiple, employeesController.addNewEmployee);
 
 // search for employee
 router.post("/search", employeesController.searchName);
