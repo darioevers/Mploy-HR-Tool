@@ -40,6 +40,13 @@
   width: 95%;
 }
 
+.form_header {
+  @include md {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+}
 .form_header_info {
   margin-left: 20px;
 }

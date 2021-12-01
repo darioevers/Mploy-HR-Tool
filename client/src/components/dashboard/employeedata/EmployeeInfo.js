@@ -34,26 +34,6 @@ const EmployeeInfo = ({ history, match }) => {
       .catch((err) => console.log(err));
   };
 
-  // const edit = () => {
-  //   const data = new FormData();
-  //   data.append("file", file);
-  //   const readyTOSend = JSON.stringify(empInfo);
-  //   data.append("empInfo", readyTOSend);
-
-  //   console.log(empInfo);
-  //   axios
-  //     .put("http://localhost:5000/employee/update", data, {
-  //       header: {
-  //         "Content-Type": "application/json",
-  //       },
-  //     })
-  //     .then((data) => {
-  //       console.log(data);
-  //       history.push("/dashboard/employeedata/");
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
-
   //styling of formControls
   const inputStylesA = {
     width: "46%",
@@ -161,7 +141,7 @@ const EmployeeInfo = ({ history, match }) => {
                 </div>
               </div>
             </div>
-            <div className="form_generaldata">
+            <div className="employeeinfo_form_generaldata">
               <div className="personaldetails_header">
                 <h3>PERSONAL DETAILS </h3>
               </div>
