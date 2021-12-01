@@ -1,0 +1,143 @@
+.back-arrow {
+  @include md {
+    visibility: visible;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100vw;
+    height: 4vh;
+    background-color: $dark-bg;
+  }
+  visibility: hidden;
+  width: 0;
+  height: 0;
+
+  //for sample push -- delete later
+  i {
+    @include md {
+      color: $primary;
+    }
+    margin-right: 15px;
+    margin-top: 25px;
+    margin-left: 10px;
+  }
+  p {
+    @include md {
+      color: $primary;
+      margin-top: 20px;
+      font-size: 15px;
+    }
+  }
+}
+
+.documents_header {
+  @include md {
+    @include flex-center;
+    flex-direction: column;
+    background-color: $dark-bg;
+    width: 100vw;
+    height: 15vh;
+  }
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 95%;
+  padding: 0px 20px;
+  h1 {
+    @include md {
+      border-bottom: none;
+      color: $primary;
+    }
+    border-bottom: 1px solid $tertiary;
+    margin-bottom: 10px;
+  }
+}
+.documents_subheader {
+  @include md {
+    width: 100vw;
+    color: $primary;
+    font-size: 15px;
+    background-color: $dark-bg;
+    padding: 0px 15px 10px;
+  }
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h4 {
+    cursor: pointer;
+    &:hover {
+      transform: translateY(-2px);
+      transition: transform 0.5s;
+      color: $highlight;
+    }
+  }
+}
+
+.active_tab {
+  @include md {
+    color: $primary;
+    border-bottom: none;
+    width: 24%;
+    height: 18px;
+    align-items: center;
+  }
+  @include flex-center;
+  width: 20%;
+  height: 40px;
+  border-bottom: 1px solid $highlight;
+  padding: 3px 10px;
+  color: $dark-bg;
+}
+
+.inactive_tab {
+  @include md {
+    color: $tertiary;
+    h4 {
+      font-weight: 100;
+    }
+  }
+}
+
+.documents_form {
+  @include md {
+    @include flex-center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    height: 550px;
+    overflow-y: scroll;
+
+    width: 100vw;
+  }
+}
+
+.documents_photo,
+.documents_cv,
+.documents_certificate,
+.documents_diploma,
+.documents_letter {
+  text-align: center;
+  position: relative;
+  background-color: $tertiary;
+  width: 30%;
+  height: 200px;
+  margin: 40px 20px;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.documents_label {
+  @include flex-center;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  color: $primary;
+  font-size: 12px;
+  height: 35%;
+  background-color: $dark-bg;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
