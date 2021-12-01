@@ -50,21 +50,12 @@ employeeController.getOneEmployee = async (req, res) => {
 employeeController.addNewEmployee = async (req, res) => {
   console.log("data", req.body);
 
-  const received = JSON.parse(req.body.employeeData);
-  console.log("file", req.file);
-  console.log("filemulti", req.files);
-
-
+  const received = JSON.parse(req.body.employee);
   const pathProfilePic = req.files?.file[0]?.path.substring(7);
-
-  const pathCv =req.files?.fileCv[0]?.path.substring(7);
-  const pathDiploma = req.files?.fileDiploma[0]?.path.substring(7);
-  const pathCertificate = req.files?.fileCetificate[0]?.path.substring(7);
-
-  const pathLetter= req.files?.fileLetter[0]?.path.substring(7);
-//  console.log("received", received);
-
-
+  // const pathCv = req.files?.fileCv[0]?.path.substring(7);
+  // const pathDiploma = req.files?.fileDiploma[0]?.path.substring(7);
+  // const pathCertificate = req.files?.fileCetificate[0]?.path.substring(7);
+  // const pathLetter = req.files?.fileLetter[0]?.path.substring(7);
   try {
     const employee = await new EmployeeData({
       bio: {
@@ -81,10 +72,10 @@ employeeController.addNewEmployee = async (req, res) => {
         role: received.role,
         hobbies: received.hobbies,
         photo: pathProfilePic,
-        cv:pathCv,
-        certificate:pathCertificate,
-        diploma:pathDiploma,
-        letter:pathLetter,
+        cv: pathCv,
+        certificate: pathCertificate,
+        diploma: pathDiploma,
+        letter: pathLetter,
       },
       addressOne: {
         streetOne: received.streetOne,
@@ -126,8 +117,6 @@ employeeController.addNewEmployee = async (req, res) => {
         salary: received.salary,
         overtime: received.overtime,
         workLocation: received.workLocation,
-       
-
       },
       availableHolidays: 30,
       availableHomeOffice: 30,

@@ -13,8 +13,7 @@ router.get("/allemployee/", employeesController.getAllEmployees);
 router.get("/singleEmployee/:id", employeesController.getOneEmployee);
 
 // add new Employee
-
-router.post("/addemployee",uploadMultiple, employeesController.addNewEmployee);
+router.post("/addemployee", uploadMultiple, employeesController.addNewEmployee);
 
 // search for employee
 router.post("/search", employeesController.searchName);

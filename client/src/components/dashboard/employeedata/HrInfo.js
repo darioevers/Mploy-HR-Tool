@@ -95,16 +95,13 @@ const HrInfo = ({ location, history, match }) => {
           <div className="hrinfo_active_tab">
             <h4>HR Information</h4>
           </div>
-          <div className="hrinfo_inactive_tab">
-            <NavLink
-              exact
-              to="/dashboard/employeedata/employeeinfo/employeedocuments"
-              activeClassName="active"
-              className="sidenav_link"
-            >
-              {" "}
-              <h4> Documents </h4>
-            </NavLink>
+          <div
+            className="hrinfo_inactive_tab"
+            onClick={() => {
+              history.push(`/dashboard/employeedata/documents/${hrData?._id}`);
+            }}
+          >
+            <h4>Documents</h4>
           </div>
         </div>
 

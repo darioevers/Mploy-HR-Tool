@@ -21,7 +21,7 @@ import {
 } from "@material-ui/core";
 // import DatePicker from "@material-ui/lab/DatePicker";
 
-const AddEmployee = ({ history }) => {
+const AddEmployee = ({ history, match }) => {
   const [employee, setEmployee] = useState({});
   const [file, setFile] = useState();
 
@@ -29,6 +29,31 @@ const AddEmployee = ({ history }) => {
   const [firstName, setFirstName] = useState("First Name");
   const [lastName, setLastName] = useState("Last Name");
   const [position, setPosition] = useState("Position");
+
+  const addNew = () => {
+    const data = new FormData();
+    data.append("file", file);
+    console.log(data);
+    const readyTOSend = JSON.stringify(employee);
+    data.append("employee", readyTOSend);
+    console.log(data);
+    axios
+      .post(
+        "http://localhost:5000/employee/addemployee",
+        data,
+
+        {
+          header: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        // history.push("/dashboard/employeedata/addemployee/documents");
+      })
+      .catch((err) => console.log(err));
+  };
 
   //styling of formControls
   const inputStylesA = {
@@ -66,7 +91,7 @@ const AddEmployee = ({ history }) => {
           <div className="inactive_tab">
             <NavLink
               exact
-              to="/dashboard/employeedata/addemployee/documents"
+              to="/dashboard/employeedata/adddocuments"
               activeClassName="active"
               className="sidenav_link"
             >
@@ -352,13 +377,29 @@ const AddEmployee = ({ history }) => {
             </div>
 
             <div className="next-btn">
-              <button
+              {/* <button
+                // onClick={() => {
+                //   addNew();
+                //   setEmployee("");
+                // }}
                 onClick={() => {
                   console.log(employee);
+                  addNew();
+                  // history.push({
+                  //   pathname: "/dashboard/employeedata/addemployee/hrinfo",
+                  //   state: { employee },
+                  // });
+                }}
+              >
+                SAVE
+              </button> */}
 
+              <button
+                onClick={() => {
+                  addNew();
                   history.push({
                     pathname: "/dashboard/employeedata/addemployee/hrinfo",
-                    state: { employee },
+                    state: { employee, file },
                   });
                 }}
               >

@@ -25,10 +25,12 @@ import MainDashboard from "./components/dashboard/maindashboard/MainDashboard";
 import Calendar from "./components/dashboard/calendar/Calendar";
 import EmployeeData from "./components/dashboard/employeedata/EmployeeData";
 import AddEmployee from "./components/dashboard/employeedata/AddEmployee";
-import EditEmployee from "./components/dashboard/employeedata/EditEmployee";
-import EditHrInfo from "./components/dashboard/employeedata/EditHrInfo";
 import AddHrInfo from "./components/dashboard/employeedata/AddHrInfo";
 import AddDocument from "./components/dashboard/employeedata/AddDocument";
+import EditEmployee from "./components/dashboard/employeedata/EditEmployee";
+import EditHrInfo from "./components/dashboard/employeedata/EditHrInfo";
+import EditDocuments from "./components/dashboard/employeedata/EditDocuments";
+
 import EmployeeInfo from "./components/dashboard/employeedata/EmployeeInfo";
 import HrInfo from "./components/dashboard/employeedata/HrInfo";
 import EmployeeDocuments from "./components/dashboard/employeedata/EmployeeDocuments";
@@ -78,6 +80,18 @@ const App = () => {
               />
 
               <Route
+                exact
+                path="/dashboard/employeedata/addemployee/hrinfo"
+                component={AddHrInfo}
+              />
+
+              <Route
+                exact
+                path="/dashboard/employeedata/adddocuments"
+                component={AddDocument}
+              />
+
+              <Route
                 path="/dashboard/employeedata/editemployee/:id"
                 component={EditEmployee}
               />
@@ -86,10 +100,10 @@ const App = () => {
                 path="/dashboard/employeedata/edithrinfo/:id"
                 component={EditHrInfo}
               />
+
               <Route
-                exact
-                path="/dashboard/employeedata/addemployee/hrinfo"
-                component={AddHrInfo}
+                path="/dashboard/employeedata/editdocuments/:id"
+                component={EditDocuments}
               />
 
               <Route
@@ -101,16 +115,10 @@ const App = () => {
                 component={HrInfo}
               />
               <Route
-                exact
-                path="/dashboard/employeedata/employeeinfo/employeedocuments"
+                path="/dashboard/employeedata/documents/:id"
                 component={EmployeeDocuments}
               />
 
-              <Route
-                exact
-                path="/dashboard/employeedata/addemployee/documents"
-                component={AddDocument}
-              />
               <Route exact path="/dashboard/calendar" component={Calendar} />
               <Route exact path="/dashboard/payroll" component={Payroll} />
               <Route exact path="/dashboard/tasks" component={Tasks} />
