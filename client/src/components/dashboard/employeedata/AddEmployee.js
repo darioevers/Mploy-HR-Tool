@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
-import { NavLink } from "react-router-dom";
-import axios from "axios";
 import PhoneIcon from "@mui/icons-material/Phone";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import countrydata from "../../../selectData/countries";
 
 import {
@@ -13,17 +10,12 @@ import {
   FormControl,
   InputLabel,
   Input,
-  Button,
-  makeStyles,
-  Typography,
   Select,
   MenuItem,
 } from "@material-ui/core";
-// import DatePicker from "@material-ui/lab/DatePicker";
 
 const AddEmployee = ({ history }) => {
   const [employee, setEmployee] = useState({});
-  const [file, setFile] = useState();
 
   //autofill
   const [firstName, setFirstName] = useState("First Name");
@@ -78,47 +70,14 @@ const AddEmployee = ({ history }) => {
 
         <div className="employeedata_form">
           <FormGroup enctype="multipart/form-data">
-            <div className="form_header">
-              <div className="form_header_info">
-                <div className="fullname">
-                  <h1>{firstName}</h1>
-                  <h1>{lastName}</h1>
-                </div>
-
-                <div className="position">
-                  <h3>{position}</h3>
-                </div>
-                <div className="contacts">
-                  <MailOutlineIcon fontSize="small" />
-                  <input
-                    name="email"
-                    onChange={(e) =>
-                      setEmployee({ ...employee, email: e.target.value })
-                    }
-                    placeholder="Email"
-                  />
-
-                  <PhoneIcon fontSize="small" />
-                  <input
-                    name="phoneNumber"
-                    onChange={(e) =>
-                      setEmployee({
-                        ...employee,
-                        phoneNumber: e.target.value,
-                      })
-                    }
-                    placeholder="Phone Number"
-                  />
-                </div>
-              </div>
-            </div>
+            <div className="form_header"></div>
 
             <div className="form_generaldata">
               <div className="basicdetails_header">
                 <h3>BASIC DETAILS </h3>
               </div>
 
-              <div className="basicdetailsone_content">
+              <div className="basicdetails_content">
                 <FormControl style={inputStylesA}>
                   <InputLabel htmlFor="my-input">First Name</InputLabel>
                   <Input
@@ -139,6 +98,29 @@ const AddEmployee = ({ history }) => {
                     onChange={(e) => {
                       setEmployee({ ...employee, lastName: e.target.value });
                       setLastName(e.target.value);
+                    }}
+                  />
+                </FormControl>
+
+                <FormControl style={inputStylesA}>
+                  <InputLabel htmlFor="my-input">Phone Number</InputLabel>
+                  <Input
+                    type="text"
+                    name="phoneNumber"
+                    onChange={(e) => {
+                      setEmployee({ ...employee, phoneNumber: e.target.value });
+                    }}
+                  />
+                </FormControl>
+
+                <FormControl style={inputStylesA}>
+                  <InputLabel htmlFor="my-input">Email</InputLabel>
+                  <Input
+                    type="text"
+                    name="email"
+                    // style={inputStylesA}
+                    onChange={(e) => {
+                      setEmployee({ ...employee, email: e.target.value });
                     }}
                   />
                 </FormControl>
