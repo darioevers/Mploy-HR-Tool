@@ -101,72 +101,34 @@ const AddDocument = ({ location }) => {
                 </div>
                 <div className="upload-photo">
                   <label for="upload-photo">Upload Photo +</label>
-                  <input
-                    type="file"
-                    name="file"
-                    id="upload-photo"
-                    onChange={(e) => setFile(e.target.files[0])}
-                  />
+                  <input type="file" name="file" id="upload-photo" />
                 </div>
               </div>
             </div>
             {/* cv */}
-            <FormControl>
-              <InputLabel htmlFor="my-input">CV</InputLabel>
-              <Input
-                type="file"
-                name="fileCv"
-                onChange={(e) => setFileCv(e.target.files[0])}
-              />
-            </FormControl>
+            <FormControl></FormControl>
             {/* Diploma */}
             <FormControl>
               <InputLabel htmlFor="my-input">Diploma</InputLabel>
-              <Input
-                type="file"
-                name="fileDiploma"
-                onChange={(e) => setFileDiploma(e.target.files[0])}
-              />
+              <Input type="file" name="fileDiploma" />
             </FormControl>
             {/* letter */}
             <FormControl>
               <InputLabel htmlFor="my-input">Letter</InputLabel>
-              <Input
-                type="file"
-                name="fileLetter"
-                onChange={(e) => setFileLetter(e.target.files[0])}
-              />
+              <Input type="file" name="fileLetter" />
             </FormControl>
             {/* certificate */}
             <FormControl>
               <InputLabel htmlFor="my-input">Certificate</InputLabel>
-              <Input
-                type="file"
-                name="fileCetificate"
-                onChange={(e) => setFileCetificate(e.target.files[0])}
-              />
+              <Input type="file" name="fileCetificate" />
             </FormControl>
             {/* certificate */}
             <FormControl>
               <InputLabel htmlFor="my-input">Certificate</InputLabel>
-              <Input
-                type="file"
-                name="fileCetificate"
-                onChange={(e) => setFileCetificate(e.target.files[0])}
-              />
+              <Input type="file" name="fileCetificate" />
             </FormControl>
           </div>
         </FormGroup>
-        <div className="hr-save-btn">
-          <button
-            onClick={() => {
-              addNew();
-              setAllData("");
-            }}
-          >
-            SAVE
-          </button>
-        </div>
       </div>
     </div>
   );

@@ -17,7 +17,6 @@ import {
   Select,
   MenuItem,
 } from "@material-ui/core";
-import EmployeeData from "./EmployeeData";
 
 const EditEmployee = ({ history, match }) => {
   const [editEmp, setEditEmp] = useState();
@@ -43,25 +42,7 @@ const EditEmployee = ({ history, match }) => {
       })
       .catch((err) => console.log(err));
   };
-  // const edit = () => {
-  //   const data = new FormData();
-  //   data.append("file", file);
-  //   const readyTOSend = JSON.stringify(editEmp);
-  //   data.append("editEmp", readyTOSend);
 
-  //   console.log(editEmp);
-  //   axios
-  //     .put("http://localhost:5000/employee/update", data, {
-  //       header: {
-  //         "Content-Type": "application/json",
-  //       },
-  //     })
-  //     .then((data) => {
-  //       console.log(data);
-  //       history.push("/dashboard/employeedata/");
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
   //autofill
   const [firstName, setFirstName] = useState(editEmp?.bio?.firstName);
   const [lastName, setLastName] = useState(editEmp?.bio?.lastName);
@@ -98,7 +79,14 @@ const EditEmployee = ({ history, match }) => {
           >
             <h4>HR Information</h4>
           </div>
-          <div className="inactive_tab">
+          <div
+            className="inactive_tab"
+            onClick={() => {
+              history.push(
+                `/dashboard/employeedata/editdocuments/${editEmp._id}`
+              );
+            }}
+          >
             <h4>Documents</h4>
           </div>
         </div>

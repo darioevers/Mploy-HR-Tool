@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
 import { NavLink } from "react-router-dom";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+
 import {
   Table,
   TableHead,
@@ -364,6 +364,7 @@ const AddHrInfo = ({ location, history }) => {
             <div className="hr-save-btn">
               <button
                 onClick={() => {
+                  console.log(employeeData);
                   history.push({
                     pathname: "/dashboard/employeedata/adddocuments",
                     state: { employeeData },

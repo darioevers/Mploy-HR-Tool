@@ -21,7 +21,7 @@ import {
 } from "@material-ui/core";
 // import DatePicker from "@material-ui/lab/DatePicker";
 
-const AddEmployee = ({ history }) => {
+const AddEmployee = ({ history, match }) => {
   const [employee, setEmployee] = useState({});
   const [file, setFile] = useState();
 
@@ -33,12 +33,7 @@ const AddEmployee = ({ history }) => {
   const addNew = () => {
     const data = new FormData();
     data.append("file", file);
-    // data.append("fileCv", fileCv);
-    // data.append("fileDiploma", fileDiploma);
-    // data.append("fileLetter", fileLetter);
-    // data.append("fileCetificate", fileCetificate);
     console.log(data);
-
     const readyTOSend = JSON.stringify(employee);
     data.append("employee", readyTOSend);
     console.log(data);
@@ -59,6 +54,7 @@ const AddEmployee = ({ history }) => {
       })
       .catch((err) => console.log(err));
   };
+
   //styling of formControls
   const inputStylesA = {
     width: "46%",
@@ -381,16 +377,29 @@ const AddEmployee = ({ history }) => {
             </div>
 
             <div className="next-btn">
-              <button
+              {/* <button
                 // onClick={() => {
                 //   addNew();
                 //   setEmployee("");
                 // }}
                 onClick={() => {
                   console.log(employee);
+                  addNew();
+                  // history.push({
+                  //   pathname: "/dashboard/employeedata/addemployee/hrinfo",
+                  //   state: { employee },
+                  // });
+                }}
+              >
+                SAVE
+              </button> */}
+
+              <button
+                onClick={() => {
+                  addNew();
                   history.push({
                     pathname: "/dashboard/employeedata/addemployee/hrinfo",
-                    state: { employee },
+                    state: { employee, file },
                   });
                 }}
               >

@@ -107,16 +107,13 @@ const EmployeeInfo = ({ history, match }) => {
           >
             <h4>HR Information</h4>
           </div>
-          <div className="inactive_tab">
-            <NavLink
-              exact
-              to="/dashboard/employeedata/employeeinfo/employeedocuments"
-              activeClassName="active"
-              className="sidenav_link"
-            >
-              {" "}
-              <h4>Documents</h4>
-            </NavLink>
+          <div
+            className="inactive_tab"
+            onClick={() => {
+              history.push(`/dashboard/employeedata/documents/${empInfo._id}`);
+            }}
+          >
+            <h4>Documents</h4>
           </div>
         </div>
         <div className="employeedata_form">
