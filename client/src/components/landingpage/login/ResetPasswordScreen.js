@@ -9,7 +9,6 @@ import { useTranslation } from "react-i18next";
 
 
 import LandingpageTopnav from "../navigation/LandingpageTopnav";
-import LandingpageFooter from "../navigation/LandingpageFooter";
 
 // MUI IMPORTS
 import Avatar from "@mui/material/Avatar";
@@ -23,7 +22,6 @@ import Typography from "@mui/material/Typography";
 import Alert from "@mui/material/Alert";
 import Container from "@mui/material/Container";
 
-import VpnKeyIcon from '@mui/icons-material/VpnKey';
 
 const ResetPasswordScreen = ({ history, match }) => {
   const [password, setPassword] = useState("");
@@ -160,47 +158,5 @@ const ResetPasswordScreen = ({ history, match }) => {
 export default ResetPasswordScreen;
 
 
-{
-  /* <div className="resetpassword-screen">
-<form
-  onSubmit={resetPasswordHandler}
-  className="resetpassword-screen__form"
->
-  <h3 className="resetpassword-screen__title">Forgot Password</h3>
-  {error && <span className="error-message">{error} </span>}
-  {success && (
-    <span className="success-message">
-      {success} <Link to="/login">Login</Link>
-    </span>
-  )}
-  <div className="form-group">
-    <label htmlFor="password">New Password:</label>
-    <input
-      type="password"
-      required
-      id="password"
-      placeholder="Enter new password"
-      autoComplete="true"
-      value={password}
-      onChange={(e) => setPassword(e.target.value)}
-    />
-  </div>
-  <div className="form-group">
-    <label htmlFor="confirmpassword">Confirm New Password:</label>
-    <input
-      type="password"
-      required
-      id="confirmpassword"
-      placeholder="Confirm new password"
-      autoComplete="true"
-      value={confirmPassword}
-      onChange={(e) => setConfirmPassword(e.target.value)}
-    />
-  </div>
-  <button type="submit" className="btn btn-primary">
-    Reset Password
-  </button>
-</form>
-</div> */
-}
+
 

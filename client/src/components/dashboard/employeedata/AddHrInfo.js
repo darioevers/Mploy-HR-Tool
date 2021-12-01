@@ -171,7 +171,7 @@ console.log(data);
 
           <div className="addhrinfo_form">
             <div className="addhrinfo_contractdetails_header">
-              <h3>CONTRACT DETAILS </h3>
+              <h3>CONTRACT DETAILS </h3> 
             </div>
 
             <div className="addhrinfo_contractdetails_content">
@@ -414,8 +414,11 @@ console.log(data);
             <div className="hr-save-btn">
               <button
                 onClick={() => {
+                  
                   addNew();
                   setEmployeeData("");
+                  alert("Employee successfully added.")
+                  history.push({pathname:"/dashboard/employeedata/"});
                 }}
               >
                 SAVE EMPLOYEE DATA{" "}

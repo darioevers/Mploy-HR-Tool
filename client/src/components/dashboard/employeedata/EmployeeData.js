@@ -178,6 +178,7 @@ function EmployeeData({ history }) {
                                   {employee.bio.firstName}{" "}
                                   {employee.bio.lastName}
                                 </h5>
+                               
                                 <h4>{employee.contractInfo?.position}</h4>
                               </div>
                             </div>
@@ -288,7 +289,7 @@ function EmployeeData({ history }) {
                                 >
                                   Edit
                                 </div>
-
+                           
 
                                 <div
                                   variant="contained"
