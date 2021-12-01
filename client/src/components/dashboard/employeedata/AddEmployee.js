@@ -21,7 +21,7 @@ import {
 } from "@material-ui/core";
 // import DatePicker from "@material-ui/lab/DatePicker";
 
-const AddEmployee = ({ history, match }) => {
+const AddEmployee = ({ history }) => {
   const [employee, setEmployee] = useState({});
   const [file, setFile] = useState();
 
@@ -29,31 +29,6 @@ const AddEmployee = ({ history, match }) => {
   const [firstName, setFirstName] = useState("First Name");
   const [lastName, setLastName] = useState("Last Name");
   const [position, setPosition] = useState("Position");
-
-  const addNew = () => {
-    const data = new FormData();
-    data.append("file", file);
-    console.log(data);
-    const readyTOSend = JSON.stringify(employee);
-    data.append("employee", readyTOSend);
-    console.log(data);
-    axios
-      .post(
-        "http://localhost:5000/employee/addemployee",
-        data,
-
-        {
-          header: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-      .then((res) => {
-        console.log(res);
-        // history.push("/dashboard/employeedata/addemployee/documents");
-      })
-      .catch((err) => console.log(err));
-  };
 
   //styling of formControls
   const inputStylesA = {
@@ -77,52 +52,33 @@ const AddEmployee = ({ history, match }) => {
           <div className="active_tab">
             <h4>General Data</h4>
           </div>
-          <div className="inactive_tab">
-            <NavLink
-              exact
-              to="/dashboard/employeedata/addemployee/hrinfo"
-              activeClassName="active"
-              className="sidenav_link"
-            >
-              {" "}
-              HR Information
-            </NavLink>
+          <div
+            className="inactive_tab"
+            onClick={() => {
+              history.push({
+                pathname: "/dashboard/employeedata/addhrinfo",
+                state: { employee },
+              });
+            }}
+          >
+            <h4>HR Information</h4>
           </div>
-          <div className="inactive_tab">
-            <NavLink
-              exact
-              to="/dashboard/employeedata/adddocuments"
-              activeClassName="active"
-              className="sidenav_link"
-            >
-              {" "}
-              Documents
-            </NavLink>
+          <div
+            className="inactive_tab"
+            onClick={() => {
+              history.push({
+                pathname: "/dashboard/employeedata/adddocuments",
+                state: { employee },
+              });
+            }}
+          >
+            <h4>Documents</h4>
           </div>
         </div>
 
         <div className="employeedata_form">
           <FormGroup enctype="multipart/form-data">
             <div className="form_header">
-              <div className="form_header_photo">
-                <div className="photo">
-                  <div className="dummy_photo">
-                    <i>
-                      <AccountCircleIcon style={{ fontSize: "135" }} />
-                    </i>
-                  </div>
-                  <div className="upload-photo">
-                    <label for="upload-photo">Upload Photo +</label>
-                    <input
-                      type="file"
-                      name="file"
-                      id="upload-photo"
-                      onChange={(e) => setFile(e.target.files[0])}
-                    />
-                  </div>
-                </div>
-              </div>
-
               <div className="form_header_info">
                 <div className="fullname">
                   <h1>{firstName}</h1>
@@ -204,6 +160,7 @@ const AddEmployee = ({ history, match }) => {
                     name="position"
                     onChange={(e) => {
                       setEmployee({ ...employee, position: e.target.value });
+                      setPosition(e.target.value);
                     }}
                   />
                 </FormControl>
@@ -396,10 +353,9 @@ const AddEmployee = ({ history, match }) => {
 
               <button
                 onClick={() => {
-                  addNew();
                   history.push({
-                    pathname: "/dashboard/employeedata/addemployee/hrinfo",
-                    state: { employee, file },
+                    pathname: "/dashboard/employeedata/hrinfo",
+                    state: { employee },
                   });
                 }}
               >

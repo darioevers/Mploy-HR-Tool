@@ -52,6 +52,24 @@ const EditHrInfo = ({ history, match }) => {
       .catch((err) => console.log(err));
   };
 
+  const edit = () => {
+    const data = new FormData();
+    const readyTOSend = JSON.stringify(editHrInfo);
+    data.append("editHrInfo", readyTOSend);
+
+    axios
+      .put("http://localhost:5000/employee/update", data, {
+        header: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((data) => {
+        console.log(data);
+        history.push("/dashboard/employeedata/");
+      })
+      .catch((err) => console.log(err));
+  };
+
   //styling of formControls
   const inputStylesA = {
     width: "46%",
@@ -378,9 +396,11 @@ const EditHrInfo = ({ history, match }) => {
             <div className="hr-save-btn">
               <button
                 onClick={() => {
-                  history.push(
-                    `/dashboard/employeedata/editdocuments/${editHrInfo._id}`
-                  );
+                  console.log(editHrInfo);
+                  edit();
+                  // history.push(
+                  //   `/dashboard/employeedata/editdocuments/${editHrInfo._id}`
+                  // );
                 }}
               >
                 Next
