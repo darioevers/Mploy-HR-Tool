@@ -9,8 +9,12 @@
     z-index: 3;
     transition: 0.5s;
     min-width: 75%;
+    // background-color: rgba(255, 255, 255, 0.15);
+    // backdrop-filter: blur(5px);
   }
   @include widget-wrapper;
+  // background-color: rgba(255, 255, 255, 0.15);
+  // backdrop-filter: blur(5px);
   background-color: $dark-bg;
   grid-area: widget_announcements;
   display: grid;
@@ -35,6 +39,8 @@
     min-width: 0%;
   }
   @include widget-wrapper;
+  // background-color: rgba(255, 255, 255, 0.15);
+  // backdrop-filter: blur(5px);
   background-color: $dark-bg;
   grid-area: widget_announcements;
   display: grid;
@@ -49,6 +55,7 @@
 .widget_announcements_header {
   @include md {
     margin-top: 30px;
+    color: $dark-bg;
   }
   grid-area: header;
   margin: 15px 0px 0px 20px;
@@ -94,6 +101,9 @@
     height: 130px;
     width: 40px;
     border-radius: 25px;
+    // background-color: rgba(255, 255, 255, 0.15);
+    // backdrop-filter: blur(5px);
+    // border: 1px solid $primary;
     background-color: $dark-bg;
     color: $primary;
     i {
@@ -143,15 +153,17 @@
   flex-direction: column;
   margin-right: 15px;
   h4 {
-    @include md {
-      font-size: 12px;
-    }
+    // @include md {
+    //   font-size: 12px;
+    //   color: black;
+    // }
     font-size: 15px;
   }
   h3 {
-    @include md {
-      font-size: 25px;
-    }
+    // @include md {
+    //   color: black;
+    //   font-size: 25px;
+    // }
     margin-top: -5px;
     font-size: 30px;
   }
@@ -184,10 +196,11 @@
     color: $highlight;
   }
   h4 {
-    @include md {
-      font-size: 10px;
-      margin-top: 2px;
-    }
+    // @include md {
+    //   font-size: 10px;
+    //   margin-top: 2px;
+    //   color: black;
+    // }
     font-size: 11.5px;
     font-weight: 300;
     color: $secondary;
@@ -260,16 +273,18 @@
     left: 10%;
     height: 80%;
   }
-  width: 40%;
+  width: 50%;
   position: absolute;
-  top: 20%;
+  top: 17%;
   left: 25%;
   z-index: 9;
-  height: 400px;
-  background-color: $dark-bg;
+  height: 600px;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  // background-color: $dark-bg;
   border-radius: 12px;
   padding: 40px;
-  border-bottom: 40px solid $dark-bg;
+  // border-bottom: 40px solid $dark-bg;
   overflow-x: hidden;
   overflow-y: scroll;
 
@@ -403,6 +418,9 @@
 
 .widget_announcements_divider_mobile {
   .line {
+    @include md {
+      border-bottom: 1px solid $primary;
+    }
     background-color: transparent;
     width: 100%;
     height: 20px;

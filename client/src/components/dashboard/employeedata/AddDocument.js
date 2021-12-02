@@ -101,6 +101,7 @@ const AddDocument = ({ location, history }) => {
   }, [selectedFile]);
 
   const onSelectFile = (e) => {
+    setFile(e.target.files[0]);
     if (!e.target.files || e.target.files.length === 0) {
       setSelectedFile(undefined);
       return;
@@ -155,11 +156,11 @@ const AddDocument = ({ location, history }) => {
                   </i>
                 </div>
                 <div className="upload-photo">
-                  <label for="upload-photo">Upload Photo +</label>
+                  <label for="file">Upload Photo +</label>
                   <input
                     type="file"
                     name="file"
-                    id="upload-photo"
+                    id="file"
                     onChange={onSelectFile}
                   />
                   {selectedFile && <img src={preview} />}
@@ -192,11 +193,11 @@ const AddDocument = ({ location, history }) => {
                   </div>
                 </div>
                 <div className="upload_button">
-                  <label for="upload-cv">Upload CV +</label>
+                  <label for="fileCv">Upload CV +</label>
                   <input
                     type="file"
-                    name="cv"
-                    id="upload-cv"
+                    name="fileCv"
+                    id="fileCv"
                     onChange={(e) => setFileCv(e.target.files[0])}
                     onClick={handleCvUpload}
                   />
@@ -231,18 +232,18 @@ const AddDocument = ({ location, history }) => {
                   </div>
                 </div>
                 <div className="upload_button">
-                  <label for="upload-diploma">Upload Diploma +</label>
+                  <label for="fileDiploma">Upload Diploma +</label>
                   <input
                     type="file"
                     name="fileDiploma"
-                    id="upload-diploma"
+                    id="fileDiploma"
                     onChange={(e) => setFileDiploma(e.target.files[0])}
                     onClick={handleDiplomaUpload}
                   />
                 </div>
               </div>
 
-              <div className="upload_certificate">
+              <div className="upload_cert">
                 <div className="upload_content">
                   <div className="upload_content_top">
                     <p
@@ -265,12 +266,13 @@ const AddDocument = ({ location, history }) => {
                     <h4>Date Today</h4>
                   </div>
                 </div>
+
                 <div className="upload_button">
-                  <label for="upload-button">Upload Certificate +</label>
+                  <label for="fileCertificate">Upload Certificate +</label>
                   <input
                     type="file"
                     name="fileCertificate"
-                    id="upload-cert"
+                    id="fileCertificate"
                     onChange={(e) => setFileCertificate(e.target.files[0])}
                     onClick={handleCertUpload}
                   />
@@ -305,11 +307,11 @@ const AddDocument = ({ location, history }) => {
                   </div>
                 </div>
                 <div className="upload_button">
-                  <label for="upload-letter">Upload Letter +</label>
+                  <label for="fileLetter">Upload Letter +</label>
                   <input
                     type="file"
                     name="fileLetter"
-                    id="upload-letter"
+                    id="fileLetter"
                     onChange={(e) => setFileLetter(e.target.files[0])}
                     onClick={handleLetterUpload}
                   />
@@ -318,9 +320,11 @@ const AddDocument = ({ location, history }) => {
             </div>
           </div>
         </FormGroup>
+
         <div className="hr-save-btn">
           <button
             onClick={() => {
+              console.log(allData);
               addNew();
               setAllData("");
             }}

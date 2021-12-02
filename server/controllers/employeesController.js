@@ -54,7 +54,7 @@ employeeController.addNewEmployee = async (req, res) => {
   const pathProfilePic = req.files?.file[0]?.path.substring(7);
   const pathCv = req.files?.fileCv[0]?.path.substring(7);
   const pathDiploma = req.files?.fileDiploma[0]?.path.substring(7);
-  const pathCertificate = req.files?.fileCetificate[0]?.path.substring(7);
+  const pathCertificate = req.files?.fileCertificate[0]?.path.substring(7);
   const pathLetter = req.files?.fileLetter[0]?.path.substring(7);
   try {
     const employee = await new EmployeeData({

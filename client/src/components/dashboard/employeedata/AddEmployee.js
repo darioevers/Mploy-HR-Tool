@@ -122,6 +122,7 @@ const AddEmployee = ({ history }) => {
                     onChange={(e) => {
                       setEmployee({ ...employee, email: e.target.value });
                     }}
+                    required
                   />
                 </FormControl>
 
@@ -336,7 +337,7 @@ const AddEmployee = ({ history }) => {
               <button
                 onClick={() => {
                   history.push({
-                    pathname: "/dashboard/employeedata/hrinfo",
+                    pathname: "/dashboard/employeedata/addhrinfo",
                     state: { employee },
                   });
                 }}

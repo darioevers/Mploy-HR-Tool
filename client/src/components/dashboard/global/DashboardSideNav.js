@@ -9,6 +9,7 @@ import EuroIcon from "@material-ui/icons/Euro";
 import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 import LogoutIcon from "@mui/icons-material/Logout";
+import logo from "../../../img/logo/MPLOY_logo_small_white.svg";
 
 import axios from "axios";
 
@@ -99,6 +100,9 @@ const DashboardSideNav = (props) => {
         {/* employee info */}
         {privateData && (
           <div className="sidenav_employeeinfo">
+            <div className="sidenav_logo">
+              <img src={logo} />
+            </div>
             <div className="sidenav_employeeinfo_image">
               <img
                 src={`http://localhost:5000/${privateData?.bio?.photo}`}
@@ -111,8 +115,10 @@ const DashboardSideNav = (props) => {
             </div>
 
             <div className="sidenav_employeeinfo_details">
-              <h1>{privateData?.bio?.firstName}</h1>
-              <h1>{privateData?.bio?.lastName}</h1>
+              <h1>
+                {privateData?.bio?.firstName} {privateData?.bio?.lastName}
+              </h1>
+
               <h4>{privateData?.contractInfo?.position}</h4>
             </div>
           </div>
