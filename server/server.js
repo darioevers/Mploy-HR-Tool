@@ -17,7 +17,7 @@ app.use(cors());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Heroku :All javascript and css will be served from this folder
-app.use(express.static("client/build"));
+// app.use(express.static("client/build"));
 
 
 
@@ -44,9 +44,9 @@ main();
 
 // routes
 //heroku:  all html file from this route index.html
-app.use("*",(req,res)=>{
-  res.sendFile(path.resolve(__dirname,"../client","build","index.html"))
-})
+// app.use("*",(req,res)=>{
+//   res.sendFile(path.resolve(__dirname,"../client","build","index.html"))
+// })
 app.use("/users", require("./routes/users"));
 
 app.use("/dashboard", require("./routes/dashboard"));
