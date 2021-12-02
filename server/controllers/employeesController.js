@@ -50,12 +50,12 @@ employeeController.getOneEmployee = async (req, res) => {
 employeeController.addNewEmployee = async (req, res) => {
   console.log("data", req.body);
 
-  const received = JSON.parse(req.body.employee);
+  const received = JSON.parse(req.body.allData);
   const pathProfilePic = req.files?.file[0]?.path.substring(7);
-  // const pathCv = req.files?.fileCv[0]?.path.substring(7);
-  // const pathDiploma = req.files?.fileDiploma[0]?.path.substring(7);
-  // const pathCertificate = req.files?.fileCetificate[0]?.path.substring(7);
-  // const pathLetter = req.files?.fileLetter[0]?.path.substring(7);
+  const pathCv = req.files?.fileCv[0]?.path.substring(7);
+  const pathDiploma = req.files?.fileDiploma[0]?.path.substring(7);
+  const pathCertificate = req.files?.fileCertificate[0]?.path.substring(7);
+  const pathLetter = req.files?.fileLetter[0]?.path.substring(7);
   try {
     const employee = await new EmployeeData({
       bio: {
@@ -167,7 +167,7 @@ employeeController.searchName = async (req, res) => {
 
 employeeController.updateEmployee = async (req, res) => {
   try {
-    let received = await JSON.parse(req.body.editEmp);
+    let received = await JSON.parse(req.body.editHrInfo);
     received.bio.photo = "uploads/" + req.file.path.substring(15);
     console.log(req.file.path);
     // received.bio.photo=req.file.path.substring(7);

@@ -19,45 +19,10 @@ const AddHrInfo = ({ location, history }) => {
   const [employeeData, setEmployeeData] = useState(
     location.state && location.state.employee
   );
-  const [file, setFile] = useState();
-  const [fileCv, setFileCv] = useState();
-  const [fileDiploma, setFileDiploma] = useState();
-  const [fileLetter, setFileLetter] = useState();
-  const [fileCetificate, setFileCetificate] = useState();
 
   const [hireDate, setHireDate] = useState(false);
   const [addEducation, setAddEducation] = useState(false);
   const [addWorkExperience, setAddWorkExperience] = useState(false);
-
-  const addNew = () => {
-    const data = new FormData();
-    data.append("file", file);
-    data.append("fileCv", fileCv);
-    data.append("fileDiploma", fileDiploma);
-    data.append("fileLetter", fileLetter);
-    data.append("fileCetificate", fileCetificate);
-    console.log(data);
-
-    const readyTOSend = JSON.stringify(employeeData);
-    data.append("employeeData", readyTOSend);
-    console.log(data);
-    axios
-      .post(
-        "http://localhost:5000/employee/addemployee",
-        data,
-
-        {
-          header: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-      .then((res) => {
-        console.log(res);
-        // history.push("/dashboard/employeedata/addemployee/documents");
-      })
-      .catch((err) => console.log(err));
-  };
 
   //styling of formControls
   const inputStylesA = {

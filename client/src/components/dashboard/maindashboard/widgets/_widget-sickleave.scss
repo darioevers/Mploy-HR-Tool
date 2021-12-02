@@ -1,7 +1,9 @@
 .widget_sickleave_mainbox {
   @include md {
     display: flex;
-    background-color: $tertiary;
+    background-color: rgba(130, 130, 130, 0.15);
+    backdrop-filter: blur(5px);
+    // background-color: $tertiary;
     position: fixed;
     top: 24%;
     height: 7%;
@@ -22,7 +24,7 @@
   .sickleave_top_wrapper {
     @include md {
       @include flex-center;
-      background-color: $dark-bg;
+      background-color: $highlight;
       width: 25%;
       height: 100%;
       margin: 0px;

@@ -81,7 +81,7 @@ const App = () => {
 
               <Route
                 exact
-                path="/dashboard/employeedata/addemployee/hrinfo"
+                path="/dashboard/employeedata/addhrinfo"
                 component={AddHrInfo}
               />
 
