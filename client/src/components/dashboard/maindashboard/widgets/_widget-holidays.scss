@@ -1,7 +1,9 @@
 .widget_holidays_mainbox {
   @include md {
     display: flex;
-    background-color: $tertiary;
+    background-color: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(5px);
+    // background-color: $tertiary;
     position: fixed;
     top: 32%;
     height: 7%;
@@ -22,7 +24,7 @@
   .holidays_top_wrapper {
     @include md {
       @include flex-center;
-      background-color: $dark-bg;
+      background-color: $highlight;
       width: 25%;
       height: 100%;
       margin: 0;
