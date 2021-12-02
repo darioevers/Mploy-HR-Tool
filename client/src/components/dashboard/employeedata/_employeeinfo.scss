@@ -10,7 +10,6 @@
     align-items: center;
     width: 100vw;
     height: 4vh;
-    background-color: $dark-bg;
   }
   visibility: hidden;
   width: 0;
@@ -101,4 +100,21 @@
       font-weight: 100;
     }
   }
+}
+
+.employeeinfo_form_generaldata {
+  @include md {
+    margin-left: 0px;
+    height: 622px;
+    overflow: scroll;
+    border-radius: 20px;
+    padding: 0px 50px;
+    margin-top: 0px;
+    width: 100vw;
+  }
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+  margin-top: 30px;
 }

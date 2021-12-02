@@ -112,10 +112,11 @@ const EditDocuments = ({ history, match }) => {
           <div className="hr-save-btn">
             <button
               onClick={() => {
+                console.log(documents);
                 edit();
               }}
             >
-              Next
+              Save Employee Data
             </button>
           </div>
         </div>

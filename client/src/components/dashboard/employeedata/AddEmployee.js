@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
-import { NavLink } from "react-router-dom";
-import axios from "axios";
 import PhoneIcon from "@mui/icons-material/Phone";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import countrydata from "../../../selectData/countries";
 
 import {
@@ -13,47 +10,17 @@ import {
   FormControl,
   InputLabel, 
   Input,
-  Button,
-  makeStyles,
-  Typography,
   Select,
   MenuItem,
 } from "@material-ui/core";
-// import DatePicker from "@material-ui/lab/DatePicker";
 
-const AddEmployee = ({ history, match }) => {
+const AddEmployee = ({ history }) => {
   const [employee, setEmployee] = useState({});
-  const [file, setFile] = useState();
 
   //autofill
   const [firstName, setFirstName] = useState("First Name");
   const [lastName, setLastName] = useState("Last Name");
   const [position, setPosition] = useState("Position");
-
-  const addNew = () => {
-    const data = new FormData();
-    data.append("file", file);
-    console.log(data);
-    const readyTOSend = JSON.stringify(employee);
-    data.append("employee", readyTOSend);
-    console.log(data);
-    axios
-      .post(
-        "http://localhost:5000/employee/addemployee",
-        data,
-
-        {
-          header: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-      .then((res) => {
-        console.log(res);
-        // history.push("/dashboard/employeedata/addemployee/documents");
-      })
-      .catch((err) => console.log(err));
-  };
 
   //styling of formControls
   const inputStylesA = {
@@ -77,92 +44,40 @@ const AddEmployee = ({ history, match }) => {
           <div className="active_tab">
             <h4>General Data</h4>
           </div>
-          <div className="inactive_tab">
-            <NavLink
-              exact
-              to="/dashboard/employeedata/addemployee/hrinfo"
-              activeClassName="active"
-              className="sidenav_link"
-            >
-              {" "}
-              HR Information
-            </NavLink>
+          <div
+            className="inactive_tab"
+            onClick={() => {
+              history.push({
+                pathname: "/dashboard/employeedata/addhrinfo",
+                state: { employee },
+              });
+            }}
+          >
+            <h4>HR Information</h4>
           </div>
-          <div className="inactive_tab">
-            <NavLink
-              exact
-              to="/dashboard/employeedata/adddocuments"
-              activeClassName="active"
-              className="sidenav_link"
-            >
-              {" "}
-              Documents
-            </NavLink>
+          <div
+            className="inactive_tab"
+            onClick={() => {
+              history.push({
+                pathname: "/dashboard/employeedata/adddocuments",
+                state: { employee },
+              });
+            }}
+          >
+            <h4>Documents</h4>
           </div>
         </div>
 
         <div className="employeedata_form">
           <FormGroup enctype="multipart/form-data">
-            <div className="form_header">
-              <div className="form_header_photo">
-                <div className="photo">
-                  <div className="dummy_photo">
-                    <i>
-                      <AccountCircleIcon style={{ fontSize: "135" }} />
-                    </i>
-                  </div>
-                  <div className="upload-photo">
-                    <label for="upload-photo">Upload Photo +</label>
-                    <input
-                      type="file"
-                      name="file"
-                      id="upload-photo"
-                      onChange={(e) => setFile(e.target.files[0])}
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="form_header_info">
-                <div className="fullname">
-                  <h1>{firstName}</h1>
-                  <h1>{lastName}</h1>
-                </div>
-
-                <div className="position">
-                  <h3>{position}</h3>
-                </div>
-                <div className="contacts">
-                  <MailOutlineIcon fontSize="small" />
-                  <input
-                    name="email"
-                    onChange={(e) =>
-                      setEmployee({ ...employee, email: e.target.value })
-                    }
-                    placeholder="Email"
-                  />
-
-                  <PhoneIcon fontSize="small" />
-                  <input
-                    name="phoneNumber"
-                    onChange={(e) =>
-                      setEmployee({
-                        ...employee,
-                        phoneNumber: e.target.value,
-                      })
-                    }
-                    placeholder="Phone Number"
-                  />
-                </div>
-              </div>
-            </div>
+            <div className="form_header"></div>
 
             <div className="form_generaldata">
               <div className="basicdetails_header">
                 <h3>BASIC DETAILS </h3>
               </div>
 
-              <div className="basicdetailsone_content">
+              <div className="basicdetails_content">
                 <FormControl style={inputStylesA}>
                   <InputLabel htmlFor="my-input">First Name</InputLabel>
                   <Input
@@ -188,6 +103,30 @@ const AddEmployee = ({ history, match }) => {
                 </FormControl>
 
                 <FormControl style={inputStylesA}>
+                  <InputLabel htmlFor="my-input">Phone Number</InputLabel>
+                  <Input
+                    type="text"
+                    name="phoneNumber"
+                    onChange={(e) => {
+                      setEmployee({ ...employee, phoneNumber: e.target.value });
+                    }}
+                  />
+                </FormControl>
+
+                <FormControl style={inputStylesA}>
+                  <InputLabel htmlFor="my-input">Email</InputLabel>
+                  <Input
+                    type="text"
+                    name="email"
+                    // style={inputStylesA}
+                    onChange={(e) => {
+                      setEmployee({ ...employee, email: e.target.value });
+                    }}
+                    required
+                  />
+                </FormControl>
+
+                <FormControl style={inputStylesA}>
                   <InputLabel htmlFor="my-input">Employee ID</InputLabel>
                   <Input
                     type="text"
@@ -204,6 +143,7 @@ const AddEmployee = ({ history, match }) => {
                     name="position"
                     onChange={(e) => {
                       setEmployee({ ...employee, position: e.target.value });
+                      setPosition(e.target.value);
                     }}
                   />
                 </FormControl>
@@ -396,10 +336,9 @@ const AddEmployee = ({ history, match }) => {
 
               <button
                 onClick={() => {
-                  addNew();
                   history.push({
-                    pathname: "/dashboard/employeedata/addemployee/hrinfo",
-                    state: { employee, file },
+                    pathname: "/dashboard/employeedata/addhrinfo",
+                    state: { employee },
                   });
                 }}
               >

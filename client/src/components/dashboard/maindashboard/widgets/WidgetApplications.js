@@ -114,7 +114,7 @@ function WidgetApplications({ userdata }) {
               onChange={(e) => {
                 setNewLeave({
                   ...newLeave,
-                  name: e.target.value,
+                  name: `${userdata?.bio?.firstName} ${userdata?.bio?.lastName}`,
                 });
               }}
             />
@@ -131,7 +131,7 @@ function WidgetApplications({ userdata }) {
               onChange={(e) =>
                 setNewLeave({
                   ...newLeave,
-                  email: e.target.value,
+                  email: userdata?.bio?.email,
                 })
               }
             />
@@ -147,7 +147,7 @@ function WidgetApplications({ userdata }) {
               onChange={(e) =>
                 setNewLeave({
                   ...newLeave,
-                  department: e.target.value,
+                  department: userdata?.contractInfo?.department,
                 })
               }
             />

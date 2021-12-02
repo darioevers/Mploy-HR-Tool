@@ -22,7 +22,7 @@
   .homeoffice_top_wrapper {
     @include md {
       @include flex-center;
-      background-color: $dark-bg;
+      background-color: $highlight;
       width: 25%;
       height: 100%;
       margin: 0;
