@@ -52,28 +52,6 @@ const EditHrInfo = ({ history, match }) => {
       .catch((err) => console.log(err));
   };
 
-  //edit info
-
-  const edit = () => {
-    const data = new FormData();
-    data.append("file", file);
-    const readyTOSend = JSON.stringify(editHrInfo);
-    data.append("editHrInfo", readyTOSend);
-
-    console.log(editHrInfo);
-    axios
-      .put("http://localhost:5000/employee/update", data, {
-        header: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then((data) => {
-        console.log(data);
-        history.push("/dashboard/employeedata/");
-      })
-      .catch((err) => console.log(err));
-  };
-
   //styling of formControls
   const inputStylesA = {
     width: "46%",
@@ -107,16 +85,15 @@ const EditHrInfo = ({ history, match }) => {
           <div className="active_tab">
             <h4> HR Information </h4>
           </div>
-          <div className="inactive_tab">
-            <NavLink
-              exact
-              to="/dashboard/employeedata/addemployee/documents"
-              activeClassName="active"
-              className="sidenav_link"
-            >
-              {" "}
-              Documents
-            </NavLink>
+          <div
+            className="inactive_tab"
+            onClick={() => {
+              history.push(
+                `/dashboard/employeedata/editdocuments/${editHrInfo._id}`
+              );
+            }}
+          >
+            <h4>Documents</h4>
           </div>
         </div>
         <div className="employeedata_form">
@@ -399,7 +376,15 @@ const EditHrInfo = ({ history, match }) => {
             </div>
 
             <div className="hr-save-btn">
-              <button onClick={edit}>Save and Update Employee Data</button>
+              <button
+                onClick={() => {
+                  history.push(
+                    `/dashboard/employeedata/editdocuments/${editHrInfo._id}`
+                  );
+                }}
+              >
+                Next
+              </button>
             </div>
           </FormGroup>
         </div>

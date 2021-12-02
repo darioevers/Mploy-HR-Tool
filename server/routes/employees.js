@@ -13,8 +13,7 @@ router.get("/allemployee/", employeesController.getAllEmployees);
 router.get("/singleEmployee/:id", employeesController.getOneEmployee);
 
 // add new Employee
-
-router.post("/addemployee",uploadMultiple, employeesController.addNewEmployee);
+router.post("/addemployee", uploadMultiple, employeesController.addNewEmployee);
 
 // search for employee
 router.post("/search", employeesController.searchName);
@@ -24,6 +23,10 @@ router.put("/update/", employeesController.updateEmployee);
 
 // updating status ||deleting from the get all employees
 router.patch("/delete", employeesController.deleteOrUpdateStatus);
+
+// get uploaded file
+// router.get('/getMultipleFiles', getallMultipleFiles);
+
 
 // get employee who has today birthday
 // router.get("/todaybirthday", employeesController.getTodaysBirthDay);
