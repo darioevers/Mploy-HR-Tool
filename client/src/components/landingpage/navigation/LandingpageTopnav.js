@@ -1,4 +1,4 @@
-import React, { Component, Suspense } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 // TRANSLATION IMPORTS
@@ -24,11 +24,7 @@ import Brightness7Icon from "@mui/icons-material/Brightness7";
 import IconButton from "@mui/material/IconButton";
 import Box from "@mui/material/Paper";
 import {
-  AppBar,
-  Toolbar,
-  CssBaseline,
   Typography,
-  makeStyles,
   useTheme,
   useMediaQuery,
 } from "@material-ui/core";

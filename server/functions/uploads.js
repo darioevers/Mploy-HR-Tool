@@ -24,6 +24,7 @@ const storage = multer.diskStorage({
 //   }
 // };
 
+
 const uploads = multer({ storage: storage });
 const uploadMultiple = uploads.fields([
   { name: "file", maxCount: 10 },
@@ -32,5 +33,6 @@ const uploadMultiple = uploads.fields([
   { name: "fileLetter", maxCount: 10 },
   { name: "fileCertificate", maxCount: 10 },
 ]);
+
 
 module.exports = { uploadMultiple };

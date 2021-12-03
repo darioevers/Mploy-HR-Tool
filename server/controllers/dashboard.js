@@ -11,16 +11,17 @@ const getPrivateData = (req, res) => {
 
 //   console.log("add admin");
 const addAdmin = async (req, res) => {
+ 
+try{
   await UserData.findOneAndUpdate(
     { "bio.email": req.body.newAdminEmail },
-    { $set: { "bio.role": "admin" } },
-    { new: true },
-    (err, doc) => {
-      if (err) {
-        res.status(401).json({ message: err, status: "Not successfull" });
-      }
-      res.send({ doc, message: "successfull" });
-    }
-  );
+    { $set: { "bio.role": "admin" } })
+    res.send({  message: "successfull" })
+}catch (error) {
+  res.status(error.status).json({
+    message: error.message,
+  });
+}
+   
 };
 module.exports = { getPrivateData, addAdmin };

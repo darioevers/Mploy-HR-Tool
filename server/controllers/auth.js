@@ -53,7 +53,7 @@ const forgotPassword = async (req, res, next) => {
     const user = await User.findOne({ "bio.email": email });
 
     if (!user) {
-      return res.status(404).json("No email could not be sent");
+      return res.status(404).json({message:"No email could not be sent"});
     }
 
     // Reset Token Gen and add to database hashed  version of token
@@ -64,7 +64,7 @@ const forgotPassword = async (req, res, next) => {
     //  reset url
     const resetUrl = `http://localhost:3000/passwordreset/${resetToken}`;
 
-    // HTML Message
+    // HTML Message 
     const message = `
       <h1> Reset Password</h1>
       <p>Please Click the link below to Reset your password </p>
@@ -105,18 +105,24 @@ const resetpassword = async (req, res, next) => {
 
   try {
     const user = await User.findOne({
-      "bio.resetPasswordToken": resetPasswordToken,
+      resetPasswordToken: resetPasswordToken,
     });
     if (!user) {
       return res.status(400).json(" Reset is not Valid ");
     }
     console.log(user);
+    console.log(req.body);
+
+
 
     user.bio.password = req.body.password;
     user.bio.resetPasswordToken = null;
     user.bio.resetPasswordExpire = null;
+    console.log("after",req.body);
 
     await user.save();
+    console.log("after save",req.body);
+
     res.status(201).json({ data: "Password reset successfully." });
   } catch (error) {
     next(error);
