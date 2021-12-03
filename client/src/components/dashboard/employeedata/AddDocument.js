@@ -1,9 +1,18 @@
 import React, { useState, useEffect } from "react";
 import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
+import { NavLink } from "react-router-dom";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
-import { FormGroup } from "@material-ui/core";
+import {
+  FormGroup,
+  FormControl,
+  InputLabel,
+  Input,
+  Button,
+  makeStyles,
+  Typography,
+} from "@material-ui/core";
 import axios from "axios";
 
 const AddDocument = ({ location, history }) => {
@@ -28,7 +37,6 @@ const AddDocument = ({ location, history }) => {
 
     const readyTOSend = JSON.stringify(allData);
     data.append("allData", readyTOSend);
-    console.log(data);
     axios
       .post(
         "http://localhost:5000/employee/addemployee",
