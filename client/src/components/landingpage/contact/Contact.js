@@ -7,13 +7,6 @@ import { useTranslation } from "react-i18next";
 import LandingpageTopnav from "../navigation/LandingpageTopnav";
 import LandingpageFooter from "../navigation/LandingpageFooter";
 
-// ICON IMPORTS
-import PhoneIcon from "@mui/icons-material/Phone";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import PersonPinIcon from "@mui/icons-material/PersonPin";
-import PersonAdd from "@mui/icons-material/PersonAdd";
-import Settings from "@mui/icons-material/Settings";
-import Logout from "@mui/icons-material/Logout";
 
 // MUI IMPORTS
 import TextField from "@mui/material/TextField";
@@ -21,11 +14,8 @@ import Box from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Avatar from "@mui/material/Avatar";
-import Stack from "@mui/material/Stack";
-import { deepOrange } from "@mui/material/colors";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";

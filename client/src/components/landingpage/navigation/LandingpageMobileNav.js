@@ -78,21 +78,21 @@ export default function LandingpageMobileNav() {
       >
         Test
         {actions.map((action) => (
-          <SpeedDialAction
-            key={action.name}
-            icon={action.icon}
-            tooltipTitle={action.name}
-            onClick={action.target}
-            FabProps={{
-              style: {
-                bgcolor: "#fff",
-                borderRadius: 7,
-                width: "5rem",
-                heigth: "10px",
-              },
-            }}
-          ></SpeedDialAction>
-        ))}
+        <SpeedDialAction
+          key={action.name}
+          icon={action.icon}
+          tooltipTitle={action.name}
+          onClick={action.target}
+          FabProps={{
+            style: {
+              bgcolor: "#fff",
+              borderRadius: 7,
+              width: "5rem",
+              heigth: "10px",
+            },
+          }}
+        ></SpeedDialAction>
+      ))}
       </SpeedDial>
     </Box>
   );

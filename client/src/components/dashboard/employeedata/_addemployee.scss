@@ -42,55 +42,11 @@
 
 .form_header {
   @include md {
-    margin: 15px;
-  }
-  position: relative;
-  display: flex;
-  margin: 25px 50px;
-  .photo {
-    flex-direction: column;
-    label {
-      @include md {
-        visibility: hidden;
-        width: 0;
-        height: 0;
-      }
-      background-color: $primary;
-      color: $highlight;
-      cursor: pointer;
-      border: 1px solid $highlight;
-      border-radius: 5px;
-      font-size: 13px;
-      padding: 3px;
-    }
-    #upload-photo {
-      opacity: 0;
-      position: absolute;
-      z-index: -1;
-    }
-    @include flex-center;
+    visibility: hidden;
+    width: 0;
+    height: 0;
   }
 }
-
-.dummy_photo {
-  @include md {
-    width: 80px;
-    height: 80px;
-    margin: 20px;
-    margin-right: 5px;
-  }
-  @include flex-center;
-  width: 120px;
-  height: 120px;
-  background-color: $primary;
-  margin-bottom: 5px;
-  img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-  }
-}
-
 .form_header_info {
   margin-left: 20px;
 }
@@ -160,6 +116,7 @@
   display: flex;
   flex-direction: column;
   margin-left: 50px;
+  margin-top: 30px;
 }
 
 .basicdetails_header {

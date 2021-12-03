@@ -24,6 +24,8 @@
 
 .sidenav_employeeinfo {
   @include md {
+    @include flex-center;
+    flex-direction: column;
     width: 100vw;
     height: 28vh;
     margin: 0;
@@ -31,23 +33,33 @@
     position: fixed;
     top: 0;
     background: $highlight;
-    background: linear-gradient(130deg, $highlight 9%, $lighter-blue 88%);
+    background: linear-gradient(-130deg, $highlight 9%, $lighter-blue 88%);
     z-index: -3;
   }
   display: flex;
   margin-top: 20px;
 
+  .sidenav_logo {
+    @include md {
+      visibility: visible;
+      width: 7%;
+      position: fixed;
+      top: 15px;
+      left: 35px;
+    }
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+
   .sidenav_employeeinfo_image {
     @include md {
-      position: fixed;
-      top: 4%;
-      left: 10%;
-      width: 100px;
-      height: 100px;
+      width: 80px;
+      height: 80px;
     }
     @include flex_center;
-    width: 60px;
-    height: 60px;
+    width: 90px;
+    height: 70px;
     img {
       border-radius: 50px;
       width: 100%;
@@ -56,10 +68,6 @@
   }
   .sidenav_employeeinfo_details {
     @include md {
-      width: 100%;
-      position: fixed;
-      top: 5%;
-      left: 30%;
     }
 
     margin-left: 12px;
@@ -67,13 +75,19 @@
       @include md {
         font-size: 22px;
         line-height: 22px;
+        text-align: center;
+        margin-top: 10px;
+        font-weight: 400;
       }
       color: $primary;
       font-size: 18px;
       margin-bottom: 5px;
-      line-height: 18px;
+      line-height: 22px;
     }
     h4 {
+      @include md {
+        text-align: center;
+      }
       color: $tertiary;
       font-size: 12px;
       font-weight: normal;

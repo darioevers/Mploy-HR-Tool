@@ -1,22 +1,8 @@
 import React, { useState, useEffect } from "react";
 import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
-import { NavLink } from "react-router-dom";
 import axios from "axios";
-import PhoneIcon from "@mui/icons-material/Phone";
-import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import {
-  FormGroup,
-  FormControl,
-  InputLabel,
-  Input,
-  Button,
-  makeStyles,
-  Typography,
-  Select,
-  MenuItem,
-} from "@material-ui/core";
+import { FormGroup, FormControl, InputLabel, Input } from "@material-ui/core";
 
 const EditHrInfo = ({ history, match }) => {
   const [editHrInfo, setEditHrInfo] = useState();
@@ -52,15 +38,11 @@ const EditHrInfo = ({ history, match }) => {
       .catch((err) => console.log(err));
   };
 
-  //edit info
-
   const edit = () => {
     const data = new FormData();
-    data.append("file", file);
     const readyTOSend = JSON.stringify(editHrInfo);
     data.append("editHrInfo", readyTOSend);
 
-    console.log(editHrInfo);
     axios
       .put("http://localhost:5000/employee/update", data, {
         header: {
@@ -107,16 +89,15 @@ const EditHrInfo = ({ history, match }) => {
           <div className="active_tab">
             <h4> HR Information </h4>
           </div>
-          <div className="inactive_tab">
-            <NavLink
-              exact
-              to="/dashboard/employeedata/addemployee/documents"
-              activeClassName="active"
-              className="sidenav_link"
-            >
-              {" "}
-              Documents
-            </NavLink>
+          <div
+            className="inactive_tab"
+            onClick={() => {
+              history.push(
+                `/dashboard/employeedata/editdocuments/${editHrInfo._id}`
+              );
+            }}
+          >
+            <h4>Documents</h4>
           </div>
         </div>
         <div className="employeedata_form">
@@ -399,7 +380,17 @@ const EditHrInfo = ({ history, match }) => {
             </div>
 
             <div className="hr-save-btn">
-              <button onClick={edit}>Save and Update Employee Data</button>
+              <button
+                onClick={() => {
+                  console.log(editHrInfo);
+                  edit();
+                  // history.push(
+                  //   `/dashboard/employeedata/editdocuments/${editHrInfo._id}`
+                  // );
+                }}
+              >
+                Next
+              </button>
             </div>
           </FormGroup>
         </div>

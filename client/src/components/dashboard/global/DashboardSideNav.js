@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 
 //icons
@@ -9,9 +9,9 @@ import EuroIcon from "@material-ui/icons/Euro";
 import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 import LogoutIcon from "@mui/icons-material/Logout";
+import logo from "../../../img/logo/MPLOY_logo_small_white.svg";
 
-// import { useState, useEffect } from "react";
-// import axios from "axios";
+import axios from "axios";
 
 const DashboardSideNav = (props) => {
   const { userdata, logout } = props;
@@ -21,7 +21,7 @@ const DashboardSideNav = (props) => {
     setActive("active");
   };
 
-  // const [privateData, setPrivateData] = useState("");
+  const [privateData, setPrivateData] = useState("");
 
   // const history = useHistory();
   // // if there is nothing in the local storage we immediatly
@@ -58,15 +58,54 @@ const DashboardSideNav = (props) => {
   //   // should go to the /
   // };
 
+  const history = useHistory();
+  // if there is nothing in the local storage we immediatly
+  useEffect(() => {
+    if (!localStorage.getItem("authToken")) {
+      history.push("/");
+    }
+
+    const fetchPrivateData = async () => {
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        },
+      };
+      try {
+        const { data } = await axios.get(
+          "http://localhost:5000/dashboard",
+          config
+        );
+        console.log(data);
+        setPrivateData(data.user);
+      } catch (error) {
+        console.log(error);
+        localStorage.removeItem("authToken");
+      }
+    };
+    fetchPrivateData();
+  }, [history]);
+  // for logining out
+
+  const logoutHandler = () => {
+    localStorage.removeItem("authToken");
+    history.push("/");
+    // should go to the /
+  };
+
   return (
     <>
       <div className="sidenav_mainbox">
         {/* employee info */}
-        {userdata && (
+        {privateData && (
           <div className="sidenav_employeeinfo">
+            <div className="sidenav_logo">
+              <img src={logo} />
+            </div>
             <div className="sidenav_employeeinfo_image">
               <img
-                src={`http://localhost:5000/${userdata.bio.photo}`}
+                src={`http://localhost:5000/${privateData?.bio?.photo}`}
                 width="50"
                 onError={(e) => {
                   e.target.onError = null;
@@ -76,9 +115,11 @@ const DashboardSideNav = (props) => {
             </div>
 
             <div className="sidenav_employeeinfo_details">
-              <h1>{userdata.bio.firstName}</h1>
-              <h1>{userdata.bio.lastName}</h1>
-              <h4>{userdata.contractInfo?.position}</h4>
+              <h1>
+                {privateData?.bio?.firstName} {privateData?.bio?.lastName}
+              </h1>
+
+              <h4>{privateData?.contractInfo?.position}</h4>
             </div>
           </div>
         )}
@@ -175,7 +216,7 @@ const DashboardSideNav = (props) => {
           </NavLink>
         </div>
         <div className="logout_btn">
-          <button onClick={logout}>Logout</button>
+          <button onClick={logoutHandler}>Logout</button>
         </div>
       </div>
     </>

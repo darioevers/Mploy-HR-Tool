@@ -21,7 +21,6 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Alert from "@mui/material/Alert";
-import HowToRegIcon from "@mui/icons-material/HowToReg";
 
 const theme = createTheme();
 
@@ -167,7 +166,7 @@ const RegisterScreen = ({ history }) => {
                   autoComplete="true"
                   required
                   fullWidth
-                  name="password"
+                  name="confirmPassword"
                   label={t("landingRegister.formdesc05")}
                   type="password"
                   autoComplete="current-password"

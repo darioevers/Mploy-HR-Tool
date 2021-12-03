@@ -2,61 +2,15 @@ import React, { useState, useRef } from "react";
 import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
 import { NavLink } from "react-router-dom";
-import {
-  Table,
-  TableHead,
-  TableCell,
-  TableRow,
-  FormGroup,
-  FormControl,
-  InputLabel,
-  Input,
-} from "@material-ui/core";
-import axios from "axios";
+import { FormGroup, FormControl, InputLabel, Input } from "@material-ui/core";
 
 const AddHrInfo = ({ location, history }) => {
   const [employeeData, setEmployeeData] = useState(
     location.state && location.state.employee
   );
-  const [file, setFile] = useState();
-  const [fileCv, setFileCv] = useState()
-  const [fileDiploma, setFileDiploma] = useState();
-  const [fileLetter, setFileLetter] = useState();
-  const [fileCetificate, setFileCetificate] = useState();
-
   const [hireDate, setHireDate] = useState(false);
   const [addEducation, setAddEducation] = useState(false);
   const [addWorkExperience, setAddWorkExperience] = useState(false);
-
-  const addNew = () => {
-    const data = new FormData();
-    data.append("file", file);
-    data.append("fileCv",fileCv);
-    data.append("fileDiploma",fileDiploma);
-    data.append("fileLetter",fileLetter)
-    data.append("fileCetificate",fileCetificate);
-    console.log(data);
-
-    const readyTOSend = JSON.stringify(employeeData);
-    data.append("employeeData", readyTOSend);
-console.log(data);
-    axios
-      .post(
-        "http://localhost:5000/employee/addemployee",
-        data,
-
-        {
-          header: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-      .then((res) => {
-        console.log(res);
-        // history.push("/dashboard/employeedata/addemployee/documents");
-      })
-      .catch((err) => console.log(err));
-  };
 
   //styling of formControls
   const inputStylesA = {
@@ -68,15 +22,6 @@ console.log(data);
     width: "22%",
     marginRight: "20px",
   };
-  // hiredate validation
-  //   const checkDateValidation=()=> {
-  //     // check the dates
-  //  if ((new Date(setEmployeeData.hireDate) > new Date(setEmployeeData.contractEnd)) || (new Date(setEmployeeData.contractEnd) < new Date(setEmployeeData.hireDate))){
-  //   setHireDate(true);
-  //     } else {
-  //       null
-  //     }
-  //   }
 
   const handleAddEducation = () => setAddEducation(!addEducation);
   const handleAddWorkExperience = () =>
@@ -107,7 +52,7 @@ console.log(data);
           <div className="inactive_tab">
             <NavLink
               exact
-              to="/dashboard/employeedata/addemployee/documents"
+              to="/dashboard/employeedata/adddocuments"
               activeClassName="active"
               className="sidenav_link"
             >
@@ -118,57 +63,6 @@ console.log(data);
         </div>
 
         <FormGroup>
-          <div>
-            <FormControl>
-              <InputLabel htmlFor="my-input">Photo</InputLabel>
-              <Input
-                type="file"
-                name="file"
-                onChange={(e) => setFile(e.target.files[0])}
-              />
-            </FormControl>
-
-           {/* cv */}
-          <FormControl>
-            <InputLabel htmlFor="my-input">CV</InputLabel>
-            <Input
-              type="file"
-              name="fileCv"
-              onChange={(e) => setFileCv(e.target.files[0])}
-            />
-          </FormControl>
-              {/* Diploma */}
-               <FormControl>
-            <InputLabel htmlFor="my-input">Diploma</InputLabel>
-            <Input
-              type="file"
-              name="fileDiploma"
-              onChange={(e) => setFileDiploma(e.target.files[0])}
-            />
-          </FormControl>
-
-            {/* letter */}
-            <FormControl>
-            <InputLabel htmlFor="my-input">Letter</InputLabel>
-            <Input
-              type="file"
-              name="fileLetter"
-              onChange={(e) => setFileLetter(e.target.files[0])}
-            />
-          </FormControl>
-
-          {/* certificate */}
-          <FormControl>
-            <InputLabel htmlFor="my-input">Certificate</InputLabel>
-            <Input
-              type="file"
-              name="fileCetificate"
-              onChange={(e) => setFileCetificate(e.target.files[0])}
-            />
-          </FormControl>
-
-          </div>
-
           <div className="addhrinfo_form">
             <div className="addhrinfo_contractdetails_header">
               <h3>CONTRACT DETAILS </h3>
@@ -414,11 +308,14 @@ console.log(data);
             <div className="hr-save-btn">
               <button
                 onClick={() => {
-                  addNew();
-                  setEmployeeData("");
+                  console.log(employeeData);
+                  history.push({
+                    pathname: "/dashboard/employeedata/adddocuments",
+                    state: { employeeData },
+                  });
                 }}
               >
-                SAVE EMPLOYEE DATA{" "}
+                NEXT
               </button>
             </div>
           </div>

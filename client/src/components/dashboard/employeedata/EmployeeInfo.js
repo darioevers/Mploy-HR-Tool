@@ -34,26 +34,6 @@ const EmployeeInfo = ({ history, match }) => {
       .catch((err) => console.log(err));
   };
 
-  // const edit = () => {
-  //   const data = new FormData();
-  //   data.append("file", file);
-  //   const readyTOSend = JSON.stringify(empInfo);
-  //   data.append("empInfo", readyTOSend);
-
-  //   console.log(empInfo);
-  //   axios
-  //     .put("http://localhost:5000/employee/update", data, {
-  //       header: {
-  //         "Content-Type": "application/json",
-  //       },
-  //     })
-  //     .then((data) => {
-  //       console.log(data);
-  //       history.push("/dashboard/employeedata/");
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
-
   //styling of formControls
   const inputStylesA = {
     width: "46%",
@@ -107,16 +87,13 @@ const EmployeeInfo = ({ history, match }) => {
           >
             <h4>HR Information</h4>
           </div>
-          <div className="inactive_tab">
-            <NavLink
-              exact
-              to="/dashboard/employeedata/employeeinfo/employeedocuments"
-              activeClassName="active"
-              className="sidenav_link"
-            >
-              {" "}
-              <h4>Documents</h4>
-            </NavLink>
+          <div
+            className="inactive_tab"
+            onClick={() => {
+              history.push(`/dashboard/employeedata/documents/${empInfo._id}`);
+            }}
+          >
+            <h4>Documents</h4>
           </div>
         </div>
         <div className="employeedata_form">
@@ -164,7 +141,7 @@ const EmployeeInfo = ({ history, match }) => {
                 </div>
               </div>
             </div>
-            <div className="form_generaldata">
+            <div className="employeeinfo_form_generaldata">
               <div className="personaldetails_header">
                 <h3>PERSONAL DETAILS </h3>
               </div>

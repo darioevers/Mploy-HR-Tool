@@ -49,21 +49,13 @@ employeeController.getOneEmployee = async (req, res) => {
 
 employeeController.addNewEmployee = async (req, res) => {
   console.log("data", req.body);
-
-  const received = JSON.parse(req.body.employeeData);
-  console.log("file", req.file);
-  console.log("filemulti", req.files);
-
-
+  
+  const received = JSON.parse(req.body.allData);
   const pathProfilePic = req.files?.file[0]?.path.substring(7);
-
-  const pathCv =req.files?.fileCv[0]?.path.substring(7);
+  const pathCv = req.files?.fileCv[0]?.path.substring(7);
   const pathDiploma = req.files?.fileDiploma[0]?.path.substring(7);
-  const pathCertificate = req.files?.fileCetificate[0]?.path.substring(7);
-
-  const pathLetter= req.files?.fileLetter[0]?.path.substring(7);
-//  console.log("received", received);
-
+  const pathCertificate = req.files?.fileCertificate[0]?.path.substring(7);
+  const pathLetter = req.files?.fileLetter[0]?.path.substring(7);
 
   try {
     const employee = await new EmployeeData({
@@ -81,10 +73,10 @@ employeeController.addNewEmployee = async (req, res) => {
         role: received.role,
         hobbies: received.hobbies,
         photo: pathProfilePic,
-        cv:pathCv,
-        certificate:pathCertificate,
-        diploma:pathDiploma,
-        letter:pathLetter,
+        cv: pathCv,
+        certificate: pathCertificate,
+        diploma: pathDiploma,
+        letter: pathLetter,
       },
       addressOne: {
         streetOne: received.streetOne,
@@ -126,8 +118,6 @@ employeeController.addNewEmployee = async (req, res) => {
         salary: received.salary,
         overtime: received.overtime,
         workLocation: received.workLocation,
-       
-
       },
       availableHolidays: 30,
       availableHomeOffice: 30,
@@ -175,14 +165,18 @@ employeeController.searchName = async (req, res) => {
 // };
 
 // patch or update employee
-
 employeeController.updateEmployee = async (req, res) => {
   try {
+
+    console.log(received)
     let received = await JSON.parse(req.body.editEmp);
+
+    // let received = await JSON.parse(req.body.editHrInfo);
+
     received.bio.photo = "uploads/" + req.file.path.substring(15);
-    console.log(req.file.path);
+    console.log(req);
     // received.bio.photo=req.file.path.substring(7);
-    console.log(received);
+    console.log("after",received);
     const employee = await EmployeeData.findOneAndUpdate(
       { "bio.email": received.bio.email },
       received,
@@ -248,4 +242,14 @@ employeeController.deleteOrUpdateStatus = async (req, res) => {
 //   }
 // };
 
+
+// get file 
+// employeeController.getallMultipleFiles = async (req, res, next) => {
+//   try{
+//       const files = await MultipleFile.find();
+//       res.status(200).send(files);
+//   }catch(error) {
+//       res.status(400).send(error.message);
+//   }
+// }
 module.exports = employeeController;

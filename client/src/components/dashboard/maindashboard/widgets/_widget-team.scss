@@ -88,7 +88,8 @@
     width: 30px;
     height: 30px;
     border-radius: 50px;
-    background-color: $dark-bg;
+    background-color: $primary;
+    border: 1px solid $secondary;
     margin: 3px;
   }
   .team_manager_links {
@@ -125,7 +126,8 @@
     width: 30px;
     height: 30px;
     border-radius: 50px;
-    background-color: $dark-bg;
+    background-color: $primary;
+    border: 1px solid $secondary;
     margin: 3px;
   }
   .team_supervisor_links {
