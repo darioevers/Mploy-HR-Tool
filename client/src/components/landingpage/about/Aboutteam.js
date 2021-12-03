@@ -83,7 +83,7 @@ const Aboutteam = () => {
                   </a>
                 </Box>
                 <Box>
-                  <a href="">
+                  <a href="google.com">
                     <AlternateEmailIcon />
                   </a>
                 </Box>
@@ -118,7 +118,7 @@ const Aboutteam = () => {
                 <a href="github.com">
                   <LinkedInIcon />
                 </a>
-                <a href="">
+                <a href="google.com">
                   <AlternateEmailIcon />
                 </a>
               </Stack>
@@ -152,7 +152,7 @@ const Aboutteam = () => {
                 <a href="github.com">
                   <LinkedInIcon />
                 </a>
-                <a href="">
+                <a href="google.com">
                   <AlternateEmailIcon />
                 </a>
               </Stack>

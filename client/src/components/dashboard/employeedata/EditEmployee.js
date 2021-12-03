@@ -1,11 +1,21 @@
 import React, { useState, useEffect } from "react";
-import DashboardTopNav from "../global/DashboardTopNav";
-import DashboardSideNav from "../global/DashboardSideNav";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
+
+
+// IMPORT COMPONENTS
+import EmployeeData from "./EmployeeData";
+import DashboardTopNav from "../global/DashboardTopNav";
+import DashboardSideNav from "../global/DashboardSideNav";
+
+// ICON IMPORTS
 import PhoneIcon from "@mui/icons-material/Phone";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+
+// MUI IMPORTS
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 import {
   FormGroup,
   FormControl,
@@ -17,7 +27,6 @@ import {
   Select,
   MenuItem,
 } from "@material-ui/core";
-import EmployeeData from "./EmployeeData";
 
 const EditEmployee = ({ history, match }) => {
   const [editEmp, setEditEmp] = useState();
@@ -250,6 +259,7 @@ const EditEmployee = ({ history, match }) => {
                   <Input
                     type="text"
                     name="streetOne"
+                    focused
                     value={editEmp?.addressOne?.streetOne}
                     onChange={(e) =>
                       setEditEmp({
