@@ -6,6 +6,7 @@ import CloseIcon from "@mui/icons-material/Close";
 function WidgetApplications({ userdata }) {
   //fetch leaves data
   const [leaves, setLeaves] = useState();
+
   useEffect(() => {
     getAllLeaves();
   }, []);
@@ -35,10 +36,10 @@ function WidgetApplications({ userdata }) {
     setShowNewApp(!showNewApp);
   };
 
-  //add new leave application
-  const [newLeave, setNewLeave] = useState({});
+  // add new leave application
+  const [newLeave, setNewLeave] = useState();
+
   const addLeave = () => {
-    console.log(newLeave);
     const data = newLeave;
 
     axios
@@ -57,19 +58,6 @@ function WidgetApplications({ userdata }) {
       })
       .catch((err) => console.log(err));
   };
-
-  //get difference between two dates
-  // const daysBetween = (one, two) => {
-  //   let date1 = new Date(one);
-  //   let date2 = new Date(two);
-  //   let result = Math.round(Math.abs(+date1 - +date2) / 8.64e7);
-  //   console.log(one, two);
-  //   console.log(result);
-  //   return setX({ ...x, test: result });
-  //   // return setNewLeave({ ...newLeave, leavesApplied: "result" });
-
-  //   // console.log(Math.round(Math.abs(+date1 - +date2) / 8.64e7));
-  // };
 
   return (
     <div className="widget_applications_mainbox">
@@ -110,13 +98,16 @@ function WidgetApplications({ userdata }) {
               type="search"
               placeholder="Type name of employee"
               className="application_search"
-              value={`${userdata.bio?.firstName} ${userdata.bio?.lastName} `}
-              onChange={(e) => {
+              value={`${userdata?.bio?.firstName} ${userdata?.bio?.lastName} `}
+              onChange={(e) =>
                 setNewLeave({
                   ...newLeave,
-                  name: `${userdata?.bio?.firstName} ${userdata?.bio?.lastName}`,
-                });
-              }}
+                  bio: {
+                    ...userdata?.bio?.firstName,
+                    firstName: e.target.value,
+                  },
+                })
+              }
             />
           </div>
 
@@ -127,11 +118,11 @@ function WidgetApplications({ userdata }) {
               type="search"
               placeholder="Type email"
               className="email"
-              value={userdata.bio?.email}
+              value={userdata?.bio?.email}
               onChange={(e) =>
                 setNewLeave({
                   ...newLeave,
-                  email: userdata?.bio?.email,
+                  email: e.target.value,
                 })
               }
             />
@@ -143,11 +134,14 @@ function WidgetApplications({ userdata }) {
               type="search"
               placeholder="Enter Department"
               className="application_search"
-              value={userdata.contractInfo?.department}
+              value={userdata?.contractInfo?.department}
               onChange={(e) =>
                 setNewLeave({
                   ...newLeave,
-                  department: userdata?.contractInfo?.department,
+                  contractInfo: {
+                    ...newLeave.department,
+                    department: e.target.value,
+                  },
                 })
               }
             />
@@ -175,11 +169,6 @@ function WidgetApplications({ userdata }) {
             <input
               type="date"
               onChange={(e) => {
-                // setNewLeave({
-                //   ...newLeave,
-                //   leavesApplied: daysBetween(e.target.value, newLeave.dateTo),
-                // });
-
                 setNewLeave({
                   ...newLeave,
                   dateFrom: e.target.value,
@@ -191,11 +180,6 @@ function WidgetApplications({ userdata }) {
             <input
               type="date"
               onChange={(e) => {
-                // setNewLeave({
-                //   ...newLeave,
-                //   leavesApplied: daysBetween(newLeave.dateFrom, e.target.value),
-                // });
-
                 setNewLeave({
                   ...newLeave,
                   dateTo: e.target.value,
