@@ -2,24 +2,12 @@ import React, { useState, useRef } from "react";
 import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
 import { NavLink } from "react-router-dom";
-
-import {
-  Table,
-  TableHead,
-  TableCell,
-  TableRow,
-  FormGroup,
-  FormControl,
-  InputLabel,
-  Input,
-} from "@material-ui/core";
-import axios from "axios";
+import { FormGroup, FormControl, InputLabel, Input } from "@material-ui/core";
 
 const AddHrInfo = ({ location, history }) => {
   const [employeeData, setEmployeeData] = useState(
     location.state && location.state.employee
   );
-
   const [hireDate, setHireDate] = useState(false);
   const [addEducation, setAddEducation] = useState(false);
   const [addWorkExperience, setAddWorkExperience] = useState(false);
@@ -34,15 +22,6 @@ const AddHrInfo = ({ location, history }) => {
     width: "22%",
     marginRight: "20px",
   };
-  // hiredate validation
-  //   const checkDateValidation=()=> {
-  //     // check the dates
-  //  if ((new Date(setEmployeeData.hireDate) > new Date(setEmployeeData.contractEnd)) || (new Date(setEmployeeData.contractEnd) < new Date(setEmployeeData.hireDate))){
-  //   setHireDate(true);
-  //     } else {
-  //       null
-  //     }
-  //   }
 
   const handleAddEducation = () => setAddEducation(!addEducation);
   const handleAddWorkExperience = () =>
@@ -86,7 +65,7 @@ const AddHrInfo = ({ location, history }) => {
         <FormGroup>
           <div className="addhrinfo_form">
             <div className="addhrinfo_contractdetails_header">
-              <h3>CONTRACT DETAILS </h3> 
+              <h3>CONTRACT DETAILS </h3>
             </div>
 
             <div className="addhrinfo_contractdetails_content">
@@ -329,13 +308,11 @@ const AddHrInfo = ({ location, history }) => {
             <div className="hr-save-btn">
               <button
                 onClick={() => {
-
                   console.log(employeeData);
                   history.push({
                     pathname: "/dashboard/employeedata/adddocuments",
                     state: { employeeData },
                   });
-
                 }}
               >
                 NEXT

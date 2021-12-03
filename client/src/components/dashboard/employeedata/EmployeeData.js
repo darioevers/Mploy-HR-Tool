@@ -6,20 +6,6 @@ import axios from "axios";
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import {
-  Table,
-  TableHead,
-  td,
-  TableRow,
-  TableBody,
-  Button,
-  makeStyles,
-  FormGroup,
-  FormControl,
-  InputLabel,
-  Input,
-} from "@material-ui/core";
-import { buttonUnstyledClasses } from "@mui/core";
 
 function EmployeeData({ history }) {
   // const classes = useStyles();
@@ -131,7 +117,6 @@ function EmployeeData({ history }) {
               </div>
             </div>
 
-
             <div
               className={checked ? "employeedata_show" : "employeedata_hide"}
             >
@@ -178,7 +163,7 @@ function EmployeeData({ history }) {
                                   {employee.bio.firstName}{" "}
                                   {employee.bio.lastName}
                                 </h5>
-                               
+
                                 <h4>{employee.contractInfo?.position}</h4>
                               </div>
                             </div>
@@ -191,7 +176,6 @@ function EmployeeData({ history }) {
                             {employee.bio.dateOfBirth}
                           </td>
                         </tr>
-
 
                         {checked && employee._id === id && (
                           <div
@@ -277,6 +261,41 @@ function EmployeeData({ history }) {
                                   </h5>
                                 </div>
                               </div>
+                              <div>
+                                <h5>
+                                  <h1>Document Periview</h1>
+                                  <a
+                                    target="_blank"
+                                    href={`http://localhost:5000/${employee.bio.cv} `}
+                                  >
+                                    Preview CV
+                                  </a>
+                                </h5>
+                                <h5>
+                                  <a
+                                    target="_blank"
+                                    href={`http://localhost:5000/${employee.bio.diploma} `}
+                                  >
+                                    Diploma Preview
+                                  </a>
+                                </h5>
+                                <h5>
+                                  <a
+                                    target="_blank"
+                                    href={`http://localhost:5000/${employee.bio.certificate} `}
+                                  >
+                                    Certificate Preview
+                                  </a>
+                                </h5>
+                                <h5>
+                                  <a
+                                    target="_blank"
+                                    href={`http://localhost:5000/${employee.bio.letter} `}
+                                  >
+                                    Letter Preview
+                                  </a>
+                                </h5>
+                              </div>
 
                               <div className="summary_buttons">
                                 <div
@@ -289,7 +308,6 @@ function EmployeeData({ history }) {
                                 >
                                   Edit
                                 </div>
-                           
 
                                 <div
                                   variant="contained"
@@ -315,7 +333,6 @@ function EmployeeData({ history }) {
                                   </i>
                                 </div>
                               </div>
-
                             </div>
                           </div>
                         )}
