@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
 
 // COMPONENT IMPORTS
 import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
-import axios from "axios";
-
-
-// IMPORT COMPONENTS
 import EmployeeData from "./EmployeeData";
-import DashboardTopNav from "../global/DashboardTopNav";
-import DashboardSideNav from "../global/DashboardSideNav";
 
 // ICON IMPORTS
 import PhoneIcon from "@mui/icons-material/Phone";
@@ -28,6 +23,7 @@ import {
   Select,
   MenuItem,
 } from "@material-ui/core";
+
 
 const EditEmployee = ({ history, match }) => {
   const [editEmp, setEditEmp] = useState();
@@ -70,6 +66,7 @@ const EditEmployee = ({ history, match }) => {
     marginRight: "20px",
   };
 
+  const height = 50
   return (
     <div className="addemployee_mainbox">
       <DashboardTopNav />
@@ -166,9 +163,35 @@ const EditEmployee = ({ history, match }) => {
                 <h3>BASIC DETAILS </h3>
               </div>
 
-              <div className="basicdetails_content">
+              <Box sx={{ mt: 2 }}>
                 <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">First Name</InputLabel>
+                  <TextField
+                    id="firstName"
+                    name="firstName"
+                    type="text"
+                    label="First Name"
+                    variant="outlined"
+                    defaultValue=""
+                    margin="normal"
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    InputLabelProps={{ shrink: true }}
+                    value={editEmp?.bio?.firstName}
+                    onChange={(e) => {
+                      setEditEmp({
+                        ...editEmp,
+                        bio: {
+                          ...editEmp.firstName,
+                          firstName: e.target.value,
+                        },
+                      });
+                      setFirstName(e.target.value);
+                    }} />
+                  {/* <InputLabel htmlFor="my-input">First Name</InputLabel>
                   <Input
                     type="text"
                     name="firstName"
@@ -184,12 +207,39 @@ const EditEmployee = ({ history, match }) => {
                       });
                       setFirstName(e.target.value);
                     }}
-                  />
+                  /> */}
                 </FormControl>
                 <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Last Name</InputLabel>
+                  <TextField
+                    id="lastName"
+                    label="Last Name"
+                    variant="outlined"
+                    type="text"
+                    defaultValue=""
+                    margin="normal"
+                    name="lastName"
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    InputLabelProps={{ shrink: true }}
+                    value={editEmp?.bio?.lastName}
+                    onChange={(e) => {
+                      setEditEmp({
+                        ...editEmp,
+                        bio: { ...editEmp, lastName: e.target.value },
+                      });
+                      setLastName(e.target.value);
+                    }} />
+
+                  {/* <InputLabel htmlFor="my-input">Last Name</InputLabel>
                   <Input
                     type="text"
+                    margin="normal"
+                    variant="outlined"
+                    defaultValue=""
                     name="lastName"
                     value={editEmp?.bio?.lastName}
                     onChange={(e) => {
@@ -199,11 +249,35 @@ const EditEmployee = ({ history, match }) => {
                       });
                       setLastName(e.target.value);
                     }}
-                  />
+                  /> */}
                 </FormControl>
-
                 <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Employee ID</InputLabel>
+                  <TextField
+                    id="employeeID"
+                    name="employeeID"
+                    type="text"
+                    label="Employee ID"
+                    variant="outlined"
+                    defaultValue=""
+                    margin="normal"
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editEmp?.bio?.employeeId}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        bio: {
+                          ...editEmp.employeeId,
+                          employeeId: e.target.value,
+                        },
+                      })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Employee ID</InputLabel>
                   <Input
                     type="text"
                     name="employeeID"
@@ -217,10 +291,36 @@ const EditEmployee = ({ history, match }) => {
                         },
                       })
                     }
-                  />
+                  /> */}
                 </FormControl>
                 <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Position</InputLabel>
+                  <TextField
+                    id="position"
+                    name="position"
+                    type="text"
+                    label="Position"
+                    variant="outlined"
+                    defaultValue=""
+                    margin="normal"
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editEmp?.contractInfo?.position}
+                    onChange={(e) => {
+                      setEditEmp({
+                        ...editEmp,
+                        contractInfo: {
+                          ...editEmp.position,
+                          position: e.target.value,
+                        },
+                      });
+                      setPosition(e.target.value);
+                    }} />
+                  {/* <InputLabel htmlFor="my-input">Position</InputLabel>
                   <Input
                     type="text"
                     name="position"
@@ -235,17 +335,43 @@ const EditEmployee = ({ history, match }) => {
                       });
                       setPosition(e.target.value);
                     }}
-                  />
+                  /> */}
                 </FormControl>
-              </div>
+              </Box>
+
 
               <div className="personaldetails_header">
                 <h3>PERSONAL DETAILS </h3>
               </div>
 
-              <div className="personaldetails_content">
+              <Box sx={{ mt: 2 }}>
                 <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Address 1</InputLabel>
+                  <TextField
+                    id="streetOne"
+                    name="streetOne"
+                    type="text"
+                    label="Address 1"
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editEmp?.addressOne?.streetOne}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        addressOne: {
+                          ...editEmp.streetOne,
+                          streetOne: e.target.value,
+                        },
+                      })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Address 1</InputLabel>
                   <Input
                     type="text"
                     name="streetOne"
@@ -260,11 +386,36 @@ const EditEmployee = ({ history, match }) => {
                         },
                       })
                     }
-                  />
+                  /> */}
                 </FormControl>
 
                 <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Address 2</InputLabel>
+                  <TextField
+                    id="streetTwo"
+                    name="streetTwo"
+                    type="text"
+                    label="Address 2"
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editEmp?.addressTwo?.streetTwo}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        addressTwo: {
+                          ...editEmp.streetTwo,
+                          streetTwo: e.target.value,
+                        },
+                      })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Address 2</InputLabel>
                   <Input
                     type="text"
                     name="streetTwo"
@@ -278,11 +429,36 @@ const EditEmployee = ({ history, match }) => {
                         },
                       })
                     }
-                  />
+                  /> */}
                 </FormControl>
 
                 <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">City</InputLabel>
+                  <TextField
+                    id="cityOne"
+                    name="cityOne"
+                    type="text"
+                    label="City"
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editEmp?.addressOne?.cityOne}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        adressOne: {
+                          ...editEmp.cityOne,
+                          cityOne: e.target.value,
+                        },
+                      })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">City</InputLabel>
                   <Input
                     type="text"
                     name="cityOne"
@@ -296,11 +472,36 @@ const EditEmployee = ({ history, match }) => {
                         },
                       })
                     }
-                  />
+                  /> */}
                 </FormControl>
 
                 <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Country</InputLabel>
+                  <TextField
+                    id="countryOne"
+                    name="countryOne"
+                    type="text"
+                    label="Country"
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editEmp?.addressOne?.countryOne}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        addressOne: {
+                          ...editEmp.countryOne,
+                          countryOne: e.target.value,
+                        },
+                      })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Country</InputLabel>
                   <Input
                     type="text"
                     name="countryOne"
@@ -314,10 +515,35 @@ const EditEmployee = ({ history, match }) => {
                         },
                       })
                     }
-                  />
+                  /> */}
                 </FormControl>
                 <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">State / Region</InputLabel>
+                  <TextField
+                    id="stateOne"
+                    name="stateOne"
+                    type="text"
+                    label="State / Region"
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editEmp?.addressOne?.stateOne}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        addressOne: {
+                          ...editEmp.stateOne,
+                          stateOne: e.target.value,
+                        },
+                      })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">State / Region</InputLabel>
                   <Input
                     type="text"
                     name="stateOne"
@@ -331,11 +557,36 @@ const EditEmployee = ({ history, match }) => {
                         },
                       })
                     }
-                  />
+                  /> */}
                 </FormControl>
 
                 <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Postal Code</InputLabel>
+                  <TextField
+                    id="postalCodeOne"
+                    name="postalCodeOne"
+                    type="text"
+                    label="Postal Code"
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editEmp?.addressOne?.postalCodeOne}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        addressOne: {
+                          ...editEmp.postalCodeOne,
+                          postalCodeOne: e.target.value,
+                        },
+                      })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Postal Code</InputLabel>
                   <Input
                     type="text"
                     name="postalCodeOne"
@@ -349,11 +600,36 @@ const EditEmployee = ({ history, match }) => {
                         },
                       })
                     }
-                  />
+                  /> */}
                 </FormControl>
 
                 <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Date of Birth</InputLabel>
+                  <TextField
+                    id="dateOfBirth"
+                    name="dateOfBirth"
+                    type="text"
+                    label="Date of Birth"
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editEmp?.bio?.dateOfBirth}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        bio: {
+                          ...editEmp.dateOfBirth,
+                          dateOfBirth: e.target.value,
+                        },
+                      })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Date of Birth</InputLabel>
                   <Input
                     type="text"
                     name="dateOfBirth"
@@ -367,11 +643,36 @@ const EditEmployee = ({ history, match }) => {
                         },
                       })
                     }
-                  />
+                  /> */}
                 </FormControl>
 
                 <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Other Email</InputLabel>
+                  <TextField
+                    id="otherEmail"
+                    name="otherEmail"
+                    type="text"
+                    label="Other Email"
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editEmp?.bio?.otherEmail}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        bio: {
+                          ...editEmp.otherEmail,
+                          otherEmail: e.target.value,
+                        },
+                      })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Other Email</InputLabel>
                   <Input
                     type="text"
                     name="otherEmail"
@@ -385,11 +686,36 @@ const EditEmployee = ({ history, match }) => {
                         },
                       })
                     }
-                  />
+                  /> */}
                 </FormControl>
 
                 <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Nationality</InputLabel>
+                  <TextField
+                    id="nationality"
+                    name="nationality"
+                    type="text"
+                    label="Nationality"
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editEmp?.bio?.nationality}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        bio: {
+                          ...editEmp.nationality,
+                          nationality: e.target.value,
+                        },
+                      })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Nationality</InputLabel>
                   <Input
                     type="text"
                     name="nationality"
@@ -403,13 +729,26 @@ const EditEmployee = ({ history, match }) => {
                         },
                       })
                     }
-                  />
+                  /> */}
                 </FormControl>
 
                 <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Gender</InputLabel>
+                  <InputLabel id="gender">Gender</InputLabel>
                   <Select
-                    labelId="demo"
+                    labelId="gender"
+                    id="gender"
+                    name="gender"
+                    type="text"
+                    label="Gender"
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
                     value={editEmp?.bio?.gender}
                     onChange={(e) =>
                       setEditEmp({
@@ -425,7 +764,39 @@ const EditEmployee = ({ history, match }) => {
                 </FormControl>
 
                 <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Marital Status</InputLabel>
+                  <InputLabel id="maritalStatus">Marital Status</InputLabel>
+                  <Select
+                    labelId="maritalStatus"
+                    id="maritalStatus"
+                    name="maritalStatus"
+                    type="text"
+                    label="maritalStatus"
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editEmp?.bio?.maritalStatus}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        bio: {
+                          ...editEmp.maritalStatus,
+                          maritalStatus: e.target.value,
+                        },
+                      })
+                    }
+                  >
+                    <MenuItem value="Single">Single</MenuItem>
+                    <MenuItem value="Married">Married</MenuItem>
+                    <MenuItem value="Separated">Separated</MenuItem>
+                    <MenuItem value="Not specified">Not Specified</MenuItem>
+                  </Select>
+                  {/* <InputLabel htmlFor="my-input">Marital Status</InputLabel>
                   <Select
                     labelId="demo"
                     value={editEmp?.bio?.maritalStatus}
@@ -443,11 +814,33 @@ const EditEmployee = ({ history, match }) => {
                     <MenuItem value="Married">Married</MenuItem>
                     <MenuItem value="Separated">Separated</MenuItem>
                     <MenuItem value="Not specified">Not Specified</MenuItem>
-                  </Select>
+                  </Select> */}
                 </FormControl>
 
                 <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Hobbies</InputLabel>
+                  <TextField
+                    id="hobbies"
+                    name="hobbies"
+                    type="text"
+                    label="Hobbies"
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editEmp?.bio?.hobbies}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        bio: { ...editEmp.hobbies, hobbies: e.target.value },
+                      })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Hobbies</InputLabel>
                   <Input
                     type="text"
                     name="hobbies"
@@ -458,9 +851,9 @@ const EditEmployee = ({ history, match }) => {
                         bio: { ...editEmp.hobbies, hobbies: e.target.value },
                       })
                     }
-                  />
+                  /> */}
                 </FormControl>
-              </div>
+              </Box>
             </div>
 
             <div className="next-btn">
