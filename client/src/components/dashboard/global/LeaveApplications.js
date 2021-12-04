@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import FilterListIcon from "@mui/icons-material/FilterList";
-// import CheckIcon from "@mui/icons-material/Check";
-// import ClearIcon from "@mui/icons-material/Clear";
-// import BookmarkIcon from "@mui/icons-material/Bookmark";
+
 import axios from "axios";
 
 function LeaveApplications() {

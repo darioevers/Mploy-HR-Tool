@@ -105,9 +105,57 @@ const AddDocument = ({ location, history }) => {
       setSelectedFile(undefined);
       return;
     }
-
-    // I've kept this example simple by using the first image instead of multiple
     setSelectedFile(e.target.files[0]);
+  };
+
+  //date uploaded
+  const [dateCv, setDateCv] = useState("");
+  const [dateDiploma, setDateDiploma] = useState("");
+  const [dateCert, setDateCert] = useState("");
+  const [dateLetter, setDateLetter] = useState("");
+
+  const handleDateChangeCv = () => {
+    let today = new Date();
+    let dateToday =
+      today.getDate() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getFullYear();
+    return dateToday;
+  };
+
+  const handleDateChangeDiploma = () => {
+    let today = new Date();
+    let dateToday =
+      today.getDate() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getFullYear();
+    return dateToday;
+  };
+
+  const handleDateChangeCert = () => {
+    let today = new Date();
+    let dateToday =
+      today.getDate() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getFullYear();
+    return dateToday;
+  };
+
+  const handleDateChangeLetter = () => {
+    let today = new Date();
+    let dateToday =
+      today.getDate() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getFullYear();
+    return dateToday;
   };
 
   return (
@@ -188,7 +236,7 @@ const AddDocument = ({ location, history }) => {
                   </div>
                   <div className="upload_content_date">
                     <h3>Date of Upload</h3>
-                    <h4>Date Today</h4>
+                    <h4>{dateCv}</h4>
                   </div>
                 </div>
                 <div className="upload_button">
@@ -198,7 +246,10 @@ const AddDocument = ({ location, history }) => {
                     name="fileCv"
                     id="fileCv"
                     onChange={(e) => setFileCv(e.target.files[0])}
-                    onClick={handleCvUpload}
+                    onClick={() => {
+                      handleCvUpload();
+                      setDateCv(handleDateChangeCv(dateCv));
+                    }}
                   />
                 </div>
               </div>
@@ -227,7 +278,7 @@ const AddDocument = ({ location, history }) => {
                   </div>
                   <div className="upload_content_date">
                     <h3>Date of Upload</h3>
-                    <h4>Date Today</h4>
+                    <h4>{dateDiploma}</h4>
                   </div>
                 </div>
                 <div className="upload_button">
@@ -237,7 +288,10 @@ const AddDocument = ({ location, history }) => {
                     name="fileDiploma"
                     id="fileDiploma"
                     onChange={(e) => setFileDiploma(e.target.files[0])}
-                    onClick={handleDiplomaUpload}
+                    onClick={() => {
+                      handleDiplomaUpload();
+                      setDateDiploma(handleDateChangeDiploma(dateDiploma));
+                    }}
                   />
                 </div>
               </div>
@@ -262,7 +316,7 @@ const AddDocument = ({ location, history }) => {
                   </div>
                   <div className="upload_content_date">
                     <h3>Date of Upload</h3>
-                    <h4>Date Today</h4>
+                    <h4>{dateCert}</h4>
                   </div>
                 </div>
 
@@ -273,7 +327,10 @@ const AddDocument = ({ location, history }) => {
                     name="fileCertificate"
                     id="fileCertificate"
                     onChange={(e) => setFileCertificate(e.target.files[0])}
-                    onClick={handleCertUpload}
+                    onClick={() => {
+                      handleCertUpload();
+                      setDateCert(handleDateChangeCert(dateCert));
+                    }}
                   />
                 </div>
               </div>
@@ -302,7 +359,7 @@ const AddDocument = ({ location, history }) => {
                   </div>
                   <div className="upload_content_date">
                     <h3>Date of Upload</h3>
-                    <h4>Date Today</h4>
+                    <h4>{dateLetter}</h4>
                   </div>
                 </div>
                 <div className="upload_button">
@@ -312,7 +369,10 @@ const AddDocument = ({ location, history }) => {
                     name="fileLetter"
                     id="fileLetter"
                     onChange={(e) => setFileLetter(e.target.files[0])}
-                    onClick={handleLetterUpload}
+                    onClick={() => {
+                      handleLetterUpload();
+                      setDateLetter(handleDateChangeLetter(dateLetter));
+                    }}
                   />
                 </div>
               </div>

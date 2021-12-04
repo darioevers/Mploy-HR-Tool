@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import consolaGlobalInstance from "consola";
 import CloseIcon from "@mui/icons-material/Close";
+import e from "cors";
 
 function WidgetApplications({ userdata }) {
   //fetch leaves data
@@ -38,6 +39,9 @@ function WidgetApplications({ userdata }) {
 
   // add new leave application
   const [newLeave, setNewLeave] = useState();
+  // useEffect(() => {
+  //   setNewLeave(userdata);
+  // }, [userdata]);
 
   const addLeave = () => {
     const data = newLeave;
@@ -95,19 +99,18 @@ function WidgetApplications({ userdata }) {
           <div className="form_search">
             <h3>Employee Name</h3>
             <input
-              type="search"
+              name="name"
+              type="text"
               placeholder="Type name of employee"
               className="application_search"
               value={`${userdata?.bio?.firstName} ${userdata?.bio?.lastName} `}
               onChange={(e) =>
                 setNewLeave({
                   ...newLeave,
-                  bio: {
-                    ...userdata?.bio?.firstName,
-                    firstName: e.target.value,
-                  },
+                  name: e.target.value,
                 })
               }
+              required
             />
           </div>
 
@@ -115,7 +118,8 @@ function WidgetApplications({ userdata }) {
           <div className="form_search">
             <h3>Email</h3>
             <input
-              type="search"
+              name="email"
+              type="text"
               placeholder="Type email"
               className="email"
               value={userdata?.bio?.email}
@@ -125,25 +129,24 @@ function WidgetApplications({ userdata }) {
                   email: e.target.value,
                 })
               }
+              required
             />
           </div>
 
           <div className="form_search">
             <h3>Department</h3>
             <input
-              type="search"
+              name="department"
+              type="text"
               placeholder="Enter Department"
               className="application_search"
-              value={userdata?.contractInfo?.department}
-              onChange={(e) =>
-                setNewLeave({
-                  ...newLeave,
-                  contractInfo: {
-                    ...newLeave.department,
-                    department: e.target.value,
-                  },
-                })
-              }
+              value="department"
+              // onSubmit={(e) =>
+              //   setNewLeave({
+              //     ...newLeave,
+              //     department: e.target.value,
+              //   })
+              // }
             />
           </div>
 
