@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
+
+// COMPONENT IMPORTS
 import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
-import axios from "axios";
+
+// MUI IMPORTS
 import { FormGroup, FormControl, InputLabel, Input } from "@material-ui/core";
+import TextField from '@mui/material/TextField';
 
 const EditHrInfo = ({ history, match }) => {
   const [editHrInfo, setEditHrInfo] = useState();
@@ -67,6 +72,9 @@ const EditHrInfo = ({ history, match }) => {
     marginRight: "20px",
   };
 
+  // FORM HEIGHT
+  const height = 50
+
   return (
     <div className="addemployee_mainbox">
       <DashboardTopNav />
@@ -120,7 +128,29 @@ const EditHrInfo = ({ history, match }) => {
 
               <div className="edithrinfo_contractdetails_content">
                 <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Contract No</InputLabel>
+                  <TextField
+                    id="contractNumber"
+                    name="contractNumber"
+                    type="text"
+                    label="Contract Number"
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editHrInfo?.contractInfo?.contractNo}
+                    onChange={(e) =>
+                      setEditHrInfo({
+                        ...editHrInfo,
+                        contractNo: e.target.value,
+                      })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Contract No</InputLabel>
                   <Input
                     value={editHrInfo?.contractInfo?.contractNo}
                     onChange={(e) =>
@@ -129,10 +159,33 @@ const EditHrInfo = ({ history, match }) => {
                         contractNo: e.target.value,
                       })
                     }
-                  />
+                  /> */}
                 </FormControl>
                 <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Hire Date</InputLabel>
+                  <TextField
+                    id="hireDate"
+                    name="hireDate"
+                    type="date"
+                    label="Hire Date"
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editHrInfo?.contractInfo?.hireDate}
+                    onChange={(e) => {
+                      // setHireDate(e.target.value);
+                      setEditHrInfo({
+                        ...editHrInfo,
+                        hireDate: e.target.value,
+                      });
+                    }} />
+                  {/* <InputLabel htmlFor="my-input">Hire Date</InputLabel>
                   <Input
                     value={editHrInfo?.contractInfo?.hireDate}
                     type="date"
@@ -143,10 +196,33 @@ const EditHrInfo = ({ history, match }) => {
                         hireDate: e.target.value,
                       });
                     }}
-                  />
+                  /> */}
                 </FormControl>
                 <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Contract End</InputLabel>
+                  <TextField
+                    id="contractEnd"
+                    name="contractEnd"
+                    type="date"
+                    label="Contract End"
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editHrInfo?.contractInfo?.contractEnd}
+                    min="2019-01-01"
+                    onChange={(e) =>
+                      setEditHrInfo({
+                        ...editHrInfo,
+                        contractEnd: e.target.value,
+                      })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Contract End</InputLabel>
                   <Input
                     value={editHrInfo?.contractInfo?.contractEnd}
                     type="date"
@@ -157,10 +233,31 @@ const EditHrInfo = ({ history, match }) => {
                         contractEnd: e.target.value,
                       })
                     }
-                  />
+                  /> */}
                 </FormControl>
                 <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Probation Period</InputLabel>
+                  <TextField
+                    id="probationTime"
+                    name="probationTime"
+                    label="Probation Period"
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editHrInfo?.contractInfo?.probationPeriod}
+                    onChange={(e) =>
+                      setEditHrInfo({
+                        ...editHrInfo,
+                        probationPeriod: e.target.value,
+                      })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Probation Period</InputLabel>
                   <Input
                     value={editHrInfo?.contractInfo?.probationPeriod}
                     onChange={(e) =>
@@ -169,10 +266,32 @@ const EditHrInfo = ({ history, match }) => {
                         probationPeriod: e.target.value,
                       })
                     }
-                  />
+                  /> */}
                 </FormControl>
                 <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Employment Type</InputLabel>
+                  <TextField
+                    id="employmentType"
+                    name="employmentType"
+                    label="Employment type"
+                    type="text"
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editHrInfo?.contractInfo?.employmentType}
+                    onChange={(e) =>
+                      setEditHrInfo({
+                        ...editHrInfo,
+                        employmentType: e.target.value,
+                      })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Employment Type</InputLabel>
                   <Input
                     value={editHrInfo?.contractInfo?.employmentType}
                     onChange={(e) =>
@@ -181,20 +300,61 @@ const EditHrInfo = ({ history, match }) => {
                         employmentType: e.target.value,
                       })
                     }
-                  />
+                  /> */}
                 </FormControl>
 
                 <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Team</InputLabel>
+                  <TextField
+                    id="team"
+                    name="team"
+                    label="Team"
+                    type="text"
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editHrInfo?.contractInfo?.team}
+                    onChange={(e) =>
+                      setEditHrInfo({ ...editHrInfo, team: e.target.value })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Team</InputLabel>
                   <Input
                     value={editHrInfo?.contractInfo?.team}
                     onChange={(e) =>
                       setEditHrInfo({ ...editHrInfo, team: e.target.value })
                     }
-                  />
+                  /> */}
                 </FormControl>
                 <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Department</InputLabel>
+                  <TextField
+                    id="department"
+                    name="department"
+                    label="Department"
+                    type="text"
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editHrInfo?.contractInfo?.department}
+                    onChange={(e) =>
+                      setEditHrInfo({
+                        ...editHrInfo,
+                        department: e.target.value,
+                      })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Department</InputLabel>
                   <Input
                     value={editHrInfo?.contractInfo?.department}
                     onChange={(e) =>
@@ -203,11 +363,33 @@ const EditHrInfo = ({ history, match }) => {
                         department: e.target.value,
                       })
                     }
-                  />
+                  /> */}
                 </FormControl>
 
                 <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Supervisor</InputLabel>
+                  <TextField
+                    id="supervisor"
+                    name="supervisor"
+                    label="Supervisor"
+                    type="text"
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editHrInfo?.contractInfo?.supervisor}
+                    onChange={(e) =>
+                      setEditHrInfo({
+                        ...editHrInfo,
+                        supervisor: e.target.value,
+                      })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Supervisor</InputLabel>
                   <Input
                     value={editHrInfo?.contractInfo?.supervisor}
                     onChange={(e) =>
@@ -216,10 +398,32 @@ const EditHrInfo = ({ history, match }) => {
                         supervisor: e.target.value,
                       })
                     }
-                  />
+                  /> */}
                 </FormControl>
                 <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Salary</InputLabel>
+                  <TextField
+                    id="salary"
+                    name="salary"
+                    label="Net salary p.a."
+                    type="text"
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editHrInfo?.contractInfo?.salary}
+                    onChange={(e) =>
+                      setEditHrInfo({
+                        ...editHrInfo,
+                        salary: e.target.value,
+                      })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Salary</InputLabel>
                   <Input
                     value={editHrInfo?.contractInfo?.salary}
                     onChange={(e) =>
@@ -228,10 +432,32 @@ const EditHrInfo = ({ history, match }) => {
                         salary: e.target.value,
                       })
                     }
-                  />
+                  /> */}
                 </FormControl>
                 <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Overtime</InputLabel>
+                  <TextField
+                    id="overtime"
+                    name="overtime"
+                    label="Overtime hrs"
+                    type="number"
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editHrInfo?.contractInfo?.overtime}
+                    onChange={(e) =>
+                      setEditHrInfo({
+                        ...editHrInfo,
+                        overtime: e.target.value,
+                      })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Overtime</InputLabel>
                   <Input
                     value={editHrInfo?.contractInfo?.overtime}
                     onChange={(e) =>
@@ -240,10 +466,32 @@ const EditHrInfo = ({ history, match }) => {
                         overtime: e.target.value,
                       })
                     }
-                  />
+                  /> */}
                 </FormControl>
                 <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Work Location</InputLabel>
+                  <TextField
+                    id="workLocation"
+                    name="workLocation"
+                    label="Office Location"
+                    type="text"
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editHrInfo?.contractInfo?.workLocation}
+                    onChange={(e) =>
+                      setEditHrInfo({
+                        ...editHrInfo,
+                        workLocation: e.target.value,
+                      })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Work Location</InputLabel>
                   <Input
                     value={editHrInfo?.contractInfo?.workLocation}
                     onChange={(e) =>
@@ -252,7 +500,7 @@ const EditHrInfo = ({ history, match }) => {
                         workLocation: e.target.value,
                       })
                     }
-                  />
+                  /> */}
                 </FormControl>
               </div>
 
