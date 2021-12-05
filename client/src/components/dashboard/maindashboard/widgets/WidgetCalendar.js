@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import Calendar from "react-calendar";
 
+// TRANSLATION IMPORTS
+import { useTranslation } from "react-i18next";
+
+// MUI IMPORTS
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Paper";
+
 function WidgetCalendar() {
   let date = new Date();
 
@@ -39,6 +46,9 @@ function WidgetCalendar() {
 
   // Calendar
   const [value, onChange] = useState(new Date());
+
+  // TRANSLATION
+  const { t } = useTranslation();
 
   return (
     <div className="widget_calendar_mainbox">

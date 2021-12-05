@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+// TRANSLATION IMPORTS
+import { useTranslation } from "react-i18next";
+
 function NewAdmin() {
   const [newAdminEmail, setNewAdminEmail] = useState("");
 
@@ -21,6 +24,9 @@ function NewAdmin() {
     setNewAdminEmail("");
   };
 
+  // TRANSLATION
+  const { t } = useTranslation();
+
   return (
     <div className="newadmin_input">
       <div className="newadmin_input_wrapper">
@@ -28,9 +34,9 @@ function NewAdmin() {
           type="email"
           value={newAdminEmail}
           onChange={(e) => setNewAdminEmail(e.target.value)}
-          placeholder="New Admin email"
+          placeholder={t("dashboardRightDrawer.formDesc01")}
         />
-        <button onClick={handleAddAdmin}>Add +</button>
+        <button onClick={handleAddAdmin}>{t("dashboardRightDrawer.formButton01")}</button>
       </div>
     </div>
   );

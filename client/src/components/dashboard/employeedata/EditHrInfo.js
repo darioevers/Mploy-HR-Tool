@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+// TRANSLATION IMPORTS
+import { useTranslation } from "react-i18next";
+
 // COMPONENT IMPORTS
 import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
 
 // MUI IMPORTS
-import { FormGroup, FormControl, InputLabel, Input } from "@material-ui/core";
+import { FormGroup, FormControl, InputLabel, Input, Typography } from "@material-ui/core";
 import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+import Button from "@material-ui/core/Button";
 
 const EditHrInfo = ({ history, match }) => {
   const [editHrInfo, setEditHrInfo] = useState();
@@ -75,6 +80,9 @@ const EditHrInfo = ({ history, match }) => {
   // FORM HEIGHT
   const height = 50
 
+  // TRANSLATION
+  const { t } = useTranslation();
+
   return (
     <div className="addemployee_mainbox">
       <DashboardTopNav />
@@ -82,7 +90,11 @@ const EditHrInfo = ({ history, match }) => {
       {/* personal edit data */}
 
       <div className="editemployee_wrapper">
-        <h1> Edit Employee </h1>
+        <Typography variant="h4" gutterBottom>
+          <Box sx={{ fontWeight: 500 }}>
+            {t("dashboardEditHRData.title01")}
+          </Box>
+        </Typography>
         <div className="addemployee_header">
           <div
             className="inactive_tab"
@@ -92,10 +104,10 @@ const EditHrInfo = ({ history, match }) => {
               );
             }}
           >
-            <h4>General Data</h4>
+            <h4>{t("dashboardEditHRData.menu01")}</h4>
           </div>
           <div className="active_tab">
-            <h4> HR Information </h4>
+            <h4>{t("dashboardEditHRData.menu02")}</h4>
           </div>
           <div
             className="inactive_tab"
@@ -105,7 +117,7 @@ const EditHrInfo = ({ history, match }) => {
               );
             }}
           >
-            <h4>Documents</h4>
+            <h4>{t("dashboardEditHRData.menu02")}</h4>
           </div>
         </div>
         <div className="employeedata_form">
@@ -123,7 +135,7 @@ const EditHrInfo = ({ history, match }) => {
 
             <div className="edithrinfo_form">
               <div className="edithrinfo_contractdetails_header">
-                <h3>CONTRACT DETAILS </h3>
+                <h3>{t("dashboardEditHRData.sectionHeading01")}</h3>
               </div>
 
               <div className="edithrinfo_contractdetails_content">
@@ -132,7 +144,7 @@ const EditHrInfo = ({ history, match }) => {
                     id="contractNumber"
                     name="contractNumber"
                     type="text"
-                    label="Contract Number"
+                    label={t("dashboardEditHRData.formDesc01")}
                     variant="outlined"
                     defaultValue=""
                     style={{ marginTop: "1em" }}
@@ -166,7 +178,7 @@ const EditHrInfo = ({ history, match }) => {
                     id="hireDate"
                     name="hireDate"
                     type="date"
-                    label="Hire Date"
+                    label={t("dashboardEditHRData.formDesc02")}
                     variant="outlined"
                     defaultValue=""
                     style={{ marginTop: "1em" }}
@@ -203,7 +215,7 @@ const EditHrInfo = ({ history, match }) => {
                     id="contractEnd"
                     name="contractEnd"
                     type="date"
-                    label="Contract End"
+                    label={t("dashboardEditHRData.formDesc03")}
                     variant="outlined"
                     defaultValue=""
                     style={{ marginTop: "1em" }}
@@ -239,7 +251,7 @@ const EditHrInfo = ({ history, match }) => {
                   <TextField
                     id="probationTime"
                     name="probationTime"
-                    label="Probation Period"
+                    label={t("dashboardEditHRData.formDesc04")}
                     variant="outlined"
                     defaultValue=""
                     style={{ marginTop: "1em" }}
@@ -272,7 +284,7 @@ const EditHrInfo = ({ history, match }) => {
                   <TextField
                     id="employmentType"
                     name="employmentType"
-                    label="Employment type"
+                    label={t("dashboardEditHRData.formDesc05")}
                     type="text"
                     variant="outlined"
                     defaultValue=""
@@ -307,7 +319,7 @@ const EditHrInfo = ({ history, match }) => {
                   <TextField
                     id="team"
                     name="team"
-                    label="Team"
+                    label={t("dashboardEditHRData.formDesc06")}
                     type="text"
                     variant="outlined"
                     defaultValue=""
@@ -335,7 +347,7 @@ const EditHrInfo = ({ history, match }) => {
                   <TextField
                     id="department"
                     name="department"
-                    label="Department"
+                    label={t("dashboardEditHRData.formDesc07")}
                     type="text"
                     variant="outlined"
                     defaultValue=""
@@ -370,7 +382,7 @@ const EditHrInfo = ({ history, match }) => {
                   <TextField
                     id="supervisor"
                     name="supervisor"
-                    label="Supervisor"
+                    label={t("dashboardEditHRData.formDesc08")}
                     type="text"
                     variant="outlined"
                     defaultValue=""
@@ -404,7 +416,7 @@ const EditHrInfo = ({ history, match }) => {
                   <TextField
                     id="salary"
                     name="salary"
-                    label="Net salary p.a."
+                    label={t("dashboardEditHRData.formDesc09")}
                     type="text"
                     variant="outlined"
                     defaultValue=""
@@ -438,7 +450,7 @@ const EditHrInfo = ({ history, match }) => {
                   <TextField
                     id="overtime"
                     name="overtime"
-                    label="Overtime hrs"
+                    label={t("dashboardEditHRData.formDesc10")}
                     type="number"
                     variant="outlined"
                     defaultValue=""
@@ -472,7 +484,7 @@ const EditHrInfo = ({ history, match }) => {
                   <TextField
                     id="workLocation"
                     name="workLocation"
-                    label="Office Location"
+                    label={t("dashboardEditHRData.formDesc11")}
                     type="text"
                     variant="outlined"
                     defaultValue=""
@@ -505,7 +517,7 @@ const EditHrInfo = ({ history, match }) => {
               </div>
 
               <div className="edithrinfo_education_header">
-                <h3>EDUCATION HISTORY</h3>
+                <h3>{t("dashboardEditHRData.sectionHeading02")}</h3>
               </div>
 
               {addEducation && (
@@ -514,7 +526,7 @@ const EditHrInfo = ({ history, match }) => {
                     <TextField
                       id="universityName"
                       name="universityName"
-                      label="University / Educational Institute"
+                      label={t("dashboardEditHRData.formDesc12")}
                       type="text"
                       variant="outlined"
                       defaultValue=""
@@ -548,7 +560,7 @@ const EditHrInfo = ({ history, match }) => {
                     <TextField
                       id="degree"
                       name="degree"
-                      label="Degree"
+                      label={t("dashboardEditHRData.formDesc13")}
                       type="text"
                       variant="outlined"
                       defaultValue=""
@@ -583,7 +595,7 @@ const EditHrInfo = ({ history, match }) => {
                     <TextField
                       id="fieldOfStudy"
                       name="fieldOfStudy"
-                      label="Field of study"
+                      label={t("dashboardEditHRData.formDesc14")}
                       type="text"
                       variant="outlined"
                       defaultValue=""
@@ -618,7 +630,7 @@ const EditHrInfo = ({ history, match }) => {
                     <TextField
                       id="yearOfCompletion"
                       name="yearOfCompletion"
-                      label="Year of completion"
+                      label={t("dashboardEditHRData.formDesc15")}
                       type="text"
                       variant="outlined"
                       defaultValue=""
@@ -653,11 +665,11 @@ const EditHrInfo = ({ history, match }) => {
                 </div>
               )}
               <button className="add-btn" onClick={handleAddEducation}>
-                Add Education +{" "}
+                {t("dashboardEditHRData.sectionHeadingButton01")}{" "}
               </button>
 
               <div className="edithrinfo_workexperience_header">
-                <h3>WORK EXPERIENCE</h3>
+                <h3>{t("dashboardEditHRData.sectionHeading03")}</h3>
               </div>
               {addWorkExperience && (
                 <div className="edithrinfo_workexperience_content">
@@ -665,7 +677,7 @@ const EditHrInfo = ({ history, match }) => {
                     <TextField
                       id="company"
                       name="company"
-                      label="Company"
+                      label={t("dashboardEditHRData.formDesc16")}
                       type="text"
                       variant="outlined"
                       defaultValue=""
@@ -699,7 +711,7 @@ const EditHrInfo = ({ history, match }) => {
                     <TextField
                       id="jobTitle"
                       name="jobTitle"
-                      label="Job title"
+                      label={t("dashboardEditHRData.formDesc17")}
                       type="text"
                       variant="outlined"
                       defaultValue=""
@@ -733,7 +745,7 @@ const EditHrInfo = ({ history, match }) => {
                     <TextField
                       id="jobFrom"
                       name="jobFrom"
-                      label="Startdate"
+                      label={t("dashboardEditHRData.formDesc18")}
                       type="date"
                       variant="outlined"
                       defaultValue=""
@@ -768,7 +780,7 @@ const EditHrInfo = ({ history, match }) => {
                     <TextField
                       id="jobTo"
                       name="jobTo"
-                      label="Enddate"
+                      label={t("dashboardEditHRData.formDesc19")}
                       type="date"
                       variant="outlined"
                       defaultValue=""
@@ -796,12 +808,12 @@ const EditHrInfo = ({ history, match }) => {
                 </div>
               )}
               <button className="add-btn" onClick={handleAddWorkExperience}>
-                Add Experience +{" "}
+                {t("dashboardEditHRData.sectionHeadingButton02")}{" "}
               </button>
             </div>
 
             <div className="hr-save-btn">
-              <button
+              <Button
                 onClick={() => {
                   console.log(editHrInfo);
                   edit();
@@ -810,8 +822,8 @@ const EditHrInfo = ({ history, match }) => {
                   // );
                 }}
               >
-                Next
-              </button>
+                {t("dashboardEditHRData.formButton01")}
+              </Button>
             </div>
           </FormGroup>
         </div>

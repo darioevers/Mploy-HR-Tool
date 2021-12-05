@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 
+// TRANSLATION IMPORTS
+import { useTranslation } from "react-i18next";
+
 // COMPONENT IMPORTS
 import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
@@ -22,7 +25,9 @@ import {
   Input,
   Select,
   MenuItem,
+  Typography
 } from "@material-ui/core";
+
 
 
 const EditEmployee = ({ history, match }) => {
@@ -69,6 +74,9 @@ const EditEmployee = ({ history, match }) => {
   // FORM HEIGHT
   const height = 50
 
+  // TRANSLATION
+  const { t } = useTranslation();
+
   return (
     <div className="addemployee_mainbox">
       <DashboardTopNav />
@@ -76,10 +84,13 @@ const EditEmployee = ({ history, match }) => {
       {/* personal edit data */}
 
       <div className="editemployee_wrapper">
-        <h1> Edit Employee </h1>
+        <Typography variant="h4" gutterBottom>
+          <Box sx={{ fontWeight: 500 }}>
+            {t("dashboardEditEmployeeData.title01")}</Box>
+        </Typography>
         <div className="addemployee_header">
           <div className="active_tab">
-            <h4>General Data</h4>
+            <h4>{t("dashboardEditEmployeeData.menu01")}</h4>
           </div>
           <div
             className="inactive_tab"
@@ -87,7 +98,7 @@ const EditEmployee = ({ history, match }) => {
               history.push(`/dashboard/employeedata/edithrinfo/${editEmp._id}`);
             }}
           >
-            <h4>HR Information</h4>
+            <h4>{t("dashboardEditEmployeeData.menu02")}</h4>
           </div>
           <div
             className="inactive_tab"
@@ -97,7 +108,7 @@ const EditEmployee = ({ history, match }) => {
               );
             }}
           >
-            <h4>Documents</h4>
+            <h4>{t("dashboardEditEmployeeData.menu03")}</h4>
           </div>
         </div>
         <div className="employeedata_form">
@@ -139,7 +150,7 @@ const EditEmployee = ({ history, match }) => {
                         bio: { ...editEmp.email, email: e.target.value },
                       })
                     }
-                    placeholder="Email"
+                    placeholder={t("dashboardEditEmployeeData.email")}
                   />
 
                   <PhoneIcon fontSize="small" />
@@ -155,14 +166,14 @@ const EditEmployee = ({ history, match }) => {
                         },
                       })
                     }
-                    placeholder="Phone Number"
+                    placeholder={t("dashboardEditEmployeeData.phone")}
                   />
                 </div>
               </div>
             </div>
             <div className="form_generaldata">
               <div className="basicdetails_header">
-                <h3>BASIC DETAILS </h3>
+                <h3>{t("dashboardEditEmployeeData.sectionHeading01")}</h3>
               </div>
 
               <Box sx={{ mt: 2 }}>
@@ -171,7 +182,7 @@ const EditEmployee = ({ history, match }) => {
                     id="firstName"
                     name="firstName"
                     type="text"
-                    label="First Name"
+                    label={t("dashboardEditEmployeeData.formDesc01")}
                     variant="outlined"
                     defaultValue=""
                     margin="normal"
@@ -214,7 +225,7 @@ const EditEmployee = ({ history, match }) => {
                 <FormControl style={inputStylesA}>
                   <TextField
                     id="lastName"
-                    label="Last Name"
+                    label={t("dashboardEditEmployeeData.formDesc02")}
                     variant="outlined"
                     type="text"
                     defaultValue=""
@@ -258,7 +269,7 @@ const EditEmployee = ({ history, match }) => {
                     id="employeeID"
                     name="employeeID"
                     type="text"
-                    label="Employee ID"
+                    label={t("dashboardEditEmployeeData.formDesc03")}
                     variant="outlined"
                     defaultValue=""
                     margin="normal"
@@ -300,7 +311,7 @@ const EditEmployee = ({ history, match }) => {
                     id="position"
                     name="position"
                     type="text"
-                    label="Position"
+                    label={t("dashboardEditEmployeeData.formDesc04")}
                     variant="outlined"
                     defaultValue=""
                     margin="normal"
@@ -343,7 +354,7 @@ const EditEmployee = ({ history, match }) => {
 
 
               <div className="personaldetails_header">
-                <h3>PERSONAL DETAILS </h3>
+                <h3>{t("dashboardEditEmployeeData.sectionHeading02")}</h3>
               </div>
 
               <Box sx={{ mt: 2 }}>
@@ -352,7 +363,7 @@ const EditEmployee = ({ history, match }) => {
                     id="streetOne"
                     name="streetOne"
                     type="text"
-                    label="Address 1"
+                    label={t("dashboardEditEmployeeData.formDesc05")}
                     variant="outlined"
                     defaultValue=""
                     style={{ marginTop: "1em" }}
@@ -396,7 +407,7 @@ const EditEmployee = ({ history, match }) => {
                     id="streetTwo"
                     name="streetTwo"
                     type="text"
-                    label="Address 2"
+                    label={t("dashboardEditEmployeeData.formDesc06")}
                     variant="outlined"
                     defaultValue=""
                     style={{ marginTop: "1em" }}
@@ -439,7 +450,7 @@ const EditEmployee = ({ history, match }) => {
                     id="cityOne"
                     name="cityOne"
                     type="text"
-                    label="City"
+                    label={t("dashboardEditEmployeeData.formDesc07")}
                     variant="outlined"
                     defaultValue=""
                     style={{ marginTop: "1em" }}
@@ -482,7 +493,7 @@ const EditEmployee = ({ history, match }) => {
                     id="countryOne"
                     name="countryOne"
                     type="text"
-                    label="Country"
+                    label={t("dashboardEditEmployeeData.formDesc08")}
                     variant="outlined"
                     defaultValue=""
                     style={{ marginTop: "1em" }}
@@ -524,7 +535,7 @@ const EditEmployee = ({ history, match }) => {
                     id="stateOne"
                     name="stateOne"
                     type="text"
-                    label="State / Region"
+                    label={t("dashboardEditEmployeeData.formDesc09")}
                     variant="outlined"
                     defaultValue=""
                     style={{ marginTop: "1em" }}
@@ -567,7 +578,7 @@ const EditEmployee = ({ history, match }) => {
                     id="postalCodeOne"
                     name="postalCodeOne"
                     type="text"
-                    label="Postal Code"
+                    label={t("dashboardEditEmployeeData.formDesc10")}
                     variant="outlined"
                     defaultValue=""
                     style={{ marginTop: "1em" }}
@@ -610,7 +621,7 @@ const EditEmployee = ({ history, match }) => {
                     id="dateOfBirth"
                     name="dateOfBirth"
                     type="text"
-                    label="Date of Birth"
+                    label={t("dashboardEditEmployeeData.formDesc11")}
                     variant="outlined"
                     defaultValue=""
                     style={{ marginTop: "1em" }}
@@ -653,7 +664,7 @@ const EditEmployee = ({ history, match }) => {
                     id="otherEmail"
                     name="otherEmail"
                     type="text"
-                    label="Other Email"
+                    label={t("dashboardEditEmployeeData.formDesc12")}
                     variant="outlined"
                     defaultValue=""
                     style={{ marginTop: "1em" }}
@@ -696,7 +707,7 @@ const EditEmployee = ({ history, match }) => {
                     id="nationality"
                     name="nationality"
                     type="text"
-                    label="Nationality"
+                    label={t("dashboardEditEmployeeData.formDesc13")}
                     variant="outlined"
                     defaultValue=""
                     style={{ marginTop: "1em" }}
@@ -735,13 +746,12 @@ const EditEmployee = ({ history, match }) => {
                 </FormControl>
 
                 <FormControl style={inputStylesB}>
-                  <InputLabel id="gender">Gender</InputLabel>
                   <Select
                     labelId="gender"
                     id="gender"
                     name="gender"
                     type="text"
-                    label="Gender"
+                    label={t("dashboardEditEmployeeData.formDesc14")}
                     variant="outlined"
                     defaultValue=""
                     style={{ marginTop: "1em" }}
@@ -759,20 +769,20 @@ const EditEmployee = ({ history, match }) => {
                       })
                     }
                   >
-                    <MenuItem value="Male">Male</MenuItem>
-                    <MenuItem value="Female">Female</MenuItem>
-                    <MenuItem value="Diverse">Diverse</MenuItem>
+                    <MenuItem value="Male">{t("dashboardEditEmployeeData.formSelect01")}</MenuItem>
+                    <MenuItem value="Female">{t("dashboardEditEmployeeData.formSelect02")}</MenuItem>
+                    <MenuItem value="Diverse">{t("dashboardEditEmployeeData.formSelect03")}</MenuItem>
                   </Select>
                 </FormControl>
 
                 <FormControl style={inputStylesB}>
-                  <InputLabel id="maritalStatus">Marital Status</InputLabel>
+                  {/* <InputLabel id="maritalStatus">Marital Status</InputLabel> */}
                   <Select
                     labelId="maritalStatus"
                     id="maritalStatus"
                     name="maritalStatus"
                     type="text"
-                    label="maritalStatus"
+                    label={t("dashboardEditEmployeeData.formDesc15")}
                     variant="outlined"
                     defaultValue=""
                     style={{ marginTop: "1em" }}
@@ -793,10 +803,10 @@ const EditEmployee = ({ history, match }) => {
                       })
                     }
                   >
-                    <MenuItem value="Single">Single</MenuItem>
-                    <MenuItem value="Married">Married</MenuItem>
-                    <MenuItem value="Separated">Separated</MenuItem>
-                    <MenuItem value="Not specified">Not Specified</MenuItem>
+                    <MenuItem value="Single">{t("dashboardEditEmployeeData.formSelect04")}</MenuItem>
+                    <MenuItem value="Married">{t("dashboardEditEmployeeData.formSelect05")}</MenuItem>
+                    <MenuItem value="Separated">{t("dashboardEditEmployeeData.formSelect06")}</MenuItem>
+                    <MenuItem value="Not specified">{t("dashboardEditEmployeeData.formSelect07")}</MenuItem>
                   </Select>
                   {/* <InputLabel htmlFor="my-input">Marital Status</InputLabel>
                   <Select
@@ -824,7 +834,7 @@ const EditEmployee = ({ history, match }) => {
                     id="hobbies"
                     name="hobbies"
                     type="text"
-                    label="Hobbies"
+                    label={t("dashboardEditEmployeeData.formDesc16")}
                     variant="outlined"
                     defaultValue=""
                     style={{ marginTop: "1em" }}
@@ -866,7 +876,7 @@ const EditEmployee = ({ history, match }) => {
                   );
                 }}
               >
-                Next{" "}
+                {t("dashboardEditEmployeeData.formButton01")}{" "}
               </button>
             </div>
           </FormGroup>
