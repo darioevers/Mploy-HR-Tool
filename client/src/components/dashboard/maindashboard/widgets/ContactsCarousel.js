@@ -1,7 +1,21 @@
 import React from "react";
+
+// CAROUSEL IMPORTS
 import Carousel from "react-elastic-carousel";
 
+// TRANSLATION IMPORTS
+import { useTranslation } from "react-i18next";
+
+// MUI IMPORTS
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Paper";
+
 function ContactCarousel() {
+
+  // TRANSLATION
+  const { t } = useTranslation();
+  //  <Typography variant="caption"><Box sx={{ ml: 2, boxShadow: "0", bgcolor: "transparent" }}>{t("dashboardWidgetSickleave.title02")}</Box></Typography>
+
   return (
     <div className="contact_carousel_mainbox">
       <Carousel itemsToShow={3}>

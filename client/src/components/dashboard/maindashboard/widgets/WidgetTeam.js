@@ -1,14 +1,29 @@
 import React from "react";
-import MailOutlineIcon from "@material-ui/icons/MailOutline";
-import InfoIcon from "@material-ui/icons/Info";
+
+// TRANSLATION IMPORTS
+import { useTranslation } from "react-i18next";
+
+// COMPONENT IMPORTS
 import ContactCarousel from "./ContactsCarousel";
 
+// MUI IMPORTS
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Paper";
+
+// ICON IMPORTS
+import MailOutlineIcon from "@material-ui/icons/MailOutline";
+import InfoIcon from "@material-ui/icons/Info";
+
 function WidgetTeam() {
+  // TRANSLATION
+  const { t } = useTranslation();
+
   return (
     <div className="widget_team_mainbox">
       {/* Team Header */}
       <div className="team_header_top">
-        <h1>TEAM</h1>
+        <Typography variant="h6"><Box sx={{ ml: 2, boxShadow: "0", bgcolor: "transparent" }}>{t("dashboardWidgetTeam.title01")}</Box></Typography>
+
         <div className="horizontal_line"></div>
       </div>
 
@@ -28,7 +43,7 @@ function WidgetTeam() {
           </div>
 
           <div className="team_manager_title">
-            <h4>Project Mngr.</h4>
+            <Typography><Box sx={{ boxShadow: "0", bgcolor: "transparent", fontSize: 10 }}>{t("dashboardWidgetTeam.jobtitle01")}</Box></Typography>
           </div>
         </div>
       </div>
@@ -49,7 +64,8 @@ function WidgetTeam() {
           </div>
 
           <div className="team_supervisor_title">
-            <h4>Supervisor</h4>
+            <Typography><Box sx={{ boxShadow: "0", bgcolor: "transparent", fontSize: 10 }}>{t("dashboardWidgetTeam.jobtitle02")}</Box></Typography>
+
           </div>
         </div>
       </div>
@@ -70,7 +86,8 @@ function WidgetTeam() {
           </div>
 
           <div className="team_it_one_title">
-            <h4>IT Manager</h4>
+            <Typography><Box sx={{ boxShadow: "0", bgcolor: "transparent", fontSize: 10 }}>{t("dashboardWidgetTeam.jobtitle03")}</Box></Typography>
+
           </div>
         </div>
       </div>
@@ -91,14 +108,16 @@ function WidgetTeam() {
           </div>
 
           <div className="team_it_two_title">
-            <h4>IT Support</h4>
+            <Typography><Box sx={{ boxShadow: "0", bgcolor: "transparent", fontSize: 10 }}>{t("dashboardWidgetTeam.jobtitle04")}</Box></Typography>
+
           </div>
         </div>
       </div>
 
       {/* Contacts Header */}
       <div className="team_header_bottom">
-        <h1>CONTACTS</h1>
+        <Typography variant="h6"><Box sx={{ ml: 2, boxShadow: "0", bgcolor: "transparent" }}>{t("dashboardWidgetContacts.title01")}</Box></Typography>
+
         <div className="horizontal_line"></div>
       </div>
 

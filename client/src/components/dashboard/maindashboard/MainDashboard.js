@@ -1,10 +1,17 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+
+// TRANSLATION IMPORTS
+import { useTranslation } from "react-i18next";
+
+// COMPONENT IMPORTS
 import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
 import Widgets from "./widgets/Widgets";
 import WelcomeMessage from "./widgets/WelcomeMessage";
+
+// MUI IMPORTS
 
 function MainDashboard() {
   const [privateData, setPrivateData] = useState("");
@@ -44,6 +51,9 @@ function MainDashboard() {
     history.push("/");
     // should go to the /
   };
+
+  // TRANSLATION
+  const { t } = useTranslation();
 
   return (
     <div className="maindashboard_area">

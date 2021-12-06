@@ -58,7 +58,11 @@ export default function Aboutoutro(props) {
                 {t("aboutInfo.title01")}
               </Box>
               <Box sx={{ m: 2, p: 2 }}>
-                <a href="https://digitalcareerinstitute.org/" target="_blank">
+                <a
+                  href="https://digitalcareerinstitute.org/"
+                  rel="noreferrer"
+                  target="_blank"
+                >
                   <img
                     src={dcilogo}
                     alt="Digital Career Institute Logo"

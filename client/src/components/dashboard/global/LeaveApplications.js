@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-
 import axios from "axios";
+
+// TRANSLATION IMPORTS
+import { useTranslation } from "react-i18next";
 
 function LeaveApplications() {
   // fetch leave application data
@@ -101,6 +103,9 @@ function LeaveApplications() {
     }
   };
 
+  // TRANSLATION
+  const { t } = useTranslation();
+
   return (
     <>
       {leaves &&
@@ -113,8 +118,8 @@ function LeaveApplications() {
                   item.type === "sick-leave"
                     ? { border: "1px solid #de7456" }
                     : item.type === "holiday"
-                    ? { border: "1px solid #a0a0a0" }
-                    : { border: "1px solid #ffffff" }
+                      ? { border: "1px solid #a0a0a0" }
+                      : { border: "1px solid #ffffff" }
                 }
               >
                 <div>{formatType(item.type)}</div>
@@ -129,17 +134,17 @@ function LeaveApplications() {
 
               <div>
                 <h5>
-                  From <span>{showDate(item.dateFrom)}</span>
+                  {t("dashboardWidgetLeaves.title09")} <span>{showDate(item.dateFrom)}</span>
                 </h5>
                 <h5>
-                  To <span>{showDate(item.dateTo)}</span>
+                  {t("dashboardWidgetLeaves.title10")} <span>{showDate(item.dateTo)}</span>
                 </h5>
               </div>
             </div>
 
             <div className="leave_buttons">
-              <h4 onClick={() => approveLeaveApplication(item._id)}>APPROVE</h4>
-              <h5 onClick={() => rejectLeaveApplication(item._id)}>REJECT</h5>
+              <h4 onClick={() => approveLeaveApplication(item._id)}>{t("dashboardRightDrawer.formDesc11")}</h4>
+              <h5 onClick={() => rejectLeaveApplication(item._id)}>{t("dashboardRightDrawer.formDesc12")}</h5>
             </div>
           </div>
         ))}

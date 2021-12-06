@@ -1,10 +1,19 @@
 import React, { useState } from "react";
+
+// TRANSLATION IMPORTS
+import LanguageSwitch from "../../../translations/languageSwitch";
+import { useTranslation } from "react-i18next";
+
+// COMPONENT IMPORTS
 import DarkModeSwitch from "./DarkModeSwitch";
 import SearchButton from "./SearchButton";
-import logo from "../../../img/logo/MPLOY_logo_small_dark.svg";
-// IMAGE IMPORTS
-
 import RightDrawer from "./RightDrawer";
+
+// IMAGE IMPORTS
+import logo from "../../../img/logo/MPLOY_logo_small_dark.svg";
+
+// MUI IMPORTS
+import Box from "@mui/material/Paper";
 
 function TopNav() {
   const role = localStorage.getItem("role");
@@ -15,14 +24,11 @@ function TopNav() {
       </div>
       <div className="top-nav-line"></div>
       <SearchButton />
-      <div className="language_switch">
-        <div className="eng_wrapper">
-          <p>ENG</p>
-        </div>
-        <div className="deu_wrapper">
-          <p>DEU</p>
-        </div>
-      </div>
+      <Box sx={{
+        boxShadow: "0"
+      }}>
+        <LanguageSwitch />
+      </Box>
       <div className="darkmode_switch">
         <DarkModeSwitch />
 
