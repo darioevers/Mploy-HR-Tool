@@ -283,41 +283,6 @@ function EmployeeData({ history }) {
                                   </h5>
                                 </div>
                               </div>
-                              <div>
-                                <h5>
-                                  <h1>Document Preview</h1>
-                                  <a
-                                    target="_blank"
-                                    href={`http://localhost:5000/${employee.bio.cv} `}
-                                  >
-                                    Preview CV
-                                  </a>
-                                </h5>
-                                <h5>
-                                  <a
-                                    target="_blank"
-                                    href={`http://localhost:5000/${employee.bio.diploma} `}
-                                  >
-                                    Diploma Preview
-                                  </a>
-                                </h5>
-                                <h5>
-                                  <a
-                                    target="_blank"
-                                    href={`http://localhost:5000/${employee.bio.certificate} `}
-                                  >
-                                    Certificate Preview
-                                  </a>
-                                </h5>
-                                <h5>
-                                  <a
-                                    target="_blank"
-                                    href={`http://localhost:5000/${employee.bio.letter} `}
-                                  >
-                                    Letter Preview
-                                  </a>
-                                </h5>
-                              </div>
 
                               <div className="summary_buttons">
                                 <div

@@ -101,7 +101,7 @@ const EditHrInfo = ({ history, match, location }) => {
           <div className="active_tab">
             <h4>{t("dashboardEditHRData.menu02")}</h4>
           </div>
-          <div
+          {/* <div
             className="inactive_tab"
             onClick={() => {
               history.push(
@@ -110,7 +110,7 @@ const EditHrInfo = ({ history, match, location }) => {
             }}
           >
             <h4>{t("dashboardEditHRData.menu02")}</h4>
-          </div>
+          </div> */}
         </div>
         <div className="employeedata_form">
           <FormGroup>

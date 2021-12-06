@@ -95,12 +95,15 @@ const EditEmployee = ({ history, match }) => {
           <div
             className="inactive_tab"
             onClick={() => {
-              history.push(`/dashboard/employeedata/edithrinfo/${editEmp._id}`);
+              history.push({
+                pathname: "/dashboard/employeedata/edithrinfo",
+                state: { editEmp },
+              });
             }}
           >
             <h4>{t("dashboardEditEmployeeData.menu02")}</h4>
           </div>
-          <div
+          {/* <div
             className="inactive_tab"
             onClick={() => {
               history.push(
@@ -109,7 +112,7 @@ const EditEmployee = ({ history, match }) => {
             }}
           >
             <h4>{t("dashboardEditEmployeeData.menu03")}</h4>
-          </div>
+          </div> */}
         </div>
         <div className="employeedata_form">
           <FormGroup>
