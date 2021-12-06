@@ -194,14 +194,15 @@ const Solutions = () => {
                   }}
                 >
                   <Box sx={{
-                    bgcolor: "transparent",
-                    mb: 1,
+                    display: "flex",
+                    height: "500px",
+                    justifyContent: "center",
+                    alignItems: "center",
                     boxShadow: "0",
-                    overflow: "hidden",
-                    justify: "center",
-                    alignItems: "center"
+                    bgcolor: "transparent",
+                    overflow: "hidden"
                   }}>
-                    <img src={ImgTabletAdminDrawer} style={{ width: "70%" }} />
+                    <img src={ImgTabletAdminDrawer} style={{ height: "85%" }} />
                   </Box>
                 </Item>
               </Grid>
@@ -250,6 +251,7 @@ const Solutions = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     boxShadow: "0",
+                    bgcolor: "transparent"
                   }}>
                     <Box sx={{
                       boxShadow: "0",
@@ -274,10 +276,17 @@ const Solutions = () => {
                     bgcolor: "background.lighterThree",
                   }}
                 >
-                  <br></br>
-                  <Typography className="homeservices_grid_text">
+                  <Box sx={{
+                    display: "flex",
+                    height: "500px",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    boxShadow: "0",
+                    bgcolor: "transparent",
+                    overflow: "hidden"
+                  }}>
                     <img src={ImgLaptopLeaveForm} style={{ width: "95%" }} />
-                  </Typography>
+                  </Box>
                 </Item>
               </Grid>
               <Grid item xs={12} md={6} lg={6} xl={6}>
@@ -289,10 +298,17 @@ const Solutions = () => {
                     bgcolor: "background.lighterThree",
                   }}
                 >
-                  <br></br>
-                  <Typography className="homeservices_grid_text">
+                  <Box sx={{
+                    display: "flex",
+                    height: "500px",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    boxShadow: "0",
+                    bgcolor: "transparent",
+                    overflow: "hidden"
+                  }}>
                     <img src={ImgLaptopEdit} style={{ width: "95%" }} />
-                  </Typography>
+                  </Box>
                 </Item>
               </Grid>
               <Grid item xs={12} md={6} lg={6} xl={6}>

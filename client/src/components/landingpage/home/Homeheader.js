@@ -4,7 +4,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 
 // IMAGE IMPORTS
-import HomeHeaderGraphic from "../../../img/graphics/browser-mockup.png";
+import HomeHeaderGraphic from "../../../img/graphics/laptop_dashboard.png";
 
 // MUI IMPORTS
 import { createTheme, ThemeProvider } from "@mui/material/styles";
