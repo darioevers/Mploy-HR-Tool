@@ -170,8 +170,8 @@ function WidgetApplications({ userdata }) {
               type="text"
               placeholder={t("dashboardWidgetLeaves.formDesc03")}
               className="application_search"
-              value="department"
-            // onSubmit={(e) =>
+              value={newLeave?.department}
+            // onChange={(e) =>
             //   setNewLeave({
             //     ...newLeave,
             //     department: e.target.value,
