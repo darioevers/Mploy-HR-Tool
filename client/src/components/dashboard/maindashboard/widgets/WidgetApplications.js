@@ -124,7 +124,7 @@ function WidgetApplications({ userdata }) {
             <Typography variant="body2"><Box sx={{ boxShadow: "0", bgcolor: "transparent", color: "#fff" }}>{t("dashboardWidgetLeaves.title05")}</Box></Typography>
 
             <input
-              type="search"
+              type="text"
               placeholder={t("dashboardWidgetLeaves.formDesc01")}
               className="application_search"
               value={`${userdata.bio?.firstName} ${userdata.bio?.lastName} `}
