@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "engines": {
+    "node": "14.17.1"
+  },
   "scripts": {
     "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -48,7 +51,6 @@
     "sass": "^1.44.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.13",
-    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "nodemon": "^2.0.13"
   }
 }
