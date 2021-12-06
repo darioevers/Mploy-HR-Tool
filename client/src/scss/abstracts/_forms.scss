@@ -31,3 +31,41 @@ textarea:focus {
     border: none;
   }
 }
+
+//notification box
+
+.alert-shown {
+  @include flex-center;
+  position: fixed;
+  top: 30px;
+  left: 43vw;
+  width: 250px;
+  height: 30px;
+  background-color: $dark-bg;
+  border-radius: 20px;
+  font-size: 13px;
+  color: $primary;
+  opacity: 1;
+  transition: all 250ms linear;
+  p {
+    margin-left: 10px;
+  }
+}
+
+.alert-hidden {
+  @include flex-center;
+  position: fixed;
+  top: 30px;
+  left: 43vw;
+  width: 250px;
+  height: 30px;
+  background-color: $dark-bg;
+  border-radius: 20px;
+  font-size: 13px;
+  color: $primary;
+  opacity: 0;
+  transition: all 250ms linear 2s;
+  p {
+    margin-left: 10px;
+  }
+}

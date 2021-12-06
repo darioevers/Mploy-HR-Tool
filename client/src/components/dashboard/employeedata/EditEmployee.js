@@ -16,8 +16,8 @@ import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 // MUI IMPORTS
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
 import {
   FormGroup,
   FormControl,
@@ -25,24 +25,11 @@ import {
   Input,
   Select,
   MenuItem,
-  Typography
+  Typography,
 } from "@material-ui/core";
-
-
 
 const EditEmployee = ({ history, match }) => {
   const [editEmp, setEditEmp] = useState();
-
-  //styling of formControls
-  const inputStylesA = {
-    width: "46%",
-    marginRight: "20px",
-  };
-
-  const inputStylesB = {
-    width: "30%",
-    marginRight: "20px",
-  };
 
   useEffect(() => {
     getEmployee();
@@ -84,7 +71,7 @@ const EditEmployee = ({ history, match }) => {
   };
 
   // FORM HEIGHT
-  const height = 50
+  const height = 50;
 
   // TRANSLATION
   const { t } = useTranslation();
@@ -98,7 +85,8 @@ const EditEmployee = ({ history, match }) => {
       <div className="editemployee_wrapper">
         <Typography variant="h4" gutterBottom>
           <Box sx={{ fontWeight: 500 }}>
-            {t("dashboardEditEmployeeData.title01")}</Box>
+            {t("dashboardEditEmployeeData.title01")}
+          </Box>
         </Typography>
         <div className="addemployee_header">
           <div className="active_tab">
@@ -107,12 +95,15 @@ const EditEmployee = ({ history, match }) => {
           <div
             className="inactive_tab"
             onClick={() => {
-              history.push(`/dashboard/employeedata/edithrinfo/${editEmp._id}`);
+              history.push({
+                pathname: "/dashboard/employeedata/edithrinfo",
+                state: { editEmp },
+              });
             }}
           >
             <h4>{t("dashboardEditEmployeeData.menu02")}</h4>
           </div>
-          <div
+          {/* <div
             className="inactive_tab"
             onClick={() => {
               history.push(
@@ -121,7 +112,7 @@ const EditEmployee = ({ history, match }) => {
             }}
           >
             <h4>{t("dashboardEditEmployeeData.menu03")}</h4>
-          </div>
+          </div> */}
         </div>
         <div className="employeedata_form">
           <FormGroup>
@@ -201,7 +192,7 @@ const EditEmployee = ({ history, match }) => {
                     inputProps={{
                       style: {
                         height,
-                        padding: '0 14px',
+                        padding: "0 14px",
                       },
                     }}
                     InputLabelProps={{ shrink: true }}
@@ -215,7 +206,8 @@ const EditEmployee = ({ history, match }) => {
                         },
                       });
                       setFirstName(e.target.value);
-                    }} />
+                    }}
+                  />
                   {/* <InputLabel htmlFor="my-input">First Name</InputLabel>
                   <Input
                     type="text"
@@ -246,7 +238,7 @@ const EditEmployee = ({ history, match }) => {
                     inputProps={{
                       style: {
                         height,
-                        padding: '0 14px',
+                        padding: "0 14px",
                       },
                     }}
                     InputLabelProps={{ shrink: true }}
@@ -257,7 +249,8 @@ const EditEmployee = ({ history, match }) => {
                         bio: { ...editEmp, lastName: e.target.value },
                       });
                       setLastName(e.target.value);
-                    }} />
+                    }}
+                  />
 
                   {/* <InputLabel htmlFor="my-input">Last Name</InputLabel>
                   <Input
@@ -326,7 +319,7 @@ const EditEmployee = ({ history, match }) => {
                     inputProps={{
                       style: {
                         height,
-                        padding: '0 14px',
+                        padding: "0 14px",
                       },
                     }}
                     value={editEmp?.bio?.employeeId}
@@ -338,7 +331,8 @@ const EditEmployee = ({ history, match }) => {
                           employeeId: e.target.value,
                         },
                       })
-                    } />
+                    }
+                  />
                   {/* <InputLabel htmlFor="my-input">Employee ID</InputLabel>
                   <Input
                     type="text"
@@ -365,7 +359,7 @@ const EditEmployee = ({ history, match }) => {
                     inputProps={{
                       style: {
                         height,
-                        padding: '0 14px',
+                        padding: "0 14px",
                       },
                     }}
                     value={editEmp?.contractInfo?.position}
@@ -378,7 +372,8 @@ const EditEmployee = ({ history, match }) => {
                         },
                       });
                       setPosition(e.target.value);
-                    }} />
+                    }}
+                  />
                   {/* <InputLabel htmlFor="my-input">Position</InputLabel>
                   <Input
                     type="text"
@@ -398,7 +393,6 @@ const EditEmployee = ({ history, match }) => {
                 </FormControl>
               </Box>
 
-
               <div className="personaldetails_header">
                 <h3>{t("dashboardEditEmployeeData.sectionHeading02")}</h3>
               </div>
@@ -417,7 +411,7 @@ const EditEmployee = ({ history, match }) => {
                     inputProps={{
                       style: {
                         height,
-                        padding: '0 14px',
+                        padding: "0 14px",
                       },
                     }}
                     value={editEmp?.addressOne?.streetOne}
@@ -429,7 +423,8 @@ const EditEmployee = ({ history, match }) => {
                           streetOne: e.target.value,
                         },
                       })
-                    } />
+                    }
+                  />
                   {/* <InputLabel htmlFor="my-input">Address 1</InputLabel>
                   <Input
                     type="text"
@@ -461,7 +456,7 @@ const EditEmployee = ({ history, match }) => {
                     inputProps={{
                       style: {
                         height,
-                        padding: '0 14px',
+                        padding: "0 14px",
                       },
                     }}
                     value={editEmp?.addressTwo?.streetTwo}
@@ -473,7 +468,8 @@ const EditEmployee = ({ history, match }) => {
                           streetTwo: e.target.value,
                         },
                       })
-                    } />
+                    }
+                  />
                   {/* <InputLabel htmlFor="my-input">Address 2</InputLabel>
                   <Input
                     type="text"
@@ -504,7 +500,7 @@ const EditEmployee = ({ history, match }) => {
                     inputProps={{
                       style: {
                         height,
-                        padding: '0 14px',
+                        padding: "0 14px",
                       },
                     }}
                     value={editEmp?.addressOne?.cityOne}
@@ -516,7 +512,8 @@ const EditEmployee = ({ history, match }) => {
                           cityOne: e.target.value,
                         },
                       })
-                    } />
+                    }
+                  />
                   {/* <InputLabel htmlFor="my-input">City</InputLabel>
                   <Input
                     type="text"
@@ -547,7 +544,7 @@ const EditEmployee = ({ history, match }) => {
                     inputProps={{
                       style: {
                         height,
-                        padding: '0 14px',
+                        padding: "0 14px",
                       },
                     }}
                     value={editEmp?.addressOne?.countryOne}
@@ -559,7 +556,8 @@ const EditEmployee = ({ history, match }) => {
                           countryOne: e.target.value,
                         },
                       })
-                    } />
+                    }
+                  />
                   {/* <InputLabel htmlFor="my-input">Country</InputLabel>
                   <Input
                     type="text"
@@ -589,7 +587,7 @@ const EditEmployee = ({ history, match }) => {
                     inputProps={{
                       style: {
                         height,
-                        padding: '0 14px',
+                        padding: "0 14px",
                       },
                     }}
                     value={editEmp?.addressOne?.stateOne}
@@ -601,7 +599,8 @@ const EditEmployee = ({ history, match }) => {
                           stateOne: e.target.value,
                         },
                       })
-                    } />
+                    }
+                  />
                   {/* <InputLabel htmlFor="my-input">State / Region</InputLabel>
                   <Input
                     type="text"
@@ -632,7 +631,7 @@ const EditEmployee = ({ history, match }) => {
                     inputProps={{
                       style: {
                         height,
-                        padding: '0 14px',
+                        padding: "0 14px",
                       },
                     }}
                     value={editEmp?.addressOne?.postalCodeOne}
@@ -644,7 +643,8 @@ const EditEmployee = ({ history, match }) => {
                           postalCodeOne: e.target.value,
                         },
                       })
-                    } />
+                    }
+                  />
                   {/* <InputLabel htmlFor="my-input">Postal Code</InputLabel>
                   <Input
                     type="text"
@@ -675,7 +675,7 @@ const EditEmployee = ({ history, match }) => {
                     inputProps={{
                       style: {
                         height,
-                        padding: '0 14px',
+                        padding: "0 14px",
                       },
                     }}
                     value={editEmp?.bio?.dateOfBirth}
@@ -687,7 +687,8 @@ const EditEmployee = ({ history, match }) => {
                           dateOfBirth: e.target.value,
                         },
                       })
-                    } />
+                    }
+                  />
                   {/* <InputLabel htmlFor="my-input">Date of Birth</InputLabel>
                   <Input
                     type="text"
@@ -715,7 +716,7 @@ const EditEmployee = ({ history, match }) => {
                     inputProps={{
                       style: {
                         height,
-                        padding: '0 14px',
+                        padding: "0 14px",
                       },
                     }}
                     value={editEmp?.bio?.otherEmail}
@@ -727,7 +728,8 @@ const EditEmployee = ({ history, match }) => {
                           otherEmail: e.target.value,
                         },
                       })
-                    } />
+                    }
+                  />
                   {/* <InputLabel htmlFor="my-input">Other Email</InputLabel>
                   <Input
                     type="text"
@@ -755,7 +757,7 @@ const EditEmployee = ({ history, match }) => {
                     inputProps={{
                       style: {
                         height,
-                        padding: '0 14px',
+                        padding: "0 14px",
                       },
                     }}
                     value={editEmp?.bio?.nationality}
@@ -767,7 +769,8 @@ const EditEmployee = ({ history, match }) => {
                           nationality: e.target.value,
                         },
                       })
-                    } />
+                    }
+                  />
                   {/* <InputLabel htmlFor="my-input">Nationality</InputLabel>
                   <Input
                     type="text"
@@ -795,7 +798,7 @@ const EditEmployee = ({ history, match }) => {
                     inputProps={{
                       style: {
                         height,
-                        padding: '0 14px',
+                        padding: "0 14px",
                       },
                     }}
                     value={editEmp?.bio?.gender}
@@ -806,9 +809,15 @@ const EditEmployee = ({ history, match }) => {
                       })
                     }
                   >
-                    <MenuItem value="Male">{t("dashboardEditEmployeeData.formSelect01")}</MenuItem>
-                    <MenuItem value="Female">{t("dashboardEditEmployeeData.formSelect02")}</MenuItem>
-                    <MenuItem value="Diverse">{t("dashboardEditEmployeeData.formSelect03")}</MenuItem>
+                    <MenuItem value="Male">
+                      {t("dashboardEditEmployeeData.formSelect01")}
+                    </MenuItem>
+                    <MenuItem value="Female">
+                      {t("dashboardEditEmployeeData.formSelect02")}
+                    </MenuItem>
+                    <MenuItem value="Diverse">
+                      {t("dashboardEditEmployeeData.formSelect03")}
+                    </MenuItem>
                   </Select>
                 </FormControl>
 
@@ -826,7 +835,7 @@ const EditEmployee = ({ history, match }) => {
                     inputProps={{
                       style: {
                         height,
-                        padding: '0 14px',
+                        padding: "0 14px",
                       },
                     }}
                     value={editEmp?.bio?.maritalStatus}
@@ -840,10 +849,18 @@ const EditEmployee = ({ history, match }) => {
                       })
                     }
                   >
-                    <MenuItem value="Single">{t("dashboardEditEmployeeData.formSelect04")}</MenuItem>
-                    <MenuItem value="Married">{t("dashboardEditEmployeeData.formSelect05")}</MenuItem>
-                    <MenuItem value="Separated">{t("dashboardEditEmployeeData.formSelect06")}</MenuItem>
-                    <MenuItem value="Not specified">{t("dashboardEditEmployeeData.formSelect07")}</MenuItem>
+                    <MenuItem value="Single">
+                      {t("dashboardEditEmployeeData.formSelect04")}
+                    </MenuItem>
+                    <MenuItem value="Married">
+                      {t("dashboardEditEmployeeData.formSelect05")}
+                    </MenuItem>
+                    <MenuItem value="Separated">
+                      {t("dashboardEditEmployeeData.formSelect06")}
+                    </MenuItem>
+                    <MenuItem value="Not specified">
+                      {t("dashboardEditEmployeeData.formSelect07")}
+                    </MenuItem>
                   </Select>
                   {/* <InputLabel htmlFor="my-input">Marital Status</InputLabel>
                   <Select
@@ -876,7 +893,7 @@ const EditEmployee = ({ history, match }) => {
                     inputProps={{
                       style: {
                         height,
-                        padding: '0 14px',
+                        padding: "0 14px",
                       },
                     }}
                     value={editEmp?.bio?.hobbies}
@@ -885,7 +902,8 @@ const EditEmployee = ({ history, match }) => {
                         ...editEmp,
                         bio: { ...editEmp.hobbies, hobbies: e.target.value },
                       })
-                    } />
+                    }
+                  />
                   {/* <InputLabel htmlFor="my-input">Hobbies</InputLabel>
                   <Input
                     type="text"
