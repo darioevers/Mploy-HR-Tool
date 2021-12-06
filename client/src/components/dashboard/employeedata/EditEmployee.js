@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 
@@ -50,6 +50,7 @@ const EditEmployee = ({ history, match }) => {
       )
 
       .then((data) => {
+        console.log(data.data);
         setEditEmp(data.data);
       })
       .catch((err) => console.log(err));
@@ -113,7 +114,7 @@ const EditEmployee = ({ history, match }) => {
         </div>
         <div className="employeedata_form">
           <FormGroup>
-            <div className="form_header">
+            {/* <div className="form_header">
               <div className="form_header_photo">
                 <div className="photo">
                   <div className="dummy_photo">
@@ -170,7 +171,7 @@ const EditEmployee = ({ history, match }) => {
                   />
                 </div>
               </div>
-            </div>
+            </div> */}
             <div className="form_generaldata">
               <div className="basicdetails_header">
                 <h3>{t("dashboardEditEmployeeData.sectionHeading01")}</h3>
@@ -210,7 +211,7 @@ const EditEmployee = ({ history, match }) => {
                     name="firstName"
                     value={editEmp?.bio?.firstName}
                     // style={inputStylesA}
-                    onChange={(e) => {
+                    onChange={(e) =>
                       setEditEmp({
                         ...editEmp,
                         bio: {
@@ -255,7 +256,44 @@ const EditEmployee = ({ history, match }) => {
                     defaultValue=""
                     name="lastName"
                     value={editEmp?.bio?.lastName}
-                    onChange={(e) => {
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        bio: {
+                          ...editEmp.bio,
+                          lastName: e.target.value,
+                        },
+                      })
+                    }
+                    // setLastName(e.target.value);
+                  />
+                </FormControl>
+
+                <FormControl style={inputStylesA}>
+                  <InputLabel htmlFor="my-input">Phone Number</InputLabel>
+                  <Input
+                    type="text"
+                    name="firstName"
+                    value={editEmp?.bio?.phoneNumber}
+                    // style={inputStylesA}
+
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        bio: { ...editEmp.bio, phoneNumber: e.target.value },
+                      })
+                    }
+                  />
+                </FormControl>
+
+                <FormControl style={inputStylesA}>
+                  <InputLabel htmlFor="my-input">Email</InputLabel>
+                  <Input
+                    type="text"
+                    name="firstName"
+                    value={editEmp?.bio?.email}
+                    // style={inputStylesA}
+                    onChange={(e) =>
                       setEditEmp({
                         ...editEmp,
                         bio: { ...editEmp, lastName: e.target.value },
@@ -298,10 +336,7 @@ const EditEmployee = ({ history, match }) => {
                     onChange={(e) =>
                       setEditEmp({
                         ...editEmp,
-                        bio: {
-                          ...editEmp.employeeId,
-                          employeeId: e.target.value,
-                        },
+                        bio: { ...editEmp.bio, employeeId: e.target.value },
                       })
                     }
                   /> */}
@@ -338,11 +373,11 @@ const EditEmployee = ({ history, match }) => {
                     type="text"
                     name="position"
                     value={editEmp?.contractInfo?.position}
-                    onChange={(e) => {
+                    onChange={(e) =>
                       setEditEmp({
                         ...editEmp,
                         contractInfo: {
-                          ...editEmp.position,
+                          ...editEmp.contractInfo,
                           position: e.target.value,
                         },
                       });
@@ -394,7 +429,7 @@ const EditEmployee = ({ history, match }) => {
                       setEditEmp({
                         ...editEmp,
                         addressOne: {
-                          ...editEmp.streetOne,
+                          ...editEmp.addressOne,
                           streetOne: e.target.value,
                         },
                       })
@@ -437,7 +472,7 @@ const EditEmployee = ({ history, match }) => {
                       setEditEmp({
                         ...editEmp,
                         addressTwo: {
-                          ...editEmp.streetTwo,
+                          ...editEmp?.addressTwo,
                           streetTwo: e.target.value,
                         },
                       })
@@ -479,8 +514,8 @@ const EditEmployee = ({ history, match }) => {
                     onChange={(e) =>
                       setEditEmp({
                         ...editEmp,
-                        adressOne: {
-                          ...editEmp.cityOne,
+                        addressOne: {
+                          ...editEmp.addressOne,
                           cityOne: e.target.value,
                         },
                       })
@@ -523,7 +558,7 @@ const EditEmployee = ({ history, match }) => {
                       setEditEmp({
                         ...editEmp,
                         addressOne: {
-                          ...editEmp.countryOne,
+                          ...editEmp.addressOne,
                           countryOne: e.target.value,
                         },
                       })
@@ -565,7 +600,7 @@ const EditEmployee = ({ history, match }) => {
                       setEditEmp({
                         ...editEmp,
                         addressOne: {
-                          ...editEmp.stateOne,
+                          ...editEmp.addressOne,
                           stateOne: e.target.value,
                         },
                       })
@@ -608,7 +643,7 @@ const EditEmployee = ({ history, match }) => {
                       setEditEmp({
                         ...editEmp,
                         addressOne: {
-                          ...editEmp.postalCodeOne,
+                          ...editEmp.addressOne,
                           postalCodeOne: e.target.value,
                         },
                       })
@@ -650,10 +685,7 @@ const EditEmployee = ({ history, match }) => {
                     onChange={(e) =>
                       setEditEmp({
                         ...editEmp,
-                        bio: {
-                          ...editEmp.dateOfBirth,
-                          dateOfBirth: e.target.value,
-                        },
+                        bio: { ...editEmp.bio, dateOfBirth: e.target.value },
                       })
                     }
                   /> */}
@@ -693,10 +725,7 @@ const EditEmployee = ({ history, match }) => {
                     onChange={(e) =>
                       setEditEmp({
                         ...editEmp,
-                        bio: {
-                          ...editEmp.otherEmail,
-                          otherEmail: e.target.value,
-                        },
+                        bio: { ...editEmp.bio, otherEmail: e.target.value },
                       })
                     }
                   /> */}
@@ -736,10 +765,7 @@ const EditEmployee = ({ history, match }) => {
                     onChange={(e) =>
                       setEditEmp({
                         ...editEmp,
-                        bio: {
-                          ...editEmp.nationality,
-                          nationality: e.target.value,
-                        },
+                        bio: { ...editEmp.bio, nationality: e.target.value },
                       })
                     }
                   /> */}
@@ -765,7 +791,7 @@ const EditEmployee = ({ history, match }) => {
                     onChange={(e) =>
                       setEditEmp({
                         ...editEmp,
-                        bio: { ...editEmp.gender, gender: e.target.value },
+                        bio: { ...editEmp.bio, gender: e.target.value },
                       })
                     }
                   >
@@ -815,10 +841,7 @@ const EditEmployee = ({ history, match }) => {
                     onChange={(e) =>
                       setEditEmp({
                         ...editEmp,
-                        bio: {
-                          ...editEmp.maritalStatus,
-                          maritalStatus: e.target.value,
-                        },
+                        bio: { ...editEmp.bio, maritalStatus: e.target.value },
                       })
                     }
                   >
@@ -860,7 +883,7 @@ const EditEmployee = ({ history, match }) => {
                     onChange={(e) =>
                       setEditEmp({
                         ...editEmp,
-                        bio: { ...editEmp.hobbies, hobbies: e.target.value },
+                        bio: { ...editEmp.bio, hobbies: e.target.value },
                       })
                     }
                   /> */}
@@ -871,9 +894,11 @@ const EditEmployee = ({ history, match }) => {
             <div className="next-btn">
               <button
                 onClick={() => {
-                  history.push(
-                    `/dashboard/employeedata/edithrinfo/${editEmp._id}`
-                  );
+                  console.log(editEmp);
+                  history.push({
+                    pathname: "/dashboard/employeedata/edithrinfo",
+                    state: { editEmp },
+                  });
                 }}
               >
                 {t("dashboardEditEmployeeData.formButton01")}{" "}

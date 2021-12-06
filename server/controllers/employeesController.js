@@ -49,7 +49,7 @@ employeeController.getOneEmployee = async (req, res) => {
 
 employeeController.addNewEmployee = async (req, res) => {
   console.log("data", req.body);
-  
+
   const received = JSON.parse(req.body.allData);
   const pathProfilePic = req.files?.file[0]?.path.substring(7);
   const pathCv = req.files?.fileCv[0]?.path.substring(7);
@@ -151,36 +151,17 @@ employeeController.searchName = async (req, res) => {
   }
 };
 
-// get single employee using email
-// employeeController.getOneEmployee = async (req, res) => {
-//   try {
-//     const employee = await EmployeeData.findOne({"bio.email":req.body.email});
-//     res.status(200).json({
-//       status: "success",
-//       data: employee,
-//     });
-//   } catch (error) {
-//     res.status(404).json({ message: error.message });
-//   }
-// };
-
 // patch or update employee
 employeeController.updateEmployee = async (req, res) => {
   try {
+    // console.log(received);
+    let received = await JSON.parse(req.body.editHrInfo);
 
-    console.log(received)
-    let received = await JSON.parse(req.body.editEmp);
-
-    // let received = await JSON.parse(req.body.editHrInfo);
-
-    received.bio.photo = "uploads/" + req.file.path.substring(15);
     console.log(req);
-    // received.bio.photo=req.file.path.substring(7);
-    console.log("after",received);
+    console.log("after", received);
     const employee = await EmployeeData.findOneAndUpdate(
       { "bio.email": received.bio.email },
       received,
-
       {
         new: true,
       }
@@ -190,7 +171,7 @@ employeeController.updateEmployee = async (req, res) => {
     res.status(404).json({ status: "fail", message: error.message });
   }
 };
-// qrcode
+
 
 // delete one employee upon criteria from the log
 employeeController.deleteOneEmployee = async (req, res) => {
@@ -219,31 +200,8 @@ employeeController.deleteOrUpdateStatus = async (req, res) => {
   }
 };
 
-// geting employees who had birthday today
-// employeeController.getTodaysBirthDay = async (req, res) => {
-//   const year = new Date().getFullYear();
-//   const month = new Date().getMonth() + 1;
-//   const day = new Date().getDate();
-//   const today = month + "-" + day;
-//   try {
-//     const allEmployees = await EmployeeData.find();
-//     // console.log("this is emp" +allEmployees);
 
-//     const  currentBdays=allEmployees.filter(item=>item.bio.dateOfBirth.includes(today));
-
-//     console.log("this is current bdays"+currentBdays);
-
-//     res.status(200).json(currentBdays);
-//     // console.log(employees);
-//   } catch (error) {
-//     res.status(404).json({
-//       message: error.message,
-//     });
-//   }
-// };
-
-
-// get file 
+// get file
 // employeeController.getallMultipleFiles = async (req, res, next) => {
 //   try{
 //       const files = await MultipleFile.find();
@@ -252,4 +210,5 @@ employeeController.deleteOrUpdateStatus = async (req, res) => {
 //       res.status(400).send(error.message);
 //   }
 // }
+
 module.exports = employeeController;

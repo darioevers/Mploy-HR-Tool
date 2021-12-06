@@ -14,9 +14,10 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Button from "@material-ui/core/Button";
 
-const EditHrInfo = ({ history, match }) => {
-  const [editHrInfo, setEditHrInfo] = useState();
-  const [file, setFile] = useState();
+const EditHrInfo = ({ history, match, location }) => {
+  const [editHrInfo, setEditHrInfo] = useState(
+    location.state && location.state.editEmp
+  );
 
   const [addEducation, setAddEducation] = useState(false);
   const [addWorkExperience, setAddWorkExperience] = useState(false);
@@ -25,29 +26,7 @@ const EditHrInfo = ({ history, match }) => {
   const handleAddWorkExperience = () =>
     setAddWorkExperience(!addWorkExperience);
 
-  //get one employee
-  useEffect(() => {
-    getEmployee();
-  }, []);
-
-  const getEmployee = () => {
-    axios
-      .get(
-        `http://localhost:5000/employee/singleEmployee/${match.params.id}`,
-
-        {
-          header: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-
-      .then((data) => {
-        setEditHrInfo(data.data);
-      })
-      .catch((err) => console.log(err));
-  };
-
+  //upate user employee data
   const edit = () => {
     const data = new FormData();
     const readyTOSend = JSON.stringify(editHrInfo);
@@ -122,17 +101,6 @@ const EditHrInfo = ({ history, match }) => {
         </div>
         <div className="employeedata_form">
           <FormGroup>
-            <div>
-              <FormControl>
-                <InputLabel htmlFor="my-input">Photo</InputLabel>
-                <Input
-                  type="file"
-                  name="file"
-                  onChange={(e) => setFile(e.target.files[0])}
-                />
-              </FormControl>
-            </div>
-
             <div className="edithrinfo_form">
               <div className="edithrinfo_contractdetails_header">
                 <h3>{t("dashboardEditHRData.sectionHeading01")}</h3>
@@ -168,7 +136,10 @@ const EditHrInfo = ({ history, match }) => {
                     onChange={(e) =>
                       setEditHrInfo({
                         ...editHrInfo,
-                        contractNo: e.target.value,
+                        contractInfo: {
+                          ...editHrInfo.contractInfo,
+                          contractNo: e.target.value,
+                        },
                       })
                     }
                   /> */}
@@ -201,8 +172,7 @@ const EditHrInfo = ({ history, match }) => {
                   <Input
                     value={editHrInfo?.contractInfo?.hireDate}
                     type="date"
-                    onChange={(e) => {
-                      // setHireDate(e.target.value);
+                    onChange={(e) =>
                       setEditHrInfo({
                         ...editHrInfo,
                         hireDate: e.target.value,
@@ -242,7 +212,10 @@ const EditHrInfo = ({ history, match }) => {
                     onChange={(e) =>
                       setEditHrInfo({
                         ...editHrInfo,
-                        contractEnd: e.target.value,
+                        contractInfo: {
+                          ...editHrInfo.contractInfo,
+                          contractEnd: e.target.value,
+                        },
                       })
                     }
                   /> */}
@@ -275,7 +248,10 @@ const EditHrInfo = ({ history, match }) => {
                     onChange={(e) =>
                       setEditHrInfo({
                         ...editHrInfo,
-                        probationPeriod: e.target.value,
+                        contractInfo: {
+                          ...editHrInfo.contractInfo,
+                          probationPeriod: e.target.value,
+                        },
                       })
                     }
                   /> */}
@@ -309,7 +285,10 @@ const EditHrInfo = ({ history, match }) => {
                     onChange={(e) =>
                       setEditHrInfo({
                         ...editHrInfo,
-                        employmentType: e.target.value,
+                        contractInfo: {
+                          ...editHrInfo.contractInfo,
+                          employmentType: e.target.value,
+                        },
                       })
                     }
                   /> */}
@@ -339,7 +318,13 @@ const EditHrInfo = ({ history, match }) => {
                   <Input
                     value={editHrInfo?.contractInfo?.team}
                     onChange={(e) =>
-                      setEditHrInfo({ ...editHrInfo, team: e.target.value })
+                      setEditHrInfo({
+                        ...editHrInfo,
+                        contractInfo: {
+                          ...editHrInfo.contractInfo,
+                          team: e.target.value,
+                        },
+                      })
                     }
                   /> */}
                 </FormControl>
@@ -372,7 +357,10 @@ const EditHrInfo = ({ history, match }) => {
                     onChange={(e) =>
                       setEditHrInfo({
                         ...editHrInfo,
-                        department: e.target.value,
+                        contractInfo: {
+                          ...editHrInfo.contractInfo,
+                          department: e.target.value,
+                        },
                       })
                     }
                   /> */}
@@ -407,7 +395,10 @@ const EditHrInfo = ({ history, match }) => {
                     onChange={(e) =>
                       setEditHrInfo({
                         ...editHrInfo,
-                        supervisor: e.target.value,
+                        contractInfo: {
+                          ...editHrInfo.contractInfo,
+                          supervisor: e.target.value,
+                        },
                       })
                     }
                   /> */}
@@ -441,7 +432,10 @@ const EditHrInfo = ({ history, match }) => {
                     onChange={(e) =>
                       setEditHrInfo({
                         ...editHrInfo,
-                        salary: e.target.value,
+                        contractInfo: {
+                          ...editHrInfo.contractInfo,
+                          salary: e.target.value,
+                        },
                       })
                     }
                   /> */}
@@ -475,7 +469,10 @@ const EditHrInfo = ({ history, match }) => {
                     onChange={(e) =>
                       setEditHrInfo({
                         ...editHrInfo,
-                        overtime: e.target.value,
+                        contractInfo: {
+                          ...editHrInfo.contractInfo,
+                          overTime: e.target.value,
+                        },
                       })
                     }
                   /> */}
@@ -509,7 +506,10 @@ const EditHrInfo = ({ history, match }) => {
                     onChange={(e) =>
                       setEditHrInfo({
                         ...editHrInfo,
-                        workLocation: e.target.value,
+                        contractInfo: {
+                          ...editHrInfo.contractInfo,
+                          workLocation: e.target.value,
+                        },
                       })
                     }
                   /> */}
@@ -551,7 +551,10 @@ const EditHrInfo = ({ history, match }) => {
                       onChange={(e) =>
                         setEditHrInfo({
                           ...editHrInfo,
-                          school: e.target.value,
+                          education: {
+                            ...editHrInfo.education,
+                            school: e.target.value,
+                          },
                         })
                       }
                     /> */}
@@ -585,7 +588,10 @@ const EditHrInfo = ({ history, match }) => {
                       onChange={(e) =>
                         setEditHrInfo({
                           ...editHrInfo,
-                          degree: e.target.value,
+                          education: {
+                            ...editHrInfo.education,
+                            degree: e.target.value,
+                          },
                         })
                       }
                     /> */}
@@ -620,7 +626,10 @@ const EditHrInfo = ({ history, match }) => {
                       onChange={(e) =>
                         setEditHrInfo({
                           ...editHrInfo,
-                          specialization: e.target.value,
+                          education: {
+                            ...editHrInfo.education,
+                            specialization: e.target.value,
+                          },
                         })
                       }
                     /> */}
@@ -657,7 +666,10 @@ const EditHrInfo = ({ history, match }) => {
                       onChange={(e) =>
                         setEditHrInfo({
                           ...editHrInfo,
-                          endDate: e.target.value,
+                          education: {
+                            ...editHrInfo.education,
+                            endDate: e.target.value,
+                          },
                         })
                       }
                     /> */}
@@ -702,7 +714,10 @@ const EditHrInfo = ({ history, match }) => {
                       onChange={(e) =>
                         setEditHrInfo({
                           ...editHrInfo,
-                          company: e.target.value,
+                          workExperience: {
+                            ...editHrInfo.workExperience,
+                            company: e.target.value,
+                          },
                         })
                       }
                     /> */}
@@ -736,7 +751,10 @@ const EditHrInfo = ({ history, match }) => {
                       onChange={(e) =>
                         setEditHrInfo({
                           ...editHrInfo,
-                          jobTitle: e.target.value,
+                          workExperience: {
+                            ...editHrInfo.workExperience,
+                            jobTitle: e.target.value,
+                          },
                         })
                       }
                     /> */}
@@ -771,7 +789,10 @@ const EditHrInfo = ({ history, match }) => {
                       onChange={(e) =>
                         setEditHrInfo({
                           ...editHrInfo,
-                          from: e.target.value,
+                          workExperience: {
+                            ...editHrInfo.workExperience,
+                            from: e.target.value,
+                          },
                         })
                       }
                     /> */}
@@ -801,7 +822,13 @@ const EditHrInfo = ({ history, match }) => {
                       type="date"
                       value={editHrInfo?.workExperience?.to}
                       onChange={(e) =>
-                        setEditHrInfo({ ...editHrInfo, to: e.target.value })
+                        setEditHrInfo({
+                          ...editHrInfo,
+                          workExperience: {
+                            ...editHrInfo.workExperience,
+                            to: e.target.value,
+                          },
+                        })
                       }
                     /> */}
                   </FormControl>
@@ -815,11 +842,7 @@ const EditHrInfo = ({ history, match }) => {
             <div className="hr-save-btn">
               <Button
                 onClick={() => {
-                  console.log(editHrInfo);
                   edit();
-                  // history.push(
-                  //   `/dashboard/employeedata/editdocuments/${editHrInfo._id}`
-                  // );
                 }}
               >
                 {t("dashboardEditHRData.formButton01")}
