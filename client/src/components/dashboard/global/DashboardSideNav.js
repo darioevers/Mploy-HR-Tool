@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
+import axios from "axios";
 
-//icons
+// TRANSLATION IMPORTS
+import { useTranslation } from "react-i18next";
+
+// MUI IMPORTS
+import Typography from "@mui/material/Typography";
+import Button from "@material-ui/core/Button";
+
+// ICON IMPORTS
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import FolderOpenIcon from "@material-ui/icons/FolderOpen";
 import TodayIcon from "@material-ui/icons/Today";
@@ -10,8 +18,6 @@ import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 import LogoutIcon from "@mui/icons-material/Logout";
 import logo from "../../../img/logo/MPLOY_logo_small_white.svg";
-
-import axios from "axios";
 
 const DashboardSideNav = (props) => {
   const { userdata, logout } = props;
@@ -94,6 +100,9 @@ const DashboardSideNav = (props) => {
     // should go to the /
   };
 
+  // TRANSLATION
+  const { t } = useTranslation();
+
   return (
     <>
       <div className="sidenav_mainbox">
@@ -136,7 +145,7 @@ const DashboardSideNav = (props) => {
             <i>
               <DashboardIcon style={{ fontSize: "x-large" }} />
             </i>
-            <p>Dashboard</p>
+            <Typography>{t("dashboardSidenav.menu01")}</Typography>
           </NavLink>
 
           <NavLink
@@ -150,7 +159,7 @@ const DashboardSideNav = (props) => {
               {" "}
               <FolderOpenIcon />
             </i>
-            <p>Employee Data</p>
+            <Typography>{t("dashboardSidenav.menu02")}</Typography>
             {/* <img src={iconbg} /> */}
             <div></div>
           </NavLink>
@@ -166,7 +175,7 @@ const DashboardSideNav = (props) => {
               {" "}
               <TodayIcon />
             </i>
-            <p>Calendar</p>
+            <Typography>{t("dashboardSidenav.menu03")}</Typography>
             {/* <img src={iconbg} /> */}
             <div></div>
           </NavLink>
@@ -181,7 +190,7 @@ const DashboardSideNav = (props) => {
               {" "}
               <EuroIcon />{" "}
             </i>
-            <p>Payroll</p>
+            <Typography>{t("dashboardSidenav.menu04")}</Typography>
             {/* <img src={iconbg} /> */}
             <div></div>
           </NavLink>
@@ -195,7 +204,7 @@ const DashboardSideNav = (props) => {
             <i>
               <FormatListBulletedIcon />
             </i>
-            <p>Tasks</p>
+            <Typography>{t("dashboardSidenav.menu05")}</Typography>
             {/* <img src={iconbg} /> */}
             <div></div>
           </NavLink>
@@ -210,13 +219,15 @@ const DashboardSideNav = (props) => {
               {" "}
               <MenuBookIcon />
             </i>{" "}
-            <p>E-Learning</p>
+            <Typography>
+              {t("dashboardSidenav.menu06")}
+            </Typography>
             {/* <img src={iconbg} /> */}
             <div></div>
           </NavLink>
         </div>
         <div className="logout_btn">
-          <button onClick={logoutHandler}>Logout</button>
+          <Button variant="outlined" onClick={logoutHandler}>{t("dashboardSidenav.menuButton01")}</Button>
         </div>
       </div>
     </>

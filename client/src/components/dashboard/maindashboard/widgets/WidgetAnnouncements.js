@@ -2,6 +2,15 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import Carousel from "react-elastic-carousel";
+
+// TRANSLATION IMPORTS
+import { useTranslation } from "react-i18next";
+
+// MUI IMPORTS
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Paper";
+
+// ICON IMPORTS
 import CloseIcon from "@mui/icons-material/Close";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 
@@ -88,6 +97,10 @@ function WidgetAnnouncements() {
     const day = ("0" + date.getDate()).slice(-2);
     return day;
   };
+
+  // TRANSLATION
+  const { t } = useTranslation();
+
   return (
     <div
       className={
@@ -97,7 +110,8 @@ function WidgetAnnouncements() {
       }
     >
       <div className="widget_announcements_header">
-        <h1>ANNOUNCEMENTS</h1>
+        <Typography variant="h6"><Box sx={{ boxShadow: "0", bgcolor: "transparent", color: "#fff" }}>{t("dashboardWidgetAnnouncements.title01")}</Box></Typography>
+
       </div>
 
       <div
@@ -128,10 +142,10 @@ function WidgetAnnouncements() {
                     <div className="widget_announcements_icons">
                       <p onClick={() => handleClick(announcement._id)}>
                         {" "}
-                        Read More
+                        {t("dashboardWidgetAnnouncements.title02")}
                       </p>
                       <p onClick={() => deleteAnnouncement(announcement._id)}>
-                        Delete
+                        {t("dashboardWidgetAnnouncements.title03")}
                       </p>
                     </div>
                   </div>
@@ -143,11 +157,11 @@ function WidgetAnnouncements() {
                       <div className="expand_header">
                         <h1>{announcement.title}</h1>
                         <div className="expand_subheader">
-                          <p>by {announcement.poster}</p>
+                          <p>{t("misc.by")} {announcement.poster}</p>
 
-                          <p>Date Posted: {announcement.date}</p>
+                          <p>{t("misc.date")} {announcement.date}</p>
 
-                          <p>Time Posted: {announcement.time}</p>
+                          <p>{t("misc.time")} {announcement.time}</p>
                         </div>
                       </div>
 
@@ -158,7 +172,7 @@ function WidgetAnnouncements() {
                       <div className="expand_main_content">
                         <h3>Content</h3>
                         <p>{announcement.message}</p>
-                        <h4> - END - </h4>
+                        <h4> - {t("misc.end")} - </h4>
                       </div>
 
                       <div className="expand_buttons">
@@ -205,10 +219,10 @@ function WidgetAnnouncements() {
                 <div className="widget_announcements_icons">
                   <p onClick={() => handleClick(announcement._id)}>
                     {" "}
-                    Read More Here
+                    {t("dashboardWidgetAnnouncements.title02")}
                   </p>
                   <p onClick={() => deleteAnnouncement(announcement._id)}>
-                    Delete
+                    {t("dashboardWidgetAnnouncements.title03")}
                   </p>
                 </div>
                 <div className="widget_announcements_divider_mobile">
@@ -222,11 +236,11 @@ function WidgetAnnouncements() {
                     <div className="expand_header">
                       <h1>{announcement.title}</h1>
                       <div className="expand_subheader">
-                        <p>by {announcement.poster}</p>
+                        <p>{t("misc.by")} {announcement.poster}</p>
 
-                        <p>Date Posted: {announcement.date}</p>
+                        <p>{t("misc.date")} {announcement.date}</p>
 
-                        <p>Time Posted: {announcement.time}</p>
+                        <p>{t("misc.time")} {announcement.time}</p>
                       </div>
                     </div>
 
@@ -237,7 +251,7 @@ function WidgetAnnouncements() {
                     <div className="expand_main_content">
                       <h3>Content</h3>
                       <p>{announcement.message}</p>
-                      <h4> - END - </h4>
+                      <h4> - {t("misc.end")} - </h4>
                     </div>
 
                     <div className="expand_buttons">

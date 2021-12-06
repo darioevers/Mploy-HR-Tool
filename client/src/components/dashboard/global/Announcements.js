@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+// TRANSLATION IMPORTS
+import { useTranslation } from "react-i18next";
+
+// MUI IMPORTS
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Paper";
+
 function Announcements() {
   const [announcement, setAnnouncement] = useState({});
 
@@ -25,11 +32,15 @@ function Announcements() {
       .catch((err) => console.log(err));
   };
 
+  // TRANSLATION
+  const { t } = useTranslation();
+
   return (
     <div className="announcements_mainbox">
       <div className="announcements_date_container">
         <div className="announcements_date">
-          <h3>Date</h3>
+          <Typography variant="h6"><Box sx={{ boxShadow: "0", bgcolor: "transparent", fontSize: 16 }}>{t("dashboardRightDrawer.formDesc02")}</Box></Typography>
+
           <input
             type="date"
             onChange={(e) =>
@@ -38,7 +49,8 @@ function Announcements() {
           ></input>
         </div>
         <div className="announcements_date">
-          <h3>Time</h3>
+          <Typography variant="h6"><Box sx={{ boxShadow: "0", bgcolor: "transparent", fontSize: 16 }}>{t("dashboardRightDrawer.formDesc03")}</Box></Typography>
+
           <input
             type="time"
             onChange={(e) =>
@@ -49,10 +61,11 @@ function Announcements() {
       </div>
 
       <div className="announcements_title">
-        <h3>Title</h3>
+        <Typography variant="h6"><Box sx={{ boxShadow: "0", bgcolor: "transparent", fontSize: 16 }}>{t("dashboardRightDrawer.formDesc04")}</Box></Typography>
+
         <input
           type="text"
-          placeholder="Enter title..."
+          placeholder={t("dashboardRightDrawer.formDesc05")}
           name="title"
           onChange={(e) =>
             setAnnouncement({ ...announcement, title: e.target.value })
@@ -61,10 +74,11 @@ function Announcements() {
       </div>
 
       <div className="announcements_subtopic">
-        <h3>Subtopic</h3>
+        <Typography variant="h6"><Box sx={{ boxShadow: "0", bgcolor: "transparent", fontSize: 16 }}>{t("dashboardRightDrawer.formDesc06")}</Box></Typography>
+
         <input
           type="text"
-          placeholder="Enter text..."
+          placeholder={t("dashboardRightDrawer.formDesc07")}
           name="subtopic"
           onChange={(e) =>
             setAnnouncement({ ...announcement, subtopic: e.target.value })
@@ -73,9 +87,10 @@ function Announcements() {
       </div>
 
       <div className="announcements_message">
-        <h3>Message</h3>
+        <Typography variant="h6"><Box sx={{ boxShadow: "0", bgcolor: "transparent", fontSize: 16 }}>{t("dashboardRightDrawer.formDesc08")}</Box></Typography>
+
         <textarea
-          placeholder="Write message here..."
+          placeholder={t("dashboardRightDrawer.formDesc09")}
           name="message"
           onChange={(e) =>
             setAnnouncement({ ...announcement, message: e.target.value })
@@ -84,7 +99,8 @@ function Announcements() {
       </div>
 
       <div className="announcements_poster">
-        <h3>Posted By</h3>
+        <Typography variant="h6"><Box sx={{ boxShadow: "0", bgcolor: "transparent", fontSize: 16 }}>{t("dashboardRightDrawer.formDesc10")}</Box></Typography>
+
         <input
           type="text"
           name="poster"
@@ -102,7 +118,8 @@ function Announcements() {
             window.location.reload();
           }}
         >
-          POST
+          <Typography variant="h6"><Box sx={{ boxShadow: "0", bgcolor: "transparent", fontSize: 16 }}>{t("dashboardRightDrawer.formButton02")}</Box></Typography>
+
         </button>
       </div>
     </div>

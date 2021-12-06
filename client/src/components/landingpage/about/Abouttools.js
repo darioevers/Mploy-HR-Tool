@@ -16,7 +16,6 @@ import expressjslogo from "../../../img/logo/expressjs.png";
 import i18nextlogo from "../../../img/logo/i18next.png";
 import mongodblogo from "../../../img/logo/mongodb.png";
 import sendgridlogo from "../../../img/logo/sendgridlogo.png";
-import envatologo from "../../../img/logo/envatologo.png";
 
 //  MUI IMPORTS
 import Typography from "@mui/material/Typography";

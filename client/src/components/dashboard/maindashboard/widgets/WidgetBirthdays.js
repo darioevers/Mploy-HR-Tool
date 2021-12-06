@@ -2,6 +2,13 @@ import React, { useState, useEffect } from "react";
 import Carousel from "react-elastic-carousel";
 import axios from "axios";
 
+// TRANSLATION IMPORTS
+import { useTranslation } from "react-i18next";
+
+// MUI IMPORTS
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Paper";
+
 function WidgetBirthdays({ userdata }) {
   const [employees, setEmployees] = useState();
 
@@ -61,10 +68,14 @@ function WidgetBirthdays({ userdata }) {
     return mm;
   };
 
+  // TRANSLATION
+  const { t } = useTranslation();
+
   return (
     <div className="widget_birthdays_mainbox">
       <div className="widget_birthdays_header">
-        <h1> BIRTHDAYS</h1>
+        <Typography variant="h6"><Box sx={{ ml: 3, mt: 2, boxShadow: "0", bgcolor: "transparent" }}>{t("dashboardWidgetBirthdays.title01")}</Box></Typography>
+
         <div className="horizontal_line"></div>
       </div>
       <div className="birthdays_content_wrapper">
@@ -96,7 +107,8 @@ function WidgetBirthdays({ userdata }) {
                   </div>
                 ))}
           </Carousel>
-          <h1>Today</h1>
+          <Typography variant="body2"><Box sx={{ boxShadow: "0", bgcolor: "transparent", fontWeight: 600 }}>{t("dashboardWidgetBirthdays.title02")}</Box></Typography>
+
         </div>
 
         <div className="birthdays_month">
@@ -127,7 +139,8 @@ function WidgetBirthdays({ userdata }) {
                   </div>
                 ))}
           </Carousel>
-          <h1>This Month</h1>
+          <Typography variant="body2"><Box sx={{ boxShadow: "0", bgcolor: "transparent", fontWeight: 600 }}>{t("dashboardWidgetBirthdays.title03")}</Box></Typography>
+
         </div>
       </div>
     </div>

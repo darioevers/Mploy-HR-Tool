@@ -1,9 +1,23 @@
 import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import axios from "axios";
+
+// TRANSLATION IMPORTS
+import { useTranslation } from "react-i18next";
+
+// COMPONENT IMPORTS
 import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
-import axios from "axios";
+import EmployeeData from "./EmployeeData";
+
+// ICON IMPORTS
 import PhoneIcon from "@mui/icons-material/Phone";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+
+// MUI IMPORTS
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 import {
   FormGroup,
   FormControl,
@@ -11,7 +25,10 @@ import {
   Input,
   Select,
   MenuItem,
+  Typography
 } from "@material-ui/core";
+
+
 
 const EditEmployee = ({ history, match }) => {
   const [editEmp, setEditEmp] = useState();
@@ -54,6 +71,12 @@ const EditEmployee = ({ history, match }) => {
     marginRight: "20px",
   };
 
+  // FORM HEIGHT
+  const height = 50
+
+  // TRANSLATION
+  const { t } = useTranslation();
+
   return (
     <div className="addemployee_mainbox">
       <DashboardTopNav />
@@ -61,10 +84,13 @@ const EditEmployee = ({ history, match }) => {
       {/* personal edit data */}
 
       <div className="editemployee_wrapper">
-        <h1> Edit Employee </h1>
+        <Typography variant="h4" gutterBottom>
+          <Box sx={{ fontWeight: 500 }}>
+            {t("dashboardEditEmployeeData.title01")}</Box>
+        </Typography>
         <div className="addemployee_header">
           <div className="active_tab">
-            <h4>General Data</h4>
+            <h4>{t("dashboardEditEmployeeData.menu01")}</h4>
           </div>
           <div
             className="inactive_tab"
@@ -72,7 +98,7 @@ const EditEmployee = ({ history, match }) => {
               history.push(`/dashboard/employeedata/edithrinfo/${editEmp._id}`);
             }}
           >
-            <h4>HR Information</h4>
+            <h4>{t("dashboardEditEmployeeData.menu02")}</h4>
           </div>
           <div
             className="inactive_tab"
@@ -82,7 +108,7 @@ const EditEmployee = ({ history, match }) => {
               );
             }}
           >
-            <h4>Documents</h4>
+            <h4>{t("dashboardEditEmployeeData.menu03")}</h4>
           </div>
         </div>
         <div className="employeedata_form">
@@ -124,7 +150,7 @@ const EditEmployee = ({ history, match }) => {
                         bio: { ...editEmp.email, email: e.target.value },
                       })
                     }
-                    placeholder="Email"
+                    placeholder={t("dashboardEditEmployeeData.email")}
                   />
 
                   <PhoneIcon fontSize="small" />
@@ -140,19 +166,45 @@ const EditEmployee = ({ history, match }) => {
                         },
                       })
                     }
-                    placeholder="Phone Number"
+                    placeholder={t("dashboardEditEmployeeData.phone")}
                   />
                 </div>
               </div>
             </div>
             <div className="form_generaldata">
               <div className="basicdetails_header">
-                <h3>BASIC DETAILS </h3>
+                <h3>{t("dashboardEditEmployeeData.sectionHeading01")}</h3>
               </div>
 
-              <div className="basicdetails_content">
+              <Box sx={{ mt: 2 }}>
                 <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">First Name</InputLabel>
+                  <TextField
+                    id="firstName"
+                    name="firstName"
+                    type="text"
+                    label={t("dashboardEditEmployeeData.formDesc01")}
+                    variant="outlined"
+                    defaultValue=""
+                    margin="normal"
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    InputLabelProps={{ shrink: true }}
+                    value={editEmp?.bio?.firstName}
+                    onChange={(e) => {
+                      setEditEmp({
+                        ...editEmp,
+                        bio: {
+                          ...editEmp.firstName,
+                          firstName: e.target.value,
+                        },
+                      });
+                      setFirstName(e.target.value);
+                    }} />
+                  {/* <InputLabel htmlFor="my-input">First Name</InputLabel>
                   <Input
                     type="text"
                     name="firstName"
@@ -168,12 +220,39 @@ const EditEmployee = ({ history, match }) => {
                       });
                       setFirstName(e.target.value);
                     }}
-                  />
+                  /> */}
                 </FormControl>
                 <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Last Name</InputLabel>
+                  <TextField
+                    id="lastName"
+                    label={t("dashboardEditEmployeeData.formDesc02")}
+                    variant="outlined"
+                    type="text"
+                    defaultValue=""
+                    margin="normal"
+                    name="lastName"
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    InputLabelProps={{ shrink: true }}
+                    value={editEmp?.bio?.lastName}
+                    onChange={(e) => {
+                      setEditEmp({
+                        ...editEmp,
+                        bio: { ...editEmp, lastName: e.target.value },
+                      });
+                      setLastName(e.target.value);
+                    }} />
+
+                  {/* <InputLabel htmlFor="my-input">Last Name</InputLabel>
                   <Input
                     type="text"
+                    margin="normal"
+                    variant="outlined"
+                    defaultValue=""
                     name="lastName"
                     value={editEmp?.bio?.lastName}
                     onChange={(e) => {
@@ -183,11 +262,35 @@ const EditEmployee = ({ history, match }) => {
                       });
                       setLastName(e.target.value);
                     }}
-                  />
+                  /> */}
                 </FormControl>
-
                 <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Employee ID</InputLabel>
+                  <TextField
+                    id="employeeID"
+                    name="employeeID"
+                    type="text"
+                    label={t("dashboardEditEmployeeData.formDesc03")}
+                    variant="outlined"
+                    defaultValue=""
+                    margin="normal"
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editEmp?.bio?.employeeId}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        bio: {
+                          ...editEmp.employeeId,
+                          employeeId: e.target.value,
+                        },
+                      })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Employee ID</InputLabel>
                   <Input
                     type="text"
                     name="employeeID"
@@ -201,10 +304,36 @@ const EditEmployee = ({ history, match }) => {
                         },
                       })
                     }
-                  />
+                  /> */}
                 </FormControl>
                 <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Position</InputLabel>
+                  <TextField
+                    id="position"
+                    name="position"
+                    type="text"
+                    label={t("dashboardEditEmployeeData.formDesc04")}
+                    variant="outlined"
+                    defaultValue=""
+                    margin="normal"
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editEmp?.contractInfo?.position}
+                    onChange={(e) => {
+                      setEditEmp({
+                        ...editEmp,
+                        contractInfo: {
+                          ...editEmp.position,
+                          position: e.target.value,
+                        },
+                      });
+                      setPosition(e.target.value);
+                    }} />
+                  {/* <InputLabel htmlFor="my-input">Position</InputLabel>
                   <Input
                     type="text"
                     name="position"
@@ -219,20 +348,47 @@ const EditEmployee = ({ history, match }) => {
                       });
                       setPosition(e.target.value);
                     }}
-                  />
+                  /> */}
                 </FormControl>
-              </div>
+              </Box>
+
 
               <div className="personaldetails_header">
-                <h3>PERSONAL DETAILS </h3>
+                <h3>{t("dashboardEditEmployeeData.sectionHeading02")}</h3>
               </div>
 
-              <div className="personaldetails_content">
+              <Box sx={{ mt: 2 }}>
                 <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Address 1</InputLabel>
+                  <TextField
+                    id="streetOne"
+                    name="streetOne"
+                    type="text"
+                    label={t("dashboardEditEmployeeData.formDesc05")}
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editEmp?.addressOne?.streetOne}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        addressOne: {
+                          ...editEmp.streetOne,
+                          streetOne: e.target.value,
+                        },
+                      })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Address 1</InputLabel>
                   <Input
                     type="text"
                     name="streetOne"
+                    focused
                     value={editEmp?.addressOne?.streetOne}
                     onChange={(e) =>
                       setEditEmp({
@@ -243,11 +399,36 @@ const EditEmployee = ({ history, match }) => {
                         },
                       })
                     }
-                  />
+                  /> */}
                 </FormControl>
 
                 <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Address 2</InputLabel>
+                  <TextField
+                    id="streetTwo"
+                    name="streetTwo"
+                    type="text"
+                    label={t("dashboardEditEmployeeData.formDesc06")}
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editEmp?.addressTwo?.streetTwo}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        addressTwo: {
+                          ...editEmp.streetTwo,
+                          streetTwo: e.target.value,
+                        },
+                      })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Address 2</InputLabel>
                   <Input
                     type="text"
                     name="streetTwo"
@@ -261,11 +442,36 @@ const EditEmployee = ({ history, match }) => {
                         },
                       })
                     }
-                  />
+                  /> */}
                 </FormControl>
 
                 <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">City</InputLabel>
+                  <TextField
+                    id="cityOne"
+                    name="cityOne"
+                    type="text"
+                    label={t("dashboardEditEmployeeData.formDesc07")}
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editEmp?.addressOne?.cityOne}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        adressOne: {
+                          ...editEmp.cityOne,
+                          cityOne: e.target.value,
+                        },
+                      })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">City</InputLabel>
                   <Input
                     type="text"
                     name="cityOne"
@@ -279,11 +485,36 @@ const EditEmployee = ({ history, match }) => {
                         },
                       })
                     }
-                  />
+                  /> */}
                 </FormControl>
 
                 <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Country</InputLabel>
+                  <TextField
+                    id="countryOne"
+                    name="countryOne"
+                    type="text"
+                    label={t("dashboardEditEmployeeData.formDesc08")}
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editEmp?.addressOne?.countryOne}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        addressOne: {
+                          ...editEmp.countryOne,
+                          countryOne: e.target.value,
+                        },
+                      })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Country</InputLabel>
                   <Input
                     type="text"
                     name="countryOne"
@@ -297,10 +528,35 @@ const EditEmployee = ({ history, match }) => {
                         },
                       })
                     }
-                  />
+                  /> */}
                 </FormControl>
                 <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">State / Region</InputLabel>
+                  <TextField
+                    id="stateOne"
+                    name="stateOne"
+                    type="text"
+                    label={t("dashboardEditEmployeeData.formDesc09")}
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editEmp?.addressOne?.stateOne}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        addressOne: {
+                          ...editEmp.stateOne,
+                          stateOne: e.target.value,
+                        },
+                      })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">State / Region</InputLabel>
                   <Input
                     type="text"
                     name="stateOne"
@@ -314,11 +570,36 @@ const EditEmployee = ({ history, match }) => {
                         },
                       })
                     }
-                  />
+                  /> */}
                 </FormControl>
 
                 <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Postal Code</InputLabel>
+                  <TextField
+                    id="postalCodeOne"
+                    name="postalCodeOne"
+                    type="text"
+                    label={t("dashboardEditEmployeeData.formDesc10")}
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editEmp?.addressOne?.postalCodeOne}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        addressOne: {
+                          ...editEmp.postalCodeOne,
+                          postalCodeOne: e.target.value,
+                        },
+                      })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Postal Code</InputLabel>
                   <Input
                     type="text"
                     name="postalCodeOne"
@@ -332,11 +613,36 @@ const EditEmployee = ({ history, match }) => {
                         },
                       })
                     }
-                  />
+                  /> */}
                 </FormControl>
 
                 <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Date of Birth</InputLabel>
+                  <TextField
+                    id="dateOfBirth"
+                    name="dateOfBirth"
+                    type="text"
+                    label={t("dashboardEditEmployeeData.formDesc11")}
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editEmp?.bio?.dateOfBirth}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        bio: {
+                          ...editEmp.dateOfBirth,
+                          dateOfBirth: e.target.value,
+                        },
+                      })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Date of Birth</InputLabel>
                   <Input
                     type="text"
                     name="dateOfBirth"
@@ -350,11 +656,36 @@ const EditEmployee = ({ history, match }) => {
                         },
                       })
                     }
-                  />
+                  /> */}
                 </FormControl>
 
                 <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Other Email</InputLabel>
+                  <TextField
+                    id="otherEmail"
+                    name="otherEmail"
+                    type="text"
+                    label={t("dashboardEditEmployeeData.formDesc12")}
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editEmp?.bio?.otherEmail}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        bio: {
+                          ...editEmp.otherEmail,
+                          otherEmail: e.target.value,
+                        },
+                      })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Other Email</InputLabel>
                   <Input
                     type="text"
                     name="otherEmail"
@@ -368,11 +699,36 @@ const EditEmployee = ({ history, match }) => {
                         },
                       })
                     }
-                  />
+                  /> */}
                 </FormControl>
 
                 <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Nationality</InputLabel>
+                  <TextField
+                    id="nationality"
+                    name="nationality"
+                    type="text"
+                    label={t("dashboardEditEmployeeData.formDesc13")}
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editEmp?.bio?.nationality}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        bio: {
+                          ...editEmp.nationality,
+                          nationality: e.target.value,
+                        },
+                      })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Nationality</InputLabel>
                   <Input
                     type="text"
                     name="nationality"
@@ -386,13 +742,25 @@ const EditEmployee = ({ history, match }) => {
                         },
                       })
                     }
-                  />
+                  /> */}
                 </FormControl>
 
                 <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Gender</InputLabel>
                   <Select
-                    labelId="demo"
+                    labelId="gender"
+                    id="gender"
+                    name="gender"
+                    type="text"
+                    label={t("dashboardEditEmployeeData.formDesc14")}
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
                     value={editEmp?.bio?.gender}
                     onChange={(e) =>
                       setEditEmp({
@@ -401,14 +769,46 @@ const EditEmployee = ({ history, match }) => {
                       })
                     }
                   >
-                    <MenuItem value="Male">Male</MenuItem>
-                    <MenuItem value="Female">Female</MenuItem>
-                    <MenuItem value="Diverse">Diverse</MenuItem>
+                    <MenuItem value="Male">{t("dashboardEditEmployeeData.formSelect01")}</MenuItem>
+                    <MenuItem value="Female">{t("dashboardEditEmployeeData.formSelect02")}</MenuItem>
+                    <MenuItem value="Diverse">{t("dashboardEditEmployeeData.formSelect03")}</MenuItem>
                   </Select>
                 </FormControl>
 
                 <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Marital Status</InputLabel>
+                  {/* <InputLabel id="maritalStatus">Marital Status</InputLabel> */}
+                  <Select
+                    labelId="maritalStatus"
+                    id="maritalStatus"
+                    name="maritalStatus"
+                    type="text"
+                    label={t("dashboardEditEmployeeData.formDesc15")}
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editEmp?.bio?.maritalStatus}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        bio: {
+                          ...editEmp.maritalStatus,
+                          maritalStatus: e.target.value,
+                        },
+                      })
+                    }
+                  >
+                    <MenuItem value="Single">{t("dashboardEditEmployeeData.formSelect04")}</MenuItem>
+                    <MenuItem value="Married">{t("dashboardEditEmployeeData.formSelect05")}</MenuItem>
+                    <MenuItem value="Separated">{t("dashboardEditEmployeeData.formSelect06")}</MenuItem>
+                    <MenuItem value="Not specified">{t("dashboardEditEmployeeData.formSelect07")}</MenuItem>
+                  </Select>
+                  {/* <InputLabel htmlFor="my-input">Marital Status</InputLabel>
                   <Select
                     labelId="demo"
                     value={editEmp?.bio?.maritalStatus}
@@ -426,11 +826,33 @@ const EditEmployee = ({ history, match }) => {
                     <MenuItem value="Married">Married</MenuItem>
                     <MenuItem value="Separated">Separated</MenuItem>
                     <MenuItem value="Not specified">Not Specified</MenuItem>
-                  </Select>
+                  </Select> */}
                 </FormControl>
 
                 <FormControl style={inputStylesB}>
-                  <InputLabel htmlFor="my-input">Hobbies</InputLabel>
+                  <TextField
+                    id="hobbies"
+                    name="hobbies"
+                    type="text"
+                    label={t("dashboardEditEmployeeData.formDesc16")}
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editEmp?.bio?.hobbies}
+                    onChange={(e) =>
+                      setEditEmp({
+                        ...editEmp,
+                        bio: { ...editEmp.hobbies, hobbies: e.target.value },
+                      })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Hobbies</InputLabel>
                   <Input
                     type="text"
                     name="hobbies"
@@ -441,9 +863,9 @@ const EditEmployee = ({ history, match }) => {
                         bio: { ...editEmp.hobbies, hobbies: e.target.value },
                       })
                     }
-                  />
+                  /> */}
                 </FormControl>
-              </div>
+              </Box>
             </div>
 
             <div className="next-btn">
@@ -454,7 +876,7 @@ const EditEmployee = ({ history, match }) => {
                   );
                 }}
               >
-                Next{" "}
+                {t("dashboardEditEmployeeData.formButton01")}{" "}
               </button>
             </div>
           </FormGroup>
