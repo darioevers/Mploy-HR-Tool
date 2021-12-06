@@ -24,8 +24,6 @@ router.put("/update", employeesController.updateEmployee);
 // updating status ||deleting from the get all employees
 router.patch("/delete", employeesController.deleteOrUpdateStatus);
 
-
-
 // get employee who has today birthday
 // router.get("/todaybirthday", employeesController.getTodaysBirthDay);
 

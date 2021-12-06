@@ -50,6 +50,7 @@ leaveController.addLeave = async (req, res) => {
     // console.log(Math.round(Math.abs(+date1 - +date2) / 8.64e7));
   };
   const leavesAppliedNum = daysBetween(req.body.dateFrom, req.body.dateTo);
+  console.log(req.body);
   try {
     const leave = await new LeavesData({
       name: req.body.name,

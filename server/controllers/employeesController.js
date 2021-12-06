@@ -1,3 +1,4 @@
+const { request } = require("express");
 const EmployeeData = require("../models/employeesModel");
 const employeeController = {};
 
@@ -32,6 +33,21 @@ employeeController.getOneEmployee = async (req, res) => {
   }
 };
 
+// //get one employee by email
+// employeeController.getOneEmployeeByEmail = async (req, res) => {
+//   console.log(req.body);
+//   try {
+//     const employee = await EmployeeData.findOne(req.body.email);
+
+//     res.status(200).json(employee);
+//     // console.log(employees);
+//   } catch (error) {
+//     res.status(error.status).json({
+//       message: error.message,
+//     });
+//   }
+// };
+
 // //get
 // leaveController.getLeaves = async (name, res) => {
 //   try {
@@ -56,7 +72,7 @@ employeeController.addNewEmployee = async (req, res) => {
   const pathDiploma = req.files?.fileDiploma[0]?.path.substring(7);
   const pathCertificate = req.files?.fileCertificate[0]?.path.substring(7);
   const pathLetter = req.files?.fileLetter[0]?.path.substring(7);
-
+  console.log(received);
   try {
     const employee = await new EmployeeData({
       bio: {
@@ -153,12 +169,12 @@ employeeController.searchName = async (req, res) => {
 
 // patch or update employee
 employeeController.updateEmployee = async (req, res) => {
+  console.log(req.body);
   try {
     // console.log(received);
-    let received = await JSON.parse(req.body.editHrInfo);
-
-    console.log(req);
-    console.log("after", received);
+    // let received = await JSON.parse(req.body.editHrInfo);
+    let received = req.body;
+    // console.log("after", received);
     const employee = await EmployeeData.findOneAndUpdate(
       { "bio.email": received.bio.email },
       received,
@@ -168,10 +184,10 @@ employeeController.updateEmployee = async (req, res) => {
     );
     res.status(200).json({ status: "success", data: employee });
   } catch (error) {
+    console.log(error);
     res.status(404).json({ status: "fail", message: error.message });
   }
 };
-
 
 // delete one employee upon criteria from the log
 employeeController.deleteOneEmployee = async (req, res) => {
@@ -199,7 +215,6 @@ employeeController.deleteOrUpdateStatus = async (req, res) => {
     res.status(400).send({ message: error.message });
   }
 };
-
 
 // get file
 // employeeController.getallMultipleFiles = async (req, res, next) => {

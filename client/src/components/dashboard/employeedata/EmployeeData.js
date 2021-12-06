@@ -160,7 +160,7 @@ function EmployeeData({ history }) {
                               />
                               <div className="table_cell_photo">
                                 <h5>
-                                  {employee.bio.firstName}{" "}
+                                  {employee.bio.firstName}
                                   {employee.bio.lastName}
                                 </h5>
 
@@ -221,7 +221,7 @@ function EmployeeData({ history }) {
                                   <h5>
                                     {employee.bio.phoneNumber
                                       ? employee.bio.phoneNumber
-                                      : "Not Specified"}
+                                      : "No Information"}
                                   </h5>
                                   <h5>
                                     {employee.bio.email
@@ -239,9 +239,21 @@ function EmployeeData({ history }) {
                                   <h5>Office:</h5>
                                 </div>
                                 <div className="workinfo_right">
-                                  <h5>{employee.contractInfo?.department}</h5>
-                                  <h5>{employee.contractInfo?.supervisor}</h5>
-                                  <h5>{employee.contractInfo?.workLocation}</h5>
+                                  <h5>
+                                    {employee.contractInfo?.department
+                                      ? employee.contractInfo?.department
+                                      : "No Information"}
+                                  </h5>
+                                  <h5>
+                                    {employee.contractInfo?.supervisor
+                                      ? employee.contractInfo?.supervisor
+                                      : "No Information"}
+                                  </h5>
+                                  <h5>
+                                    {employee.contractInfo?.workLocation
+                                      ? employee.contractInfo?.workLocation
+                                      : "No Information"}
+                                  </h5>
                                 </div>
                               </div>
 
@@ -253,48 +265,23 @@ function EmployeeData({ history }) {
                                   <h5>Address:</h5>
                                 </div>
                                 <div className="personalinfo_right">
-                                  <h5>{employee.bio.gender}</h5>
-                                  <h5>{employee.bio.dateOfBirth}</h5>
                                   <h5>
-                                    {employee.addressOne?.stateOne},{" "}
-                                    {employee.addressOne?.countryOne}
+                                    {employee.bio.gender
+                                      ? employee.bio.gender
+                                      : "No Information"}
+                                  </h5>
+                                  <h5>
+                                    {employee.bio.dateOfBirth
+                                      ? employee.bio.dateOfBirth
+                                      : "No Information"}
+                                  </h5>
+                                  <h5>
+                                    {employee.addressOne?.stateOne
+                                      ? employee.addressOne?.stateOne
+                                      : "No Information"}
+                                    , {employee.addressOne?.countryOne}
                                   </h5>
                                 </div>
-                              </div>
-                              <div>
-                                <h5>
-                                  <h1>Document Periview</h1>
-                                  <a
-                                    target="_blank"
-                                    href={`http://localhost:5000/${employee.bio.cv} `}
-                                  >
-                                    Preview CV
-                                  </a>
-                                </h5>
-                                <h5>
-                                  <a
-                                    target="_blank"
-                                    href={`http://localhost:5000/${employee.bio.diploma} `}
-                                  >
-                                    Diploma Preview
-                                  </a>
-                                </h5>
-                                <h5>
-                                  <a
-                                    target="_blank"
-                                    href={`http://localhost:5000/${employee.bio.certificate} `}
-                                  >
-                                    Certificate Preview
-                                  </a>
-                                </h5>
-                                <h5>
-                                  <a
-                                    target="_blank"
-                                    href={`http://localhost:5000/${employee.bio.letter} `}
-                                  >
-                                    Letter Preview
-                                  </a>
-                                </h5>
                               </div>
 
                               <div className="summary_buttons">

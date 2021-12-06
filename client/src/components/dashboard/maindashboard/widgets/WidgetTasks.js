@@ -124,17 +124,38 @@ function WidgetTasks() {
     <div className="widget_tasks_mainbox">
       <div className="taskwidget_mobile">
         <div className="taskwidget_mobile_header">
-          <Typography variant="h6"><Box sx={{ ml: 2, boxShadow: "0", bgcolor: "transparent" }}>{t("dashboardWidgetTasks.title01")}</Box></Typography>
+          <Typography variant="h10">
+            <Box sx={{ ml: 2, boxShadow: "0", bgcolor: "transparent" }}>
+              {t("dashboardWidgetTasks.title01")}
+            </Box>
+          </Typography>
 
-          <div className="horizontal_line"></div>
           <div className="add-btn">+</div>
         </div>
       </div>
       <div class={showForm ? "sidenav_open" : "sidenav"}>
-        <Typography variant="h6"><Box sx={{ m: 2, boxShadow: "0", bgcolor: "transparent", color: "#fff" }}>{t("dashboardWidgetTasks.title01")}</Box></Typography>
+        <Typography variant="h6">
+          <Box
+            sx={{ m: 2, boxShadow: "0", bgcolor: "transparent", color: "#fff" }}
+          >
+            {t("dashboardWidgetTasks.title01")}
+          </Box>
+        </Typography>
 
         <hr />
-        <Typography variant="caption"><Box sx={{ ml: 2, mt: 1, boxShadow: "0", bgcolor: "transparent", color: "#fff" }}>{t("dashboardWidgetTasks.title02")}</Box></Typography>
+        <Typography variant="caption">
+          <Box
+            sx={{
+              ml: 2,
+              mt: 1,
+              boxShadow: "0",
+              bgcolor: "transparent",
+              color: "#fff",
+            }}
+          >
+            {t("dashboardWidgetTasks.title02")}
+          </Box>
+        </Typography>
 
         <input
           className="newtask_input"
@@ -142,14 +163,38 @@ function WidgetTasks() {
           type="text"
           onChange={(e) => setTask({ ...task, title: e.target.value })}
         />
-        <Typography variant="caption"><Box sx={{ ml: 2, mt: 1, boxShadow: "0", bgcolor: "transparent", color: "#fff" }}>{t("dashboardWidgetTasks.title03")}</Box></Typography>
+        <Typography variant="caption">
+          <Box
+            sx={{
+              ml: 2,
+              mt: 1,
+              boxShadow: "0",
+              bgcolor: "transparent",
+              color: "#fff",
+            }}
+          >
+            {t("dashboardWidgetTasks.title03")}
+          </Box>
+        </Typography>
 
         <input
           className="newtask_date"
           type="date"
           onChange={(e) => setTask({ ...task, dueDate: e.target.value })}
         />
-        <Typography variant="caption"><Box sx={{ ml: 2, mt: 1, boxShadow: "0", bgcolor: "transparent", color: "#fff" }}>{t("dashboardWidgetTasks.title04")}</Box></Typography>
+        <Typography variant="caption">
+          <Box
+            sx={{
+              ml: 2,
+              mt: 1,
+              boxShadow: "0",
+              bgcolor: "transparent",
+              color: "#fff",
+            }}
+          >
+            {t("dashboardWidgetTasks.title04")}
+          </Box>
+        </Typography>
 
         <select
           className="newtask_tag"
@@ -189,14 +234,22 @@ function WidgetTasks() {
         <div className="widget_tasks_display">
           <div className="header">
             <div className="header_title">
-              <Typography variant="h6"><Box sx={{ boxShadow: "0", bgcolor: "transparent", fontSize: 12 }}>{t("dashboardWidgetTasks.title05")}</Box></Typography>
-
+              <Typography variant="h6">
+                <Box
+                  sx={{ boxShadow: "0", bgcolor: "transparent", fontSize: 12 }}
+                >
+                  {t("dashboardWidgetTasks.title05")}
+                </Box>
+              </Typography>
             </div>
 
-            <Box sx={{
-              boxShadow: "0",
-              bgcolor: "transparent"
-            }} onClick={handleShowFilter}>
+            <Box
+              sx={{
+                boxShadow: "0",
+                bgcolor: "transparent",
+              }}
+              onClick={handleShowFilter}
+            >
               <FilterListIcon style={{ fontSize: 15 }} />
             </Box>
           </div>
@@ -263,8 +316,8 @@ function WidgetTasks() {
                       ) : task.taskTag === "Medium" ? (
                         <h5 style={{ fontSize: 15, color: "yellow" }}> - </h5>
                       ) : (
-                            <h5 style={{ fontSize: 15, color: "green" }}> - </h5>
-                          )}
+                        <h5 style={{ fontSize: 15, color: "green" }}> - </h5>
+                      )}
                     </div>
                   </div>
                 </div>
