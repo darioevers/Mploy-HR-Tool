@@ -1,18 +1,9 @@
 import React, { useState, useEffect } from "react";
 import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
-import { NavLink } from "react-router-dom";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
-import {
-  FormGroup,
-  FormControl,
-  InputLabel,
-  Input,
-  Button,
-  makeStyles,
-  Typography,
-} from "@material-ui/core";
+import { FormGroup } from "@material-ui/core";
 import axios from "axios";
 
 const AddDocument = ({ location, history }) => {
@@ -50,7 +41,6 @@ const AddDocument = ({ location, history }) => {
       )
       .then((res) => {
         console.log(res);
-        // history.push("/dashboard/employeedata/addemployee/documents");
       })
       .catch((err) => console.log(err));
   };

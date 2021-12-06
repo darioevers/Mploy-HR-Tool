@@ -25,20 +25,4 @@ router.put("/update", employeesController.updateEmployee);
 router.patch("/delete", employeesController.deleteOrUpdateStatus);
 
 
-
-// get employee who has today birthday
-// router.get("/todaybirthday", employeesController.getTodaysBirthDay);
-
-// get employee who has birthday this month
-//2router.get("/thismonthbirthday", employeesController.getThisMonthBirthDay);
-
-// get one employee by name
-// router.get("/:firstName", employeesController.getOneEmployee);
-
-// get one employee by email
-// router.post("/singleemployee", employeesController.getOneEmployee);
-
-// delete employee
-// router.delete("/:id", employeesController.deleteOneEmployee);
-
 module.exports = router;

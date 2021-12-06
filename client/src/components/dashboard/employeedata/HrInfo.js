@@ -4,10 +4,9 @@ import DashboardSideNav from "../global/DashboardSideNav";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { FormGroup, FormControl, InputLabel, Input } from "@material-ui/core";
-import { formGroupClasses } from "@mui/material";
+import { FormGroup } from "@material-ui/core";
 
-const HrInfo = ({ location, history, match }) => {
+const HrInfo = ({ history, match }) => {
   const [hrData, setHrData] = useState();
 
   useEffect(() => {
@@ -32,25 +31,6 @@ const HrInfo = ({ location, history, match }) => {
       })
       .catch((err) => console.log(err));
   };
-
-  //styling of formControls
-  // const inputStylesA = {
-  //   width: "100%",
-  //   marginRight: "20px",
-  //   fontSize: "14px",
-  // };
-
-  // const inputStylesB = {
-  //   width: "50%",
-  //   fontSize: "12px",
-  // };
-
-  // const formStylesA = {
-  //   backgroundColor: "#ebebeb",
-  //   marginTop: "20px",
-  //   padding: "15px",
-  //   borderRadius: "20px",
-  // };
 
   const formStylesB = {
     backgroundColor: "#ebebeb",

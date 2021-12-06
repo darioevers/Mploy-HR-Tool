@@ -69,22 +69,18 @@ const EmployeesSchema = Schema({
 
     cv: {
       type: String,
-      required: [true, "Please upload your CV! "],
 
     },
     certificate: {
       type: String,
-      required: [true, "Please upload your certificate! "],
 
     },
     diploma: {
       type: String,
-      required: [true, "Please upload your diploma! "],
 
     },
     letter: {
       type: String,
-      required: [true, "Please upload your employment letter! "],
 
     },
     resetPasswordToken: String,

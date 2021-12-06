@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
-import PhoneIcon from "@mui/icons-material/Phone";
-import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import countrydata from "../../../selectData/countries";
 
 import {
   FormGroup,
   FormControl,
-  InputLabel, 
+  InputLabel,
   Input,
   Select,
   MenuItem,
@@ -83,7 +81,6 @@ const AddEmployee = ({ history }) => {
                   <Input
                     type="text"
                     name="firstName"
-                    // style={inputStylesA}
                     onChange={(e) => {
                       setEmployee({ ...employee, firstName: e.target.value });
                       setFirstName(e.target.value);
@@ -118,7 +115,6 @@ const AddEmployee = ({ history }) => {
                   <Input
                     type="text"
                     name="email"
-                    // style={inputStylesA}
                     onChange={(e) => {
                       setEmployee({ ...employee, email: e.target.value });
                     }}
@@ -317,23 +313,6 @@ const AddEmployee = ({ history }) => {
             </div>
 
             <div className="next-btn">
-              {/* <button
-                // onClick={() => {
-                //   addNew();
-                //   setEmployee("");
-                // }}
-                onClick={() => {
-                  console.log(employee);
-                  addNew();
-                  // history.push({
-                  //   pathname: "/dashboard/employeedata/addemployee/hrinfo",
-                  //   state: { employee },
-                  // });
-                }}
-              >
-                SAVE
-              </button> */}
-
               <button
                 onClick={() => {
                   history.push({

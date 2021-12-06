@@ -45,9 +45,6 @@ leaveController.addLeave = async (req, res) => {
     let date2 = new Date(two);
     let result = Math.round(Math.abs(+date1 - +date2) / 8.64e7);
     return result;
-    // return setNewLeave({ ...newLeave, leavesApplied: "result" });
-
-    // console.log(Math.round(Math.abs(+date1 - +date2) / 8.64e7));
   };
   const leavesAppliedNum = daysBetween(req.body.dateFrom, req.body.dateTo);
   try {
@@ -60,7 +57,6 @@ leaveController.addLeave = async (req, res) => {
       dateTo: req.body.dateTo,
       pending: true,
       leavesApplied: leavesAppliedNum,
-      // totalHolidays: LeavesData.totalHolidays + req.body.totalHolidays, //comment
     });
 
     leave.save();

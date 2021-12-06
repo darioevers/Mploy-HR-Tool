@@ -32,18 +32,6 @@ employeeController.getOneEmployee = async (req, res) => {
   }
 };
 
-// //get
-// leaveController.getLeaves = async (name, res) => {
-//   try {
-//     const leaves = await LeavesData.find({name: name})
-//     .populate('leaves')
-//     res.status(200).json(leaves);
-//   } catch (error) {
-//     res.status(error.status).json({
-//       message: error.message,
-//     });
-//   }
-// };
 
 // add new Employee
 
@@ -134,11 +122,9 @@ employeeController.addNewEmployee = async (req, res) => {
 
 // employee search
 employeeController.searchName = async (req, res) => {
-  // let searchPattern = new RegEx("^" + req.body.query);
-  // EmployeeData.find({ firstName: { $regex: searchPattern } })
+  
   try {
     const empArr = await EmployeeData.find({ "bio.status": "active" });
-    // .select("firstName"
     console.log(empArr);
     const empFilter = empArr.filter((item) =>
       item.bio.firstName.toLowerCase().includes(req.body.query)
@@ -154,9 +140,7 @@ employeeController.searchName = async (req, res) => {
 // patch or update employee
 employeeController.updateEmployee = async (req, res) => {
   try {
-    // console.log(received);
     let received = await JSON.parse(req.body.editHrInfo);
-
     console.log(req);
     console.log("after", received);
     const employee = await EmployeeData.findOneAndUpdate(
@@ -200,15 +184,5 @@ employeeController.deleteOrUpdateStatus = async (req, res) => {
   }
 };
 
-
-// get file
-// employeeController.getallMultipleFiles = async (req, res, next) => {
-//   try{
-//       const files = await MultipleFile.find();
-//       res.status(200).send(files);
-//   }catch(error) {
-//       res.status(400).send(error.message);
-//   }
-// }
 
 module.exports = employeeController;
