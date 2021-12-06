@@ -7,7 +7,6 @@ import e from "cors";
 function WidgetApplications({ userdata }) {
   //fetch leaves data
   const [leaves, setLeaves] = useState();
-
   useEffect(() => {
     getAllLeaves();
   }, []);
@@ -39,9 +38,6 @@ function WidgetApplications({ userdata }) {
 
   // add new leave application
   const [newLeave, setNewLeave] = useState();
-  // useEffect(() => {
-  //   setNewLeave(userdata);
-  // }, [userdata]);
 
   const addLeave = () => {
     const data = newLeave;
@@ -58,6 +54,7 @@ function WidgetApplications({ userdata }) {
         }
       )
       .then((res) => {
+        console.log(data);
         console.log(res);
       })
       .catch((err) => console.log(err));
@@ -103,14 +100,12 @@ function WidgetApplications({ userdata }) {
               type="text"
               placeholder="Type name of employee"
               className="application_search"
-              value={`${userdata?.bio?.firstName} ${userdata?.bio?.lastName} `}
               onChange={(e) =>
                 setNewLeave({
                   ...newLeave,
                   name: e.target.value,
                 })
               }
-              required
             />
           </div>
 
@@ -122,14 +117,12 @@ function WidgetApplications({ userdata }) {
               type="text"
               placeholder="Type email"
               className="email"
-              value={userdata?.bio?.email}
               onChange={(e) =>
                 setNewLeave({
                   ...newLeave,
                   email: e.target.value,
                 })
               }
-              required
             />
           </div>
 
@@ -140,13 +133,12 @@ function WidgetApplications({ userdata }) {
               type="text"
               placeholder="Enter Department"
               className="application_search"
-              value="department"
-              // onSubmit={(e) =>
-              //   setNewLeave({
-              //     ...newLeave,
-              //     department: e.target.value,
-              //   })
-              // }
+              onChange={(e) =>
+                setNewLeave({
+                  ...newLeave,
+                  department: e.target.value,
+                })
+              }
             />
           </div>
 
