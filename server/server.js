@@ -16,8 +16,20 @@ dotenv.config();
 app.use(cors());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Heroku :All javascript and css will be served from this folder
-// app.use(express.static("client/build"));
+// // ** MIDDLEWARE ** for preventing the cors issue 
+// const whitelist = ['http://localhost:3000', 'http://localhost:5000', 'here the heroku link after deployment']
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     console.log("** Origin of request " + origin)
+//     if (whitelist.indexOf(origin) !== -1 || !origin) {
+//       console.log("Origin acceptable")
+//       callback(null, true)
+//     } else {
+//       console.log("Origin rejected")
+//       callback(new Error('Not allowed by CORS'))
+//     }
+//   }
+// }
 
 
 
@@ -42,11 +54,16 @@ const main = async () => {
 };
 main();
 
-// routes
-//heroku:  all html file from this route index.html
-// app.use("*",(req,res)=>{
-//   res.sendFile(path.resolve(__dirname,"../client","build","index.html"))
-// })
+
+// --> Add this to deploy in heroku
+if (process.env.NODE_ENV === 'production') {
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, 'client/build')));
+// Handle React routing, return all requests to React app
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
+}
 app.use("/users", require("./routes/users"));
 
 app.use("/dashboard", require("./routes/dashboard"));
