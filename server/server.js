@@ -5,7 +5,6 @@ const morgan = require("morgan");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const cors = require("cors");
-//const users = require("./models/employeesModel");
 const multer=require("multer");
 const path=require("path");
 
@@ -30,9 +29,6 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 //     }
 //   }
 // }
-
-
-
 
 
 // Connect with the database
