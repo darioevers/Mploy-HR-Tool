@@ -1,9 +1,20 @@
 import * as React from "react";
-import Drawer from "@mui/material/Drawer";
-import SettingsIcon from "@material-ui/icons/Settings";
+
+// TRANSLATION IMPORTS
+import { useTranslation } from "react-i18next";
+
+// COMPONENT IMPORTS
 import NewAdmin from "./NewAdmin";
 import Announcements from "./Announcements";
 import LeaveApplications from "./LeaveApplications";
+
+// MUI IMPORTS
+import Drawer from "@mui/material/Drawer";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Paper";
+
+// ICON IMPORTS
+import SettingsIcon from "@material-ui/icons/Settings";
 import { AnnouncementSharp } from "@material-ui/icons";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
@@ -45,6 +56,9 @@ export default function TemporaryDrawer() {
     setState({ ...state, [anchor]: open });
   };
 
+  // TRANSLATION
+  const { t } = useTranslation();
+
   return (
     <div className="right_drawer">
       {["right"].map((anchor) => (
@@ -66,7 +80,8 @@ export default function TemporaryDrawer() {
           >
             <div className="right_drawer_wrapper">
               <div className="right_drawer_header">
-                <h3>ADMIN / HR DRAWER </h3>
+                <Typography variant="h6"><Box sx={{ boxShadow: "0", bgcolor: "transparent", color: "#fff" }}>{t("dashboardRightDrawer.title01")}</Box></Typography>
+
               </div>
             </div>
 
@@ -78,7 +93,8 @@ export default function TemporaryDrawer() {
               }
             >
               <div className="newadmin_header" onClick={handleNewAdmin}>
-                <h4>ADD NEW ADMIN</h4>
+                <Typography variant="body1"><Box sx={{ boxShadow: "0", bgcolor: "transparent", fontWeight: 500, fontSize: 15 }}>{t("dashboardRightDrawer.title02")}</Box></Typography>
+
                 <i>
                   <KeyboardArrowDownIcon />
                 </i>
@@ -100,7 +116,8 @@ export default function TemporaryDrawer() {
                 className="right_drawer_announcements_header"
                 onClick={handleNewAnnouncement}
               >
-                <h4>POST AN ANNOUNCEMENT</h4>
+                <Typography variant="body1"><Box sx={{ boxShadow: "0", bgcolor: "transparent", fontWeight: 500, fontSize: 15 }}>{t("dashboardRightDrawer.title03")}</Box></Typography>
+
                 <i>
                   <KeyboardArrowDownIcon />
                 </i>
@@ -120,7 +137,8 @@ export default function TemporaryDrawer() {
                 className="right_drawer_leaves_header"
                 onClick={handleShowLeaves}
               >
-                <h4>LEAVE APPLICATIONS</h4>
+                <Typography variant="body1"><Box sx={{ boxShadow: "0", bgcolor: "transparent", fontWeight: 500, fontSize: 15 }}>{t("dashboardRightDrawer.title04")}</Box></Typography>
+
                 <i>
                   <KeyboardArrowDownIcon />
                 </i>

@@ -24,7 +24,6 @@ const storage = multer.diskStorage({
 //   }
 // };
 
-
 const uploads = multer({ storage: storage });
 const uploadMultiple = uploads.fields([
   { name: "file", maxCount: 10 },

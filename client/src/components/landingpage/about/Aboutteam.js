@@ -72,15 +72,21 @@ const Aboutteam = () => {
                 alignItems="center"
                 spacing={1}
               >
-                <a href="github.com">
-                  <GitHubIcon />
-                </a>
-                <a href="github.com">
-                  <LinkedInIcon />
-                </a>
-                <a href="">
-                  <AlternateEmailIcon />
-                </a>
+                <Box>
+                  <a href="github.com">
+                    <GitHubIcon />
+                  </a>
+                </Box>
+                <Box>
+                  <a href="github.com">
+                    <LinkedInIcon />
+                  </a>
+                </Box>
+                <Box>
+                  <a href="google.com">
+                    <AlternateEmailIcon />
+                  </a>
+                </Box>
               </Stack>
             </Item>
           </Grid>
@@ -112,7 +118,7 @@ const Aboutteam = () => {
                 <a href="github.com">
                   <LinkedInIcon />
                 </a>
-                <a href="">
+                <a href="google.com">
                   <AlternateEmailIcon />
                 </a>
               </Stack>
@@ -146,7 +152,7 @@ const Aboutteam = () => {
                 <a href="github.com">
                   <LinkedInIcon />
                 </a>
-                <a href="">
+                <a href="google.com">
                   <AlternateEmailIcon />
                 </a>
               </Stack>

@@ -151,19 +151,6 @@ employeeController.searchName = async (req, res) => {
   }
 };
 
-// get single employee using email
-// employeeController.getOneEmployee = async (req, res) => {
-//   try {
-//     const employee = await EmployeeData.findOne({"bio.email":req.body.email});
-//     res.status(200).json({
-//       status: "success",
-//       data: employee,
-//     });
-//   } catch (error) {
-//     res.status(404).json({ message: error.message });
-//   }
-// };
-
 // patch or update employee
 employeeController.updateEmployee = async (req, res) => {
   try {
@@ -184,7 +171,7 @@ employeeController.updateEmployee = async (req, res) => {
     res.status(404).json({ status: "fail", message: error.message });
   }
 };
-// qrcode
+
 
 // delete one employee upon criteria from the log
 employeeController.deleteOneEmployee = async (req, res) => {
@@ -213,6 +200,7 @@ employeeController.deleteOrUpdateStatus = async (req, res) => {
   }
 };
 
+
 // get file
 // employeeController.getallMultipleFiles = async (req, res, next) => {
 //   try{
@@ -222,4 +210,5 @@ employeeController.deleteOrUpdateStatus = async (req, res) => {
 //       res.status(400).send(error.message);
 //   }
 // }
+
 module.exports = employeeController;

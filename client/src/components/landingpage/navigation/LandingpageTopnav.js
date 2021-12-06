@@ -43,71 +43,71 @@ const LandingpageTopnav = () => {
       {isMobile ? (
         <LandingpageMobileNav />
       ) : (
-        <div className="landingpage_topnav_backgroundbox">
-          <Box
-            id="landingpagetopnavbox"
-            sx={{
-              bgcolor: "landingpagenavbar.main",
-              borderRadius: "0px",
-              backdropFilter: "blur(4px)",
-              boxShadow: "0",
-            }}
-          >
-            <div className="landingpage_topnav_mainbox">
-              <div className="landingpage_topnav_logobox">
-                <Link to={"/"} color="inherit">
-                  <img src={LogoDarkS} alt="Logo"></img>
-                </Link>
-              </div>
-              <div className="landingpage_topnav_menulinks">
-                <Link to={"/solutions"} color="inherit">
-                  <Typography variant="button" id="landingpage_navlink">
-                    {t("landingNavbar.link01")}
-                  </Typography>
-                </Link>
+          <div className="landingpage_topnav_backgroundbox">
+            <Box
+              id="landingpagetopnavbox"
+              sx={{
+                bgcolor: "landingpagenavbar.main",
+                borderRadius: "0px",
+                backdropFilter: "blur(4px)",
+                boxShadow: "0",
+              }}
+            >
+              <div className="landingpage_topnav_mainbox">
+                <div className="landingpage_topnav_logobox">
+                  <Link to={"/"} color="inherit">
+                    <img src={LogoDarkS} alt="Logo"></img>
+                  </Link>
+                </div>
+                <div className="landingpage_topnav_menulinks">
+                  <Link to={"/solutions"} color="inherit">
+                    <Typography variant="button" id="landingpage_navlink">
+                      {t("landingNavbar.link01")}
+                    </Typography>
+                  </Link>
 
-                <Link to={"/about"} color="inherit">
-                  <Typography variant="button" id="landingpage_navlink">
-                    {t("landingNavbar.link02")}
-                  </Typography>
-                </Link>
-              </div>
-              <div className="landingpage_topnav_buttons">
-                <LanguageSwitch />
-                <IconButton
-                  sx={{ ml: 1 }}
-                  onClick={colorMode.toggleColorMode}
-                  color="inherit"
-                >
-                  {theme.palette.mode === "dark" ? (
-                    <Brightness7Icon />
-                  ) : (
-                    <Brightness4Icon />
-                  )}
-                </IconButton>
-                <div className="landingpage_topnav_contactbutton">
-                  <Link to={"/contact"}>
-                    <Button variant="outlined">
-                      {t("landingNavbar.button01")}
-                    </Button>
+                  <Link to={"/about"} color="inherit">
+                    <Typography variant="button" id="landingpage_navlink">
+                      {t("landingNavbar.link02")}
+                    </Typography>
                   </Link>
                 </div>
-                <div className="landingpage_topnav_loginbutton">
-                  <Link to={"/login"}>
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      endIcon={<LoginIcon />}
-                    >
-                      {t("landingNavbar.button02")}
-                    </Button>
-                  </Link>
+                <div className="landingpage_topnav_buttons">
+                  <LanguageSwitch />
+                  <IconButton
+                    sx={{ ml: 1 }}
+                    onClick={colorMode.toggleColorMode}
+                    color="inherit"
+                  >
+                    {theme.palette.mode === "dark" ? (
+                      <Brightness7Icon />
+                    ) : (
+                        <Brightness4Icon />
+                      )}
+                  </IconButton>
+                  <div className="landingpage_topnav_contactbutton">
+                    <Link to={"/contact"}>
+                      <Button variant="outlined">
+                        {t("landingNavbar.button01")}
+                      </Button>
+                    </Link>
+                  </div>
+                  <div className="landingpage_topnav_loginbutton">
+                    <Link to={"/login"}>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        endIcon={<LoginIcon />}
+                      >
+                        {t("landingNavbar.button02")}
+                      </Button>
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          </Box>
-        </div>
-      )}
+            </Box>
+          </div>
+        )}
     </Box>
   );
 };

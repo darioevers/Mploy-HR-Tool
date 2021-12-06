@@ -3,37 +3,9 @@ import React from "react";
 // TRANSLATION IMPORTS
 import { useTranslation } from "react-i18next";
 
-// LOGO IMPORTS
-import dcilogo from "../../../img/logo/DCI_Logo.png";
-
-// ICON IMPORTS
-import GitHubIcon from "@mui/icons-material/GitHub";
-import MessageIcon from "@mui/icons-material/Message";
-import CodeIcon from "@mui/icons-material/Code";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import AllInclusiveIcon from "@mui/icons-material/AllInclusive";
-
 //  MUI IMPORTS
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import { styled } from "@mui/material/styles";
-import Paper from "@mui/material/Paper";
-import Divider from "@mui/material/Divider";
-import Timeline from "@material-ui/lab/Timeline";
-import TimelineItem from "@material-ui/lab/TimelineItem";
-import TimelineSeparator from "@material-ui/lab/TimelineSeparator";
-import TimelineConnector from "@material-ui/lab/TimelineConnector";
-import TimelineContent from "@material-ui/lab/TimelineContent";
-import TimelineOppositeContent from "@material-ui/lab/TimelineOppositeContent";
-import TimelineDot from "@material-ui/lab/TimelineDot";
-
-const Item = styled(Paper)(({ theme }) => ({
-  ...theme.typography.body2,
-  padding: theme.spacing(5),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-}));
 
 // COMPONENT EXPORT
 const Aboutintro = () => {

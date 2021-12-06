@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import consolaGlobalInstance from "consola";
+
+// TRANSLATION IMPORTS
+import { useTranslation } from "react-i18next";
+
+// MUI IMPORTS
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Paper";
+
+// ICON IMPORTS
 import CloseIcon from "@mui/icons-material/Close";
 import e from "cors";
 
@@ -60,10 +69,27 @@ function WidgetApplications({ userdata }) {
       .catch((err) => console.log(err));
   };
 
+  //get difference between two dates
+  // const daysBetween = (one, two) => {
+  //   let date1 = new Date(one);
+  //   let date2 = new Date(two);
+  //   let result = Math.round(Math.abs(+date1 - +date2) / 8.64e7);
+  //   console.log(one, two);
+  //   console.log(result);
+  //   return setX({ ...x, test: result });
+  //   // return setNewLeave({ ...newLeave, leavesApplied: "result" });
+
+  //   // console.log(Math.round(Math.abs(+date1 - +date2) / 8.64e7));
+  // };
+
+  // TRANSLATION
+  const { t } = useTranslation();
+
   return (
     <div className="widget_applications_mainbox">
       <div className="widget_applications_header">
-        <h1> APPLICATIONS</h1>
+        <Typography variant="h6"><Box sx={{ ml: 3, mt: 2, boxShadow: "0", bgcolor: "transparent" }}>{t("dashboardWidgetLeaves.title01")}</Box></Typography>
+
         <div className="horizontal_line"></div>
       </div>
       <div className="widget_applications_body">
@@ -71,16 +97,18 @@ function WidgetApplications({ userdata }) {
           <h1>
             {leaves && leaves.filter((item) => item.pending === true).length}
           </h1>
-          <h4>Pending</h4>
+          <Typography variant="caption"><Box sx={{ boxShadow: "0", bgcolor: "transparent" }}>{t("dashboardWidgetLeaves.title02")}</Box></Typography>
+
         </div>
         <div className="widget_applications_approved">
           <h1>
             {leaves && leaves.filter((item) => item.pending === false).length}
           </h1>
-          <h4>Approved</h4>
+          <Typography variant="caption"><Box sx={{ boxShadow: "0", bgcolor: "transparent" }}>{t("dashboardWidgetLeaves.title03")}</Box></Typography>
+
         </div>
         <div className="widget_applications_new">
-          <div onClick={handleShow}> NEW APPLICATION </div>
+          <div onClick={handleShow}>{t("dashboardWidgetLeaves.button01")}</div>
         </div>
       </div>
 
@@ -90,15 +118,16 @@ function WidgetApplications({ userdata }) {
         }
       >
         <form class="form_container">
-          <h1>APPLICATION WIZARD</h1>
+          <Typography variant="h6"><Box sx={{ boxShadow: "0", bgcolor: "transparent", color: "#fff", textAlign: "center" }}>{t("dashboardWidgetLeaves.title04")}</Box></Typography>
+
           <br />
 
           <div className="form_search">
-            <h3>Employee Name</h3>
+            <Typography variant="body2"><Box sx={{ boxShadow: "0", bgcolor: "transparent", color: "#fff" }}>{t("dashboardWidgetLeaves.title05")}</Box></Typography>
+
             <input
               name="name"
-              type="text"
-              placeholder="Type name of employee"
+              placeholder={t("dashboardWidgetLeaves.formDesc01")}
               className="application_search"
               onChange={(e) =>
                 setNewLeave({
@@ -111,11 +140,11 @@ function WidgetApplications({ userdata }) {
 
           {/* EMAIL */}
           <div className="form_search">
-            <h3>Email</h3>
+            <Typography variant="body2"><Box sx={{ boxShadow: "0", bgcolor: "transparent", color: "#fff" }}>{t("dashboardWidgetLeaves.title06")}</Box></Typography>
             <input
               name="email"
               type="text"
-              placeholder="Type email"
+              placeholder={t("dashboardWidgetLeaves.formDesc02")}
               className="email"
               onChange={(e) =>
                 setNewLeave({
@@ -127,11 +156,11 @@ function WidgetApplications({ userdata }) {
           </div>
 
           <div className="form_search">
-            <h3>Department</h3>
+            <Typography variant="body2"><Box sx={{ boxShadow: "0", bgcolor: "transparent", color: "#fff" }}>{t("dashboardWidgetLeaves.title07")}</Box></Typography>
             <input
               name="department"
               type="text"
-              placeholder="Enter Department"
+              placeholder={t("dashboardWidgetLeaves.formDesc03")}
               className="application_search"
               onChange={(e) =>
                 setNewLeave({
@@ -143,7 +172,7 @@ function WidgetApplications({ userdata }) {
           </div>
 
           <div className="form_type">
-            <h3>Application Type</h3>
+            <Typography variant="body2"><Box sx={{ boxShadow: "0", bgcolor: "transparent", color: "#fff" }}>{t("dashboardWidgetLeaves.title08")}</Box></Typography>
             <select
               onChange={(e) =>
                 setNewLeave({
@@ -152,15 +181,16 @@ function WidgetApplications({ userdata }) {
                 })
               }
             >
-              <option value="">Please select type...</option>
-              <option value="sick-leave">Sick Leave</option>
-              <option value="holiday">Holiday</option>
-              <option value="home-office">Home Office</option>
+              <option value="">{t("dashboardWidgetLeaves.formSelect01")}</option>
+              <option value="sick-leave">{t("dashboardWidgetLeaves.formSelect02")}</option>
+              <option value="holiday">{t("dashboardWidgetLeaves.formSelect03")}</option>
+              <option value="home-office">{t("dashboardWidgetLeaves.formSelect04")}</option>
             </select>
           </div>
 
           <div className="form_date">
-            <h3>From</h3>
+            <Typography variant="body2"><Box sx={{ boxShadow: "0", bgcolor: "transparent", color: "#fff" }}>{t("dashboardWidgetLeaves.title09")}</Box></Typography>
+
             <input
               type="date"
               onChange={(e) => {
@@ -171,7 +201,8 @@ function WidgetApplications({ userdata }) {
               }}
             />
 
-            <h3>To</h3>
+            <Typography variant="body2"><Box sx={{ boxShadow: "0", bgcolor: "transparent", color: "#fff" }}>{t("dashboardWidgetLeaves.title10")}</Box></Typography>
+
             <input
               type="date"
               onChange={(e) => {
@@ -193,7 +224,7 @@ function WidgetApplications({ userdata }) {
                 window.location.reload();
               }}
             >
-              Submit
+              {t("dashboardWidgetLeaves.button02")}
             </div>
             <div class="btn_cancel" onClick={handleShow}>
               <CloseIcon />
