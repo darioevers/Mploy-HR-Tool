@@ -6,6 +6,7 @@ import { Document, Page } from "react-pdf";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 import axios from "axios";
+import { DocumentScanner } from "@mui/icons-material";
 
 const EmployeeDocuments = ({ history, match }) => {
   const [documents, setDocuments] = useState();
@@ -95,9 +96,12 @@ const EmployeeDocuments = ({ history, match }) => {
           </div>
 
           <div className="documents_cv">
-            <Document
-              file={`http://localhost:5000/${documents?.bio?.cv}`}
-            ></Document>
+            <a
+              target="_blank"
+              href={`http://localhost:5000/${documents?.bio?.cv} `}
+            >
+              Preview CV
+            </a>
             <div className="documents_label">
               <p>Upload Date </p>
               <p>01-12-2021</p>

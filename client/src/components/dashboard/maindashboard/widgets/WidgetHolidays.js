@@ -36,17 +36,23 @@ function WidgetHolidays({ userdata }) {
   // TRANSLATION
   const { t } = useTranslation();
 
-
-
   return (
     <div className="widget_holidays_mainbox">
       <div className="holidays_top_wrapper">
         <div className="square_bullet"></div>
-        <Typography variant="h6"><Box sx={{ ml: 2, boxShadow: "0", bgcolor: "transparent" }}>{t("dashboardWidgetHolidays.title01")}</Box></Typography>
+        <Typography variant="h7">
+          <Box sx={{ ml: 2, boxShadow: "0", bgcolor: "transparent" }}>
+            {t("dashboardWidgetHolidays.title01")}
+          </Box>
+        </Typography>
       </div>
 
       <div className="holidays_middle_wrapper">
-        <Typography variant="caption"><Box sx={{ boxShadow: "0", bgcolor: "transparent" }}>{t("dashboardWidgetHolidays.title02")}</Box></Typography>
+        <Typography variant="caption">
+          <Box sx={{ boxShadow: "0", bgcolor: "transparent" }}>
+            {t("dashboardWidgetHolidays.title02")}
+          </Box>
+        </Typography>
         <div className="horizontal_line"></div>
       </div>
 
@@ -55,8 +61,11 @@ function WidgetHolidays({ userdata }) {
           leaves
             .filter((item) => item.bio.email === userdata.bio?.email)
             .map((item) => <h2>{item.availableHolidays}</h2>)}
-        <Typography variant="caption"><Box sx={{ boxShadow: "0", bgcolor: "transparent" }}>{t("dashboardWidgetHolidays.title03")}</Box></Typography>
-
+        <Typography variant="caption">
+          <Box sx={{ boxShadow: "0", bgcolor: "transparent" }}>
+            {t("dashboardWidgetHolidays.title03")}
+          </Box>
+        </Typography>
       </div>
 
       <div className="holidays_bottommiddle_wrapper">
@@ -68,8 +77,11 @@ function WidgetHolidays({ userdata }) {
           leaves
             .filter((item) => item.bio.email === userdata.bio?.email)
             .map((item) => <h2>{item.takenHolidays || "0"} </h2>)}
-        <Typography variant="caption"><Box sx={{ boxShadow: "0", bgcolor: "transparent" }}>{t("dashboardWidgetHolidays.title04")}</Box></Typography>
-
+        <Typography variant="caption">
+          <Box sx={{ boxShadow: "0", bgcolor: "transparent" }}>
+            {t("dashboardWidgetHolidays.title04")}
+          </Box>
+        </Typography>
       </div>
     </div>
   );

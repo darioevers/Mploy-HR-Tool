@@ -206,7 +206,7 @@
     "body01": "Welcome back! Inspire the best work in people, enabling them to achieve their goals!"
   },
   "dashboardWidgetSickleave": {
-    "title01": "Leave",
+    "title01": "Sick Leave",
     "title02": "Available Days",
     "title03": "∞",
     "title04": "Available",
@@ -235,7 +235,7 @@
     "title01": "CONTACTS"
   },
   "dashboardWidgetTasks": {
-    "title01": "ADD NEW TASK",
+    "title01": "TASKS",
     "title02": "Task",
     "title03": "Due date  ",
     "title04": "Priority",
@@ -273,7 +273,7 @@
     "button02": "Send"
   },
   "dashboardWidgetBirthdays": {
-    "title01": "Birthdays",
+    "title01": "BIRTHDAYS",
     "title02": "Today",
     "title03": "This Month"
   },
@@ -345,6 +345,6 @@
     "formDesc17": "Job Title",
     "formDesc18": "Startdate",
     "formDesc19": "Enddate",
-    "formButton01": "Weiter"
+    "formButton01": "Update & Save"
   }
 }

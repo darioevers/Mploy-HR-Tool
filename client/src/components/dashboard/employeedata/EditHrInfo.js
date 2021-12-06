@@ -9,12 +9,21 @@ import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
 
 // MUI IMPORTS
-import { FormGroup, FormControl, InputLabel, Input, Typography } from "@material-ui/core";
-import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
+import {
+  FormGroup,
+  FormControl,
+  InputLabel,
+  Input,
+  Typography,
+} from "@material-ui/core";
+import TextField from "@mui/material/TextField";
+import Box from "@mui/material/Box";
 import Button from "@material-ui/core/Button";
 
 const EditHrInfo = ({ history, match, location }) => {
+  //ALERT BOX
+  const [isShowingAlert, setShowingAlert] = useState(false);
+
   const [editHrInfo, setEditHrInfo] = useState(
     location.state && location.state.editEmp
   );
@@ -28,9 +37,13 @@ const EditHrInfo = ({ history, match, location }) => {
 
   //upate user employee data
   const edit = () => {
-    const data = new FormData();
-    const readyTOSend = JSON.stringify(editHrInfo);
-    data.append("editHrInfo", readyTOSend);
+    console.log(editHrInfo);
+    // let data = new FormData();
+    // const readyTOSend = JSON.stringify(editHrInfo);
+    // console.log(readyTOSend);
+    const data = editHrInfo;
+
+    // data.append("editHrInfo", readyTOSend);
 
     axios
       .put("http://localhost:5000/employee/update", data, {
@@ -40,7 +53,9 @@ const EditHrInfo = ({ history, match, location }) => {
       })
       .then((data) => {
         console.log(data);
-        history.push("/dashboard/employeedata/");
+        setTimeout(() => {
+          history.push("/dashboard/employeedata/");
+        }, 1500);
       })
       .catch((err) => console.log(err));
   };
@@ -57,7 +72,7 @@ const EditHrInfo = ({ history, match, location }) => {
   };
 
   // FORM HEIGHT
-  const height = 50
+  const height = 50;
 
   // TRANSLATION
   const { t } = useTranslation();
@@ -70,9 +85,7 @@ const EditHrInfo = ({ history, match, location }) => {
 
       <div className="editemployee_wrapper">
         <Typography variant="h4" gutterBottom>
-          <Box sx={{ fontWeight: 500 }}>
-            {t("dashboardEditHRData.title01")}
-          </Box>
+          <Box sx={{ fontWeight: 500 }}>{t("dashboardEditHRData.title01")}</Box>
         </Typography>
         <div className="addemployee_header">
           <div
@@ -120,7 +133,7 @@ const EditHrInfo = ({ history, match, location }) => {
                     inputProps={{
                       style: {
                         height,
-                        padding: '0 14px',
+                        padding: "0 14px",
                       },
                     }}
                     value={editHrInfo?.contractInfo?.contractNo}
@@ -129,7 +142,8 @@ const EditHrInfo = ({ history, match, location }) => {
                         ...editHrInfo,
                         contractNo: e.target.value,
                       })
-                    } />
+                    }
+                  />
                   {/* <InputLabel htmlFor="my-input">Contract No</InputLabel>
                   <Input
                     value={editHrInfo?.contractInfo?.contractNo}
@@ -157,7 +171,7 @@ const EditHrInfo = ({ history, match, location }) => {
                     inputProps={{
                       style: {
                         height,
-                        padding: '0 14px',
+                        padding: "0 14px",
                       },
                     }}
                     value={editHrInfo?.contractInfo?.hireDate}
@@ -167,7 +181,8 @@ const EditHrInfo = ({ history, match, location }) => {
                         ...editHrInfo,
                         hireDate: e.target.value,
                       });
-                    }} />
+                    }}
+                  />
                   {/* <InputLabel htmlFor="my-input">Hire Date</InputLabel>
                   <Input
                     value={editHrInfo?.contractInfo?.hireDate}
@@ -193,7 +208,7 @@ const EditHrInfo = ({ history, match, location }) => {
                     inputProps={{
                       style: {
                         height,
-                        padding: '0 14px',
+                        padding: "0 14px",
                       },
                     }}
                     value={editHrInfo?.contractInfo?.contractEnd}
@@ -203,7 +218,8 @@ const EditHrInfo = ({ history, match, location }) => {
                         ...editHrInfo,
                         contractEnd: e.target.value,
                       })
-                    } />
+                    }
+                  />
                   {/* <InputLabel htmlFor="my-input">Contract End</InputLabel>
                   <Input
                     value={editHrInfo?.contractInfo?.contractEnd}
@@ -232,7 +248,7 @@ const EditHrInfo = ({ history, match, location }) => {
                     inputProps={{
                       style: {
                         height,
-                        padding: '0 14px',
+                        padding: "0 14px",
                       },
                     }}
                     value={editHrInfo?.contractInfo?.probationPeriod}
@@ -241,7 +257,8 @@ const EditHrInfo = ({ history, match, location }) => {
                         ...editHrInfo,
                         probationPeriod: e.target.value,
                       })
-                    } />
+                    }
+                  />
                   {/* <InputLabel htmlFor="my-input">Probation Period</InputLabel>
                   <Input
                     value={editHrInfo?.contractInfo?.probationPeriod}
@@ -269,7 +286,7 @@ const EditHrInfo = ({ history, match, location }) => {
                     inputProps={{
                       style: {
                         height,
-                        padding: '0 14px',
+                        padding: "0 14px",
                       },
                     }}
                     value={editHrInfo?.contractInfo?.employmentType}
@@ -278,7 +295,8 @@ const EditHrInfo = ({ history, match, location }) => {
                         ...editHrInfo,
                         employmentType: e.target.value,
                       })
-                    } />
+                    }
+                  />
                   {/* <InputLabel htmlFor="my-input">Employment Type</InputLabel>
                   <Input
                     value={editHrInfo?.contractInfo?.employmentType}
@@ -307,13 +325,14 @@ const EditHrInfo = ({ history, match, location }) => {
                     inputProps={{
                       style: {
                         height,
-                        padding: '0 14px',
+                        padding: "0 14px",
                       },
                     }}
                     value={editHrInfo?.contractInfo?.team}
                     onChange={(e) =>
                       setEditHrInfo({ ...editHrInfo, team: e.target.value })
-                    } />
+                    }
+                  />
                   {/* <InputLabel htmlFor="my-input">Team</InputLabel>
                   <Input
                     value={editHrInfo?.contractInfo?.team}
@@ -341,7 +360,7 @@ const EditHrInfo = ({ history, match, location }) => {
                     inputProps={{
                       style: {
                         height,
-                        padding: '0 14px',
+                        padding: "0 14px",
                       },
                     }}
                     value={editHrInfo?.contractInfo?.department}
@@ -350,7 +369,8 @@ const EditHrInfo = ({ history, match, location }) => {
                         ...editHrInfo,
                         department: e.target.value,
                       })
-                    } />
+                    }
+                  />
                   {/* <InputLabel htmlFor="my-input">Department</InputLabel>
                   <Input
                     value={editHrInfo?.contractInfo?.department}
@@ -379,7 +399,7 @@ const EditHrInfo = ({ history, match, location }) => {
                     inputProps={{
                       style: {
                         height,
-                        padding: '0 14px',
+                        padding: "0 14px",
                       },
                     }}
                     value={editHrInfo?.contractInfo?.supervisor}
@@ -388,7 +408,8 @@ const EditHrInfo = ({ history, match, location }) => {
                         ...editHrInfo,
                         supervisor: e.target.value,
                       })
-                    } />
+                    }
+                  />
                   {/* <InputLabel htmlFor="my-input">Supervisor</InputLabel>
                   <Input
                     value={editHrInfo?.contractInfo?.supervisor}
@@ -416,7 +437,7 @@ const EditHrInfo = ({ history, match, location }) => {
                     inputProps={{
                       style: {
                         height,
-                        padding: '0 14px',
+                        padding: "0 14px",
                       },
                     }}
                     value={editHrInfo?.contractInfo?.salary}
@@ -425,7 +446,8 @@ const EditHrInfo = ({ history, match, location }) => {
                         ...editHrInfo,
                         salary: e.target.value,
                       })
-                    } />
+                    }
+                  />
                   {/* <InputLabel htmlFor="my-input">Salary</InputLabel>
                   <Input
                     value={editHrInfo?.contractInfo?.salary}
@@ -453,7 +475,7 @@ const EditHrInfo = ({ history, match, location }) => {
                     inputProps={{
                       style: {
                         height,
-                        padding: '0 14px',
+                        padding: "0 14px",
                       },
                     }}
                     value={editHrInfo?.contractInfo?.overtime}
@@ -462,7 +484,8 @@ const EditHrInfo = ({ history, match, location }) => {
                         ...editHrInfo,
                         overtime: e.target.value,
                       })
-                    } />
+                    }
+                  />
                   {/* <InputLabel htmlFor="my-input">Overtime</InputLabel>
                   <Input
                     value={editHrInfo?.contractInfo?.overtime}
@@ -490,7 +513,7 @@ const EditHrInfo = ({ history, match, location }) => {
                     inputProps={{
                       style: {
                         height,
-                        padding: '0 14px',
+                        padding: "0 14px",
                       },
                     }}
                     value={editHrInfo?.contractInfo?.workLocation}
@@ -499,7 +522,8 @@ const EditHrInfo = ({ history, match, location }) => {
                         ...editHrInfo,
                         workLocation: e.target.value,
                       })
-                    } />
+                    }
+                  />
                   {/* <InputLabel htmlFor="my-input">Work Location</InputLabel>
                   <Input
                     value={editHrInfo?.contractInfo?.workLocation}
@@ -535,7 +559,7 @@ const EditHrInfo = ({ history, match, location }) => {
                       inputProps={{
                         style: {
                           height,
-                          padding: '0 14px',
+                          padding: "0 14px",
                         },
                       }}
                       value={editHrInfo?.education?.school}
@@ -544,7 +568,8 @@ const EditHrInfo = ({ history, match, location }) => {
                           ...editHrInfo,
                           school: e.target.value,
                         })
-                      } />
+                      }
+                    />
                     {/* <InputLabel htmlFor="my-input">School Name</InputLabel>
                     <Input
                       value={editHrInfo?.education?.school}
@@ -572,7 +597,7 @@ const EditHrInfo = ({ history, match, location }) => {
                       inputProps={{
                         style: {
                           height,
-                          padding: '0 14px',
+                          padding: "0 14px",
                         },
                       }}
                       value={editHrInfo?.education?.degree}
@@ -581,7 +606,8 @@ const EditHrInfo = ({ history, match, location }) => {
                           ...editHrInfo,
                           degree: e.target.value,
                         })
-                      } />
+                      }
+                    />
                     {/* <InputLabel htmlFor="my-input">Degree</InputLabel>
                     <Input
                       value={editHrInfo?.education?.degree}
@@ -610,7 +636,7 @@ const EditHrInfo = ({ history, match, location }) => {
                       inputProps={{
                         style: {
                           height,
-                          padding: '0 14px',
+                          padding: "0 14px",
                         },
                       }}
                       value={editHrInfo?.education?.specialization}
@@ -619,7 +645,8 @@ const EditHrInfo = ({ history, match, location }) => {
                           ...editHrInfo,
                           specialization: e.target.value,
                         })
-                      } />
+                      }
+                    />
                     {/* <InputLabel htmlFor="my-input">Field Of Study</InputLabel>
                     <Input
                       value={editHrInfo?.education?.specialization}
@@ -648,7 +675,7 @@ const EditHrInfo = ({ history, match, location }) => {
                       inputProps={{
                         style: {
                           height,
-                          padding: '0 14px',
+                          padding: "0 14px",
                         },
                       }}
                       value={editHrInfo?.education?.endDate}
@@ -657,7 +684,8 @@ const EditHrInfo = ({ history, match, location }) => {
                           ...editHrInfo,
                           endDate: e.target.value,
                         })
-                      } />
+                      }
+                    />
                     {/* <InputLabel htmlFor="my-input">
                       Year Of Completion
                     </InputLabel>
@@ -698,7 +726,7 @@ const EditHrInfo = ({ history, match, location }) => {
                       inputProps={{
                         style: {
                           height,
-                          padding: '0 14px',
+                          padding: "0 14px",
                         },
                       }}
                       value={editHrInfo?.workExperience?.company}
@@ -707,7 +735,8 @@ const EditHrInfo = ({ history, match, location }) => {
                           ...editHrInfo,
                           company: e.target.value,
                         })
-                      } />
+                      }
+                    />
                     {/* <InputLabel htmlFor="my-input">Company</InputLabel>
                     <Input
                       value={editHrInfo?.workExperience?.company}
@@ -735,7 +764,7 @@ const EditHrInfo = ({ history, match, location }) => {
                       inputProps={{
                         style: {
                           height,
-                          padding: '0 14px',
+                          padding: "0 14px",
                         },
                       }}
                       value={editHrInfo?.workExperience?.jobTitle}
@@ -744,7 +773,8 @@ const EditHrInfo = ({ history, match, location }) => {
                           ...editHrInfo,
                           jobTitle: e.target.value,
                         })
-                      } />
+                      }
+                    />
                     {/* <InputLabel htmlFor="my-input">Job Title</InputLabel>
                     <Input
                       value={editHrInfo?.workExperience?.jobTitle}
@@ -772,7 +802,7 @@ const EditHrInfo = ({ history, match, location }) => {
                       inputProps={{
                         style: {
                           height,
-                          padding: '0 14px',
+                          padding: "0 14px",
                         },
                       }}
                       value={editHrInfo?.workExperience?.from}
@@ -781,7 +811,8 @@ const EditHrInfo = ({ history, match, location }) => {
                           ...editHrInfo,
                           from: e.target.value,
                         })
-                      } />
+                      }
+                    />
                     {/* <InputLabel htmlFor="my-input">From</InputLabel>
                     <Input
                       type="date"
@@ -810,13 +841,14 @@ const EditHrInfo = ({ history, match, location }) => {
                       inputProps={{
                         style: {
                           height,
-                          padding: '0 14px',
+                          padding: "0 14px",
                         },
                       }}
                       value={editHrInfo?.workExperience?.to}
                       onChange={(e) =>
                         setEditHrInfo({ ...editHrInfo, to: e.target.value })
-                      } />
+                      }
+                    />
                     {/* <InputLabel htmlFor="my-input">To</InputLabel>
                     <Input
                       type="date"
@@ -842,6 +874,7 @@ const EditHrInfo = ({ history, match, location }) => {
             <div className="hr-save-btn">
               <Button
                 onClick={() => {
+                  setShowingAlert(true);
                   edit();
                 }}
               >
@@ -849,6 +882,14 @@ const EditHrInfo = ({ history, match, location }) => {
               </Button>
             </div>
           </FormGroup>
+          <div
+            className={`alert alert-success ${
+              isShowingAlert ? "alert-shown" : "alert-hidden"
+            }`}
+            onTransitionEnd={() => setShowingAlert(false)}
+          >
+            <p>Employee Data Updated!</p>
+          </div>
         </div>
       </div>
     </div>
