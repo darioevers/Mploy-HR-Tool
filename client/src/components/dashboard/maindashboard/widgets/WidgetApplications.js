@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import consolaGlobalInstance from "consola";
+import e from "cors";
 
 // TRANSLATION IMPORTS
 import { useTranslation } from "react-i18next";
@@ -12,7 +13,6 @@ import Box from "@mui/material/Paper";
 
 // ICON IMPORTS
 import CloseIcon from "@mui/icons-material/Close";
-import e from "cors";
 
 function WidgetApplications({ userdata }) {
   //fetch leaves data
@@ -188,6 +188,7 @@ function WidgetApplications({ userdata }) {
             </Typography>
 
             <input
+              type="text"
               name="name"
               placeholder={t("dashboardWidgetLeaves.formDesc01")}
               className="application_search"

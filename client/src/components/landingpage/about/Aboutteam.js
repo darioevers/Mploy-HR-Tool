@@ -11,6 +11,11 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 
+// IMAGE IMPORTS
+import ProfilePictureAlex from "../../../img/images/alexalbaran.jpeg";
+import ProfilePictureDario from "../../../img/images/darioevers.jpg";
+import ProfilePictureMaryam from "../../../img/images/maryampayenda.jpeg";
+
 //  MUI IMPORTS
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
@@ -54,7 +59,7 @@ const Aboutteam = () => {
             <Item sx={{ boxShadow: "0" }}>
               <Box>
                 <img
-                  src={blankprofilepic}
+                  src={ProfilePictureAlex}
                   alt="Teammember"
                   className="about_profilepics"
                 />
@@ -63,8 +68,14 @@ const Aboutteam = () => {
               <Typography variant="body1">
                 {t("aboutTeam.teamRole01")}
               </Typography>
+              <Typography variant="body1">
+                {t("aboutTeam.teamRole02")}
+              </Typography>
+              <Typography variant="body1">
+                {t("aboutTeam.teamRole03")}
+              </Typography>
               <Typography variant="body1" gutterBottom>
-                {t("aboutTeam.teamDesc01")}
+                {/* {t("aboutTeam.teamDesc01")} */}
               </Typography>
               <Stack
                 direction="row"
@@ -73,17 +84,17 @@ const Aboutteam = () => {
                 spacing={1}
               >
                 <Box>
-                  <a href="github.com">
+                  <a href="https://github.com/albaranlex" target="_blank">
                     <GitHubIcon />
                   </a>
                 </Box>
                 <Box>
-                  <a href="github.com">
+                  <a href="https://www.linkedin.com/in/albaranalex/" target="_blank">
                     <LinkedInIcon />
                   </a>
                 </Box>
                 <Box>
-                  <a href="google.com">
+                  <a href="mailto:albaranlex@icloud.com" target="_blank">
                     <AlternateEmailIcon />
                   </a>
                 </Box>
@@ -94,17 +105,23 @@ const Aboutteam = () => {
             <Item sx={{ boxShadow: "0" }}>
               <Box>
                 <img
-                  src={blankprofilepic}
+                  src={ProfilePictureDario}
                   alt="Teammember"
                   className="about_profilepics"
                 />
               </Box>
               <Typography variant="h5">Dario Evers</Typography>
               <Typography variant="body1">
-                {t("aboutTeam.teamRole02")}
+                {t("aboutTeam.teamRole01")}
+              </Typography>
+              <Typography variant="body1">
+                {t("aboutTeam.teamRole03")}
               </Typography>
               <Typography variant="body1" gutterBottom>
-                {t("aboutTeam.teamDesc02")}
+                {t("aboutTeam.teamRole04")}
+              </Typography>
+              <Typography variant="body1" gutterBottom>
+                {/* {t("aboutTeam.teamDesc02")} */}
               </Typography>
               <Stack
                 direction="row"
@@ -112,13 +129,13 @@ const Aboutteam = () => {
                 alignItems="center"
                 spacing={1}
               >
-                <a href="github.com">
+                <a href="https://github.com/darioevers" target="_blank">
                   <GitHubIcon />
                 </a>
-                <a href="github.com">
+                <a href="https://www.linkedin.com/in/dario-n-evers/" target="_blank">
                   <LinkedInIcon />
                 </a>
-                <a href="google.com">
+                <a href="mailto:darioevers@gmail.com" target="_blank">
                   <AlternateEmailIcon />
                 </a>
               </Stack>
@@ -128,17 +145,23 @@ const Aboutteam = () => {
             <Item sx={{ boxShadow: "0" }}>
               <Box>
                 <img
-                  src={blankprofilepic}
+                  src={ProfilePictureMaryam}
                   alt="Teammember"
                   className="about_profilepics"
                 />
               </Box>
               <Typography variant="h5">Maryam Payenda</Typography>
               <Typography variant="body1">
-                {t("aboutTeam.teamRole03")}
+                {t("aboutTeam.teamRole01")}
+              </Typography>
+              <Typography variant="body1">
+                {t("aboutTeam.teamRole02")}
+              </Typography>
+              <Typography variant="body1">
+                {t("aboutTeam.teamRole05")}
               </Typography>
               <Typography variant="body1" gutterBottom>
-                {t("aboutTeam.teamDesc03")}
+                {/* {t("aboutTeam.teamDesc03")} */}
               </Typography>
               <Stack
                 direction="row"
@@ -146,13 +169,13 @@ const Aboutteam = () => {
                 alignItems="center"
                 spacing={1}
               >
-                <a href="github.com">
+                <a href="https://github.com/MaryamPayenda" target="_blank">
                   <GitHubIcon />
                 </a>
-                <a href="github.com">
+                <a href="https://www.linkedin.com/in/maryam-payenda-1844a7140/" target="_blank">
                   <LinkedInIcon />
                 </a>
-                <a href="google.com">
+                <a href="mailto:maryampayanda12@gmail.com" target="_blank">
                   <AlternateEmailIcon />
                 </a>
               </Stack>
