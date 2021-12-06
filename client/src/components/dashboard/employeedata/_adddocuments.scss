@@ -37,7 +37,7 @@
         color: $primary;
       }
     }
-    #upload-photo {
+    #file {
       opacity: 0;
       position: absolute;
       z-index: -1;
@@ -155,10 +155,11 @@
   label {
     cursor: pointer;
   }
-  #upload-cv,
-  #upload-diploma,
-  #upload-cert,
-  #upload-letter {
+
+  #fileCv,
+  #fileDiploma,
+  #fileCertificate,
+  #fileLetter {
     opacity: 0;
     position: absolute;
     z-index: -1;

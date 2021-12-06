@@ -69,7 +69,7 @@ const App = () => {
               <PrivateRoute exact path="/dashboard" component={MainDashboard} />
               <Route
                 exact
-                path="/dashboard/employeedata"
+                path="/dashboard/employeedata/"
                 component={EmployeeData}
               />
 
@@ -97,7 +97,8 @@ const App = () => {
               />
 
               <Route
-                path="/dashboard/employeedata/edithrinfo/:id"
+                exact
+                path="/dashboard/employeedata/edithrinfo"
                 component={EditHrInfo}
               />
 

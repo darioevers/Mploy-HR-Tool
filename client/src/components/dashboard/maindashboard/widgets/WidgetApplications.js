@@ -11,10 +11,12 @@ import Box from "@mui/material/Paper";
 
 // ICON IMPORTS
 import CloseIcon from "@mui/icons-material/Close";
+import e from "cors";
 
 function WidgetApplications({ userdata }) {
   //fetch leaves data
   const [leaves, setLeaves] = useState();
+
   useEffect(() => {
     getAllLeaves();
   }, []);
@@ -44,10 +46,13 @@ function WidgetApplications({ userdata }) {
     setShowNewApp(!showNewApp);
   };
 
-  //add new leave application
-  const [newLeave, setNewLeave] = useState({});
+  // add new leave application
+  const [newLeave, setNewLeave] = useState();
+  // useEffect(() => {
+  //   setNewLeave(userdata);
+  // }, [userdata]);
+
   const addLeave = () => {
-    console.log(newLeave);
     const data = newLeave;
 
     axios
@@ -124,16 +129,17 @@ function WidgetApplications({ userdata }) {
             <Typography variant="body2"><Box sx={{ boxShadow: "0", bgcolor: "transparent", color: "#fff" }}>{t("dashboardWidgetLeaves.title05")}</Box></Typography>
 
             <input
-              type="search"
+              name="name"
               placeholder={t("dashboardWidgetLeaves.formDesc01")}
               className="application_search"
-              value={`${userdata.bio?.firstName} ${userdata.bio?.lastName} `}
-              onChange={(e) => {
+              value={`${userdata?.bio?.firstName} ${userdata?.bio?.lastName} `}
+              onChange={(e) =>
                 setNewLeave({
                   ...newLeave,
-                  name: `${userdata?.bio?.firstName} ${userdata?.bio?.lastName}`,
-                });
-              }}
+                  name: e.target.value,
+                })
+              }
+              required
             />
           </div>
 
@@ -141,32 +147,35 @@ function WidgetApplications({ userdata }) {
           <div className="form_search">
             <Typography variant="body2"><Box sx={{ boxShadow: "0", bgcolor: "transparent", color: "#fff" }}>{t("dashboardWidgetLeaves.title06")}</Box></Typography>
             <input
-              type="search"
+              name="email"
+              type="text"
               placeholder={t("dashboardWidgetLeaves.formDesc02")}
               className="email"
-              value={userdata.bio?.email}
+              value={userdata?.bio?.email}
               onChange={(e) =>
                 setNewLeave({
                   ...newLeave,
-                  email: userdata?.bio?.email,
+                  email: e.target.value,
                 })
               }
+              required
             />
           </div>
 
           <div className="form_search">
             <Typography variant="body2"><Box sx={{ boxShadow: "0", bgcolor: "transparent", color: "#fff" }}>{t("dashboardWidgetLeaves.title07")}</Box></Typography>
             <input
-              type="search"
+              name="department"
+              type="text"
               placeholder={t("dashboardWidgetLeaves.formDesc03")}
               className="application_search"
-              value={userdata.contractInfo?.department}
-              onChange={(e) =>
-                setNewLeave({
-                  ...newLeave,
-                  department: userdata?.contractInfo?.department,
-                })
-              }
+              value="department"
+              // onSubmit={(e) =>
+              //   setNewLeave({
+              //     ...newLeave,
+              //     department: e.target.value,
+              //   })
+              // }
             />
           </div>
 
@@ -193,11 +202,6 @@ function WidgetApplications({ userdata }) {
             <input
               type="date"
               onChange={(e) => {
-                // setNewLeave({
-                //   ...newLeave,
-                //   leavesApplied: daysBetween(e.target.value, newLeave.dateTo),
-                // });
-
                 setNewLeave({
                   ...newLeave,
                   dateFrom: e.target.value,
@@ -210,11 +214,6 @@ function WidgetApplications({ userdata }) {
             <input
               type="date"
               onChange={(e) => {
-                // setNewLeave({
-                //   ...newLeave,
-                //   leavesApplied: daysBetween(newLeave.dateFrom, e.target.value),
-                // });
-
                 setNewLeave({
                   ...newLeave,
                   dateTo: e.target.value,
