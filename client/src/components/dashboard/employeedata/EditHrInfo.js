@@ -1,12 +1,23 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
+
+// TRANSLATION IMPORTS
+import { useTranslation } from "react-i18next";
+
+// COMPONENT IMPORTS
 import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
-import axios from "axios";
-import { FormGroup, FormControl, InputLabel, Input } from "@material-ui/core";
 
-const EditHrInfo = ({ history, match }) => {
-  const [editHrInfo, setEditHrInfo] = useState();
-  const [file, setFile] = useState();
+// MUI IMPORTS
+import { FormGroup, FormControl, InputLabel, Input, Typography } from "@material-ui/core";
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+import Button from "@material-ui/core/Button";
+
+const EditHrInfo = ({ history, match, location }) => {
+  const [editHrInfo, setEditHrInfo] = useState(
+    location.state && location.state.editEmp
+  );
 
   const [addEducation, setAddEducation] = useState(false);
   const [addWorkExperience, setAddWorkExperience] = useState(false);
@@ -15,29 +26,7 @@ const EditHrInfo = ({ history, match }) => {
   const handleAddWorkExperience = () =>
     setAddWorkExperience(!addWorkExperience);
 
-  //get one employee
-  useEffect(() => {
-    getEmployee();
-  }, []);
-
-  const getEmployee = () => {
-    axios
-      .get(
-        `http://localhost:5000/employee/singleEmployee/${match.params.id}`,
-
-        {
-          header: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-
-      .then((data) => {
-        setEditHrInfo(data.data);
-      })
-      .catch((err) => console.log(err));
-  };
-
+  //upate user employee data
   const edit = () => {
     const data = new FormData();
     const readyTOSend = JSON.stringify(editHrInfo);
@@ -67,6 +56,12 @@ const EditHrInfo = ({ history, match }) => {
     marginRight: "20px",
   };
 
+  // FORM HEIGHT
+  const height = 50
+
+  // TRANSLATION
+  const { t } = useTranslation();
+
   return (
     <div className="addemployee_mainbox">
       <DashboardTopNav />
@@ -74,7 +69,11 @@ const EditHrInfo = ({ history, match }) => {
       {/* personal edit data */}
 
       <div className="editemployee_wrapper">
-        <h1> Edit Employee </h1>
+        <Typography variant="h4" gutterBottom>
+          <Box sx={{ fontWeight: 500 }}>
+            {t("dashboardEditHRData.title01")}
+          </Box>
+        </Typography>
         <div className="addemployee_header">
           <div
             className="inactive_tab"
@@ -84,10 +83,10 @@ const EditHrInfo = ({ history, match }) => {
               );
             }}
           >
-            <h4>General Data</h4>
+            <h4>{t("dashboardEditHRData.menu01")}</h4>
           </div>
           <div className="active_tab">
-            <h4> HR Information </h4>
+            <h4>{t("dashboardEditHRData.menu02")}</h4>
           </div>
           <div
             className="inactive_tab"
@@ -97,56 +96,115 @@ const EditHrInfo = ({ history, match }) => {
               );
             }}
           >
-            <h4>Documents</h4>
+            <h4>{t("dashboardEditHRData.menu02")}</h4>
           </div>
         </div>
         <div className="employeedata_form">
           <FormGroup>
-            <div>
-              <FormControl>
-                <InputLabel htmlFor="my-input">Photo</InputLabel>
-                <Input
-                  type="file"
-                  name="file"
-                  onChange={(e) => setFile(e.target.files[0])}
-                />
-              </FormControl>
-            </div>
-
             <div className="edithrinfo_form">
               <div className="edithrinfo_contractdetails_header">
-                <h3>CONTRACT DETAILS </h3>
+                <h3>{t("dashboardEditHRData.sectionHeading01")}</h3>
               </div>
 
               <div className="edithrinfo_contractdetails_content">
                 <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Contract No</InputLabel>
-                  <Input
+                  <TextField
+                    id="contractNumber"
+                    name="contractNumber"
+                    type="text"
+                    label={t("dashboardEditHRData.formDesc01")}
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
                     value={editHrInfo?.contractInfo?.contractNo}
                     onChange={(e) =>
                       setEditHrInfo({
                         ...editHrInfo,
                         contractNo: e.target.value,
                       })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Contract No</InputLabel>
+                  <Input
+                    value={editHrInfo?.contractInfo?.contractNo}
+                    onChange={(e) =>
+                      setEditHrInfo({
+                        ...editHrInfo,
+                        contractInfo: {
+                          ...editHrInfo.contractInfo,
+                          contractNo: e.target.value,
+                        },
+                      })
                     }
-                  />
+                  /> */}
                 </FormControl>
                 <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Hire Date</InputLabel>
-                  <Input
-                    value={editHrInfo?.contractInfo?.hireDate}
+                  <TextField
+                    id="hireDate"
+                    name="hireDate"
                     type="date"
+                    label={t("dashboardEditHRData.formDesc02")}
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editHrInfo?.contractInfo?.hireDate}
                     onChange={(e) => {
                       // setHireDate(e.target.value);
                       setEditHrInfo({
                         ...editHrInfo,
                         hireDate: e.target.value,
                       });
+                    }} />
+                  {/* <InputLabel htmlFor="my-input">Hire Date</InputLabel>
+                  <Input
+                    value={editHrInfo?.contractInfo?.hireDate}
+                    type="date"
+                    onChange={(e) =>
+                      setEditHrInfo({
+                        ...editHrInfo,
+                        hireDate: e.target.value,
+                      });
                     }}
-                  />
+                  /> */}
                 </FormControl>
                 <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Contract End</InputLabel>
+                  <TextField
+                    id="contractEnd"
+                    name="contractEnd"
+                    type="date"
+                    label={t("dashboardEditHRData.formDesc03")}
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
+                    value={editHrInfo?.contractInfo?.contractEnd}
+                    min="2019-01-01"
+                    onChange={(e) =>
+                      setEditHrInfo({
+                        ...editHrInfo,
+                        contractEnd: e.target.value,
+                      })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Contract End</InputLabel>
                   <Input
                     value={editHrInfo?.contractInfo?.contractEnd}
                     type="date"
@@ -154,154 +212,453 @@ const EditHrInfo = ({ history, match }) => {
                     onChange={(e) =>
                       setEditHrInfo({
                         ...editHrInfo,
-                        contractEnd: e.target.value,
+                        contractInfo: {
+                          ...editHrInfo.contractInfo,
+                          contractEnd: e.target.value,
+                        },
                       })
                     }
-                  />
+                  /> */}
                 </FormControl>
                 <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Probation Period</InputLabel>
-                  <Input
+                  <TextField
+                    id="probationTime"
+                    name="probationTime"
+                    label={t("dashboardEditHRData.formDesc04")}
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
                     value={editHrInfo?.contractInfo?.probationPeriod}
                     onChange={(e) =>
                       setEditHrInfo({
                         ...editHrInfo,
                         probationPeriod: e.target.value,
                       })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Probation Period</InputLabel>
+                  <Input
+                    value={editHrInfo?.contractInfo?.probationPeriod}
+                    onChange={(e) =>
+                      setEditHrInfo({
+                        ...editHrInfo,
+                        contractInfo: {
+                          ...editHrInfo.contractInfo,
+                          probationPeriod: e.target.value,
+                        },
+                      })
                     }
-                  />
+                  /> */}
                 </FormControl>
                 <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Employment Type</InputLabel>
-                  <Input
+                  <TextField
+                    id="employmentType"
+                    name="employmentType"
+                    label={t("dashboardEditHRData.formDesc05")}
+                    type="text"
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
                     value={editHrInfo?.contractInfo?.employmentType}
                     onChange={(e) =>
                       setEditHrInfo({
                         ...editHrInfo,
                         employmentType: e.target.value,
                       })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Employment Type</InputLabel>
+                  <Input
+                    value={editHrInfo?.contractInfo?.employmentType}
+                    onChange={(e) =>
+                      setEditHrInfo({
+                        ...editHrInfo,
+                        contractInfo: {
+                          ...editHrInfo.contractInfo,
+                          employmentType: e.target.value,
+                        },
+                      })
                     }
-                  />
+                  /> */}
                 </FormControl>
 
                 <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Team</InputLabel>
-                  <Input
+                  <TextField
+                    id="team"
+                    name="team"
+                    label={t("dashboardEditHRData.formDesc06")}
+                    type="text"
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
                     value={editHrInfo?.contractInfo?.team}
                     onChange={(e) =>
                       setEditHrInfo({ ...editHrInfo, team: e.target.value })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Team</InputLabel>
+                  <Input
+                    value={editHrInfo?.contractInfo?.team}
+                    onChange={(e) =>
+                      setEditHrInfo({
+                        ...editHrInfo,
+                        contractInfo: {
+                          ...editHrInfo.contractInfo,
+                          team: e.target.value,
+                        },
+                      })
                     }
-                  />
+                  /> */}
                 </FormControl>
                 <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Department</InputLabel>
-                  <Input
+                  <TextField
+                    id="department"
+                    name="department"
+                    label={t("dashboardEditHRData.formDesc07")}
+                    type="text"
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
                     value={editHrInfo?.contractInfo?.department}
                     onChange={(e) =>
                       setEditHrInfo({
                         ...editHrInfo,
                         department: e.target.value,
                       })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Department</InputLabel>
+                  <Input
+                    value={editHrInfo?.contractInfo?.department}
+                    onChange={(e) =>
+                      setEditHrInfo({
+                        ...editHrInfo,
+                        contractInfo: {
+                          ...editHrInfo.contractInfo,
+                          department: e.target.value,
+                        },
+                      })
                     }
-                  />
+                  /> */}
                 </FormControl>
 
                 <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Supervisor</InputLabel>
-                  <Input
+                  <TextField
+                    id="supervisor"
+                    name="supervisor"
+                    label={t("dashboardEditHRData.formDesc08")}
+                    type="text"
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
                     value={editHrInfo?.contractInfo?.supervisor}
                     onChange={(e) =>
                       setEditHrInfo({
                         ...editHrInfo,
                         supervisor: e.target.value,
                       })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Supervisor</InputLabel>
+                  <Input
+                    value={editHrInfo?.contractInfo?.supervisor}
+                    onChange={(e) =>
+                      setEditHrInfo({
+                        ...editHrInfo,
+                        contractInfo: {
+                          ...editHrInfo.contractInfo,
+                          supervisor: e.target.value,
+                        },
+                      })
                     }
-                  />
+                  /> */}
                 </FormControl>
                 <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Salary</InputLabel>
-                  <Input
+                  <TextField
+                    id="salary"
+                    name="salary"
+                    label={t("dashboardEditHRData.formDesc09")}
+                    type="text"
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
                     value={editHrInfo?.contractInfo?.salary}
                     onChange={(e) =>
                       setEditHrInfo({
                         ...editHrInfo,
                         salary: e.target.value,
                       })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Salary</InputLabel>
+                  <Input
+                    value={editHrInfo?.contractInfo?.salary}
+                    onChange={(e) =>
+                      setEditHrInfo({
+                        ...editHrInfo,
+                        contractInfo: {
+                          ...editHrInfo.contractInfo,
+                          salary: e.target.value,
+                        },
+                      })
                     }
-                  />
+                  /> */}
                 </FormControl>
                 <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Overtime</InputLabel>
-                  <Input
+                  <TextField
+                    id="overtime"
+                    name="overtime"
+                    label={t("dashboardEditHRData.formDesc10")}
+                    type="number"
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
                     value={editHrInfo?.contractInfo?.overtime}
                     onChange={(e) =>
                       setEditHrInfo({
                         ...editHrInfo,
                         overtime: e.target.value,
                       })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Overtime</InputLabel>
+                  <Input
+                    value={editHrInfo?.contractInfo?.overtime}
+                    onChange={(e) =>
+                      setEditHrInfo({
+                        ...editHrInfo,
+                        contractInfo: {
+                          ...editHrInfo.contractInfo,
+                          overTime: e.target.value,
+                        },
+                      })
                     }
-                  />
+                  /> */}
                 </FormControl>
                 <FormControl style={inputStylesA}>
-                  <InputLabel htmlFor="my-input">Work Location</InputLabel>
-                  <Input
+                  <TextField
+                    id="workLocation"
+                    name="workLocation"
+                    label={t("dashboardEditHRData.formDesc11")}
+                    type="text"
+                    variant="outlined"
+                    defaultValue=""
+                    style={{ marginTop: "1em" }}
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{
+                      style: {
+                        height,
+                        padding: '0 14px',
+                      },
+                    }}
                     value={editHrInfo?.contractInfo?.workLocation}
                     onChange={(e) =>
                       setEditHrInfo({
                         ...editHrInfo,
                         workLocation: e.target.value,
                       })
+                    } />
+                  {/* <InputLabel htmlFor="my-input">Work Location</InputLabel>
+                  <Input
+                    value={editHrInfo?.contractInfo?.workLocation}
+                    onChange={(e) =>
+                      setEditHrInfo({
+                        ...editHrInfo,
+                        contractInfo: {
+                          ...editHrInfo.contractInfo,
+                          workLocation: e.target.value,
+                        },
+                      })
                     }
-                  />
+                  /> */}
                 </FormControl>
               </div>
 
               <div className="edithrinfo_education_header">
-                <h3>EDUCATION HISTORY</h3>
+                <h3>{t("dashboardEditHRData.sectionHeading02")}</h3>
               </div>
 
               {addEducation && (
                 <div clasName="edithrinfo_education_content">
                   <FormControl style={inputStylesB}>
-                    <InputLabel htmlFor="my-input">School Name</InputLabel>
-                    <Input
+                    <TextField
+                      id="universityName"
+                      name="universityName"
+                      label={t("dashboardEditHRData.formDesc12")}
+                      type="text"
+                      variant="outlined"
+                      defaultValue=""
+                      style={{ marginTop: "1em" }}
+                      InputLabelProps={{ shrink: true }}
+                      inputProps={{
+                        style: {
+                          height,
+                          padding: '0 14px',
+                        },
+                      }}
                       value={editHrInfo?.education?.school}
                       onChange={(e) =>
                         setEditHrInfo({
                           ...editHrInfo,
                           school: e.target.value,
                         })
+                      } />
+                    {/* <InputLabel htmlFor="my-input">School Name</InputLabel>
+                    <Input
+                      value={editHrInfo?.education?.school}
+                      onChange={(e) =>
+                        setEditHrInfo({
+                          ...editHrInfo,
+                          education: {
+                            ...editHrInfo.education,
+                            school: e.target.value,
+                          },
+                        })
                       }
-                    />
+                    /> */}
                   </FormControl>
                   <FormControl style={inputStylesB}>
-                    <InputLabel htmlFor="my-input">Degree</InputLabel>
-                    <Input
+                    <TextField
+                      id="degree"
+                      name="degree"
+                      label={t("dashboardEditHRData.formDesc13")}
+                      type="text"
+                      variant="outlined"
+                      defaultValue=""
+                      style={{ marginTop: "1em" }}
+                      InputLabelProps={{ shrink: true }}
+                      inputProps={{
+                        style: {
+                          height,
+                          padding: '0 14px',
+                        },
+                      }}
                       value={editHrInfo?.education?.degree}
                       onChange={(e) =>
                         setEditHrInfo({
                           ...editHrInfo,
                           degree: e.target.value,
                         })
+                      } />
+                    {/* <InputLabel htmlFor="my-input">Degree</InputLabel>
+                    <Input
+                      value={editHrInfo?.education?.degree}
+                      onChange={(e) =>
+                        setEditHrInfo({
+                          ...editHrInfo,
+                          education: {
+                            ...editHrInfo.education,
+                            degree: e.target.value,
+                          },
+                        })
                       }
-                    />
+                    /> */}
                   </FormControl>
 
                   <FormControl style={inputStylesB}>
-                    <InputLabel htmlFor="my-input">Field Of Study</InputLabel>
-                    <Input
+                    <TextField
+                      id="fieldOfStudy"
+                      name="fieldOfStudy"
+                      label={t("dashboardEditHRData.formDesc14")}
+                      type="text"
+                      variant="outlined"
+                      defaultValue=""
+                      style={{ marginTop: "1em" }}
+                      InputLabelProps={{ shrink: true }}
+                      inputProps={{
+                        style: {
+                          height,
+                          padding: '0 14px',
+                        },
+                      }}
                       value={editHrInfo?.education?.specialization}
                       onChange={(e) =>
                         setEditHrInfo({
                           ...editHrInfo,
                           specialization: e.target.value,
                         })
+                      } />
+                    {/* <InputLabel htmlFor="my-input">Field Of Study</InputLabel>
+                    <Input
+                      value={editHrInfo?.education?.specialization}
+                      onChange={(e) =>
+                        setEditHrInfo({
+                          ...editHrInfo,
+                          education: {
+                            ...editHrInfo.education,
+                            specialization: e.target.value,
+                          },
+                        })
                       }
-                    />
+                    /> */}
                   </FormControl>
 
                   <FormControl style={inputStylesB}>
-                    <InputLabel htmlFor="my-input">
+                    <TextField
+                      id="yearOfCompletion"
+                      name="yearOfCompletion"
+                      label={t("dashboardEditHRData.formDesc15")}
+                      type="text"
+                      variant="outlined"
+                      defaultValue=""
+                      style={{ marginTop: "1em" }}
+                      InputLabelProps={{ shrink: true }}
+                      inputProps={{
+                        style: {
+                          height,
+                          padding: '0 14px',
+                        },
+                      }}
+                      value={editHrInfo?.education?.endDate}
+                      onChange={(e) =>
+                        setEditHrInfo({
+                          ...editHrInfo,
+                          endDate: e.target.value,
+                        })
+                      } />
+                    {/* <InputLabel htmlFor="my-input">
                       Year Of Completion
                     </InputLabel>
                     <Input
@@ -309,88 +666,187 @@ const EditHrInfo = ({ history, match }) => {
                       onChange={(e) =>
                         setEditHrInfo({
                           ...editHrInfo,
-                          endDate: e.target.value,
+                          education: {
+                            ...editHrInfo.education,
+                            endDate: e.target.value,
+                          },
                         })
                       }
-                    />
+                    /> */}
                   </FormControl>
                 </div>
               )}
               <button className="add-btn" onClick={handleAddEducation}>
-                Add Education +{" "}
+                {t("dashboardEditHRData.sectionHeadingButton01")}{" "}
               </button>
 
               <div className="edithrinfo_workexperience_header">
-                <h3>WORK EXPERIENCE</h3>
+                <h3>{t("dashboardEditHRData.sectionHeading03")}</h3>
               </div>
               {addWorkExperience && (
                 <div className="edithrinfo_workexperience_content">
                   <FormControl style={inputStylesB}>
-                    <InputLabel htmlFor="my-input">Company</InputLabel>
-                    <Input
+                    <TextField
+                      id="company"
+                      name="company"
+                      label={t("dashboardEditHRData.formDesc16")}
+                      type="text"
+                      variant="outlined"
+                      defaultValue=""
+                      style={{ marginTop: "1em" }}
+                      InputLabelProps={{ shrink: true }}
+                      inputProps={{
+                        style: {
+                          height,
+                          padding: '0 14px',
+                        },
+                      }}
                       value={editHrInfo?.workExperience?.company}
                       onChange={(e) =>
                         setEditHrInfo({
                           ...editHrInfo,
                           company: e.target.value,
                         })
+                      } />
+                    {/* <InputLabel htmlFor="my-input">Company</InputLabel>
+                    <Input
+                      value={editHrInfo?.workExperience?.company}
+                      onChange={(e) =>
+                        setEditHrInfo({
+                          ...editHrInfo,
+                          workExperience: {
+                            ...editHrInfo.workExperience,
+                            company: e.target.value,
+                          },
+                        })
                       }
-                    />
+                    /> */}
                   </FormControl>
                   <FormControl style={inputStylesB}>
-                    <InputLabel htmlFor="my-input">Job Title</InputLabel>
-                    <Input
+                    <TextField
+                      id="jobTitle"
+                      name="jobTitle"
+                      label={t("dashboardEditHRData.formDesc17")}
+                      type="text"
+                      variant="outlined"
+                      defaultValue=""
+                      style={{ marginTop: "1em" }}
+                      InputLabelProps={{ shrink: true }}
+                      inputProps={{
+                        style: {
+                          height,
+                          padding: '0 14px',
+                        },
+                      }}
                       value={editHrInfo?.workExperience?.jobTitle}
                       onChange={(e) =>
                         setEditHrInfo({
                           ...editHrInfo,
                           jobTitle: e.target.value,
                         })
+                      } />
+                    {/* <InputLabel htmlFor="my-input">Job Title</InputLabel>
+                    <Input
+                      value={editHrInfo?.workExperience?.jobTitle}
+                      onChange={(e) =>
+                        setEditHrInfo({
+                          ...editHrInfo,
+                          workExperience: {
+                            ...editHrInfo.workExperience,
+                            jobTitle: e.target.value,
+                          },
+                        })
                       }
-                    />
+                    /> */}
                   </FormControl>
                   <FormControl style={inputStylesB}>
-                    <InputLabel htmlFor="my-input">From</InputLabel>
-                    <Input
+                    <TextField
+                      id="jobFrom"
+                      name="jobFrom"
+                      label={t("dashboardEditHRData.formDesc18")}
                       type="date"
+                      variant="outlined"
+                      defaultValue=""
+                      style={{ marginTop: "1em" }}
+                      InputLabelProps={{ shrink: true }}
+                      inputProps={{
+                        style: {
+                          height,
+                          padding: '0 14px',
+                        },
+                      }}
                       value={editHrInfo?.workExperience?.from}
                       onChange={(e) =>
                         setEditHrInfo({
                           ...editHrInfo,
                           from: e.target.value,
                         })
+                      } />
+                    {/* <InputLabel htmlFor="my-input">From</InputLabel>
+                    <Input
+                      type="date"
+                      value={editHrInfo?.workExperience?.from}
+                      onChange={(e) =>
+                        setEditHrInfo({
+                          ...editHrInfo,
+                          workExperience: {
+                            ...editHrInfo.workExperience,
+                            from: e.target.value,
+                          },
+                        })
                       }
-                    />
+                    /> */}
                   </FormControl>
                   <FormControl style={inputStylesB}>
-                    <InputLabel htmlFor="my-input">To</InputLabel>
+                    <TextField
+                      id="jobTo"
+                      name="jobTo"
+                      label={t("dashboardEditHRData.formDesc19")}
+                      type="date"
+                      variant="outlined"
+                      defaultValue=""
+                      style={{ marginTop: "1em" }}
+                      InputLabelProps={{ shrink: true }}
+                      inputProps={{
+                        style: {
+                          height,
+                          padding: '0 14px',
+                        },
+                      }}
+                      value={editHrInfo?.workExperience?.to}
+                      onChange={(e) =>
+                        setEditHrInfo({ ...editHrInfo, to: e.target.value })
+                      } />
+                    {/* <InputLabel htmlFor="my-input">To</InputLabel>
                     <Input
                       type="date"
                       value={editHrInfo?.workExperience?.to}
                       onChange={(e) =>
-                        setEditHrInfo({ ...editHrInfo, to: e.target.value })
+                        setEditHrInfo({
+                          ...editHrInfo,
+                          workExperience: {
+                            ...editHrInfo.workExperience,
+                            to: e.target.value,
+                          },
+                        })
                       }
-                    />
+                    /> */}
                   </FormControl>
                 </div>
               )}
               <button className="add-btn" onClick={handleAddWorkExperience}>
-                Add Experience +{" "}
+                {t("dashboardEditHRData.sectionHeadingButton02")}{" "}
               </button>
             </div>
 
             <div className="hr-save-btn">
-              <button
+              <Button
                 onClick={() => {
-                  console.log(editHrInfo);
                   edit();
-                  // history.push(
-                  //   `/dashboard/employeedata/editdocuments/${editHrInfo._id}`
-                  // );
                 }}
               >
-                Next
-              </button>
+                {t("dashboardEditHRData.formButton01")}
+              </Button>
             </div>
           </FormGroup>
         </div>

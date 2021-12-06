@@ -1,7 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 // IMAGE IMPORTS
-import LogoDarkS from "../../../img/logo/MPLOY_logo_small_dark.svg";
 
 // ICON IMPORTS
 import DragHandleIcon from "@mui/icons-material/DragHandle";
@@ -10,7 +10,6 @@ import DragHandleIcon from "@mui/icons-material/DragHandle";
 import { ColorModeContext } from "../../theme/theme";
 
 // MUI IMPORTS
-
 import Box from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
 import SpeedDial from "@mui/material/SpeedDial";
@@ -79,21 +78,21 @@ export default function LandingpageMobileNav() {
       >
         Test
         {actions.map((action) => (
-          <SpeedDialAction
-            key={action.name}
-            icon={action.icon}
-            tooltipTitle={action.name}
-            onClick={action.target}
-            FabProps={{
-              style: {
-                bgcolor: "#fff",
-                borderRadius: 7,
-                width: "5rem",
-                heigth: "10px",
-              },
-            }}
-          ></SpeedDialAction>
-        ))}
+        <SpeedDialAction
+          key={action.name}
+          icon={action.icon}
+          tooltipTitle={action.name}
+          onClick={action.target}
+          FabProps={{
+            style: {
+              bgcolor: "#fff",
+              borderRadius: 7,
+              width: "5rem",
+              heigth: "10px",
+            },
+          }}
+        ></SpeedDialAction>
+      ))}
       </SpeedDial>
     </Box>
   );

@@ -1,11 +1,22 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import consolaGlobalInstance from "consola";
+
+// TRANSLATION IMPORTS
+import { useTranslation } from "react-i18next";
+
+// MUI IMPORTS
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Paper";
+
+// ICON IMPORTS
 import CloseIcon from "@mui/icons-material/Close";
+import e from "cors";
 
 function WidgetApplications({ userdata }) {
   //fetch leaves data
   const [leaves, setLeaves] = useState();
+
   useEffect(() => {
     getAllLeaves();
   }, []);
@@ -35,10 +46,13 @@ function WidgetApplications({ userdata }) {
     setShowNewApp(!showNewApp);
   };
 
-  //add new leave application
-  const [newLeave, setNewLeave] = useState({});
+  // add new leave application
+  const [newLeave, setNewLeave] = useState();
+  // useEffect(() => {
+  //   setNewLeave(userdata);
+  // }, [userdata]);
+
   const addLeave = () => {
-    console.log(newLeave);
     const data = newLeave;
 
     axios
@@ -71,10 +85,14 @@ function WidgetApplications({ userdata }) {
   //   // console.log(Math.round(Math.abs(+date1 - +date2) / 8.64e7));
   // };
 
+  // TRANSLATION
+  const { t } = useTranslation();
+
   return (
     <div className="widget_applications_mainbox">
       <div className="widget_applications_header">
-        <h1> APPLICATIONS</h1>
+        <Typography variant="h6"><Box sx={{ ml: 3, mt: 2, boxShadow: "0", bgcolor: "transparent" }}>{t("dashboardWidgetLeaves.title01")}</Box></Typography>
+
         <div className="horizontal_line"></div>
       </div>
       <div className="widget_applications_body">
@@ -82,16 +100,18 @@ function WidgetApplications({ userdata }) {
           <h1>
             {leaves && leaves.filter((item) => item.pending === true).length}
           </h1>
-          <h4>Pending</h4>
+          <Typography variant="caption"><Box sx={{ boxShadow: "0", bgcolor: "transparent" }}>{t("dashboardWidgetLeaves.title02")}</Box></Typography>
+
         </div>
         <div className="widget_applications_approved">
           <h1>
             {leaves && leaves.filter((item) => item.pending === false).length}
           </h1>
-          <h4>Approved</h4>
+          <Typography variant="caption"><Box sx={{ boxShadow: "0", bgcolor: "transparent" }}>{t("dashboardWidgetLeaves.title03")}</Box></Typography>
+
         </div>
         <div className="widget_applications_new">
-          <div onClick={handleShow}> NEW APPLICATION </div>
+          <div onClick={handleShow}>{t("dashboardWidgetLeaves.button01")}</div>
         </div>
       </div>
 
@@ -101,60 +121,66 @@ function WidgetApplications({ userdata }) {
         }
       >
         <form class="form_container">
-          <h1>APPLICATION WIZARD</h1>
+          <Typography variant="h6"><Box sx={{ boxShadow: "0", bgcolor: "transparent", color: "#fff", textAlign: "center" }}>{t("dashboardWidgetLeaves.title04")}</Box></Typography>
+
           <br />
 
           <div className="form_search">
-            <h3>Employee Name</h3>
+            <Typography variant="body2"><Box sx={{ boxShadow: "0", bgcolor: "transparent", color: "#fff" }}>{t("dashboardWidgetLeaves.title05")}</Box></Typography>
+
             <input
-              type="search"
-              placeholder="Type name of employee"
+              name="name"
+              placeholder={t("dashboardWidgetLeaves.formDesc01")}
               className="application_search"
-              value={`${userdata.bio?.firstName} ${userdata.bio?.lastName} `}
-              onChange={(e) => {
+              value={`${userdata?.bio?.firstName} ${userdata?.bio?.lastName} `}
+              onChange={(e) =>
                 setNewLeave({
                   ...newLeave,
-                  name: `${userdata?.bio?.firstName} ${userdata?.bio?.lastName}`,
-                });
-              }}
+                  name: e.target.value,
+                })
+              }
+              required
             />
           </div>
 
           {/* EMAIL */}
           <div className="form_search">
-            <h3>Email</h3>
+            <Typography variant="body2"><Box sx={{ boxShadow: "0", bgcolor: "transparent", color: "#fff" }}>{t("dashboardWidgetLeaves.title06")}</Box></Typography>
             <input
-              type="search"
-              placeholder="Type email"
+              name="email"
+              type="text"
+              placeholder={t("dashboardWidgetLeaves.formDesc02")}
               className="email"
-              value={userdata.bio?.email}
+              value={userdata?.bio?.email}
               onChange={(e) =>
                 setNewLeave({
                   ...newLeave,
-                  email: userdata?.bio?.email,
+                  email: e.target.value,
                 })
               }
+              required
             />
           </div>
 
           <div className="form_search">
-            <h3>Department</h3>
+            <Typography variant="body2"><Box sx={{ boxShadow: "0", bgcolor: "transparent", color: "#fff" }}>{t("dashboardWidgetLeaves.title07")}</Box></Typography>
             <input
-              type="search"
-              placeholder="Enter Department"
+              name="department"
+              type="text"
+              placeholder={t("dashboardWidgetLeaves.formDesc03")}
               className="application_search"
-              value={userdata.contractInfo?.department}
-              onChange={(e) =>
-                setNewLeave({
-                  ...newLeave,
-                  department: userdata?.contractInfo?.department,
-                })
-              }
+              value="department"
+              // onSubmit={(e) =>
+              //   setNewLeave({
+              //     ...newLeave,
+              //     department: e.target.value,
+              //   })
+              // }
             />
           </div>
 
           <div className="form_type">
-            <h3>Application Type</h3>
+            <Typography variant="body2"><Box sx={{ boxShadow: "0", bgcolor: "transparent", color: "#fff" }}>{t("dashboardWidgetLeaves.title08")}</Box></Typography>
             <select
               onChange={(e) =>
                 setNewLeave({
@@ -163,23 +189,19 @@ function WidgetApplications({ userdata }) {
                 })
               }
             >
-              <option value="">Please select type...</option>
-              <option value="sick-leave">Sick Leave</option>
-              <option value="holiday">Holiday</option>
-              <option value="home-office">Home Office</option>
+              <option value="">{t("dashboardWidgetLeaves.formSelect01")}</option>
+              <option value="sick-leave">{t("dashboardWidgetLeaves.formSelect02")}</option>
+              <option value="holiday">{t("dashboardWidgetLeaves.formSelect03")}</option>
+              <option value="home-office">{t("dashboardWidgetLeaves.formSelect04")}</option>
             </select>
           </div>
 
           <div className="form_date">
-            <h3>From</h3>
+            <Typography variant="body2"><Box sx={{ boxShadow: "0", bgcolor: "transparent", color: "#fff" }}>{t("dashboardWidgetLeaves.title09")}</Box></Typography>
+
             <input
               type="date"
               onChange={(e) => {
-                // setNewLeave({
-                //   ...newLeave,
-                //   leavesApplied: daysBetween(e.target.value, newLeave.dateTo),
-                // });
-
                 setNewLeave({
                   ...newLeave,
                   dateFrom: e.target.value,
@@ -187,15 +209,11 @@ function WidgetApplications({ userdata }) {
               }}
             />
 
-            <h3>To</h3>
+            <Typography variant="body2"><Box sx={{ boxShadow: "0", bgcolor: "transparent", color: "#fff" }}>{t("dashboardWidgetLeaves.title10")}</Box></Typography>
+
             <input
               type="date"
               onChange={(e) => {
-                // setNewLeave({
-                //   ...newLeave,
-                //   leavesApplied: daysBetween(newLeave.dateFrom, e.target.value),
-                // });
-
                 setNewLeave({
                   ...newLeave,
                   dateTo: e.target.value,
@@ -214,7 +232,7 @@ function WidgetApplications({ userdata }) {
                 window.location.reload();
               }}
             >
-              Submit
+              {t("dashboardWidgetLeaves.button02")}
             </div>
             <div class="btn_cancel" onClick={handleShow}>
               <CloseIcon />

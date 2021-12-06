@@ -89,25 +89,4 @@ leaveController.addLeave = async (req, res) => {
   }
 };
 
-// //update totalHolidays
-// const daysBetween = (dateFrom, dateTo) => {
-//   let date1 = new Date(dateFrom);
-//   let date2 = new Date(dateTo);
-//   return Math.round(Math.abs(+date1 - +date2) / 8.64e7);
-// };
-
-// leaveController.updateLeave = async (req, res) => {
-//   try {
-//     const leave = await LeavesData.findById(req.body.id);
-//     const totalApplied = daysBetween(req.body.dateFrom, req.body.dateTo);
-//     leave.totalHolidays = leave.totalHolidays + totalApplied;
-//     leave.save();
-//     res.json({ success: true, message: "leave marked as approved" });
-//   } catch (error) {
-//     res.status(error.status).json({
-//       message: error.message,
-//     });
-//   }
-// };
-
 module.exports = leaveController;

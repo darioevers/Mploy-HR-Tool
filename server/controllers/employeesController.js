@@ -49,7 +49,7 @@ employeeController.getOneEmployee = async (req, res) => {
 
 employeeController.addNewEmployee = async (req, res) => {
   console.log("data", req.body);
-  
+
   const received = JSON.parse(req.body.allData);
   const pathProfilePic = req.files?.file[0]?.path.substring(7);
   const pathCv = req.files?.fileCv[0]?.path.substring(7);
@@ -154,20 +154,14 @@ employeeController.searchName = async (req, res) => {
 // patch or update employee
 employeeController.updateEmployee = async (req, res) => {
   try {
+    // console.log(received);
+    let received = await JSON.parse(req.body.editHrInfo);
 
-    console.log(received)
-    let received = await JSON.parse(req.body.editEmp);
-
-    // let received = await JSON.parse(req.body.editHrInfo);
-
-    received.bio.photo = "uploads/" + req.file.path.substring(15);
     console.log(req);
-    // received.bio.photo=req.file.path.substring(7);
-    console.log("after",received);
+    console.log("after", received);
     const employee = await EmployeeData.findOneAndUpdate(
       { "bio.email": received.bio.email },
       received,
-
       {
         new: true,
       }
@@ -206,5 +200,15 @@ employeeController.deleteOrUpdateStatus = async (req, res) => {
   }
 };
 
+
+// get file
+// employeeController.getallMultipleFiles = async (req, res, next) => {
+//   try{
+//       const files = await MultipleFile.find();
+//       res.status(200).send(files);
+//   }catch(error) {
+//       res.status(400).send(error.message);
+//   }
+// }
 
 module.exports = employeeController;
