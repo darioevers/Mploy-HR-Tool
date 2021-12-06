@@ -43,10 +43,6 @@ const LeavesSchema = Schema({
     required: false,
   },
 
-  // employee: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: "employees",
-  // },
 });
 
 const Leaves = mongoose.model("leaves", LeavesSchema);

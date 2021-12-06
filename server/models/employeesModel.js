@@ -17,13 +17,13 @@ const EmployeesSchema = Schema({
     },
     email: {
       type: String,
-      required: false,
+      required: true,
       unique: true,
     },
     password: {
       type: String,
-      required: false,
-      // select: false,
+      required: true,
+      
     },
     role: {
       type: String,
@@ -61,7 +61,6 @@ const EmployeesSchema = Schema({
     },
     photo: {
       type: String,
-      // default:"http:localhost:5000/uploads/error.jpg"
     },
     hobbies: {
       type: String,
@@ -70,15 +69,23 @@ const EmployeesSchema = Schema({
 
     cv: {
       type: String,
+      required: [true, "Please upload your CV! "],
+
     },
     certificate: {
       type: String,
+      required: [true, "Please upload your certificate! "],
+
     },
     diploma: {
       type: String,
+      required: [true, "Please upload your diploma! "],
+
     },
     letter: {
       type: String,
+      required: [true, "Please upload your employment letter! "],
+
     },
     resetPasswordToken: String,
     resetPasswordExpire: Date,
