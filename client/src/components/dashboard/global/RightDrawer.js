@@ -71,6 +71,7 @@ export default function TemporaryDrawer() {
               border: "1px solid #2b3240",
               borderRadius: "10px",
               color: "white",
+              marginTop: "3px",
             }}
           />
           <Drawer
@@ -80,8 +81,17 @@ export default function TemporaryDrawer() {
           >
             <div className="right_drawer_wrapper">
               <div className="right_drawer_header">
-                <Typography variant="h6"><Box sx={{ boxShadow: "0", bgcolor: "transparent", color: "#fff" }}>{t("dashboardRightDrawer.title01")}</Box></Typography>
-
+                <Typography variant="h6">
+                  <Box
+                    sx={{
+                      boxShadow: "0",
+                      bgcolor: "transparent",
+                      color: "#fff",
+                    }}
+                  >
+                    {t("dashboardRightDrawer.title01")}
+                  </Box>
+                </Typography>
               </div>
             </div>
 
@@ -93,7 +103,18 @@ export default function TemporaryDrawer() {
               }
             >
               <div className="newadmin_header" onClick={handleNewAdmin}>
-                <Typography variant="body1"><Box sx={{ boxShadow: "0", bgcolor: "transparent", fontWeight: 500, fontSize: 15 }}>{t("dashboardRightDrawer.title02")}</Box></Typography>
+                <Typography variant="body1">
+                  <Box
+                    sx={{
+                      boxShadow: "0",
+                      bgcolor: "transparent",
+                      fontWeight: 500,
+                      fontSize: 15,
+                    }}
+                  >
+                    {t("dashboardRightDrawer.title02")}
+                  </Box>
+                </Typography>
 
                 <i>
                   <KeyboardArrowDownIcon />
@@ -116,7 +137,18 @@ export default function TemporaryDrawer() {
                 className="right_drawer_announcements_header"
                 onClick={handleNewAnnouncement}
               >
-                <Typography variant="body1"><Box sx={{ boxShadow: "0", bgcolor: "transparent", fontWeight: 500, fontSize: 15 }}>{t("dashboardRightDrawer.title03")}</Box></Typography>
+                <Typography variant="body1">
+                  <Box
+                    sx={{
+                      boxShadow: "0",
+                      bgcolor: "transparent",
+                      fontWeight: 500,
+                      fontSize: 15,
+                    }}
+                  >
+                    {t("dashboardRightDrawer.title03")}
+                  </Box>
+                </Typography>
 
                 <i>
                   <KeyboardArrowDownIcon />
@@ -137,7 +169,18 @@ export default function TemporaryDrawer() {
                 className="right_drawer_leaves_header"
                 onClick={handleShowLeaves}
               >
-                <Typography variant="body1"><Box sx={{ boxShadow: "0", bgcolor: "transparent", fontWeight: 500, fontSize: 15 }}>{t("dashboardRightDrawer.title04")}</Box></Typography>
+                <Typography variant="body1">
+                  <Box
+                    sx={{
+                      boxShadow: "0",
+                      bgcolor: "transparent",
+                      fontWeight: 500,
+                      fontSize: 15,
+                    }}
+                  >
+                    {t("dashboardRightDrawer.title04")}
+                  </Box>
+                </Typography>
 
                 <i>
                   <KeyboardArrowDownIcon />

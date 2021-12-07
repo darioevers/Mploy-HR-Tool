@@ -13,8 +13,12 @@ import Box from "@mui/material/Paper";
 // ICON IMPORTS
 import CloseIcon from "@mui/icons-material/Close";
 import e from "cors";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 function WidgetApplications({ userdata }) {
+  //alertbox
+  const [isShowingAlert, setShowingAlert] = useState(false);
+
   //fetch leaves data
   const [leaves, setLeaves] = useState();
   const [newLeave, setNewLeave] = useState();
@@ -46,7 +50,7 @@ function WidgetApplications({ userdata }) {
       console.log(data);
       setNewLeave({
         email: data.user.bio.email,
-        name: data.user.bio.firstName,
+        name: `${data.user.bio.firstName} ${data.user.bio.lastName}`,
         department: data.user.contractInfo.department,
       });
     } catch (error) {
@@ -324,6 +328,7 @@ function WidgetApplications({ userdata }) {
               type="submit"
               class="btn_submit"
               onClick={() => {
+                setShowingAlert(true);
                 addLeave();
                 setNewLeave("");
                 window.location.reload();
@@ -336,6 +341,15 @@ function WidgetApplications({ userdata }) {
             </div>
           </div>
         </form>
+        <div
+          className={`alert alert-success ${
+            isShowingAlert ? "alert-shown" : "alert-hidden"
+          }`}
+          onTransitionEnd={() => setShowingAlert(false)}
+        >
+          <CheckCircleOutlineIcon />
+          <p> Leave Application Submitted!</p>
+        </div>
       </div>
     </div>
   );

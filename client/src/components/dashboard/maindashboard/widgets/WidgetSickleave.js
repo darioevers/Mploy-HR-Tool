@@ -28,6 +28,7 @@ function WidgetSickLeave({ userdata }) {
       )
 
       .then((data) => {
+        console.log(leaves);
         setLeaves(data.data);
       })
       .catch((err) => console.log(err));
@@ -41,7 +42,7 @@ function WidgetSickLeave({ userdata }) {
       <div className="sickleave_top_wrapper">
         <div className="square_bullet"></div>
         <Typography variant="h7">
-          <Box sx={{ ml: 2, boxShadow: "0", bgcolor: "transparent" }}>
+          <Box sx={{ ml: 2, boxShadow: "0", backgroundColor: "transparent" }}>
             {t("dashboardWidgetSickleave.title01")}
           </Box>
         </Typography>

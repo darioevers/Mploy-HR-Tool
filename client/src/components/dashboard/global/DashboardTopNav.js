@@ -24,9 +24,12 @@ function TopNav() {
       </div>
       <div className="top-nav-line"></div>
       <SearchButton />
-      <Box sx={{
-        boxShadow: "0"
-      }}>
+      <Box
+        sx={{
+          boxShadow: "0",
+          width: "100px",
+        }}
+      >
         <LanguageSwitch />
       </Box>
       <div className="darkmode_switch">

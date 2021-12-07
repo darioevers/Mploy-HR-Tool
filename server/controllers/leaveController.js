@@ -20,7 +20,7 @@ leaveController.getLeaves = async (req, res) => {
 leaveController.updateLeave = async (req, res) => {
   try {
     if (req.body.approved) {
-      const leave = await LeavesData.findById(req.body.id);
+      const leave = await EmployeesData.findById(req.body.id);
       leave.pending = false;
       leave.save();
       res.json({ success: true, message: "leave marked as approved" });
@@ -61,7 +61,6 @@ leaveController.addLeave = async (req, res) => {
       dateTo: req.body.dateTo,
       pending: true,
       leavesApplied: leavesAppliedNum,
-      // totalHolidays: LeavesData.totalHolidays + req.body.totalHolidays, //comment
     });
 
     leave.save();
@@ -75,7 +74,7 @@ leaveController.addLeave = async (req, res) => {
       employee.takenHolidays = leavesAppliedNum;
       employee.availableHolidays =
         employee.availableHolidays - leavesAppliedNum;
-    } else {
+    } else if (type === "home-office") {
       employee.takenHomeOffice = leavesAppliedNum;
       employee.availableHomeOffice =
         employee.availableHomeOffice - leavesAppliedNum;

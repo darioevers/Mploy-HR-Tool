@@ -110,8 +110,11 @@ function WidgetAnnouncements() {
       }
     >
       <div className="widget_announcements_header">
-        <Typography variant="h6"><Box sx={{ boxShadow: "0", bgcolor: "transparent", color: "#fff" }}>{t("dashboardWidgetAnnouncements.title01")}</Box></Typography>
-
+        <Typography style={{ fontSize: "15px" }}>
+          <Box sx={{ boxShadow: "0", bgcolor: "transparent", color: "#fff" }}>
+            {t("dashboardWidgetAnnouncements.title01")}
+          </Box>
+        </Typography>
       </div>
 
       <div
@@ -157,11 +160,17 @@ function WidgetAnnouncements() {
                       <div className="expand_header">
                         <h1>{announcement.title}</h1>
                         <div className="expand_subheader">
-                          <p>{t("misc.by")} {announcement.poster}</p>
+                          <p>
+                            {t("misc.by")} {announcement.poster}
+                          </p>
 
-                          <p>{t("misc.date")} {announcement.date}</p>
+                          <p>
+                            {t("misc.date")} {announcement.date}
+                          </p>
 
-                          <p>{t("misc.time")} {announcement.time}</p>
+                          <p>
+                            {t("misc.time")} {announcement.time}
+                          </p>
                         </div>
                       </div>
 
@@ -236,11 +245,17 @@ function WidgetAnnouncements() {
                     <div className="expand_header">
                       <h1>{announcement.title}</h1>
                       <div className="expand_subheader">
-                        <p>{t("misc.by")} {announcement.poster}</p>
+                        <p>
+                          {t("misc.by")} {announcement.poster}
+                        </p>
 
-                        <p>{t("misc.date")} {announcement.date}</p>
+                        <p>
+                          {t("misc.date")} {announcement.date}
+                        </p>
 
-                        <p>{t("misc.time")} {announcement.time}</p>
+                        <p>
+                          {t("misc.time")} {announcement.time}
+                        </p>
                       </div>
                     </div>
 
