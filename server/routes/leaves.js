@@ -1,14 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const leaveController = require("../controllers/leaveController");
-const auth=require("../middlewares/authMiddleware");
-//get announcements
+const auth = require("../middlewares/authMiddleware");
+
+//get leaves
 router.get("/getLeaves", leaveController.getLeaves);
 
-//add new announcement
+//add new leave
 router.post("/addleave", leaveController.addLeave);
 
-// delete announcement
+// update / delete leave
 router.put("/", leaveController.updateLeave);
 
 module.exports = router;
