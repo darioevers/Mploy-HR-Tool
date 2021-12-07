@@ -194,12 +194,12 @@ function WidgetApplications({ userdata }) {
               className="application_search"
               value={newLeave?.name}
 
-              // onChange={(e) =>
-              //   setNewLeave({
-              //     ...newLeave,
-              //     name: e.target.value,
-              //   })
-              // }
+            // onChange={(e) =>
+            //   setNewLeave({
+            //     ...newLeave,
+            //     name: e.target.value,
+            //   })
+            // }
             />
           </div>
 
@@ -219,12 +219,12 @@ function WidgetApplications({ userdata }) {
               placeholder={t("dashboardWidgetLeaves.formDesc02")}
               className="email"
               readOnly
-              // onChange={(e) =>
-              //   setNewLeave({
-              //     ...newLeave,
-              //     email: e.target.value,
-              //   })
-              // }
+            // onChange={(e) =>
+            //   setNewLeave({
+            //     ...newLeave,
+            //     email: e.target.value,
+            //   })
+            // }
             />
           </div>
 
@@ -242,12 +242,12 @@ function WidgetApplications({ userdata }) {
               placeholder={t("dashboardWidgetLeaves.formDesc03")}
               className="application_search"
               value={newLeave?.department}
-              // onChange={(e) =>
-              //   setNewLeave({
-              //     ...newLeave,
-              //     department: e.target.value,
-              //   })
-              // }
+            // onChange={(e) =>
+            //   setNewLeave({
+            //     ...newLeave,
+            //     department: e.target.value,
+            //   })
+            // }
             />
           </div>
 
