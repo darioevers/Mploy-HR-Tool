@@ -208,7 +208,7 @@ export default function Homeservices(props) {
                       Mobile Ready
                       </Typography>
                     <Typography variant="body1" gutterBottom>
-                      Read company updates or check on database records on-the-go. Must functionality is desktop-only.
+                      Read company updates or check on database records on-the-go. Some functionality is desktop-only.
                   </Typography>
                   </Box>
                 </Box>
