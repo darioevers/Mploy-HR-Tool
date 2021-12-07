@@ -89,7 +89,7 @@
 <p>The admin drawer can be opened on desktop-only via the top right settings button and contains <em>Add New Admin</em>, <em>Post Announcement</em> & <em>Leave Applications</em>.
 <details><summary><b>See more</b></summary>
 
-<img src="./client/src/img/graphics/tablet_admindrawer.png">
+<img src="./client/src/img/graphics/laptop_admindrawer.png">
 
 </details>
 <br>
@@ -150,7 +150,7 @@
 # **Team**
 <img src="./client/src/img/images/darioevers.jpg" width="150">
 <p>Dario Evers</p>
-<sup>Front-End  UIUX | Design</sup>
+<sup>Front-End | UIUX | Design</sup>
 <br>
 <a href="https://www.linkedin.com/in/dario-n-evers/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-blue"> </a>
 <br>
