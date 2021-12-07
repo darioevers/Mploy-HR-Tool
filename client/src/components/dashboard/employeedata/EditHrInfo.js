@@ -18,7 +18,6 @@ const EditHrInfo = ({ history, match, location }) => {
   const [editHrInfo, setEditHrInfo] = useState(
     location.state && location.state.editEmp
   );
-
   const [addEducation, setAddEducation] = useState(false);
   const [addWorkExperience, setAddWorkExperience] = useState(false);
 
