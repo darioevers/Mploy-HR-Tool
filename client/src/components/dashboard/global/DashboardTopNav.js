@@ -22,13 +22,9 @@ function TopNav() {
       <div className="logo">
         <img src={logo} />
       </div>
-      <div className="top-nav-line"></div>
+      <Box className="top-nav-line" sx={{ boxShadow: 0, bgcolor: "background.hr" }}></Box>
       <SearchButton />
-      <Box sx={{
-        boxShadow: "0"
-      }}>
-        <LanguageSwitch />
-      </Box>
+      <LanguageSwitch />
       <div className="darkmode_switch">
         <DarkModeSwitch />
 

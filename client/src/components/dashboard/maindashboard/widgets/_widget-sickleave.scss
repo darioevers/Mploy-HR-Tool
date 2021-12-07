@@ -1,7 +1,7 @@
 .widget_sickleave_mainbox {
   @include md {
     display: flex;
-    background-color: $tertiary;
+    // background-color: $tertiary;
     // background-color: $tertiary;
     position: fixed;
     top: 24%;
@@ -68,7 +68,6 @@
       font-size: 10px;
     }
     .horizontal_line {
-      background-color: $primary;
       margin: 10px 0px;
       width: 92%;
       height: 2px;
@@ -100,7 +99,6 @@
     .vertical_line {
       width: 2px;
       height: 80%;
-      background-color: $primary;
     }
   }
   .sickleave_bottomright_wrapper {

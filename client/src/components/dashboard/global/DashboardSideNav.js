@@ -6,8 +6,13 @@ import axios from "axios";
 import { useTranslation } from "react-i18next";
 
 // MUI IMPORTS
+import { makeStyles } from '@mui/styles';
 import Typography from "@mui/material/Typography";
 import Button from "@material-ui/core/Button";
+import Box from "@mui/material/Box";
+
+// IMAGE IMPORTS
+import navlinkImg from "../../../img/graphics/active-bg-xl.svg";
 
 // ICON IMPORTS
 import DashboardIcon from "@material-ui/icons/Dashboard";
@@ -100,6 +105,16 @@ const DashboardSideNav = (props) => {
     // should go to the /
   };
 
+  // NAVBAR ACTIVE BUTTONS
+  const classes = makeStyles({
+    button: {
+      "&.active": {
+        backgroundImage: { navlinkImg },
+        bgcolor: "background.default"
+      },
+    },
+  });
+
   // TRANSLATION
   const { t } = useTranslation();
 
@@ -135,18 +150,20 @@ const DashboardSideNav = (props) => {
 
         {/* sidenavlinks */}
         <div className="sidenav_links">
-          <NavLink
-            exact
-            to="/dashboard"
-            activeClassName="active"
-            className="sidenav_link"
-            onClick={handleClick}
-          >
-            <i>
-              <DashboardIcon style={{ fontSize: "x-large" }} />
-            </i>
-            <Typography>{t("dashboardSidenav.menu01")}</Typography>
-          </NavLink>
+          <Box className="sidenav_link" sx={{ boxShadow: 0, width: "100%" }}>
+            <NavLink
+              exact
+              to="/dashboard"
+              activeClassName="active"
+              className={classes.button}
+              onClick={handleClick}
+            >
+              <i>
+                <DashboardIcon style={{ fontSize: "x-large" }} />
+              </i>
+              <Typography>{t("dashboardSidenav.menu01")}</Typography>
+            </NavLink>
+          </Box>
 
           <NavLink
             exact

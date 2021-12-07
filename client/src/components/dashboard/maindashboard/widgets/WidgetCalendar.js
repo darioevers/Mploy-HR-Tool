@@ -51,10 +51,10 @@ function WidgetCalendar() {
   const { t } = useTranslation();
 
   return (
-    <div className="widget_calendar_mainbox">
+    <Box className="widget_calendar_mainbox" sx={{ boxShadow: "0", bgcolor: 'background.widgets' }}>
       <div className="widget_calendar_today">
         <div className="widget_calendar_today_header">
-          <h1>TODAY</h1>
+          <h1>{t("dashboardWidgetCalendar.title01")}</h1>
         </div>
         <div className="widget_calendar_month">
           <p>{month.toUpperCase()}</p>
@@ -73,7 +73,7 @@ function WidgetCalendar() {
         </div>
         <div className="widget_calendar_bottom_border"></div>
       </div>
-    </div>
+    </Box>
   );
 }
 

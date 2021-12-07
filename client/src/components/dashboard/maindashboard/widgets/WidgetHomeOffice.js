@@ -37,11 +37,11 @@ function WidgetHomeOffice({ userdata }) {
   const { t } = useTranslation();
 
   return (
-    <div className="widget_homeoffice_mainbox">
+    <Box className="widget_homeoffice_mainbox" sx={{ boxShadow: "0", bgcolor: 'background.widgets' }}>
       <div className="homeoffice_top_wrapper">
         <div className="square_bullet"></div>
-        <Typography variant="h7">
-          <Box sx={{ ml: 2, boxShadow: "0", bgcolor: "transparent" }}>
+        <Typography variant="h6">
+          <Box sx={{ ml: 2, boxShadow: "0", bgcolor: "background.widgets" }}>
             {t("dashboardWidgetHomeOffice.title01")}
           </Box>
         </Typography>
@@ -49,11 +49,11 @@ function WidgetHomeOffice({ userdata }) {
 
       <div className="homeoffice_middle_wrapper">
         <Typography variant="caption">
-          <Box sx={{ boxShadow: "0", bgcolor: "transparent" }}>
+          <Box sx={{ boxShadow: "0", bgcolor: "background.widgets" }}>
             {t("dashboardWidgetHomeOffice.title02")}
           </Box>
         </Typography>
-        <div className="horizontal_line"></div>
+        <Box className="horizontal_line" sx={{ boxShadow: "0", bgcolor: "background.widgetlines" }}></Box>
       </div>
 
       <div className="homeoffice_bottomleft_wrapper">
@@ -62,14 +62,14 @@ function WidgetHomeOffice({ userdata }) {
             .filter((item) => item.bio.email === userdata.bio?.email)
             .map((item) => <h2>{item.availableHomeOffice}</h2>)}
         <Typography variant="caption">
-          <Box sx={{ boxShadow: "0", bgcolor: "transparent" }}>
+          <Box sx={{ boxShadow: "0", bgcolor: "background.widgets" }}>
             {t("dashboardWidgetHomeOffice.title03")}
           </Box>
         </Typography>
       </div>
 
       <div className="homeoffice_bottommiddle_wrapper">
-        <div className="vertical_line"></div>
+        <Box className="vertical_line" sx={{ boxShadow: "0", bgcolor: "background.widgetlines" }}></Box>
       </div>
 
       <div className="homeoffice_bottomright_wrapper">
@@ -78,12 +78,12 @@ function WidgetHomeOffice({ userdata }) {
             .filter((item) => item.bio.email === userdata.bio?.email)
             .map((item) => <h2>{item.takenHomeOffice || "0"} </h2>)}
         <Typography variant="caption">
-          <Box sx={{ boxShadow: "0", bgcolor: "transparent" }}>
+          <Box sx={{ boxShadow: "0", bgcolor: "background.widgets" }}>
             {t("dashboardWidgetHomeOffice.title04")}
           </Box>
         </Typography>
       </div>
-    </div>
+    </Box>
   );
 }
 export default WidgetHomeOffice;

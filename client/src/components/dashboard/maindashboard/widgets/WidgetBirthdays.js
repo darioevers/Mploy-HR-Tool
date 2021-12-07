@@ -72,9 +72,9 @@ function WidgetBirthdays({ userdata }) {
   const { t } = useTranslation();
 
   return (
-    <div className="widget_birthdays_mainbox">
+    <Box className="widget_birthdays_mainbox" sx={{ boxShadow: "0", bgcolor: 'background.widgets' }}>
       <div className="widget_birthdays_header">
-        <Typography variant="h10">
+        <Typography variant="h6">
           <Box sx={{ ml: 3, mt: 2, boxShadow: "0", bgcolor: "transparent" }}>
             {t("dashboardWidgetBirthdays.title01")}
           </Box>
@@ -155,7 +155,7 @@ function WidgetBirthdays({ userdata }) {
           </Typography>
         </div>
       </div>
-    </div>
+    </Box>
   );
 }
 export default WidgetBirthdays;

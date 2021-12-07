@@ -21,7 +21,7 @@ function WelcomeMessage({ userdata }) {
         </span>
       </h1>
 
-      <Typography variant="body2"><Box sx={{ boxShadow: "0", bgcolor: "transparent" }}>{t("dashboardWidgetWelcomeMessage.body01")}</Box></Typography>
+      <Typography variant="body1">{t("dashboardWidgetWelcomeMessage.body01")}</Typography>
 
     </div>
   );

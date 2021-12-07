@@ -223,7 +223,7 @@ export default function Homeservices(props) {
                 </Box>
               </Item>
             </Grid>
-            <Grid item xs={12} md={12} lg={12} xl={12}>
+            {/* <Grid item xs={12} md={12} lg={12} xl={12}>
               <Item
                 sx={{
                   display: "flex",
@@ -245,7 +245,7 @@ export default function Homeservices(props) {
                 </Typography>
                 </Box>
               </Item>
-            </Grid>
+            </Grid> */}
           </Grid>
         </Box>
       </div>

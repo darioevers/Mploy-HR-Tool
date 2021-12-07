@@ -32,10 +32,10 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function Aboutoutro(props) {
   const content = {
     // GRID NUMBER STRINGS
-    commits: "284",
-    lines: "5000",
+    commits: "393",
+    lines: "55419",
     messages: "2400",
-    hours: "100",
+    hours: "300",
     tech: "12+",
     // MID CONTENT
     ...props.content,
