@@ -12,8 +12,12 @@ import Box from "@mui/material/Paper";
 import CheckIcon from "@mui/icons-material/Check";
 import ClearIcon from "@mui/icons-material/Clear";
 import FilterListIcon from "@mui/icons-material/FilterList";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 function WidgetTasks() {
+  //alertbox
+  const [isShowingAlert, setShowingAlert] = useState(false);
+
   //open and close new task form onClick
   const [showForm, setShowForm] = useState(true);
   const handleClick = () => {
@@ -79,7 +83,7 @@ function WidgetTasks() {
       })
       .then((data) => {
         data.data.success && getAllTasks();
-        alert("task deleted");
+        setShowingAlert(true);
       })
       .catch((err) => console.log(err));
   };
@@ -322,6 +326,15 @@ function WidgetTasks() {
                   </div>
                 </div>
               ))}
+          </div>
+          <div
+            className={`alert alert-success ${
+              isShowingAlert ? "alert-shown" : "alert-hidden"
+            }`}
+            onTransitionEnd={() => setShowingAlert(false)}
+          >
+            <CheckCircleOutlineIcon />
+            <p> Task Deleted</p>
           </div>
         </div>
       </div>

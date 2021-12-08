@@ -1,6 +1,6 @@
 .topnav_mainbox {
   @include md {
-    display: none;
+    height: 1%;
   }
   display: flex;
   justify-content: space-between;
@@ -8,8 +8,12 @@
   width: 98%;
   height: 100%;
 }
+//for push
 
 .logo {
+  @include md {
+    display: none;
+  }
   @include flex-center;
   margin-left: 15px;
   width: 60px;
@@ -20,6 +24,9 @@
   }
 }
 .top-nav-line {
+  @include md {
+    display: none;
+  }
   display: flex;
   align-self: center;
   margin: 0 20px;
@@ -27,7 +34,29 @@
   width: 100%;
 }
 
-.settings_button {
+.search-button {
+  @include md {
+    display: none;
+  }
+}
+
+.language-switch {
+  @include md {
+    position: fixed;
+    right: 20px;
+  }
+}
+
+.darkmode-switch {
+  @include md {
+    display: none;
+  }
+}
+
+.settings-button {
+  @include md {
+    display: none;
+  }
   @include flex-center;
   margin-top: 3px;
 }

@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/NewDashboardSideNav";
 
+
 // MUI IMPORTS
 import {
   FormGroup,
@@ -121,7 +122,6 @@ const AddEmployee = ({ history }) => {
                   <Input
                     type="text"
                     name="firstName"
-                    // style={inputStylesA}
                     onChange={(e) => {
                       setEmployee({ ...employee, firstName: e.target.value });
                       setFirstName(e.target.value);
@@ -218,7 +218,6 @@ const AddEmployee = ({ history }) => {
                   <Input
                     type="text"
                     name="email"
-                    // style={inputStylesA}
                     onChange={(e) => {
                       setEmployee({ ...employee, email: e.target.value });
                     }}
@@ -402,7 +401,7 @@ const AddEmployee = ({ history }) => {
                     }}
                     InputLabelProps={{ style: { fontSize: 15 } }}
                     onChange={(e) =>
-                      setEmployee({ ...employee, country: e.target.value })
+                      setEmployee({ ...employee, countryOne: e.target.value })
                     }
                   >
                     {countrydata.map((data) => (
@@ -705,23 +704,6 @@ const AddEmployee = ({ history }) => {
             </div>
 
             <div className="next-btn">
-              {/* <button
-                // onClick={() => {
-                //   addNew();
-                //   setEmployee("");
-                // }}
-                onClick={() => {
-                  console.log(employee);
-                  addNew();
-                  // history.push({
-                  //   pathname: "/dashboard/employeedata/addemployee/hrinfo",
-                  //   state: { employee },
-                  // });
-                }}
-              >
-                SAVE
-              </button> */}
-
               <button
                 onClick={() => {
                   history.push({

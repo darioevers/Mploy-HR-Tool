@@ -12,9 +12,9 @@ import DashboardSideNav from "../global/NewDashboardSideNav";
 import {
   FormGroup,
   FormControl,
+  Typography,
   InputLabel,
   Input,
-  Typography,
 } from "@material-ui/core";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
@@ -27,7 +27,7 @@ const EditHrInfo = ({ history, match, location }) => {
   const [editHrInfo, setEditHrInfo] = useState(
     location.state && location.state.editEmp
   );
-
+  const [file, setFile] = useState();
   const [addEducation, setAddEducation] = useState(false);
   const [addWorkExperience, setAddWorkExperience] = useState(false);
 
@@ -37,13 +37,15 @@ const EditHrInfo = ({ history, match, location }) => {
 
   //upate user employee data
   const edit = () => {
-    console.log(editHrInfo);
-    // let data = new FormData();
-    // const readyTOSend = JSON.stringify(editHrInfo);
-    // console.log(readyTOSend);
-    const data = editHrInfo;
+    const data = new FormData();
+    data.append("file", file);
+    const readyTOSend = JSON.stringify(editHrInfo);
+    data.append("editHrInfo", readyTOSend);
 
-    // data.append("editHrInfo", readyTOSend);
+    console.log("editHrInfo", editHrInfo);
+    console.log("data", data);
+
+    // const data = editHrInfo;
 
     axios
       .put("http://localhost:5000/employee/update", data, {
@@ -81,8 +83,8 @@ const EditHrInfo = ({ history, match, location }) => {
     <div className="addemployee_mainbox">
       <DashboardTopNav />
       <DashboardSideNav />
-      {/* personal edit data */}
 
+      {/* personal edit data */}
       <div className="editemployee_wrapper">
         <Typography variant="h4" gutterBottom>
           <Box sx={{ fontWeight: 500 }}>{t("dashboardEditHRData.title01")}</Box>
@@ -101,16 +103,6 @@ const EditHrInfo = ({ history, match, location }) => {
           <div className="active_tab">
             <h4>{t("dashboardEditHRData.menu02")}</h4>
           </div>
-          {/* <div
-            className="inactive_tab"
-            onClick={() => {
-              history.push(
-                `/dashboard/employeedata/editdocuments/${editHrInfo._id}`
-              );
-            }}
-          >
-            <h4>{t("dashboardEditHRData.menu02")}</h4>
-          </div> */}
         </div>
         <div className="employeedata_form">
           <FormGroup>
@@ -120,6 +112,14 @@ const EditHrInfo = ({ history, match, location }) => {
               </div>
 
               <div className="edithrinfo_contractdetails_content">
+                <FormControl>
+                  <InputLabel htmlFor="my-input">Photo</InputLabel>
+                  <Input
+                    type="file"
+                    name="file"
+                    onChange={(e) => setFile(e.target.files[0])}
+                  />
+                </FormControl>
                 <FormControl style={inputStylesA}>
                   <TextField
                     id="contractNumber"
@@ -140,23 +140,14 @@ const EditHrInfo = ({ history, match, location }) => {
                     onChange={(e) =>
                       setEditHrInfo({
                         ...editHrInfo,
-                        contractNo: e.target.value,
-                      })
-                    }
-                  />
-                  {/* <InputLabel htmlFor="my-input">Contract No</InputLabel>
-                  <Input
-                    value={editHrInfo?.contractInfo?.contractNo}
-                    onChange={(e) =>
-                      setEditHrInfo({
-                        ...editHrInfo,
                         contractInfo: {
                           ...editHrInfo.contractInfo,
                           contractNo: e.target.value,
                         },
                       })
                     }
-                  /> */}
+
+                  />
                 </FormControl>
                 <FormControl style={inputStylesA}>
                   <TextField
@@ -176,24 +167,12 @@ const EditHrInfo = ({ history, match, location }) => {
                     }}
                     value={editHrInfo?.contractInfo?.hireDate}
                     onChange={(e) => {
-                      // setHireDate(e.target.value);
                       setEditHrInfo({
                         ...editHrInfo,
                         hireDate: e.target.value,
                       });
                     }}
                   />
-                  {/* <InputLabel htmlFor="my-input">Hire Date</InputLabel>
-                  <Input
-                    value={editHrInfo?.contractInfo?.hireDate}
-                    type="date"
-                    onChange={(e) =>
-                      setEditHrInfo({
-                        ...editHrInfo,
-                        hireDate: e.target.value,
-                      });
-                    }}
-                  /> */}
                 </FormControl>
                 <FormControl style={inputStylesA}>
                   <TextField
@@ -220,21 +199,6 @@ const EditHrInfo = ({ history, match, location }) => {
                       })
                     }
                   />
-                  {/* <InputLabel htmlFor="my-input">Contract End</InputLabel>
-                  <Input
-                    value={editHrInfo?.contractInfo?.contractEnd}
-                    type="date"
-                    min="2019-01-01"
-                    onChange={(e) =>
-                      setEditHrInfo({
-                        ...editHrInfo,
-                        contractInfo: {
-                          ...editHrInfo.contractInfo,
-                          contractEnd: e.target.value,
-                        },
-                      })
-                    }
-                  /> */}
                 </FormControl>
                 <FormControl style={inputStylesA}>
                   <TextField
@@ -255,23 +219,14 @@ const EditHrInfo = ({ history, match, location }) => {
                     onChange={(e) =>
                       setEditHrInfo({
                         ...editHrInfo,
-                        probationPeriod: e.target.value,
-                      })
-                    }
-                  />
-                  {/* <InputLabel htmlFor="my-input">Probation Period</InputLabel>
-                  <Input
-                    value={editHrInfo?.contractInfo?.probationPeriod}
-                    onChange={(e) =>
-                      setEditHrInfo({
-                        ...editHrInfo,
+
                         contractInfo: {
                           ...editHrInfo.contractInfo,
                           probationPeriod: e.target.value,
                         },
                       })
                     }
-                  /> */}
+                  />
                 </FormControl>
                 <FormControl style={inputStylesA}>
                   <TextField
@@ -293,23 +248,14 @@ const EditHrInfo = ({ history, match, location }) => {
                     onChange={(e) =>
                       setEditHrInfo({
                         ...editHrInfo,
-                        employmentType: e.target.value,
-                      })
-                    }
-                  />
-                  {/* <InputLabel htmlFor="my-input">Employment Type</InputLabel>
-                  <Input
-                    value={editHrInfo?.contractInfo?.employmentType}
-                    onChange={(e) =>
-                      setEditHrInfo({
-                        ...editHrInfo,
+
                         contractInfo: {
                           ...editHrInfo.contractInfo,
                           employmentType: e.target.value,
                         },
                       })
                     }
-                  /> */}
+                  />
                 </FormControl>
 
                 <FormControl style={inputStylesA}>
@@ -330,13 +276,6 @@ const EditHrInfo = ({ history, match, location }) => {
                     }}
                     value={editHrInfo?.contractInfo?.team}
                     onChange={(e) =>
-                      setEditHrInfo({ ...editHrInfo, team: e.target.value })
-                    }
-                  />
-                  {/* <InputLabel htmlFor="my-input">Team</InputLabel>
-                  <Input
-                    value={editHrInfo?.contractInfo?.team}
-                    onChange={(e) =>
                       setEditHrInfo({
                         ...editHrInfo,
                         contractInfo: {
@@ -345,7 +284,7 @@ const EditHrInfo = ({ history, match, location }) => {
                         },
                       })
                     }
-                  /> */}
+                  />
                 </FormControl>
                 <FormControl style={inputStylesA}>
                   <TextField
@@ -367,23 +306,13 @@ const EditHrInfo = ({ history, match, location }) => {
                     onChange={(e) =>
                       setEditHrInfo({
                         ...editHrInfo,
-                        department: e.target.value,
-                      })
-                    }
-                  />
-                  {/* <InputLabel htmlFor="my-input">Department</InputLabel>
-                  <Input
-                    value={editHrInfo?.contractInfo?.department}
-                    onChange={(e) =>
-                      setEditHrInfo({
-                        ...editHrInfo,
                         contractInfo: {
                           ...editHrInfo.contractInfo,
                           department: e.target.value,
                         },
                       })
                     }
-                  /> */}
+                  />
                 </FormControl>
 
                 <FormControl style={inputStylesA}>
@@ -406,23 +335,14 @@ const EditHrInfo = ({ history, match, location }) => {
                     onChange={(e) =>
                       setEditHrInfo({
                         ...editHrInfo,
-                        supervisor: e.target.value,
-                      })
-                    }
-                  />
-                  {/* <InputLabel htmlFor="my-input">Supervisor</InputLabel>
-                  <Input
-                    value={editHrInfo?.contractInfo?.supervisor}
-                    onChange={(e) =>
-                      setEditHrInfo({
-                        ...editHrInfo,
+
                         contractInfo: {
                           ...editHrInfo.contractInfo,
                           supervisor: e.target.value,
                         },
                       })
                     }
-                  /> */}
+                  />
                 </FormControl>
                 <FormControl style={inputStylesA}>
                   <TextField
@@ -444,23 +364,14 @@ const EditHrInfo = ({ history, match, location }) => {
                     onChange={(e) =>
                       setEditHrInfo({
                         ...editHrInfo,
-                        salary: e.target.value,
-                      })
-                    }
-                  />
-                  {/* <InputLabel htmlFor="my-input">Salary</InputLabel>
-                  <Input
-                    value={editHrInfo?.contractInfo?.salary}
-                    onChange={(e) =>
-                      setEditHrInfo({
-                        ...editHrInfo,
+
                         contractInfo: {
                           ...editHrInfo.contractInfo,
                           salary: e.target.value,
                         },
                       })
                     }
-                  /> */}
+                  />
                 </FormControl>
                 <FormControl style={inputStylesA}>
                   <TextField
@@ -482,23 +393,14 @@ const EditHrInfo = ({ history, match, location }) => {
                     onChange={(e) =>
                       setEditHrInfo({
                         ...editHrInfo,
-                        overtime: e.target.value,
-                      })
-                    }
-                  />
-                  {/* <InputLabel htmlFor="my-input">Overtime</InputLabel>
-                  <Input
-                    value={editHrInfo?.contractInfo?.overtime}
-                    onChange={(e) =>
-                      setEditHrInfo({
-                        ...editHrInfo,
+
                         contractInfo: {
                           ...editHrInfo.contractInfo,
-                          overTime: e.target.value,
+                          overtime: e.target.value,
                         },
                       })
                     }
-                  /> */}
+                  />
                 </FormControl>
                 <FormControl style={inputStylesA}>
                   <TextField
@@ -520,23 +422,14 @@ const EditHrInfo = ({ history, match, location }) => {
                     onChange={(e) =>
                       setEditHrInfo({
                         ...editHrInfo,
-                        workLocation: e.target.value,
-                      })
-                    }
-                  />
-                  {/* <InputLabel htmlFor="my-input">Work Location</InputLabel>
-                  <Input
-                    value={editHrInfo?.contractInfo?.workLocation}
-                    onChange={(e) =>
-                      setEditHrInfo({
-                        ...editHrInfo,
+
                         contractInfo: {
                           ...editHrInfo.contractInfo,
                           workLocation: e.target.value,
                         },
                       })
                     }
-                  /> */}
+                  />
                 </FormControl>
               </div>
 
@@ -566,23 +459,14 @@ const EditHrInfo = ({ history, match, location }) => {
                       onChange={(e) =>
                         setEditHrInfo({
                           ...editHrInfo,
-                          school: e.target.value,
-                        })
-                      }
-                    />
-                    {/* <InputLabel htmlFor="my-input">School Name</InputLabel>
-                    <Input
-                      value={editHrInfo?.education?.school}
-                      onChange={(e) =>
-                        setEditHrInfo({
-                          ...editHrInfo,
+
                           education: {
                             ...editHrInfo.education,
                             school: e.target.value,
                           },
                         })
                       }
-                    /> */}
+                    />
                   </FormControl>
                   <FormControl style={inputStylesB}>
                     <TextField
@@ -604,23 +488,14 @@ const EditHrInfo = ({ history, match, location }) => {
                       onChange={(e) =>
                         setEditHrInfo({
                           ...editHrInfo,
-                          degree: e.target.value,
-                        })
-                      }
-                    />
-                    {/* <InputLabel htmlFor="my-input">Degree</InputLabel>
-                    <Input
-                      value={editHrInfo?.education?.degree}
-                      onChange={(e) =>
-                        setEditHrInfo({
-                          ...editHrInfo,
+
                           education: {
                             ...editHrInfo.education,
                             degree: e.target.value,
                           },
                         })
                       }
-                    /> */}
+                    />
                   </FormControl>
 
                   <FormControl style={inputStylesB}>
@@ -643,23 +518,14 @@ const EditHrInfo = ({ history, match, location }) => {
                       onChange={(e) =>
                         setEditHrInfo({
                           ...editHrInfo,
-                          specialization: e.target.value,
-                        })
-                      }
-                    />
-                    {/* <InputLabel htmlFor="my-input">Field Of Study</InputLabel>
-                    <Input
-                      value={editHrInfo?.education?.specialization}
-                      onChange={(e) =>
-                        setEditHrInfo({
-                          ...editHrInfo,
+
                           education: {
                             ...editHrInfo.education,
                             specialization: e.target.value,
                           },
                         })
                       }
-                    /> */}
+                    />
                   </FormControl>
 
                   <FormControl style={inputStylesB}>
@@ -682,25 +548,14 @@ const EditHrInfo = ({ history, match, location }) => {
                       onChange={(e) =>
                         setEditHrInfo({
                           ...editHrInfo,
-                          endDate: e.target.value,
-                        })
-                      }
-                    />
-                    {/* <InputLabel htmlFor="my-input">
-                      Year Of Completion
-                    </InputLabel>
-                    <Input
-                      value={editHrInfo?.education?.endDate}
-                      onChange={(e) =>
-                        setEditHrInfo({
-                          ...editHrInfo,
+
                           education: {
                             ...editHrInfo.education,
                             endDate: e.target.value,
                           },
                         })
                       }
-                    /> */}
+                    />
                   </FormControl>
                 </div>
               )}
@@ -733,23 +588,14 @@ const EditHrInfo = ({ history, match, location }) => {
                       onChange={(e) =>
                         setEditHrInfo({
                           ...editHrInfo,
-                          company: e.target.value,
-                        })
-                      }
-                    />
-                    {/* <InputLabel htmlFor="my-input">Company</InputLabel>
-                    <Input
-                      value={editHrInfo?.workExperience?.company}
-                      onChange={(e) =>
-                        setEditHrInfo({
-                          ...editHrInfo,
+
                           workExperience: {
                             ...editHrInfo.workExperience,
                             company: e.target.value,
                           },
                         })
                       }
-                    /> */}
+                    />
                   </FormControl>
                   <FormControl style={inputStylesB}>
                     <TextField
@@ -771,23 +617,14 @@ const EditHrInfo = ({ history, match, location }) => {
                       onChange={(e) =>
                         setEditHrInfo({
                           ...editHrInfo,
-                          jobTitle: e.target.value,
-                        })
-                      }
-                    />
-                    {/* <InputLabel htmlFor="my-input">Job Title</InputLabel>
-                    <Input
-                      value={editHrInfo?.workExperience?.jobTitle}
-                      onChange={(e) =>
-                        setEditHrInfo({
-                          ...editHrInfo,
+
                           workExperience: {
                             ...editHrInfo.workExperience,
                             jobTitle: e.target.value,
                           },
                         })
                       }
-                    /> */}
+                    />
                   </FormControl>
                   <FormControl style={inputStylesB}>
                     <TextField
@@ -809,24 +646,14 @@ const EditHrInfo = ({ history, match, location }) => {
                       onChange={(e) =>
                         setEditHrInfo({
                           ...editHrInfo,
-                          from: e.target.value,
-                        })
-                      }
-                    />
-                    {/* <InputLabel htmlFor="my-input">From</InputLabel>
-                    <Input
-                      type="date"
-                      value={editHrInfo?.workExperience?.from}
-                      onChange={(e) =>
-                        setEditHrInfo({
-                          ...editHrInfo,
+
                           workExperience: {
                             ...editHrInfo.workExperience,
                             from: e.target.value,
                           },
                         })
                       }
-                    /> */}
+                    />
                   </FormControl>
                   <FormControl style={inputStylesB}>
                     <TextField
@@ -849,20 +676,6 @@ const EditHrInfo = ({ history, match, location }) => {
                         setEditHrInfo({ ...editHrInfo, to: e.target.value })
                       }
                     />
-                    {/* <InputLabel htmlFor="my-input">To</InputLabel>
-                    <Input
-                      type="date"
-                      value={editHrInfo?.workExperience?.to}
-                      onChange={(e) =>
-                        setEditHrInfo({
-                          ...editHrInfo,
-                          workExperience: {
-                            ...editHrInfo.workExperience,
-                            to: e.target.value,
-                          },
-                        })
-                      }
-                    /> */}
                   </FormControl>
                 </div>
               )}
@@ -874,6 +687,7 @@ const EditHrInfo = ({ history, match, location }) => {
             <div className="hr-save-btn">
               <Button
                 onClick={() => {
+                  console.log(editHrInfo);
                   setShowingAlert(true);
                   edit();
                 }}

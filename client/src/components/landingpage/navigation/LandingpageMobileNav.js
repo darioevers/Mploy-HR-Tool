@@ -78,68 +78,22 @@ export default function LandingpageMobileNav() {
       >
         Test
         {actions.map((action) => (
-        <SpeedDialAction
-          key={action.name}
-          icon={action.icon}
-          tooltipTitle={action.name}
-          onClick={action.target}
-          FabProps={{
-            style: {
-              bgcolor: "#fff",
-              borderRadius: 7,
-              width: "5rem",
-              heigth: "10px",
-            },
-          }}
-        ></SpeedDialAction>
-      ))}
+          <SpeedDialAction
+            key={action.name}
+            icon={action.icon}
+            tooltipTitle={action.name}
+            onClick={action.target}
+            FabProps={{
+              style: {
+                bgcolor: "#fff",
+                borderRadius: 7,
+                width: "5rem",
+                heigth: "10px",
+              },
+            }}
+          ></SpeedDialAction>
+        ))}
       </SpeedDial>
     </Box>
   );
 }
-
-// function LandingpageMobileNav() {
-//   const [openDrawer, setOpenDrawer] = useState(false);
-//   return (
-//     <Box
-//       sx={{
-//         boxShadow: "0",
-//         position: "fixed",
-//         top: "0",
-//       }}
-//     >
-//       <Drawer open={openDrawer} onClose={() => setOpenDrawer(false)}>
-//         <List>
-//           <ListItem onClick={() => setOpenDrawer(false)}>
-//             <ListItemText>
-//               <Link to="/">Home</Link>
-//             </ListItemText>
-//           </ListItem>
-//           <Divider />
-//           <ListItem onClick={() => setOpenDrawer(false)}>
-//             <ListItemText>
-//               <Link to="/about">About</Link>
-//             </ListItemText>
-//           </ListItem>
-//           <Divider />
-//           <ListItem onClick={() => setOpenDrawer(false)}>
-//             <ListItemText>
-//               <Link to="/contact">Contact</Link>
-//             </ListItemText>
-//           </ListItem>
-//           <Divider />
-//           <ListItem onClick={() => setOpenDrawer(false)}>
-//             <ListItemText>
-//               <Link to="/about">Faq</Link>
-//             </ListItemText>
-//           </ListItem>
-//           <Divider />
-//         </List>
-//       </Drawer>
-//       <IconButton onClick={() => setOpenDrawer(!openDrawer)}>
-//         <MenuIcon />
-//       </IconButton>
-//     </Box>
-//   );
-// }
-// export default LandingpageMobileNav;

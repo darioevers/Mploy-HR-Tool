@@ -27,11 +27,12 @@ function TopNav() {
       <LanguageSwitch />
       <div className="darkmode_switch">
         <DarkModeSwitch />
-
-        <div className="settings_button">
-          <RightDrawer />
-        </div>
       </div>
+
+      <div className="settings-button">
+        <RightDrawer />
+      </div>
+
       {role === "admin" && <></>}
     </div>
   );

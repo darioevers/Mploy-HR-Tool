@@ -28,6 +28,7 @@ function WidgetSickLeave({ userdata }) {
       )
 
       .then((data) => {
+        console.log(leaves);
         setLeaves(data.data);
       })
       .catch((err) => console.log(err));

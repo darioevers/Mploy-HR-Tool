@@ -20,7 +20,6 @@ employeeController.getAllEmployees = async (req, res) => {
 
 //get one employee by id
 employeeController.getOneEmployee = async (req, res) => {
-  console.log(req.params.id);
   try {
     const employee = await EmployeeData.findById(req.params.id);
 
@@ -33,38 +32,9 @@ employeeController.getOneEmployee = async (req, res) => {
   }
 };
 
-// //get one employee by email
-// employeeController.getOneEmployeeByEmail = async (req, res) => {
-//   console.log(req.body);
-//   try {
-//     const employee = await EmployeeData.findOne(req.body.email);
-
-//     res.status(200).json(employee);
-//     // console.log(employees);
-//   } catch (error) {
-//     res.status(error.status).json({
-//       message: error.message,
-//     });
-//   }
-// };
-
-// //get
-// leaveController.getLeaves = async (name, res) => {
-//   try {
-//     const leaves = await LeavesData.find({name: name})
-//     .populate('leaves')
-//     res.status(200).json(leaves);
-//   } catch (error) {
-//     res.status(error.status).json({
-//       message: error.message,
-//     });
-//   }
-// };
-
 // add new Employee
 
 employeeController.addNewEmployee = async (req, res) => {
-  console.log("data", req.body);
 
   const received = JSON.parse(req.body.allData);
   const pathProfilePic = req.files?.file[0]?.path.substring(7);
@@ -72,7 +42,6 @@ employeeController.addNewEmployee = async (req, res) => {
   const pathDiploma = req.files?.fileDiploma[0]?.path.substring(7);
   const pathCertificate = req.files?.fileCertificate[0]?.path.substring(7);
   const pathLetter = req.files?.fileLetter[0]?.path.substring(7);
-  console.log(received);
   try {
     const employee = await new EmployeeData({
       bio: {
@@ -150,17 +119,12 @@ employeeController.addNewEmployee = async (req, res) => {
 
 // employee search
 employeeController.searchName = async (req, res) => {
-  // let searchPattern = new RegEx("^" + req.body.query);
-  // EmployeeData.find({ firstName: { $regex: searchPattern } })
   try {
     const empArr = await EmployeeData.find({ "bio.status": "active" });
-    // .select("firstName"
-    console.log(empArr);
+
     const empFilter = empArr.filter((item) =>
       item.bio.firstName.toLowerCase().includes(req.body.query)
     );
-
-    console.log(empFilter);
     res.json(empFilter);
   } catch (err) {
     res.send(err);
@@ -169,12 +133,14 @@ employeeController.searchName = async (req, res) => {
 
 // patch or update employee
 employeeController.updateEmployee = async (req, res) => {
-  console.log(req.body);
   try {
-    // console.log(received);
-    // let received = await JSON.parse(req.body.editHrInfo);
-    let received = req.body;
-    // console.log("after", received);
+
+    let received = await JSON.parse(req.body.editHrInfo);
+
+    received.bio.photo = req.files?.file[0]?.path.substring(7);
+
+    console.log("recieve", received);
+
     const employee = await EmployeeData.findOneAndUpdate(
       { "bio.email": received.bio.email },
       received,
@@ -215,15 +181,5 @@ employeeController.deleteOrUpdateStatus = async (req, res) => {
     res.status(400).send({ message: error.message });
   }
 };
-
-// get file
-// employeeController.getallMultipleFiles = async (req, res, next) => {
-//   try{
-//       const files = await MultipleFile.find();
-//       res.status(200).send(files);
-//   }catch(error) {
-//       res.status(400).send(error.message);
-//   }
-// }
 
 module.exports = employeeController;

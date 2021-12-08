@@ -23,6 +23,30 @@ leaveController.updateLeave = async (req, res) => {
       const leave = await LeavesData.findById(req.body.id);
       leave.pending = false;
       leave.save();
+
+      let employee = await EmployeesData.findOne({
+        "bio.email": leave.email,
+      });
+      // employee.leaves.push(leave);
+      console.log(employee);
+      const type = leave.type;
+      console.log(type);
+      console.log(leave.leavesApplied);
+
+      if (type === "sick-leave") {
+        console.log(leave.leavesApplied);
+        employee.takenSickLeave = leave.leavesApplied;
+      } else if (type === "holiday") {
+        employee.takenHolidays = leave.leavesApplied;
+        employee.availableHolidays =
+          employee.availableHolidays - leave.leavesApplied;
+      } else {
+        employee.takenHomeOffice = leave.leavesApplied;
+        employee.availableHomeOffice =
+          employee.availableHomeOffice - leave.leavesApplied;
+      }
+      employee.save();
+
       res.json({ success: true, message: "leave marked as approved" });
     } else if (!req.body.approved) {
       await LeavesData.findByIdAndDelete(req.body.id);
@@ -45,12 +69,9 @@ leaveController.addLeave = async (req, res) => {
     let date2 = new Date(two);
     let result = Math.round(Math.abs(+date1 - +date2) / 8.64e7);
     return result;
-    // return setNewLeave({ ...newLeave, leavesApplied: "result" });
-
-    // console.log(Math.round(Math.abs(+date1 - +date2) / 8.64e7));
   };
   const leavesAppliedNum = daysBetween(req.body.dateFrom, req.body.dateTo);
-  console.log(req.body);
+
   try {
     const leave = await new LeavesData({
       name: req.body.name,
@@ -61,26 +82,25 @@ leaveController.addLeave = async (req, res) => {
       dateTo: req.body.dateTo,
       pending: true,
       leavesApplied: leavesAppliedNum,
-      // totalHolidays: LeavesData.totalHolidays + req.body.totalHolidays, //comment
     });
 
     leave.save();
     let employee = await EmployeesData.findOne({ "bio.email": req.body.email });
     employee.leaves.push(leave);
-    const type = req.body.type;
-    console.log(req.body);
-    if (type === "sick-leave") {
-      employee.takenSickLeave = leavesAppliedNum;
-    } else if (type === "holiday") {
-      employee.takenHolidays = leavesAppliedNum;
-      employee.availableHolidays =
-        employee.availableHolidays - leavesAppliedNum;
-    } else {
-      employee.takenHomeOffice = leavesAppliedNum;
-      employee.availableHomeOffice =
-        employee.availableHomeOffice - leavesAppliedNum;
-    }
-    employee.save();
+    // const type = req.body.type;
+    // console.log(req.body);
+    // if (type === "sick-leave") {
+    //   employee.takenSickLeave = leavesAppliedNum;
+    // } else if (type === "holiday") {
+    //   employee.takenHolidays = leavesAppliedNum;
+    //   employee.availableHolidays =
+    //     employee.availableHolidays - leavesAppliedNum;
+    // } else {
+    //   employee.takenHomeOffice = leavesAppliedNum;
+    //   employee.availableHomeOffice =
+    //     employee.availableHomeOffice - leavesAppliedNum;
+    // }
+    // employee.save();
 
     res
       .status(200)

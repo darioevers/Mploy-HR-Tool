@@ -12,7 +12,6 @@
   width: 0;
   height: 0;
 
-  //for sample push -- delete later
   i {
     @include md {
       color: $primary;
@@ -111,7 +110,6 @@
   }
 }
 
-.documents_photo,
 .documents_cv,
 .documents_certificate,
 .documents_diploma,
@@ -123,9 +121,19 @@
   height: 200px;
   margin: 40px 20px;
   border-radius: 20px;
-  padding: 20px;
+  padding: 50px 20px;
 }
 
+.documents_photo {
+  text-align: center;
+  position: relative;
+  background-color: $tertiary;
+  width: 30%;
+  height: 200px;
+  margin: 40px 20px;
+  border-radius: 20px;
+  padding: 20px;
+}
 .documents_label {
   @include flex-center;
   flex-direction: column;
