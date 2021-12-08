@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import DashboardTopNav from "../global/DashboardTopNav";
-import DashboardSideNav from "../global/DashboardSideNav";
+import DashboardSideNav from "../global/NewDashboardSideNav";
 import { NavLink } from "react-router-dom";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
@@ -396,9 +396,8 @@ const AddDocument = ({ location, history }) => {
           </button>
         </div>
         <div
-          className={`alert alert-success ${
-            isShowingAlert ? "alert-shown" : "alert-hidden"
-          }`}
+          className={`alert alert-success ${isShowingAlert ? "alert-shown" : "alert-hidden"
+            }`}
           onTransitionEnd={() => setShowingAlert(false)}
         >
           <CheckCircleOutlineIcon />

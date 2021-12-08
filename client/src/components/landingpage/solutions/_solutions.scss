@@ -1,1 +1,12 @@
 
+.home_solutions_gridbox {
+    height: 500px
+}
+
+.home_solutions_gridbox_content{
+    height: 400px;
+    @media only screen and (max-width: 600px) {
+        /*Big smartphones [426px -> 600px]*/
+        height: 300px
+      }
+}

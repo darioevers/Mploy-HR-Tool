@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 
 // COMPONENT IMPORTS
 import DashboardTopNav from "../global/DashboardTopNav";
-import DashboardSideNav from "../global/DashboardSideNav";
+import DashboardSideNav from "../global/NewDashboardSideNav";
 
 // MUI IMPORTS
 import {
@@ -883,9 +883,8 @@ const EditHrInfo = ({ history, match, location }) => {
             </div>
           </FormGroup>
           <div
-            className={`alert alert-success ${
-              isShowingAlert ? "alert-shown" : "alert-hidden"
-            }`}
+            className={`alert alert-success ${isShowingAlert ? "alert-shown" : "alert-hidden"
+              }`}
             onTransitionEnd={() => setShowingAlert(false)}
           >
             <p>Employee Data Updated!</p>

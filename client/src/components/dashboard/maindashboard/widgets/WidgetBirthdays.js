@@ -109,9 +109,9 @@ function WidgetBirthdays({ userdata }) {
                   </div>
                 ))}
           </Carousel>
-          <Typography variant="body2">
+          <Typography variant="caption">
             <Box
-              sx={{ boxShadow: "0", bgcolor: "transparent", fontWeight: 600 }}
+              sx={{ boxShadow: "0", bgcolor: "background.widgets", fontWeight: 400 }}
             >
               {t("dashboardWidgetBirthdays.title02")}
             </Box>
@@ -146,9 +146,9 @@ function WidgetBirthdays({ userdata }) {
                   </div>
                 ))}
           </Carousel>
-          <Typography variant="body2">
+          <Typography variant="caption">
             <Box
-              sx={{ boxShadow: "0", bgcolor: "transparent", fontWeight: 600 }}
+              sx={{ boxShadow: "0", bgcolor: "background.widgets", fontWeight: 400 }}
             >
               {t("dashboardWidgetBirthdays.title03")}
             </Box>

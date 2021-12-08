@@ -151,21 +151,17 @@
     background-image: url("../../../img/graphics/active-bg.png");
     background-size: cover;
   }
-  width: 230px;
-  height: 79px;
+  // width: 230px;
+  // height: 79px;
   background-image: url("../../../img/graphics/active-bg-xl.png");
-  background-size: cover;
-  margin-left: -30px;
-  margin-bottom: 0;
+  // background-size: cover;
+  // margin-left: -30px;
+  // margin-bottom: 0;
   // border: 1px solid red;
-  p {
-    color: $dark-bg;
-  }
   i {
     @include md {
       padding-left: 25px;
     }
-    color: $dark-bg;
     padding-left: 33px;
   }
 }

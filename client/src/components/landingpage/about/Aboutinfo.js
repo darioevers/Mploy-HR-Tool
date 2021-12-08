@@ -33,7 +33,7 @@ export default function Aboutoutro(props) {
   const content = {
     // GRID NUMBER STRINGS
     commits: "393",
-    lines: "55419",
+    lines: "15354",
     messages: "2400",
     hours: "300",
     tech: "12+",

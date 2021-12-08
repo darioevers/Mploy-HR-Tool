@@ -30,7 +30,7 @@
 //WIDGET WRAPPER
 @mixin widget-wrapper {
   width: 100%;
-  min-width: 400px;
+  min-width: 350px;
   height: 100%;
   // min-height: 150px;
   // background-color: $light-bg;
@@ -45,18 +45,18 @@
     display: flex;
     flex-direction: column;
     margin: 0;
-    overflow: hidden;
+    // overflow: hidden;
   }
-  width: 98vw;
-  height: 95vh;
-  min-width: 1366px;
-  min-height: 846px;
-  overflow: hidden;
-  margin: 10px;
+  max-width: 99vw;
+  max-height: 95vh;
+  // min-width: 1366px;
+  // min-height: 846px;
+  // overflow: hidden;
+  margin-top: 10px;
   display: grid;
   grid-template-columns: 0.5fr 1.5fr 1fr;
   grid-template-rows: 0.2fr 1.6fr 1fr;
-  gap: 0px 20px;
+  gap: 0px 0px;
   grid-template-areas:
     "topnav_mainbox topnav_mainbox topnav_mainbox"
     "sidenav_mainbox components_mainbox components_mainbox"

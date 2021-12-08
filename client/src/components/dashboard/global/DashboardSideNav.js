@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Component } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import axios from "axios";
 
@@ -6,6 +6,7 @@ import axios from "axios";
 import { useTranslation } from "react-i18next";
 
 // MUI IMPORTS
+import { withStyles } from '@material-ui/core/styles';
 import { makeStyles } from '@mui/styles';
 import Typography from "@mui/material/Typography";
 import Button from "@material-ui/core/Button";
@@ -106,14 +107,27 @@ const DashboardSideNav = (props) => {
   };
 
   // NAVBAR ACTIVE BUTTONS
-  const classes = makeStyles({
+  // const classes = makeStyles({
+  //   button: {
+  //     "&.active": {
+  //       backgroundImage: { navlinkImg },
+  //       bgcolor: "background.default"
+  //     },
+  //   },
+  // });
+
+  const useStyles = makeStyles(theme => ({
     button: {
-      "&.active": {
-        backgroundImage: { navlinkImg },
-        bgcolor: "background.default"
-      },
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
-  });
+    active: {
+      bgcolor: "background.paper"
+    },
+  }));
+
+  const classes = useStyles();
 
   // TRANSLATION
   const { t } = useTranslation();
@@ -155,7 +169,7 @@ const DashboardSideNav = (props) => {
               exact
               to="/dashboard"
               activeClassName="active"
-              className={classes.button}
+              className="sidenav_link"
               onClick={handleClick}
             >
               <i>

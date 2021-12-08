@@ -45,6 +45,7 @@ export function ToggleColorMode(props) {
                         primary: '#000',
                         secondary: '#000',
                         alternate: "#fff",
+                        gray: "#9fa1a4"
                     },
                     background: {
                         paper: '#fff',
@@ -102,6 +103,7 @@ export function ToggleColorMode(props) {
                         primary: '#e6e6e6',
                         secondary: '#cccccc',
                         alternate: "#fff",
+                        gray: "#9fa1a4"
                     },
                     background: {
                         paper: '#3b444e',
@@ -113,7 +115,7 @@ export function ToggleColorMode(props) {
                         widgets: "#0e141b",
                         widgetlines: "#252d36",
                         darkerOne: "#161d25",
-                        hr: "#151a20",
+                        hr: "#151a20"
                     },
                     landingpagenavbar: {
                         main: "rgba(54, 54, 54, 0.835)"
