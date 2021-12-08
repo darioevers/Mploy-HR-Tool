@@ -37,11 +37,14 @@ function WidgetHomeOffice({ userdata }) {
   const { t } = useTranslation();
 
   return (
-    <Box className="widget_homeoffice_mainbox" sx={{ boxShadow: "0", bgcolor: 'background.widgets' }}>
+    <Box
+      className="widget_homeoffice_mainbox"
+      sx={{ boxShadow: "0", bgcolor: "background.widgets" }}
+    >
       <div className="homeoffice_top_wrapper">
         <div className="square_bullet"></div>
-        <Typography variant="h6">
-          <Box sx={{ ml: 2, boxShadow: "0", bgcolor: "background.widgets" }}>
+        <Typography style={{ fontSize: "15px" }}>
+          <Box sx={{ ml: 2, boxShadow: "0", bgcolor: "transparent" }}>
             {t("dashboardWidgetHomeOffice.title01")}
           </Box>
         </Typography>
@@ -53,7 +56,10 @@ function WidgetHomeOffice({ userdata }) {
             {t("dashboardWidgetHomeOffice.title02")}
           </Box>
         </Typography>
-        <Box className="horizontal_line" sx={{ boxShadow: "0", bgcolor: "background.widgetlines" }}></Box>
+        <Box
+          className="horizontal_line"
+          sx={{ boxShadow: "0", bgcolor: "background.widgetlines" }}
+        ></Box>
       </div>
 
       <div className="homeoffice_bottomleft_wrapper">
@@ -69,7 +75,10 @@ function WidgetHomeOffice({ userdata }) {
       </div>
 
       <div className="homeoffice_bottommiddle_wrapper">
-        <Box className="vertical_line" sx={{ boxShadow: "0", bgcolor: "background.widgetlines" }}></Box>
+        <Box
+          className="vertical_line"
+          sx={{ boxShadow: "0", bgcolor: "background.widgetlines" }}
+        ></Box>
       </div>
 
       <div className="homeoffice_bottomright_wrapper">

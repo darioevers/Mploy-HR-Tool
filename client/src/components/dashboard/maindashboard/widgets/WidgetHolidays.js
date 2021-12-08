@@ -37,11 +37,14 @@ function WidgetHolidays({ userdata }) {
   const { t } = useTranslation();
 
   return (
-    <Box className="widget_holidays_mainbox" sx={{ boxShadow: "0", bgcolor: 'background.widgets' }}>
+    <Box
+      className="widget_holidays_mainbox"
+      sx={{ boxShadow: "0", bgcolor: "background.widgets" }}
+    >
       <div className="holidays_top_wrapper">
         <div className="square_bullet"></div>
-        <Typography variant="h6">
-          <Box sx={{ ml: 2, boxShadow: "0", bgcolor: "background.widgets" }}>
+        <Typography style={{ fontSize: "15px" }}>
+          <Box sx={{ ml: 2, boxShadow: "0", bgcolor: "transparent" }}>
             {t("dashboardWidgetHolidays.title01")}
           </Box>
         </Typography>
@@ -53,7 +56,10 @@ function WidgetHolidays({ userdata }) {
             {t("dashboardWidgetHolidays.title02")}
           </Box>
         </Typography>
-        <Box className="horizontal_line" sx={{ boxShadow: "0", bgcolor: "background.widgetlines" }}></Box>
+        <Box
+          className="horizontal_line"
+          sx={{ boxShadow: "0", bgcolor: "background.widgetlines" }}
+        ></Box>
       </div>
 
       <div className="holidays_bottomleft_wrapper">
@@ -69,7 +75,10 @@ function WidgetHolidays({ userdata }) {
       </div>
 
       <div className="holidays_bottommiddle_wrapper">
-        <Box className="vertical_line" sx={{ boxShadow: "0", bgcolor: "background.widgetlines" }}></Box>
+        <Box
+          className="vertical_line"
+          sx={{ boxShadow: "0", bgcolor: "background.widgetlines" }}
+        ></Box>
       </div>
 
       <div className="holidays_bottomright_wrapper">
