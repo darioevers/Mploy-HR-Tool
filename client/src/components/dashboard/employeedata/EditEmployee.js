@@ -25,7 +25,6 @@ const EditEmployee = ({ history, location }) => {
     location.state && location.state.employee
   );
 
-
   //styling of formControls
   const inputStylesA = {
     width: "46%",
@@ -58,7 +57,6 @@ const EditEmployee = ({ history, location }) => {
         <div className="addemployee_header">
           <div className="active_tab">
             <h4>{t("dashboardEditEmployeeData.menu01")}</h4>
-          
           </div>
           <div
             className="inactive_tab"
@@ -104,13 +102,9 @@ const EditEmployee = ({ history, location }) => {
                           ...editEmp.bio,
                           firstName: e.target.value,
                         },
-
                       })
                     }
-
                   />
- 
-
                 </FormControl>
                 <FormControl style={inputStylesA}>
                   <TextField
@@ -139,7 +133,6 @@ const EditEmployee = ({ history, location }) => {
                         },
                       })
                     }
-
                   />
                 </FormControl>
                 <FormControl style={inputStylesA}>
@@ -164,7 +157,7 @@ const EditEmployee = ({ history, location }) => {
                         ...editEmp,
                         bio: {
                           ...editEmp.bio,
-                          lastName: e.target.value,
+                          employeeId: e.target.value,
                         },
                       })
                     }
@@ -191,14 +184,12 @@ const EditEmployee = ({ history, location }) => {
                       setEditEmp({
                         ...editEmp,
                         contractInfo: {
-
                           ...editEmp.contractInfo,
                           position: e.target.value,
                         },
                       });
                     }}
                   />
-                 
                 </FormControl>
               </Box>
 
@@ -285,7 +276,7 @@ const EditEmployee = ({ history, location }) => {
                     onChange={(e) =>
                       setEditEmp({
                         ...editEmp,
-                        adressOne: {
+                        addressOne: {
                           ...editEmp.addressOne,
                           cityOne: e.target.value,
                         },
@@ -397,16 +388,14 @@ const EditEmployee = ({ history, location }) => {
                       },
                     }}
                     value={editEmp?.bio?.dateOfBirth}
-                    onChange={(e) => {
+                    onChange={(e) =>
                       setEditEmp({
                         ...editEmp,
                         bio: {
                           ...editEmp.bio,
                           dateOfBirth: e.target.value,
                         },
-                      });
-                     
-                    } 
+                      })
                     }
                   />
                 </FormControl>
@@ -432,7 +421,7 @@ const EditEmployee = ({ history, location }) => {
                       setEditEmp({
                         ...editEmp,
                         bio: {
-                          ...editEmp.otherEmail,
+                          ...editEmp.bio,
                           otherEmail: e.target.value,
                         },
                       })
@@ -461,7 +450,7 @@ const EditEmployee = ({ history, location }) => {
                       setEditEmp({
                         ...editEmp,
                         bio: {
-                          ...editEmp.nationality,
+                          ...editEmp.bio,
                           nationality: e.target.value,
                         },
                       })
@@ -489,12 +478,10 @@ const EditEmployee = ({ history, location }) => {
                     onChange={(e) =>
                       setEditEmp({
                         ...editEmp,
-
                         bio: {
                           ...editEmp.bio,
                           gender: e.target.value,
                         },
-
                       })
                     }
                   >
@@ -572,7 +559,10 @@ const EditEmployee = ({ history, location }) => {
                     onChange={(e) =>
                       setEditEmp({
                         ...editEmp,
-                        bio: { ...editEmp.bio, hobbies: e.target.value },
+                        bio: {
+                          ...editEmp.bio,
+                          hobbies: e.target.value,
+                        },
                       })
                     }
                   />

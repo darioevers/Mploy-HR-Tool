@@ -13,8 +13,8 @@ import Box from "@mui/material/Paper";
 
 // ICON IMPORTS
 import CloseIcon from "@mui/icons-material/Close";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
-import e from "cors";
 
 
 function WidgetApplications({ userdata }) {

@@ -9,7 +9,13 @@ import DashboardTopNav from "../global/DashboardTopNav";
 import DashboardSideNav from "../global/DashboardSideNav";
 
 // MUI IMPORTS
-import { FormGroup, FormControl, Typography } from "@material-ui/core";
+import {
+  FormGroup,
+  FormControl,
+  Typography,
+  InputLabel,
+  Input,
+} from "@material-ui/core";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Button from "@material-ui/core/Button";
@@ -36,11 +42,10 @@ const EditHrInfo = ({ history, match, location }) => {
     const readyTOSend = JSON.stringify(editHrInfo);
     data.append("editHrInfo", readyTOSend);
 
-    console.log("editHrInfo",editHrInfo);
-    console.log("data",data);
+    console.log("editHrInfo", editHrInfo);
+    console.log("data", data);
 
     // const data = editHrInfo;
-
 
     axios
       .put("http://localhost:5000/employee/update", data, {
@@ -98,27 +103,23 @@ const EditHrInfo = ({ history, match, location }) => {
           <div className="active_tab">
             <h4>{t("dashboardEditHRData.menu02")}</h4>
           </div>
-
         </div>
         <div className="employeedata_form">
           <FormGroup>
             <div className="edithrinfo_form">
               <div className="edithrinfo_contractdetails_header">
                 <h3>{t("dashboardEditHRData.sectionHeading01")}</h3>
-                
               </div>
 
               <div className="edithrinfo_contractdetails_content">
-              <FormControl>
-            <InputLabel htmlFor="my-input">Photo</InputLabel>
-            <Input type="file"
-              name="file"
-             
-              onChange={(e) =>
-                setFile( e.target.files[0])  
-            }
-            />
-          </FormControl>
+                <FormControl>
+                  <InputLabel htmlFor="my-input">Photo</InputLabel>
+                  <Input
+                    type="file"
+                    name="file"
+                    onChange={(e) => setFile(e.target.files[0])}
+                  />
+                </FormControl>
                 <FormControl style={inputStylesA}>
                   <TextField
                     id="contractNumber"
@@ -139,15 +140,14 @@ const EditHrInfo = ({ history, match, location }) => {
                     onChange={(e) =>
                       setEditHrInfo({
                         ...editHrInfo,
-
                         contractInfo: {
                           ...editHrInfo.contractInfo,
                           contractNo: e.target.value,
                         },
                       })
                     }
-                  />
 
+                  />
                 </FormControl>
                 <FormControl style={inputStylesA}>
                   <TextField
@@ -173,8 +173,6 @@ const EditHrInfo = ({ history, match, location }) => {
                       });
                     }}
                   />
-
-
                 </FormControl>
                 <FormControl style={inputStylesA}>
                   <TextField
@@ -201,7 +199,6 @@ const EditHrInfo = ({ history, match, location }) => {
                       })
                     }
                   />
-
                 </FormControl>
                 <FormControl style={inputStylesA}>
                   <TextField
@@ -230,7 +227,6 @@ const EditHrInfo = ({ history, match, location }) => {
                       })
                     }
                   />
-
                 </FormControl>
                 <FormControl style={inputStylesA}>
                   <TextField
@@ -260,7 +256,6 @@ const EditHrInfo = ({ history, match, location }) => {
                       })
                     }
                   />
-
                 </FormControl>
 
                 <FormControl style={inputStylesA}>
@@ -281,7 +276,6 @@ const EditHrInfo = ({ history, match, location }) => {
                     }}
                     value={editHrInfo?.contractInfo?.team}
                     onChange={(e) =>
-
                       setEditHrInfo({
                         ...editHrInfo,
                         contractInfo: {
@@ -291,7 +285,6 @@ const EditHrInfo = ({ history, match, location }) => {
                       })
                     }
                   />
-
                 </FormControl>
                 <FormControl style={inputStylesA}>
                   <TextField
@@ -313,7 +306,6 @@ const EditHrInfo = ({ history, match, location }) => {
                     onChange={(e) =>
                       setEditHrInfo({
                         ...editHrInfo,
-
                         contractInfo: {
                           ...editHrInfo.contractInfo,
                           department: e.target.value,
@@ -321,7 +313,6 @@ const EditHrInfo = ({ history, match, location }) => {
                       })
                     }
                   />
-
                 </FormControl>
 
                 <FormControl style={inputStylesA}>
@@ -352,7 +343,6 @@ const EditHrInfo = ({ history, match, location }) => {
                       })
                     }
                   />
-
                 </FormControl>
                 <FormControl style={inputStylesA}>
                   <TextField
@@ -382,7 +372,6 @@ const EditHrInfo = ({ history, match, location }) => {
                       })
                     }
                   />
-
                 </FormControl>
                 <FormControl style={inputStylesA}>
                   <TextField
@@ -412,7 +401,6 @@ const EditHrInfo = ({ history, match, location }) => {
                       })
                     }
                   />
-
                 </FormControl>
                 <FormControl style={inputStylesA}>
                   <TextField
@@ -442,7 +430,6 @@ const EditHrInfo = ({ history, match, location }) => {
                       })
                     }
                   />
-
                 </FormControl>
               </div>
 
@@ -480,7 +467,6 @@ const EditHrInfo = ({ history, match, location }) => {
                         })
                       }
                     />
-
                   </FormControl>
                   <FormControl style={inputStylesB}>
                     <TextField
@@ -510,7 +496,6 @@ const EditHrInfo = ({ history, match, location }) => {
                         })
                       }
                     />
-
                   </FormControl>
 
                   <FormControl style={inputStylesB}>
@@ -541,7 +526,6 @@ const EditHrInfo = ({ history, match, location }) => {
                         })
                       }
                     />
-
                   </FormControl>
 
                   <FormControl style={inputStylesB}>
@@ -572,7 +556,6 @@ const EditHrInfo = ({ history, match, location }) => {
                         })
                       }
                     />
-
                   </FormControl>
                 </div>
               )}
@@ -613,7 +596,6 @@ const EditHrInfo = ({ history, match, location }) => {
                         })
                       }
                     />
-
                   </FormControl>
                   <FormControl style={inputStylesB}>
                     <TextField
@@ -643,7 +625,6 @@ const EditHrInfo = ({ history, match, location }) => {
                         })
                       }
                     />
-
                   </FormControl>
                   <FormControl style={inputStylesB}>
                     <TextField
@@ -673,7 +654,6 @@ const EditHrInfo = ({ history, match, location }) => {
                         })
                       }
                     />
-
                   </FormControl>
                   <FormControl style={inputStylesB}>
                     <TextField
@@ -696,7 +676,6 @@ const EditHrInfo = ({ history, match, location }) => {
                         setEditHrInfo({ ...editHrInfo, to: e.target.value })
                       }
                     />
-
                   </FormControl>
                 </div>
               )}
