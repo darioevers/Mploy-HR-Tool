@@ -36,7 +36,6 @@ announcementContoller.addNewAnnouncement = async (req, res) => {
 
 //delete announcement
 announcementContoller.deleteAnnouncement = async (req, res) => {
-  console.log(req.params.id);
   try {
     await AnnouncementsData.findByIdAndDelete(req.params.id);
     res.status(200).send({ message: "data deleted!", success: true });

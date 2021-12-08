@@ -20,7 +20,6 @@ employeeController.getAllEmployees = async (req, res) => {
 
 //get one employee by id
 employeeController.getOneEmployee = async (req, res) => {
-  console.log(req.params.id);
   try {
     const employee = await EmployeeData.findById(req.params.id);
 
@@ -36,7 +35,6 @@ employeeController.getOneEmployee = async (req, res) => {
 // add new Employee
 
 employeeController.addNewEmployee = async (req, res) => {
-  // console.log("data", req.body);
 
   const received = JSON.parse(req.body.allData);
   const pathProfilePic = req.files?.file[0]?.path.substring(7);
@@ -44,7 +42,6 @@ employeeController.addNewEmployee = async (req, res) => {
   const pathDiploma = req.files?.fileDiploma[0]?.path.substring(7);
   const pathCertificate = req.files?.fileCertificate[0]?.path.substring(7);
   const pathLetter = req.files?.fileLetter[0]?.path.substring(7);
-  console.log(received);
   try {
     const employee = await new EmployeeData({
       bio: {
@@ -124,12 +121,10 @@ employeeController.addNewEmployee = async (req, res) => {
 employeeController.searchName = async (req, res) => {
   try {
     const empArr = await EmployeeData.find({ "bio.status": "active" });
-    console.log(empArr);
+
     const empFilter = empArr.filter((item) =>
       item.bio.firstName.toLowerCase().includes(req.body.query)
     );
-
-    console.log(empFilter);
     res.json(empFilter);
   } catch (err) {
     res.send(err);
@@ -139,6 +134,7 @@ employeeController.searchName = async (req, res) => {
 // patch or update employee
 employeeController.updateEmployee = async (req, res) => {
   try {
+
     let received = await JSON.parse(req.body.editHrInfo);
 
     received.bio.photo = req.files?.file[0]?.path.substring(7);

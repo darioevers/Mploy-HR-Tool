@@ -188,7 +188,7 @@ const AddEmployee = ({ history }) => {
                   <Select
                     labelId="demo"
                     onChange={(e) =>
-                      setEmployee({ ...employee, country: e.target.value })
+                      setEmployee({ ...employee, countryOne: e.target.value })
                     }
                   >
                     {countrydata.map((data) => (

@@ -162,8 +162,8 @@ function EmployeeData({ history }) {
                               />
                               <div className="table_cell_photo">
                                 <h5>
-                                  {employee.bio.firstName}
-                                  {employee.bio.lastName}
+                                  {" "}
+                                  {`${employee?.bio?.firstName} ${employee?.bio?.lastName}`}
                                 </h5>
 
                                 <h4>{employee.contractInfo?.position}</h4>
@@ -290,9 +290,11 @@ function EmployeeData({ history }) {
                                 <div
                                   variant="contained"
                                   onClick={() => {
-                                    history.push(
-                                      `/dashboard/employeedata/editemployee/${employee._id}`
-                                    );
+                                    history.push({
+                                      pathname:
+                                        "/dashboard/employeedata/editemployee",
+                                      state: { employee },
+                                    });
                                   }}
                                 >
                                   Edit

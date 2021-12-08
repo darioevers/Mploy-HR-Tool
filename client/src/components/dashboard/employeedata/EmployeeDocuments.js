@@ -81,20 +81,6 @@ const EmployeeDocuments = ({ history, match }) => {
         </div>
 
         <div className="documents_form">
-          <div className="documents_photo">
-            <div className="photo">
-              <div className="dummy_photo">
-                <img
-                  src={`http://localhost:5000/${documents?.bio?.photo}`}
-                  onError={(e) => {
-                    e.target.onError = null;
-                    e.target.src = "http://localhost:5000/uploads/error.jpg";
-                  }}
-                />
-              </div>
-            </div>
-          </div>
-
           <div className="documents_cv">
             <a
               target="_blank"
@@ -126,7 +112,7 @@ const EmployeeDocuments = ({ history, match }) => {
               target="_blank"
               href={`http://localhost:5000/${documents?.bio?.diploma} `}
             >
-              Preview diploma
+              Preview Diploma
             </a>
             <div className="documents_label">
               <p>Upload Date </p>
@@ -139,7 +125,7 @@ const EmployeeDocuments = ({ history, match }) => {
               target="_blank"
               href={`http://localhost:5000/${documents?.bio?.letter} `}
             >
-              Preview Recommendation Letter
+              Preview Letter
             </a>
             <div className="documents_label">
               <p>Upload Date </p>

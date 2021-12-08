@@ -28,6 +28,7 @@ function WidgetSickLeave({ userdata }) {
       )
 
       .then((data) => {
+        console.log(leaves);
         setLeaves(data.data);
       })
       .catch((err) => console.log(err));
@@ -41,7 +42,7 @@ function WidgetSickLeave({ userdata }) {
       <div className="sickleave_top_wrapper">
         <div className="square_bullet"></div>
         <Typography variant="h7">
-          <Box sx={{ ml: 2, boxShadow: "0", bgcolor: "transparent" }}>
+          <Box sx={{ ml: 2, boxShadow: "0", backgroundColor: "transparent" }}>
             {t("dashboardWidgetSickleave.title01")}
           </Box>
         </Typography>
@@ -58,7 +59,14 @@ function WidgetSickLeave({ userdata }) {
 
       <div className="sickleave_bottomleft_wrapper">
         <Typography variant="body2">
-          <Box sx={{ ml: 2, boxShadow: "0", bgcolor: "transparent" }}>
+          <Box
+            sx={{
+              ml: 2,
+              boxShadow: "0",
+              bgcolor: "transparent",
+              fontSize: "22px",
+            }}
+          >
             {t("dashboardWidgetSickleave.title03")}
           </Box>
         </Typography>
@@ -79,7 +87,14 @@ function WidgetSickLeave({ userdata }) {
               .map((item) => <h2>{item.takenSickLeave || "0"}</h2>)}
         </h2>
         <Typography variant="caption">
-          <Box sx={{ ml: 2, boxShadow: "0", bgcolor: "transparent" }}>
+          <Box
+            sx={{
+              ml: 2,
+              boxShadow: "0",
+              bgcolor: "transparent",
+              marginLeft: "0px",
+            }}
+          >
             {t("dashboardWidgetSickleave.title05")}
           </Box>
         </Typography>

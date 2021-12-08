@@ -1,7 +1,7 @@
 const TasksData = require("../models/tasksModel");
 const taskContoller = {};
 
-// get announcements
+// get tasks
 taskContoller.getTasks = async (req, res) => {
   try {
     const tasks = await TasksData.find();
@@ -13,7 +13,7 @@ taskContoller.getTasks = async (req, res) => {
   }
 };
 
-//add new announcements
+//add new task
 taskContoller.addNewTask = async (req, res) => {
   try {
     const task = await new TasksData({
@@ -31,7 +31,6 @@ taskContoller.addNewTask = async (req, res) => {
 
 //delete announcement
 taskContoller.deleteTask = async (req, res) => {
-  console.log(req.params.id);
   try {
     await TasksData.findByIdAndDelete(req.params.id);
     res.status(200).send({ message: "data deleted!", success: true });

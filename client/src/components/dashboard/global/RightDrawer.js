@@ -71,6 +71,7 @@ export default function TemporaryDrawer() {
               border: "1px solid #2b3240",
               borderRadius: "10px",
               color: "white",
+              marginTop: "3px",
             }}
           />
           <Drawer

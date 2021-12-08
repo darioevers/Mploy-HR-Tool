@@ -22,7 +22,7 @@ function WidgetTeam() {
     <div className="widget_team_mainbox">
       {/* Team Header */}
       <div className="team_header_top">
-        <Typography variant="h8">
+        <Typography style={{ fontSize: "15px" }}>
           <Box sx={{ ml: 2, boxShadow: "0", bgcolor: "transparent" }}>
             {t("dashboardWidgetTeam.title01")}
           </Box>
@@ -139,7 +139,7 @@ function WidgetTeam() {
 
       {/* Contacts Header */}
       <div className="team_header_bottom">
-        <Typography variant="h6">
+        <Typography style={{ fontSize: "15px" }}>
           <Box sx={{ ml: 2, boxShadow: "0", bgcolor: "transparent" }}>
             {t("dashboardWidgetContacts.title01")}
           </Box>

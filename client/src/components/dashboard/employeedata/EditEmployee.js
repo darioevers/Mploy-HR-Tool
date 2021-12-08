@@ -20,32 +20,10 @@ import {
   Typography,
 } from "@material-ui/core";
 
-const EditEmployee = ({ history, match }) => {
-  const [editEmp, setEditEmp] = useState();
-
-  useEffect(() => {
-    getEmployee();
-  }, []);
-
-  const getEmployee = () => {
-    axios
-      .get(
-        `http://localhost:5000/employee/singleEmployee/${match.params.id}`,
-
-        {
-          header: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-
-      .then((data) => {
-        console.log(data.data);
-        setEditEmp(data.data);
-      })
-      .catch((err) => console.log(err));
-  };
-
+const EditEmployee = ({ history, location }) => {
+  const [editEmp, setEditEmp] = useState(
+    location.state && location.state.employee
+  );
 
 
   //styling of formControls
@@ -119,17 +97,17 @@ const EditEmployee = ({ history, match }) => {
                     }}
                     InputLabelProps={{ shrink: true }}
                     value={editEmp?.bio?.firstName}
-                    onChange={(e) => {
+                    onChange={(e) =>
                       setEditEmp({
                         ...editEmp,
                         bio: {
                           ...editEmp.bio,
                           firstName: e.target.value,
                         },
-                      });
-                     
-                    } 
-                  }
+
+                      })
+                    }
+
                   />
  
 
@@ -151,13 +129,17 @@ const EditEmployee = ({ history, match }) => {
                     }}
                     InputLabelProps={{ shrink: true }}
                     value={editEmp?.bio?.lastName}
-                    onChange={(e) => {
+                    onChange={(e) =>
                       setEditEmp({
                         ...editEmp,
-                        bio: { ...editEmp.bio, lastName: e.target.value },
-                      });
-                   
-                    }}
+
+                        bio: {
+                          ...editEmp.bio,
+                          lastName: e.target.value,
+                        },
+                      })
+                    }
+
                   />
                 </FormControl>
                 <FormControl style={inputStylesA}>
@@ -181,8 +163,8 @@ const EditEmployee = ({ history, match }) => {
                       setEditEmp({
                         ...editEmp,
                         bio: {
-                          ...editEmp.employeeId,
-                          employeeId: e.target.value,
+                          ...editEmp.bio,
+                          lastName: e.target.value,
                         },
                       })
                     }
@@ -209,13 +191,14 @@ const EditEmployee = ({ history, match }) => {
                       setEditEmp({
                         ...editEmp,
                         contractInfo: {
+
                           ...editEmp.contractInfo,
                           position: e.target.value,
                         },
                       });
-                     
                     }}
                   />
+                 
                 </FormControl>
               </Box>
 
@@ -245,7 +228,7 @@ const EditEmployee = ({ history, match }) => {
                       setEditEmp({
                         ...editEmp,
                         addressOne: {
-                          ...editEmp.streetOne,
+                          ...editEmp.addressOne,
                           streetOne: e.target.value,
                         },
                       })
@@ -274,7 +257,7 @@ const EditEmployee = ({ history, match }) => {
                       setEditEmp({
                         ...editEmp,
                         addressTwo: {
-                          ...editEmp.streetTwo,
+                          ...editEmp.addressTwo,
                           streetTwo: e.target.value,
                         },
                       })
@@ -303,7 +286,7 @@ const EditEmployee = ({ history, match }) => {
                       setEditEmp({
                         ...editEmp,
                         adressOne: {
-                          ...editEmp.cityOne,
+                          ...editEmp.addressOne,
                           cityOne: e.target.value,
                         },
                       })
@@ -332,7 +315,7 @@ const EditEmployee = ({ history, match }) => {
                       setEditEmp({
                         ...editEmp,
                         addressOne: {
-                          ...editEmp.countryOne,
+                          ...editEmp.addressOne,
                           countryOne: e.target.value,
                         },
                       })
@@ -360,7 +343,7 @@ const EditEmployee = ({ history, match }) => {
                       setEditEmp({
                         ...editEmp,
                         addressOne: {
-                          ...editEmp.stateOne,
+                          ...editEmp.addressOne,
                           stateOne: e.target.value,
                         },
                       })
@@ -389,7 +372,7 @@ const EditEmployee = ({ history, match }) => {
                       setEditEmp({
                         ...editEmp,
                         addressOne: {
-                          ...editEmp.postalCodeOne,
+                          ...editEmp.addressOne,
                           postalCodeOne: e.target.value,
                         },
                       })
@@ -506,7 +489,12 @@ const EditEmployee = ({ history, match }) => {
                     onChange={(e) =>
                       setEditEmp({
                         ...editEmp,
-                        bio: { ...editEmp.gender, gender: e.target.value },
+
+                        bio: {
+                          ...editEmp.bio,
+                          gender: e.target.value,
+                        },
+
                       })
                     }
                   >
@@ -543,7 +531,7 @@ const EditEmployee = ({ history, match }) => {
                       setEditEmp({
                         ...editEmp,
                         bio: {
-                          ...editEmp.maritalStatus,
+                          ...editEmp.bio,
                           maritalStatus: e.target.value,
                         },
                       })
@@ -584,7 +572,7 @@ const EditEmployee = ({ history, match }) => {
                     onChange={(e) =>
                       setEditEmp({
                         ...editEmp,
-                        bio: { ...editEmp.hobbies, hobbies: e.target.value },
+                        bio: { ...editEmp.bio, hobbies: e.target.value },
                       })
                     }
                   />
