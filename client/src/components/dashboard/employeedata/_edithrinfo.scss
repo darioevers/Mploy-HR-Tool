@@ -1,0 +1,41 @@
+.edithrinfo_contractdetails_content {
+  height: 480px;
+  overflow-y: scroll;
+}
+
+.edithrinfo_photo_upload {
+  @include flex-center;
+  flex-direction: column;
+  label {
+    cursor: pointer;
+    background-color: $highlight;
+    color: $primary;
+    padding: 6px 12px;
+    border-radius: 10px;
+    font-size: 12px;
+  }
+}
+.edithrinfo_dummy_photo {
+  img {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+#hrinfo_file {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.edithrinfo_upload_photo {
+  position: relative;
+  img {
+    width: 92px;
+    height: 92px;
+    position: absolute;
+    top: -97px;
+    left: 20px;
+    border-radius: 50px;
+  }
+}

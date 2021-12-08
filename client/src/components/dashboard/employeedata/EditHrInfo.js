@@ -20,6 +20,9 @@ import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Button from "@material-ui/core/Button";
 
+//ICONS
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+
 const EditHrInfo = ({ history, match, location }) => {
   //ALERT BOX
   const [isShowingAlert, setShowingAlert] = useState(false);
@@ -44,8 +47,6 @@ const EditHrInfo = ({ history, match, location }) => {
 
     console.log("editHrInfo", editHrInfo);
     console.log("data", data);
-
-    // const data = editHrInfo;
 
     axios
       .put("http://localhost:5000/employee/update", data, {
@@ -79,6 +80,33 @@ const EditHrInfo = ({ history, match, location }) => {
   // TRANSLATION
   const { t } = useTranslation();
 
+  //image preview
+  const [selectedFile, setSelectedFile] = useState();
+  const [preview, setPreview] = useState();
+
+  // create a preview as a side effect, whenever selected file is changed
+  useEffect(() => {
+    if (!selectedFile) {
+      setPreview(undefined);
+      return;
+    }
+
+    const objectUrl = URL.createObjectURL(selectedFile);
+    setPreview(objectUrl);
+
+    // free memory when ever this component is unmounted
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [selectedFile]);
+
+  const onSelectFile = (e) => {
+    setFile(e.target.files[0]);
+    if (!e.target.files || e.target.files.length === 0) {
+      setSelectedFile(undefined);
+      return;
+    }
+    setSelectedFile(e.target.files[0]);
+  };
+
   return (
     <div className="addemployee_mainbox">
       <DashboardTopNav />
@@ -107,19 +135,34 @@ const EditHrInfo = ({ history, match, location }) => {
         <div className="employeedata_form">
           <FormGroup>
             <div className="edithrinfo_form">
-              <div className="edithrinfo_contractdetails_header">
-                <h3>{t("dashboardEditHRData.sectionHeading01")}</h3>
-              </div>
-
               <div className="edithrinfo_contractdetails_content">
-                <FormControl>
-                  <InputLabel htmlFor="my-input">Photo</InputLabel>
-                  <Input
-                    type="file"
-                    name="file"
-                    onChange={(e) => setFile(e.target.files[0])}
-                  />
-                </FormControl>
+                <div className="edithrinfo_photo_upload">
+                  <div className="edithrinfo_dummy_photo">
+                    <img
+                      src={`http://localhost:5000/${editHrInfo?.bio?.photo}`}
+                      onError={(e) => {
+                        e.target.onError = null;
+                        e.target.src =
+                          "http://localhost:5000/uploads/error.jpg";
+                      }}
+                    />
+                  </div>
+
+                  <div className="edithrinfo_upload_photo">
+                    <label for="hrinfo_file">Upload New Photo +</label>
+                    <input
+                      type="file"
+                      name="file"
+                      id="hrinfo_file"
+                      onChange={onSelectFile}
+                    />
+                    {selectedFile && <img src={preview} />}
+                  </div>
+                </div>
+                <br />
+                <div className="edithrinfo_contractdetails_header">
+                  <h3>{t("dashboardEditHRData.sectionHeading01")}</h3>
+                </div>
                 <FormControl style={inputStylesA}>
                   <TextField
                     id="contractNumber"
@@ -146,7 +189,6 @@ const EditHrInfo = ({ history, match, location }) => {
                         },
                       })
                     }
-
                   />
                 </FormControl>
                 <FormControl style={inputStylesA}>
@@ -257,7 +299,6 @@ const EditHrInfo = ({ history, match, location }) => {
                     }
                   />
                 </FormControl>
-
                 <FormControl style={inputStylesA}>
                   <TextField
                     id="team"
@@ -314,7 +355,6 @@ const EditHrInfo = ({ history, match, location }) => {
                     }
                   />
                 </FormControl>
-
                 <FormControl style={inputStylesA}>
                   <TextField
                     id="supervisor"
@@ -697,8 +737,9 @@ const EditHrInfo = ({ history, match, location }) => {
             </div>
           </FormGroup>
           <div
-            className={`alert alert-success ${isShowingAlert ? "alert-shown" : "alert-hidden"
-              }`}
+            className={`alert alert-success ${
+              isShowingAlert ? "alert-shown" : "alert-hidden"
+            }`}
             onTransitionEnd={() => setShowingAlert(false)}
           >
             <p>Employee Data Updated!</p>
