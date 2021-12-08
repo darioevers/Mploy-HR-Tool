@@ -74,7 +74,7 @@ const LandingpageTopnav = () => {
                 </div>
                 <div className="landingpage_topnav_buttons">
                   <LanguageSwitch />
-                  <IconButton
+                  {/* <IconButton
                     sx={{ ml: 1 }}
                     onClick={colorMode.toggleColorMode}
                     color="inherit"
@@ -84,7 +84,7 @@ const LandingpageTopnav = () => {
                     ) : (
                         <Brightness4Icon />
                       )}
-                  </IconButton>
+                  </IconButton> */}
                   <div className="landingpage_topnav_contactbutton">
                     <Link to={"/contact"}>
                       <Button variant="outlined">

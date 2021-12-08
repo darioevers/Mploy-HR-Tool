@@ -169,9 +169,11 @@
     "teamDesc01": "alex beschreibung lorem ipsum",
     "teamDesc02": "dario beschreibung lorem ipsum",
     "teamDesc03": "maryam beschreibung lorem ipsum",
-    "teamRole01": "Front-End / Back-End",
-    "teamRole02": "Front-End",
-    "teamRole03": "Back-End"
+    "teamRole01": "Front-End",
+    "teamRole02": "Back-End",
+    "teamRole03": "UI / UX",
+    "teamRole04": "Design",
+    "teamRole05": "Database"
   },
   "dashboardSidenav": {
     "menu01": "Dashboard",

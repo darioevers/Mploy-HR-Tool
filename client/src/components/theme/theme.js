@@ -26,6 +26,7 @@ export function ToggleColorMode(props) {
                     primary: {
                         main: '#98c1d9',
                         light: '#caf4ff',
+                        lighter: '#f4f4f4',
                         dark: '#6891a7',
                         contrastText: '#000',
                     },
@@ -78,6 +79,7 @@ export function ToggleColorMode(props) {
                     primary: {
                         main: '#addcf7',
                         light: '#e0ffff',
+                        lighter: '#505d6a',
                         dark: '#7caac4',
                         contrastText: '#fff',
                     },

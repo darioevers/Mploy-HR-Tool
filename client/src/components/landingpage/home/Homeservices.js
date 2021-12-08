@@ -6,6 +6,9 @@ import { useTranslation } from "react-i18next";
 
 // IMAGE IMPORTS
 import HomeServicesGraphic from "../../../img/graphics/06_Digital_World.svg";
+import ImgLaptopEmployees from "../../../img/graphics/laptop_employees.png";
+import ImgMobileView from "../../../img/graphics/tablet_view.png";
+import ImgLaptopEdit from "../../../img/graphics/laptop_edit.png";
 
 // ICON IMPORTS
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -86,13 +89,50 @@ export default function Homeservices(props) {
                   borderRadius: "0",
                   boxShadow: "none",
                   bgcolor: "background.lighterThree",
+                  overflow: "hidden"
                 }}
               >
-                <AccountCircleIcon></AccountCircleIcon>
-                <br></br>
-                <Typography className="homeservices_grid_text">
-                  Employee Data
-                </Typography>
+                <Box sx={{
+                  display: "flex",
+                  height: "300px",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  boxShadow: "0",
+                  bgcolor: "transparent",
+                }}>
+                  <img src={ImgLaptopEmployees} style={{ width: "95%", maxWidth: "450px" }} />
+                </Box>
+              </Item>
+            </Grid>
+            <Grid item xs={12} md={6} lg={6} xl={6}>
+              <Item
+                sx={{
+                  height: "400px",
+                  borderRadius: "0",
+                  boxShadow: "none",
+                  bgcolor: "background.default",
+                }}
+              >
+                <Box sx={{
+                  display: "flex",
+                  height: "300px",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  boxShadow: "0",
+                  bgcolor: "transparent"
+                }}>
+                  <Box sx={{
+                    boxShadow: "0",
+                  }}>
+                    <Typography variant="h4">
+                      Visualize your
+                        <br /> employee records.
+                      </Typography>
+                    <Typography variant="body1" gutterBottom>
+                      Use MPloy to send and receive company-wide announcements.
+                  </Typography>
+                  </Box>
+                </Box>
               </Item>
             </Grid>
             <Grid item xs={12} md={6} lg={6} xl={6}>
@@ -102,14 +142,41 @@ export default function Homeservices(props) {
                   borderRadius: "0",
                   boxShadow: "none",
                   bgcolor: "background.lighterThree",
+                  overflow: "hidden"
                 }}
               >
-                <EventIcon></EventIcon>
-                <br></br>
-                <Typography className="homeservices_grid_text">
-                  Calendar
-                </Typography>
-                4
+                <Box sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  boxShadow: "0",
+                  bgcolor: "transparent",
+                }}>
+                  <Box sx={{
+                    boxShadow: "0",
+                    mb: 2,
+                    maxWidth: "400px"
+                  }}>
+                    <Typography variant="h4">
+                      Easily edit
+                      </Typography>
+                    <Typography variant="h4">
+                      employee records
+                      </Typography>
+                    <Typography variant="body1" gutterBottom>
+                      Read company updates or check on database records on-the-go. Must functionality is desktop-only.
+                  </Typography>
+                  </Box>
+                </Box>
+                <Box sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  // alignItems: "center",
+                  boxShadow: "0",
+                  bgcolor: "transparent",
+                }}>
+                  <img src={ImgLaptopEdit} style={{ width: "55%" }} />
+                </Box>
               </Item>
             </Grid>
             <Grid item xs={12} md={6} lg={6} xl={6}>
@@ -119,53 +186,69 @@ export default function Homeservices(props) {
                   borderRadius: "0",
                   boxShadow: "none",
                   bgcolor: "background.lighterThree",
+                  overflow: "hidden"
                 }}
               >
-                <AnnouncementIcon></AnnouncementIcon>
-                <br></br>
-                <Typography className="homeservices_grid_text">
-                  Announcements
-                </Typography>
-              </Item>
-            </Grid>
-            <Grid item xs={12} md={6} lg={6} xl={6}>
-              <Item
-                sx={{
-                  height: "400px",
-                  borderRadius: "0",
-                  boxShadow: "none",
-                  bgcolor: "background.lighterThree",
-                }}
-              >
-                <AccountBalanceWalletIcon></AccountBalanceWalletIcon>
-                <br></br>
-                <Typography className="homeservices_grid_text">
-                  Payroll
-                </Typography>
+                <Box sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  boxShadow: "0",
+                  bgcolor: "transparent",
+                }}>
+                  <Box sx={{
+                    boxShadow: "0",
+                    mb: 2,
+                    maxWidth: "400px"
+                  }}>
+                    <Typography variant="h4">
+                      MPloy is
+                      </Typography>
+                    <Typography variant="h4">
+                      Mobile Ready
+                      </Typography>
+                    <Typography variant="body1" gutterBottom>
+                      Read company updates or check on database records on-the-go. Must functionality is desktop-only.
+                  </Typography>
+                  </Box>
+                </Box>
+                <Box sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  // alignItems: "center",
+                  boxShadow: "0",
+                  bgcolor: "transparent",
+                }}>
+                  <img src={ImgMobileView} style={{ width: "40%" }} />
+                </Box>
               </Item>
             </Grid>
             <Grid item xs={12} md={12} lg={12} xl={12}>
               <Item
                 sx={{
-                  height: "400px",
+                  display: "flex",
                   borderRadius: "0",
                   boxShadow: "none",
                   bgcolor: "background.lighterThree",
+                  alignItems: "center"
                 }}
               >
-                <Typography variant="h5">
-                  Digitising your HR management doesn’t need to be hard and
-                  Mploy is here to streamline that process.
+                <Box sx={{ width: "85%", maxWidth: "650px", margin: "0 auto" }}>
+                  <Typography variant="h4">
+                    Digitising HR doesn’t need to be hard.
                 </Typography>
-                HR Management should be seamless, intuitive and easy. Here at
-                Mploy we strive to deliver innovative solutions with our modern
-                approach to HR Management. We want to make HR management an
-                experience, rather than a task. Sign up and let us show you how.
+                  <Typography variant="body1">
+                    HR Management should be seamless, intuitive and easy. Here at
+                    Mploy we strive to deliver innovative solutions with our modern
+                    approach to HR Management. We want to make HR management an
+                    experience, rather than a task. Sign up and let us show you how.
+                </Typography>
+                </Box>
               </Item>
             </Grid>
           </Grid>
         </Box>
       </div>
-    </div>
+    </div >
   );
 }
