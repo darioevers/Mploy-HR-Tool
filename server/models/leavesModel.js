@@ -42,7 +42,10 @@ const LeavesSchema = Schema({
     type: String,
     required: false,
   },
-
+  leavesApplied: {
+    type: Number,
+    required: false,
+  },
 });
 
 const Leaves = mongoose.model("leaves", LeavesSchema);
