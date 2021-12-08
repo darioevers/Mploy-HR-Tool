@@ -129,10 +129,10 @@ function WidgetApplications({ userdata }) {
   const { t } = useTranslation();
 
   return (
-    <div className="widget_applications_mainbox">
+    <Box className="widget_applications_mainbox" sx={{ boxShadow: "0", bgcolor: 'background.widgets' }}>
       <div className="widget_applications_header">
-        <Typography variant="h10">
-          <Box sx={{ ml: 3, mt: 2, boxShadow: "0", bgcolor: "transparent" }}>
+        <Typography variant="h6">
+          <Box sx={{ ml: 3, mt: 2, boxShadow: "0", bgcolor: "background.widgets" }}>
             {t("dashboardWidgetLeaves.title01")}
           </Box>
         </Typography>
@@ -143,7 +143,7 @@ function WidgetApplications({ userdata }) {
             {leaves && leaves.filter((item) => item.pending === true).length}
           </h1>
           <Typography variant="caption">
-            <Box sx={{ boxShadow: "0", bgcolor: "transparent" }}>
+            <Box sx={{ boxShadow: "0", bgcolor: "background.widgets" }}>
               {t("dashboardWidgetLeaves.title02")}
             </Box>
           </Typography>
@@ -153,7 +153,7 @@ function WidgetApplications({ userdata }) {
             {leaves && leaves.filter((item) => item.pending === false).length}
           </h1>
           <Typography variant="caption">
-            <Box sx={{ boxShadow: "0", bgcolor: "transparent" }}>
+            <Box sx={{ boxShadow: "0", bgcolor: "background.widgets" }}>
               {t("dashboardWidgetLeaves.title03")}
             </Box>
           </Typography>
@@ -354,7 +354,7 @@ function WidgetApplications({ userdata }) {
           <p> Leave Application Submitted!</p>
         </div>
       </div>
-    </div>
+    </Box>
   );
 }
 

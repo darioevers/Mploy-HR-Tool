@@ -7,7 +7,13 @@ import { useTranslation } from "react-i18next";
 
 // COMPONENT IMPORTS
 import DashboardTopNav from "../global/DashboardTopNav";
-import DashboardSideNav from "../global/DashboardSideNav";
+import DashboardSideNav from "../global/NewDashboardSideNav";
+import EmployeeData from "./EmployeeData";
+
+// ICON IMPORTS
+import PhoneIcon from "@mui/icons-material/Phone";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 // MUI IMPORTS
 import Box from "@mui/material/Box";

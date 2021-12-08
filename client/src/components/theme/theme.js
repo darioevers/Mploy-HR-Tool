@@ -45,6 +45,7 @@ export function ToggleColorMode(props) {
                         primary: '#000',
                         secondary: '#000',
                         alternate: "#fff",
+                        gray: "#9fa1a4"
                     },
                     background: {
                         paper: '#fff',
@@ -53,6 +54,10 @@ export function ToggleColorMode(props) {
                         lighter: '#ebebeb',
                         lighterTwo: "#f5f5f7",
                         lighterThree: "#fbfbfd",
+                        widgets: "#f7f7f9",
+                        widgetlines: "#ebebeb",
+                        darkerOne: "#fff",
+                        hr: "#ebebeb"
                     },
                     landingpagenavbar: {
                         main: "rgba(255, 255, 255, 0.75)"
@@ -95,17 +100,22 @@ export function ToggleColorMode(props) {
                     },
                     divider: '#000',
                     text: {
-                        primary: '#fff',
-                        secondary: '#fff',
+                        primary: '#e6e6e6',
+                        secondary: '#cccccc',
                         alternate: "#fff",
+                        gray: "#9fa1a4"
                     },
                     background: {
                         paper: '#3b444e',
-                        default: '#141d26',
+                        default: '#141a21',
                         darker: '#000000',
                         lighter: '#3b444e',
                         lighterTwo: "#3d4752",
                         lighterThree: "#121a22",
+                        widgets: "#0e141b",
+                        widgetlines: "#252d36",
+                        darkerOne: "#161d25",
+                        hr: "#151a20"
                     },
                     landingpagenavbar: {
                         main: "rgba(54, 54, 54, 0.835)"

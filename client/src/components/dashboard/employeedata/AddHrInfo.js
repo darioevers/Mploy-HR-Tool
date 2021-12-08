@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import DashboardTopNav from "../global/DashboardTopNav";
-import DashboardSideNav from "../global/DashboardSideNav";
+import DashboardSideNav from "../global/NewDashboardSideNav";
 import { NavLink } from "react-router-dom";
 import { FormGroup, FormControl, InputLabel, Input } from "@material-ui/core";
 

@@ -41,7 +41,8 @@
     "by": "von",
     "date": "Datum:",
     "time": "Uhrzeit:",
-    "end": "Ende"
+    "end": "Ende",
+    "inprogress": "In Arbeit"
   },
   "landingNavbar": {
     "link01": "Leistungen",
@@ -140,7 +141,7 @@
     "grid02": "Zeilen Code",
     "grid03": "Nachrichten",
     "grid04": "Stunden",
-    "grid05": "lorem",
+    "grid05": "Technologien",
     "grid06": "viel",
     "grid07": "gelernt"
   },
@@ -283,6 +284,35 @@
     "title01": "NEUIGKEITEN",
     "title02": "Mehr lesen",
     "title03": "Löschen"
+  },
+  "dashboardEmployeeData": {
+    "formDesc01": "Name des Mitarbeiters",
+    "button01": "Neuer Eintrag",
+    "tableDesc01": "Name",
+    "tableDesc02": "Abteilung",
+    "tableDesc03": "E-Mail",
+    "tableDesc04": "Geburtsdatum",
+    "drawerTitle01": "Kontakt",
+    "drawerDesc01": "Telefon",
+    "drawerDesc02": "E-Mail",
+    "drawerTitle02": "Unternehmen",
+    "drawerDesc03": "Abteilung",
+    "drawerDesc04": "Vorgesetzter",
+    "drawerDesc05": "Standort",
+    "drawerTitle03": "Persönliches",
+    "drawerDesc06": "Geschlecht",
+    "drawerDesc07": "Geburtsdatum",
+    "drawerDesc08": "Adresse",
+    "button02": "Bearbeiten",
+    "button03": "Löschen",
+    "noInfo": "Keine Information"
+  },
+  "dashboardAddEmployee": {
+    "title01": "Neuer Eintrag",
+    "menu01": "General Data",
+    "menu02": "HR Information",
+    "menu03": "Documents",
+    "sectionHeading01": "ALLGEMEIN"
   },
   "dashboardEditEmployeeData": {
     "title01": "Mitarbeiter bearbeiten",

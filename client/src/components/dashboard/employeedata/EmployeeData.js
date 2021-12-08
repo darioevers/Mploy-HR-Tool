@@ -1,8 +1,15 @@
 import react, { useState, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
-import DashboardTopNav from "../global/DashboardTopNav";
-import DashboardSideNav from "../global/DashboardSideNav";
 import axios from "axios";
+
+// TRANSLATION IMPORTS
+import { useTranslation } from "react-i18next";
+
+// COMPONENT IMPORTS
+import DashboardTopNav from "../global/DashboardTopNav";
+import DashboardSideNav from "../global/NewDashboardSideNav";
+
+// ICON IMPORTS
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -69,6 +76,9 @@ function EmployeeData({ history }) {
       .catch((err) => console.log(err));
   };
 
+  // TRANSLATION
+  const { t } = useTranslation();
+
   return (
     <>
       {employees && (
@@ -99,7 +109,7 @@ function EmployeeData({ history }) {
                   type="text"
                   value={search}
                   onChange={(e) => searchEmployee(e.target.value)}
-                  placeholder="Type Employee Name"
+                  placeholder={t("dashboardEmployeeData.formDesc01")}
                 />
               </div>
 
@@ -111,7 +121,7 @@ function EmployeeData({ history }) {
                   className="sidenav_link"
                 >
                   <div className="addemployee_button">
-                    Add Employee <span>+</span>
+                    {t("dashboardEmployeeData.button01")} <span>+</span>
                   </div>
                 </NavLink>
               </div>
@@ -123,10 +133,10 @@ function EmployeeData({ history }) {
               <table>
                 <thead>
                   <tr>
-                    <th>Name</th>
-                    <th>Department</th>
-                    <th>Email</th>
-                    <th className="mobile_hide">Date of Birth</th>
+                    <th>{t("dashboardEmployeeData.tableDesc01")}</th>
+                    <th>{t("dashboardEmployeeData.tableDesc02")}</th>
+                    <th>{t("dashboardEmployeeData.tableDesc03")}</th>
+                    <th className="mobile_hide">{t("dashboardEmployeeData.tableDesc04")}</th>
                   </tr>
                   <tr>
                     <th></th>
@@ -213,11 +223,11 @@ function EmployeeData({ history }) {
                             </div>
 
                             <div className="summary_body">
-                              <h1> Contact Information </h1>
+                              <h1> {t("dashboardEmployeeData.drawerTitle01")}</h1>
                               <div className="summary_body_contact">
                                 <div className="contact_left">
-                                  <h5>Phone:</h5>
-                                  <h5>Email:</h5>
+                                  <h5>{t("dashboardEmployeeData.drawerDesc01")}</h5>
+                                  <h5>{t("dashboardEmployeeData.drawerDesc01")}</h5>
                                 </div>
                                 <div className="contact_right">
                                   <h5>
@@ -233,12 +243,12 @@ function EmployeeData({ history }) {
                                 </div>
                               </div>
 
-                              <h1> Work Information </h1>
+                              <h1> {t("dashboardEmployeeData.drawerTitle02")}</h1>
                               <div className="summary_body_workinfo">
                                 <div className="workinfo_left">
-                                  <h5>Department:</h5>
-                                  <h5>Supervisor:</h5>
-                                  <h5>Office:</h5>
+                                  <h5>{t("dashboardEmployeeData.drawerDesc03")}</h5>
+                                  <h5>{t("dashboardEmployeeData.drawerDesc04")}</h5>
+                                  <h5>{t("dashboardEmployeeData.drawerDesc05")}</h5>
                                 </div>
                                 <div className="workinfo_right">
                                   <h5>
@@ -259,12 +269,12 @@ function EmployeeData({ history }) {
                                 </div>
                               </div>
 
-                              <h1> Personal Info </h1>
+                              <h1> {t("dashboardEmployeeData.drawerTitle03")}</h1>
                               <div className="summary_body_personalinfo">
                                 <div className="personalinfo_left">
-                                  <h5>Gender:</h5>
-                                  <h5>Birthday:</h5>
-                                  <h5>Address:</h5>
+                                  <h5>{t("dashboardEmployeeData.drawerDesc06")}</h5>
+                                  <h5>{t("dashboardEmployeeData.drawerDesc07")}</h5>
+                                  <h5>{t("dashboardEmployeeData.drawerDesc08")}</h5>
                                 </div>
                                 <div className="personalinfo_right">
                                   <h5>
@@ -297,7 +307,7 @@ function EmployeeData({ history }) {
                                     });
                                   }}
                                 >
-                                  Edit
+                                  {t("dashboardEmployeeData.button02")}
                                 </div>
 
                                 <div
@@ -307,7 +317,7 @@ function EmployeeData({ history }) {
                                   }
                                 >
                                   {" "}
-                                  Delete
+                                  {t("dashboardEmployeeData.button03")}
                                 </div>
 
                                 <div

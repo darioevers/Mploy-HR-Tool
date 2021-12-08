@@ -125,7 +125,7 @@ function WidgetTasks() {
   const { t } = useTranslation();
 
   return (
-    <div className="widget_tasks_mainbox">
+    <Box className="widget_tasks_mainbox" sx={{ boxShadow: "0", bgcolor: 'background.widgets' }}>
       <div className="taskwidget_mobile">
         <div className="taskwidget_mobile_header">
           <Typography variant="h10">
@@ -240,7 +240,7 @@ function WidgetTasks() {
             <div className="header_title">
               <Typography variant="h6">
                 <Box
-                  sx={{ boxShadow: "0", bgcolor: "transparent", fontSize: 12 }}
+                  sx={{ boxShadow: "0", bgcolor: "background.widgets", fontSize: 12 }}
                 >
                   {t("dashboardWidgetTasks.title05")}
                 </Box>
@@ -320,8 +320,8 @@ function WidgetTasks() {
                       ) : task.taskTag === "Medium" ? (
                         <h5 style={{ fontSize: 15, color: "yellow" }}> - </h5>
                       ) : (
-                        <h5 style={{ fontSize: 15, color: "green" }}> - </h5>
-                      )}
+                            <h5 style={{ fontSize: 15, color: "green" }}> - </h5>
+                          )}
                     </div>
                   </div>
                 </div>
@@ -338,7 +338,7 @@ function WidgetTasks() {
           </div>
         </div>
       </div>
-    </div>
+    </Box>
   );
 }
 export default WidgetTasks;

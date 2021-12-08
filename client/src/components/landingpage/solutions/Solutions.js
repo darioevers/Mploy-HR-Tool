@@ -187,21 +187,21 @@ const Solutions = () => {
               <Grid item xs={12} md={6} lg={6} xl={6}>
                 <Item
                   sx={{
-                    height: "500px",
                     borderRadius: "0",
                     boxShadow: "none",
                     bgcolor: "background.lighterThree",
                   }}
                 >
-                  <Box sx={{
-                    display: "flex",
-                    height: "500px",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    boxShadow: "0",
-                    bgcolor: "transparent",
-                    overflow: "hidden"
-                  }}>
+                  <Box
+                    className="home_solutions_gridbox"
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      boxShadow: "0",
+                      bgcolor: "transparent",
+                      overflow: "hidden"
+                    }}>
                     <img src={ImgTabletAdminDrawer} style={{ height: "85%" }} />
                   </Box>
                 </Item>
@@ -209,19 +209,19 @@ const Solutions = () => {
               <Grid item xs={12} md={6} lg={6} xl={6}>
                 <Item
                   sx={{
-                    height: "500px",
                     borderRadius: "0",
                     boxShadow: "none",
                     bgcolor: "background.default",
                   }}
                 >
-                  <Box sx={{
-                    display: "flex",
-                    height: "500px",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    boxShadow: "0",
-                  }}>
+                  <Box
+                    className="home_solutions_gridbox_content"
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      boxShadow: "0",
+                    }}>
                     <Box sx={{
                       boxShadow: "0",
                     }}>
@@ -239,20 +239,20 @@ const Solutions = () => {
               <Grid item xs={12} md={6} lg={6} xl={6}>
                 <Item
                   sx={{
-                    height: "500px",
                     borderRadius: "0",
                     boxShadow: "none",
                     bgcolor: "background.default",
                   }}
                 >
-                  <Box sx={{
-                    display: "flex",
-                    height: "500px",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    boxShadow: "0",
-                    bgcolor: "transparent"
-                  }}>
+                  <Box
+                    className="home_solutions_gridbox_content"
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      boxShadow: "0",
+                      bgcolor: "transparent"
+                    }}>
                     <Box sx={{
                       boxShadow: "0",
                     }}>
@@ -270,21 +270,21 @@ const Solutions = () => {
               <Grid item xs={12} md={6} lg={6} xl={6}>
                 <Item
                   sx={{
-                    height: "500px",
                     borderRadius: "0",
                     boxShadow: "none",
                     bgcolor: "background.lighterThree",
                   }}
                 >
-                  <Box sx={{
-                    display: "flex",
-                    height: "500px",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    boxShadow: "0",
-                    bgcolor: "transparent",
-                    overflow: "hidden"
-                  }}>
+                  <Box
+                    className="home_solutions_gridbox_content"
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      boxShadow: "0",
+                      bgcolor: "transparent",
+                      overflow: "hidden"
+                    }}>
                     <img src={ImgLaptopLeaveForm} style={{ width: "95%" }} />
                   </Box>
                 </Item>
@@ -292,21 +292,21 @@ const Solutions = () => {
               <Grid item xs={12} md={6} lg={6} xl={6}>
                 <Item
                   sx={{
-                    height: "500px",
                     borderRadius: "0",
                     boxShadow: "none",
                     bgcolor: "background.lighterThree",
                   }}
                 >
-                  <Box sx={{
-                    display: "flex",
-                    height: "500px",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    boxShadow: "0",
-                    bgcolor: "transparent",
-                    overflow: "hidden"
-                  }}>
+                  <Box
+                    className="home_solutions_gridbox_content"
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      boxShadow: "0",
+                      bgcolor: "transparent",
+                      overflow: "hidden"
+                    }}>
                     <img src={ImgLaptopEdit} style={{ width: "95%" }} />
                   </Box>
                 </Item>
@@ -314,19 +314,19 @@ const Solutions = () => {
               <Grid item xs={12} md={6} lg={6} xl={6}>
                 <Item
                   sx={{
-                    height: "500px",
                     borderRadius: "0",
                     boxShadow: "none",
                     bgcolor: "background.default",
                   }}
                 >
-                  <Box sx={{
-                    display: "flex",
-                    height: "500px",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    boxShadow: "0",
-                  }}>
+                  <Box
+                    className="home_solutions_gridbox_content"
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      boxShadow: "0",
+                    }}>
                     <Box sx={{
                       boxShadow: "0",
                     }}>
