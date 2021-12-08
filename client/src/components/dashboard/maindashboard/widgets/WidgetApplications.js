@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import consolaGlobalInstance from "consola";
+import e from "cors";
 
 // TRANSLATION IMPORTS
 import { useTranslation } from "react-i18next";
@@ -12,8 +13,9 @@ import Box from "@mui/material/Paper";
 
 // ICON IMPORTS
 import CloseIcon from "@mui/icons-material/Close";
+
 import e from "cors";
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+
 
 function WidgetApplications({ userdata }) {
   //alertbox
@@ -192,17 +194,18 @@ function WidgetApplications({ userdata }) {
             </Typography>
 
             <input
+              type="text"
               name="name"
               placeholder={t("dashboardWidgetLeaves.formDesc01")}
               className="application_search"
               value={newLeave?.name}
 
-              // onChange={(e) =>
-              //   setNewLeave({
-              //     ...newLeave,
-              //     name: e.target.value,
-              //   })
-              // }
+            // onChange={(e) =>
+            //   setNewLeave({
+            //     ...newLeave,
+            //     name: e.target.value,
+            //   })
+            // }
             />
           </div>
 
@@ -222,12 +225,12 @@ function WidgetApplications({ userdata }) {
               placeholder={t("dashboardWidgetLeaves.formDesc02")}
               className="email"
               readOnly
-              // onChange={(e) =>
-              //   setNewLeave({
-              //     ...newLeave,
-              //     email: e.target.value,
-              //   })
-              // }
+            // onChange={(e) =>
+            //   setNewLeave({
+            //     ...newLeave,
+            //     email: e.target.value,
+            //   })
+            // }
             />
           </div>
 
@@ -245,12 +248,12 @@ function WidgetApplications({ userdata }) {
               placeholder={t("dashboardWidgetLeaves.formDesc03")}
               className="application_search"
               value={newLeave?.department}
-              // onChange={(e) =>
-              //   setNewLeave({
-              //     ...newLeave,
-              //     department: e.target.value,
-              //   })
-              // }
+            // onChange={(e) =>
+            //   setNewLeave({
+            //     ...newLeave,
+            //     department: e.target.value,
+            //   })
+            // }
             />
           </div>
 

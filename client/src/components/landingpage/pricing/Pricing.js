@@ -122,7 +122,7 @@ const Pricing = () => {
                       variant="h3"
                       color="text.primary"
                     >
-                      ${tier.price}
+                       title={tier.price}
                     </Typography>
                     <Typography variant="h6" color="text.secondary">
                       /mo

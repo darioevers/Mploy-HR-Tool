@@ -6,7 +6,7 @@
     width: 80%;
     margin: 0 auto;
     .homeheader_mainbox_leftcontent {
-      width: 50%;
+      width: 40%;
       height: 60%;
       justify-content: center;
       .coloured_heading {
@@ -14,10 +14,14 @@
       }
     }
     .homeheader_mainbox_rightcontent {
-      width: 50%;
+      width: 70%;
       height: 70%;
       img {
         width: 100%;
+        @media only screen and (max-width: 600px){
+          /*Big smartphones [426px -> 600px]*/
+          display: none;
+      }
       }
     }
   }

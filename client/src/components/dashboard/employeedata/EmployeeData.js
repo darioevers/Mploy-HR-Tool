@@ -139,8 +139,10 @@ function EmployeeData({ history }) {
                 <tbody>
                   {employees &&
                     employees.map((employee) => (
-                      <>
-                        <tr
+                <>
+
+                        <tr 
+                
                           key={employee._id}
                           onClick={() => {
                             setChecked(true);

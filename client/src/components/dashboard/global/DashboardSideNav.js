@@ -29,41 +29,6 @@ const DashboardSideNav = (props) => {
 
   const [privateData, setPrivateData] = useState("");
 
-  // const history = useHistory();
-  // // if there is nothing in the local storage we immediatly
-  // useEffect(() => {
-  //   if (!localStorage.getItem("authToken")) {
-  //     history.push("/");
-  //   }
-
-  //   const fetchPrivateData = async () => {
-  //     const config = {
-  //       headers: {
-  //         "Content-type": "application/json",
-  //         Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-  //       },
-  //     };
-  //     try {
-  //       const { data } = await axios.get(
-  //         "http://localhost:5000/dashboard",
-  //         config
-  //       );
-  //       console.log(data);
-  //       setPrivateData(data.user);
-  //     } catch (error) {
-  //       console.log(error);
-  //       localStorage.removeItem("authToken");
-  //     }
-  //   };
-  //   fetchPrivateData();
-  // }, [history]);
-  // for logining out
-  // const logoutHandler = () => {
-  //   localStorage.removeItem("authToken");
-  //   history.push("/");
-  //   // should go to the /
-  // };
-
   const history = useHistory();
   // if there is nothing in the local storage we immediatly
   useEffect(() => {
@@ -160,7 +125,6 @@ const DashboardSideNav = (props) => {
               <FolderOpenIcon />
             </i>
             <Typography>{t("dashboardSidenav.menu02")}</Typography>
-            {/* <img src={iconbg} /> */}
             <div></div>
           </NavLink>
 
@@ -176,7 +140,6 @@ const DashboardSideNav = (props) => {
               <TodayIcon />
             </i>
             <Typography>{t("dashboardSidenav.menu03")}</Typography>
-            {/* <img src={iconbg} /> */}
             <div></div>
           </NavLink>
           <NavLink
@@ -191,7 +154,6 @@ const DashboardSideNav = (props) => {
               <EuroIcon />{" "}
             </i>
             <Typography>{t("dashboardSidenav.menu04")}</Typography>
-            {/* <img src={iconbg} /> */}
             <div></div>
           </NavLink>
           <NavLink
@@ -205,7 +167,6 @@ const DashboardSideNav = (props) => {
               <FormatListBulletedIcon />
             </i>
             <Typography>{t("dashboardSidenav.menu05")}</Typography>
-            {/* <img src={iconbg} /> */}
             <div></div>
           </NavLink>
           <NavLink
@@ -219,15 +180,14 @@ const DashboardSideNav = (props) => {
               {" "}
               <MenuBookIcon />
             </i>{" "}
-            <Typography>
-              {t("dashboardSidenav.menu06")}
-            </Typography>
-            {/* <img src={iconbg} /> */}
+            <Typography>{t("dashboardSidenav.menu06")}</Typography>
             <div></div>
           </NavLink>
         </div>
         <div className="logout_btn">
-          <Button variant="outlined" onClick={logoutHandler}>{t("dashboardSidenav.menuButton01")}</Button>
+          <Button variant="outlined" onClick={logoutHandler}>
+            {t("dashboardSidenav.menuButton01")}
+          </Button>
         </div>
       </div>
     </>

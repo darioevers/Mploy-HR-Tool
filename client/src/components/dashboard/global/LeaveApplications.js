@@ -47,8 +47,6 @@ function LeaveApplications() {
       .catch((err) => console.log(err));
   };
 
-  //remove leave after approval
-
   //approve leave application
   const approveLeaveApplication = (id) => {
     const data = { id, approved: true };
