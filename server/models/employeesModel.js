@@ -68,19 +68,15 @@ const EmployeesSchema = Schema({
 
     cv: {
       type: String,
-      // required: [true, "Please upload your CV! "],
     },
     certificate: {
       type: String,
-      // required: [true, "Please upload your certificate! "],
     },
     diploma: {
       type: String,
-      // required: [true, "Please upload your diploma! "],
     },
     letter: {
       type: String,
-      // required: [true, "Please upload your employment letter! "],
     },
     resetPasswordToken: String,
     resetPasswordExpire: Date,
@@ -252,7 +248,7 @@ const EmployeesSchema = Schema({
 // using a hook inside the function to cash
 EmployeesSchema.pre("save", async function (next) {
   let user = this.bio;
-  if (!user.password) return next();
+  if(!user.password) return next();
   if (!user.isModified("bio.password")) return next();
   user.password = await hash(user.password, 10);
 

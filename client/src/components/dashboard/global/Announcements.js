@@ -13,7 +13,6 @@ function Announcements() {
 
   const addNewAnnouncement = () => {
     const data = announcement;
-    // console.log(announcement);
     axios
       .post(
         "http://localhost:5000/announcements/addannouncement",
@@ -27,7 +26,6 @@ function Announcements() {
       )
       .then((res) => {
         console.log(res);
-        // history.push("/dashboard");
       })
       .catch((err) => console.log(err));
   };
@@ -39,7 +37,11 @@ function Announcements() {
     <div className="announcements_mainbox">
       <div className="announcements_date_container">
         <div className="announcements_date">
-          <Typography variant="h6"><Box sx={{ boxShadow: "0", bgcolor: "transparent", fontSize: 16 }}>{t("dashboardRightDrawer.formDesc02")}</Box></Typography>
+          <Typography variant="h6">
+            <Box sx={{ boxShadow: "0", bgcolor: "transparent", fontSize: 16 }}>
+              {t("dashboardRightDrawer.formDesc02")}
+            </Box>
+          </Typography>
 
           <input
             type="date"
@@ -49,7 +51,11 @@ function Announcements() {
           ></input>
         </div>
         <div className="announcements_date">
-          <Typography variant="h6"><Box sx={{ boxShadow: "0", bgcolor: "transparent", fontSize: 16 }}>{t("dashboardRightDrawer.formDesc03")}</Box></Typography>
+          <Typography variant="h6">
+            <Box sx={{ boxShadow: "0", bgcolor: "transparent", fontSize: 16 }}>
+              {t("dashboardRightDrawer.formDesc03")}
+            </Box>
+          </Typography>
 
           <input
             type="time"
@@ -61,7 +67,11 @@ function Announcements() {
       </div>
 
       <div className="announcements_title">
-        <Typography variant="h6"><Box sx={{ boxShadow: "0", bgcolor: "transparent", fontSize: 16 }}>{t("dashboardRightDrawer.formDesc04")}</Box></Typography>
+        <Typography variant="h6">
+          <Box sx={{ boxShadow: "0", bgcolor: "transparent", fontSize: 16 }}>
+            {t("dashboardRightDrawer.formDesc04")}
+          </Box>
+        </Typography>
 
         <input
           type="text"
@@ -74,7 +84,11 @@ function Announcements() {
       </div>
 
       <div className="announcements_subtopic">
-        <Typography variant="h6"><Box sx={{ boxShadow: "0", bgcolor: "transparent", fontSize: 16 }}>{t("dashboardRightDrawer.formDesc06")}</Box></Typography>
+        <Typography variant="h6">
+          <Box sx={{ boxShadow: "0", bgcolor: "transparent", fontSize: 16 }}>
+            {t("dashboardRightDrawer.formDesc06")}
+          </Box>
+        </Typography>
 
         <input
           type="text"
@@ -87,7 +101,11 @@ function Announcements() {
       </div>
 
       <div className="announcements_message">
-        <Typography variant="h6"><Box sx={{ boxShadow: "0", bgcolor: "transparent", fontSize: 16 }}>{t("dashboardRightDrawer.formDesc08")}</Box></Typography>
+        <Typography variant="h6">
+          <Box sx={{ boxShadow: "0", bgcolor: "transparent", fontSize: 16 }}>
+            {t("dashboardRightDrawer.formDesc08")}
+          </Box>
+        </Typography>
 
         <textarea
           placeholder={t("dashboardRightDrawer.formDesc09")}
@@ -99,7 +117,11 @@ function Announcements() {
       </div>
 
       <div className="announcements_poster">
-        <Typography variant="h6"><Box sx={{ boxShadow: "0", bgcolor: "transparent", fontSize: 16 }}>{t("dashboardRightDrawer.formDesc10")}</Box></Typography>
+        <Typography variant="h6">
+          <Box sx={{ boxShadow: "0", bgcolor: "transparent", fontSize: 16 }}>
+            {t("dashboardRightDrawer.formDesc10")}
+          </Box>
+        </Typography>
 
         <input
           type="text"
@@ -118,8 +140,11 @@ function Announcements() {
             window.location.reload();
           }}
         >
-          <Typography variant="h6"><Box sx={{ boxShadow: "0", bgcolor: "transparent", fontSize: 16 }}>{t("dashboardRightDrawer.formButton02")}</Box></Typography>
-
+          <Typography variant="h6">
+            <Box sx={{ boxShadow: "0", bgcolor: "transparent", fontSize: 16 }}>
+              {t("dashboardRightDrawer.formButton02")}
+            </Box>
+          </Typography>
         </button>
       </div>
     </div>

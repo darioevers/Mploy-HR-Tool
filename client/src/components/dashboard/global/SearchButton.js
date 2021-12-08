@@ -80,13 +80,6 @@ export default function SearchAppBar() {
             </SearchIconWrapper>
             <StyledInputBase inputProps={{ "aria-label": "search" }} />
           </Search>
-
-          {/* <div className="darkmode_switch">
-            <FormControlLabel
-              control={<DarkModeSwitch sx={{ m: 0 }} defaultunchecked />}
-              label=""
-            />
-          </div> */}
         </Toolbar>
       </MyAppBar>
     </Box>

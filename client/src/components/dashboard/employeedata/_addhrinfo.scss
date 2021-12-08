@@ -17,12 +17,8 @@
 
 .active_tab {
   @include flex-center;
-  // background-color: $tertiary;
-  //   width: 20%;
   height: 40px;
   border-bottom: 1px solid $highlight;
-  // border-top-right-radius: 7px;
-  // border-top-left-radius: 7px;
   padding: 3px 10px;
   color: $dark-bg;
 }
@@ -40,17 +36,6 @@
   }
 }
 
-// .education_header,
-// .workexperience_header {
-//   margin-top: 20px;
-// }
-
-// .workdetails_content,
-// .education_content,
-// .workexperience_content {
-//   display: flex;
-//   flex-wrap: wrap;
-// }
 
 .hr-save-btn {
   @include flex-center;

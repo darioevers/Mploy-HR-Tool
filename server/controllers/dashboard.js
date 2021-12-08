@@ -9,7 +9,7 @@ const getPrivateData = (req, res) => {
   // console.log("req"+req.user)
 };
 
-//   console.log("add admin");
+//   "add new admin";
 const addAdmin = async (req, res) => {
  
 try{

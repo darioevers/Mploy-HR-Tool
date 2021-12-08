@@ -33,6 +33,7 @@ const login = async (req, res, next) => {
 // signup or register new user
 const register = async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
+  console.log(req.body)
   try {
     const user = await User.create({
       bio: { firstName, lastName, email, password },
