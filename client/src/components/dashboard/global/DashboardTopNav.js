@@ -23,19 +23,29 @@ function TopNav() {
         <img src={logo} />
       </div>
       <div className="top-nav-line"></div>
-      <SearchButton />
-      <Box sx={{
-        boxShadow: "0"
-      }}>
-        <LanguageSwitch />
-      </Box>
-      <div className="darkmode_switch">
-        <DarkModeSwitch />
 
-        <div className="settings_button">
-          <RightDrawer />
-        </div>
+      <div className="search-button">
+        <SearchButton />
       </div>
+      <div className="language-switch">
+        <Box
+          sx={{
+            boxShadow: "0",
+            width: "100px",
+            bgcolor: "transparent",
+          }}
+        >
+          <LanguageSwitch />
+        </Box>
+      </div>
+      <div className="darkmode-switch">
+        <DarkModeSwitch />
+      </div>
+
+      <div className="settings-button">
+        <RightDrawer />
+      </div>
+
       {role === "admin" && <></>}
     </div>
   );

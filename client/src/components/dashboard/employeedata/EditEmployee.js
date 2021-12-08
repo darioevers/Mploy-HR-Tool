@@ -28,36 +28,33 @@ import {
   Typography,
 } from "@material-ui/core";
 
-const EditEmployee = ({ history, match }) => {
-  const [editEmp, setEditEmp] = useState();
+const EditEmployee = ({ history, location }) => {
+  const [editEmp, setEditEmp] = useState(
+    location.state && location.state.employee
+  );
 
-  useEffect(() => {
-    getEmployee();
-  }, []);
+  // useEffect(() => {
+  //   getEmployee();
+  // }, []);
 
-  const getEmployee = () => {
-    axios
-      .get(
-        `http://localhost:5000/employee/singleEmployee/${match.params.id}`,
+  // const getEmployee = () => {
+  //   axios
+  //     .get(
+  //       `http://localhost:5000/employee/singleEmployee/${match.params.id}`,
 
-        {
-          header: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
+  //       {
+  //         header: {
+  //           "Content-Type": "application/json",
+  //         },
+  //       }
+  //     )
 
-      .then((data) => {
-        console.log(data.data);
-        setEditEmp(data.data);
-      })
-      .catch((err) => console.log(err));
-  };
-
-  //autofill
-  const [firstName, setFirstName] = useState(editEmp?.bio?.firstName);
-  const [lastName, setLastName] = useState(editEmp?.bio?.lastName);
-  const [position, setPosition] = useState(editEmp?.contractInfo?.position);
+  //     .then((data) => {
+  //       console.log(data.data);
+  //       setEditEmp(data.data);
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
 
   //styling of formControls
   const inputStylesA = {
@@ -197,16 +194,15 @@ const EditEmployee = ({ history, match }) => {
                     }}
                     InputLabelProps={{ shrink: true }}
                     value={editEmp?.bio?.firstName}
-                    onChange={(e) => {
+                    onChange={(e) =>
                       setEditEmp({
                         ...editEmp,
                         bio: {
-                          ...editEmp.firstName,
+                          ...editEmp.bio,
                           firstName: e.target.value,
                         },
-                      });
-                      setFirstName(e.target.value);
-                    }}
+                      })
+                    }
                   />
                   {/* <InputLabel htmlFor="my-input">First Name</InputLabel>
                   <Input
@@ -243,13 +239,15 @@ const EditEmployee = ({ history, match }) => {
                     }}
                     InputLabelProps={{ shrink: true }}
                     value={editEmp?.bio?.lastName}
-                    onChange={(e) => {
+                    onChange={(e) =>
                       setEditEmp({
                         ...editEmp,
-                        bio: { ...editEmp, lastName: e.target.value },
-                      });
-                      setLastName(e.target.value);
-                    }}
+                        bio: {
+                          ...editEmp.bio,
+                          lastName: e.target.value,
+                        },
+                      })
+                    }
                   />
 
                   {/* <InputLabel htmlFor="my-input">Last Name</InputLabel>
@@ -327,8 +325,8 @@ const EditEmployee = ({ history, match }) => {
                       setEditEmp({
                         ...editEmp,
                         bio: {
-                          ...editEmp.employeeId,
-                          employeeId: e.target.value,
+                          ...editEmp.bio,
+                          lastName: e.target.value,
                         },
                       })
                     }
@@ -367,11 +365,10 @@ const EditEmployee = ({ history, match }) => {
                       setEditEmp({
                         ...editEmp,
                         contractInfo: {
-                          ...editEmp.position,
+                          ...editEmp.contractInfo,
                           position: e.target.value,
                         },
                       });
-                      setPosition(e.target.value);
                     }}
                   />
                   {/* <InputLabel htmlFor="my-input">Position</InputLabel>
@@ -419,7 +416,7 @@ const EditEmployee = ({ history, match }) => {
                       setEditEmp({
                         ...editEmp,
                         addressOne: {
-                          ...editEmp.streetOne,
+                          ...editEmp.addressOne,
                           streetOne: e.target.value,
                         },
                       })
@@ -464,7 +461,7 @@ const EditEmployee = ({ history, match }) => {
                       setEditEmp({
                         ...editEmp,
                         addressTwo: {
-                          ...editEmp.streetTwo,
+                          ...editEmp.addressTwo,
                           streetTwo: e.target.value,
                         },
                       })
@@ -508,7 +505,7 @@ const EditEmployee = ({ history, match }) => {
                       setEditEmp({
                         ...editEmp,
                         adressOne: {
-                          ...editEmp.cityOne,
+                          ...editEmp.addressOne,
                           cityOne: e.target.value,
                         },
                       })
@@ -552,7 +549,7 @@ const EditEmployee = ({ history, match }) => {
                       setEditEmp({
                         ...editEmp,
                         addressOne: {
-                          ...editEmp.countryOne,
+                          ...editEmp.addressOne,
                           countryOne: e.target.value,
                         },
                       })
@@ -595,7 +592,7 @@ const EditEmployee = ({ history, match }) => {
                       setEditEmp({
                         ...editEmp,
                         addressOne: {
-                          ...editEmp.stateOne,
+                          ...editEmp.addressOne,
                           stateOne: e.target.value,
                         },
                       })
@@ -639,7 +636,7 @@ const EditEmployee = ({ history, match }) => {
                       setEditEmp({
                         ...editEmp,
                         addressOne: {
-                          ...editEmp.postalCodeOne,
+                          ...editEmp.addressOne,
                           postalCodeOne: e.target.value,
                         },
                       })
@@ -683,7 +680,7 @@ const EditEmployee = ({ history, match }) => {
                       setEditEmp({
                         ...editEmp,
                         bio: {
-                          ...editEmp.dateOfBirth,
+                          ...editEmp.bio,
                           dateOfBirth: e.target.value,
                         },
                       })
@@ -805,7 +802,10 @@ const EditEmployee = ({ history, match }) => {
                     onChange={(e) =>
                       setEditEmp({
                         ...editEmp,
-                        bio: { ...editEmp.bio, gender: e.target.value },
+                        bio: {
+                          ...editEmp.bio,
+                          gender: e.target.value,
+                        },
                       })
                     }
                   >
@@ -843,7 +843,7 @@ const EditEmployee = ({ history, match }) => {
                       setEditEmp({
                         ...editEmp,
                         bio: {
-                          ...editEmp.maritalStatus,
+                          ...editEmp.bio,
                           maritalStatus: e.target.value,
                         },
                       })
@@ -900,7 +900,7 @@ const EditEmployee = ({ history, match }) => {
                     onChange={(e) =>
                       setEditEmp({
                         ...editEmp,
-                        bio: { ...editEmp.hobbies, hobbies: e.target.value },
+                        bio: { ...editEmp.bio, hobbies: e.target.value },
                       })
                     }
                   />
