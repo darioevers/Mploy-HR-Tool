@@ -19,11 +19,21 @@ function WidgetTeam() {
   const { t } = useTranslation();
 
   return (
-    <Box className="widget_team_mainbox" sx={{ boxShadow: "0", bgcolor: 'background.widgets' }}>
+    <Box
+      className="widget_team_mainbox"
+      sx={{ boxShadow: "0", bgcolor: "transparent" }}
+    >
       {/* Team Header */}
       <div className="team_header_top">
-        <Typography variant="h6">
-          <Box sx={{ ml: 2, boxShadow: "0", bgcolor: "background.widgets" }}>
+        <Typography style={{ fontSize: "15px" }}>
+          <Box
+            sx={{
+              ml: 2,
+              boxShadow: "0",
+              bgcolor: "background.widgets",
+              width: "50px",
+            }}
+          >
             {t("dashboardWidgetTeam.title01")}
           </Box>
         </Typography>
@@ -47,7 +57,11 @@ function WidgetTeam() {
           <div className="team_manager_title">
             <Typography>
               <Box
-                sx={{ boxShadow: "0", bgcolor: "background.widgets", fontSize: 10 }}
+                sx={{
+                  boxShadow: "0",
+                  bgcolor: "background.widgets",
+                  fontSize: 10,
+                }}
               >
                 {t("dashboardWidgetTeam.jobtitle01")}
               </Box>
@@ -74,7 +88,11 @@ function WidgetTeam() {
           <div className="team_supervisor_title">
             <Typography>
               <Box
-                sx={{ boxShadow: "0", bgcolor: "background.widgets", fontSize: 10 }}
+                sx={{
+                  boxShadow: "0",
+                  bgcolor: "background.widgets",
+                  fontSize: 10,
+                }}
               >
                 {t("dashboardWidgetTeam.jobtitle02")}
               </Box>
@@ -101,7 +119,11 @@ function WidgetTeam() {
           <div className="team_it_one_title">
             <Typography>
               <Box
-                sx={{ boxShadow: "0", bgcolor: "background.widgets", fontSize: 10 }}
+                sx={{
+                  boxShadow: "0",
+                  bgcolor: "background.widgets",
+                  fontSize: 10,
+                }}
               >
                 {t("dashboardWidgetTeam.jobtitle03")}
               </Box>
@@ -128,7 +150,11 @@ function WidgetTeam() {
           <div className="team_it_two_title">
             <Typography>
               <Box
-                sx={{ boxShadow: "0", bgcolor: "background.widgets", fontSize: 10 }}
+                sx={{
+                  boxShadow: "0",
+                  bgcolor: "background.widgets",
+                  fontSize: 10,
+                }}
               >
                 {t("dashboardWidgetTeam.jobtitle04")}
               </Box>
@@ -139,7 +165,7 @@ function WidgetTeam() {
 
       {/* Contacts Header */}
       <div className="team_header_bottom">
-        <Typography variant="h6">
+        <Typography variant="h10">
           <Box sx={{ ml: 2, boxShadow: "0", bgcolor: "background.widgets" }}>
             {t("dashboardWidgetContacts.title01")}
           </Box>

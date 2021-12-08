@@ -15,8 +15,6 @@ import Box from "@mui/material/Paper";
 import CloseIcon from "@mui/icons-material/Close";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
-
-
 function WidgetApplications({ userdata }) {
   //alertbox
   const [isShowingAlert, setShowingAlert] = useState(false);
@@ -129,10 +127,15 @@ function WidgetApplications({ userdata }) {
   const { t } = useTranslation();
 
   return (
-    <Box className="widget_applications_mainbox" sx={{ boxShadow: "0", bgcolor: 'background.widgets' }}>
+    <Box
+      className="widget_applications_mainbox"
+      sx={{ boxShadow: "0", bgcolor: "background.widgets" }}
+    >
       <div className="widget_applications_header">
-        <Typography variant="h6">
-          <Box sx={{ ml: 3, mt: 2, boxShadow: "0", bgcolor: "background.widgets" }}>
+        <Typography style={{ fontSize: "15px" }}>
+          <Box
+            sx={{ ml: 3, mt: 2, boxShadow: "0", bgcolor: "background.widgets" }}
+          >
             {t("dashboardWidgetLeaves.title01")}
           </Box>
         </Typography>
@@ -200,12 +203,12 @@ function WidgetApplications({ userdata }) {
               className="application_search"
               value={newLeave?.name}
 
-            // onChange={(e) =>
-            //   setNewLeave({
-            //     ...newLeave,
-            //     name: e.target.value,
-            //   })
-            // }
+              // onChange={(e) =>
+              //   setNewLeave({
+              //     ...newLeave,
+              //     name: e.target.value,
+              //   })
+              // }
             />
           </div>
 
@@ -225,12 +228,12 @@ function WidgetApplications({ userdata }) {
               placeholder={t("dashboardWidgetLeaves.formDesc02")}
               className="email"
               readOnly
-            // onChange={(e) =>
-            //   setNewLeave({
-            //     ...newLeave,
-            //     email: e.target.value,
-            //   })
-            // }
+              // onChange={(e) =>
+              //   setNewLeave({
+              //     ...newLeave,
+              //     email: e.target.value,
+              //   })
+              // }
             />
           </div>
 
@@ -248,12 +251,12 @@ function WidgetApplications({ userdata }) {
               placeholder={t("dashboardWidgetLeaves.formDesc03")}
               className="application_search"
               value={newLeave?.department}
-            // onChange={(e) =>
-            //   setNewLeave({
-            //     ...newLeave,
-            //     department: e.target.value,
-            //   })
-            // }
+              // onChange={(e) =>
+              //   setNewLeave({
+              //     ...newLeave,
+              //     department: e.target.value,
+              //   })
+              // }
             />
           </div>
 
