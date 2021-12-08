@@ -64,7 +64,7 @@ function WidgetSickLeave({ userdata }) {
       </div>
 
       <div className="sickleave_bottomleft_wrapper">
-        <Typography variant="body2">
+        <Typography variant="body2" style={{ fontSize: "22px" }}>
           <Box sx={{ ml: 2, boxShadow: "0", bgcolor: "background.widgets" }}>
             {t("dashboardWidgetSickleave.title03")}
           </Box>

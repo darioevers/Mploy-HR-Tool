@@ -21,7 +21,7 @@ function WidgetTeam() {
   return (
     <Box
       className="widget_team_mainbox"
-      sx={{ boxShadow: "0", bgcolor: "transparent" }}
+      sx={{ boxShadow: "0", bgcolor: "background.widgets" }}
     >
       {/* Team Header */}
       <div className="team_header_top">
