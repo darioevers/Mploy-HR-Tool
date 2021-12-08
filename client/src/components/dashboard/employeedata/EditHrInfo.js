@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 
 // COMPONENT IMPORTS
 import DashboardTopNav from "../global/DashboardTopNav";
-import DashboardSideNav from "../global/NewDashboardSideNav";
+import DashboardSideNav from "../global/DashboardSideNav";
 
 // MUI IMPORTS
 import {
