@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 
 // COMPONENT IMPORTS
 import DashboardTopNav from "../global/DashboardTopNav";
-import DashboardSideNav from "../global/NewDashboardSideNav";
+import DashboardSideNav from "../global/DashboardSideNav";
 
 // ICON IMPORTS
 import SearchIcon from "@mui/icons-material/Search";
@@ -149,10 +149,10 @@ function EmployeeData({ history }) {
                 <tbody>
                   {employees &&
                     employees.map((employee) => (
-                <>
+                      <>
 
-                        <tr 
-                
+                        <tr
+
                           key={employee._id}
                           onClick={() => {
                             setChecked(true);
