@@ -1,3 +1,4 @@
+const { request } = require("express");
 const EmployeeData = require("../models/employeesModel");
 const employeeController = {};
 
@@ -32,11 +33,10 @@ employeeController.getOneEmployee = async (req, res) => {
   }
 };
 
-
 // add new Employee
 
 employeeController.addNewEmployee = async (req, res) => {
-  console.log("data", req.body);
+  // console.log("data", req.body);
 
   const received = JSON.parse(req.body.allData);
   const pathProfilePic = req.files?.file[0]?.path.substring(7);
@@ -44,7 +44,7 @@ employeeController.addNewEmployee = async (req, res) => {
   const pathDiploma = req.files?.fileDiploma[0]?.path.substring(7);
   const pathCertificate = req.files?.fileCertificate[0]?.path.substring(7);
   const pathLetter = req.files?.fileLetter[0]?.path.substring(7);
-
+  console.log(received);
   try {
     const employee = await new EmployeeData({
       bio: {
@@ -122,7 +122,6 @@ employeeController.addNewEmployee = async (req, res) => {
 
 // employee search
 employeeController.searchName = async (req, res) => {
-  
   try {
     const empArr = await EmployeeData.find({ "bio.status": "active" });
     console.log(empArr);
@@ -141,8 +140,11 @@ employeeController.searchName = async (req, res) => {
 employeeController.updateEmployee = async (req, res) => {
   try {
     let received = await JSON.parse(req.body.editHrInfo);
-    console.log(req);
-    console.log("after", received);
+
+    received.bio.photo = req.files?.file[0]?.path.substring(7);
+
+    console.log("recieve", received);
+
     const employee = await EmployeeData.findOneAndUpdate(
       { "bio.email": received.bio.email },
       received,
@@ -152,10 +154,10 @@ employeeController.updateEmployee = async (req, res) => {
     );
     res.status(200).json({ status: "success", data: employee });
   } catch (error) {
+    console.log(error);
     res.status(404).json({ status: "fail", message: error.message });
   }
 };
-
 
 // delete one employee upon criteria from the log
 employeeController.deleteOneEmployee = async (req, res) => {
@@ -183,6 +185,5 @@ employeeController.deleteOrUpdateStatus = async (req, res) => {
     res.status(400).send({ message: error.message });
   }
 };
-
 
 module.exports = employeeController;

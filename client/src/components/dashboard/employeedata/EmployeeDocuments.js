@@ -6,6 +6,7 @@ import { Document, Page } from "react-pdf";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 import axios from "axios";
+import { DocumentScanner } from "@mui/icons-material";
 
 const EmployeeDocuments = ({ history, match }) => {
   const [documents, setDocuments] = useState();
@@ -95,9 +96,12 @@ const EmployeeDocuments = ({ history, match }) => {
           </div>
 
           <div className="documents_cv">
-            <Document
-              file={`http://localhost:5000/${documents?.bio?.cv}`}
-            ></Document>
+            <a
+              target="_blank"
+              href={`http://localhost:5000/${documents?.bio?.cv} `}
+            >
+              Preview CV
+            </a>
             <div className="documents_label">
               <p>Upload Date </p>
               <p>01-12-2021</p>
@@ -105,9 +109,12 @@ const EmployeeDocuments = ({ history, match }) => {
           </div>
 
           <div className="documents_certificate">
-            <Document
-              file={`http://localhost:5000/${documents?.bio?.certificate}`}
-            ></Document>
+            <a
+              target="_blank"
+              href={`http://localhost:5000/${documents?.bio?.certificate} `}
+            >
+              Preview Certificate
+            </a>
             <div className="documents_label">
               <p>Upload Date </p>
               <p>01-12-2021</p>
@@ -115,9 +122,12 @@ const EmployeeDocuments = ({ history, match }) => {
           </div>
 
           <div className="documents_diploma">
-            <Document
-              file={`http://localhost:5000/${documents?.bio?.diploma}`}
-            ></Document>
+            <a
+              target="_blank"
+              href={`http://localhost:5000/${documents?.bio?.diploma} `}
+            >
+              Preview diploma
+            </a>
             <div className="documents_label">
               <p>Upload Date </p>
               <p>01-12-2021</p>
@@ -125,9 +135,12 @@ const EmployeeDocuments = ({ history, match }) => {
           </div>
 
           <div className="documents_letter">
-            <Document
-              file={`http://localhost:5000/${documents?.bio?.diploma}`}
-            ></Document>
+            <a
+              target="_blank"
+              href={`http://localhost:5000/${documents?.bio?.letter} `}
+            >
+              Preview Recommendation Letter
+            </a>
             <div className="documents_label">
               <p>Upload Date </p>
               <p>01-12-2021</p>

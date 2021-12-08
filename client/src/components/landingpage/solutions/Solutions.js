@@ -10,6 +10,9 @@ import LandingpageFooter from "../navigation/LandingpageFooter";
 
 // IMAGE IMPORTS
 import SolutionsBottomBanner from "../../../img/images/presentation.jpg";
+import ImgTabletAdminDrawer from "../../../img/graphics/tablet_admindrawer.png";
+import ImgLaptopLeaveForm from "../../../img/graphics/laptop_leaveform.png";
+import ImgLaptopEdit from "../../../img/graphics/laptop_edit.png";
 
 // ICON IMPORTS
 import AccessAlarmIcon from "@mui/icons-material/AccessAlarm";
@@ -180,20 +183,27 @@ const Solutions = () => {
             </div>
           </section>
           <section id="landingpage_solutions_servicelist">
-            <Grid container spacing={1}>
+            <Grid container>
               <Grid item xs={12} md={6} lg={6} xl={6}>
                 <Item
                   sx={{
                     height: "500px",
                     borderRadius: "0",
                     boxShadow: "none",
-                    bgcolor: "#ebebeb",
+                    bgcolor: "background.lighterThree",
                   }}
                 >
-                  <br></br>
-                  <Typography className="homeservices_grid_text">
-                    IMAGE MOBILE APP
-                  </Typography>
+                  <Box sx={{
+                    display: "flex",
+                    height: "500px",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    boxShadow: "0",
+                    bgcolor: "transparent",
+                    overflow: "hidden"
+                  }}>
+                    <img src={ImgTabletAdminDrawer} style={{ height: "85%" }} />
+                  </Box>
                 </Item>
               </Grid>
               <Grid item xs={12} md={6} lg={6} xl={6}>
@@ -205,9 +215,25 @@ const Solutions = () => {
                     bgcolor: "background.default",
                   }}
                 >
-                  <Typography className="homeservices_grid_text">
-                    CONTENT{" "}
+                  <Box sx={{
+                    display: "flex",
+                    height: "500px",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    boxShadow: "0",
+                  }}>
+                    <Box sx={{
+                      boxShadow: "0",
+                    }}>
+                      <Typography variant="h4">
+                        Company-wide announcements
+                        <br /> from your pocket.
+                      </Typography>
+                      <Typography variant="body1" gutterBottom>
+                        Use MPloy to send and receive company-wide announcements.
                   </Typography>
+                    </Box>
+                  </Box>
                 </Item>
               </Grid>
               <Grid item xs={12} md={6} lg={6} xl={6}>
@@ -219,10 +245,26 @@ const Solutions = () => {
                     bgcolor: "background.default",
                   }}
                 >
-                  <br></br>
-                  <Typography className="homeservices_grid_text">
-                    CONTENT
+                  <Box sx={{
+                    display: "flex",
+                    height: "500px",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    boxShadow: "0",
+                    bgcolor: "transparent"
+                  }}>
+                    <Box sx={{
+                      boxShadow: "0",
+                    }}>
+                      <Typography variant="h4">
+                        Streamlined
+                        <br /> leave process.
+                      </Typography>
+                      <Typography variant="body1" gutterBottom>
+                        Use MPloy to send and receive company-wide announcements.
                   </Typography>
+                    </Box>
+                  </Box>
                 </Item>
               </Grid>
               <Grid item xs={12} md={6} lg={6} xl={6}>
@@ -231,13 +273,20 @@ const Solutions = () => {
                     height: "500px",
                     borderRadius: "0",
                     boxShadow: "none",
-                    bgcolor: "#ebebeb",
+                    bgcolor: "background.lighterThree",
                   }}
                 >
-                  <br></br>
-                  <Typography className="homeservices_grid_text">
-                    IMAGE WEB VERSION
-                  </Typography>
+                  <Box sx={{
+                    display: "flex",
+                    height: "500px",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    boxShadow: "0",
+                    bgcolor: "transparent",
+                    overflow: "hidden"
+                  }}>
+                    <img src={ImgLaptopLeaveForm} style={{ width: "95%" }} />
+                  </Box>
                 </Item>
               </Grid>
               <Grid item xs={12} md={6} lg={6} xl={6}>
@@ -246,13 +295,20 @@ const Solutions = () => {
                     height: "500px",
                     borderRadius: "0",
                     boxShadow: "none",
-                    bgcolor: "#ebebeb",
+                    bgcolor: "background.lighterThree",
                   }}
                 >
-                  <br></br>
-                  <Typography className="homeservices_grid_text">
-                    IMAGE SOMETHING
-                  </Typography>
+                  <Box sx={{
+                    display: "flex",
+                    height: "500px",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    boxShadow: "0",
+                    bgcolor: "transparent",
+                    overflow: "hidden"
+                  }}>
+                    <img src={ImgLaptopEdit} style={{ width: "95%" }} />
+                  </Box>
                 </Item>
               </Grid>
               <Grid item xs={12} md={6} lg={6} xl={6}>
@@ -264,10 +320,25 @@ const Solutions = () => {
                     bgcolor: "background.default",
                   }}
                 >
-                  <br></br>
-                  <Typography className="homeservices_grid_text">
-                    CONTENT
+                  <Box sx={{
+                    display: "flex",
+                    height: "500px",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    boxShadow: "0",
+                  }}>
+                    <Box sx={{
+                      boxShadow: "0",
+                    }}>
+                      <Typography variant="h4">
+                        Company-wide announcements
+                        <br /> from your pocket.
+                      </Typography>
+                      <Typography variant="body1" gutterBottom>
+                        Use MPloy to send and receive company-wide announcements.
                   </Typography>
+                    </Box>
+                  </Box>
                 </Item>
               </Grid>
             </Grid>
@@ -292,7 +363,7 @@ const Solutions = () => {
         </section>
       </div>
       <LandingpageFooter />
-    </Box>
+    </Box >
   );
 };
 

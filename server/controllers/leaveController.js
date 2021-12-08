@@ -47,6 +47,7 @@ leaveController.addLeave = async (req, res) => {
     return result;
   };
   const leavesAppliedNum = daysBetween(req.body.dateFrom, req.body.dateTo);
+  console.log(req.body);
   try {
     const leave = await new LeavesData({
       name: req.body.name,

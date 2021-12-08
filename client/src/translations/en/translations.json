@@ -169,9 +169,11 @@
     "teamDesc01": "alex description lorem ipsum",
     "teamDesc02": "dario description lorem ipsum",
     "teamDesc03": "maryam description lorem ipsum",
-    "teamRole01": "Front-End / Back-End",
-    "teamRole02": "Front-End",
-    "teamRole03": "Back-End"
+    "teamRole01": "Front-End",
+    "teamRole02": "Back-End",
+    "teamRole03": "UI / UX",
+    "teamRole04": "Design",
+    "teamRole05": "Database"
   },
   "dashboardSidenav": {
     "menu01": "Dashboard",
@@ -206,7 +208,7 @@
     "body01": "Welcome back! Inspire the best work in people, enabling them to achieve their goals!"
   },
   "dashboardWidgetSickleave": {
-    "title01": "Leave",
+    "title01": "Sick Leave",
     "title02": "Available Days",
     "title03": "∞",
     "title04": "Available",
@@ -235,7 +237,7 @@
     "title01": "CONTACTS"
   },
   "dashboardWidgetTasks": {
-    "title01": "ADD NEW TASK",
+    "title01": "TASKS",
     "title02": "Task",
     "title03": "Due date  ",
     "title04": "Priority",
@@ -273,7 +275,7 @@
     "button02": "Send"
   },
   "dashboardWidgetBirthdays": {
-    "title01": "Birthdays",
+    "title01": "BIRTHDAYS",
     "title02": "Today",
     "title03": "This Month"
   },
@@ -345,6 +347,6 @@
     "formDesc17": "Job Title",
     "formDesc18": "Startdate",
     "formDesc19": "Enddate",
-    "formButton01": "Weiter"
+    "formButton01": "Update & Save"
   }
 }

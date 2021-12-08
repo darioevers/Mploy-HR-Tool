@@ -7,6 +7,9 @@ import { FormGroup } from "@material-ui/core";
 import axios from "axios";
 
 const AddDocument = ({ location, history }) => {
+  //ALERT BOX
+  const [isShowingAlert, setShowingAlert] = useState(false);
+
   const [allData, setAllData] = useState(
     location.state && location.state.employeeData
   );
@@ -28,6 +31,7 @@ const AddDocument = ({ location, history }) => {
 
     const readyTOSend = JSON.stringify(allData);
     data.append("allData", readyTOSend);
+    console.log(data);
     axios
       .post(
         "http://localhost:5000/employee/addemployee",
@@ -373,13 +377,22 @@ const AddDocument = ({ location, history }) => {
         <div className="hr-save-btn">
           <button
             onClick={() => {
-              console.log(allData);
+              setShowingAlert(true);
               addNew();
               setAllData("");
             }}
           >
             SAVE
           </button>
+        </div>
+        <div
+          className={`alert alert-success ${
+            isShowingAlert ? "alert-shown" : "alert-hidden"
+          }`}
+          onTransitionEnd={() => setShowingAlert(false)}
+        >
+          <CheckCircleOutlineIcon />
+          <p> Employee Added To Database!</p>
         </div>
       </div>
     </div>

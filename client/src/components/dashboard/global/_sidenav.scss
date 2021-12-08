@@ -32,8 +32,7 @@
     padding: 0;
     position: fixed;
     top: 0;
-    background: $highlight;
-    background: linear-gradient(-130deg, $highlight 9%, $lighter-blue 88%);
+    background-color: $dark-bg;
     z-index: -3;
   }
   display: flex;

@@ -22,8 +22,7 @@ const EmployeesSchema = Schema({
     },
     password: {
       type: String,
-      required: true,
-      
+      // required: true,
     },
     role: {
       type: String,
@@ -69,19 +68,15 @@ const EmployeesSchema = Schema({
 
     cv: {
       type: String,
-
     },
     certificate: {
       type: String,
-
     },
     diploma: {
       type: String,
-
     },
     letter: {
       type: String,
-
     },
     resetPasswordToken: String,
     resetPasswordExpire: Date,
@@ -94,7 +89,6 @@ const EmployeesSchema = Schema({
       type: Date,
       required: false,
     },
-
   },
   addressOne: {
     streetOne: {
@@ -225,7 +219,6 @@ const EmployeesSchema = Schema({
       type: String,
       required: false,
     },
-  
   },
   leaves: [],
   availableHolidays: {

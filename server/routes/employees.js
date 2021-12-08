@@ -19,10 +19,9 @@ router.post("/addemployee", uploadMultiple, employeesController.addNewEmployee);
 router.post("/search", employeesController.searchName);
 
 // update employee
-router.put("/update", employeesController.updateEmployee);
+router.put("/update", uploadMultiple,employeesController.updateEmployee);
 
 // updating status ||deleting from the get all employees
 router.patch("/delete", employeesController.deleteOrUpdateStatus);
-
 
 module.exports = router;

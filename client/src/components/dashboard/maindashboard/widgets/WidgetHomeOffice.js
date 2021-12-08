@@ -40,12 +40,19 @@ function WidgetHomeOffice({ userdata }) {
     <div className="widget_homeoffice_mainbox">
       <div className="homeoffice_top_wrapper">
         <div className="square_bullet"></div>
-        <Typography variant="h6"><Box sx={{ ml: 2, boxShadow: "0", bgcolor: "transparent" }}>{t("dashboardWidgetHomeOffice.title01")}</Box></Typography>
-
+        <Typography variant="h7">
+          <Box sx={{ ml: 2, boxShadow: "0", bgcolor: "transparent" }}>
+            {t("dashboardWidgetHomeOffice.title01")}
+          </Box>
+        </Typography>
       </div>
 
       <div className="homeoffice_middle_wrapper">
-        <Typography variant="caption"><Box sx={{ boxShadow: "0", bgcolor: "transparent" }}>{t("dashboardWidgetHomeOffice.title02")}</Box></Typography>
+        <Typography variant="caption">
+          <Box sx={{ boxShadow: "0", bgcolor: "transparent" }}>
+            {t("dashboardWidgetHomeOffice.title02")}
+          </Box>
+        </Typography>
         <div className="horizontal_line"></div>
       </div>
 
@@ -54,7 +61,11 @@ function WidgetHomeOffice({ userdata }) {
           leaves
             .filter((item) => item.bio.email === userdata.bio?.email)
             .map((item) => <h2>{item.availableHomeOffice}</h2>)}
-        <Typography variant="caption"><Box sx={{ boxShadow: "0", bgcolor: "transparent" }}>{t("dashboardWidgetHomeOffice.title03")}</Box></Typography>
+        <Typography variant="caption">
+          <Box sx={{ boxShadow: "0", bgcolor: "transparent" }}>
+            {t("dashboardWidgetHomeOffice.title03")}
+          </Box>
+        </Typography>
       </div>
 
       <div className="homeoffice_bottommiddle_wrapper">
@@ -66,7 +77,11 @@ function WidgetHomeOffice({ userdata }) {
           leaves
             .filter((item) => item.bio.email === userdata.bio?.email)
             .map((item) => <h2>{item.takenHomeOffice || "0"} </h2>)}
-        <Typography variant="caption"><Box sx={{ boxShadow: "0", bgcolor: "transparent" }}>{t("dashboardWidgetHomeOffice.title04")}</Box></Typography>
+        <Typography variant="caption">
+          <Box sx={{ boxShadow: "0", bgcolor: "transparent" }}>
+            {t("dashboardWidgetHomeOffice.title04")}
+          </Box>
+        </Typography>
       </div>
     </div>
   );

@@ -23,17 +23,6 @@ import {
 const EditEmployee = ({ history, match }) => {
   const [editEmp, setEditEmp] = useState();
 
-  //styling of formControls
-  const inputStylesA = {
-    width: "46%",
-    marginRight: "20px",
-  };
-
-  const inputStylesB = {
-    width: "30%",
-    marginRight: "20px",
-  };
-
   useEffect(() => {
     getEmployee();
   }, []);
@@ -57,10 +46,18 @@ const EditEmployee = ({ history, match }) => {
       .catch((err) => console.log(err));
   };
 
-  //autofill
-  const [firstName, setFirstName] = useState(editEmp?.bio?.firstName);
-  const [lastName, setLastName] = useState(editEmp?.bio?.lastName);
-  const [position, setPosition] = useState(editEmp?.contractInfo?.position);
+
+
+  //styling of formControls
+  const inputStylesA = {
+    width: "46%",
+    marginRight: "20px",
+  };
+
+  const inputStylesB = {
+    width: "30%",
+    marginRight: "20px",
+  };
 
   // FORM HEIGHT
   const height = 50;
@@ -83,24 +80,18 @@ const EditEmployee = ({ history, match }) => {
         <div className="addemployee_header">
           <div className="active_tab">
             <h4>{t("dashboardEditEmployeeData.menu01")}</h4>
+          
           </div>
           <div
             className="inactive_tab"
             onClick={() => {
-              history.push(`/dashboard/employeedata/edithrinfo/${editEmp._id}`);
+              history.push({
+                pathname: "/dashboard/employeedata/edithrinfo",
+                state: { editEmp },
+              });
             }}
           >
             <h4>{t("dashboardEditEmployeeData.menu02")}</h4>
-          </div>
-          <div
-            className="inactive_tab"
-            onClick={() => {
-              history.push(
-                `/dashboard/employeedata/editdocuments/${editEmp._id}`
-              );
-            }}
-          >
-            <h4>{t("dashboardEditEmployeeData.menu03")}</h4>
           </div>
         </div>
         <div className="employeedata_form">
@@ -132,13 +123,16 @@ const EditEmployee = ({ history, match }) => {
                       setEditEmp({
                         ...editEmp,
                         bio: {
-                          ...editEmp.firstName,
+                          ...editEmp.bio,
                           firstName: e.target.value,
                         },
                       });
-                      setFirstName(e.target.value);
-                    }}
+                     
+                    } 
+                  }
                   />
+ 
+
                 </FormControl>
                 <FormControl style={inputStylesA}>
                   <TextField
@@ -160,9 +154,9 @@ const EditEmployee = ({ history, match }) => {
                     onChange={(e) => {
                       setEditEmp({
                         ...editEmp,
-                        bio: { ...editEmp, lastName: e.target.value },
+                        bio: { ...editEmp.bio, lastName: e.target.value },
                       });
-                      setLastName(e.target.value);
+                   
                     }}
                   />
                 </FormControl>
@@ -215,11 +209,11 @@ const EditEmployee = ({ history, match }) => {
                       setEditEmp({
                         ...editEmp,
                         contractInfo: {
-                          ...editEmp.position,
+                          ...editEmp.contractInfo,
                           position: e.target.value,
                         },
                       });
-                      setPosition(e.target.value);
+                     
                     }}
                   />
                 </FormControl>
@@ -420,14 +414,16 @@ const EditEmployee = ({ history, match }) => {
                       },
                     }}
                     value={editEmp?.bio?.dateOfBirth}
-                    onChange={(e) =>
+                    onChange={(e) => {
                       setEditEmp({
                         ...editEmp,
                         bio: {
-                          ...editEmp.dateOfBirth,
+                          ...editEmp.bio,
                           dateOfBirth: e.target.value,
                         },
-                      })
+                      });
+                     
+                    } 
                     }
                   />
                 </FormControl>
@@ -510,7 +506,7 @@ const EditEmployee = ({ history, match }) => {
                     onChange={(e) =>
                       setEditEmp({
                         ...editEmp,
-                        bio: { ...editEmp.bio, gender: e.target.value },
+                        bio: { ...editEmp.gender, gender: e.target.value },
                       })
                     }
                   >

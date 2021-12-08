@@ -5,31 +5,15 @@ const morgan = require("morgan");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const multer=require("multer");
-const path=require("path");
+const multer = require("multer");
+const path = require("path");
 
 // Applications Middlewares
 app.use(morgan("dev"));
 app.use(express.json());
 dotenv.config();
 app.use(cors());
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-
-// // ** MIDDLEWARE ** for preventing the cors issue 
-// const whitelist = ['http://localhost:3000', 'http://localhost:5000', 'here the heroku link after deployment']
-// const corsOptions = {
-//   origin: function (origin, callback) {
-//     console.log("** Origin of request " + origin)
-//     if (whitelist.indexOf(origin) !== -1 || !origin) {
-//       console.log("Origin acceptable")
-//       callback(null, true)
-//     } else {
-//       console.log("Origin rejected")
-//       callback(new Error('Not allowed by CORS'))
-//     }
-//   }
-// }
-
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Connect with the database
 
@@ -50,16 +34,36 @@ const main = async () => {
 };
 main();
 
-
 // --> Add this to deploy in heroku
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === "production") {
   // Serve any static files
-  app.use(express.static(path.join(__dirname, 'client/build')));
-// Handle React routing, return all requests to React app
-  app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  app.use(express.static(path.join(__dirname, "client/build")));
+  // Handle React routing, return all requests to React app
+  app.get("*", function (req, res) {
+    res.sendFile(path.join(__dirname, "client/build", "index.html"));
   });
 }
+
+// ** MIDDLEWARE FOR DEPLOYING ON HEROKU ** //
+const whitelist = [
+  "http://localhost:3000",
+  "http://localhost:5000",
+  "https://stormy-ridge-64190.herokuapp.com/",
+];
+const corsOptions = {
+  origin: function (origin, callback) {
+    console.log("** Origin of request " + origin);
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      console.log("Origin acceptable");
+      callback(null, true);
+    } else {
+      console.log("Origin rejected");
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+};
+app.use(cors(corsOptions));
+
 app.use("/users", require("./routes/users"));
 
 app.use("/dashboard", require("./routes/dashboard"));
