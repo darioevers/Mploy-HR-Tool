@@ -2,9 +2,9 @@
   font-family: $font-family-roboto;
 }
 
-body {
-  @include md {
-    overflow-x: hidden;
-  }
-  scroll-behavior: smooth;
-}
+// body {
+//   @include md {
+//     overflow-x: hidden;
+//   }
+//   scroll-behavior: smooth;
+// }

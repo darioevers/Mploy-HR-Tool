@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import DashboardTopNav from "../global/DashboardTopNav";
-import DashboardSideNav from "../global/NewDashboardSideNav";
+import DashboardSideNav from "../global/DashboardSideNav";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 

@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 
 // COMPONENT IMPORTS
 import DashboardTopNav from "../global/DashboardTopNav";
-import DashboardSideNav from "../global/NewDashboardSideNav";
+import DashboardSideNav from "../global/DashboardSideNav";
 import EmployeeData from "./EmployeeData";
 
 // ICON IMPORTS

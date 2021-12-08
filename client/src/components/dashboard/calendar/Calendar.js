@@ -1,6 +1,6 @@
 import React from "react";
 import DashboardTopNav from "../global/DashboardTopNav";
-import DashboardSideNav from "../global/NewDashboardSideNav";
+import DashboardSideNav from "../global/DashboardSideNav";
 import MiniCalendar from "react-calendar";
 
 function Calendar() {
