@@ -60,7 +60,7 @@ export default function Contact(props) {
               sx={{ boxShadow: "0", mr: 5 }}
             >
               <Typography variant="h2" className="aboutintro_heading">
-                Get In Touch.
+                {t("contact.title")}
               </Typography>
               <Typography
                 variant="body1"
@@ -68,9 +68,7 @@ export default function Contact(props) {
                 sx={{ maxWidth: "400px", textAlign: "justify" }}
               >
                 <Box sx={{ fontSize: 22, boxShadow: "0" }}>
-                  MPloy is the first project we've independently developed and
-                  managed, so we would love to hear your feedback. Please fill out
-                  the contact form below to get in touch.
+                  {t("contact.body")}
                 </Box>
               </Typography>
             </Box>
@@ -79,7 +77,7 @@ export default function Contact(props) {
                 id="boxtest"
                 component="form"
                 sx={{
-                  "& > :not(style)": { m: 2, width: "25ch" },
+                  "& > :not(style)": { m: 1, width: "25ch" },
                   textAlign: "center",
                 }}
                 noValidate
@@ -88,43 +86,50 @@ export default function Contact(props) {
                 <TextField
                   required
                   id="contactform_name"
-                  label="First Name"
-                  variant="standard"
+                  label={t("landingRegister.formdesc01")}
+                  variant="outlined"
                 />
                 <TextField
                   required
                   id="contactform_name"
-                  label="Last Name"
-                  variant="standard"
+                  label={t("landingRegister.formdesc02")}
+                  variant="outlined"
                 />
                 <TextField
                   required
                   id="contactform_email"
-                  label="Email"
-                  variant="standard"
+                  label={t("landingRegister.formdesc03")}
+                  variant="outlined"
                 />
                 <TextField
                   id="contactform_phone"
-                  label="Phone"
-                  variant="standard"
+                  label={t("dashboardEditEmployeeData.phone")}
+                  variant="outlined"
                 />
                 <TextField
                   required
                   id="contactform_message"
-                  label="Message"
+                  label={t("dashboardRightDrawer.formDesc08")}
                   multiline
                   maxRows={10}
                   minRows={6}
                   fullWidth
                   style={{ width: "90%" }}
                 />
-                <Button
-                  variant="contained"
-                  id="contactform_namelabel"
-                  style={{ width: "90%" }}
+                <Tooltip
+                  title="Please contact us via email"
                 >
-                  Send Message
-              </Button>
+                  <span>
+                    <Button
+                      variant="contained"
+                      id="contactform_namelabel"
+                      style={{ width: "90%" }}
+                      disabled
+                    >
+                      {t("dashboardRightDrawer.formButton01")}
+                    </Button>
+                  </span>
+                </Tooltip>
               </Box>
             </div>
           </Box>

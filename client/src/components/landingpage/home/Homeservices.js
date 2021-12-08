@@ -125,12 +125,12 @@ export default function Homeservices(props) {
                     boxShadow: "0",
                   }}>
                     <Typography variant="h4">
-                      Visualize your
-                        <br /> employee records.
-                      </Typography>
+                      {t("landingHomeServices.gridItem01")}
+                      <br />
+                      {t("landingHomeServices.gridItem011")}
+                    </Typography>
                     <Typography variant="body1" gutterBottom>
-                      Use MPloy to send and receive company-wide announcements.
-                  </Typography>
+                      {t("landingHomeServices.gridDesc01")} </Typography>
                   </Box>
                 </Box>
               </Item>
@@ -158,14 +158,15 @@ export default function Homeservices(props) {
                     maxWidth: "400px"
                   }}>
                     <Typography variant="h4">
-                      Easily edit
-                      </Typography>
+                      {t("landingHomeServices.gridItem02")}
+
+                    </Typography>
                     <Typography variant="h4">
-                      employee records
-                      </Typography>
+                      {t("landingHomeServices.gridItem022")}
+                    </Typography>
                     <Typography variant="body1" gutterBottom>
-                      Read company updates or check on database records on-the-go. Must functionality is desktop-only.
-                  </Typography>
+                      {t("landingHomeServices.gridDesc02")}
+                    </Typography>
                   </Box>
                 </Box>
                 <Box sx={{
@@ -202,14 +203,13 @@ export default function Homeservices(props) {
                     maxWidth: "400px"
                   }}>
                     <Typography variant="h4">
-                      MPloy is
-                      </Typography>
+                      {t("landingHomeServices.gridItem03")}
+                    </Typography>
                     <Typography variant="h4">
-                      Mobile Ready
-                      </Typography>
+                      {t("landingHomeServices.gridItem033")}
+                    </Typography>
                     <Typography variant="body1" gutterBottom>
-                      Read company updates or check on database records on-the-go. Must functionality is desktop-only.
-                  </Typography>
+                      {t("landingHomeServices.gridDesc03")} </Typography>
                   </Box>
                 </Box>
                 <Box sx={{
