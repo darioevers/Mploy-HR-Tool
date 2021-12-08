@@ -62,7 +62,16 @@
     "title02": "Das beste rausholen!",
     "body01": "Es war noch nie so einfach, das beste aus Ihrem Team zu holen. Verwalten Sie mit MPloy alles in einem Arbeitsbereich und legen Sie in wenigen Minuten los. Testen Sie es noch heute kostenlos!",
     "button01": "JETZT ANMELDEN",
-    "button02": "SPRICH UNS AN"
+    "button02": "SPRICH UNS AN",
+    "gridItem01": "Digitale",
+    "gridItem011": "Mitarbeiterakten",
+    "gridDesc01": "Greifen Sie auf alle Mitarbeiterinfos von einer Plattform zu.",
+    "gridItem02": "Einfach",
+    "gridItem022": "bearbeiten",
+    "gridDesc02": "Bearbeiten Sie Mitarbeiterdaten in real-time und sparen Sie wertvolle Zeit.",
+    "gridItem03": "MPloy ist",
+    "gridItem033": "mobile ready",
+    "gridDesc03": "Ob Unternehmensweite Neuigkeiten on-the-go oder Daten auslesen, MPloy kann auch mobil verwendet werden."
   },
   "landingHomeAbout": {
     "title01": "HR digitalisieren.",
@@ -75,7 +84,8 @@
     "button01": "JETZT ANMELDEN"
   },
   "contact": {
-    "title": "Sprich uns an."
+    "title": "Sprich uns an.",
+    "body": "MPloy ist das erste Projekt, das wir eigenständig entwickelt und betrieben haben, daher würden wir uns über Ihr Feedback freuen. Bitte kontaktieren Sie uns über LinkedIn oder per E-Mail."
   },
   "landingLogin": {
     "title01": "Anmelden",
@@ -124,7 +134,16 @@
     "gridDesc03": "Die Nutzung ist für Sie völlig kostenlos! Für die Nutzung unserer Demo fallen keine Gebühren an. Sehen Sie sich unsere Preistabelle über die Schaltfläche unten an, um mehr zu erfahren.",
     "gridButton01": "",
     "gridButton02": "",
-    "gridButton03": "PREISE"
+    "gridButton03": "PREISE",
+    "gridItem01": "Unternehmensweite News",
+    "gridItem011": "aus der Hosentasche",
+    "gridDesc04": "Mit MPloy können Sie Unternehmens-Neuigkeiten einfach senden und erhalten.",
+    "gridItem02": "Abwesenheiten",
+    "gridItem022": "top organisiert",
+    "gridDesc05": "Mit dem implementierten Abwesenheitsprotokoll erleichtern wir Ihre Arbeit.",
+    "gridItem03": "Einfacher Zugriff",
+    "gridItem033": "auf alle Daten",
+    "gridDesc06": "Greifen Sie blitzschnell auf alle Mitarbeiterdaten zu."
   },
   "aboutIntro": {
     "title01": "Über unser Projekt",
@@ -312,7 +331,8 @@
     "menu01": "General Data",
     "menu02": "HR Information",
     "menu03": "Documents",
-    "sectionHeading01": "ALLGEMEIN"
+    "sectionHeading01": "ALLGEMEIN",
+    "formDesc21": "Einstellungstermin"
   },
   "dashboardEditEmployeeData": {
     "title01": "Mitarbeiter bearbeiten",

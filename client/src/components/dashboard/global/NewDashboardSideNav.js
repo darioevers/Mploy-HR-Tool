@@ -138,7 +138,6 @@ const NewDashboardSideNav = (props) => {
         <Container
             sx={{
                 boxShadow: 0,
-                height: "80vh"
             }}
         >
             {isMobile ? (

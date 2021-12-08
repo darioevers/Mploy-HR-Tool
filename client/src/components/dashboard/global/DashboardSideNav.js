@@ -1,19 +1,14 @@
-import React, { useState, useEffect, Component } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import axios from "axios";
 
 // TRANSLATION IMPORTS
 import { useTranslation } from "react-i18next";
 
+
 // MUI IMPORTS
-import { withStyles } from '@material-ui/core/styles';
-import { makeStyles } from '@mui/styles';
 import Typography from "@mui/material/Typography";
 import Button from "@material-ui/core/Button";
-import Box from "@mui/material/Box";
-
-// IMAGE IMPORTS
-import navlinkImg from "../../../img/graphics/active-bg-xl.svg";
 
 // ICON IMPORTS
 import DashboardIcon from "@material-ui/icons/Dashboard";
@@ -34,6 +29,41 @@ const DashboardSideNav = (props) => {
   };
 
   const [privateData, setPrivateData] = useState("");
+
+  // const history = useHistory();
+  // // if there is nothing in the local storage we immediatly
+  // useEffect(() => {
+  //   if (!localStorage.getItem("authToken")) {
+  //     history.push("/");
+  //   }
+
+  //   const fetchPrivateData = async () => {
+  //     const config = {
+  //       headers: {
+  //         "Content-type": "application/json",
+  //         Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+  //       },
+  //     };
+  //     try {
+  //       const { data } = await axios.get(
+  //         "http://localhost:5000/dashboard",
+  //         config
+  //       );
+  //       console.log(data);
+  //       setPrivateData(data.user);
+  //     } catch (error) {
+  //       console.log(error);
+  //       localStorage.removeItem("authToken");
+  //     }
+  //   };
+  //   fetchPrivateData();
+  // }, [history]);
+  // for logining out
+  // const logoutHandler = () => {
+  //   localStorage.removeItem("authToken");
+  //   history.push("/");
+  //   // should go to the /
+  // };
 
   const history = useHistory();
   // if there is nothing in the local storage we immediatly
@@ -71,29 +101,6 @@ const DashboardSideNav = (props) => {
     // should go to the /
   };
 
-  // NAVBAR ACTIVE BUTTONS
-  // const classes = makeStyles({
-  //   button: {
-  //     "&.active": {
-  //       backgroundImage: { navlinkImg },
-  //       bgcolor: "background.default"
-  //     },
-  //   },
-  // });
-
-  const useStyles = makeStyles(theme => ({
-    button: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    active: {
-      bgcolor: "background.paper"
-    },
-  }));
-
-  const classes = useStyles();
-
   // TRANSLATION
   const { t } = useTranslation();
 
@@ -129,20 +136,18 @@ const DashboardSideNav = (props) => {
 
         {/* sidenavlinks */}
         <div className="sidenav_links">
-          <Box className="sidenav_link" sx={{ boxShadow: 0, width: "100%" }}>
-            <NavLink
-              exact
-              to="/dashboard"
-              activeClassName="active"
-              className="sidenav_link"
-              onClick={handleClick}
-            >
-              <i>
-                <DashboardIcon style={{ fontSize: "x-large" }} />
-              </i>
-              <Typography>{t("dashboardSidenav.menu01")}</Typography>
-            </NavLink>
-          </Box>
+          <NavLink
+            exact
+            to="/dashboard"
+            activeClassName="active"
+            className="sidenav_link"
+            onClick={handleClick}
+          >
+            <i>
+              <DashboardIcon style={{ fontSize: "x-large" }} />
+            </i>
+            <Typography>{t("dashboardSidenav.menu01")}</Typography>
+          </NavLink>
 
           <NavLink
             exact
@@ -156,6 +161,7 @@ const DashboardSideNav = (props) => {
               <FolderOpenIcon />
             </i>
             <Typography>{t("dashboardSidenav.menu02")}</Typography>
+            {/* <img src={iconbg} /> */}
             <div></div>
           </NavLink>
 
@@ -171,6 +177,7 @@ const DashboardSideNav = (props) => {
               <TodayIcon />
             </i>
             <Typography>{t("dashboardSidenav.menu03")}</Typography>
+            {/* <img src={iconbg} /> */}
             <div></div>
           </NavLink>
           <NavLink
@@ -185,6 +192,7 @@ const DashboardSideNav = (props) => {
               <EuroIcon />{" "}
             </i>
             <Typography>{t("dashboardSidenav.menu04")}</Typography>
+            {/* <img src={iconbg} /> */}
             <div></div>
           </NavLink>
           <NavLink
@@ -198,6 +206,7 @@ const DashboardSideNav = (props) => {
               <FormatListBulletedIcon />
             </i>
             <Typography>{t("dashboardSidenav.menu05")}</Typography>
+            {/* <img src={iconbg} /> */}
             <div></div>
           </NavLink>
           <NavLink
@@ -211,14 +220,15 @@ const DashboardSideNav = (props) => {
               {" "}
               <MenuBookIcon />
             </i>{" "}
-            <Typography>{t("dashboardSidenav.menu06")}</Typography>
+            <Typography>
+              {t("dashboardSidenav.menu06")}
+            </Typography>
+            {/* <img src={iconbg} /> */}
             <div></div>
           </NavLink>
         </div>
         <div className="logout_btn">
-          <Button variant="outlined" onClick={logoutHandler}>
-            {t("dashboardSidenav.menuButton01")}
-          </Button>
+          <Button variant="outlined" onClick={logoutHandler}>{t("dashboardSidenav.menuButton01")}</Button>
         </div>
       </div>
     </>

@@ -26,6 +26,7 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
+import Tooltip from '@mui/material/Tooltip';
 
 // GRID ITEM
 const Item = styled(Paper)(({ theme }) => ({
@@ -226,12 +227,13 @@ const Solutions = () => {
                       boxShadow: "0",
                     }}>
                       <Typography variant="h4">
-                        Company-wide announcements
-                        <br /> from your pocket.
+                        {t("solutions.gridItem01")}
+                        <br />
+                        {t("solutions.gridItem011")}
                       </Typography>
                       <Typography variant="body1" gutterBottom>
-                        Use MPloy to send and receive company-wide announcements.
-                  </Typography>
+                        {t("solutions.gridDesc04")}
+                      </Typography>
                     </Box>
                   </Box>
                 </Item>
@@ -257,12 +259,11 @@ const Solutions = () => {
                       boxShadow: "0",
                     }}>
                       <Typography variant="h4">
-                        Streamlined
-                        <br /> leave process.
+                        {t("solutions.gridItem02")}
+                        <br /> {t("solutions.gridItem022")}
                       </Typography>
                       <Typography variant="body1" gutterBottom>
-                        Use MPloy to send and receive company-wide announcements.
-                  </Typography>
+                        {t("solutions.gridDesc05")}</Typography>
                     </Box>
                   </Box>
                 </Item>
@@ -331,12 +332,11 @@ const Solutions = () => {
                       boxShadow: "0",
                     }}>
                       <Typography variant="h4">
-                        Company-wide announcements
-                        <br /> from your pocket.
+                        {t("solutions.gridItem03")}
+                        <br /> {t("solutions.gridItem033")}
                       </Typography>
                       <Typography variant="body1" gutterBottom>
-                        Use MPloy to send and receive company-wide announcements.
-                  </Typography>
+                        {t("solutions.gridDesc06")} </Typography>
                     </Box>
                   </Box>
                 </Item>

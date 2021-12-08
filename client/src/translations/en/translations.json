@@ -62,7 +62,15 @@
     "title02": "Scale your team with thoughtful solutions.",
     "body01": "Planning, tracking and delivering your team’s best work has never been easier. Manage everything in one Workspace with MPloy and get started within minutes. Try it today for free!",
     "button01": "SIGN UP FOR MPLOY",
-    "button02": "GET IN TOUCH"
+    "button02": "GET IN TOUCH",
+    "gridItem01": "Visualize your",
+    "gridItem011": "employee records.",
+    "gridDesc01": "Acces all your employee data visualized from within one workspace.",
+    "gridItem02": "Easily edit employee records",
+    "gridDesc02": "Quickly edit employee records and save real-time.",
+    "gridItem03": "MPloy is",
+    "gridItem033": "mobile ready",
+    "gridDesc03": "Read company updates or check on database records on-the-go. Most functionality is desktop-only."
   },
   "landingHomeAbout": {
     "title01": "Digitising HR.",
@@ -75,7 +83,8 @@
     "button01": "TRY NOW"
   },
   "contact": {
-    "title": "Get in touch."
+    "title": "Get In Touch.",
+    "body": "MPloy is the first project we've independently developed and managed, so we would love to hear your feedback. Please fill out the contact form below to get in touch. "
   },
   "landingLogin": {
     "title01": "Sign In",
@@ -124,7 +133,16 @@
     "gridDesc03": "Actually, its completely free for you to use! There will be no fee charged if you use our demo. Check out our pricing table via the button below to learn more.",
     "gridButton01": "",
     "gridButton02": "",
-    "gridButton03": "PRICING"
+    "gridButton03": "PRICING",
+    "gridItem01": "Company-wide annoncements",
+    "gridItem011": "from your pocket",
+    "gridDesc04": "Use MPloy to send and receive company-wide announcements.",
+    "gridItem02": "Streamlined",
+    "gridItem022": "leave process",
+    "gridDesc05": "MPloy features a build-in streamline leave and absence process.",
+    "gridItem03": "Easy database access",
+    "gridItem033": " and editing",
+    "gridDesc06": "Access all employee records and edit them as quickly as it can be."
   },
   "aboutIntro": {
     "title01": "What's this about?",
@@ -293,16 +311,16 @@
     "tableDesc03": "Email",
     "tableDesc04": "Date of Birth",
     "drawerTitle01": "Contact Information",
-    "drawerdesc01": "Phone",
-    "drawerdesc02": "Email",
+    "drawerDesc01": "Phone",
+    "drawerDesc02": "Email",
     "drawerTitle02": "Work Information",
-    "drawerdesc03": "Department",
-    "drawerdesc04": "Supervisor",
-    "drawerdesc05": "Office",
+    "drawerDesc03": "Department",
+    "drawerDesc04": "Supervisor",
+    "drawerDesc05": "Office",
     "drawerTitle03": "Personal Info",
-    "drawerdesc06": "Gender",
-    "drawerdesc07": "Birthday",
-    "drawerdesc08": "Address",
+    "drawerDesc06": "Gender",
+    "drawerDesc07": "Birthday",
+    "drawerDesc08": "Address",
     "button02": "Edit",
     "button03": "Delete",
     "noInfo": "No Information"
